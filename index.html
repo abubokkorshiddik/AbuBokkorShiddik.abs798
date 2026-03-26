@@ -1,197 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Abu Bokkor Shiddik | Research Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Abu Bokkor Shiddik | Research Portfolio</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            background-color: #f4f6f8;
-            color: #222;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: #f5f7fa;
+        color: #222;
+    }
 
-        header {
-            background: #1f3c88;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
+    header {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
 
-        header h1 {
-            margin: 0;
-        }
+    header h1 {
+        margin-bottom: 10px;
+        font-size: 32px;
+    }
 
-        nav {
-            background: #162447;
-            padding: 10px;
-            text-align: center;
-        }
+    header p {
+        margin: 5px 0;
+        opacity: 0.9;
+    }
 
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .links a {
+        color: #ffd369;
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: 500;
+    }
 
-        section {
-            padding: 30px;
-            max-width: 1000px;
-            margin: auto;
-            background: white;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
+    nav {
+        background: #1b262c;
+        text-align: center;
+        padding: 12px;
+    }
 
-        h2 {
-            color: #1f3c88;
-        }
+    nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    section {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px;
+    }
 
-        .project {
-            margin-bottom: 20px;
-        }
+    h2 {
+        color: #0f2027;
+        margin-bottom: 20px;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #162447;
-            color: white;
-            margin-top: 20px;
-        }
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+    }
 
-        a {
-            color: #1f3c88;
-        }
-    </style>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .project a {
+        display: inline-block;
+        margin-top: 10px;
+        color: #0f2027;
+        font-weight: bold;
+    }
+
+    footer {
+        background: #1b262c;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
 </head>
 
 <body>
 
 <header>
     <h1>Md. Abu Bokkor Shiddik</h1>
-    <p>AI Researcher | Statistics Graduate | Global Health & Explainable AI</p>
-    <p>
-        📧 abubokkor.brur60@gmail.com |
-        📞 +8801874001360
-    </p>
+    <p>AI Researcher | Statistics | Global Health & Explainable AI</p>
+    <p>📧 abubokkor.brur60@gmail.com | 📞 +8801874001360</p>
+
+    <div class="links">
+        <a href="#">Google Scholar</a>
+        <a href="#">ORCID</a>
+        <a href="https://github.com/abubokkorshiddik">GitHub</a>
+        <a href="#">LinkedIn</a>
+    </div>
 </header>
 
 <nav>
     <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#publications">Publications</a>
+    <a href="#work">Research</a>
     <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
     <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
 </nav>
 
 <section id="about">
     <h2>About</h2>
-    <p>
-        I am a researcher working on machine learning, explainable AI, and global health.
-        My work focuses on disease prediction, climate-health interactions, and interpretable models
-        for public health decision making.
-    </p>
-
-    <p>
-        <b>Profiles:</b><br>
-        <a href="#">Google Scholar</a> |
-        <a href="#">ORCID</a> |
-        <a href="https://github.com/abubokkorshiddik">GitHub</a> |
-        <a href="#">LinkedIn</a>
-    </p>
+    <div class="card">
+        <p>
+            Researcher focused on machine learning, explainable AI, and global health.
+            I develop interpretable models for disease prediction, climate-health analysis,
+            and public health decision support systems.
+        </p>
+    </div>
 </section>
 
-<section id="research">
-    <h2>Research Focus</h2>
-    <ul>
-        <li>Machine learning for health data</li>
-        <li>Explainable AI (SHAP, LIME, IG, LRP)</li>
-        <li>Spatio-temporal modeling</li>
-        <li>Climate-health interactions</li>
-        <li>Disease early warning systems</li>
-    </ul>
-</section>
+<section id="work">
+    <h2>Research highlights</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Dengue early warning system</h3>
+            <p>Hybrid AI + Bayesian deep learning model for district-level prediction.</p>
+        </div>
 
-<section id="publications">
-    <h2>Selected Publications</h2>
-    <ul>
-        <li>
-            AI-based modeling of tuberculosis drivers — Scientific Reports (2025)
-            <br><a href="#">View Paper (DOI)</a>
-        </li>
-        <li>
-            Dengue early warning system — Health Science Reports (2025)
-            <br><a href="#">View Paper</a>
-        </li>
-        <li>
-            Explainable AI for dengue outbreaks — Global Epidemiology (2025)
-        </li>
-        <li>
-            Bayesian mortality modeling — BMJ Open (2026)
-        </li>
-    </ul>
+        <div class="card">
+            <h3>Global disease modeling</h3>
+            <p>Multi-country ML analysis (41+ countries, 2000–2022).</p>
+        </div>
+
+        <div class="card">
+            <h3>Explainable AI</h3>
+            <p>SHAP and XAI methods to interpret disease drivers.</p>
+        </div>
+    </div>
 </section>
 
 <section id="projects">
     <h2>Projects and tools</h2>
 
-    <div class="project">
-        <h3>Dengue analytics dashboard</h3>
-        <p>Interactive dashboard for dengue trends and early warning modeling.</p>
-        <a href="https://abubokkorshiddik.github.io/dengue-dashboard">Live Demo</a>
-    </div>
+    <div class="grid">
 
-    <div class="project">
-        <h3>Systematic review dashboard</h3>
-        <p>Tool for screening and analyzing research articles.</p>
-        <a href="https://abubokkorshiddik.github.io/research-explorer">Live Demo</a>
-    </div>
+        <div class="card project">
+            <h3>Dengue dashboard</h3>
+            <p>Interactive dengue analytics and visualization platform.</p>
+            <a href="https://abubokkorshiddik.github.io/dengue-dashboard">View project</a>
+        </div>
 
-    <div class="project">
-        <h3>R distribution detector (whatdis)</h3>
-        <p>R package for checking and visualizing data distribution.</p>
-        <a href="https://github.com/abubokkorshiddik/R-distribution-detector">GitHub</a>
-    </div>
+        <div class="card project">
+            <h3>Systematic review dashboard</h3>
+            <p>Tool for screening and analyzing publications.</p>
+            <a href="https://abubokkorshiddik.github.io/research-explorer">View project</a>
+        </div>
 
-    <div class="project">
-        <h3>Snake game</h3>
-        <p>Browser-based game using JavaScript and CSS.</p>
-        <a href="https://abubokkorshiddik.github.io/snake-game">Play Game</a>
-    </div>
+        <div class="card project">
+            <h3>R distribution detector</h3>
+            <p>Custom R package for statistical distribution analysis.</p>
+            <a href="https://github.com/abubokkorshiddik/R-distribution-detector">GitHub</a>
+        </div>
 
+        <div class="card project">
+            <h3>Snake game</h3>
+            <p>Interactive browser game using JavaScript.</p>
+            <a href="https://abubokkorshiddik.github.io/snake-game">Play</a>
+        </div>
+
+    </div>
+</section>
+
+<section id="publications">
+    <h2>Selected publications</h2>
+    <div class="card">
+        <ul>
+            <li>AI-based tuberculosis modeling — Scientific Reports (2025)</li>
+            <li>Dengue early warning system — Health Science Reports (2025)</li>
+            <li>Explainable AI for dengue — Global Epidemiology (2025)</li>
+            <li>Bayesian mortality modeling — BMJ Open (2026)</li>
+        </ul>
+    </div>
 </section>
 
 <section id="skills">
     <h2>Technical skills</h2>
-
-    <p><b>Programming:</b> R, Python, C, Java, HTML</p>
-
-    <p><b>Machine learning:</b> Regression, Random Forest, XGBoost, SVM</p>
-
-    <p><b>Deep learning:</b> CNN, RNN, LSTM, GRU, STGNN</p>
-
-    <p><b>Statistics:</b> GLM, ARIMA, Bayesian methods</p>
-
-    <p><b>Geospatial:</b> GIS, spatial modeling</p>
-</section>
-
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: abubokkor.brur60@gmail.com</p>
-    <p>Location: Rangpur, Bangladesh</p>
+    <div class="card">
+        <p><b>Programming:</b> R, Python, C, Java</p>
+        <p><b>ML & AI:</b> XGBoost, Random Forest, SVM, Deep Learning</p>
+        <p><b>XAI:</b> SHAP, LIME, IG</p>
+        <p><b>Statistics:</b> GLM, ARIMA, Bayesian</p>
+        <p><b>Geospatial:</b> GIS, spatial modeling</p>
+    </div>
 </section>
 
 <footer>
-    <p>© 2026 Md. Abu Bokkor Shiddik | Academic Portfolio</p>
+    <p>© 2026 Md. Abu Bokkor Shiddik</p>
 </footer>
 
 </body>
