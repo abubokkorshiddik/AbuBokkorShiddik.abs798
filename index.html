@@ -221,37 +221,73 @@ a {color:#0b1f3a;}
 <p>Shared public health and data science resources to promote research skills among students and early-career researchers.</p>
 </div>
 </section>
-<section id="summary">
-<h2>Summary visualization</h2>
-<canvas id="summaryChart" width="400" height="400"></canvas>
+<section id="summary-bar">
+<h2>Summary of portfolio contributions</h2>
+<canvas id="summaryBarChart" width="600" height="400"></canvas>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-const ctx = document.getElementById('summaryChart').getContext('2d');
-const summaryChart = new Chart(ctx, {
-    type: 'radar',
+const ctxBar = document.getElementById('summaryBarChart').getContext('2d');
+const summaryBarChart = new Chart(ctxBar, {
+    type: 'bar',
     data: {
-        labels: ['Programming', 'Data Analysis', 'Machine Learning', 'AI Interpretation', 'Geospatial Modeling', 'Public Health', 'Research Projects', 'Publications', 'Reviewer Service', 'Digital Projects'],
+        labels: [
+            'Programming', 
+            'Data Analysis', 
+            'Machine Learning', 
+            'AI Interpretation', 
+            'Geospatial Modeling', 
+            'Public Health', 
+            'Research Projects', 
+            'Publications', 
+            'Reviewer Service', 
+            'Digital Projects'
+        ],
         datasets: [{
-            label: 'Proficiency & Contributions',
+            label: 'Proficiency & Contributions (%)',
             data: [95, 90, 88, 85, 80, 92, 85, 90, 75, 80],
-            backgroundColor: 'rgba(11, 31, 58, 0.2)',
-            borderColor: 'rgba(11, 31, 58, 0.9)',
-            borderWidth: 2,
-            pointBackgroundColor: 'rgba(11, 31, 58, 0.9)'
+            backgroundColor: [
+                '#0b1f3a',
+                '#1f4e79',
+                '#3b7ca4',
+                '#5aa0c2',
+                '#7fc0e3',
+                '#0b3d62',
+                '#115173',
+                '#176385',
+                '#1d7496',
+                '#2385a7'
+            ],
+            borderColor: '#0b1f3a',
+            borderWidth: 1
         }]
     },
     options: {
+        indexAxis: 'y',
         scales: {
-            r: {
+            x: {
                 beginAtZero: true,
-                suggestedMax: 100
+                max: 100,
+                title: {
+                    display: true,
+                    text: 'Contribution (%)',
+                    color: '#0b1f3a',
+                    font: { size: 14, weight: 'bold' }
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Portfolio Categories',
+                    color: '#0b1f3a',
+                    font: { size: 14, weight: 'bold' }
+                }
             }
         },
         plugins: {
             legend: {
-                position: 'top'
+                display: false
             }
         }
     }
