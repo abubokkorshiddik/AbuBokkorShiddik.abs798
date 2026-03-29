@@ -34,38 +34,30 @@ header {
 
 /* Layout inside header */
 .header-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
+  text-align: center;
   max-width: 1100px;
   margin: auto;
-  text-align: left;
 }
 
 /* Profile image */
 .profile-img {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   border: 3px solid #facc15;
   object-fit: cover;
+  margin-bottom: 15px;
 }
 
 /* Header text */
-.header-text {
-  display: flex;
-  flex-direction: column;
-}
-
 .header-text h1 {
-  margin: 0;
+  margin: 8px 0;
   font-size: 30px;
 }
 
 .header-text p {
-  margin: 5px 0;
-  font-size: 15px;
+  margin: 4px 0;
+  font-size: 14px;
   color: #cbd5e1;
 }
 
@@ -73,7 +65,7 @@ header {
 .header-links {
   text-align: center;
   margin-top: 18px;
-  padding-top: 10px;
+  padding-top: 12px;
   border-top: 1px solid rgba(255,255,255,0.2);
 }
 
@@ -102,10 +94,11 @@ nav {
 }
 
 nav a {
-  padding: 12px 15px;
+  padding: 10px 14px;
   font-weight: 500;
   color: #1e293b;
   text-decoration: none;
+  font-size: 14px;
 }
 
 nav a:hover {
@@ -147,7 +140,7 @@ li {
   margin-bottom: 8px;
 }
 
-/* Skills */
+/* Skills grid */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -159,6 +152,15 @@ li {
   padding: 12px;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
+}
+
+/* Links */
+a {
+  color: #1e3a8a;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /* Footer */
@@ -173,28 +175,19 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
 
-  .header-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .header-text {
-    align-items: center;
-  }
-
-  header h1 {
+  .header-text h1 {
     font-size: 24px;
   }
 
-  nav {
-    font-size: 14px;
+  nav a {
+    font-size: 13px;
+    padding: 8px 10px;
   }
 
   section {
     padding: 15px;
   }
 }
-
 </style>
 </head>
 
@@ -206,16 +199,15 @@ footer {
 
   <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/ABS.jpeg" class="profile-img" alt="Profile">
 
-  <div class="header-text">
-    <h1>Md. Abu Bokkor Shiddik</h1>
-    <p>Researcher | Bachelor of Science in Statistics</p>
-    <p>📧 abubokkor.brur60@gmail.com | 📞 +8801874001360</p>
-    <p>📍 Park Mor, Tajhat, Rangpur - 5400, Bangladesh</p>
-  </div>
+  <h1>Md. Abu Bokkor Shiddik</h1>
+
+  <p>Researcher | Bachelor of Science in Statistics</p>
+  <p>📧 abubokkor.brur60@gmail.com | 📞 +8801874001360</p>
+  <p>📍 Park Mor, Tajhat, Rangpur - 5400, Bangladesh</p>
 
 </div>
 
-<div class="contact-links">
+<div class="header-links">
   <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik" target="_blank">Portfolio</a> |
   <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798" target="_blank">LinkedIn</a> |
   <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ&hl=en" target="_blank">Google Scholar</a> |
