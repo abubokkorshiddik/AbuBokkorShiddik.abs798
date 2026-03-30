@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Abu Bokkor Shiddik</title>
+
+<style>
+
+/* same CSS as yours */
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f8fafc;
+  color: #1f2937;
+}
+
+/* TOP BAR */
+.topbar {
+  background: #020617;
+  color: #e2e8f0;
+  font-size: 14px;
+}
+
+.topbar-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 20px;
+}
+
+.top-links a {
+  color: #93c5fd;
+  margin-left: 12px;
+  text-decoration: none;
+}
+
+/* NAV */
+.navbar {
+  background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: auto;
+  padding: 12px 20px;
+}
+
+.nav-inner a {
+  color: #cbd5e1;
+  margin-right: 18px;
+  text-decoration: none;
+}
+
+.nav-inner a:hover {
+  color: #60a5fa;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #020617, #0b3a6e);
+  color: white;
+  padding: 60px 20px;
+}
+
+.hero-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.title {
+  color: #cbd5e1;
+}
+
+/* BUTTONS */
+.actions {
+  margin-top: 20px;
+}
+
+.btn {
+  background: #1d4ed8;
+  color: white;
+  padding: 10px 16px;
+  text-decoration: none;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.btn-outline {
+  border: 1px solid #60a5fa;
+  color: #60a5fa;
+  padding: 10px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* PHOTO */
+.photo-frame {
+  width: 200px;
+  height: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 3px solid #1e3a8a;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MAIN */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+h2 {
+  border-left: 4px solid #1d4ed8;
+  padding-left: 10px;
+}
+
+/* BOX */
+.box {
+  background: white;
+  padding: 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin-top: 15px;
+  line-height: 1.7;
+}
+
+/* GRID */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* PUBLICATION */
+.pub {
+  background: white;
+  padding: 14px;
+  margin-top: 10px;
+  border-left: 4px solid #1d4ed8;
+}
+
+/* FOOTER */
+footer {
+  background: #020617;
+  color: #e2e8f0;
+  text-align: center;
+  padding: 30px;
+}
+
+.footer-links a {
+  color: #93c5fd;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>Academic Profile</span>
+    <div class="top-links">
+      <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ">Google Scholar</a>
+      <a href="https://orcid.org">ORCID</a>
+      <a href="https://github.com">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#skills">Skills</a>
+    <a href="#publications">Publications</a>
+    <a href="#projects">Projects</a>
+    <a href="#service">Service</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+
+    <div>
+      <h1>Md. Abu Bokkor Shiddik</h1>
+      <p class="title">Researcher | Bachelor of Science in Statistics</p>
+
+      <p>
+        Email: abubokkor.brur60@gmail.com<br>
+        Phone: +8801874001360<br>
+        Location: Rangpur, Bangladesh
+      </p>
+
+      <div class="actions">
+        <a class="btn" href="Md_Abu_Bokkor_Shiddik_CV.pdf">Download CV</a>
+        <a class="btn-outline" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ">Google Scholar</a>
+      </div>
+
+    </div>
+
+    <div class="photo-frame">
+      <img src="https://github.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/blob/main/ABS.jpeg?raw=true">
+    </div>
+
+  </div>
+</header>
+
+<main class="container">
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About</h2>
+
+  <div class="box">
+    Researcher in statistics focusing on machine learning, public health analytics, and
+    explainable AI. My work integrates environmental, socioeconomic, and health data to
+    understand disease dynamics and support evidence-based decision making.
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <h2>Research Areas</h2>
+
+  <div class="box">
+    Machine Learning, Deep Learning, Explainable AI, Spatial and spatio-temporal modeling,
+    Climate-health analysis, Epidemiological modeling, and Data-driven public health systems.
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Technical Skills</h2>
+
+  <div class="grid-2">
+
+    <div class="box">
+      <strong>Programming</strong><br>
+      R, Python, C, Java, SPSS, Git, HTML, LaTeX
+    </div>
+
+    <div class="box">
+      <strong>ML & AI</strong><br>
+      XGBoost, RF, SVM, LSTM, ANN, CNN, clustering
+    </div>
+
+    <div class="box">
+      <strong>Statistics</strong><br>
+      ANOVA, GLM, ARIMA, Bayesian methods
+    </div>
+
+    <div class="box">
+      <strong>Explainable AI</strong><br>
+      SHAP, LIME, IG, LRP
+    </div>
+
+  </div>
+
+</section>
+
+<!-- EDUCATION -->
+<section>
+  <h2>Education</h2>
+
+  <div class="box">
+    <strong>B.Sc. in Statistics</strong><br>
+    Begum Rokeya University (2022–2026)
+  </div>
+
+  <div class="box">
+    <strong>HSC (Science)</strong><br>
+    Police Lines School and College (2018–2019)
+  </div>
+
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <h2>Selected Publications</h2>
+
+  <div class="pub">Explainable AI for dengue prediction — Global Epidemiology (2025)</div>
+  <div class="pub">Tuberculosis prediction using ML — Scientific Reports (2025)</div>
+  <div class="pub">Malaria modeling using AI — Scientific Reports (2025)</div>
+
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="box">
+    Dengue Early Warning System using Hybrid AI and Bayesian Deep Learning
+  </div>
+
+  <div class="box">
+    Community health behavior analysis for NCDs in Bangladesh
+  </div>
+
+</section>
+
+<!-- SERVICE -->
+<section id="service">
+  <h2>Academic Service</h2>
+
+  <div class="box">
+    Reviewer for BMJ Global Health, BMJ Public Health, Health Science Reports,
+    PLOS Digital Health, and other journals.
+  </div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+
+  <p>Md. Abu Bokkor Shiddik</p>
+
+  <div class="footer-links">
+    <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ">Google Scholar</a>
+    <a href="Md_Abu_Bokkor_Shiddik_CV.pdf">Download CV</a>
+  </div>
+
+</footer>
+
+</body>
+</html>
