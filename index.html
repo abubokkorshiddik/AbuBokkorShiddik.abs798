@@ -292,8 +292,20 @@ footer {
   </div>
 
 </section>
+<script>
+async function loadScholar() {
+  const response = await fetch("https://api.example.com/scholar");
+  const data = await response.json();
 
+  document.getElementById("citations").innerText = data.citations;
+  document.getElementById("hindex").innerText = data.hindex;
+  document.getElementById("i10").innerText = data.i10;
+}
+
+loadScholar();
+</script>
 <section id="metrics">
+  
   <h2>Research Metrics</h2>
 
   <div class="grid-2">
