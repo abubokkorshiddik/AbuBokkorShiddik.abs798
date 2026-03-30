@@ -46,18 +46,29 @@ body {
   max-width: 1100px;
   margin: auto;
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
   align-items: center;
 }
 
-/* PROFILE IMAGE */
-.profile-pic {
-  width: 170px;
-  height: 200px;
+/* LEFT IMAGE STACK */
+.image-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.image-stack img {
+  width: 180px;
+  height: 110px;
   object-fit: cover;
   border-radius: 6px;
-  border: 3px solid white;
+  border: 2px solid white;
+}
+
+/* MAIN PROFILE BIGGER */
+.image-stack img.main {
+  height: 180px;
 }
 
 /* LINKS */
@@ -83,14 +94,13 @@ body {
   background: #2563eb;
 }
 
-/* CONTAINER */
+/* CONTENT */
 .container {
   max-width: 1100px;
   margin: auto;
   padding: 30px 20px;
 }
 
-/* SECTION */
 .section {
   margin-bottom: 35px;
 }
@@ -114,11 +124,6 @@ body {
   padding: 14px;
   border-radius: 6px;
   border: 1px solid #e5e7eb;
-  line-height: 1.5;
-}
-
-.card strong {
-  display: block;
 }
 
 /* FOOTER */
@@ -130,7 +135,6 @@ footer {
 }
 
 </style>
-
 </head>
 
 <body>
@@ -150,11 +154,25 @@ footer {
 <div class="header">
   <div class="header-inner">
 
-    <!-- LEFT IMAGE -->
-    <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/ABS.jpeg" class="profile-pic">
+    <!-- LEFT: 3 IMAGES -->
+    <div class="image-stack">
 
-    <!-- RIGHT INFO -->
-    <div>
+      <!-- PROFILE -->
+      <img class="main"
+      src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/ABS.jpeg">
+
+      <!-- IMAGE 2 -->
+      <img
+      src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/isrt.jpeg">
+
+      <!-- IMAGE 3 -->
+      <img
+      src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg">
+
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div style="flex:1;">
       <h1>Md. Abu Bokkor Shiddik</h1>
       <p><b>Researcher | Machine Learning | Public Health</b></p>
       <p>Rangpur, Bangladesh</p>
@@ -177,134 +195,64 @@ footer {
 <!-- CONTENT -->
 <div class="container">
 
-<!-- ABOUT -->
 <div class="section">
 <h2>About</h2>
 <div class="card">
-Machine learning researcher working on public health, disease prediction, and explainable AI integrating climate and socioeconomic data.
+Machine learning researcher focusing on public health, disease prediction, and explainable AI.
 </div>
 </div>
 
-<!-- SKILLS -->
 <div class="section">
-<h2>Technical Skills</h2>
+<h2>Skills</h2>
 <div class="grid">
-<div class="card"><strong>Programming</strong>Python, R, SQL, Java</div>
-<div class="card"><strong>ML & AI</strong>XGBoost, RF, ANN, LSTM</div>
-<div class="card"><strong>Statistics</strong>GLM, ARIMA, Bayesian</div>
-<div class="card"><strong>XAI</strong>SHAP, LIME, IG, LRP</div>
+<div class="card">Python, R, SQL</div>
+<div class="card">XGBoost, RF, ANN</div>
+<div class="card">SHAP, LIME, IG</div>
+<div class="card">GLM, ARIMA</div>
 </div>
 </div>
 
-<!-- PUBLICATIONS -->
 <div class="section">
 <h2>Publications</h2>
 <div class="grid">
-
-<div class="card">
-<strong>Tuberculosis prediction using AI</strong>
-Scientific Reports, 2025
-</div>
-
-<div class="card">
-<strong>Dengue early warning system</strong>
-Health Science Reports, 2025
-</div>
-
-<div class="card">
-<strong>Dengue explainable AI</strong>
-Global Epidemiology, 2025
-</div>
-
-<div class="card">
-<strong>Malaria modeling</strong>
-Scientific Reports, 2025
-</div>
-
+<div class="card">Tuberculosis modeling – Scientific Reports</div>
+<div class="card">Dengue early warning – Health Sci Reports</div>
+<div class="card">Malaria modeling – Scientific Reports</div>
 </div>
 <a class="btn" href="publications.html">View all</a>
 </div>
 
-<!-- PROJECTS -->
 <div class="section">
 <h2>Projects</h2>
 <div class="grid">
-
-<div class="card">
-<strong>Dengue Dashboard</strong>
-District level prediction & visualization
-</div>
-
-<div class="card">
-<strong>Systematic Review Tool</strong>
-Search, filter, PRISMA workflow
-</div>
-
-<div class="card">
-<strong>R Package whatdis()</strong>
-Distribution detection tool
-</div>
-
+<div class="card">Dengue Dashboard</div>
+<div class="card">Systematic Review Tool</div>
+<div class="card">R Package whatdis()</div>
 </div>
 <a class="btn" href="projects.html">View all</a>
 </div>
 
-<!-- COURSES -->
 <div class="section">
-<h2>Courses & Training</h2>
+<h2>Courses</h2>
 <div class="grid">
-
-<div class="card">
-<strong>Gen AI in research</strong>
-Elsevier, 2026
-</div>
-
-<div class="card">
-<strong>Time Series Analysis</strong>
-SUNY, 2025
-</div>
-
-<div class="card">
-<strong>Machine Learning with Python</strong>
-IBM, 2024
-</div>
-
-<div class="card">
-<strong>Data Science Methodology</strong>
-IBM, 2023
-</div>
-
+<div class="card">Gen AI – Elsevier (2026)</div>
+<div class="card">Time Series – SUNY (2025)</div>
+<div class="card">ML with Python – IBM (2024)</div>
 </div>
 <a class="btn" href="courses.html">View all</a>
 </div>
 
-<!-- SERVICE -->
 <div class="section">
-<h2>Academic Service</h2>
+<h2>Service</h2>
 <div class="grid">
-
-<div class="card">
-<strong>PLOS Digital Health</strong>
-Reviewer (2025–2026)
-</div>
-
-<div class="card">
-<strong>BMJ Global Health</strong>
-Reviewer (2026)
-</div>
-
-<div class="card">
-<strong>Health Science Reports</strong>
-Reviewer (2025–2026)
-</div>
-
+<div class="card">PLOS Digital Health Reviewer</div>
+<div class="card">BMJ Global Health Reviewer</div>
 </div>
 <a class="btn" href="service.html">View all</a>
 </div>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
 <p>© 2026 Md. Abu Bokkor Shiddik</p>
 </footer>
