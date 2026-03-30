@@ -14,34 +14,47 @@ body {
   color: #1f2937;
 }
 
+/* NAVIGATION (STICKY) */
 .navbar {
   background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.nav-inner {
+  max-width: 1000px;
+  margin: auto;
   padding: 12px 20px;
 }
 
-.navbar a {
+.nav-inner a {
   color: #cbd5e1;
   margin-right: 15px;
   text-decoration: none;
+  font-weight: 500;
 }
 
-.navbar a:hover {
+.nav-inner a:hover {
   color: #60a5fa;
 }
 
+/* HEADER */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
-  padding: 40px 20px;
+  padding: 45px 20px;
   text-align: center;
 }
 
+/* CONTAINER */
 .container {
   max-width: 1000px;
   margin: auto;
   padding: 40px 20px;
 }
 
+/* PUBLICATION CARD */
 .pub {
   background: white;
   padding: 18px;
@@ -49,6 +62,12 @@ body {
   border-left: 4px solid #1d4ed8;
   border-radius: 6px;
   line-height: 1.7;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.pub strong {
+  display: block;
+  margin-top: 6px;
 }
 
 .pub a {
@@ -61,12 +80,23 @@ body {
   text-decoration: underline;
 }
 
+/* FOOTER */
 footer {
   background: #020617;
   color: #e2e8f0;
   text-align: center;
   padding: 25px;
   margin-top: 40px;
+}
+
+footer a {
+  color: #93c5fd;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+footer a:hover {
+  color: white;
 }
 
 </style>
@@ -78,8 +108,7 @@ footer {
 <!-- NAV -->
 <div class="navbar">
   <div class="nav-inner">
-    <a href="index.html">Home</a>
-    <a href="home.html">Profile</a>
+    <a href="home.html">Home</a>
     <a href="publications.html">Publications</a>
     <a href="projects.html">Projects</a>
     <a href="courses.html">Courses</a>
@@ -97,56 +126,56 @@ footer {
 <div class="container">
 
 <div class="pub">
-1. Rahman, M.S., Shiddik, A.B. Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally. <br>
-<strong>Scientific Reports, 2025</strong> <br>
+Rahman, M.S., Shiddik, A.B. Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally.
+<strong>Scientific Reports, 2025</strong>
 <a href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">View Publication</a>
 </div>
 
 <div class="pub">
-2. Rahman, M. S., Amrin, M., & Bokkor Shiddik, M. A. (2025). Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree‐Based Machine Learning Model. <br>
-<strong>Health Science Reports, 2025</strong> <br>
+Rahman, M. S., Amrin, M., & Bokkor Shiddik, M. A. Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh using interpretable machine learning.
+<strong>Health Science Reports, 2025</strong>
 <a href="https://doi.org/10.1002/hsr2.70726" target="_blank">View Publication</a>
 </div>
 
 <div class="pub">
-3. Rahman, M. S., & Shiddik, M. A. B. (2025). Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers. <br>
-<strong>Global Epidemiology, 2025</strong> <br>
+Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers.
+<strong>Global Epidemiology, 2025</strong>
 <a href="https://www.sciencedirect.com/science/article/pii/S2590113325000288" target="_blank">View Publication</a>
 </div>
 
 <div class="pub">
-4. Rahman, M. S., & Shiddik, M. A. B. (2025). Unraveling global malaria incidence and mortality using machine learning and artificial intelligence–driven spatial analysis. <br>
-<strong>Scientific Reports, 2025</strong> <br>
+Unraveling global malaria incidence and mortality using machine learning and spatial analysis.
+<strong>Scientific Reports, 2025</strong>
 <a href="https://www.nature.com/articles/s41598-025-12872-0" target="_blank">View Publication</a>
 </div>
 
 <div class="pub">
-5. Rahman, S., & Shiddik, A. B. (2025). Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh. <br>
-<strong>Global Epidemiology, 2025</strong> <br>
+Reflections on explainable artificial intelligence for predicting dengue outbreaks.
+<strong>Global Epidemiology, 2025</strong>
 <a href="https://www.sciencedirect.com/science/article/pii/S2590113325000483" target="_blank">View Publication</a>
 </div>
 
 <div class="pub">
-6. Rahman, M. S., & Shiddik, M. A. B. (2025). Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference. <br>
-<strong>International Journal of Statistical Sciences, 2025</strong> <br>
+Data-driven dengue prevention strategies using explainable AI and causal inference.
+<strong>International Journal of Statistical Sciences, 2025</strong>
 <a href="https://www.banglajol.info/index.php/ijss/article/view/85772" target="_blank">View Publication</a>
 </div>
 
 <div class="pub">
-7. Rahman, M. S., & Shiddik, M. A. B. (2025). Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000–2022). <br>
-<strong>International Journal of Health Geographics, 2025</strong> <br>
+Leveraging explainable AI and spatial analysis for communicable diseases in Asia (2000–2022).
+<strong>International Journal of Health Geographics, 2025</strong>
 <a href="https://link.springer.com/article/10.1186/s12942-025-00433-7" target="_blank">View Publication</a>
 </div>
 
 <div class="pub">
-8. Rahman, S. and Shiddik, A.B. (2026). Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality. <br>
-<strong>BMJ Open, 2026</strong> <br>
+Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality.
+<strong>BMJ Open, 2026</strong>
 <a href="https://bmjopen.bmj.com/content/16/2/e108632" target="_blank">View Publication</a>
 </div>
 
 <div class="pub">
-9. Shiddik, M.A.B., Toshi, F.Z., Yesmin, S. and Rahman, M.S. (2026). District-Level Dengue Early Warning Prediction System using Hybrid Explainable AI. <br>
-<strong>Tropical Medicine and Infectious Disease, 2026</strong> <br>
+District-level dengue early warning prediction system using hybrid explainable AI.
+<strong>Tropical Medicine and Infectious Disease, 2026</strong>
 <a href="https://www.mdpi.com/2414-6366/11/3/73" target="_blank">View Publication</a>
 </div>
 
@@ -157,8 +186,8 @@ footer {
   <p>Md. Abu Bokkor Shiddik</p>
   <p>
     <a href="home.html">Home</a> |
-    <a href="research.html">Research</a> |
-    <a href="contact.html">Contact</a>
+    <a href="projects.html">Projects</a> |
+    <a href="courses.html">Courses</a>
   </p>
 </footer>
 
