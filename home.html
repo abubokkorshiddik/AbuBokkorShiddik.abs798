@@ -6,112 +6,148 @@
 <title>Md. Abu Bokkor Shiddik</title>
 
 <style>
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f8fafc;
-  color: #1f2937;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
 }
 
+/* NAV */
 .navbar {
   background: #020617;
-  position: sticky;
-  top: 0;
+  padding: 12px 0;
 }
 
 .nav-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
-  padding: 12px;
+  padding: 0 20px;
 }
 
 .nav-inner a {
   color: #cbd5e1;
-  margin-right: 15px;
+  margin-right: 18px;
   text-decoration: none;
+  font-size: 14px;
 }
 
 .nav-inner a:hover {
-  color: #60a5fa;
+  color: #38bdf8;
 }
 
+/* HEADER */
 .header {
-  background: linear-gradient(135deg, #020617, #0b3a6e);
+  background: #0b3a6e;
   color: white;
   padding: 40px 20px;
 }
 
-.header-inner {
-  max-width: 1100px;
+.header-container {
+  max-width: 1200px;
   margin: auto;
   display: flex;
-  align-items: center;
-  gap: 20px;
+  gap: 30px;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 
-.profile-pic {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
+/* PROFILE IMAGE */
+.profile-box img {
+  width: 220px;
+  height: 260px;
   object-fit: cover;
+  border-radius: 6px;
   border: 3px solid white;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 25px;
+/* INFO */
+.info {
+  flex: 1;
 }
 
-.card {
-  background: white;
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 6px;
-  border: 1px solid #e5e7eb;
+.info h1 {
+  margin: 0;
+  font-size: 32px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 15px;
+.info p {
+  margin: 6px 0;
 }
 
+/* LINKS */
+.links a {
+  color: #93c5fd;
+  margin-right: 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* BUTTON */
 .btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 8px 12px;
+  margin-top: 12px;
+  padding: 8px 14px;
   background: #1d4ed8;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .btn:hover {
   background: #2563eb;
 }
 
-.links a {
-  color: #60a5fa;
-  margin-right: 10px;
-  text-decoration: none;
+/* MAIN */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px;
 }
 
+/* SECTIONS */
+.section {
+  margin-bottom: 35px;
+}
+
+.section h2 {
+  border-left: 4px solid #1d4ed8;
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+/* FOOTER */
 footer {
   background: #020617;
-  color: white;
+  color: #e2e8f0;
   text-align: center;
-  padding: 20px;
-  margin-top: 40px;
+  padding: 25px;
 }
+
 </style>
 
 </head>
 
 <body>
 
-<nav class="navbar">
+<!-- NAV -->
+<div class="navbar">
   <div class="nav-inner">
     <a href="index.html">Home</a>
     <a href="home.html">Profile</a>
@@ -120,16 +156,21 @@ footer {
     <a href="courses.html">Courses</a>
     <a href="service.html">Service</a>
   </div>
-</nav>
+</div>
 
-<section class="header">
-  <div class="header-inner">
-    
-    <img src="profile.jpg" class="profile-pic">
+<!-- HEADER -->
+<div class="header">
+  <div class="header-container">
 
-    <div>
+    <!-- LEFT: PROFILE -->
+    <div class="profile-box">
+      <img src="profile.jpg" alt="Profile">
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div class="info">
       <h1>Md. Abu Bokkor Shiddik</h1>
-      <p>Researcher | Machine Learning | Public Health</p>
+      <p><b>Researcher | Machine Learning | Public Health</b></p>
       <p>Rangpur, Bangladesh</p>
 
       <p class="links">
@@ -140,52 +181,75 @@ footer {
         <a href="https://github.com/abubokkorshiddik" target="_blank">GitHub</a>
       </p>
 
+      <br>
+
       <a href="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/Md_Abu_Bokkor_Shiddik_CV.pdf"
          class="btn" target="_blank">Download CV</a>
 
     </div>
 
   </div>
-</section>
+</div>
 
+<!-- CONTENT -->
 <div class="container">
 
+<div class="section">
 <h2>About</h2>
 <div class="card">
-Researcher working on machine learning, deep learning, and explainable AI in public health.
+Researcher focusing on machine learning, deep learning, and explainable AI in public health, with emphasis on disease prediction, climate-health interactions, and data-driven decision systems.
+</div>
 </div>
 
+<div class="section">
 <h2>Research Interests</h2>
 <div class="grid">
-<div class="card">Machine Learning</div>
-<div class="card">Deep Learning</div>
-<div class="card">Explainable AI</div>
-<div class="card">Public Health</div>
-<div class="card">Climate Health</div>
+<div class="card">Machine Learning & Deep Learning</div>
+<div class="card">Explainable AI (SHAP, IG, LRP)</div>
+<div class="card">Epidemiological Modeling</div>
+<div class="card">Climate & Health</div>
+<div class="card">Spatio-temporal Analysis</div>
+<div class="card">Public Health Informatics</div>
+</div>
 </div>
 
+<div class="section">
 <h2>Publications</h2>
-<div class="card">Selected research in epidemiology and AI.</div>
-<a class="btn" href="publications.html">View more</a>
+<div class="card">
+Selected peer-reviewed publications on epidemiology, AI, and public health modeling.
+</div>
+<a class="btn" href="publications.html">View Publications</a>
+</div>
 
+<div class="section">
 <h2>Projects</h2>
 <div class="grid">
-<div class="card">Dengue Dashboard</div>
+<div class="card">Dengue Analytics Dashboard</div>
 <div class="card">Systematic Review Dashboard</div>
-<div class="card">R Package whatdis()</div>
+<div class="card">R Package: whatdis()</div>
 </div>
-<a class="btn" href="projects.html">View more</a>
-
-<h2>Courses</h2>
-<div class="card">Professional training in data science and research methods.</div>
-<a class="btn" href="courses.html">View more</a>
-
-<h2>Service</h2>
-<div class="card">Reviewer for international journals.</div>
-<a class="btn" href="service.html">View more</a>
-
+<a class="btn" href="projects.html">View Projects</a>
 </div>
 
+<div class="section">
+<h2>Courses & Training</h2>
+<div class="card">
+Completed advanced training in machine learning, data science, statistical modeling, and research methodology from international institutions.
+</div>
+<a class="btn" href="courses.html">View Courses</a>
+</div>
+
+<div class="section">
+<h2>Academic Service</h2>
+<div class="card">
+Reviewer for BMJ Global Health, BMJ Public Health, PLOS Digital Health, and other international journals.
+</div>
+<a class="btn" href="service.html">View Service</a>
+</div>
+
+</div>
+
+<!-- FOOTER -->
 <footer>
 <p>© 2026 Md. Abu Bokkor Shiddik</p>
 </footer>
