@@ -7,27 +7,55 @@
 
 <style>
 
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial;
+  font-family: "Segoe UI", Arial, sans-serif;
   background: #f8fafc;
   color: #1f2937;
 }
 
-/* NAV */
+/* TOP BAR */
+.topbar {
+  background: #020617;
+  color: #e2e8f0;
+  font-size: 14px;
+}
+
+.topbar-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 20px;
+}
+
+/* NAVBAR FIXED */
 .navbar {
   background: #020617;
-  padding: 12px;
-  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-.navbar a {
+.nav-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav-inner a {
   color: #cbd5e1;
-  margin: 0 12px;
+  margin-right: 18px;
   text-decoration: none;
+  font-weight: 500;
 }
 
-.navbar a:hover {
+.nav-inner a:hover {
   color: #60a5fa;
 }
 
@@ -42,24 +70,23 @@ body {
   max-width: 1200px;
   margin: auto;
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 30px;
   align-items: center;
 }
 
-/* IMAGE ROW */
+/* RIGHT IMAGES */
 .image-row {
   display: flex;
   gap: 10px;
-  justify-content: flex-end;
 }
 
 .image-row img {
-  width: 30%;
-  height: 160px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
   border-radius: 6px;
-  border: 3px solid #1e3a8a;
+  border: 2px solid #1e3a8a;
 }
 
 /* LINKS */
@@ -69,10 +96,9 @@ body {
   text-decoration: none;
 }
 
-/* BUTTON */
-.cv-btn {
+.cv-button {
   display: inline-block;
-  margin-top: 12px;
+  margin-top: 10px;
   background: #1d4ed8;
   color: white;
   padding: 8px 14px;
@@ -87,43 +113,42 @@ body {
   padding: 30px 15px;
 }
 
-h2 {
+/* SECTION TITLE */
+.section-title {
   border-left: 4px solid #1d4ed8;
   padding-left: 10px;
   margin-top: 40px;
 }
 
-/* GRID */
-.grid {
+/* CARD GRID */
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
   margin-top: 15px;
 }
 
 /* CARD */
 .card {
   background: white;
-  padding: 14px;
-  border-radius: 6px;
   border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 14px;
+  line-height: 1.6;
+}
+
+.card strong {
+  display: block;
+  margin-bottom: 5px;
 }
 
 /* SEE MORE */
-.see-more {
-  margin-top: 12px;
+.more-btn {
   display: inline-block;
-  padding: 6px 12px;
-  border: 1px solid #1d4ed8;
+  margin-top: 12px;
   color: #1d4ed8;
   text-decoration: none;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.see-more:hover {
-  background: #1d4ed8;
-  color: white;
+  font-weight: 500;
 }
 
 /* FOOTER */
@@ -131,12 +156,12 @@ footer {
   background: #020617;
   color: #e2e8f0;
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   margin-top: 40px;
 }
 
 /* MOBILE */
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .hero-grid {
     grid-template-columns: 1fr;
   }
@@ -144,36 +169,41 @@ footer {
   .image-row {
     justify-content: center;
   }
-
-  .image-row img {
-    width: 30%;
-    height: 120px;
-  }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- NAV -->
-<div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="publications.html">Publications</a>
-  <a href="projects.html">Projects</a>
-  <a href="courses.html">Courses</a>
-  <a href="service.html">Service</a>
+<!-- TOP -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>Academic Portfolio</span>
+    <span>
+      <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" style="color:#93c5fd;">Scholar</a>
+    </span>
+  </div>
 </div>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="home.html">Home</a>
+    <a href="publications.html">Publications</a>
+    <a href="projects.html">Projects</a>
+    <a href="courses.html">Courses</a>
+    <a href="service.html">Service</a>
+  </div>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-grid">
 
-    <!-- LEFT TEXT -->
     <div>
       <h1>Md. Abu Bokkor Shiddik</h1>
-      <p>Researcher | Machine Learning | Public Health</p>
+      <p>Researcher | Machine Learning | Public Health Analytics</p>
 
       <p>
         📧 abubokkor.brur60@gmail.com <br>
@@ -182,22 +212,22 @@ footer {
       </p>
 
       <p class="links">
-        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik">Portfolio</a>
-        <a href="https://www.linkedin.com">LinkedIn</a>
-        <a href="https://scholar.google.com">Google Scholar</a>
-        <a href="https://orcid.org">ORCID</a>
+        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik">Portfolio</a> |
+        <a href="https://www.linkedin.com">LinkedIn</a> |
+        <a href="https://scholar.google.com">Google Scholar</a> |
+        <a href="https://orcid.org">ORCID</a> |
         <a href="https://github.com">GitHub</a>
       </p>
 
-      <a href="https://github.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/blob/main/Md_Abu_Bokkor_Shiddik_CV.pdf"
-         class="cv-btn" target="_blank">Download CV</a>
+      <a href="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/Md_Abu_Bokkor_Shiddik_CV.pdf"
+         class="cv-button" target="_blank">Download CV</a>
     </div>
 
-    <!-- RIGHT IMAGES -->
+    <!-- RIGHT SIDE IMAGES -->
     <div class="image-row">
-      <img src="https://github.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/blob/main/ABS.jpeg?raw=true">
-      <img src="https://github.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/blob/main/isrt.jpeg?raw=true">
-      <img src="https://github.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/blob/main/stst.jpeg?raw=true">
+      <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/ABS.jpeg">
+      <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/isrt.jpeg">
+      <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg">
     </div>
 
   </div>
@@ -205,53 +235,83 @@ footer {
 
 <div class="container">
 
-<!-- ABOUT -->
-<h2>About</h2>
-<div class="card">
-Researcher in statistics focusing on machine learning, explainable AI, and public health analytics.
-</div>
-
 <!-- PUBLICATIONS -->
-<h2>Publications</h2>
-<div class="grid">
-<div class="card"><strong>Tuberculosis prediction using AI</strong><br>Scientific Reports, 2025</div>
-<div class="card"><strong>Dengue early warning system</strong><br>Health Science Reports, 2025</div>
-<div class="card"><strong>Explainable dengue modeling</strong><br>Global Epidemiology, 2025</div>
-<div class="card"><strong>Malaria modeling</strong><br>Scientific Reports, 2025</div>
+<h2 class="section-title">Publications</h2>
+<div class="card-grid">
+  <div class="card">
+    <strong>AI-based tuberculosis modeling</strong>
+    Scientific Reports, 2025
+  </div>
+  <div class="card">
+    <strong>Dengue early warning system</strong>
+    Health Science Reports, 2025
+  </div>
+  <div class="card">
+    <strong>Global malaria modeling</strong>
+    Scientific Reports, 2025
+  </div>
 </div>
-<a href="publications.html" class="see-more">See more →</a>
+<a class="more-btn" href="publications.html">See more →</a>
 
 <!-- PROJECTS -->
-<h2>Projects</h2>
-<div class="grid">
-<div class="card"><strong>Dengue Dashboard</strong><br>Prediction and visualization</div>
-<div class="card"><strong>Systematic Review Dashboard</strong><br>Filtering and PRISMA tool</div>
-<div class="card"><strong>whatdis() R Package</strong><br>Distribution analysis</div>
+<h2 class="section-title">Projects</h2>
+<div class="card-grid">
+  <div class="card">
+    <strong>Dengue Dashboard</strong>
+    Prediction + visualization system
+  </div>
+  <div class="card">
+    <strong>Systematic Review Tool</strong>
+    PRISMA filtering dashboard
+  </div>
+  <div class="card">
+    <strong>whatdis() R Package</strong>
+    Distribution detection tool
+  </div>
 </div>
-<a href="projects.html" class="see-more">See more →</a>
+<a class="more-btn" href="projects.html">See more →</a>
 
 <!-- COURSES -->
-<h2>Courses</h2>
-<div class="grid">
-<div class="card"><strong>Gen AI Research Workflow</strong><br>Elsevier, 2026</div>
-<div class="card"><strong>Machine Learning with Python</strong><br>IBM, 2024</div>
-<div class="card"><strong>Climate Risk Analysis</strong><br>UNESCO, 2024</div>
+<h2 class="section-title">Courses</h2>
+<div class="card-grid">
+  <div class="card">
+    <strong>Gen AI in Research</strong>
+    Elsevier, 2026
+  </div>
+  <div class="card">
+    <strong>Time Series Analysis</strong>
+    SUNY, 2025
+  </div>
+  <div class="card">
+    <strong>Machine Learning with Python</strong>
+    IBM, 2024
+  </div>
 </div>
-<a href="courses.html" class="see-more">See more →</a>
+<a class="more-btn" href="courses.html">See more →</a>
 
 <!-- SERVICE -->
-<h2>Academic Service</h2>
-<div class="grid">
-<div class="card"><strong>BMJ Global Health</strong><br>Reviewer, 2026</div>
-<div class="card"><strong>PLOS Digital Health</strong><br>Reviewer, 2025–2026</div>
-<div class="card"><strong>Health Science Reports</strong><br>Reviewer, 2025–2026</div>
+<h2 class="section-title">Service</h2>
+<div class="card-grid">
+  <div class="card">
+    <strong>BMJ Global Health</strong>
+    Reviewer (2026)
+  </div>
+  <div class="card">
+    <strong>PLOS Digital Health</strong>
+    Reviewer (2025–2026)
+  </div>
+  <div class="card">
+    <strong>Health Science Reports</strong>
+    Reviewer (2025–2026)
+  </div>
 </div>
-<a href="service.html" class="see-more">See more →</a>
+<a class="more-btn" href="service.html">See more →</a>
 
 </div>
 
+<!-- FOOTER -->
 <footer>
-<p>Md. Abu Bokkor Shiddik © 2026</p>
+  <p>Md. Abu Bokkor Shiddik</p>
 </footer>
 
 </body>
