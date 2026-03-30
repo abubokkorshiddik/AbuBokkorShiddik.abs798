@@ -22,7 +22,6 @@ body {
 .topbar {
   background: #020617;
   color: #e2e8f0;
-  font-size: 15px;
 }
 
 .topbar-inner {
@@ -31,6 +30,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
+  font-size: 15px;
 }
 
 /* NAVBAR */
@@ -54,7 +54,6 @@ body {
   margin-right: 18px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 16px;
 }
 
 .nav-inner a:hover {
@@ -85,18 +84,21 @@ body {
   align-items: center;
 }
 
-/* IMAGES */
+/* IMAGE ROW (DESKTOP) */
 .image-row {
   display: flex;
-  gap: 12px;
+  gap: 14px;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .image-row img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 6px;
   border: 2px solid #1e3a8a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 /* LINKS */
@@ -163,18 +165,30 @@ footer {
   text-align: center;
   padding: 30px;
   margin-top: 50px;
-  font-size: 16px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
+
   .hero-grid {
     grid-template-columns: 1fr;
+    text-align: center;
   }
 
   .image-row {
     justify-content: center;
+    flex-wrap: wrap;
   }
+
+  .image-row img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .nav-inner {
+    justify-content: center;
+  }
+
 }
 
 </style>
@@ -218,17 +232,17 @@ footer {
       </p>
 
       <p class="links">
-        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik">Portfolio</a> |
-        <a href="https://www.linkedin.com">LinkedIn</a> |
-        <a href="https://scholar.google.com">Google Scholar</a> |
-        <a href="https://orcid.org">ORCID</a> |
-        <a href="https://github.com">GitHub</a>
+        <a href="#">Portfolio</a> |
+        <a href="#">LinkedIn</a> |
+        <a href="#">Google Scholar</a> |
+        <a href="#">ORCID</a> |
+        <a href="#">GitHub</a>
       </p>
 
-      <a href="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/Md_Abu_Bokkor_Shiddik_CV.pdf"
-         class="cv-button" target="_blank">Download CV</a>
+      <a href="#" class="cv-button">Download CV</a>
     </div>
 
+    <!-- IMAGES -->
     <div class="image-row">
       <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/ABS.jpeg">
       <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/isrt.jpeg">
@@ -240,7 +254,7 @@ footer {
 
 <div class="container">
 
-<!-- RESEARCH INTERESTS -->
+<!-- RESEARCH -->
 <h2 class="section-title">Research Interests</h2>
 <div class="card-grid">
   <div class="card">Machine Learning in Public Health</div>
@@ -256,9 +270,9 @@ footer {
 <div class="card-grid">
   <div class="card"><strong>Programming</strong>Python, R, JavaScript</div>
   <div class="card"><strong>Machine Learning</strong>TensorFlow, PyTorch, Scikit-learn</div>
-  <div class="card"><strong>Data Analysis</strong>Pandas, NumPy, Statistical Modeling</div>
-  <div class="card"><strong>Visualization</strong>Matplotlib, Plotly, ggplot2</div>
-  <div class="card"><strong>Tools</strong>Git, GitHub, LaTeX, Excel</div>
+  <div class="card"><strong>Data Analysis</strong>Pandas, NumPy</div>
+  <div class="card"><strong>Visualization</strong>Matplotlib, Plotly</div>
+  <div class="card"><strong>Tools</strong>Git, LaTeX, Excel</div>
 </div>
 
 <!-- PUBLICATIONS -->
@@ -268,34 +282,6 @@ footer {
   <div class="card"><strong>Dengue early warning system</strong>Health Science Reports, 2025</div>
   <div class="card"><strong>Global malaria modeling</strong>Scientific Reports, 2025</div>
 </div>
-<a href="publications.html" style="color:#1d4ed8;">See more →</a>
-
-<!-- PROJECTS -->
-<h2 class="section-title">Projects</h2>
-<div class="card-grid">
-  <div class="card"><strong>Dengue Dashboard</strong>Prediction and visualization system</div>
-  <div class="card"><strong>Systematic Review Tool</strong>PRISMA screening system</div>
-  <div class="card"><strong>R Distribution Package</strong>Statistical tool development</div>
-</div>
-<a href="projects.html" style="color:#1d4ed8;">See more →</a>
-
-<!-- COURSES -->
-<h2 class="section-title">Courses</h2>
-<div class="card-grid">
-  <div class="card"><strong>Gen AI in Research</strong>Elsevier, 2026</div>
-  <div class="card"><strong>Time Series Analysis</strong>SUNY, 2025</div>
-  <div class="card"><strong>Machine Learning</strong>IBM, 2024</div>
-</div>
-<a href="courses.html" style="color:#1d4ed8;">See more →</a>
-
-<!-- SERVICE -->
-<h2 class="section-title">Service</h2>
-<div class="card-grid">
-  <div class="card"><strong>BMJ Global Health</strong>Reviewer</div>
-  <div class="card"><strong>PLOS Digital Health</strong>Reviewer</div>
-  <div class="card"><strong>Health Science Reports</strong>Reviewer</div>
-</div>
-<a href="service.html" style="color:#1d4ed8;">See more →</a>
 
 </div>
 
