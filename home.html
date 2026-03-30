@@ -24,17 +24,11 @@ body {
 }
 
 .topbar-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   padding: 8px 20px;
-}
-
-.top-links a {
-  color: #93c5fd;
-  margin-left: 12px;
-  text-decoration: none;
 }
 
 /* NAV */
@@ -46,14 +40,14 @@ body {
 }
 
 .nav-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
   padding: 12px 20px;
 }
 
 .nav-inner a {
   color: #cbd5e1;
-  margin-right: 18px;
+  margin-right: 16px;
   text-decoration: none;
 }
 
@@ -65,90 +59,61 @@ body {
 .hero {
   background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
-  padding: 60px 20px;
+  padding: 50px 20px;
 }
 
 .hero-grid {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 25px;
-  align-items: center;
 }
 
-.hero h1 {
-  font-size: 40px;
-}
-
-.title {
-  color: #cbd5e1;
-}
-
-/* BUTTONS */
-.actions {
-  margin-top: 20px;
-}
-
-.btn {
-  background: #1d4ed8;
-  color: white;
-  padding: 10px 16px;
-  text-decoration: none;
-  margin-right: 10px;
-  border-radius: 4px;
-}
-
-.btn-outline {
-  border: 1px solid #60a5fa;
-  color: #60a5fa;
-  padding: 10px 16px;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-/* PHOTO */
-.photo-frame {
-  width: 200px;
-  height: 200px;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 3px solid #1e3a8a;
-}
-
-.photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* MAIN */
+/* CARDS */
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 30px 15px;
 }
 
-h2 {
+.section-title {
   border-left: 4px solid #1d4ed8;
   padding-left: 10px;
+  margin-top: 40px;
 }
 
-/* BOX */
-.box {
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 15px;
+}
+
+.card {
   background: white;
-  padding: 18px;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
-  margin-top: 15px;
-  line-height: 1.7;
+  padding: 14px;
+  line-height: 1.5;
 }
 
-/* GRID */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+.card strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.card small {
+  color: #64748b;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 /* FOOTER */
@@ -156,13 +121,8 @@ footer {
   background: #020617;
   color: #e2e8f0;
   text-align: center;
-  padding: 30px;
-}
-
-.footer-links a {
-  color: #93c5fd;
-  margin: 0 10px;
-  text-decoration: none;
+  padding: 25px;
+  margin-top: 40px;
 }
 
 </style>
@@ -171,15 +131,13 @@ footer {
 
 <body>
 
-<!-- TOP BAR -->
+<!-- TOP -->
 <div class="topbar">
   <div class="topbar-inner">
-    <span>Academic Profile</span>
-    <div class="top-links">
-      <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ">Google Scholar</a>
-      <a href="https://orcid.org">ORCID</a>
-      <a href="https://github.com">GitHub</a>
-    </div>
+    <span>Academic Portfolio</span>
+    <span>
+      <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" style="color:#93c5fd;">Scholar</a>
+    </span>
   </div>
 </div>
 
@@ -193,118 +151,157 @@ footer {
     <a href="projects.html">Projects</a>
     <a href="courses.html">Courses</a>
     <a href="service.html">Service</a>
-    <a href="contact.html">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="hero">
+<section class="hero">
   <div class="hero-grid">
 
     <div>
       <h1>Md. Abu Bokkor Shiddik</h1>
-      <p class="title">Researcher | Bachelor of Science in Statistics</p>
+      <p>Researcher | Machine Learning | Public Health Analytics</p>
 
       <p>
-        Email: abubokkor.brur60@gmail.com<br>
-        Phone: +8801874001360<br>
-        Location: Rangpur, Bangladesh
+        📧 abubokkor.brur60@gmail.com <br>
+        📞 +8801874001360 <br>
+        📍 Rangpur, Bangladesh
       </p>
-
-      <div class="actions">
-        <a class="btn" href="Md_Abu_Bokkor_Shiddik_CV.pdf">Download CV</a>
-        <a class="btn-outline" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ">Google Scholar</a>
-        <a class="btn-outline" href="publications.html">View Publications</a>
-      </div>
-
-    </div>
-
-    <div class="photo-frame">
-      <img src="https://github.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/blob/main/ABS.jpeg?raw=true">
     </div>
 
   </div>
-</header>
+</section>
 
-<main class="container">
+<div class="container">
 
 <!-- ABOUT -->
-<section>
-  <h2>About</h2>
-  <div class="box">
-    Researcher in statistics focusing on machine learning, public health analytics, and explainable AI.
-    My work integrates environmental, socioeconomic, and health data to understand disease dynamics
-    and support evidence-based decision making.
-    <br><br>
-    <a href="about.html">Read full details →</a>
-  </div>
-</section>
+<h2 class="section-title">About</h2>
+<div class="card">
+  Researcher in statistics focusing on machine learning, explainable AI, and public health data analysis.
+  <br><a class="btn" href="about.html">Read more</a>
+</div>
 
 <!-- RESEARCH -->
-<section>
-  <h2>Research Areas</h2>
-  <div class="box">
-    Machine Learning, Deep Learning, Explainable AI, Spatial modeling, Climate-health analysis,
-    Epidemiological modeling, and Data-driven public health systems.
-    <br><br>
-    <a href="research.html">Explore research →</a>
-  </div>
-</section>
+<h2 class="section-title">Research Areas</h2>
+<div class="card">
+  Machine learning, deep learning, spatio-temporal modeling, climate-health, epidemiology, explainable AI.
+  <br><a class="btn" href="research.html">Explore</a>
+</div>
 
 <!-- PUBLICATIONS -->
-<section>
-  <h2>Publications</h2>
-  <div class="box">
-    Selected peer-reviewed journal articles in global health, epidemiology, and AI.
-    <br><br>
-    <a href="publications.html">View all publications →</a>
+<h2 class="section-title">Publications (Selected)</h2>
+
+<div class="card-grid">
+
+  <div class="card">
+    <strong>Dengue prediction using explainable AI</strong>
+    Global Epidemiology, 2025
   </div>
-</section>
+
+  <div class="card">
+    <strong>Tuberculosis modeling using ML</strong>
+    Scientific Reports, 2025
+  </div>
+
+  <div class="card">
+    <strong>Malaria risk prediction using AI</strong>
+    Scientific Reports, 2025
+  </div>
+
+</div>
+
+<a class="btn" href="publications.html">View all publications</a>
 
 <!-- PROJECTS -->
-<section>
-  <h2>Projects</h2>
-  <div class="box">
-    Interactive dashboards, R packages, and AI-based tools for public health research.
-    <br><br>
-    <a href="projects.html">View projects →</a>
+<h2 class="section-title">Projects</h2>
+
+<div class="card-grid">
+
+  <div class="card">
+    <strong>Dengue Dashboard</strong>
+    AI-based early warning system for Bangladesh<br>
+    <small>Interactive visualization + prediction</small>
   </div>
-</section>
+
+  <div class="card">
+    <strong>Systematic Review Dashboard</strong>
+    Literature search, filtering, PRISMA screening<br>
+    <small>Web-based research tool</small>
+  </div>
+
+  <div class="card">
+    <strong>R Package: whatdis()</strong>
+    Distribution detection and visualization tool<br>
+    <small>GitHub available</small>
+  </div>
+
+</div>
+
+<a class="btn" href="projects.html">View projects</a>
 
 <!-- COURSES -->
-<section>
-  <h2>Courses & Training</h2>
-  <div class="box">
-    Continuous learning in machine learning, statistics, programming, and research methodology.
-    <br><br>
-    <a href="courses.html">View courses →</a>
+<h2 class="section-title">Courses & Training</h2>
+
+<div class="card-grid">
+
+  <div class="card">
+    <strong>Machine Learning Specialization</strong>
+    Coursera<br>
+    <small>2024</small>
   </div>
-</section>
+
+  <div class="card">
+    <strong>Data Science with R</strong>
+    Online Training<br>
+    <small>2023</small>
+  </div>
+
+  <div class="card">
+    <strong>Statistical Modeling</strong>
+    University Level Course<br>
+    <small>2022–2024</small>
+  </div>
+
+</div>
+
+<a class="btn" href="courses.html">View courses</a>
 
 <!-- SERVICE -->
-<section>
-  <h2>Academic Service</h2>
-  <div class="box">
-    Reviewer for international journals including BMJ and PLOS series.
-    <br><br>
-    <a href="service.html">View details →</a>
-  </div>
-</section>
+<h2 class="section-title">Academic Service</h2>
 
-</main>
+<div class="card-grid">
+
+  <div class="card">
+    <strong>BMJ Global Health</strong>
+    Reviewer<br>
+    <small>2026</small>
+  </div>
+
+  <div class="card">
+    <strong>PLOS Digital Health</strong>
+    Reviewer<br>
+    <small>2025–2026</small>
+  </div>
+
+  <div class="card">
+    <strong>Health Science Reports</strong>
+    Reviewer<br>
+    <small>2025–2026</small>
+  </div>
+
+</div>
+
+<a class="btn" href="service.html">View details</a>
+
+</div>
 
 <!-- FOOTER -->
 <footer>
-
   <p>Md. Abu Bokkor Shiddik</p>
-
-  <div class="footer-links">
-    <a href="publications.html">Publications</a>
-    <a href="projects.html">Projects</a>
-    <a href="courses.html">Courses</a>
-    <a href="Md_Abu_Bokkor_Shiddik_CV.pdf">Download CV</a>
-  </div>
-
+  <p>
+    <a href="projects.html" style="color:#93c5fd;">Projects</a> |
+    <a href="publications.html" style="color:#93c5fd;">Publications</a>
+  </p>
 </footer>
 
 </body>
