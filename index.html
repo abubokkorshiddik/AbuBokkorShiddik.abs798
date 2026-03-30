@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Md. Abu Bokkor Shiddik | Home</title>
+<title>Md. Abu Bokkor Shiddik</title>
 
 <style>
 
@@ -18,11 +18,27 @@ body {
   color: #1f2937;
 }
 
-/* HEADER */
+/* NAV */
+.nav {
+  background: #020617;
+  padding: 10px 20px;
+}
+
+.nav a {
+  color: #cbd5e1;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #60a5fa;
+}
+
+/* HERO */
 .hero {
   background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
-  padding: 70px 20px;
+  padding: 60px 20px;
 }
 
 .hero-inner {
@@ -35,47 +51,31 @@ body {
 }
 
 .hero h1 {
-  font-size: 42px;
-  margin: 0;
+  font-size: 40px;
 }
 
 .subtitle {
   color: #cbd5e1;
-  margin-top: 10px;
 }
 
 .contact {
-  margin-top: 15px;
-  line-height: 1.6;
   color: #e2e8f0;
+  line-height: 1.6;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn {
-  display: inline-block;
-  margin-top: 18px;
-  padding: 10px 16px;
   background: #1d4ed8;
   color: white;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-.btn-outline {
-  display: inline-block;
-  margin-top: 18px;
-  margin-left: 10px;
   padding: 10px 16px;
-  border: 1px solid #60a5fa;
-  color: #60a5fa;
   text-decoration: none;
   border-radius: 4px;
 }
 
 /* PHOTO */
 .photo {
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
   border-radius: 8px;
   overflow: hidden;
   border: 3px solid #1e3a8a;
@@ -97,7 +97,6 @@ body {
 h2 {
   border-left: 4px solid #1d4ed8;
   padding-left: 10px;
-  margin-top: 40px;
 }
 
 /* GRID */
@@ -114,34 +113,14 @@ h2 {
   border-radius: 6px;
 }
 
-/* NAV */
-.nav {
-  background: #020617;
-  padding: 10px 20px;
-  position: sticky;
-  top: 0;
-}
-
-.nav a {
-  color: #cbd5e1;
-  margin-right: 15px;
-  text-decoration: none;
-}
-
-.nav a:hover {
-  color: #60a5fa;
-}
-
 /* FOOTER */
 footer {
   background: #020617;
   color: white;
   text-align: center;
   padding: 20px;
-  margin-top: 40px;
 }
 
-/* RESPONSIVE */
 @media (max-width: 900px) {
   .hero-inner {
     grid-template-columns: 1fr;
@@ -159,7 +138,7 @@ footer {
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
   <a href="research.html">Research</a>
@@ -174,16 +153,17 @@ footer {
 
     <div>
       <h1>Md. Abu Bokkor Shiddik</h1>
-      <p class="subtitle">Researcher | Bachelor of Science in Statistics</p>
+      <p class="subtitle">Researcher | Statistics</p>
 
       <p class="contact">
         Email: abubokkor.brur60@gmail.com<br>
         Phone: +8801874001360<br>
-        Location: Rangpur, Bangladesh
+        Rangpur, Bangladesh
       </p>
 
-      <a class="btn" href="https://github.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/raw/main/Md_Abu_Bokkor_Shiddik_CV.pdf">Download CV</a>
-      <a class="btn-outline" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">Google Scholar</a>
+      <a class="btn" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">
+        Google Scholar
+      </a>
     </div>
 
     <div class="photo">
@@ -193,55 +173,94 @@ footer {
   </div>
 </header>
 
-<!-- CONTENT -->
 <main class="container">
 
+<!-- ABOUT -->
 <section>
   <h2>About</h2>
   <p>
-    I am a researcher focused on machine learning, explainable artificial intelligence,
-    and public health modeling, with applications in epidemiology and data-driven decision systems.
+    Researcher working on machine learning, explainable AI, and public health modeling with focus on
+    disease prediction, spatial analysis, and data-driven decision systems.
   </p>
 </section>
 
+<!-- RESEARCH -->
 <section>
-  <h2>Research Highlights</h2>
+  <h2>Research Interests</h2>
+  <p>
+    Machine learning, explainable AI, epidemiology, spatial modeling, climate-health interactions,
+    and predictive analytics in public health.
+  </p>
+</section>
+
+<!-- SKILLS -->
+<section>
+  <h2>Key Expertise</h2>
 
   <div class="grid">
 
     <div class="box">
-      <h3>Dengue Prediction</h3>
-      <p>AI-based models for early outbreak detection.</p>
+      <h3>Machine Learning</h3>
+      <p>Regression, classification, deep learning models.</p>
     </div>
 
     <div class="box">
-      <h3>Tuberculosis Analysis</h3>
-      <p>Global-level AI modeling using socioeconomic factors.</p>
+      <h3>Explainable AI</h3>
+      <p>SHAP, LIME, model interpretability.</p>
+    </div>
+
+    <div class="box">
+      <h3>Data Science</h3>
+      <p>Python, R, statistical modeling.</p>
+    </div>
+
+    <div class="box">
+      <h3>Geo Health</h3>
+      <p>GIS, spatial and temporal modeling.</p>
     </div>
 
   </div>
 
 </section>
 
+<!-- PUBLICATIONS -->
 <section>
-  <h2>Quick Links</h2>
+  <h2>Selected Publications</h2>
+
+  <p>
+    Published research in high-impact journals including Global Epidemiology, Scientific Reports,
+    BMJ Open, and Health Science Reports focusing on dengue, tuberculosis, malaria,
+    and mortality modeling using AI and spatial methods.
+  </p>
+
+</section>
+
+<!-- PROJECTS -->
+<section>
+  <h2>Projects</h2>
 
   <div class="grid">
 
     <div class="box">
-      <h3>Publications</h3>
-      <p>View all academic papers and journals.</p>
-      <a href="publications.html">Go to Publications</a>
+      <h3>Dengue Dashboard</h3>
+      <p>AI-based outbreak prediction and visualization system.</p>
     </div>
 
     <div class="box">
-      <h3>Projects</h3>
-      <p>Explore dashboards and AI systems.</p>
-      <a href="projects.html">Go to Projects</a>
+      <h3>Review System</h3>
+      <p>Systematic review tool with PRISMA-based filtering.</p>
     </div>
 
   </div>
 
+</section>
+
+<!-- SERVICE -->
+<section>
+  <h2>Academic Service</h2>
+  <p>
+    Reviewer for international journals and contributor to scientific research in public health and AI.
+  </p>
 </section>
 
 </main>
