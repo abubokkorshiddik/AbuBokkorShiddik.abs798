@@ -6,6 +6,7 @@
 <title>Conference & Workshop | Md. Abu Bokkor Shiddik</title>
 
 <style>
+
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
@@ -14,6 +15,7 @@ body {
   line-height: 1.7;
 }
 
+/* NAV */
 .navbar {
   background: #020617;
   padding: 12px 20px;
@@ -26,33 +28,38 @@ body {
   color: #cbd5e1;
   margin-right: 18px;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .navbar a:hover {
   color: #60a5fa;
 }
 
+/* HEADER */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
-  padding: 36px 20px;
+  padding: 40px 20px;
   text-align: center;
-  font-size: 24px;
+  font-size: 26px;
 }
 
+/* CONTAINER */
 .container {
   max-width: 1000px;
   margin: auto;
   padding: 30px 20px;
 }
 
+/* SECTION TITLE */
 .section-title {
   font-size: 22px;
-  margin-top: 30px;
+  margin-top: 35px;
   border-left: 4px solid #1d4ed8;
   padding-left: 12px;
 }
 
+/* CARD */
 .card {
   background: white;
   padding: 18px;
@@ -61,26 +68,38 @@ body {
   border-left: 4px solid #1d4ed8;
 }
 
-iframe {
-  width: 100%;
-  height: 600px;
-  border: 1px solid #ccc;
+/* PDF LINK BOX */
+.pdf-box {
+  background: white;
+  padding: 18px;
   margin-top: 18px;
+  border-radius: 6px;
+  border-left: 4px solid #1d4ed8;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-img {
+.pdf-box a {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* IMAGE */
+.image-box img {
   width: 100%;
   max-width: 800px;
-  border-radius: 6px;
   margin-top: 18px;
+  border-radius: 6px;
   display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* FOOTER */
 footer {
   background: #020617;
   color: #e2e8f0;
   text-align: center;
-  padding: 22px;
+  padding: 25px;
   margin-top: 40px;
 }
 
@@ -89,6 +108,14 @@ footer a {
   margin: 0 8px;
   text-decoration: none;
 }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+}
+
 </style>
 
 </head>
@@ -96,48 +123,61 @@ footer a {
 
 <!-- NAV -->
 <nav class="navbar">
-  <div class="nav-inner">
-    <a href="home.html">Home</a>
-    <a href="conference-and-workshop.html">Conference & Workshop</a>
-    <a href="publications.html">Publications</a>
-    <a href="projects.html">Projects</a>
-    <a href="courses.html">Courses</a>
-    <a href="service.html">Service</a>
-  </div>
+  <a href="home.html">Home</a>
+  <a href="conference-and-workshop.html">Conference & Workshop</a>
+  <a href="publications.html">Publications</a>
+  <a href="projects.html">Projects</a>
+  <a href="courses.html">Courses</a>
+  <a href="service.html">Service</a>
 </nav>
 
+<!-- HEADER -->
 <div class="header">
   Conference & Workshop
 </div>
 
 <div class="container">
 
-  <!-- Conference -->
+  <!-- CONFERENCE -->
   <h2 class="section-title">International Conference on Applied Statistics and Data Science-2025</h2>
 
   <div class="card">
     <p><strong>Venue:</strong> University of Dhaka</p>
     <p><strong>Abstract IDs:</strong> P-145 & P-105</p>
-    <p><strong>Presented research work:</strong> Spatio-temporal modeling of global tuberculosis prediction based on unified-machine learning framework</p>
+    <p>
+      <strong>Presented research:</strong> Spatio-temporal modeling of global tuberculosis prediction
+      based on unified machine learning framework
+    </p>
   </div>
 
-  <!-- PDF Embed -->
-  <iframe src="https://isrt.ac.bd/wp-content/uploads/2026/01/icas2025-book-v2.1.pdf"></iframe>
+  <!-- PDF LINK -->
+  <div class="pdf-box">
+    <p><strong>Conference Book (PDF):</strong></p>
+    <a href="https://isrt.ac.bd/wp-content/uploads/2026/01/icas2025-book-v2.1.pdf" target="_blank">
+      View / Download PDF →
+    </a>
+  </div>
 
-  <!-- Workshop -->
+  <!-- WORKSHOP -->
   <h2 class="section-title">Workshop on Promotion of Research in Higher Education</h2>
 
   <div class="card">
-    <p><strong>Date:</strong> 10 March, 2025</p>
+    <p><strong>Date:</strong> 10 March 2025</p>
     <p><strong>Organized by:</strong> Institutional Quality Assurance Cell (IQAC), Begum Rokeya University, Rangpur</p>
   </div>
 
-  <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/workshop.jpg" alt="Workshop Image">
+  <!-- IMAGE -->
+  <div class="image-box">
+    <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/workshop.jpg" alt="Workshop Image">
+  </div>
 
 </div>
 
+<!-- FOOTER -->
 <footer>
+
   <p>Md. Abu Bokkor Shiddik</p>
+
   <p>
     <a href="home.html">Home</a> |
     <a href="publications.html">Publications</a> |
@@ -145,6 +185,7 @@ footer a {
     <a href="courses.html">Courses</a> |
     <a href="service.html">Service</a>
   </p>
+
   <p>
     <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">Portfolio</a> |
     <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">LinkedIn</a> |
@@ -152,6 +193,7 @@ footer a {
     <a href="https://orcid.org/" target="_blank">ORCID</a> |
     <a href="https://github.com/abubokkorshiddik" target="_blank">GitHub</a>
   </p>
+
 </footer>
 
 </body>
