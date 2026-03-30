@@ -80,17 +80,11 @@ body {
 }
 
 .hero h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
+  font-size: 42px;
 }
 
 .title {
   color: #cbd5e1;
-  margin-bottom: 15px;
-}
-
-.contact {
-  line-height: 1.7;
 }
 
 /* BUTTONS */
@@ -160,12 +154,21 @@ h2 {
   gap: 20px;
 }
 
+/* PUBLICATION LIST */
+.pub {
+  background: white;
+  padding: 14px;
+  margin-top: 10px;
+  border-left: 4px solid #1d4ed8;
+  border-radius: 5px;
+}
+
 /* FOOTER */
 footer {
   background: #020617;
   color: #e2e8f0;
   text-align: center;
-  padding: 25px;
+  padding: 30px;
   margin-top: 40px;
 }
 
@@ -198,7 +201,7 @@ footer {
   <div class="topbar-inner">
     <span>Academic Profile</span>
     <div class="top-links">
-      <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">Scholar</a>
+      <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">Google Scholar</a>
       <a href="https://orcid.org" target="_blank">ORCID</a>
       <a href="https://github.com" target="_blank">GitHub</a>
     </div>
@@ -211,7 +214,9 @@ footer {
     <a href="#about">About</a>
     <a href="#research">Research</a>
     <a href="#skills">Skills</a>
-    <a href="#highlights">Highlights</a>
+    <a href="#publications">Publications</a>
+    <a href="#projects">Projects</a>
+    <a href="#service">Service</a>
   </div>
 </nav>
 
@@ -221,14 +226,15 @@ footer {
 
     <div>
       <h1>Md. Abu Bokkor Shiddik</h1>
-      <p class="title">Researcher | Machine Learning & Public Health</p>
+      <p class="title">Researcher | Machine Learning | Public Health</p>
 
       <p>
-        Focused on AI-driven epidemiological modeling, explainable machine learning,
-        and data-based public health insights using large-scale datasets.
+        I am engaged in interdisciplinary research combining machine learning, statistical modeling,
+        and public health analytics. My work focuses on disease prediction, explainable AI,
+        and the integration of climate and socioeconomic data for understanding health risks.
       </p>
 
-      <p class="contact">
+      <p>
         Email: abubokkor.brur60@gmail.com<br>
         Phone: +8801874001360<br>
         Location: Rangpur, Bangladesh
@@ -236,8 +242,8 @@ footer {
 
       <div class="actions">
         <a class="btn" href="Md_Abu_Bokkor_Shiddik_CV.pdf">Download CV</a>
-        <a class="btn-outline" href="research.html">Full Research</a>
-        <a class="btn-outline" href="publications.html">Publications</a>
+        <a class="btn-outline" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">Google Scholar</a>
+        <a class="btn-outline" href="research.html">Research Page</a>
       </div>
 
     </div>
@@ -249,81 +255,156 @@ footer {
   </div>
 </header>
 
-<!-- MAIN -->
 <main class="container">
 
+<!-- ABOUT -->
 <section id="about">
   <h2>About</h2>
 
   <div class="box">
-    I am a researcher working in machine learning, epidemiology, and data science.
-    My research focuses on understanding disease patterns and building predictive models
-    using statistical and AI-based approaches.
+    I am a researcher with a background in statistics, currently focusing on machine learning and
+    public health data science. My research explores how environmental, socioeconomic, and
+    biological factors interact to influence disease dynamics.
 
     <br><br>
-    I have contributed to multiple peer-reviewed publications and continue working on
-    projects involving real-world health data and climate-related risk analysis.
+    I have worked on multiple large-scale datasets involving infectious diseases such as dengue,
+    tuberculosis, malaria, and mortality patterns across different regions.
 
     <br><br>
-    <a href="research.html">Explore detailed research →</a>
+    My work emphasizes interpretable machine learning so that models are not only accurate but
+    also understandable and useful for real-world decision-making.
+
+    <br><br>
+    <a href="research.html">Explore full research details →</a>
   </div>
 </section>
 
+<!-- RESEARCH -->
 <section id="research">
-  <h2>Research Overview</h2>
+  <h2>Research Areas</h2>
 
   <div class="box">
-    My work combines machine learning with public health data to analyze and predict
-    infectious diseases such as dengue, tuberculosis, and malaria.
+    My research integrates advanced computational techniques with public health data to address
+    complex global health challenges.
 
     <br><br>
-    I also work on explainable AI techniques to ensure transparency in model predictions,
-    making results useful for researchers and policymakers.
+
+    - Machine Learning and Deep Learning for prediction  
+    - Explainable AI using SHAP and related methods  
+    - Epidemiological and spatial modeling  
+    - Climate-health interaction analysis  
+    - Data-driven public health systems  
 
     <br><br>
-    <a href="research.html">Read full research details →</a>
+    I continuously work on improving model performance while ensuring transparency and interpretability.
+
+    <br><br>
+    <a href="research.html">Read full research work →</a>
   </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
-  <h2>Core Skills</h2>
+  <h2>Technical Skills</h2>
 
   <div class="grid-2">
 
     <div class="box">
+      <strong>Programming & Tools</strong>
+      <p>Python, R, SQL, data analysis, and visualization tools.</p>
+    </div>
+
+    <div class="box">
       <strong>Machine Learning</strong>
-      <p>Prediction models, deep learning, and ensemble learning techniques.</p>
+      <p>Regression, classification, deep learning, ensemble methods.</p>
     </div>
 
     <div class="box">
       <strong>Explainable AI</strong>
-      <p>SHAP, LIME, and model interpretation methods.</p>
+      <p>SHAP, LIME, Integrated Gradients, LRP.</p>
     </div>
 
     <div class="box">
-      <strong>Data Science</strong>
-      <p>Python, R, data analysis, and visualization.</p>
-    </div>
-
-    <div class="box">
-      <strong>Spatial Analysis</strong>
-      <p>Geographic modeling and spatial epidemiology.</p>
+      <strong>Statistical Modeling</strong>
+      <p>Regression models, hypothesis testing, time series analysis.</p>
     </div>
 
   </div>
 
 </section>
 
-<section id="highlights">
-  <h2>Highlights</h2>
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <h2>Selected Publications</h2>
+
+  <div class="pub">
+    Explainable AI for predicting dengue outbreaks in Bangladesh using eco-climatic triggers<br>
+    <strong>Global Epidemiology, 2025</strong>
+  </div>
+
+  <div class="pub">
+    AI-based tuberculosis prediction using socioeconomic and environmental factors<br>
+    <strong>Scientific Reports, 2025</strong>
+  </div>
+
+  <div class="pub">
+    Dengue early warning system using interpretable machine learning<br>
+    <strong>Health Science Reports, 2025</strong>
+  </div>
+
+  <div class="pub">
+    Global malaria incidence and mortality modeling<br>
+    <strong>Scientific Reports, 2025</strong>
+  </div>
+
+  <div class="pub">
+    Spatiotemporal mortality modeling in Asia<br>
+    <strong>BMJ Open, 2026</strong>
+  </div>
+
+  <br>
+  <a href="publications.html">View full list of publications →</a>
+
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="grid-2">
+
+    <div class="box">
+      <strong>Dengue Dashboard</strong>
+      <p>
+        An interactive system for predicting and visualizing dengue outbreaks using machine learning.
+      </p>
+    </div>
+
+    <div class="box">
+      <strong>Systematic Review Dashboard</strong>
+      <p>
+        A tool for screening and analyzing research papers with PRISMA-based filtering and visualization.
+      </p>
+    </div>
+
+  </div>
+
+  <br>
+  <a href="projects.html">View all projects →</a>
+
+</section>
+
+<!-- SERVICE -->
+<section id="service">
+  <h2>Academic Service</h2>
 
   <div class="box">
-    - Published in international journals like Scientific Reports and BMJ Open<br>
-    - Experience with global datasets and large-scale modeling<br>
-    - Focus on real-world impact through AI-driven research<br>
-    - Active reviewer in academic publishing<br><br>
+    I actively contribute as a reviewer for international journals in the fields of public health,
+    data science, and machine learning. My academic service supports maintaining quality in
+    peer-reviewed research publications.
 
-    <a href="publications.html">See all publications →</a>
+    <br><br>
+    <a href="service.html">More details →</a>
   </div>
 
 </section>
@@ -336,10 +417,10 @@ footer {
   <p>Md. Abu Bokkor Shiddik</p>
 
   <div class="footer-links">
-    <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">Google Scholar</a>
-    <a href="https://orcid.org" target="_blank">ORCID</a>
-    <a href="https://github.com" target="_blank">GitHub</a>
-    <a href="Md_Abu_Bokkor_Shiddik_CV.pdf">CV</a>
+    <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ">Google Scholar</a>
+    <a href="https://orcid.org">ORCID</a>
+    <a href="https://github.com">GitHub</a>
+    <a href="Md_Abu_Bokkor_Shiddik_CV.pdf">Download CV</a>
   </div>
 
   <p>© 2026</p>
