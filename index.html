@@ -6,6 +6,7 @@
 <title>Md. Abu Bokkor Shiddik</title>
 
 <style>
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -13,10 +14,11 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f8fafc;
   color: #1f2937;
+  font-size: 17px;
   line-height: 1.7;
 }
 
-/* NAVBAR */
+/* NAV */
 .navbar {
   background: #020617;
   position: sticky;
@@ -29,33 +31,17 @@ body {
   margin: auto;
   padding: 14px 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
 }
 
-.logo {
-  color: white;
-  font-weight: bold;
-}
-
-.menu-toggle {
-  display: none;
-  font-size: 22px;
-  color: white;
-  cursor: pointer;
-}
-
-.nav-links {
-  display: flex;
-  gap: 15px;
-}
-
-.nav-links a {
+.nav-inner a {
   color: #cbd5e1;
+  margin-right: 18px;
   text-decoration: none;
+  font-weight: 500;
 }
 
-.nav-links a:hover {
+.nav-inner a:hover {
   color: #60a5fa;
 }
 
@@ -75,26 +61,30 @@ body {
   align-items: center;
 }
 
+/* IMAGES */
 .image-row {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 12px;
   justify-content: flex-end;
 }
 
 .image-row img {
-  width: 150px;
-  aspect-ratio: 1/1;
+  width: 170px;
+  height: 170px;
   object-fit: cover;
   border-radius: 6px;
   border: 2px solid #1e3a8a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
+/* LINKS */
 .links a {
   color: #93c5fd;
   margin-right: 10px;
+  text-decoration: none;
 }
 
+/* BUTTON */
 .cv-button {
   display: inline-block;
   margin-top: 12px;
@@ -105,25 +95,30 @@ body {
   border-radius: 4px;
 }
 
-/* CONTENT */
+/* CONTAINER */
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 35px 20px;
 }
 
+/* SECTION */
 .section-title {
   border-left: 4px solid #1d4ed8;
   padding-left: 12px;
   margin-top: 45px;
+  font-size: 22px;
 }
 
+/* GRID */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
+  margin-top: 18px;
 }
 
+/* CARD */
 .card {
   background: white;
   border: 1px solid #e5e7eb;
@@ -140,49 +135,90 @@ footer {
   margin-top: 50px;
 }
 
-/* MOBILE */
+/* ===================================== */
+/* 🔥 MOBILE ONLY (DESKTOP UNCHANGED) */
+/* ===================================== */
 @media (max-width: 768px) {
 
-  .hero-grid {
-    grid-template-columns: 1fr;
+  body {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAV FIX */
+  .nav-inner {
+    justify-content: center;
+  }
+
+  .nav-inner a {
+    margin: 8px 10px;
+    font-size: 14px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 40px 15px;
     text-align: center;
   }
 
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  /* IMAGE */
   .image-row {
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
+    flex-wrap: wrap;
   }
 
   .image-row img {
     width: 110px;
+    height: 110px;
   }
 
-  .menu-toggle {
+  /* LINKS */
+  .links {
     display: block;
+    line-height: 1.8;
   }
 
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: #020617;
+  .links a {
+    display: inline-block;
+    margin: 4px 6px;
+  }
+
+  /* SECTION */
+  .section-title {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+
+  /* GRID → STACK */
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  /* BUTTON */
+  .cv-button {
     width: 100%;
     text-align: center;
   }
 
-  .nav-links a {
-    padding: 10px;
-    border-top: 1px solid #1e293b;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr;
+  /* FOOTER */
+  footer {
+    font-size: 14px;
+    padding: 25px 15px;
   }
 }
 
@@ -194,20 +230,15 @@ footer {
 <!-- NAV -->
 <nav class="navbar">
   <div class="nav-inner">
-    <div class="logo">ABS</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-    <div class="nav-links" id="navLinks">
-      <a href="home.html">Home</a>
-      <a href="conference-and-workshop.html">Conference & Workshop</a>
-      <a href="publications.html">Publications</a>
-      <a href="projects.html">Projects</a>
-      <a href="courses.html">Courses</a>
-      <a href="service.html">Service</a>
-    </div>
+    <a href="home.html">Home</a>
+    <a href="conference-and-workshop.html">Conference & Workshop</a>
+    <a href="publications.html">Publications</a>
+    <a href="projects.html">Projects</a>
+    <a href="courses.html">Courses</a>
+    <a href="service.html">Service</a>
   </div>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-grid">
@@ -230,7 +261,7 @@ footer {
         <a href="https://github.com/abubokkorshiddik" target="_blank">GitHub</a>
       </p>
 
-      <a href="cv.pdf" class="cv-button" download>Download CV</a>
+      <a href="#" class="cv-button">Download CV</a>
     </div>
 
     <div class="image-row">
@@ -258,60 +289,61 @@ footer {
 <!-- SKILLS -->
 <h2 class="section-title">Skills</h2>
 <div class="card-grid">
-  <div class="card"><strong>Programming</strong><br>Python, R, JavaScript</div>
-  <div class="card"><strong>ML</strong><br>TensorFlow, PyTorch</div>
-  <div class="card"><strong>Analysis</strong><br>Pandas, NumPy</div>
-  <div class="card"><strong>Visualization</strong><br>Matplotlib, Plotly</div>
+  <div class="card"><strong>Programming</strong>Python, R, JavaScript</div>
+  <div class="card"><strong>ML</strong>TensorFlow, PyTorch</div>
+  <div class="card"><strong>Analysis</strong>Pandas, NumPy</div>
+  <div class="card"><strong>Visualization</strong>Matplotlib, Plotly</div>
 </div>
 
-<!-- PUBLICATIONS (ALL PRESERVED) -->
+<!-- PUBLICATIONS -->
 <h2 class="section-title">Publications</h2>
+
 <div class="card-grid">
 
-<div class="card">
-<strong>Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</strong><br>
-Scientific Reports, 2025
-</div>
+  <div class="card">
+    <p><strong>Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</strong></p>
+    <p>Scientific Reports, 2025</p>
+  </div>
 
-<div class="card">
-<strong>Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model</strong><br>
-Health Science Reports, 2025
-</div>
+  <div class="card">
+    <p><strong>Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model</strong></p>
+    <p>Health Science Reports, 2025</p>
+  </div>
 
-<div class="card">
-<strong>Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</strong><br>
-Global Epidemiology, 2025
-</div>
+  <div class="card">
+    <p><strong>Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</strong></p>
+    <p>Global Epidemiology, 2025</p>
+  </div>
 
-<div class="card">
-<strong>Unraveling global malaria incidence and mortality using machine learning and artificial intelligence–driven spatial analysis</strong><br>
-Scientific Reports, 2025
-</div>
+  <div class="card">
+    <p><strong>Unraveling global malaria incidence and mortality using machine learning and artificial intelligence–driven spatial analysis</strong></p>
+    <p>Scientific Reports, 2025</p>
+  </div>
 
-<div class="card">
-<strong>Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</strong><br>
-Global Epidemiology, 2025
-</div>
+  <div class="card">
+    <p><strong>Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</strong></p>
+    <p>Global Epidemiology, 2025</p>
+  </div>
 
-<div class="card">
-<strong>Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</strong><br>
-International Journal of Statistical Sciences, 2025
-</div>
+  <div class="card">
+    <p><strong>Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</strong></p>
+    <p>International Journal of Statistical Sciences, 2025</p>
+  </div>
 
-<div class="card">
-<strong>Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000–2022)</strong><br>
-International Journal of Health Geographics, 2025
-</div>
+  <div class="card">
+    <p><strong>Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000–2022)</strong></p>
+    <p>International Journal of Health Geographics, 2025</p>
+  </div>
 
-<div class="card">
-<strong>Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000–2022) in 41 Asian countries</strong><br>
-BMJ Open, 2026
-</div>
+  <div class="card">
+    <p><strong>Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000–2022) in 41 Asian countries</strong></p>
+    <p>BMJ Open, 2026</p>
+  </div>
 
-<div class="card">
-<strong>District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</strong><br>
-Tropical Medicine and Infectious Disease, 2026
-</div>
+  <div class="card">
+    <p><strong>District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</strong></p>
+    <p>Tropical Medicine and Infectious Disease, 2026</p>
+  </div>
 
 </div>
 
@@ -350,14 +382,24 @@ Tropical Medicine and Infectious Disease, 2026
 </div>
 
 <footer>
-<p>Md. Abu Bokkor Shiddik</p>
-</footer>
+  <p>Md. Abu Bokkor Shiddik</p>
 
-<script>
-function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("active");
-}
-</script>
+  <p>
+    <a href="home.html">Home</a> |
+    <a href="publications.html">Publications</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="courses.html">Courses</a> |
+    <a href="service.html">Service</a>
+  </p>
+
+  <p class="links">
+    <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">Portfolio</a> |
+    <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">LinkedIn</a> |
+    <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">Google Scholar</a> |
+    <a href="https://orcid.org/" target="_blank">ORCID</a> |
+    <a href="https://github.com/abubokkorshiddik" target="_blank">GitHub</a>
+  </p>
+</footer>
 
 </body>
 </html>
