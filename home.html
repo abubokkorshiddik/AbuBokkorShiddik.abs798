@@ -9,74 +9,95 @@
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f1f5f9;
-  color: #0f172a;
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+  color: #1f2937;
 }
 
 /* NAV */
 .navbar {
   background: #020617;
-  padding: 12px 0;
+  position: sticky;
+  top: 0;
 }
 
 .nav-inner {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
-  padding: 0 20px;
+  padding: 12px;
 }
 
 .nav-inner a {
   color: #cbd5e1;
-  margin-right: 18px;
+  margin-right: 15px;
   text-decoration: none;
-  font-size: 14px;
 }
 
 .nav-inner a:hover {
-  color: #38bdf8;
+  color: #60a5fa;
 }
 
 /* HEADER */
 .header {
-  background: #0b3a6e;
+  background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
   padding: 40px 20px;
 }
 
-.header-container {
-  max-width: 1200px;
+/* HEADER LAYOUT */
+.header-inner {
+  max-width: 1100px;
   margin: auto;
   display: flex;
-  gap: 30px;
-  align-items: flex-start;
+  align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-/* PROFILE IMAGE */
-.profile-box img {
-  width: 220px;
-  height: 260px;
+/* PROFILE IMAGE LEFT */
+.profile-pic {
+  width: 160px;
+  height: 160px;
   object-fit: cover;
   border-radius: 6px;
   border: 3px solid white;
 }
 
-/* INFO */
-.info {
-  flex: 1;
+/* CONTENT */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 25px;
 }
 
-.info h1 {
-  margin: 0;
-  font-size: 32px;
+.card {
+  background: white;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
 }
 
-.info p {
-  margin: 6px 0;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
 }
 
-/* LINKS */
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #1d4ed8;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background: #2563eb;
+}
+
 .links a {
   color: #93c5fd;
   margin-right: 10px;
@@ -84,60 +105,13 @@ body {
   font-size: 14px;
 }
 
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 8px 14px;
-  background: #1d4ed8;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-.btn:hover {
-  background: #2563eb;
-}
-
-/* MAIN */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 30px 20px;
-}
-
-/* SECTIONS */
-.section {
-  margin-bottom: 35px;
-}
-
-.section h2 {
-  border-left: 4px solid #1d4ed8;
-  padding-left: 10px;
-  margin-bottom: 15px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 15px;
-}
-
-.card {
-  background: white;
-  padding: 16px;
-  border-radius: 6px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-}
-
 /* FOOTER */
 footer {
   background: #020617;
-  color: #e2e8f0;
+  color: white;
   text-align: center;
-  padding: 25px;
+  padding: 20px;
+  margin-top: 40px;
 }
 
 </style>
@@ -159,16 +133,14 @@ footer {
 </div>
 
 <!-- HEADER -->
-<div class="header">
-  <div class="header-container">
+<section class="header">
+  <div class="header-inner">
 
-    <!-- LEFT: PROFILE -->
-    <div class="profile-box">
-      <img src="profile.jpg" alt="Profile">
-    </div>
+    <!-- LEFT: PROFILE PHOTO -->
+    <img src="profile.jpg" alt="Profile" class="profile-pic">
 
     <!-- RIGHT: INFO -->
-    <div class="info">
+    <div>
       <h1>Md. Abu Bokkor Shiddik</h1>
       <p><b>Researcher | Machine Learning | Public Health</b></p>
       <p>Rangpur, Bangladesh</p>
@@ -189,63 +161,51 @@ footer {
     </div>
 
   </div>
-</div>
+</section>
 
 <!-- CONTENT -->
 <div class="container">
 
-<div class="section">
 <h2>About</h2>
 <div class="card">
-Researcher focusing on machine learning, deep learning, and explainable AI in public health, with emphasis on disease prediction, climate-health interactions, and data-driven decision systems.
-</div>
+Researcher focusing on machine learning, deep learning, and explainable AI applied to public health and epidemiology.
 </div>
 
-<div class="section">
 <h2>Research Interests</h2>
 <div class="grid">
 <div class="card">Machine Learning & Deep Learning</div>
-<div class="card">Explainable AI (SHAP, IG, LRP)</div>
+<div class="card">Explainable AI</div>
 <div class="card">Epidemiological Modeling</div>
 <div class="card">Climate & Health</div>
 <div class="card">Spatio-temporal Analysis</div>
 <div class="card">Public Health Informatics</div>
 </div>
-</div>
 
-<div class="section">
 <h2>Publications</h2>
 <div class="card">
-Selected peer-reviewed publications on epidemiology, AI, and public health modeling.
+Selected research publications in public health and AI-based modeling.
 </div>
 <a class="btn" href="publications.html">View Publications</a>
-</div>
 
-<div class="section">
 <h2>Projects</h2>
 <div class="grid">
-<div class="card">Dengue Analytics Dashboard</div>
+<div class="card">Dengue Dashboard</div>
 <div class="card">Systematic Review Dashboard</div>
 <div class="card">R Package: whatdis()</div>
 </div>
 <a class="btn" href="projects.html">View Projects</a>
-</div>
 
-<div class="section">
 <h2>Courses & Training</h2>
 <div class="card">
-Completed advanced training in machine learning, data science, statistical modeling, and research methodology from international institutions.
+Professional training in data science, machine learning, and research methodology.
 </div>
 <a class="btn" href="courses.html">View Courses</a>
-</div>
 
-<div class="section">
 <h2>Academic Service</h2>
 <div class="card">
-Reviewer for BMJ Global Health, BMJ Public Health, PLOS Digital Health, and other international journals.
+Reviewer for BMJ Global Health, BMJ Public Health, PLOS Digital Health, and other journals.
 </div>
 <a class="btn" href="service.html">View Service</a>
-</div>
 
 </div>
 
