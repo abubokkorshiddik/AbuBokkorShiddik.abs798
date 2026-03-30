@@ -63,13 +63,22 @@ body {
   line-height: 1.6;
 }
 
-/* BUTTON */
+/* BUTTONS */
 .btn {
   background: #1d4ed8;
   color: white;
   padding: 10px 16px;
   text-decoration: none;
   border-radius: 4px;
+}
+
+.btn-outline {
+  border: 1px solid #60a5fa;
+  color: #60a5fa;
+  padding: 10px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-left: 10px;
 }
 
 /* PHOTO */
@@ -99,6 +108,15 @@ h2 {
   padding-left: 10px;
 }
 
+/* BOX */
+.box {
+  background: white;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+
 /* GRID */
 .grid {
   display: grid;
@@ -106,11 +124,11 @@ h2 {
   gap: 20px;
 }
 
-.box {
-  background: white;
-  padding: 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
+/* READ MORE */
+.more {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 /* FOOTER */
@@ -153,7 +171,7 @@ footer {
 
     <div>
       <h1>Md. Abu Bokkor Shiddik</h1>
-      <p class="subtitle">Researcher | Statistics</p>
+      <p class="subtitle">Researcher | Machine Learning & Public Health</p>
 
       <p class="contact">
         Email: abubokkor.brur60@gmail.com<br>
@@ -163,6 +181,10 @@ footer {
 
       <a class="btn" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">
         Google Scholar
+      </a>
+
+      <a class="btn-outline" href="Md_Abu_Bokkor_Shiddik_CV.pdf">
+        Download CV
       </a>
     </div>
 
@@ -178,61 +200,63 @@ footer {
 <!-- ABOUT -->
 <section>
   <h2>About</h2>
-  <p>
-    Researcher working on machine learning, explainable AI, and public health modeling with focus on
-    disease prediction, spatial analysis, and data-driven decision systems.
-  </p>
+
+  <div class="box">
+    <p>
+      I am a researcher specializing in machine learning, explainable artificial intelligence, and
+      data-driven public health systems. My work focuses on developing predictive models for
+      infectious diseases and analyzing complex relationships between climate, socioeconomic,
+      and health-related factors.
+    </p>
+
+    <a class="more" href="research.html">Read full research details →</a>
+  </div>
 </section>
 
 <!-- RESEARCH -->
 <section>
-  <h2>Research Interests</h2>
-  <p>
-    Machine learning, explainable AI, epidemiology, spatial modeling, climate-health interactions,
-    and predictive analytics in public health.
-  </p>
-</section>
-
-<!-- SKILLS -->
-<section>
-  <h2>Key Expertise</h2>
+  <h2>Research Focus</h2>
 
   <div class="grid">
 
     <div class="box">
-      <h3>Machine Learning</h3>
-      <p>Regression, classification, deep learning models.</p>
+      <strong>Disease Prediction</strong>
+      <p>AI-based forecasting for dengue, tuberculosis, and malaria.</p>
     </div>
 
     <div class="box">
-      <h3>Explainable AI</h3>
-      <p>SHAP, LIME, model interpretability.</p>
+      <strong>Explainable AI</strong>
+      <p>Interpreting machine learning models using SHAP and LIME.</p>
     </div>
 
     <div class="box">
-      <h3>Data Science</h3>
-      <p>Python, R, statistical modeling.</p>
+      <strong>Spatial Analysis</strong>
+      <p>Geographic and temporal modeling of disease patterns.</p>
     </div>
 
     <div class="box">
-      <h3>Geo Health</h3>
-      <p>GIS, spatial and temporal modeling.</p>
+      <strong>Public Health Data</strong>
+      <p>Integration of climate, socioeconomic, and health datasets.</p>
     </div>
 
   </div>
 
+  <a class="more" href="research.html">Explore full research →</a>
 </section>
 
 <!-- PUBLICATIONS -->
 <section>
   <h2>Selected Publications</h2>
 
-  <p>
-    Published research in high-impact journals including Global Epidemiology, Scientific Reports,
-    BMJ Open, and Health Science Reports focusing on dengue, tuberculosis, malaria,
-    and mortality modeling using AI and spatial methods.
-  </p>
+  <div class="box">
+    <p>
+      Published in leading journals including <strong>Scientific Reports</strong>,
+      <strong>BMJ Open</strong>, and <strong>Global Epidemiology</strong>, focusing on AI-driven
+      epidemiological modeling and public health analytics.
+    </p>
 
+    <a class="more" href="publications.html">View all publications →</a>
+  </div>
 </section>
 
 <!-- PROJECTS -->
@@ -242,25 +266,32 @@ footer {
   <div class="grid">
 
     <div class="box">
-      <h3>Dengue Dashboard</h3>
+      <strong>Dengue Dashboard</strong>
       <p>AI-based outbreak prediction and visualization system.</p>
     </div>
 
     <div class="box">
-      <h3>Review System</h3>
-      <p>Systematic review tool with PRISMA-based filtering.</p>
+      <strong>Systematic Review Tool</strong>
+      <p>Automated PRISMA-based screening system for research.</p>
     </div>
 
   </div>
 
+  <a class="more" href="projects.html">View all projects →</a>
 </section>
 
 <!-- SERVICE -->
 <section>
   <h2>Academic Service</h2>
-  <p>
-    Reviewer for international journals and contributor to scientific research in public health and AI.
-  </p>
+
+  <div class="box">
+    <p>
+      Active reviewer for international journals including BMJ and PLOS, contributing to
+      scientific quality and peer review processes in global research.
+    </p>
+
+    <a class="more" href="service.html">More details →</a>
+  </div>
 </section>
 
 </main>
