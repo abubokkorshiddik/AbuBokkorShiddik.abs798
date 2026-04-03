@@ -215,6 +215,34 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+  /* center all sections in same alignment */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* hero grid */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: 30px;
+}
+
+/* right image center */
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+}
 </style>
 </head>
 
