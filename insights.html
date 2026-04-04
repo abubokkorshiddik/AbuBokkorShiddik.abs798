@@ -7,66 +7,16 @@
 <meta name="description" content="Insights, research activities, and learning posts by Md. Abu Bokkor Shiddik.">
 
 <style>
-  .nav-inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropbtn {
-  color: #cbd5e1;
-  text-decoration: none;
-  padding: 6px 10px;
-  font-weight: 500;
-  border-radius: 4px;
-}
-
-.dropbtn:hover {
-  color: #60a5fa;
-  background: rgba(255,255,255,0.1);
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #020617;
-  min-width: 150px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  z-index: 9999;
-  border-radius: 6px;
-  flex-direction: column;
-}
-
-.dropdown-content a {
-  color: #cbd5e1;
-  padding: 10px 12px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #004080;
-  color: white;
-}
-
-.dropdown:hover .dropdown-content {
-  display: flex;
-  flex-direction: column;
-}
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f8fafc;
   color: #1f2937;
+  display: flex;
+  flex-direction: column;
 }
 
-/* NAVIGATION (STICKY) */
+/* NAVIGATION */
 .navbar {
   background: linear-gradient(90deg, #00264d, #004080);
   position: sticky;
@@ -75,25 +25,59 @@ body {
 }
 
 .nav-inner {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto;
   padding: 12px 20px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 15px;
+  align-items: center;
 }
 
-.nav-inner a {
+/* Dropdown menu */
+.nav-inner .dropdown {
+  position: relative;
+}
+
+.nav-inner .dropbtn {
   color: #cbd5e1;
-  text-decoration: none;
   font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
   padding: 6px 10px;
   border-radius: 4px;
 }
 
-.nav-inner a:hover {
-  color: #60a5fa;
+.nav-inner .dropbtn:hover {
   background: rgba(255,255,255,0.1);
+  color: #60a5fa;
+}
+
+.nav-inner .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #0b2d5c;
+  min-width: 160px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  z-index: 9999;
+  top: 36px;
+}
+
+.nav-inner .dropdown-content a {
+  color: #cbd5e1;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-inner .dropdown-content a:hover {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+.nav-inner .dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /* HEADER */
@@ -115,11 +99,18 @@ body {
   color: #cfd8e8;
 }
 
-/* CONTAINER */
-.container {
-  max-width: 1000px;
+/* MAIN CONTENT + SIDEBAR */
+.main-wrapper {
+  display: flex;
+  max-width: 1200px;
   margin: auto;
   padding: 40px 20px;
+  gap: 20px;
+}
+
+/* POSTS AREA */
+.container {
+  flex: 3;
 }
 
 /* POST CARD */
@@ -149,7 +140,7 @@ body {
 .author-line {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 14px;
   margin-bottom: 10px;
 }
@@ -172,7 +163,6 @@ body {
   display: inline-flex;
   gap: 3px;
   vertical-align: super;
-  margin-left: 2px;
   font-size: 12px;
 }
 
@@ -203,7 +193,7 @@ body {
   margin-top: 6px;
 }
 
-/* BUTTON */
+/* SHARE BUTTON */
 .share-btn {
   margin-top: 15px;
   background: #1d4ed8;
@@ -212,6 +202,35 @@ body {
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+/* RIGHT SIDEBAR */
+.sidebar {
+  flex: 1;
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 10px;
+  max-height: 600px;
+  overflow-y: auto;
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #1e3a8a;
+}
+
+.sidebar a {
+  display: block;
+  color: #1d4ed8;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
 }
 
 /* FOOTER */
@@ -235,15 +254,11 @@ footer {
     <a href="projects.html">Projects</a>
     <a href="courses.html">Courses</a>
     <a href="service.html">Service</a>
-
-    <!-- Insights Dropdown -->
     <div class="dropdown">
-      <a href="insights.html" class="dropbtn">Insights ▼</a>
+      <button class="dropbtn">Insights ▼</button>
       <div class="dropdown-content">
+        <a href="insights.html">Posts</a>
         <a href="videos.html">Videos</a>
-        <a href="contents.html">Contents</a>
-        <!-- Future pages -->
-        <!-- <a href="facebook.html">Facebook</a> -->
       </div>
     </div>
   </div>
@@ -255,57 +270,65 @@ footer {
   <p>Research activities and learning posts by Md. Abu Bokkor Shiddik</p>
 </div>
 
-<div class="container">
+<!-- MAIN CONTENT -->
+<div class="main-wrapper">
 
-<!-- POST 1 -->
-<div class="post" id="ml-journey">
-  <img src="images/post1.jpg" alt="Machine Learning post image">
-  <div class="post-content">
-    <div class="post-title">My Journey into Machine Learning Research</div>
-    <div class="author-line">
-      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic" alt="Author pic">
-      <span class="author-name">Md. Abu Bokkor Shiddik
-        <span class="author-icons">
-          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">🆔</a>
-          <a href="mailto:abubokkor.brur60@gmail.com">✉️</a>
-        </span>
-      </span>
-    </div>
-    <div class="meta">📅 April 2026 | ⏰ 10:30 AM</div>
-    <div class="post-text short-text">
-      Today I explored advanced machine learning models and their application in global health data. 
-      Understanding feature importance and explainability is becoming essential in modern research.
-    </div>
-    <span class="read-more" onclick="toggleText(this)">Read more</span>
-    <br>
-    <button class="share-btn" onclick="copyLink('ml-journey')">🔗 Share</button>
-  </div>
-</div>
+  <!-- POSTS AREA -->
+  <div class="container">
 
-<!-- POST 2 -->
-<div class="post" id="data-vis">
-  <img src="images/post2.jpg" alt="Data Visualization post image">
-  <div class="post-content">
-    <div class="post-title">Learning Data Visualization in R</div>
-    <div class="author-line">
-      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic" alt="Author pic">
-      <span class="author-name">Md. Abu Bokkor Shiddik
-        <span class="author-icons">
-          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">🆔</a>
-          <a href="mailto:abubokkor.brur60@gmail.com">✉️</a>
-        </span>
-      </span>
+    <!-- POST 1 -->
+    <div class="post" id="ml-journey">
+      <img src="images/post1.jpg">
+      <div class="post-content">
+        <div class="post-title">My Journey into Machine Learning Research</div>
+        <div class="author-line">
+          <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic">
+          <span class="author-name">Md. Abu Bokkor Shiddik
+            <span class="author-icons">👤 ✉️</span>
+          </span>
+        </div>
+        <div class="meta">📅 April 2026 | ⏰ 10:30 AM</div>
+        <div class="post-text short-text">
+          Today I explored advanced machine learning models and their application in global health data. 
+          Understanding feature importance and explainability is essential.
+        </div>
+        <span class="read-more" onclick="toggleText(this)">Read more</span>
+        <br>
+        <button class="share-btn" onclick="copyLink('ml-journey')">🔗 Share</button>
+      </div>
     </div>
-    <div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
-    <div class="post-text short-text">
-      Data visualization is essential for communicating research findings. Today I practiced creating 
-      clear and effective plots in R.
+
+    <!-- POST 2 -->
+    <div class="post" id="data-vis">
+      <img src="images/post2.jpg">
+      <div class="post-content">
+        <div class="post-title">Learning Data Visualization in R</div>
+        <div class="author-line">
+          <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic">
+          <span class="author-name">Md. Abu Bokkor Shiddik
+            <span class="author-icons">👤 ✉️</span>
+          </span>
+        </div>
+        <div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
+        <div class="post-text short-text">
+          Data visualization is essential for communicating research findings. Today I practiced creating clear plots in R.
+        </div>
+        <span class="read-more" onclick="toggleText(this)">Read more</span>
+        <br>
+        <button class="share-btn" onclick="copyLink('data-vis')">🔗 Share</button>
+      </div>
     </div>
-    <span class="read-more" onclick="toggleText(this)">Read more</span>
-    <br>
-    <button class="share-btn" onclick="copyLink('data-vis')">🔗 Share</button>
+
   </div>
-</div>
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="sidebar">
+    <h3>Quick View</h3>
+    <a href="videos.html">🎥 Videos</a>
+    <!-- Future: add Facebook posts -->
+    <a href="insights.html#ml-journey">📝 ML Journey</a>
+    <a href="insights.html#data-vis">📝 Data Viz</a>
+  </div>
 
 </div>
 
@@ -332,16 +355,6 @@ function copyLink(postId) {
   navigator.clipboard.writeText(url);
   alert("Link copied! Share anywhere.");
 }
-
-window.onload = function() {
-  const params = new URLSearchParams(window.location.search);
-  const postId = params.get("post");
-  if (postId) {
-    document.querySelectorAll(".post").forEach(p => {
-      if (p.id !== postId) p.style.display = "none";
-    });
-  }
-};
 </script>
 
 </body>
