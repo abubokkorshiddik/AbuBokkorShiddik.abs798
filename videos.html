@@ -31,52 +31,39 @@ body {
   gap: 12px;
 }
 /* DROPDOWN */
-.nav-inner .dropdown {
-  position: relative;  /* required for positioning the dropdown items */
-}
-
+.nav-inner .dropdown { position: relative; }
 .nav-inner .dropbtn {
   background: none;
   border: none;
-  color: white;        /* dropdown text white */
-  font-weight: bold;   /* bold text */
+  color: white;
+  font-weight: bold;
   cursor: pointer;
   padding: 6px 10px;
   border-radius: 4px;
 }
-
-.nav-inner .dropbtn:hover {
-  background: rgba(255, 255, 255, 0.1); /* subtle hover effect */
-}
-
+.nav-inner .dropbtn:hover { background: rgba(255,255,255,0.1); }
 .nav-inner .dropdown-content {
-  display: none;               /* hide by default */
-  position: absolute;          /* absolute positioning */
-  background-color: #0b2d5c;  /* dark blue background */
-  min-width: 160px;            /* width of dropdown */
+  display: none;
+  position: absolute;
+  background-color: #0b2d5c;
+  min-width: 160px;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
   border-radius: 6px;
   z-index: 9999;
-  top: 36px;                   /* space below button */
+  top: 36px;
 }
-
 .nav-inner .dropdown-content a {
-  color: #cbd5e1;              /* light gray links */
+  color: #cbd5e1;
   padding: 8px 12px;
   text-decoration: none;
   display: block;
   font-weight: 500;
 }
-
 .nav-inner .dropdown-content a:hover {
-  background-color: #1e3a8a;   /* highlight on hover */
+  background-color: #1e3a8a;
   color: white;
 }
-
-/* Show dropdown on hover */
-.nav-inner .dropdown:hover .dropdown-content {
-  display: block;
-}
+.nav-inner .dropdown:hover .dropdown-content { display: block; }
 .nav-inner a {
   color: #cbd5e1;
   text-decoration: none;
@@ -84,37 +71,39 @@ body {
   padding: 6px 10px;
   border-radius: 4px;
 }
-
-.nav-inner a:hover {
-  color: #60a5fa;
-  background: rgba(255,255,255,0.1);
-}
+.nav-inner a:hover { color: #60a5fa; background: rgba(255,255,255,0.1); }
 
 /* HEADER */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
-  padding: 50px 20px;
+  padding: 40px 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
-
-.header h1 {
-  margin: 0;
-  font-size: 34px;
+.header h1 { margin: 0; font-size: 34px; }
+.header p { margin: 0; font-size: 16px; color: #cfd8e8; }
+.channel-cover {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
 }
-
-.header p {
-  margin-top: 8px;
-  font-size: 16px;
-  color: #cfd8e8;
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
+.channel-info img { width: 60px; height: 60px; border-radius: 50%; }
 
 /* CONTAINER */
 .container {
   max-width: 1100px;
   margin: auto;
   padding: 30px 20px;
-  font-family: "Segoe UI", Arial, sans-serif; /* Uniform font */
 }
 
 /* SECTION TITLE */
@@ -133,28 +122,16 @@ body {
   margin-bottom: 35px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
-
 .video-block iframe {
   width: 100%;
   height: 480px;
   border: none;
 }
 
-.video-content {
-  padding: 15px 20px;
-}
-
-.video-title {
-  font-size: 20px;
-  margin-bottom: 6px;
-  color: #1e3a8a;
-}
-
-.video-description {
-  font-size: 15px;
-  color: #555;
-  line-height: 1.5;
-}
+/* VIDEO CONTENT */
+.video-content { padding: 15px 20px; }
+.video-title { font-size: 20px; margin-bottom: 6px; color: #1e3a8a; }
+.video-description { font-size: 15px; color: #555; line-height: 1.5; }
 
 /* FOOTER */
 footer {
@@ -162,6 +139,12 @@ footer {
   padding: 25px;
   background: #020617;
   color: #e2e8f0;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .video-block iframe { height: 280px; }
+  .channel-info img { width: 50px; height: 50px; }
 }
 </style>
 </head>
@@ -189,77 +172,95 @@ footer {
 
 <!-- HEADER -->
 <div class="header">
-  <h1>Videos & Learning Resources</h1>
-  <p>Programming, statistics, and knowledge-sharing content</p>
+  <img src="images/channel-cover.jpg" alt="Channel Cover" class="channel-cover">
+  <div class="channel-info">
+    <img src="images/channel-profile.jpg" alt="Profile Picture">
+    <div>
+      <h1>Md. Abu Bokkor Shiddik</h1>
+      <p>Programming, statistics & learning resources</p>
+    </div>
+  </div>
 </div>
 
 <div class="container">
 
-  <!-- LATEST VIDEO -->
   <div class="section-title">Latest Video</div>
   <div class="video-block">
-    <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=UCmue_D64tjDjTueuhLUx67g&rel=0&modestbranding=1" allowfullscreen></iframe>
+    <iframe class="youtube-video" src="https://www.youtube.com/embed?listType=user_uploads&list=UCmue_D64tjDjTueuhLUx67g&rel=0&modestbranding=1" allowfullscreen></iframe>
     <div class="video-content">
       <div class="video-title">Newest Upload from My Channel</div>
-      <div class="video-description">
-        Automatically shows the most recent video uploaded to my YouTube channel.
-      </div>
+      <div class="video-description">Automatically shows the most recent video uploaded to my YouTube channel.</div>
     </div>
   </div>
 
-  <!-- PYTHON -->
   <div class="section-title">Python Programming</div>
   <div class="video-block">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB&rel=0&modestbranding=1" allowfullscreen></iframe>
+    <iframe class="youtube-video" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB&rel=0&modestbranding=1" allowfullscreen></iframe>
     <div class="video-content">
       <div class="video-title">Python Programming Playlist</div>
-      <div class="video-description">
-        Learn Python for machine learning, data science, and research applications.
-      </div>
+      <div class="video-description">Learn Python for machine learning, data science, and research applications.</div>
     </div>
   </div>
 
-  <!-- R -->
   <div class="section-title">R Programming</div>
   <div class="video-block">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe&rel=0&modestbranding=1" allowfullscreen></iframe>
+    <iframe class="youtube-video" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe&rel=0&modestbranding=1" allowfullscreen></iframe>
     <div class="video-content">
       <div class="video-title">R Programming Playlist</div>
-      <div class="video-description">
-        Statistical analysis, visualization, and research-focused workflows using R.
-      </div>
+      <div class="video-description">Statistical analysis, visualization, and research-focused workflows using R.</div>
     </div>
   </div>
 
-  <!-- STATISTICS -->
   <div class="section-title">Statistics</div>
   <div class="video-block">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX8rcFR38G-JZVMrClNyNIrE&rel=0&modestbranding=1" allowfullscreen></iframe>
+    <iframe class="youtube-video" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX8rcFR38G-JZVMrClNyNIrE&rel=0&modestbranding=1" allowfullscreen></iframe>
     <div class="video-content">
       <div class="video-title">Statistics Playlist</div>
-      <div class="video-description">
-        Core statistical concepts, hypothesis testing, and data analysis techniques for students and researchers.
-      </div>
-    </div>
-  </div>
-
-  <!-- BOOK REVIEW -->
-  <div class="section-title">Book Reviews</div>
-  <div class="video-block">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9e1yPUnjXNE-46HC3Kd9hs&rel=0&modestbranding=1" allowfullscreen></iframe>
-    <div class="video-content">
-      <div class="video-title">Book Review Playlist</div>
-      <div class="video-description">
-        Reviews of academic and knowledge-building books to support continuous learning.
-      </div>
+      <div class="video-description">Core statistical concepts, hypothesis testing, and data analysis techniques.</div>
     </div>
   </div>
 
 </div>
 
-<footer>
-© 2026 Md. Abu Bokkor Shiddik
-</footer>
+<footer>© 2026 Md. Abu Bokkor Shiddik</footer>
+
+<script>
+// Only play one video at a time and pause on scroll
+const videos = document.querySelectorAll(".youtube-video");
+
+function postMessageToIframe(iframe, command) {
+  iframe.contentWindow.postMessage(JSON.stringify({
+    "event": "command",
+    "func": command,
+    "args": []
+  }), "*");
+}
+
+// Initialize YouTube API for all videos
+videos.forEach(v => {
+  v.src += "&enablejsapi=1"; // Add JS API param
+});
+
+// Pause others when playing
+window.addEventListener('message', e => {
+  if (e.data && typeof e.data === 'string' && e.data.includes('onStateChange')) {
+    videos.forEach(v => postMessageToIframe(v, 'pauseVideo'));
+  }
+});
+
+// Pause when out of viewport
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+}
+function checkVideos() {
+  videos.forEach(v => {
+    if (!isInViewport(v)) postMessageToIframe(v, 'pauseVideo');
+  });
+}
+window.addEventListener('scroll', checkVideos);
+window.addEventListener('resize', checkVideos);
+</script>
 
 </body>
 </html>
