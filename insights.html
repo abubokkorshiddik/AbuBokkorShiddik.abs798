@@ -14,39 +14,23 @@ body {
   color: #1f2937;
 }
 
-/* HEADER */
-.header {
-  background: linear-gradient(135deg, #001f3f, #004080); /* navy to deep blue */
-  color: white;
-  padding: 30px 15px;
-  text-align: center;
-}
-.header h1 {
-  margin: 0;
-  font-size: 32px;
-}
-.header p {
-  margin-top: 6px;
-  font-size: 16px;
-  color: #cfd8e8;
-}
-
-/* NAV */
+/* NAVIGATION (STICKY) */
 .navbar {
-  background: linear-gradient(90deg, #00264d, #004080); /* darker blue gradient */
+  background: linear-gradient(90deg, #00264d, #004080);
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 9999;
 }
+
 .nav-inner {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   padding: 12px 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
+
 .nav-inner a {
   color: #cbd5e1;
   text-decoration: none;
@@ -54,19 +38,39 @@ body {
   padding: 6px 10px;
   border-radius: 4px;
 }
+
 .nav-inner a:hover {
   color: #60a5fa;
   background: rgba(255,255,255,0.1);
 }
 
-/* CONTAINER */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 30px 15px;
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #020617, #0b3a6e);
+  color: white;
+  padding: 45px 20px;
+  text-align: center;
 }
 
-/* POST */
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.header p {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #cfd8e8;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* POST CARD */
 .post {
   background: white;
   margin-bottom: 25px;
@@ -74,12 +78,15 @@ body {
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
+
 .post img {
   width: 100%;
 }
+
 .post-content {
   padding: 20px;
 }
+
 .post-title {
   font-size: 22px;
   color: #1e3a8a;
@@ -94,26 +101,30 @@ body {
   font-size: 14px;
   margin-bottom: 10px;
 }
+
 .author-line img.author-pic {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
 }
+
 .author-name {
   text-decoration: none;
   color: #1f2937;
   font-weight: 500;
   position: relative;
 }
+
 .author-icons {
   display: inline-flex;
-  gap: 3px;
+  gap: 4px;
   vertical-align: super;
   margin-left: 4px;
 }
+
 .author-icons img {
-  width: 14px;  /* smaller icons */
+  width: 14px;
   height: 14px;
   display: inline-block;
   vertical-align: middle;
@@ -134,9 +145,11 @@ body {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
+
 .full-text {
   -webkit-line-clamp: unset;
 }
+
 .read-more {
   color: #2563eb;
   cursor: pointer;
@@ -168,12 +181,6 @@ footer {
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <h1>Insights</h1>
-  <p>Research activities and learning posts by Md. Abu Bokkor Shiddik</p>
-</div>
-
 <!-- NAV -->
 <nav class="navbar">
   <div class="nav-inner">
@@ -186,6 +193,12 @@ footer {
     <a href="insights.html">Insights</a>
   </div>
 </nav>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Insights</h1>
+  <p>Research activities and learning posts by Md. Abu Bokkor Shiddik</p>
+</div>
 
 <div class="container">
 
@@ -210,9 +223,7 @@ footer {
     <div class="meta">📅 April 2026 | ⏰ 10:30 AM</div>
     <div class="post-text short-text">
       Today I explored advanced machine learning models and their application in global health data. 
-      Understanding feature importance and explainability is becoming essential in modern research. 
-      I also explored interpretability tools such as SHAP and LIME. These tools help explain complex models 
-      and build trust in AI systems used in decision making. This learning is very important for future research.
+      Understanding feature importance and explainability is becoming essential in modern research.
     </div>
     <span class="read-more" onclick="toggleText(this)">Read more</span>
     <br>
@@ -241,8 +252,7 @@ footer {
     <div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
     <div class="post-text short-text">
       Data visualization is essential for communicating research findings. Today I practiced creating 
-      clear and effective plots in R. Visualization helps transform raw data into meaningful insights. 
-      It also improves the readability of research papers and presentations significantly.
+      clear and effective plots in R.
     </div>
     <span class="read-more" onclick="toggleText(this)">Read more</span>
     <br>
@@ -257,7 +267,6 @@ footer {
 </footer>
 
 <script>
-// READ MORE
 function toggleText(el) {
   const text = el.previousElementSibling;
   if (text.classList.contains("short-text")) {
@@ -271,14 +280,12 @@ function toggleText(el) {
   }
 }
 
-// COPY LINK
 function copyLink(postId) {
   const url = window.location.origin + window.location.pathname + "?post=" + postId;
   navigator.clipboard.writeText(url);
   alert("Link copied! Share anywhere.");
 }
 
-// OPEN SINGLE POST
 window.onload = function() {
   const params = new URLSearchParams(window.location.search);
   const postId = params.get("post");
