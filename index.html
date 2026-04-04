@@ -6,134 +6,223 @@
 <title>Md. Abu Bokkor Shiddik</title>
 
 <style>
-/* GLOBAL RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
+html { scroll-behavior: smooth; }
 
 body {
-  overflow-x: hidden;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f8fafc;
+  color: #1f2937;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* NAV */
+.navbar {
+  background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav-inner a {
+  color: #cbd5e1;
+  margin-right: 18px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-inner a:hover {
+  color: #60a5fa;
 }
 
 /* HERO */
-.hero-container {
-  max-width: 1100px;
+.hero {
+  background: linear-gradient(135deg, #020617, #0b3a6e);
+  color: white;
+  padding: 60px 20px;
+}
+
+.hero-grid {
+  max-width: 1200px;
   margin: auto;
-  padding: 40px 20px;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 40px;
+  gap: 30px;
   align-items: center;
 }
 
-/* HERO TEXT */
-.hero-text {
-  text-align: left;
-}
-
-/* HERO IMAGES */
-.hero-images {
+/* IMAGES */
+.image-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 12px;
+  justify-content: flex-end;
 }
 
-.hero-images img {
-  width: 140px;
-  height: 140px;
+.image-row img {
+  width: 170px;
+  height: 170px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
+  border: 2px solid #1e3a8a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* LINKS */
+.links a {
+  color: #93c5fd;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+/* BUTTON */
+.cv-button {
+  display: inline-block;
+  margin-top: 12px;
+  background: #1d4ed8;
+  color: white;
+  padding: 12px 4px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
 }
 
 /* CONTAINER */
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
-  padding: 0 20px;
+  padding: 35px 20px;
 }
 
-/* SECTION TITLE */
+/* SECTION */
 .section-title {
-  max-width: 1100px;
-  margin: 40px auto 15px auto;
-  padding: 0 20px;
+  border-left: 4px solid #1d4ed8;
+  padding-left: 12px;
+  margin-top: 45px;
   font-size: 22px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-/* SEE MORE */
-.section-title .see-more {
-  font-size: 14px;
-  text-decoration: none;
-}
-
-/* CARD GRID */
+/* GRID */
 .card-grid {
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 20px;
-
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
+  margin-top: 18px;
 }
 
-/* CARDS */
+/* CARD */
 .card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
   padding: 16px;
-}
-
-/* SKILLS / SERVICES */
-.skills-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 0 20px;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
 }
 
 /* FOOTER */
 footer {
+  background: #020617;
+  color: #e2e8f0;
   text-align: center;
-  padding: 30px 20px;
+  padding: 30px;
   margin-top: 50px;
 }
 
-/* MOBILE */
+/* ===================================== */
+/* 🔥 MOBILE ONLY (DESKTOP UNCHANGED) */
+/* ===================================== */
 @media (max-width: 768px) {
 
-  .hero-container {
-    grid-template-columns: 1fr;
+  body {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAV FIX */
+  .nav-inner {
+    justify-content: center;
+  }
+
+  .nav-inner a {
+    margin: 8px 10px;
+    font-size: 14px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 40px 15px;
     text-align: center;
   }
 
-  .hero-images {
-    flex-direction: row;
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  /* IMAGE */
+  .image-row {
     justify-content: center;
+    margin-top: 15px;
     flex-wrap: wrap;
   }
 
+  .image-row img {
+    width: 110px;
+    height: 110px;
+  }
+
+  /* LINKS */
+  .links {
+    display: block;
+    line-height: 1.8;
+  }
+
+  .links a {
+    display: inline-block;
+    margin: 4px 6px;
+  }
+
+  /* SECTION */
+  .section-title {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+
+  /* GRID → STACK */
   .card-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
 
-  .section-title {
-    flex-direction: column;
-    align-items: flex-start;
+  .card {
+    padding: 14px;
   }
 
-  .section-title .see-more {
-    margin-top: 8px;
+  /* BUTTON */
+  .cv-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    font-size: 14px;
+    padding: 25px 15px;
   }
 }
+
 </style>
 </head>
 
@@ -153,37 +242,39 @@ footer {
  
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-container">
+  <div class="hero-grid">
 
-    <!-- LEFT CONTENT -->
-    <div class="hero-text">
-      <h1>Md. Abu Bokkor Shiddik</h1>
+    <div>
+  <h1>Md. Abu Bokkor Shiddik</h1>
+  <p><strong>Researcher in Machine Learning, Explainable AI & Global Health Analytics</strong></p>
 
-      <p><strong>Researcher in Machine Learning, Explainable AI & Global Health Analytics</strong></p>
+  <p>
+    I apply machine learning and explainable AI to global health and climate-sensitive systems, focusing on interpretable disease prediction, spatio-temporal modeling, and data-driven decision support for public health.
+  </p>
 
-      <p>
-        📧 abubokkor.brur60@gmail.com <br>
-        📞 +8801874001360 <br>
-        📍 Rangpur, Bangladesh
-      </p>
+  <p>
+    📧 abubokkor.brur60@gmail.com <br>
+    📞 +8801874001360 <br>
+    📍 Rangpur, Bangladesh
+  </p>
 
-      <p class="links">
-        <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/" target="_blank">Portfolio</a> |
-        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">LinkedIn</a> |
-        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">Google Scholar</a> |
-        <a href="https://orcid.org/" target="_blank">ORCID</a> |
-        <a href="https://github.com/abubokkorshiddik" target="_blank">GitHub</a>
-      </p>
+  <p class="links">
+    <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">Portfolio</a> |
+    <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">LinkedIn</a> |
+    <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">Google Scholar</a> |
+    <a href="https://orcid.org/" target="_blank">ORCID</a> |
+    <a href="https://github.com/abubokkorshiddik" target="_blank">GitHub</a>
+  </p>
 
-      <a href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/AbuBokkorShiddik_CV_2026_STAT_Center.pdf" 
-         class="cv-button" 
-         target="_blank">
-        Download Academic CV
-      </a>
-    </div>
+  <a href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/AbuBokkorShiddik_CV_2026_STAT_Center.pdf" 
+   class="cv-button" 
+   target="_blank">
+   Download Academic CV
+</a>
 
-    <!-- RIGHT IMAGE -->
-    <div class="hero-images">
+</div>
+
+    <div class="image-row">
       <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/ABS.jpeg">
       <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/isrt.jpeg">
       <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg">
@@ -193,135 +284,90 @@ footer {
 </section>
 
 <div class="container">
+  
+<h2 class="section-title">Research Profile</h2>
+<div class="card">
+  <p>
+    I am a researcher with multiple peer-reviewed publications in high-impact international journals, including work on global disease modeling, dengue early warning systems, and climate-health interactions. My research integrates machine learning, explainable AI, and spatial analysis to support evidence-based decision-making in public health.
+  </p>
 
-  <!-- RESEARCH PROFILE -->
-  <h2 class="section-title">
-    Research Profile
-  </h2>
+  <p>
+    My work has been published in internationally recognized journals and contributes to understanding health risks across countries using large-scale multi-source datasets.
+  </p>
+</div>
+  
+<!-- RESEARCH -->
+<h2 class="section-title">Research Interests</h2>
+<div class="card-grid">
+  <div class="card">Machine Learning in Public Health</div>
+  <div class="card">Explainable AI</div>
+  <div class="card">Epidemiological Modeling</div>
+  <div class="card">Spatiotemporal Analysis</div>
+  <div class="card">Disease Prediction Systems</div>
+  <div class="card">Climate & Health</div>
+</div>
 
-  <div class="card single-card">
-    <p>
-      I am a researcher with multiple peer-reviewed publications in high-impact international journals, including work on global disease modeling, dengue early warning systems, and climate-health interactions. My research integrates machine learning, explainable AI, and spatial analysis to support evidence-based decision-making in public health.
-    </p>
+<!-- SKILLS -->
+<h2 class="section-title">Skills</h2>
+<div class="card"><strong>Core Methods:</strong> Machine Learning, Explainable AI (SHAP, LIME), Statistical Modeling</div>
+<div class="card"><strong>Tools:</strong> R, Python, SPSS, LaTeX, Git, GitHub</div>
+<div class="card"><strong>Advanced:</strong> Time Series (ARIMA, SARIMA), Spatial Analysis, Bayesian Modeling</div>
+<div class="card"><strong>Applications:</strong> Epidemiological Modeling, Climate-Health Analytics, Disease Prediction</div>
+</div>
 
-    <p>
-      My work has been published in internationally recognized journals and contributes to understanding health risks across countries using large-scale multi-source datasets.
-    </p>
+<!-- PUBLICATIONS -->
+<h2 class="section-title">Publications</h2>
+
+<div class="card-grid">
+
+  <div class="card">
+    <p><strong>Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</strong></p>
+    <p>Scientific Reports, 2025</p>
   </div>
 
-  <!-- RESEARCH INTERESTS -->
-  <h2 class="section-title">
-    Research Interests
-  </h2>
-
-  <div class="card-grid">
-    <div class="card">Machine Learning in Public Health</div>
-    <div class="card">Explainable AI</div>
-    <div class="card">Epidemiological Modeling</div>
-    <div class="card">Spatiotemporal Analysis</div>
-    <div class="card">Disease Prediction Systems</div>
-    <div class="card">Climate & Health</div>
+  <div class="card">
+    <p><strong>Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model</strong></p>
+    <p>Health Science Reports, 2025</p>
   </div>
 
-  <!-- SKILLS -->
-  <h2 class="section-title">
-    Skills
-  </h2>
+  <div class="card">
+    <p><strong>Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</strong></p>
+    <p>Global Epidemiology, 2025</p>
+  </div>
 
-  <div class="skills-container">
+  <div class="card">
+    <p><strong>Unraveling global malaria incidence and mortality using machine learning and artificial intelligence–driven spatial analysis</strong></p>
+    <p>Scientific Reports, 2025</p>
+  </div>
 
-    <div class="card">
-      <strong>Core Methods:</strong><br>
-      Machine Learning, Explainable AI (SHAP, LIME), Statistical Modeling
-    </div>
+  <div class="card">
+    <p><strong>Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</strong></p>
+    <p>Global Epidemiology, 2025</p>
+  </div>
 
-    <div class="card">
-      <strong>Tools:</strong><br>
-      R, Python, SPSS, LaTeX, Git, GitHub
-    </div>
+  <div class="card">
+    <p><strong>Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</strong></p>
+    <p>International Journal of Statistical Sciences, 2025</p>
+  </div>
 
-    <div class="card">
-      <strong>Advanced:</strong><br>
-      Time Series (ARIMA, SARIMA), Spatial Analysis, Bayesian Modeling
-    </div>
+  <div class="card">
+    <p><strong>Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000–2022)</strong></p>
+    <p>International Journal of Health Geographics, 2025</p>
+  </div>
 
-    <div class="card">
-      <strong>Applications:</strong><br>
-      Epidemiological Modeling, Climate-Health Analytics, Disease Prediction
-    </div>
+  <div class="card">
+    <p><strong>Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000–2022) in 41 Asian countries</strong></p>
+    <p>BMJ Open, 2026</p>
+  </div>
 
+  <div class="card">
+    <p><strong>District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</strong></p>
+    <p>Tropical Medicine and Infectious Disease, 2026</p>
   </div>
 
 </div>
 
-<div class="container">
-
-  <!-- SECTION TITLE WITH SEE MORE -->
-  <h2 class="section-title">
-    Publications
-    <a href="publications.html" class="see-more">See more →</a>
-  </h2>
-
-  <!-- PUBLICATIONS GRID -->
-  <div class="card-grid">
-
-    <div class="card">
-      <p class="pub-title">Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</p>
-      <p class="pub-journal"><strong>Scientific Reports, 2025</strong></p>
-      <a href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank" class="pub-link">View Publication</a>
-    </div>
-
-    <div class="card">
-      <p class="pub-title">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh using interpretable machine learning</p>
-      <p class="pub-journal"><strong>Health Science Reports, 2025</strong></p>
-      <a href="https://doi.org/10.1002/hsr2.70726" target="_blank" class="pub-link">View Publication</a>
-    </div>
-
-    <div class="card">
-      <p class="pub-title">Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</p>
-      <p class="pub-journal"><strong>Global Epidemiology, 2025</strong></p>
-      <a href="https://www.sciencedirect.com/science/article/pii/S2590113325000288" target="_blank" class="pub-link">View Publication</a>
-    </div>
-
-    <div class="card">
-      <p class="pub-title">Unraveling global malaria incidence and mortality using machine learning and spatial analysis</p>
-      <p class="pub-journal"><strong>Scientific Reports, 2025</strong></p>
-      <a href="https://www.nature.com/articles/s41598-025-12872-0" target="_blank" class="pub-link">View Publication</a>
-    </div>
-
-    <div class="card">
-      <p class="pub-title">Reflections on explainable artificial intelligence for predicting dengue outbreaks</p>
-      <p class="pub-journal"><strong>Global Epidemiology, 2025</strong></p>
-      <a href="https://www.sciencedirect.com/science/article/pii/S2590113325000483" target="_blank" class="pub-link">View Publication</a>
-    </div>
-
-    <div class="card">
-      <p class="pub-title">Data-driven dengue prevention strategies using explainable AI and causal inference</p>
-      <p class="pub-journal"><strong>International Journal of Statistical Sciences, 2025</strong></p>
-      <a href="https://www.banglajol.info/index.php/ijss/article/view/85772" target="_blank" class="pub-link">View Publication</a>
-    </div>
-
-    <div class="card">
-      <p class="pub-title">Leveraging explainable AI and spatial analysis for communicable diseases in Asia (2000–2022)</p>
-      <p class="pub-journal"><strong>International Journal of Health Geographics, 2025</strong></p>
-      <a href="https://link.springer.com/article/10.1186/s12942-025-00433-7" target="_blank" class="pub-link">View Publication</a>
-    </div>
-
-    <div class="card">
-      <p class="pub-title">Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000–2022) in 41 Asian countries</p>
-      <p class="pub-journal"><strong>BMJ Open, 2026</strong></p>
-      <a href="https://bmjopen.bmj.com/content/16/2/e108632" target="_blank" class="pub-link">View Publication</a>
-    </div>
-
-    <div class="card">
-      <p class="pub-title">District-level dengue early warning prediction system using hybrid explainable AI and Bayesian deep learning</p>
-      <p class="pub-journal"><strong>Tropical Medicine and Infectious Disease, 2026</strong></p>
-      <a href="https://www.mdpi.com/2414-6366/11/3/73" target="_blank" class="pub-link">View Publication</a>
-    </div>
-
-  </div>
-
-</div>
+<a href="publications.html">See more →</a>
 
 <!-- PROJECTS -->
 <h2 class="section-title">Projects</h2>
@@ -372,32 +418,28 @@ footer {
 
 <a href="courses.html">See more →</a>
 
-<div class="container">
+<!-- SERVICE -->
+<h2 class="section-title">Service</h2>
+<div class="card"><strong>Reviewer:</strong> BMJ Global Health</div>
+<div class="card"><strong>Reviewer:</strong> PLOS Digital Health</div>
+<div class="card"><strong>Reviewer:</strong> Health Science Reports</div>
+<div class="card"><strong>Reviewer:</strong> BMJ Public Health</div>
+</div>
 
-  <!-- SECTION TITLE WITH SEE MORE -->
-  <h2 class="section-title">
-    Service
-    <a href="service.html" class="see-more">See more →</a>
-  </h2>
-
-  <!-- SERVICE CARDS -->
-  <div class="skills-container">
-
-    <div class="card"><strong>Reviewer:</strong> BMJ Global Health</div>
-
-    <div class="card"><strong>Reviewer:</strong> PLOS Digital Health</div>
-
-    <div class="card"><strong>Reviewer:</strong> Health Science Reports</div>
-
-    <div class="card"><strong>Reviewer:</strong> BMJ Public Health</div>
-
-  </div>
+<a href="service.html">See more →</a>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
   <p>Md. Abu Bokkor Shiddik</p>
+
+  <p>
+    <a href="home.html">Home</a> |
+    <a href="publications.html">Publications</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="courses.html">Courses</a> |
+    <a href="service.html">Service</a>
+  </p>
 
   <p class="links">
     <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">Portfolio</a> |
