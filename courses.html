@@ -38,7 +38,53 @@ body {
 .nav-inner a:hover {
   color: #60a5fa;
 }
+/* DROPDOWN */
+.nav-inner .dropdown {
+  position: relative;  /* required for positioning the dropdown items */
+}
 
+.nav-inner .dropbtn {
+  background: none;
+  border: none;
+  color: white;        /* dropdown text white */
+  font-weight: bold;   /* bold text */
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.nav-inner .dropbtn:hover {
+  background: rgba(255, 255, 255, 0.1); /* subtle hover effect */
+}
+
+.nav-inner .dropdown-content {
+  display: none;               /* hide by default */
+  position: absolute;          /* absolute positioning */
+  background-color: #0b2d5c;  /* dark blue background */
+  min-width: 160px;            /* width of dropdown */
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  z-index: 9999;
+  top: 36px;                   /* space below button */
+}
+
+.nav-inner .dropdown-content a {
+  color: #cbd5e1;              /* light gray links */
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+}
+
+.nav-inner .dropdown-content a:hover {
+  background-color: #1e3a8a;   /* highlight on hover */
+  color: white;
+}
+
+/* Show dropdown on hover */
+.nav-inner .dropdown:hover .dropdown-content {
+  display: block;
+}
 /* HEADER */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
