@@ -10,63 +10,81 @@
 
 <style>
 
+/* BASE */
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f8fafc;
-  color: #1f2937;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #ffffff;
+  color: #222;
+  line-height: 1.7;
 }
 
-/* NAV */
+/* HEADER */
+.header {
+  background: #f9fafb;
+  padding: 25px 15px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #1d4ed8;
+}
+
+.header p {
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* NAV (LIGHT) */
 .navbar {
-  background: #020617;
-  position: sticky;
-  top: 0;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .nav-inner {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
-  padding: 14px 20px;
+  padding: 12px 15px;
 }
 
 .nav-inner a {
-  color: #cbd5e1;
+  color: #374151;
   margin-right: 18px;
   text-decoration: none;
+  font-size: 15px;
 }
 
 .nav-inner a:hover {
-  color: #60a5fa;
+  color: #1d4ed8;
 }
 
 /* CONTAINER */
 .container {
-  max-width: 900px;
+  max-width: 800px;
   margin: auto;
   padding: 30px 15px;
 }
 
 /* POST */
 .post {
-  background: white;
-  margin-bottom: 30px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 50px;
 }
 
 .post img {
   width: 100%;
+  border-radius: 6px;
+  margin-bottom: 15px;
 }
 
-.post-content {
-  padding: 20px;
-}
-
+/* TITLE */
 .post-title {
-  font-size: 22px;
-  color: #1e3a8a;
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
 /* AUTHOR */
@@ -74,18 +92,18 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 10px 0;
+  margin-bottom: 8px;
 }
 
 .author-line img {
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
 }
 
 .author-name {
   text-decoration: none;
-  color: #1f2937;
+  color: #1d4ed8;
   font-weight: 500;
 }
 
@@ -95,28 +113,27 @@ body {
 }
 
 .icon {
-  width: 18px;
-  height: 18px;
-  filter: grayscale(100%);
-  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
 }
 
 .icon:hover {
-  filter: none;
+  opacity: 1;
 }
 
 /* META */
 .meta {
   font-size: 13px;
-  color: #777;
-  margin-bottom: 10px;
+  color: #6b7280;
+  margin-bottom: 15px;
 }
 
 /* TEXT */
 .short-text {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
 
@@ -125,34 +142,49 @@ body {
 }
 
 .read-more {
-  color: #2563eb;
+  color: #1d4ed8;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+/* SHARE */
+.share-btn {
+  margin-top: 15px;
+  background: none;
+  border: 1px solid #1d4ed8;
+  color: #1d4ed8;
+  padding: 6px 12px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
 }
 
-/* BUTTON */
-.share-btn {
-  margin-top: 10px;
+.share-btn:hover {
   background: #1d4ed8;
   color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 25px;
-  background: #020617;
-  color: #e2e8f0;
+  padding: 30px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #6b7280;
 }
 
 </style>
 </head>
 
 <body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Md. Abu Bokkor Shiddik</h1>
+  <p>Researcher | Insights and Learning Journal</p>
+</div>
 
 <!-- NAV -->
 <nav class="navbar">
@@ -169,17 +201,14 @@ footer {
 
 <img src="images/post1.jpg">
 
-<div class="post-content">
-
 <div class="post-title">My Journey into Machine Learning Research</div>
 
 <div class="author-line">
   <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg">
-  
   <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik</a>
 
   <div class="author-actions">
-    <a href="https://orcid.org/my-orcid?orcid=0009-0002-0424-446X" target="_blank">
+    <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/orcid.svg" class="icon">
     </a>
     <a href="mailto:abubokkor.brur60@gmail.com">
@@ -188,7 +217,7 @@ footer {
   </div>
 </div>
 
-<div class="meta">📅 April 2026 | ⏰ 10:30 AM</div>
+<div class="meta">April 2026 · 10:30 AM</div>
 
 <div class="post-text short-text">
 Today I explored advanced machine learning models and their application in global health data. 
@@ -200,9 +229,8 @@ and build trust in AI systems used in decision making.
 <span class="read-more" onclick="toggleText(this)">Read more</span>
 
 <br>
-<button class="share-btn" onclick="copyLink('ml-journey')">🔗 Share</button>
+<button class="share-btn" onclick="copyLink('ml-journey')">Share</button>
 
-</div>
 </div>
 
 <!-- POST 2 -->
@@ -210,17 +238,14 @@ and build trust in AI systems used in decision making.
 
 <img src="images/post2.jpg">
 
-<div class="post-content">
-
 <div class="post-title">Learning Data Visualization in R</div>
 
 <div class="author-line">
   <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg">
-
   <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik</a>
 
   <div class="author-actions">
-    <a href="https://orcid.org/my-orcid?orcid=0009-0002-0424-446X" target="_blank">
+    <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/orcid.svg" class="icon">
     </a>
     <a href="mailto:abubokkor.brur60@gmail.com">
@@ -229,7 +254,7 @@ and build trust in AI systems used in decision making.
   </div>
 </div>
 
-<div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
+<div class="meta">April 2026 · 4:00 PM</div>
 
 <div class="post-text short-text">
 Data visualization is essential for communicating research findings. Today I practiced creating 
@@ -240,9 +265,8 @@ and improves research communication significantly.
 <span class="read-more" onclick="toggleText(this)">Read more</span>
 
 <br>
-<button class="share-btn" onclick="copyLink('data-vis')">🔗 Share</button>
+<button class="share-btn" onclick="copyLink('data-vis')">Share</button>
 
-</div>
 </div>
 
 </div>
