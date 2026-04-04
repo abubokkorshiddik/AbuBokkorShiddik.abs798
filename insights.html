@@ -81,8 +81,6 @@ body {
 
 .post img {
   width: 100%;
-  max-height: 300px;
-  object-fit: cover;
 }
 
 .post-content {
@@ -99,13 +97,13 @@ body {
 .author-line {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
 .author-line img.author-pic {
-  width: 28px;   /* small profile pic */
+  width: 28px;
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
@@ -120,16 +118,10 @@ body {
 
 .author-icons {
   display: inline-flex;
-  gap: 4px;
-  vertical-align: middle;
-  margin-left: 4px;
-}
-
-.author-icons img {
-  width: 28px;   /* same small size as profile pic */
-  height: 28px;
-  display: inline-block;
-  object-fit: contain;
+  gap: 3px;
+  vertical-align: super;
+  margin-left: 2px;
+  font-size: 12px;
 }
 
 /* META */
@@ -210,16 +202,12 @@ footer {
     <div class="post-title">My Journey into Machine Learning Research</div>
     <div class="author-line">
       <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic" alt="Author pic">
-      <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik
+      <span class="author-name">Md. Abu Bokkor Shiddik
         <span class="author-icons">
-          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID icon">
-          </a>
-          <a href="mailto:abubokkor.brur60@gmail.com">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email icon">
-          </a>
+          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">🆔</a>
+          <a href="mailto:abubokkor.brur60@gmail.com">✉️</a>
         </span>
-      </a>
+      </span>
     </div>
     <div class="meta">📅 April 2026 | ⏰ 10:30 AM</div>
     <div class="post-text short-text">
@@ -239,290 +227,12 @@ footer {
     <div class="post-title">Learning Data Visualization in R</div>
     <div class="author-line">
       <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic" alt="Author pic">
-      <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik
+      <span class="author-name">Md. Abu Bokkor Shiddik
         <span class="author-icons">
-          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID icon">
-          </a>
-          <a href="mailto:abubokkor.brur60@gmail.com">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email icon">
-          </a>
+          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">🆔</a>
+          <a href="mailto:abubokkor.brur60@gmail.com">✉️</a>
         </span>
-      </a>
-    </div>
-    <div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
-    <div class="post-text short-text">
-      Data visualization is essential for communicating research findings. Today I practiced creating 
-      clear and effective plots in R.
-    </div>
-    <span class="read-more" onclick="toggleText(this)">Read more</span>
-    <br>
-    <button class="share-btn" onclick="copyLink('data-vis')">🔗 Share</button>
-  </div>
-</div>
-
-</div>
-
-<footer>
-© 2026 Md. Abu Bokkor Shiddik
-</footer>
-
-<script>
-function toggleText(el) {
-  const textHere’s the **completed full code** with both the profile picture and the author icons kept small (28×28), consistent, and neat. I’ve also finished the JavaScript section so everything works smoothly:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insights | Md. Abu Bokkor Shiddik</title>
-<meta name="description" content="Insights, research activities, and learning posts by Md. Abu Bokkor Shiddik.">
-
-<style>
-body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f8fafc;
-  color: #1f2937;
-}
-
-/* NAVIGATION (STICKY) */
-.navbar {
-  background: linear-gradient(90deg, #00264d, #004080);
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-}
-
-.nav-inner {
-  max-width: 1000px;
-  margin: auto;
-  padding: 12px 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.nav-inner a {
-  color: #cbd5e1;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 6px 10px;
-  border-radius: 4px;
-}
-
-.nav-inner a:hover {
-  color: #60a5fa;
-  background: rgba(255,255,255,0.1);
-}
-
-/* HEADER */
-.header {
-  background: linear-gradient(135deg, #020617, #0b3a6e);
-  color: white;
-  padding: 45px 20px;
-  text-align: center;
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 32px;
-}
-
-.header p {
-  margin-top: 6px;
-  font-size: 16px;
-  color: #cfd8e8;
-}
-
-/* CONTAINER */
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-/* POST CARD */
-.post {
-  background: white;
-  margin-bottom: 25px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.post img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-}
-
-.post-content {
-  padding: 20px;
-}
-
-.post-title {
-  font-size: 22px;
-  color: #1e3a8a;
-  margin-bottom: 5px;
-}
-
-/* AUTHOR LINE */
-.author-line {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.author-line img.author-pic {
-  width: 28px;   /* small profile pic */
-  height: 28px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.author-name {
-  text-decoration: none;
-  color: #1f2937;
-  font-weight: 500;
-  position: relative;
-}
-
-.author-icons {
-  display: inline-flex;
-  gap: 4px;
-  vertical-align: middle;
-  margin-left: 4px;
-}
-
-.author-icons img {
-  width: 28px;   /* same small size as profile pic */
-  height: 28px;
-  display: inline-block;
-  object-fit: contain;
-}
-
-/* META */
-.meta {
-  font-size: 13px;
-  color: #777;
-  margin-bottom: 12px;
-}
-
-/* TEXT */
-.short-text {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-}
-
-.full-text {
-  -webkit-line-clamp: unset;
-}
-
-.read-more {
-  color: #2563eb;
-  cursor: pointer;
-  font-size: 14px;
-  display: inline-block;
-  margin-top: 6px;
-}
-
-/* BUTTON */
-.share-btn {
-  margin-top: 15px;
-  background: #1d4ed8;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 25px;
-  background: #020617;
-  color: #e2e8f0;
-}
-</style>
-</head>
-
-<body>
-
-<!-- NAV -->
-<nav class="navbar">
-  <div class="nav-inner">
-    <a href="home.html">Home</a>
-    <a href="conference-and-workshop.html">Conference & Workshop</a>
-    <a href="publications.html">Publications</a>
-    <a href="projects.html">Projects</a>
-    <a href="courses.html">Courses</a>
-    <a href="service.html">Service</a>
-    <a href="insights.html">Insights</a>
-  </div>
-</nav>
-
-<!-- HEADER -->
-<div class="header">
-  <h1>Insights</h1>
-  <p>Research activities and learning posts by Md. Abu Bokkor Shiddik</p>
-</div>
-
-<div class="container">
-
-<!-- POST 1 -->
-<div class="post" id="ml-journey">
-  <img src="images/post1.jpg" alt="Machine Learning post image">
-  <div class="post-content">
-    <div class="post-title">My Journey into Machine Learning Research</div>
-    <div class="author-line">
-      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic" alt="Author pic">
-      <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik
-        <span class="author-icons">
-          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID icon">
-          </a>
-          <a href="mailto:abubokkor.brur60@gmail.com">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email icon">
-          </a>
-        </span>
-      </a>
-    </div>
-    <div class="meta">📅 April 2026 | ⏰ 10:30 AM</div>
-    <div class="post-text short-text">
-      Today I explored advanced machine learning models and their application in global health data. 
-      Understanding feature importance and explainability is becoming essential in modern research.
-    </div>
-    <span class="read-more" onclick="toggleText(this)">Read more</span>
-    <br>
-    <button class="share-btn" onclick="copyLink('ml-journey')">🔗 Share</button>
-  </div>
-</div>
-
-<!-- POST 2 -->
-<div class="post" id="data-vis">
-  <img src="images/post2.jpg" alt="Data Visualization post image">
-  <div class="post-content">
-    <div class="post-title">Learning Data Visualization in R</div>
-    <div class="author-line">
-      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic" alt="Author pic">
-      <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik
-        <span class="author-icons">
-          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID icon">
-          </a>
-          <a href="mailto:abubokkor.brur60@gmail.com">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email icon">
-          </a>
-        </span>
-      </a>
+      </span>
     </div>
     <div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
     <div class="post-text short-text">
