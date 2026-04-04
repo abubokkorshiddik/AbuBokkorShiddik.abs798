@@ -81,8 +81,8 @@ body {
 
 .post img {
   width: 100%;
-  max-height: 300px;   /* limit height */
-  object-fit: cover;   /* crop nicely */
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .post-content {
@@ -100,13 +100,13 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 
 .author-line img.author-pic {
-  width: 40px;   /* increased size */
-  height: 40px;
+  width: 28px;   /* small profile pic */
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -120,14 +120,14 @@ body {
 
 .author-icons {
   display: inline-flex;
-  gap: 0.4px;
+  gap: 4px;
   vertical-align: middle;
-  margin-left: 9.4px;
+  margin-left: 4px;
 }
 
 .author-icons img {
-  width: 0.1px;   /* larger icons */
-  height: 0.1px;
+  width: 28px;   /* same small size as profile pic */
+  height: 28px;
   display: inline-block;
   object-fit: contain;
 }
@@ -269,7 +269,7 @@ footer {
 
 <script>
 function toggleText(el) {
-  const text = el.previousHere’s the **full updated code** with the corrected sizes for the author profile picture and icons, plus a height limit for post images so they don’t overwhelm the layout. This should fix the “cone size” issue you mentioned:
+  const textHere’s the **completed full code** with both the profile picture and the author icons kept small (28×28), consistent, and neat. I’ve also finished the JavaScript section so everything works smoothly:
 
 ```html
 <!DOCTYPE html>
@@ -355,8 +355,8 @@ body {
 
 .post img {
   width: 100%;
-  max-height: 300px;   /* limit height */
-  object-fit: cover;   /* crop nicely */
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .post-content {
@@ -379,8 +379,8 @@ body {
 }
 
 .author-line img.author-pic {
-  width: 40px;   /* increased size */
-  height: 40px;
+  width: 28px;   /* small profile pic */
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -400,8 +400,8 @@ body {
 }
 
 .author-icons img {
-  width: 16px;   /* larger icons */
-  height: 16px;
+  width: 28px;   /* same small size as profile pic */
+  height: 28px;
   display: inline-block;
   object-fit: contain;
 }
