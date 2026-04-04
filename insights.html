@@ -12,6 +12,20 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f8fafc;
   color: #1f2937;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights | Md. Abu Bokkor Shiddik</title>
+<meta name="description" content="Insights, research activities, and learning posts by Md. Abu Bokkor Shiddik.">
+
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f8fafc;
+  color: #1f2937;
 }
 
 /* NAVIGATION (STICKY) */
@@ -203,18 +217,18 @@ footer {
 
 <!-- POST 1 -->
 <div class="post" id="ml-journey">
-  <img src="images/post1.jpg">
+  <img src="images/post1.jpg" alt="Machine Learning post image">
   <div class="post-content">
     <div class="post-title">My Journey into Machine Learning Research</div>
     <div class="author-line">
-      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic">
+      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic" alt="Author pic">
       <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik
         <span class="author-icons">
           <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID">
+            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID icon">
           </a>
           <a href="mailto:abubokkor.brur60@gmail.com">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email">
+            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email icon">
           </a>
         </span>
       </a>
@@ -232,18 +246,18 @@ footer {
 
 <!-- POST 2 -->
 <div class="post" id="data-vis">
-  <img src="images/post2.jpg">
+  <img src="images/post2.jpg" alt="Data Visualization post image">
   <div class="post-content">
     <div class="post-title">Learning Data Visualization in R</div>
     <div class="author-line">
-      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic">
+      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic" alt="Author pic">
       <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik
         <span class="author-icons">
           <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID">
+            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID icon">
           </a>
           <a href="mailto:abubokkor.brur60@gmail.com">
-            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email">
+            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email icon">
           </a>
         </span>
       </a>
@@ -290,9 +304,7 @@ window.onload = function() {
   const postId = params.get("post");
   if (postId) {
     document.querySelectorAll(".post").forEach(p => {
-      if (p.id !== postId) {
-        p.style.display = "none";
-      }
+      if (p.id !== postId) p.style.display = "none";
     });
   }
 };
