@@ -6,65 +6,58 @@
 
 <title>Insights | Md. Abu Bokkor Shiddik</title>
 
-<meta name="description" content="Insights, activities, and learning posts by Md. Abu Bokkor Shiddik - Researcher in Statistics and Machine Learning.">
+<meta name="description" content="Insights, research activities, and learning posts by Md. Abu Bokkor Shiddik.">
 
 <style>
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f5f7fa;
-  color: #333;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f8fafc;
+  color: #1f2937;
 }
 
-header {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: white;
-  padding: 20px 40px;
-  text-align: center;
+/* NAV */
+.navbar {
+  background: #020617;
+  position: sticky;
+  top: 0;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 28px;
+.nav-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
 }
 
-nav {
-  text-align: center;
-  background: #ffffff;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-nav a {
-  margin: 0 15px;
+.nav-inner a {
+  color: #cbd5e1;
+  margin-right: 18px;
   text-decoration: none;
-  color: #2a5298;
-  font-weight: 500;
 }
 
+.nav-inner a:hover {
+  color: #60a5fa;
+}
+
+/* CONTAINER */
 .container {
   max-width: 900px;
-  margin: 30px auto;
-  padding: 0 15px;
+  margin: auto;
+  padding: 30px 15px;
 }
 
+/* POST */
 .post {
   background: white;
   margin-bottom: 25px;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: 0.3s;
-}
-
-.post:hover {
-  transform: translateY(-5px);
 }
 
 .post img {
   width: 100%;
-  height: auto;
 }
 
 .post-content {
@@ -73,61 +66,72 @@ nav a {
 
 .post-title {
   font-size: 22px;
-  color: #1e3c72;
+  color: #1e3a8a;
+  margin-bottom: 5px;
+}
+
+/* AUTHOR LINE */
+.author-line {
+  font-size: 14px;
+  color: #555;
   margin-bottom: 10px;
 }
+
+.author-line a {
+  text-decoration: none;
+  margin-left: 8px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: white;
+}
+
+.orcid { background: #16a34a; }
+.email { background: #2563eb; }
 
 .meta {
   font-size: 13px;
   color: #777;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
-.meta span {
-  margin-right: 15px;
+/* TEXT */
+.short-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
-.post-text {
-  font-size: 15px;
-  line-height: 1.6;
+.full-text {
+  -webkit-line-clamp: unset;
 }
 
-.author-box {
-  margin-top: 20px;
-  padding-top: 10px;
-  border-top: 1px solid #eee;
+.read-more {
+  color: #2563eb;
+  cursor: pointer;
   font-size: 14px;
+  display: inline-block;
+  margin-top: 6px;
 }
 
-.share {
+/* BUTTON */
+.share-btn {
   margin-top: 15px;
-}
-
-.share button {
+  background: #1d4ed8;
+  color: white;
   border: none;
   padding: 8px 12px;
-  margin-right: 8px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  color: white;
 }
 
-.facebook { background: #3b5998; }
-.twitter { background: #1da1f2; }
-.linkedin { background: #0077b5; }
-
+/* FOOTER */
 footer {
   text-align: center;
-  padding: 20px;
-  background: #1e3c72;
-  color: white;
-  margin-top: 40px;
-}
-
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 22px;
-  }
+  padding: 25px;
+  background: #020617;
+  color: #e2e8f0;
 }
 
 </style>
@@ -135,106 +139,123 @@ footer {
 
 <body>
 
-<header>
-  <h1>Insights & Learning</h1>
-  <p>Activities, Thoughts, and Research Journey</p>
-</header>
-
+<!-- NAV -->
 <nav class="navbar">
   <div class="nav-inner">
     <a href="home.html">Home</a>
-    <a href="conference-and-workshop.html">Conference & Workshop</a>
-    <a href="publications.html">Publications</a>
-    <a href="projects.html">Projects</a>
-    <a href="courses.html">Courses</a>
-    <a href="service.html">Service</a>
     <a href="insights.html">Insights</a>
   </div>
 </nav>
 
 <div class="container">
 
-  <!-- POST 1 -->
-  <div class="post">
-    <img src="images/post1.jpg" alt="Learning Image">
+<!-- POST 1 -->
+<div class="post" id="ml-journey">
 
-    <div class="post-content">
-      <div class="post-title">My Journey into Machine Learning Research</div>
+<img src="images/post1.jpg">
 
-      <div class="meta">
-        <span>📅 April 2026</span>
-        <span>⏰ 10:30 AM</span>
-      </div>
+<div class="post-content">
 
-      <div class="post-text">
-        Today I explored advanced machine learning models and their application in global health data. 
-        Understanding feature importance and explainability is becoming essential in modern research.
-      </div>
+<div class="post-title">My Journey into Machine Learning Research</div>
 
-      <div class="author-box">
-        <strong>Author:</strong> Md. Abu Bokkor Shiddik <br>
-        <strong>Affiliation:</strong> B.Sc. in Statistics, Begum Rokeya University, Rangpur
-      </div>
+<div class="author-line">
+  Md. Abu Bokkor Shiddik
+  <a href="https://orcid.org/" target="_blank" class="orcid">ORCID</a>
+  <a href="mailto:abubokkor.brur60@gmail.com" class="email">Email</a>
+</div>
 
-      <div class="share">
-        <button class="facebook" onclick="share('facebook')">Facebook</button>
-        <button class="twitter" onclick="share('twitter')">Twitter</button>
-        <button class="linkedin" onclick="share('linkedin')">LinkedIn</button>
-      </div>
+<div class="meta">📅 April 2026 | ⏰ 10:30 AM</div>
 
-    </div>
-  </div>
+<div class="post-text short-text">
+Today I explored advanced machine learning models and their application in global health data. 
+Understanding feature importance and explainability is becoming essential in modern research. 
+I also explored interpretability tools such as SHAP and LIME. These tools help explain complex models 
+and build trust in AI systems used in decision making. This learning is very important for future research.
+</div>
 
-  <!-- POST 2 -->
-  <div class="post">
-    <img src="images/post2.jpg" alt="Activity Image">
+<span class="read-more" onclick="toggleText(this)">Read more</span>
 
-    <div class="post-content">
-      <div class="post-title">Learning Data Visualization in R</div>
+<br>
+<button class="share-btn" onclick="copyLink('ml-journey')">🔗 Share</button>
 
-      <div class="meta">
-        <span>📅 April 2026</span>
-        <span>⏰ 4:00 PM</span>
-      </div>
+</div>
+</div>
 
-      <div class="post-text">
-        Data visualization helps communicate insights effectively. Today I practiced creating 
-        clean and informative plots using R for better storytelling in research.
-      </div>
+<!-- POST 2 -->
+<div class="post" id="data-vis">
 
-      <div class="author-box">
-        <strong>Author:</strong> Md. Abu Bokkor Shiddik <br>
-        <strong>Affiliation:</strong> Statistics Researcher
-      </div>
+<img src="images/post2.jpg">
 
-      <div class="share">
-        <button class="facebook" onclick="share('facebook')">Facebook</button>
-        <button class="twitter" onclick="share('twitter')">Twitter</button>
-        <button class="linkedin" onclick="share('linkedin')">LinkedIn</button>
-      </div>
+<div class="post-content">
 
-    </div>
-  </div>
+<div class="post-title">Learning Data Visualization in R</div>
+
+<div class="author-line">
+  Md. Abu Bokkor Shiddik
+  <a href="https://orcid.org/" target="_blank" class="orcid">ORCID</a>
+  <a href="mailto:abubokkor.brur60@gmail.com" class="email">Email</a>
+</div>
+
+<div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
+
+<div class="post-text short-text">
+Data visualization is essential for communicating research findings. Today I practiced creating 
+clear and effective plots in R. Visualization helps transform raw data into meaningful insights. 
+It also improves the readability of research papers and presentations significantly.
+</div>
+
+<span class="read-more" onclick="toggleText(this)">Read more</span>
+
+<br>
+<button class="share-btn" onclick="copyLink('data-vis')">🔗 Share</button>
+
+</div>
+</div>
 
 </div>
 
 <footer>
-  © 2026 Md. Abu Bokkor Shiddik | All Rights Reserved
+© 2026 Md. Abu Bokkor Shiddik
 </footer>
 
 <script>
-function share(platform) {
-  const url = window.location.href;
-  const text = "Check out this insight from Md. Abu Bokkor Shiddik";
 
-  if (platform === 'facebook') {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-  } else if (platform === 'twitter') {
-    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
-  } else if (platform === 'linkedin') {
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+// READ MORE
+function toggleText(el) {
+  const text = el.previousElementSibling;
+
+  if (text.classList.contains("short-text")) {
+    text.classList.remove("short-text");
+    text.classList.add("full-text");
+    el.innerText = "Show less";
+  } else {
+    text.classList.add("short-text");
+    text.classList.remove("full-text");
+    el.innerText = "Read more";
   }
 }
+
+// COPY LINK
+function copyLink(postId) {
+  const url = window.location.origin + window.location.pathname + "?post=" + postId;
+  navigator.clipboard.writeText(url);
+  alert("Link copied! Share anywhere.");
+}
+
+// OPEN SINGLE POST
+window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
+  const postId = params.get("post");
+
+  if (postId) {
+    document.querySelectorAll(".post").forEach(p => {
+      if (p.id !== postId) {
+        p.style.display = "none";
+      }
+    });
+  }
+};
+
 </script>
 
 </body>
