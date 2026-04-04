@@ -14,9 +14,26 @@ body {
   color: #1f2937;
 }
 
-/* NAV with gradient */
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #001f3f, #004080); /* navy to deep blue */
+  color: white;
+  padding: 30px 15px;
+  text-align: center;
+}
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+.header p {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #cfd8e8;
+}
+
+/* NAV */
 .navbar {
-  background: linear-gradient(90deg, #0f172a, #1e40af); /* Navy gradient */
+  background: linear-gradient(90deg, #00264d, #004080); /* darker blue gradient */
   position: sticky;
   top: 0;
   z-index: 100;
@@ -31,37 +48,16 @@ body {
   margin-right: 18px;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
 }
 .nav-inner a:hover {
   color: #60a5fa;
-}
-
-/* PAGE HEADER with deep blue gradient */
-.page-header {
-  background: linear-gradient(135deg, #1e3a8a, #2563eb); /* Deep & bright blue */
-  color: white;
-  text-align: center;
-  padding: 50px 15px;
-  border-radius: 0 0 15px 15px;
-  margin-bottom: 30px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-.page-header h1 {
-  margin: 0;
-  font-size: 32px;
-}
-.page-header p {
-  margin-top: 10px;
-  font-size: 16px;
-  color: #dbeafe;
 }
 
 /* CONTAINER */
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 0 15px 30px;
+  padding: 30px 15px;
 }
 
 /* POST */
@@ -81,16 +77,15 @@ body {
 .post-title {
   font-size: 22px;
   color: #1e3a8a;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* AUTHOR LINE */
 .author-line {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 14px;
-  color: #555;
   margin-bottom: 10px;
 }
 .author-line img.author-pic {
@@ -101,26 +96,22 @@ body {
 }
 .author-name {
   text-decoration: none;
-  color: #000;
+  color: #1f2937;
   font-weight: 500;
   position: relative;
 }
-.author-name .author-icons {
+.author-icons {
   display: inline-flex;
-  align-items: center;
   gap: 4px;
-  margin-left: 5px;
-  position: relative;
-  top: -4px; /* superscript effect */
+  vertical-align: super;
+  margin-left: 4px;
 }
-.author-name .author-icons img {
-  width: 16px;
-  height: 16px;
+.author-icons img {
+  width: 18px;
+  height: 18px;
   display: inline-block;
-  transition: transform 0.2s;
-}
-.author-name .author-icons a:hover img {
-  transform: scale(1.2);
+  vertical-align: middle;
+  object-fit: contain;
 }
 
 /* META */
@@ -163,13 +154,19 @@ body {
 footer {
   text-align: center;
   padding: 25px;
-  background: linear-gradient(90deg, #0f172a, #1e40af);
+  background: #020617;
   color: #e2e8f0;
 }
 </style>
 </head>
 
 <body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Insights</h1>
+  <p>Research activities and learning posts by Md. Abu Bokkor Shiddik</p>
+</div>
 
 <!-- NAV -->
 <nav class="navbar">
@@ -184,85 +181,67 @@ footer {
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <h1>Insights & Learning</h1>
-  <p>Research activities, learning experiences, and updates by Md. Abu Bokkor Shiddik</p>
-</div>
-
 <div class="container">
 
 <!-- POST 1 -->
 <div class="post" id="ml-journey">
-<img src="images/post1.jpg">
-
-<div class="post-content">
-  <div class="post-title">My Journey into Machine Learning Research</div>
-
-  <div class="author-line">
-    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" alt="Author" class="author-pic">
-    <a href="index.html" class="author-name">
-      Md. Abu Bokkor Shiddik
-      <span class="author-icons">
-        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
-          <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID">
-        </a>
-        <a href="mailto:abubokkor.brur60@gmail.com">
-          <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email">
-        </a>
-      </span>
-    </a>
+  <img src="images/post1.jpg">
+  <div class="post-content">
+    <div class="post-title">My Journey into Machine Learning Research</div>
+    <div class="author-line">
+      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic">
+      <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik
+        <span class="author-icons">
+          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
+            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID">
+          </a>
+          <a href="mailto:abubokkor.brur60@gmail.com">
+            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email">
+          </a>
+        </span>
+      </a>
+    </div>
+    <div class="meta">📅 April 2026 | ⏰ 10:30 AM</div>
+    <div class="post-text short-text">
+      Today I explored advanced machine learning models and their application in global health data. 
+      Understanding feature importance and explainability is becoming essential in modern research. 
+      I also explored interpretability tools such as SHAP and LIME. These tools help explain complex models 
+      and build trust in AI systems used in decision making. This learning is very important for future research.
+    </div>
+    <span class="read-more" onclick="toggleText(this)">Read more</span>
+    <br>
+    <button class="share-btn" onclick="copyLink('ml-journey')">🔗 Share</button>
   </div>
-
-  <div class="meta">📅 April 2026 | ⏰ 10:30 AM</div>
-
-  <div class="post-text short-text">
-    Today I explored advanced machine learning models and their application in global health data. 
-    Understanding feature importance and explainability is becoming essential in modern research. 
-    I also explored interpretability tools such as SHAP and LIME. These tools help explain complex models 
-    and build trust in AI systems used in decision making. This learning is very important for future research.
-  </div>
-
-  <span class="read-more" onclick="toggleText(this)">Read more</span>
-  <br>
-  <button class="share-btn" onclick="copyLink('ml-journey')">🔗 Share</button>
-</div>
 </div>
 
 <!-- POST 2 -->
 <div class="post" id="data-vis">
-<img src="images/post2.jpg">
-
-<div class="post-content">
-  <div class="post-title">Learning Data Visualization in R</div>
-
-  <div class="author-line">
-    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" alt="Author" class="author-pic">
-    <a href="index.html" class="author-name">
-      Md. Abu Bokkor Shiddik
-      <span class="author-icons">
-        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
-          <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID">
-        </a>
-        <a href="mailto:abubokkor.brur60@gmail.com">
-          <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email">
-        </a>
-      </span>
-    </a>
+  <img src="images/post2.jpg">
+  <div class="post-content">
+    <div class="post-title">Learning Data Visualization in R</div>
+    <div class="author-line">
+      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic">
+      <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik
+        <span class="author-icons">
+          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">
+            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/ORCID_iD.svg.png" alt="ORCID">
+          </a>
+          <a href="mailto:abubokkor.brur60@gmail.com">
+            <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/pngtree-gmail-logo-png-png-image_4868140.jpg" alt="Email">
+          </a>
+        </span>
+      </a>
+    </div>
+    <div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
+    <div class="post-text short-text">
+      Data visualization is essential for communicating research findings. Today I practiced creating 
+      clear and effective plots in R. Visualization helps transform raw data into meaningful insights. 
+      It also improves the readability of research papers and presentations significantly.
+    </div>
+    <span class="read-more" onclick="toggleText(this)">Read more</span>
+    <br>
+    <button class="share-btn" onclick="copyLink('data-vis')">🔗 Share</button>
   </div>
-
-  <div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
-
-  <div class="post-text short-text">
-    Data visualization is essential for communicating research findings. Today I practiced creating 
-    clear and effective plots in R. Visualization helps transform raw data into meaningful insights. 
-    It also improves the readability of research papers and presentations significantly.
-  </div>
-
-  <span class="read-more" onclick="toggleText(this)">Read more</span>
-  <br>
-  <button class="share-btn" onclick="copyLink('data-vis')">🔗 Share</button>
-</div>
 </div>
 
 </div>
@@ -299,7 +278,9 @@ window.onload = function() {
   const postId = params.get("post");
   if (postId) {
     document.querySelectorAll(".post").forEach(p => {
-      if (p.id !== postId) p.style.display = "none";
+      if (p.id !== postId) {
+        p.style.display = "none";
+      }
     });
   }
 };
