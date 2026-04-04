@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insights | Md. Abu Bokkor Shiddik</title>
-<meta name="description" content="Insights, research activities, and blogs">
+<meta name="description" content="Insights, research activities, and learning posts by Md. Abu Bokkor Shiddik.">
 
 <style>
 body {
@@ -37,20 +37,26 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .nav-inner {
   max-width: 1200px;
   margin: auto;
-  padding: 14px 20px;
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 .nav-inner a {
   color: #cbd5e1;
-  margin-right: 18px;
   text-decoration: none;
   font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 4px;
 }
 .nav-inner a:hover {
   color: #60a5fa;
+  background: rgba(255,255,255,0.1);
 }
 
 /* CONTAINER */
@@ -84,7 +90,7 @@ body {
 .author-line {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-size: 14px;
   margin-bottom: 10px;
 }
@@ -102,13 +108,13 @@ body {
 }
 .author-icons {
   display: inline-flex;
-  gap: 4px;
+  gap: 3px;
   vertical-align: super;
   margin-left: 4px;
 }
 .author-icons img {
-  width: 18px;
-  height: 18px;
+  width: 14px;  /* smaller icons */
+  height: 14px;
   display: inline-block;
   vertical-align: middle;
   object-fit: contain;
