@@ -19,6 +19,7 @@ body {
   background: #020617;
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 .nav-inner {
   max-width: 1200px;
@@ -29,16 +30,36 @@ body {
   color: #cbd5e1;
   margin-right: 18px;
   text-decoration: none;
+  font-weight: 500;
 }
 .nav-inner a:hover {
   color: #60a5fa;
+}
+
+/* PAGE HEADER */
+.page-header {
+  background: #1e3a8a;
+  color: white;
+  text-align: center;
+  padding: 50px 15px;
+  border-radius: 0 0 15px 15px;
+  margin-bottom: 30px;
+}
+.page-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+.page-header p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #dbeafe;
 }
 
 /* CONTAINER */
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 30px 15px;
+  padding: 0 15px 30px;
 }
 
 /* POST */
@@ -58,7 +79,7 @@ body {
 .post-title {
   font-size: 22px;
   color: #1e3a8a;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 /* AUTHOR LINE */
@@ -95,6 +116,10 @@ body {
   font-size: 14px;
   color: white;
   margin-left: 6px;
+  transition: transform 0.2s;
+}
+.author-icons a:hover {
+  transform: scale(1.2);
 }
 .orcid {
   background: #16a34a; /* ORCID green */
@@ -164,6 +189,12 @@ footer {
   </div>
 </nav>
 
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>Insights & Learning</h1>
+  <p>Research activities, learning experiences, and updates by Md. Abu Bokkor Shiddik</p>
+</div>
+
 <div class="container">
 
 <!-- POST 1 -->
@@ -177,7 +208,7 @@ footer {
     <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" alt="Author">
     <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik</a>
     <span class="author-icons">
-      <a href="https://orcid.org/my-orcid?orcid=0009-0002-0424-446X" target="_blank" class="orcid">
+      <a href="https://orcid.org/0009-0002-0424-446X" target="_blank" class="orcid">
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/ORCID_iD_icon.svg" alt="ORCID" style="width:16px;height:16px;">
       </a>
       <a href="mailto:abubokkor.brur60@gmail.com" class="email">✉️</a>
@@ -211,7 +242,7 @@ footer {
     <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" alt="Author">
     <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik</a>
     <span class="author-icons">
-      <a href="https://orcid.org/my-orcid?orcid=0009-0002-0424-446X" target="_blank" class="orcid">
+      <a href="https://orcid.org/0009-0002-0424-446X" target="_blank" class="orcid">
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/ORCID_iD_icon.svg" alt="ORCID" style="width:16px;height:16px;">
       </a>
       <a href="mailto:abubokkor.brur60@gmail.com" class="email">✉️</a>
