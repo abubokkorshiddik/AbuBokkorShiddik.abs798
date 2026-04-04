@@ -165,7 +165,7 @@ footer {
   <!-- LATEST VIDEO -->
   <div class="section-title">Latest Video</div>
   <div class="video-block">
-    <iframe class="youtube-video" src="https://www.youtube.com/embed?listType=user_uploads&list=UCmue_D64tjDjTueuhLUx67g&rel=0&modestbranding=1" allowfullscreen></iframe>
+    <iframe class="youtube-video" id="video0" src="https://www.youtube.com/embed?listType=user_uploads&list=UCmue_D64tjDjTueuhLUx67g&rel=0&modestbranding=1" allowfullscreen></iframe>
     <div class="video-content">
       <div class="video-title">Newest Upload from My Channel</div>
       <div class="video-description">
@@ -177,7 +177,7 @@ footer {
   <!-- PYTHON -->
   <div class="section-title">Python Programming</div>
   <div class="video-block">
-    <iframe class="youtube-video" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB&rel=0&modestbranding=1" allowfullscreen></iframe>
+    <iframe class="youtube-video" id="video1" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB&rel=0&modestbranding=1" allowfullscreen></iframe>
     <div class="video-content">
       <div class="video-title">Python Programming Playlist</div>
       <div class="video-description">
@@ -189,7 +189,7 @@ footer {
   <!-- R -->
   <div class="section-title">R Programming</div>
   <div class="video-block">
-    <iframe class="youtube-video" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe&rel=0&modestbranding=1" allowfullscreen></iframe>
+    <iframe class="youtube-video" id="video2" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe&rel=0&modestbranding=1" allowfullscreen></iframe>
     <div class="video-content">
       <div class="video-title">R Programming Playlist</div>
       <div class="video-description">
@@ -201,7 +201,7 @@ footer {
   <!-- STATISTICS -->
   <div class="section-title">Statistics</div>
   <div class="video-block">
-    <iframe class="youtube-video" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX8rcFR38G-JZVMrClNyNIrE&rel=0&modestbranding=1" allowfullscreen></iframe>
+    <iframe class="youtube-video" id="video3" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX8rcFR38G-JZVMrClNyNIrE&rel=0&modestbranding=1" allowfullscreen></iframe>
     <div class="video-content">
       <div class="video-title">Statistics Playlist</div>
       <div class="video-description">
@@ -213,7 +213,7 @@ footer {
   <!-- BOOK REVIEW -->
   <div class="section-title">Book Reviews</div>
   <div class="video-block">
-    <iframe class="youtube-video" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9e1yPUnjXNE-46HC3Kd9hs&rel=0&modestbranding=1" allowfullscreen></iframe>
+    <iframe class="youtube-video" id="video4" src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9e1yPUnjXNE-46HC3Kd9hs&rel=0&modestbranding=1" allowfullscreen></iframe>
     <div class="video-content">
       <div class="video-title">Book Review Playlist</div>
       <div class="video-description">
@@ -226,29 +226,43 @@ footer {
 
 <footer>© 2026 Md. Abu Bokkor Shiddik</footer>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
-// Select all YouTube iframes
-const videos = document.querySelectorAll(".youtube-video");
-
-// Add JS API parameter for control
-videos.forEach(v => { v.src += "&enablejsapi=1"; });
-
-// Function to send commands to iframe
-function postMessageToIframe(iframe, command) {
-  iframe.contentWindow.postMessage(JSON.stringify({
-    event: "command",
-    func: command,
-    args: []
-  }), "*");
+let players = [];
+function onYouTubeIframeAPIReady() {
+  const iframes = document.querySelectorAll('.youtube-video');
+  iframes.forEach((iframe, i) => {
+    players[i] = new YT.Player(iframe.id, {
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  });
 }
 
-// Pause video if it's out of viewport
-function isInViewport(el) {
+function onPlayerStateChange(event) {
+  if(event.data === YT.PlayerState.PLAYING){
+    // Pause all other videos
+    players.forEach(player => {
+      if(player !== event.target){
+        player.pauseVideo();
+      }
+    });
+  }
+}
+
+// Pause when scrolling out of viewport
+function isInViewport(el){
   const rect = el.getBoundingClientRect();
   return rect.top < window.innerHeight && rect.bottom > 0;
 }
-function checkVideos() {
-  videos.forEach(v => { if (!isInViewport(v)) postMessageToIframe(v, 'pauseVideo'); });
+function checkVideos(){
+  players.forEach(player => {
+    const iframe = player.getIframe();
+    if(!isInViewport(iframe)){
+      player.pauseVideo();
+    }
+  });
 }
 window.addEventListener('scroll', checkVideos);
 window.addEventListener('resize', checkVideos);
