@@ -14,6 +14,8 @@
   box-sizing: border-box;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
@@ -21,9 +23,11 @@ body {
   color: #1f2937;
 }
 
-/* NAVBAR */
+/* ========================= */
+/* NAVBAR (INSIGHTS MATCH) */
+/* ========================= */
 .navbar {
-  background: linear-gradient(90deg, #020617, #0b3a6e);
+  background: linear-gradient(90deg, #00264d, #004080);
   position: sticky;
   top: 0;
   z-index: 9999;
@@ -38,22 +42,22 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  gap: 6px;
 }
 
 /* LINKS */
 .nav-inner a {
-  color: #cbd5e1;
+  color: white;
   text-decoration: none;
   font-weight: 500;
   padding: 6px 10px;
   border-radius: 5px;
-  margin-right: 12px;
   transition: 0.25s;
 }
 
 .nav-inner a:hover {
   color: #60a5fa;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.12);
 }
 
 /* DROPDOWN */
@@ -64,18 +68,17 @@ body {
 .nav-inner .dropbtn {
   background: none;
   border: none;
-  color: #cbd5e1;
+  color: white;
   font-weight: 500;
   font-size: 16px;
   cursor: pointer;
   padding: 6px 10px;
   border-radius: 5px;
-  margin-right: 12px;
 }
 
 .nav-inner .dropbtn:hover {
   color: #60a5fa;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.12);
 }
 
 /* DROPDOWN CONTENT */
@@ -107,7 +110,9 @@ body {
   display: block;
 }
 
+/* ========================= */
 /* HEADER */
+/* ========================= */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
@@ -126,7 +131,9 @@ body {
   color: #cfd8e8;
 }
 
+/* ========================= */
 /* CONTAINER */
+/* ========================= */
 .container {
   max-width: 1000px;
   margin: auto;
@@ -163,7 +170,9 @@ body {
   font-size: 14px;
 }
 
+/* ========================= */
 /* FOOTER */
+/* ========================= */
 footer {
   background: #020617;
   color: #e2e8f0;
@@ -182,7 +191,9 @@ footer a:hover {
   color: white;
 }
 
-/* MOBILE IMPROVED NAV */
+/* ========================= */
+/* MOBILE FIX (SMOOTH NAV) */
+/* ========================= */
 @media (max-width: 600px) {
 
   .nav-inner {
@@ -190,11 +201,20 @@ footer a:hover {
     overflow-x: auto;
     gap: 6px;
     padding: 10px;
-    scrollbar-width: none;
+
+    /* SMOOTH SCROLL */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
 
+  /* CLEAN SCROLLBAR */
   .nav-inner::-webkit-scrollbar {
-    display: none;
+    height: 4px;
+  }
+
+  .nav-inner::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
   }
 
   .nav-inner a,
@@ -206,8 +226,7 @@ footer a:hover {
   }
 
   .nav-inner .dropdown-content {
-    position: absolute;
-    top: 38px;
+    top: 40px;
     left: 0;
   }
 
