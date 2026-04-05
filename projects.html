@@ -7,6 +7,8 @@
 
 <style>
 
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
@@ -26,8 +28,12 @@ body {
   max-width: 1100px;
   margin: auto;
   padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
+/* NAV LINKS */
 .nav-inner a {
   color: #cbd5e1;
   margin-right: 15px;
@@ -38,38 +44,52 @@ body {
 .nav-inner a:hover {
   color: #60a5fa;
 }
+
 /* DROPDOWN */
 .nav-inner .dropdown {
-  position: relative;  /* required for positioning the dropdown items */
+  position: relative;
 }
 
+/* ALIGN FIX */
 .nav-inner .dropbtn {
   background: none;
   border: none;
-  color: white;        /* dropdown text white */
-  font-weight: bold;   /* bold text */
+  color: #cbd5e1;
+  font-weight: 500;
+  font-size: 17px;
+  font-family: inherit;
   cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 4px;
+  padding: 0;
+  margin-right: 15px;
 }
 
+/* MATCH HOVER */
 .nav-inner .dropbtn:hover {
-  background: rgba(255, 255, 255, 0.1); /* subtle hover effect */
+  color: #60a5fa;
 }
 
+/* DROPDOWN MENU FIX */
 .nav-inner .dropdown-content {
-  display: none;               /* hide by default */
-  position: absolute;          /* absolute positioning */
-  background-color: #0b2d5c;  /* dark blue background */
-  min-width: 160px;            /* width of dropdown */
+  display: none;
+  position: absolute;
+  background-color: #0b2d5c;
+  min-width: 160px;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
   border-radius: 6px;
   z-index: 9999;
-  top: 36px;                   /* space below button */
+
+  top: 100%;   /* REMOVE GAP */
+  left: 0;
 }
 
+/* KEEP VISIBLE */
+.nav-inner .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* DROPDOWN LINKS */
 .nav-inner .dropdown-content a {
-  color: #cbd5e1;              /* light gray links */
+  color: #cbd5e1;
   padding: 8px 12px;
   text-decoration: none;
   display: block;
@@ -77,14 +97,10 @@ body {
 }
 
 .nav-inner .dropdown-content a:hover {
-  background-color: #1e3a8a;   /* highlight on hover */
+  background-color: #1e3a8a;
   color: white;
 }
 
-/* Show dropdown on hover */
-.nav-inner .dropdown:hover .dropdown-content {
-  display: block;
-}
 /* HEADER */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
