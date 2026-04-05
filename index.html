@@ -14,15 +14,15 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f8fafc;
   color: #1f2937;
-  font-size: 16px;   /* fixed size for all */
+  font-size: 16px;
   line-height: 1.65;
 }
 
 /* ===================== */
-/* NAVBAR (UNIFIED STYLE) */
+/* NAVBAR (UNIFIED COLOR) */
 /* ===================== */
 .navbar {
-  background: linear-gradient(90deg, #020617, #0b3a6e);
+  background: linear-gradient(90deg, #00264d, #004080); /* unified */
   position: sticky;
   top: 0;
   z-index: 9999;
@@ -31,29 +31,29 @@ body {
 .nav-inner {
   max-width: 1200px;
   margin: auto;
-  padding: 12px 18px;   /* same spacing everywhere */
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* LINKS + BUTTON SAME LOOK */
+/* LINKS + BUTTON */
 .nav-inner a,
 .nav-inner .dropbtn {
-  color: #cbd5e1;
+  color: #e2e8f0;
   text-decoration: none;
   font-weight: 500;
   font-size: 15px;
   padding: 6px 10px;
   border-radius: 5px;
-  background: transparent;
   border: none;
+  background: transparent;
   cursor: pointer;
 }
 
 .nav-inner a:hover,
 .nav-inner .dropbtn:hover {
-  background: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.12);
   color: #93c5fd;
 }
 
@@ -86,18 +86,25 @@ body {
   color: white;
 }
 
-/* hover for desktop */
+/* DESKTOP HOVER */
 .nav-inner .dropdown:hover .dropdown-content {
   display: block;
 }
 
+/* MOBILE CLICK FIX */
+.nav-inner .dropdown.active .dropdown-content {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
 /* ===================== */
-/* HERO (MATCH SIZE) */
+/* HERO (SAME STYLE) */
 /* ===================== */
 .hero {
-  background: linear-gradient(90deg, #020617, #0b3a6e);
+  background: linear-gradient(90deg, #00264d, #004080); /* same color */
   color: white;
-  padding: 50px 20px; /* unified spacing */
+  padding: 50px 20px;
 }
 
 .hero-grid {
@@ -109,7 +116,7 @@ body {
   align-items: center;
 }
 
-/* IMAGES SAME SIZE */
+/* IMAGES */
 .image-row img {
   width: 150px;
   height: 150px;
@@ -136,7 +143,7 @@ body {
   font-weight: 600;
 }
 
-/* CARD GRID */
+/* GRID */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -157,7 +164,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* BUTTON (UNIFIED) */
+/* BUTTON */
 .cv-button {
   display: inline-block;
   margin-top: 10px;
@@ -178,7 +185,7 @@ footer {
 }
 
 /* ===================== */
-/* MOBILE (STABLE, NO SCROLL) */
+/* MOBILE (STABLE UI) */
 /* ===================== */
 @media (max-width: 768px) {
 
