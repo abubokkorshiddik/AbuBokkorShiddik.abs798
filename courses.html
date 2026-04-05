@@ -7,6 +7,13 @@
 
 <style>
 
+/* BASE RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
@@ -14,7 +21,7 @@ body {
   color: #1f2937;
 }
 
-/* NAVIGATION */
+/* NAVBAR */
 .navbar {
   background: linear-gradient(90deg, #020617, #0b3a6e);
   position: sticky;
@@ -23,22 +30,24 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+/* NAV CONTAINER */
 .nav-inner {
   max-width: 1100px;
   margin: auto;
-  padding: 12px 20px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
+/* LINKS */
 .nav-inner a {
   color: #cbd5e1;
   text-decoration: none;
   font-weight: 500;
   padding: 6px 10px;
-  border-radius: 4px;
+  border-radius: 5px;
+  margin-right: 12px;
   transition: 0.25s;
 }
 
@@ -60,8 +69,8 @@ body {
   font-size: 16px;
   cursor: pointer;
   padding: 6px 10px;
-  border-radius: 4px;
-  transition: 0.25s;
+  border-radius: 5px;
+  margin-right: 12px;
 }
 
 .nav-inner .dropbtn:hover {
@@ -69,6 +78,7 @@ body {
   background: rgba(255,255,255,0.08);
 }
 
+/* DROPDOWN CONTENT */
 .nav-inner .dropdown-content {
   display: none;
   position: absolute;
@@ -86,7 +96,6 @@ body {
   padding: 10px 12px;
   display: block;
   font-weight: 500;
-  border-radius: 4px;
 }
 
 .nav-inner .dropdown-content a:hover {
@@ -123,7 +132,7 @@ body {
   margin: auto;
   padding: 40px 20px;
 }
- 
+
 /* COURSE CARD */
 .course {
   background: white;
@@ -173,14 +182,33 @@ footer a:hover {
   color: white;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+/* MOBILE IMPROVED NAV */
+@media (max-width: 600px) {
+
   .nav-inner {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 6px;
     padding: 10px;
+    scrollbar-width: none;
   }
 
-  .container {
-    padding: 25px 15px;
+  .nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-inner a,
+  .nav-inner .dropbtn {
+    font-size: 13px;
+    padding: 6px 10px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .nav-inner .dropdown-content {
+    position: absolute;
+    top: 38px;
+    left: 0;
   }
 
   .header h1 {
@@ -191,11 +219,14 @@ footer a:hover {
     font-size: 14px;
   }
 
+  .container {
+    padding: 25px 15px;
+  }
+
   .course {
     padding: 15px;
   }
 }
-
 </style>
 </head>
 
