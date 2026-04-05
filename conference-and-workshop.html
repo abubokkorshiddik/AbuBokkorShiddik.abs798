@@ -40,7 +40,8 @@ body {
   padding: 12px 16px;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: center; /* FIX ALIGN */
+  flex-wrap: wrap; /* NO SCROLL */
   gap: 8px;
 }
 
@@ -64,6 +65,7 @@ body {
   position: relative;
 }
 
+/* MATCH LINKS */
 .nav-inner .dropbtn {
   background: none;
   border: none;
@@ -92,10 +94,12 @@ body {
   left: 0;
 }
 
+/* DESKTOP HOVER */
 .nav-inner .dropdown:hover .dropdown-content {
   display: block;
 }
 
+/* DROPDOWN LINKS */
 .nav-inner .dropdown-content a {
   display: block;
   padding: 10px 12px;
@@ -202,41 +206,31 @@ footer a:hover {
 }
 
 /* ========================= */
-/* MOBILE NAV (SMOOTH) */
+/* MOBILE FIX (NO SCROLL + WORKING DROPDOWN) */
 /* ========================= */
 @media (max-width: 600px) {
 
   .nav-inner {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 6px;
-    padding: 10px;
-
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* CLEAN SCROLLBAR */
-  .nav-inner::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .nav-inner::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.25);
-    border-radius: 10px;
+    flex-wrap: wrap; /* REMOVE SCROLL */
+    justify-content: center;
   }
 
   .nav-inner a,
   .nav-inner .dropbtn {
     font-size: 13px;
-    padding: 6px 10px;
-    flex: 0 0 auto;
-    white-space: nowrap;
+    padding: 6px 8px;
   }
 
+  /* DROPDOWN FIX FOR TAP */
   .nav-inner .dropdown-content {
-    top: 40px;
+    position: relative;
+    top: 0;
     left: 0;
+    width: 100%;
+  }
+
+  .nav-inner .dropdown:focus-within .dropdown-content {
+    display: block;
   }
 }
 </style>
