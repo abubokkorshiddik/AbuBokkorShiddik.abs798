@@ -25,7 +25,7 @@ body {
   font-weight: 600;
 }
 
-/* NAVBAR (UPDATED ONLY) */
+/* NAVBAR */
 .navbar {
   background: linear-gradient(90deg, #00264d, #004080);
   position: sticky;
@@ -44,7 +44,7 @@ body {
   justify-content: center;
 }
 
-/* NAV TEXT */
+/* NAV LINKS */
 .nav-inner a,
 .dropbtn {
   color: #e5e7eb;
@@ -59,11 +59,7 @@ body {
   cursor: pointer;
 }
 
-.nav-inner a:hover {
-  background: rgba(255,255,255,0.12);
-  color: #60a5fa;
-}
-
+.nav-inner a:hover,
 .dropbtn:hover {
   background: rgba(255,255,255,0.12);
   color: #60a5fa;
@@ -94,7 +90,6 @@ body {
   display: block;
   padding: 10px;
   color: #1f2937;
-  font-weight: 600;
 }
 
 .dropdown-content a:hover {
@@ -111,13 +106,11 @@ body {
 
 .header h1 {
   font-size: 28px;
-  font-weight: 600;
 }
 
 .header p {
   color: #cbd5e1;
   font-size: 15px;
-  font-weight: 600;
 }
 
 /* GRID */
@@ -138,17 +131,12 @@ body {
   color: #1e3a8a;
 }
 
-/* VIDEO CARD */
+/* VIDEO */
 .video-block {
   background: white;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  transition: 0.3s;
-}
-
-.video-block:hover {
-  transform: translateY(-5px);
 }
 
 .video-block iframe {
@@ -157,14 +145,12 @@ body {
   border: none;
 }
 
-/* CONTENT */
 .video-content {
   padding: 12px;
 }
 
 .video-title {
   font-size: 16px;
-  font-weight: 600;
   color: #1e3a8a;
 }
 
@@ -181,7 +167,6 @@ footer {
   background: #020617;
   color: #e5e7eb;
   margin-top: 25px;
-  font-weight: 600;
 }
 
 /* TABLET */
@@ -195,27 +180,19 @@ footer {
   }
 }
 
-/* MOBILE */
+/* MOBILE (NO SCROLL, WRAPPED NAVBAR) */
 @media (max-width: 600px) {
 
   .nav-inner {
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 6px;
-    padding: 10px;
-    scrollbar-width: none;
-  }
-
-  .nav-inner::-webkit-scrollbar {
-    display: none;
   }
 
   .nav-inner a,
   .dropbtn {
     font-size: 14px;
-    padding: 6px 10px;
-    flex: 0 0 auto;
-    white-space: nowrap;
+    padding: 6px 8px;
   }
 
   .dropdown-content {
@@ -239,6 +216,7 @@ footer {
 }
 
 </style>
+  
 </head>
 
 <body>
