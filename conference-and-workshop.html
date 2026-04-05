@@ -7,17 +7,23 @@
 
 <style>
 
+/* BASE RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f8fafc;
   color: #1f2937;
   line-height: 1.7;
 }
 
-/* NAV */
+/* NAVBAR */
 .navbar {
   background: #020617;
   position: sticky;
@@ -25,10 +31,11 @@ body {
   z-index: 9999;
 }
 
+/* NAV CONTAINER */
 .nav-inner {
   max-width: 1000px;
   margin: auto;
-  padding: 12px 20px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -40,10 +47,14 @@ body {
   margin-right: 18px;
   text-decoration: none;
   font-weight: 500;
+  padding: 6px 8px;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
 .nav-inner a:hover {
   color: #60a5fa;
+  background: rgba(255,255,255,0.08);
 }
 
 /* DROPDOWN */
@@ -51,50 +62,40 @@ body {
   position: relative;
 }
 
-/* ALIGN FIX */
 .nav-inner .dropbtn {
   background: none;
   border: none;
   color: #cbd5e1;
   font-weight: 500;
-  font-size: 17px;
-  font-family: inherit;
+  font-size: 16px;
   cursor: pointer;
-  padding: 0;
   margin-right: 18px;
 }
 
-/* HOVER MATCH */
 .nav-inner .dropbtn:hover {
   color: #60a5fa;
 }
 
-/* DROPDOWN FIX */
+/* DROPDOWN CONTENT */
 .nav-inner .dropdown-content {
   display: none;
   position: absolute;
   background-color: #0b2d5c;
-  min-width: 160px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  min-width: 150px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   border-radius: 6px;
-  z-index: 9999;
-
-  top: 100%;   /* REMOVE GAP */
+  top: 100%;
   left: 0;
 }
 
-/* KEEP OPEN */
 .nav-inner .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* DROPDOWN LINKS */
 .nav-inner .dropdown-content a {
-  color: #cbd5e1;
-  padding: 8px 12px;
-  text-decoration: none;
   display: block;
-  font-weight: 500;
+  padding: 8px 12px;
+  color: #cbd5e1;
 }
 
 .nav-inner .dropdown-content a:hover {
@@ -180,11 +181,42 @@ footer a:hover {
   color: white;
 }
 
-/* MOBILE */
+/* TABLET */
 @media (max-width: 768px) {
   .container {
     padding: 20px 15px;
   }
+}
+
+/* MOBILE NAV IMPROVED */
+@media (max-width: 600px) {
+
+  .nav-inner {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 10px;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-inner a,
+  .nav-inner .dropbtn {
+    font-size: 13px;
+    padding: 6px 10px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .nav-inner .dropdown-content {
+    position: absolute;
+    top: 38px;
+    left: 0;
+  }
+
 }
 </style>
 
