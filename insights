@@ -341,7 +341,7 @@ footer {
     <div class="dropdown">
       <button class="dropbtn">Insights ▼</button>
       <div class="dropdown-content">
-        <a href="insights/post">Posts</a>
+        <a href="insights">Posts</a>
         <a href="insights/videos">Videos</a>
       </div>
     </div>
