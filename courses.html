@@ -16,81 +16,105 @@ body {
 
 /* NAVIGATION */
 .navbar {
-  background: #020617;
+  background: linear-gradient(90deg, #020617, #0b3a6e);
   position: sticky;
   top: 0;
   z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .nav-inner {
   max-width: 1100px;
   margin: auto;
   padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .nav-inner a {
   color: #cbd5e1;
-  margin-right: 15px;
   text-decoration: none;
   font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: 0.25s;
 }
 
 .nav-inner a:hover {
   color: #60a5fa;
+  background: rgba(255,255,255,0.08);
 }
+
 /* DROPDOWN */
 .nav-inner .dropdown {
-  position: relative;  /* required for positioning the dropdown items */
+  position: relative;
 }
 
 .nav-inner .dropbtn {
   background: none;
   border: none;
-  color: white;        /* dropdown text white */
-  font-weight: bold;   /* bold text */
+  color: #cbd5e1;
+  font-weight: 500;
+  font-size: 16px;
   cursor: pointer;
   padding: 6px 10px;
   border-radius: 4px;
+  transition: 0.25s;
 }
 
 .nav-inner .dropbtn:hover {
-  background: rgba(255, 255, 255, 0.1); /* subtle hover effect */
+  color: #60a5fa;
+  background: rgba(255,255,255,0.08);
 }
 
 .nav-inner .dropdown-content {
-  display: none;               /* hide by default */
-  position: absolute;          /* absolute positioning */
-  background-color: #0b2d5c;  /* dark blue background */
-  min-width: 160px;            /* width of dropdown */
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  display: none;
+  position: absolute;
+  background-color: #0b2d5c;
+  min-width: 160px;
+  box-shadow: 0px 6px 16px rgba(0,0,0,0.2);
   border-radius: 6px;
   z-index: 9999;
-  top: 36px;                   /* space below button */
+  top: 100%;
+  left: 0;
 }
 
 .nav-inner .dropdown-content a {
-  color: #cbd5e1;              /* light gray links */
-  padding: 8px 12px;
-  text-decoration: none;
+  color: #cbd5e1;
+  padding: 10px 12px;
   display: block;
   font-weight: 500;
+  border-radius: 4px;
 }
 
 .nav-inner .dropdown-content a:hover {
-  background-color: #1e3a8a;   /* highlight on hover */
+  background-color: #1e3a8a;
   color: white;
 }
 
-/* Show dropdown on hover */
 .nav-inner .dropdown:hover .dropdown-content {
   display: block;
 }
+
 /* HEADER */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
-  padding: 45px 20px;
+  padding: 50px 20px;
   text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.header p {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #cfd8e8;
 }
 
 /* CONTAINER */
@@ -100,24 +124,33 @@ body {
   padding: 40px 20px;
 }
 
-/* CARD */
+/* COURSE CARD */
 .course {
   background: white;
-  padding: 16px;
-  margin-bottom: 15px;
+  padding: 18px;
+  margin-bottom: 18px;
   border-left: 4px solid #1d4ed8;
-  border-radius: 6px;
+  border-radius: 8px;
   line-height: 1.7;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: 0.25s;
 }
 
+.course:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* DATE */
 .date {
-  font-weight: bold;
+  font-weight: 600;
   color: #1d4ed8;
+  font-size: 14px;
 }
 
+/* PROVIDER */
 .provider {
-  color: #374151;
+  color: #475569;
   font-size: 14px;
 }
 
@@ -138,6 +171,29 @@ footer a {
 
 footer a:hover {
   color: white;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 25px 15px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+  }
+
+  .header p {
+    font-size: 14px;
+  }
+
+  .course {
+    padding: 15px;
+  }
 }
 
 </style>
