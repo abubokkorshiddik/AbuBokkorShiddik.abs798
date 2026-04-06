@@ -146,8 +146,18 @@ body {
 }
 
 /* CONTENT */
-.post-content {
-  padding: 20px;
+.post-content h3 {
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+.post-content p {
+  margin-bottom: 12px;
+}
+
+.post-content ul {
+  margin-bottom: 12px;
+  padding-left: 18px;
 }
 
 .post-title {
@@ -321,11 +331,11 @@ footer {
   <!-- POST (FULL CONTENT PRESERVED) -->
   <!-- POST (FULL CONTENT PRESERVED) -->
   <!-- POST (FULL CONTENT PRESERVED) -->
-  <!-- POST (FULL CONTENT PRESERVED) -->
+ 
 
 
-  
-<div class="post" id="post-gather-guidelines-02">
+   <!-- POST (2) -->
+<div class="post" id="post-gather-guidelines-02" data-category="Public Health">
 
   <img src="https://github.com/user-attachments/assets/bb76126f-aa6f-4c7f-ab7e-e03ef4f3afd0">
 
@@ -494,7 +504,7 @@ GATHER promotes transparent and trustworthy science. It helps ensure that resear
 </div>
 
   <!-- POST (1) -->
-<div class="post" id="post-normalization-standardization-01">
+<div class="post" id="post-normalization-standardization-01" data-category="Machine Learning">
 
   <img src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5">
 
@@ -706,25 +716,50 @@ document.addEventListener("DOMContentLoaded", function () {
   const posts = document.querySelectorAll(".post");
   const container = document.getElementById("quick-links");
 
-  posts.forEach((post, index) => {
+  const categories = {};
+
+  posts.forEach(post => {
+    const category = post.getAttribute("data-category") || "Other";
     const id = post.id;
     const title = post.querySelector(".post-title").innerText;
 
-    const link = document.createElement("a");
-    link.href = "#" + id;
-    link.innerText = (index + 1) + ". " + title;
+    if (!categories[category]) {
+      categories[category] = [];
+    }
 
-    link.style.display = "block";
-    link.style.marginBottom = "8px";
-    link.style.fontSize = "14px";
-    link.style.color = "#1e3a8a";
-    link.style.textDecoration = "none";
-
-    link.onmouseover = () => link.style.textDecoration = "underline";
-    link.onmouseout = () => link.style.textDecoration = "none";
-
-    container.appendChild(link);
+    categories[category].push({ id, title });
   });
+
+  for (let cat in categories) {
+
+    const catTitle = document.createElement("div");
+    catTitle.innerText = cat;
+    catTitle.style.fontWeight = "700";
+    catTitle.style.marginTop = "10px";
+    catTitle.style.marginBottom = "5px";
+    catTitle.style.color = "#0f172a";
+
+    container.appendChild(catTitle);
+
+    categories[cat].forEach(item => {
+      const link = document.createElement("a");
+
+      link.href = "#" + item.id;
+      link.innerText = "• " + item.title;
+
+      link.style.display = "block";
+      link.style.fontSize = "13px";
+      link.style.marginBottom = "5px";
+      link.style.color = "#1e3a8a";
+      link.style.textDecoration = "none";
+
+      link.onmouseover = () => link.style.textDecoration = "underline";
+      link.onmouseout = () => link.style.textDecoration = "none";
+
+      container.appendChild(link);
+    });
+
+  }
 
 });
 </script>
