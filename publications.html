@@ -219,6 +219,19 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
+    .figures img {
+  width: 150px;
+  margin: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+  .fig-preview img,
+.fig-full img {
+  max-width: 100%;
+  margin: 8px 0;
+  cursor: pointer;
+  border-radius: 6px;
+}
 /* FOOTER */
 footer {
   background: #020617;
@@ -237,12 +250,7 @@ footer a {
 footer a:hover {
   color: white;
 }
-  .figures img {
-  width: 150px;
-  margin: 5px;
-  border-radius: 6px;
-  cursor: pointer;
-}
+
 </style>
 </head>
 
@@ -330,12 +338,11 @@ footer a:hover {
   </div>
 
   <div class="fig-full" style="display:none;">
-    <img src="https://github.com/user-attachments/assets/9a2b292c-919a-4b7a-8106-7cac14ee4fb5">
-    <img src="https://github.com/user-attachments/assets/025439ef-f880-41c5-b202-7585cddf912d">
-    <img src="https://github.com/user-attachments/assets/b25a2489-bb83-4f7b-9039-c3c87844f7a0">
-    <img src="https://github.com/user-attachments/assets/dab00be0-e460-47ba-975c-d1f593172106">
-    <img src="https://github.com/user-attachments/assets/90a6b33e-aa01-4ff8-a645-e1b80f046f28">
-    <img src="https://github.com/user-attachments/assets/b25a2489-bb83-4f7b-9039-c3c87844f7a0">
+    <img src="https://github.com/user-attachments/assets/9a2b292c-919a-4b7a-8106-7cac14ee4fb5" onclick="openFigure(this)">
+    <img src="https://github.com/user-attachments/assets/025439ef-f880-41c5-b202-7585cddf912d" onclick="openFigure(this)">
+    <img src="https://github.com/user-attachments/assets/b25a2489-bb83-4f7b-9039-c3c87844f7a0" onclick="openFigure(this)">
+    <img src="https://github.com/user-attachments/assets/dab00be0-e460-47ba-975c-d1f593172106" onclick="openFigure(this)">
+    <img src="https://github.com/user-attachments/assets/90a6b33e-aa01-4ff8-a645-e1b80f046f28" onclick="openFigure(this)">
   </div>
 
   <a href="#" onclick="toggleFigures(this); return false;">
@@ -344,7 +351,7 @@ footer a:hover {
 
 </div>
 
-</div>
+
 
 
 
@@ -425,7 +432,7 @@ function toggleAbstract(el) {
   const shortText = parent.querySelector(".abstract-short");
   const fullText = parent.querySelector(".abstract-full");
 
-  if (getComputedStyle(fullText).display === "none") {
+  if (fullText.style.display === "none") {
     fullText.style.display = "block";
     shortText.style.display = "none";
     el.textContent = "Show less";
@@ -446,6 +453,19 @@ function openFigure(img) {
       </body>
     </html>
   `);
+}
+
+function toggleFigures(el) {
+  const parent = el.closest(".figures");
+  const full = parent.querySelector(".fig-full");
+
+  if (full.style.display === "none") {
+    full.style.display = "block";
+    el.textContent = "Hide figures";
+  } else {
+    full.style.display = "none";
+    el.textContent = "View all figures";
+  }
 }
 </script>
 
