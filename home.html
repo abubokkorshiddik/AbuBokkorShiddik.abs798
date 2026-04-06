@@ -359,6 +359,58 @@ footer {
     padding: 25px 15px;
   }
 }
+
+  /* ========================= */
+/* PUBLICATIONS SECTION FIX */
+/* ========================= */
+
+#publications .card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* publication cards */
+#publications .card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 190px;
+}
+
+/* limit long titles */
+#publications .card p strong {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* keep link aligned at bottom */
+#publications .card a {
+  margin-top: auto;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+  #publications .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  #publications .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
   
 </head>
