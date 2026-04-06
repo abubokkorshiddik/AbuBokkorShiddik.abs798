@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Insights | Md. Abu Bokkor Shiddik</title>
 
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Insights | Md. Abu Bokkor Shiddik</title>
+<meta name="description" content="Insights, research activities, and learning posts by Md. Abu Bokkor Shiddik.">
+
 <style>
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f8fafc;
   color: #1f2937;
+  display: flex;
+  flex-direction: column;
 }
 
 /* NAV */
@@ -31,31 +39,89 @@ body {
   margin: auto;
   padding: 12px 16px;
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.nav-inner a {
+/* LINKS */
+.nav-inner a,
+.nav-inner .dropbtn {
   color: white;
   font-weight: 700;
   text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  transition: 0.25s;
+  font-size: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-inner a:hover,
+.nav-inner .dropbtn:hover {
+  color: #60a5fa;
+  background: rgba(255,255,255,0.12);
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #0b2d5c;
+  min-width: 160px;
+  border-radius: 6px;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  color: #cbd5e1;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background: #1e3a8a;
+  color: white;
 }
 
 /* HEADER */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
+  padding: 45px 20px;
   text-align: center;
-  padding: 40px;
 }
 
-/* MAIN */
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.header p {
+  margin-top: 6px;
+  color: #cfd8e8;
+}
+
+/* LAYOUT */
 .main-wrapper {
   display: flex;
   max-width: 1200px;
   margin: auto;
-  padding: 30px;
+  padding: 40px 20px;
   gap: 20px;
 }
 
@@ -72,11 +138,13 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* IMAGE FIX (important) */
-.post-image img {
+/* IMAGE SCALING FIX (IMPORTANT) */
+.post img {
   width: 100%;
-  height: 220px;
+  height: auto;
+  max-height: 280px;
   object-fit: cover;
+  display: block;
 }
 
 /* CONTENT */
@@ -87,242 +155,232 @@ body {
 .post-title {
   font-size: 22px;
   color: #1e3a8a;
-  margin-bottom: 10px;
 }
 
 /* AUTHOR */
 .author-line {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
 .author-pic {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-name {
+  text-decoration: none;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.author-icons {
+  display: inline-flex;
+  gap: 6px;
 }
 
 /* META */
 .meta {
   font-size: 13px;
   color: #777;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 /* TEXT */
+.post-text {
+  line-height: 1.6;
+}
+
 .short-text {
+  overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .full-text {
   -webkit-line-clamp: unset;
 }
 
-/* BUTTON */
 .read-more {
   color: #2563eb;
   cursor: pointer;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.share-btn {
+  margin-top: 15px;
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+  flex: 1;
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 10px;
+  position: sticky;
+  top: 100px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #020617;
+  color: #e2e8f0;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .main-wrapper {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+
+  .sidebar {
+    position: relative;
+    top: auto;
+    max-height: none;
+  }
+
+  .post img {
+    max-height: 200px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+  }
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="#">Home</a>
-    <a href="#">Publications</a>
+    <a href="home.html">Home</a>
+    <a href="conference-and-workshop.html">Conference & Workshop</a>
+    <a href="publications.html">Publications</a>
+    <a href="projects.html">Projects</a>
+    <a href="courses.html">Courses</a>
+    <a href="service.html">Service</a>
+
+    <div class="dropdown">
+      <button class="dropbtn">Insights ▼</button>
+      <div class="dropdown-content">
+        <a href="insights.html">Posts</a>
+        <a href="videos.html">Videos</a>
+      </div>
+    </div>
   </div>
 </nav>
 
-<!-- HEADER -->
 <div class="header">
   <h1>Insights</h1>
+  <p>Research activities and learning posts by Md. Abu Bokkor Shiddik</p>
 </div>
 
 <div class="main-wrapper">
 
 <div class="container">
 
-
-
-  
-<!-- ================= FIRST POST (UNCHANGED STRUCTURE) ================= -->
-
-
-  
+<!-- YOUR FULL POST CONTENT (UNCHANGED) -->
 <div class="post" id="post-normalization-standardization-01">
 
-  <div class="post-image">
-    <img src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5">
-  </div>
+  <img src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5">
 
   <div class="post-content">
 
     <div class="post-title">Normalization vs. Standardization</div>
-<!-- AUTHOR -->
+
     <div class="author-line">
-      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" 
-           class="author-pic" 
-           alt="Author">
-
-      <div class="author-info">
-        <a href="index.html" class="author-name">
-          Md. Abu Bokkor Shiddik
-        </a>
-
+      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic">
+      <div>
+        <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik</a>
         <div class="author-icons">
-          <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">🌐</a>
+          <a href="https://orcid.org/0009-0002-0424-446X">🌐</a>
           <a href="mailto:abubokkor.brur60@gmail.com">✉️</a>
         </div>
       </div>
     </div>
-    
-  
-    <div class="meta">📅 6 April 2026</div>
 
-    <div class="short-text">
-       <p>
-        When working with real-world datasets, variables often come with very different scales. 
-        For example, one variable may represent population in millions, while another represents 
-        a percentage or a rate. If we use such variables directly in analysis or machine learning 
-        models, the results may become biased toward variables with larger scales.
-      </p>
+    <div class="meta">📅 6 April 2026 | ⏰ 12:00 AM</div>
 
-      <p>
-        To solve this issue, two common techniques are used: 
-        <b>Normalization</b> and <b>Standardization</b>. Although both aim to make variables comparable, 
-        they work in different ways.
-      </p>
+    <div class="post-text short-text">
+      <p>When working with real-world datasets, variables often come with very different scales...</p>
+      <p>To solve this issue, two common techniques are used: <b>Normalization</b> and <b>Standardization</b>.</p>
 
-      <!-- SUBTITLE -->
       <h3>Normalization</h3>
+      <p>Normalization rescales data so that all values fall within a fixed range, usually between 0 and 1.</p>
 
-      <p>
-        Normalization rescales data so that all values fall within a fixed range, usually between 0 and 1.
-      </p>
-
-      <p>
-        In this approach, the smallest value becomes 0, the largest value becomes 1, and the rest 
-        of the values are scaled proportionally within this interval.
-      </p>
-
-      <p>
-        This method preserves the relative relationships between observations while restricting the 
-        range of the data.
-      </p>
-
-      <!-- BULLET LIST -->
-      <p><b>Normalization is commonly useful in:</b></p>
-      <ul>
-        <li>Neural networks</li>
-        <li>Distance-based algorithms</li>
-        <li>Image processing</li>
-        <li>Situations where bounded values are required</li>
-      </ul>
-
-      <!-- SUBTITLE -->
       <h3>Standardization</h3>
+      <p>Standardization transforms data so that it is centered around the average.</p>
 
-      <p>
-        Standardization transforms data so that it is centered around the average of the dataset.
-      </p>
-
-      <p><b>After standardization:</b></p>
-      <ul>
-        <li>Values above the average become positive</li>
-        <li>Values below the average become negative</li>
-        <li>Values near the average remain close to zero</li>
-      </ul>
-
-      <p><b>Standardization is widely used in:</b></p>
-      <ul>
-        <li>Regression models</li>
-        <li>Principal component analysis (PCA)</li>
-        <li>Clustering methods</li>
-        <li>Many statistical and machine learning models</li>
-      </ul>
-
-      <!-- KEY DIFFERENCE -->
-      <h3>Key Difference</h3>
-
-      <p>
-        Normalization changes the scale of the data, while standardization changes the position 
-        of the data relative to its average.
-      </p>
-
-      <ul>
-        <li>Normalization focuses on bringing values into a fixed interval</li>
-        <li>Standardization focuses on understanding how far values are from the dataset’s average</li>
-      </ul>
-
-      <p>
-        Both methods are essential tools for data preprocessing and improve model performance and stability.
-      </p>
+      <p><b>Key Difference:</b> Normalization changes scale while standardization changes position.</p>
     </div>
 
     <span class="read-more" onclick="toggleText(this)">Read more</span>
 
-  </div>
-</div>
-
-
-
-  
-<!-- ================= SECOND POST (UPDATED FORMAT) ================= -->
-<div class="post" id="data-vis">
-
-  <div class="post-image">
-    <img src="images/post2.jpg">
-  </div>
-
-  <div class="post-content">
-
-    <div class="post-title">Learning Data Visualization in R</div>
-
-    <div class="author-line">
-      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic">
-      <a href="#">Md. Abu Bokkor Shiddik</a>
-    </div>
-
-    <div class="meta">📅 April 2026 | ⏰ 4:00 PM</div>
-
-    <div class="short-text">
-      Data visualization is essential for communicating research findings. Today I practiced creating clear plots in R.
-    </div>
-
-    <span class="read-more" onclick="toggleText(this)">Read more</span>
+    <button class="share-btn" onclick="copyLink('post-normalization-standardization-01')">🔗 Share</button>
 
   </div>
 </div>
 
 </div>
 
+<div class="sidebar">
+  <h3>Quick View</h3>
+  <a href="videos.html">🎥 Videos</a>
+  <a href="insights.html#ml-journey">📝 ML Journey</a>
+  <a href="insights.html#data-vis">📝 Data Viz</a>
 </div>
+
+</div>
+
+<footer>
+© 2026 Md. Abu Bokkor Shiddik
+</footer>
 
 <script>
+
 function toggleText(el) {
   const text = el.previousElementSibling;
-  text.classList.toggle("short-text");
-  text.classList.toggle("full-text");
+
+  if (text.classList.contains("short-text")) {
+    text.classList.remove("short-text");
+    text.classList.add("full-text");
+    el.innerText = "Show less";
+  } else {
+    text.classList.add("short-text");
+    text.classList.remove("full-text");
+    el.innerText = "Read more";
+  }
 }
+
+function copyLink(postId) {
+  const url = window.location.origin + window.location.pathname + "?post=" + postId;
+  navigator.clipboard.writeText(url);
+  alert("Link copied!");
+}
+
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
