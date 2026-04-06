@@ -2,99 +2,197 @@
 <html lang="en">
 <head>
   <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="
-  ABS798, ABUBOKKORSHIDDIK, AbuBokkorShiddik, Md. Abu Bokkor Shiddik,
-  Machine Learning, Public Health, Epidemiology, Dengue Research
-  ">
+ABS798,
+ABUBOKKORSHIDDIK,
+AbuBokkorShiddik,
+Abu Bokkor Shiddik,
+Md. Abu Bokkor Shiddik,
+Shiddik ABS,
+BRUR,
+Begum Rokeya University,
+Statistics,
+STAT,
+Data Science,
+Machine Learning,
+Public Health,
+Researcher Bangladesh,
+Bangladesh Research,
+Academic Portfolio,
+Bio Statistics,
+Epidemiology,
+Dengue Research,
+Thesis Work,
+Scientific Research,
+Health Data Analysis
+">
+  
+<title>Publications | Md. Abu Bokkor Shiddik</title>
 
-  <title>Publications | Md. Abu Bokkor Shiddik</title>
+<style>
 
-  <style>
-  html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 
-  body {
-    margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f8fafc;
-    color: #1f2937;
-  }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f8fafc;
+  color: #1f2937;
+}
 
-  .navbar {
-    background: linear-gradient(90deg, #00264d, #004080);
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-  }
+/* ========================= */
+/* NAV (UPDATED ONLY) */
+/* ========================= */
+.navbar {
+  background: linear-gradient(90deg, #00264d, #004080);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
 
-  .nav-inner {
-    max-width: 1000px;
-    margin: auto;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+.nav-inner {
+  max-width: 1000px;
+  margin: auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 
-  .nav-inner a {
-    color: white;
-    text-decoration: none;
-    padding: 6px 10px;
-  }
+.nav-inner a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 5px;
+  transition: 0.25s;
+  margin-right: 0;
+}
 
-  .nav-inner a:hover {
-    color: #60a5fa;
-  }
+.nav-inner a:hover {
+  color: #60a5fa;
+  background: rgba(255,255,255,0.12);
+}
 
-  .header {
-    background: linear-gradient(135deg, #020617, #0b3a6e);
-    color: white;
-    padding: 45px 20px;
-    text-align: center;
-  }
+.nav-inner .dropdown {
+  position: relative;
+}
 
-  .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
-  }
+.nav-inner .dropbtn {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 17px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
 
-  .pub {
-    background: white;
-    padding: 18px;
-    margin-bottom: 18px;
-    border-left: 4px solid #1d4ed8;
-    border-radius: 6px;
-    line-height: 1.7;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  }
+.nav-inner .dropbtn:hover {
+  color: #60a5fa;
+  background: rgba(255,255,255,0.12);
+}
 
-  .pub h3 {
-    margin: 0 0 8px 0;
-  }
+.nav-inner .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #0b2d5c;
+  min-width: 160px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  z-index: 9999;
+  top: 100%;
+  left: 0;
+}
 
-  .pub a {
-    color: #1d4ed8;
-    text-decoration: none;
-  }
+.nav-inner .dropdown:hover .dropdown-content {
+  display: block;
+}
 
-  .pub a:hover {
-    text-decoration: underline;
-  }
+.nav-inner .dropdown.active .dropdown-content {
+  display: block;
+}
 
-  footer {
-    background: #020617;
-    color: #e2e8f0;
-    text-align: center;
-    padding: 25px;
-  }
-  </style>
+.nav-inner .dropdown-content a {
+  color: #cbd5e1;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+}
+
+.nav-inner .dropdown-content a:hover {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #020617, #0b3a6e);
+  color: white;
+  padding: 45px 20px;
+  text-align: center;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* PUBLICATION CARD */
+.pub {
+  background: white;
+  padding: 18px;
+  margin-bottom: 18px;
+  border-left: 4px solid #1d4ed8;
+  border-radius: 6px;
+  line-height: 1.7;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.pub strong {
+  display: block;
+  margin-top: 6px;
+}
+
+.pub a {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.pub a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  background: #020617;
+  color: #e2e8f0;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+}
+
+footer a {
+  color: #93c5fd;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+footer a:hover {
+  color: white;
+}
+</style>
 </head>
 
 <body>
@@ -108,65 +206,81 @@
     <a href="projects.html">Projects</a>
     <a href="courses.html">Courses</a>
     <a href="service.html">Service</a>
+    <div class="dropdown">
+      <button class="dropbtn">Insights ▼</button>
+      <div class="dropdown-content">
+        <a href="insights.html">Posts</a>
+        <a href="videos.html">Videos</a>
+      </div>
+    </div>
   </div>
 </nav>
+
 
 <!-- HEADER -->
 <div class="header">
   <h1>Publications</h1>
-  <p>Peer-reviewed journal articles in machine learning and public health</p>
+  <p>Peer-reviewed journal articles in machine learning, epidemiology, and public health</p>
 </div>
 
 <!-- CONTENT -->
 <div class="container">
 
-<div id="paper1"></div>
-<div id="paper2"></div>
-<div id="paper3"></div>
-<div id="paper4"></div>
-<div id="paper5"></div>
-<div id="paper6"></div>
-<div id="paper7"></div>
-<div id="paper8"></div>
-<div id="paper9"></div>
-
+<div class="pub">
+Rahman, M.S., Shiddik, A.B. Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally.
+<strong>Scientific Reports, 2025</strong>
+<a href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">View Publication</a>
 </div>
 
-<!-- SCRIPT -->
-<script>
-async function loadDOI(doi, id) {
-  try {
-    const res = await fetch(`https://api.crossref.org/works/${doi}`);
-    const data = await res.json();
-    const p = data.message;
+<div class="pub">
+Rahman, M. S., Amrin, M., & Bokkor Shiddik, M. A. Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh using interpretable machine learning.
+<strong>Health Science Reports, 2025</strong>
+<a href="https://doi.org/10.1002/hsr2.70726" target="_blank">View Publication</a>
+</div>
 
-    const authors = p.author ? p.author.map(a => a.family).join(", ") : "Unknown authors";
+<div class="pub">
+Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers.
+<strong>Global Epidemiology, 2025</strong>
+<a href="https://www.sciencedirect.com/science/article/pii/S2590113325000288" target="_blank">View Publication</a>
+</div>
 
-    document.getElementById(id).innerHTML = `
-      <div class="pub">
-        <h3>${p.title ? p.title[0] : "No title"}</h3>
-        <p><strong>${authors}</strong></p>
-        <p>${p.abstract ? p.abstract.replace(/<[^>]*>?/gm, "") : "No abstract available"}</p>
-        <a href="https://doi.org/${doi}" target="_blank">View Publication</a>
-      </div>
-    `;
-  } catch (e) {
-    document.getElementById(id).innerHTML = "<div class='pub'>Error loading publication</div>";
-  }
-}
+<div class="pub">
+Unraveling global malaria incidence and mortality using machine learning and spatial analysis.
+<strong>Scientific Reports, 2025</strong>
+<a href="https://www.nature.com/articles/s41598-025-12872-0" target="_blank">View Publication</a>
+</div>
 
-/* Load papers */
-loadDOI("10.1038/s41598-025-96973-w", "paper1");
-loadDOI("10.1002/hsr2.70726", "paper2");
-loadDOI("10.1038/s41598-025-12872-0", "paper3");
-loadDOI("10.1136/bmjopen-2026-108632", "paper4");
-loadDOI("10.3390/tropicalmed11030073", "paper5");
-loadDOI("10.1016/j.gloepi.2025.100210", "paper6");
-loadDOI("10.1016/j.gloepi.2025.100230", "paper7");
-loadDOI("10.3329/ijss.v25i2.85772", "paper8");
-loadDOI("10.1186/s12942-025-00433-7", "paper9");
+<div class="pub">
+Reflections on explainable artificial intelligence for predicting dengue outbreaks.
+<strong>Global Epidemiology, 2025</strong>
+<a href="https://www.sciencedirect.com/science/article/pii/S2590113325000483" target="_blank">View Publication</a>
+</div>
 
-</script>
+<div class="pub">
+Data-driven dengue prevention strategies using explainable AI and causal inference.
+<strong>International Journal of Statistical Sciences, 2025</strong>
+<a href="https://www.banglajol.info/index.php/ijss/article/view/85772" target="_blank">View Publication</a>
+</div>
+
+<div class="pub">
+Leveraging explainable AI and spatial analysis for communicable diseases in Asia (2000–2022).
+<strong>International Journal of Health Geographics, 2025</strong>
+<a href="https://link.springer.com/article/10.1186/s12942-025-00433-7" target="_blank">View Publication</a>
+</div>
+
+<div class="pub">
+Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality.
+<strong>BMJ Open, 2026</strong>
+<a href="https://bmjopen.bmj.com/content/16/2/e108632" target="_blank">View Publication</a>
+</div>
+
+<div class="pub">
+District-level dengue early warning prediction system using hybrid explainable AI.
+<strong>Tropical Medicine and Infectious Disease, 2026</strong>
+<a href="https://www.mdpi.com/2414-6366/11/3/73" target="_blank">View Publication</a>
+</div>
+
+</div>
 
 <!-- FOOTER -->
 <footer>
