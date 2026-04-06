@@ -425,7 +425,7 @@ function toggleAbstract(el) {
   const shortText = parent.querySelector(".abstract-short");
   const fullText = parent.querySelector(".abstract-full");
 
-  if (fullText.style.display === "none") {
+  if (getComputedStyle(fullText).display === "none") {
     fullText.style.display = "block";
     shortText.style.display = "none";
     el.textContent = "Show less";
@@ -435,10 +435,19 @@ function toggleAbstract(el) {
     el.textContent = "Show more";
   }
 }
+
 function openFigure(img) {
   const w = window.open("");
-  w.document.write(`<img src="${img.src}" style="width:100%">`);
+  w.document.write(`
+    <html>
+      <head><title>Figure</title></head>
+      <body style="margin:0; display:flex; justify-content:center; align-items:center; background:#000;">
+        <img src="${img.src}" style="max-width:100%; height:auto;">
+      </body>
+    </html>
+  `);
 }
+</script>
 
 </body>
 </html>
