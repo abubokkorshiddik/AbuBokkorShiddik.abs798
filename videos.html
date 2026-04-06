@@ -224,46 +224,70 @@ footer {
 /* MOBILE (NO SCROLL, WRAPPED NAVBAR) */
 @media (max-width: 768px) {
 
-  /* container spacing */
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* container */
   .container {
-    padding: 15px 10px;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 8px;
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 12px;
   }
 
   /* header */
   .header {
-    padding: 25px 10px;
+    width: 100%;
+    padding: 22px 10px;
   }
 
   .header h1 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .header p {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   /* navbar */
   .nav-inner {
-    padding: 8px 10px;
+    width: 100%;
+    padding: 8px;
+    gap: 5px;
     justify-content: center;
-    gap: 6px;
   }
 
   .nav-inner a,
   .dropbtn {
-    font-size: 13px;
-    padding: 6px 8px;
+    font-size: 12px;
+    padding: 5px 7px;
   }
 
-  /* video block spacing */
+  /* video block */
+  .video-block {
+    width: 100%;
+  }
+
+  .video-block iframe {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   .video-content {
     padding: 10px;
   }
 
   .video-title {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .video-description {
@@ -272,13 +296,14 @@ footer {
 
   /* dropdown fix */
   .dropdown-content {
-    min-width: 130px;
+    min-width: 120px;
   }
 
-  /* iframe responsive fix (extra safety) */
-  .video-block iframe {
+  /* footer */
+  footer {
     width: 100%;
-    height: auto;
+    text-align: center;
+    padding: 16px 10px;
   }
 
 }
