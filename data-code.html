@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Resources | Md. Abu Bokkor Shiddik</title>
+
+<style>
+body {
+  margin:0;
+  font-family: "Segoe UI", Arial;
+  background:#f8fafc;
+  color:#1f2937;
+}
+
+/* NAVBAR */
+.navbar {
+  background: linear-gradient(90deg, #00264d, #004080);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.nav-inner {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:10px;
+  flex-wrap: wrap;
+}
+
+.nav-inner a {
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:5px;
+}
+
+.nav-inner a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* SECTION */
+.section {
+  max-width:1100px;
+  margin:30px auto;
+  padding:0 15px;
+}
+
+h2 {
+  border-left:5px solid #2563eb;
+  padding-left:10px;
+  margin-bottom:15px;
+}
+
+/* CARD */
+.card {
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  margin-bottom:20px;
+}
+
+/* TABLE */
+.table-box {
+  overflow-x:auto;
+  margin-top:10px;
+}
+
+table {
+  border-collapse:collapse;
+  width:100%;
+}
+
+th, td {
+  border:1px solid #ddd;
+  padding:8px;
+  font-size:13px;
+  text-align:left;
+}
+
+/* CODE */
+.code-box {
+  background:#111827;
+  color:#e5e7eb;
+  padding:10px;
+  border-radius:8px;
+  font-family: monospace;
+  font-size:13px;
+  max-height:120px;
+  overflow:hidden;
+}
+
+.code-box.expanded {
+  max-height:400px;
+  overflow:auto;
+}
+
+/* BUTTONS */
+.btn {
+  margin-top:10px;
+  padding:6px 12px;
+  border:none;
+  background:#2563eb;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.copy-btn {
+  background:#9333ea;
+  margin-left:5px;
+}
+
+/* DOWNLOAD */
+.download {
+  display:inline-block;
+  margin-top:10px;
+  text-decoration:none;
+  color:white;
+  background:#16a34a;
+  padding:6px 12px;
+  border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-inner">
+    <a href="index.html">Home</a>
+    <a href="archive.html">Archive</a>
+    <a href="resources.html">Research Resources</a>
+  </div>
+</div>
+
+<!-- DATASET / VARIABLE DESCRIPTION -->
+<div class="section">
+  <h2>Dataset Preview</h2>
+
+  <div class="card">
+    <a href="files/dataset.csv" class="download" download>Download Dataset</a>
+
+    <div class="table-box">
+      <table id="csvTable"></table>
+    </div>
+
+    <button class="btn" onclick="loadCSV('files/dataset.csv')">Load Data</button>
+    <button class="btn" onclick="loadCSV('files/variables.csv')">Variable Description</button>
+  </div>
+</div>
+
+<!-- R CODE -->
+<div class="section">
+  <h2>R Code</h2>
+
+  <div class="card">
+    <div class="code-box" id="rcode">
+# Load CSV
+library(readr)
+data <- read_csv("dataset.csv")
+
+# View summary
+summary(data)
+
+# Plot example
+plot(data$Year, data$Cases)
+    </div>
+    <button class="btn" onclick="toggleCode('rcode', this)">Show More</button>
+    <button class="btn copy-btn" onclick="copyCode('rcode')">Copy</button>
+  </div>
+</div>
+
+<!-- PYTHON CODE -->
+<div class="section">
+  <h2>Python Code</h2>
+
+  <div class="card">
+    <div class="code-box" id="pycode">
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("dataset.csv")
+print(df.head())
+
+plt.plot(df['Year'], df['Cases'])
+plt.show()
+    </div>
+    <button class="btn" onclick="toggleCode('pycode', this)">Show More</button>
+    <button class="btn copy-btn" onclick="copyCode('pycode')">Copy</button>
+  </div>
+</div>
+
+<!-- PUBLISHED PAPERS -->
+<div class="section">
+  <h2>Published Papers</h2>
+
+  <div class="card">
+    <ul>
+      <li>Global Prediction Study - 2024</li>
+      <li>Health Data Analysis Paper - 2025</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+// Toggle Show More for code
+function toggleCode(id, btn){
+  let box = document.getElementById(id);
+  box.classList.toggle("expanded");
+  btn.innerText = box.classList.contains("expanded") ? "Show Less" : "Show More";
+}
+
+// Copy code to clipboard
+function copyCode(id){
+  let text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Code copied!");
+}
+
+// CSV loader
+function loadCSV(url){
+  fetch(url)
+    .then(res => res.text())
+    .then(data => {
+      const rows = data.split("\n").map(r => r.split(","));
+      let html = "<thead><tr>";
+      rows[0].forEach(h => html += `<th>${h}</th>`);
+      html += "</tr></thead><tbody>";
+      for(let i=1; i<rows.length; i++){
+        if(rows[i].length===1 && rows[i][0]==="") continue;
+        html += "<tr>";
+        rows[i].forEach(c => html += `<td>${c}</td>`);
+        html += "</tr>";
+      }
+      html += "</tbody>";
+      document.getElementById("csvTable").innerHTML = html;
+    });
+}
+
+// Load dataset by default
+loadCSV("files/dataset.csv");
+</script>
+
+</body>
+</html>
