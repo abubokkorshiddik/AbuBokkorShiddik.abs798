@@ -254,6 +254,7 @@ footer {
   <h1>Data and Code Lab</h1>
 </div>
 
+
 <!-- MAIN CARD -->
 <div class="card">
 
@@ -286,14 +287,13 @@ footer {
 
   <!-- CODE -->
   <h3 style="margin-top:15px;">Code Preview</h3>
-  <textarea id="codeBox"></textarea>
+
+  <button class="btn" onclick="copyCode()">Copy Code</button>
+
+  <textarea id="codeBox" readonly></textarea>
 
 </div>
 
-
-
-
-  
 <!-- DRAFT CARD -->
 <div class="card">
 
@@ -301,9 +301,10 @@ footer {
 
   <p>This card is ready for your next dataset.</p>
 
-  <button class="btn">Download Dataset</button>
-  <button class="btn">Download Variables</button>
-  <button class="btn">Download Code</button>
+  <!-- DUMMY LINKS -->
+  <button class="btn" onclick="downloadFile(dataURL2)">Download Dataset</button>
+  <button class="btn" onclick="downloadFile(varURL2)">Download Variables</button>
+  <button class="btn" onclick="downloadFile(codeURL2)">Download Code</button>
 
   <div class="flex">
 
@@ -324,29 +325,31 @@ footer {
   </div>
 
   <h3 style="margin-top:15px;">Code Preview</h3>
-  <textarea></textarea>
+
+  <textarea readonly></textarea>
 
 </div>
 
-<footer>
-  © ABS Research Lab
-</footer>
-
 <script>
 
-/* LINKS */
+/* REAL LINKS */
 const dataURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv";
 const varURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv";
 const codeURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt";
 
+/* DUMMY LINKS (DRAFT) */
+const dataURL2 = "https://example.com/dummy-data.csv";
+const varURL2 = "https://example.com/dummy-variables.csv";
+const codeURL2 = "https://example.com/dummy-code.txt";
+
 /* LOAD TABLE */
-function loadTable(url, id) {
+function loadTable(url, id, limit) {
 
   fetch(url)
   .then(res => res.text())
   .then(text => {
 
-    let rows = text.split("\n").slice(0, 20);
+    let rows = text.split("\n").slice(0, limit);
     let html = "";
 
     rows.forEach((row, i) => {
@@ -368,8 +371,17 @@ function loadCode() {
   fetch(codeURL)
   .then(res => res.text())
   .then(text => {
-    document.getElementById("codeBox").value = text.split("\n").slice(0, 500).join("\n");
+    document.getElementById("codeBox").value = text.split("\n").slice(0, 600).join("\n");
   });
+}
+
+/* COPY CODE */
+function copyCode() {
+  const code = document.getElementById("codeBox");
+  code.select();
+  code.setSelectionRange(0, 999999);
+  document.execCommand("copy");
+  alert("Code copied successfully");
 }
 
 /* DOWNLOAD */
@@ -384,8 +396,8 @@ function downloadFile(url) {
 }
 
 /* INIT */
-loadTable(dataURL, "dataTable");
-loadTable(varURL, "varTable");
+loadTable(dataURL, "dataTable", 20);
+loadTable(varURL, "varTable", 100);
 loadCode();
 
 </script>
