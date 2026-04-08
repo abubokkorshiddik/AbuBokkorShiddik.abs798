@@ -98,7 +98,7 @@ footer {
 
 <div class="header">
   <h1>Code and Data Lab</h1>
-  <p>Dataset, variables and code in one place</p>
+  <p>Dataset, variables, and code in one place</p>
 </div>
 
 <div class="container">
@@ -107,32 +107,27 @@ footer {
 
     <h2>Global Tuberculosis AI Dataset</h2>
 
-    <!-- DOWNLOAD -->
     <button onclick="downloadAll()">Download Full Package</button>
 
-    <!-- LINKS -->
     <p>
       <strong>Files:</strong><br>
-      <a href="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/GlobalTB.csv" target="_blank">GlobalTB.csv</a><br>
-      <a href="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/GlobalTBVariables.csv" target="_blank">Variables.csv</a><br>
-      <a href="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/TBXAI.txt" target="_blank">TBXAI.txt</a>
+      <a href="https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv" target="_blank">GlobalTB.csv</a><br>
+      <a href="https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv" target="_blank">Variables.csv</a><br>
+      <a href="https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt" target="_blank">TBXAI.txt</a>
     </p>
 
-    <!-- DATASET -->
     <h3>Dataset Preview</h3>
     <button onclick="loadCSV()">Load Dataset</button>
     <div class="table-wrapper">
       <table id="table"></table>
     </div>
 
-    <!-- VARIABLES -->
     <h3>Variables Preview</h3>
     <button onclick="loadVariables()">Load Variables</button>
     <div class="table-wrapper">
       <table id="varTable"></table>
     </div>
 
-    <!-- CODE -->
     <h3>Code Preview</h3>
     <button onclick="loadCode()">Load Code</button>
     <textarea id="codeBox" class="code-box"></textarea>
@@ -145,19 +140,21 @@ footer {
   © 2026 Md. Abu Bokkor Shiddik
 </footer>
 
-<!-- JS ZIP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
 <script>
 
-/* LOAD CSV */
+/* DATASET */
 function loadCSV() {
-  fetch("https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/GlobalTB.csv")
-  .then(res => res.text())
+
+  fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv")
+  .then(r => r.text())
   .then(text => {
+
     const rows = text.split("\n").map(r => r.split(","));
     let html = "";
+
     rows.forEach((row, i) => {
       html += "<tr>";
       row.forEach(cell => {
@@ -165,17 +162,23 @@ function loadCSV() {
       });
       html += "</tr>";
     });
+
     document.getElementById("table").innerHTML = html;
+
   });
+
 }
 
-/* LOAD VARIABLES */
+/* VARIABLES */
 function loadVariables() {
-  fetch("https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/GlobalTBVariables.csv")
-  .then(res => res.text())
+
+  fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv")
+  .then(r => r.text())
   .then(text => {
+
     const rows = text.split("\n").map(r => r.split(","));
     let html = "";
+
     rows.forEach((row, i) => {
       html += "<tr>";
       row.forEach(cell => {
@@ -183,17 +186,22 @@ function loadVariables() {
       });
       html += "</tr>";
     });
+
     document.getElementById("varTable").innerHTML = html;
+
   });
+
 }
 
-/* LOAD CODE */
+/* CODE */
 function loadCode() {
-  fetch("https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/TBXAI.txt")
-  .then(res => res.text())
+
+  fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt")
+  .then(r => r.text())
   .then(text => {
     document.getElementById("codeBox").value = text;
   });
+
 }
 
 /* DOWNLOAD ZIP */
@@ -201,16 +209,16 @@ async function downloadAll() {
 
   const zip = new JSZip();
 
-  const csv1 = await fetch("https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/GlobalTB.csv").then(r => r.text());
-  const csv2 = await fetch("https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/GlobalTBVariables.csv").then(r => r.text());
-  const code = await fetch("https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/TBXAI.txt").then(r => r.text());
+  const csv1 = await fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv").then(r => r.text());
+  const csv2 = await fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv").then(r => r.text());
+  const code = await fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt").then(r => r.text());
 
   zip.file("GlobalTB.csv", csv1);
   zip.file("Variables.csv", csv2);
   zip.file("TBXAI.txt", code);
 
   zip.generateAsync({type:"blob"}).then(function(content) {
-    saveAs(content, "TB_Data_Code.zip");
+    saveAs(content, "TB_Package.zip");
   });
 
 }
