@@ -3,31 +3,114 @@
 
 <head>
 
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Data and Code Lab</title>
-
-<link rel="stylesheet" href="style.css">
+<title>Data and Code Lab | ABS</title>
 
 <style>
 
-/* BASIC */
-body {
+/* RESET */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f8fafc;
   color: #1f2937;
 }
 
-/* CARD */
-.card {
+/* NAVBAR (YOUR STYLE) */
+.navbar {
+  background: linear-gradient(90deg, #00264d, #004080);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: auto;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.nav-inner a,
+.dropbtn {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.nav-inner a:hover,
+.dropbtn:hover {
+  color: #60a5fa;
+  background: rgba(255,255,255,0.12);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #0b2d5c;
+  min-width: 160px;
+  border-radius: 6px;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #cbd5e1;
+}
+
+.dropdown-content a:hover {
+  background: #1e3a8a;
+  color: white;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #020617, #0b3a6e);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 30px;
+}
+
+/* SINGLE MAIN CARD */
+.main-card {
+  max-width: 1100px;
+  margin: 30px auto;
   background: white;
   padding: 22px;
-  margin: 25px auto;
-  max-width: 1100px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
 }
 
 /* TABLE */
@@ -60,15 +143,15 @@ button {
   border: none;
   padding: 8px 14px;
   border-radius: 5px;
-  cursor: pointer;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 button:hover {
   background: #1e40af;
 }
 
-/* CODE BOX */
+/* CODE */
 .code-box {
   width: 100%;
   height: 180px;
@@ -79,19 +162,17 @@ button:hover {
   border-radius: 6px;
 }
 
-/* HEADER */
-.header {
-  background: linear-gradient(135deg, #020617, #0b3a6e);
-  color: white;
-  text-align: center;
-  padding: 35px 15px;
+.downloads button {
+  margin-right: 8px;
 }
 
-/* DOWNLOAD AREA */
-.download-box {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+/* FOOTER */
+footer {
+  background: #020617;
+  color: #e2e8f0;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
 }
 
 </style>
@@ -100,92 +181,92 @@ button:hover {
 
 <body>
 
-<!-- YOUR MAIN NAVBAR -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-inner">
-    <div class="logo">
-      <a href="index.html" style="color:white; text-decoration:none;">ABS</a>
+
+    <a href="home.html">Home</a>
+    <a href="publications.html">Publications</a>
+    <a href="service.html">Services</a>
+
+    <div class="dropdown">
+      <button class="dropbtn">Digital Lab ▼</button>
+      <div class="dropdown-content">
+        <a href="projects.html">Projects</a>
+        <a href="data-code.html">Data & Code</a>
+      </div>
     </div>
 
-    <ul class="nav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="data.html">Data</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="publications.html">Publications</a></li>
-    </ul>
   </div>
 </nav>
 
 <!-- HEADER -->
 <div class="header">
   <h1>Data and Code Lab</h1>
-  <p>Preview and download datasets, variables, and code</p>
+  <p>Preview datasets, variables and code with quick download</p>
 </div>
 
-<!-- DOWNLOAD SECTION -->
-<div class="card">
+<!-- MAIN CARD -->
+<div class="main-card">
 
-  <h2>Downloads</h2>
+  <h2>TB Research Package</h2>
 
-  <div class="download-box">
+  <!-- DOWNLOAD -->
+  <div class="downloads">
     <button onclick="downloadFile('data')">Download Data</button>
     <button onclick="downloadFile('variables')">Download Variables</button>
     <button onclick="downloadFile('code')">Download Code</button>
-    <button onclick="downloadAll()">Download All (ZIP)</button>
+    <button onclick="downloadAll()">Download All</button>
   </div>
 
-</div>
-
-<!-- DATASET -->
-<div class="card">
-  <h2>Dataset Preview</h2>
+  <!-- DATA -->
+  <h3 style="margin-top:20px;">Dataset Preview (Max 100 rows)</h3>
   <div class="table-wrapper">
     <table id="table"></table>
   </div>
-  <button onclick="showMore('table')">See more</button>
-</div>
+  <button onclick="showMore('data')">See more</button>
 
-<!-- VARIABLES -->
-<div class="card">
-  <h2>Variables Preview</h2>
+  <!-- VARIABLES -->
+  <h3 style="margin-top:20px;">Variables Preview (Max 40 rows)</h3>
   <div class="table-wrapper">
     <table id="varTable"></table>
   </div>
-  <button onclick="showMore('varTable')">See more</button>
-</div>
+  <button onclick="showMore('variables')">See more</button>
 
-<!-- CODE -->
-<div class="card">
-  <h2>Code Preview</h2>
+  <!-- CODE -->
+  <h3 style="margin-top:20px;">Code Preview</h3>
   <textarea id="codeBox" class="code-box"></textarea>
   <button onclick="showMoreCode()">See more</button>
+
 </div>
 
-<!-- JS ZIP LIBRARIES -->
+<footer>
+  © 2026 ABS Research Lab
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
 <script>
 
-/* LINKS */
 const dataURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv";
 const varURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv";
 const codeURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt";
 
-const previewLimit = 5;
+const LIMIT_DATA = 100;
+const LIMIT_VAR = 40;
 
 /* LOAD CSV */
-function loadCSV(url, tableId) {
+function loadCSV(url, tableId, limit) {
 
   fetch(url)
   .then(r => r.text())
   .then(text => {
 
     const rows = text.split("\n").map(r => r.split(","));
-
     let html = "";
 
-    rows.slice(0, previewLimit).forEach((row, i) => {
+    rows.slice(0, limit).forEach((row, i) => {
       html += "<tr>";
       row.forEach(cell => {
         html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
@@ -210,18 +291,19 @@ function loadCode() {
 
 }
 
-/* SEE MORE TABLE */
-function showMore(tableId) {
+/* SEE MORE */
+function showMore(type) {
 
-  fetch(tableId === "table" ? dataURL : varURL)
+  fetch(type === "data" ? dataURL : varURL)
   .then(r => r.text())
   .then(text => {
 
+    const limit = type === "data" ? LIMIT_DATA : LIMIT_VAR;
     const rows = text.split("\n").map(r => r.split(","));
 
     let html = "";
 
-    rows.forEach((row, i) => {
+    rows.slice(0, limit).forEach((row, i) => {
       html += "<tr>";
       row.forEach(cell => {
         html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
@@ -229,13 +311,13 @@ function showMore(tableId) {
       html += "</tr>";
     });
 
-    document.getElementById(tableId).innerHTML = html;
+    document.getElementById(type === "data" ? "table" : "varTable").innerHTML = html;
 
   });
 
 }
 
-/* SEE MORE CODE */
+/* CODE SEE MORE */
 function showMoreCode() {
 
   fetch(codeURL)
@@ -246,7 +328,7 @@ function showMoreCode() {
 
 }
 
-/* DOWNLOAD SINGLE FILE */
+/* DOWNLOAD SINGLE */
 async function downloadFile(type) {
 
   let url, name;
@@ -266,10 +348,10 @@ async function downloadFile(type) {
     name = "TBXAI.txt";
   }
 
-  const file = await fetch(url).then(r => r.blob());
+  const blob = await fetch(url).then(r => r.blob());
 
   const a = document.createElement("a");
-  a.href = URL.createObjectURL(file);
+  a.href = URL.createObjectURL(blob);
   a.download = name;
   a.click();
 
@@ -280,23 +362,19 @@ async function downloadAll() {
 
   const zip = new JSZip();
 
-  const data = await fetch(dataURL).then(r => r.text());
-  const variables = await fetch(varURL).then(r => r.text());
-  const code = await fetch(codeURL).then(r => r.text());
-
-  zip.file("GlobalTB.csv", data);
-  zip.file("Variables.csv", variables);
-  zip.file("TBXAI.txt", code);
+  zip.file("GlobalTB.csv", await fetch(dataURL).then(r => r.text()));
+  zip.file("Variables.csv", await fetch(varURL).then(r => r.text()));
+  zip.file("TBXAI.txt", await fetch(codeURL).then(r => r.text()));
 
   zip.generateAsync({type:"blob"}).then(function(content) {
-    saveAs(content, "TB_Data_Package.zip");
+    saveAs(content, "ABS_Data_Package.zip");
   });
 
 }
 
 /* AUTO LOAD */
-loadCSV(dataURL, "table");
-loadCSV(varURL, "varTable");
+loadCSV(dataURL, "table", LIMIT_DATA);
+loadCSV(varURL, "varTable", LIMIT_VAR);
 loadCode();
 
 </script>
