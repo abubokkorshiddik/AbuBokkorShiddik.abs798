@@ -509,13 +509,13 @@ projects.forEach(p => {
 
   if (p.tables) {
     p.tables.forEach(t => {
-      loadTable(p[t.data], t.dataId, 20);
-      loadTable(p[t.var], t.varId, 100);
+      loadTable(p[t.data], t.dataId, 500);
+      loadTable(p[t.var], t.varId, 50);
     });
   }
 
-  if (p.data) loadTable(p.data, p.tableId, 20);
-  if (p.var) loadTable(p.var, p.varId, 100);
+  if (p.data) loadTable(p.data, p.tableId, 500);
+  if (p.var) loadTable(p.var, p.varId, 50);
 
   loadCode(p.rcode, p.rId);
   loadCode(p.pycode, p.pyId);
