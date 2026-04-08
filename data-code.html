@@ -6,14 +6,22 @@
 <title>Research Resources | Md. Abu Bokkor Shiddik</title>
 
 <style>
-body {
-  margin:0;
-  font-family: "Segoe UI", Arial;
-  background:#f8fafc;
-  color:#1f2937;
+
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box;
 }
 
-/* NAVBAR */
+body {
+  margin:0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:#f8fafc;
+  color:#1f2937;
+  line-height:1.6;
+  font-size:16px;
+}
+
+/* NAVBAR (UNCHANGED STRUCTURE, ONLY SMALL POLISH) */
 .navbar {
   background: linear-gradient(90deg, #00264d, #004080);
   position: sticky;
@@ -24,49 +32,82 @@ body {
 .nav-inner {
   display:flex;
   justify-content:center;
-  gap:10px;
-  padding:10px;
+  gap:12px;
+  padding:12px 10px;
   flex-wrap: wrap;
 }
 
-.nav-inner a {
+.nav-inner a,
+.dropbtn {
   color:white;
   text-decoration:none;
   font-weight:600;
-  padding:6px 10px;
-  border-radius:5px;
+  padding:7px 12px;
+  border-radius:6px;
+  font-size:14px;
 }
 
-.nav-inner a:hover {
-  background: rgba(255,255,255,0.1);
+.nav-inner a:hover,
+.dropbtn:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* DROPDOWN (minimal fix for consistency) */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display:none;
+  position:absolute;
+  background:#0f172a;
+  min-width:200px;
+  top:38px;
+  border-radius:6px;
+  overflow:hidden;
+}
+
+.dropdown-content a {
+  display:block;
+  padding:10px;
+  font-size:14px;
+}
+
+.dropdown-content a:hover {
+  background:#1f2937;
+}
+
+.dropdown:hover .dropdown-content {
+  display:block;
 }
 
 /* SECTION */
 .section {
   max-width:1100px;
-  margin:30px auto;
-  padding:0 15px;
+  margin:40px auto;
+  padding:0 20px;
 }
 
 h2 {
-  border-left:5px solid #2563eb;
-  padding-left:10px;
+  font-size:20px;
   margin-bottom:15px;
+  border-left:5px solid #2563eb;
+  padding-left:12px;
 }
 
 /* CARD */
 .card {
   background:white;
-  padding:15px;
-  border-radius:10px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
-  margin-bottom:20px;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 6px 14px rgba(0,0,0,0.06);
+  margin-bottom:22px;
 }
 
 /* TABLE */
 .table-box {
   overflow-x:auto;
-  margin-top:10px;
+  margin-top:12px;
 }
 
 table {
@@ -75,43 +116,52 @@ table {
 }
 
 th, td {
-  border:1px solid #ddd;
-  padding:8px;
-  font-size:13px;
-  text-align:left;
+  border:1px solid #e5e7eb;
+  padding:10px;
+  font-size:14px;
 }
 
 /* CODE */
 .code-box {
-  background:#111827;
+  background:#0b1220;
   color:#e5e7eb;
-  padding:10px;
-  border-radius:8px;
+  padding:12px;
+  border-radius:10px;
   font-family: monospace;
   font-size:13px;
-  max-height:120px;
+  max-height:140px;
   overflow:hidden;
+  transition:0.3s;
 }
 
 .code-box.expanded {
-  max-height:400px;
+  max-height:420px;
   overflow:auto;
 }
 
 /* BUTTONS */
 .btn {
-  margin-top:10px;
-  padding:6px 12px;
+  margin-top:12px;
+  padding:7px 14px;
   border:none;
   background:#2563eb;
   color:white;
-  border-radius:5px;
+  border-radius:6px;
   cursor:pointer;
+  font-size:14px;
+}
+
+.btn:hover {
+  background:#1d4ed8;
 }
 
 .copy-btn {
   background:#9333ea;
-  margin-left:5px;
+  margin-left:6px;
+}
+
+.copy-btn:hover {
+  background:#7e22ce;
 }
 
 /* DOWNLOAD */
@@ -121,21 +171,28 @@ th, td {
   text-decoration:none;
   color:white;
   background:#16a34a;
-  padding:6px 12px;
-  border-radius:5px;
+  padding:7px 14px;
+  border-radius:6px;
+  font-size:14px;
 }
+
+.download:hover {
+  background:#15803d;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAVBAR (UNCHANGED) -->
 <nav class="navbar">
   <div class="nav-inner">
 
     <a href="home.html">Home</a>
     <a href="publications.html">Publications</a>
- <a href="service.html">Services</a>
+    <a href="service.html">Services</a>
+
     <div class="dropdown">
       <button class="dropbtn">Digital Lab ▼</button>
       <div class="dropdown-content">
@@ -152,7 +209,6 @@ th, td {
       </div>
     </div>
 
-   
     <div class="dropdown">
       <button class="dropbtn">Insights ▼</button>
       <div class="dropdown-content">
@@ -165,7 +221,7 @@ th, td {
   </div>
 </nav>
 
-<!-- DATASET / VARIABLE DESCRIPTION -->
+<!-- DATASET -->
 <div class="section">
   <h2>Dataset Preview</h2>
 
@@ -191,10 +247,8 @@ th, td {
 library(readr)
 data <- read_csv("dataset.csv")
 
-# View summary
 summary(data)
 
-# Plot example
 plot(data$Year, data$Cases)
     </div>
     <button class="btn" onclick="toggleCode('rcode', this)">Show More</button>
@@ -212,6 +266,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.read_csv("dataset.csv")
+
 print(df.head())
 
 plt.plot(df['Year'], df['Cases'])
@@ -222,7 +277,7 @@ plt.show()
   </div>
 </div>
 
-<!-- PUBLISHED PAPERS -->
+<!-- PUBLICATIONS -->
 <div class="section">
   <h2>Published Papers</h2>
 
@@ -235,42 +290,43 @@ plt.show()
 </div>
 
 <script>
-// Toggle Show More for code
+
 function toggleCode(id, btn){
   let box = document.getElementById(id);
   box.classList.toggle("expanded");
   btn.innerText = box.classList.contains("expanded") ? "Show Less" : "Show More";
 }
 
-// Copy code to clipboard
 function copyCode(id){
   let text = document.getElementById(id).innerText;
   navigator.clipboard.writeText(text);
   alert("Code copied!");
 }
 
-// CSV loader
 function loadCSV(url){
   fetch(url)
     .then(res => res.text())
     .then(data => {
       const rows = data.split("\n").map(r => r.split(","));
       let html = "<thead><tr>";
+
       rows[0].forEach(h => html += `<th>${h}</th>`);
       html += "</tr></thead><tbody>";
+
       for(let i=1; i<rows.length; i++){
         if(rows[i].length===1 && rows[i][0]==="") continue;
         html += "<tr>";
         rows[i].forEach(c => html += `<td>${c}</td>`);
         html += "</tr>";
       }
+
       html += "</tbody>";
       document.getElementById("csvTable").innerHTML = html;
     });
 }
 
-// Load dataset by default
 loadCSV("files/dataset.csv");
+
 </script>
 
 </body>
