@@ -8,19 +8,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Data & Code</title>
+<title>Data & Code | ABS</title>
 
 <style>
 
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* BODY */
+/* GLOBAL */
 body {
+  margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f8fafc;
   color: #1f2937;
@@ -34,11 +28,7 @@ body {
   padding: 45px 15px;
 }
 
-.header h1 {
-  font-size: 32px;
-}
-
-/* NAVBAR (NOW BELOW HEADER) */
+/* NAVBAR */
 .navbar {
   background: #0b1f3a;
   position: sticky;
@@ -46,7 +36,6 @@ body {
   z-index: 9999;
 }
 
-/* NAV INNER */
 .nav-inner {
   max-width: 1100px;
   margin: auto;
@@ -54,10 +43,9 @@ body {
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
-  padding: 10px 15px;
+  padding: 10px;
 }
 
-/* LINKS */
 .nav-inner a,
 .dropbtn {
   color: #e2e8f0;
@@ -66,22 +54,14 @@ body {
   padding: 10px 14px;
   border-radius: 6px;
   font-size: 14px;
-  background: transparent;
+  background: none;
   border: none;
   cursor: pointer;
 }
 
-/* HOVER */
 .nav-inner a:hover,
 .dropbtn:hover {
   background: rgba(255,255,255,0.12);
-  color: #ffffff;
-}
-
-/* ACTIVE */
-.nav-inner a.active {
-  background: #1d4ed8;
-  color: white;
 }
 
 /* DROPDOWN */
@@ -89,41 +69,34 @@ body {
   position: relative;
 }
 
-/* DROPDOWN MENU (FIXED COLOR) */
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
-  background: #0b1f3a;   /* unified with navbar */
-  min-width: 200px;
+  background: #0b1f3a;
+  min-width: 180px;
   border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
 }
 
-/* SHOW */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* DROPDOWN LINKS */
 .dropdown-content a {
   display: block;
   padding: 10px;
-  color: #e2e8f0;
+  color: #cbd5e1;
 }
 
-/* HOVER INSIDE DROPDOWN */
 .dropdown-content a:hover {
   background: #1d4ed8;
-  color: #ffffff;
+  color: white;
 }
 
 /* CONTAINER */
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
-  padding: 35px 20px;
+  padding: 30px 20px;
 }
 
 /* CARD */
@@ -135,18 +108,49 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-/* FOOTER */
-footer {
-  background: #020617;
-  color: #e2e8f0;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-footer a {
-  color: #93c5fd;
-  text-decoration: none;
+th, td {
+  border: 1px solid #e5e7eb;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* CODE */
+.code-box {
+  background: #020617;
+  color: #e2e8f0;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #1e40af;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  background: #020617;
+  color: #e2e8f0;
+  padding: 20px;
+  margin-top: 40px;
 }
 
 </style>
@@ -158,10 +162,10 @@ footer a {
 <!-- HEADER -->
 <div class="header">
   <h1>Data & Code</h1>
-  <p>Datasets and reproducible research</p>
+  <p>Datasets, Variables, and Publications</p>
 </div>
 
-<!-- NAVBAR (BELOW HEADER) -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-inner">
 
@@ -176,6 +180,8 @@ footer a {
       </div>
     </div>
 
+    <a href="service.html">Services</a>
+
     <div class="dropdown">
       <button class="dropbtn">Learning & Events ▼</button>
       <div class="dropdown-content">
@@ -184,7 +190,6 @@ footer a {
       </div>
     </div>
 
-    <a href="service.html">Services</a>
     <a href="insights.html">Insights</a>
 
   </div>
@@ -193,23 +198,97 @@ footer a {
 <!-- CONTENT -->
 <div class="container">
 
+  <!-- DATASET -->
   <div class="card">
     <h2>Dataset</h2>
-    <p>Upload and explore datasets here.</p>
+
+    <input type="file" id="csvFile" accept=".csv">
+    <button class="btn" onclick="loadCSV()">Load CSV</button>
+
+    <div style="overflow-x:auto; margin-top:15px;">
+      <table id="table"></table>
+    </div>
   </div>
 
+  <!-- VARIABLES -->
   <div class="card">
-    <h2>Code</h2>
-    <p>Display your scripts and notebooks here.</p>
+    <h2>Variables</h2>
+
+    <table>
+      <tr><th>Variable</th><th>Description</th></tr>
+      <tr><td>X1</td><td>Climate variable (temperature)</td></tr>
+      <tr><td>X2</td><td>Socioeconomic factor (GDP)</td></tr>
+      <tr><td>X3</td><td>Health infrastructure (hospital beds)</td></tr>
+      <tr><td>X4</td><td>Disease incidence</td></tr>
+    </table>
+
+  </div>
+
+  <!-- CODE -->
+  <div class="card">
+    <h2>Code Example</h2>
+
+    <div class="code-box">
+import pandas as pd
+
+df = pd.read_csv("data.csv")
+
+print(df.head())
+    </div>
+
+  </div>
+
+  <!-- PUBLICATION -->
+  <div class="card">
+    <h2>Publication Citation</h2>
+
+    <p>
+    Rahman, M.S., Shiddik, A.B. (2026). 
+    "Explainable AI for disease prediction using climate and socioeconomic data." 
+    <em>Scientific Reports</em>.
+    </p>
+
+    <p>
+    DOI: 10.xxxx/xxxxx
+    </p>
+
   </div>
 
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <p>Md. Abu Bokkor Shiddik</p>
-  <p><a href="home.html">Home</a> | <a href="publications.html">Publications</a></p>
+  © 2026 Md. Abu Bokkor Shiddik
 </footer>
+
+<script>
+
+function loadCSV(){
+  const file = document.getElementById("csvFile").files[0];
+  if (!file) return alert("Select CSV first");
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+    const rows = e.target.result.split("\n").map(r => r.split(","));
+
+    let html = "";
+
+    rows.forEach((row,i)=>{
+      html += "<tr>";
+      row.forEach(cell=>{
+        html += i===0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
+      });
+      html += "</tr>";
+    });
+
+    document.getElementById("table").innerHTML = html;
+  };
+
+  reader.readAsText(file);
+}
+
+</script>
 
 </body>
 </html>
