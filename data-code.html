@@ -358,6 +358,70 @@ footer {
 
 </div>
 
+
+
+ <div class="card">
+
+  <h2>Dengue AI and Early Warning System</h2>
+
+  <button class="btn" onclick="downloadProject(0)">Download All</button>
+
+  <div class="flex">
+
+    <div class="box">
+      <h3>Dataset (Monthly)</h3>
+      <div class="scroll">
+        <table id="dataTable1"></table>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Variables</h3>
+      <div class="scroll">
+        <table id="varTable1"></table>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 style="margin-top:15px;">Python Code (EWS + AI)</h3>
+  <button class="btn" onclick="copyCode('pyCodeBox1')">Copy Python Code</button>
+  <textarea id="pyCodeBox1" readonly></textarea>
+
+  <h3 style="margin-top:15px;">Python Code (General)</h3>
+  <button class="btn" onclick="copyCode('pyCodeBox2')">Copy Python Code</button>
+  <textarea id="pyCodeBox2" readonly></textarea>
+
+  <h3 style="margin-top:15px;">R Code (EWS)</h3>
+  <button class="btn" onclick="copyCode('rCodeBox1')">Copy R Code</button>
+  <textarea id="rCodeBox1" readonly></textarea>
+
+  <h3 style="margin-top:15px;">R Code (XAI)</h3>
+  <button class="btn" onclick="copyCode('rCodeBox2')">Copy R Code</button>
+  <textarea id="rCodeBox2" readonly></textarea>
+
+  <h3 style="margin-top:15px;">Publications</h3>
+
+  <p>
+    Rahman, M.S. and Shiddik, M.A.B., 2025. Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers. <em>Global Epidemiology</em>, 10, 100210.
+  </p>
+
+  <p>
+    Rahman, S. and Shiddik, A.B., 2025. Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh. <em>Global Epidemiology</em>, p.100230.
+  </p>
+
+  <p>
+    Rahman, M.S., Amrin, M. and Shiddik, M.A., 2025. Dengue Early Warning System using interpretable tree-based machine learning models. <em>Health Science Reports</em>, 8(5), e70726.
+  </p>
+
+  <p>
+    Rahman, M.S. and Shiddik, M.A.B., 2025. Data-driven dengue prevention strategies using explainable AI and causal inference. <em>International Journal of Statistical Sciences</em>, 25(2), 101–113.
+  </p>
+
+</div>
+
+
+ 
 <!-- ================= TB CARD ================= -->
 <div class="card">
 
@@ -469,7 +533,27 @@ const projects = [
     varId: "varTable4",
     rId: "rCodeBox3",
     pyId: null
-  }
+  },
+ {
+  name: "Dengue AI and EWS",
+  data: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/MonthlyDengueBDData.csv",
+  var: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/MonthlyDengueBDVariable.csv",
+
+  pycode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/CAIPythonCodeDengue.txt",
+  pycode2: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/PythonCode_Dengue_BD.txt",
+
+  rcode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/EWS_DengueRcode.txt",
+  rcode2: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/Rcode__XAI_Dengue.txt",
+
+  tableId: "dataTable1",
+  varId: "varTable1",
+
+  rId: "rCodeBox1",
+  rId2: "rCodeBox2",
+
+  pyId: "pyCodeBox1",
+  pyId2: "pyCodeBox2"
+}
 ];
 
 /* ================= SAFE LOAD TABLE ================= */
