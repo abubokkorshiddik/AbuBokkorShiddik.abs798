@@ -268,7 +268,7 @@ footer {
 
     <!-- DATA -->
     <div class="box">
-      <h3>Dataset (20 rows)</h3>
+      <h3>Dataset</h3>
       <div class="scroll">
         <table id="dataTable"></table>
       </div>
@@ -276,7 +276,7 @@ footer {
 
     <!-- VARIABLES -->
     <div class="box">
-      <h3>Variables (20 rows)</h3>
+      <h3>Variables</h3>
       <div class="scroll">
         <table id="varTable"></table>
       </div>
@@ -290,6 +290,10 @@ footer {
 
 </div>
 
+
+
+
+  
 <!-- DRAFT CARD -->
 <div class="card">
 
@@ -364,7 +368,7 @@ function loadCode() {
   fetch(codeURL)
   .then(res => res.text())
   .then(text => {
-    document.getElementById("codeBox").value = text.split("\n").slice(0, 20).join("\n");
+    document.getElementById("codeBox").value = text.split("\n").slice(0, 500).join("\n");
   });
 }
 
