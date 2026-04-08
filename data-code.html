@@ -390,145 +390,110 @@ footer {
 
 </div>
 
+
+
+<!-- ================= MALARIA CARD ================= -->
+<div class="card">
+
+  <h2>Global malaria project</h2>
+
+  <button class="btn" onclick="downloadProject(2)">Download All</button>
+
+  <div class="flex">
+    <div class="box">
+      <h3>Dataset</h3>
+      <div class="scroll"><table id="dataTable4"></table></div>
+    </div>
+
+    <div class="box">
+      <h3>Variables</h3>
+      <div class="scroll"><table id="varTable4"></table></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:15px;">R Code</h3>
+  <button class="btn" onclick="copyCode('rCodeBox3')">Copy R Code</button>
+  <textarea id="rCodeBox3" readonly></textarea>
+
+  <h3 style="margin-top:15px;">Publication</h3>
+<p>
+  Rahman, M.S. and Shiddik, M.A.B., 2025.  
+  Unraveling global malaria incidence and mortality using machine learning and artificial intelligence–driven spatial analysis.  
+  <em>Scientific Reports</em>, 15(1), p.28334.
+</p>
+
+</div>
+
+
+
+
+
+ 
 </div>
 
 <script>
 
 /* ================= PROJECT CONFIG ================= */
 const projects = [
-
-  /* TB */
   {
-    name: "Global_TB_Project",
+    name: "Global TB Project",
     data: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv",
     var: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv",
     rcode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt",
-    pycode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt",
-
     tableId: "dataTable",
     varId: "varTable",
     rId: "rCodeBox",
-    pyId: "pyCodeBox"
   },
-
-  /* DENGUE */
   {
-    name: "District_Level_Dengue",
-
+    name: "District Level Dengue Project",
     data1: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/DistricLevelDengueBD_Yearly_Data.csv",
     var1: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/DistricLevelDengueBD_Variable1_Yearly.csv",
-
     data2: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/DistricLevelDengueBD_Monthly_Data.csv",
     var2: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/DistricLevelDengueBD_Variable2_monthly.csv",
-
     rcode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/RCode_Dengue_BD%20(1).txt",
     pycode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/PythonCode_Dengue_BD.txt",
-
-    tables: [
-      { data: "data1", var: "var1", dataId: "dataTable2", varId: "varTable2" },
-      { data: "data2", var: "var2", dataId: "dataTable3", varId: "varTable3" }
-    ],
-
+    tableId1: "dataTable2",
+    varId1: "varTable2",
+    tableId2: "dataTable3",
+    varId2: "varTable3",
     rId: "rCodeBox2",
     pyId: "pyCodeBox2"
+  },
+  {
+    name: "Global malaria project",
+    data: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalMalariaDataset.csv",
+    var: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalMalariaVariable.csv",
+    rcode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/10325MalariaR.txt",
+    tableId: "dataTable4",
+    varId: "varTable4",
+    rId: "rCodeBox3",
   }
-
 ];
 
-/* ================= TABLE LOADER ================= */
-function loadTable(url, id, limit) {
-  fetch(url)
-  .then(res => res.text())
-  .then(text => {
-    let rows = text.split("\n").slice(0, limit);
-    let html = "";
-    rows.forEach((row, i) => {
-      html += "<tr>";
-      row.split(",").forEach(cell => {
-        html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
-      });
-      html += "</tr>";
-    });
-    document.getElementById(id).innerHTML = html;
-  })
-  .catch(() => {
-    document.getElementById(id).innerHTML = "<tr><td>No data</td></tr>";
-  });
-}
-
-/* ================= CODE LOADER ================= */
-function loadCode(url, id) {
-  fetch(url)
-  .then(res => res.text())
-  .then(text => {
-    document.getElementById(id).value = text.split("\n").slice(0, 600).join("\n");
-  });
-}
-
-/* ================= COPY ================= */
-function copyCode(id) {
-  const box = document.getElementById(id);
-  box.select();
-  document.execCommand("copy");
-  alert("Copied");
-}
-
-/* ================= DOWNLOAD ================= */
-async function downloadProject(index) {
-
-  const p = projects[index];
-  const zip = new JSZip();
-
-  try {
-
-    if (p.data) {
-      zip.file("Dataset.csv", await fetch(p.data).then(r => r.text()));
-      zip.file("Variables.csv", await fetch(p.var).then(r => r.text()));
-    }
-
-    if (p.tables) {
-      const t1 = p.tables[0];
-      const t2 = p.tables[1];
-
-      zip.file("Dataset_Yearly.csv", await fetch(p[t1.data]).then(r => r.text()));
-      zip.file("Variables_Yearly.csv", await fetch(p[t1.var]).then(r => r.text()));
-
-      zip.file("Dataset_Monthly.csv", await fetch(p[t2.data]).then(r => r.text()));
-      zip.file("Variables_Monthly.csv", await fetch(p[t2.var]).then(r => r.text()));
-    }
-
-    zip.file("R_Code.txt", await fetch(p.rcode).then(r => r.text()));
-    zip.file("Python_Code.txt", await fetch(p.pycode).then(r => r.text()));
-
-  } catch {
-    alert("Download error");
-    return;
-  }
-
-  zip.generateAsync({type:"blob"}).then(content => {
-    saveAs(content, p.name + ".zip");
-  });
-
-}
-
 /* ================= INIT ================= */
-projects.forEach(p => {
+projects.forEach((p, i) => {
 
-  if (p.tables) {
-    p.tables.forEach(t => {
-      loadTable(p[t.data], t.dataId, 500);
-      loadTable(p[t.var], t.varId, 50);
-    });
-  }
-
+  // dataset
   if (p.data) loadTable(p.data, p.tableId, 500);
-  if (p.var) loadTable(p.var, p.varId, 50);
 
-  loadCode(p.rcode, p.rId);
-  loadCode(p.pycode, p.pyId);
+  // dengue has two
+  if (p.data1) loadTable(p.data1, p.tableId1, 500);
+  if (p.data2) loadTable(p.data2, p.tableId2, 500);
+
+  // variables
+  if (p.var) loadTable(p.var, p.varId, 100);
+  if (p.var1) loadTable(p.var1, p.varId1, 100);
+  if (p.var2) loadTable(p.var2, p.varId2, 100);
+
+  // R code
+  if (p.rcode) loadCode(p.rcode, p.rId);
+
+  // Python code
+  if (p.pycode) loadCode(p.pycode, p.pyId);
 
 });
 
+ 
 </script>
  
 
