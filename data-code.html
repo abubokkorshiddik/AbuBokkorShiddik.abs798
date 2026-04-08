@@ -10,7 +10,9 @@
 
 <style>
 
+/* ========================= */
 /* GLOBAL */
+/* ========================= */
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
@@ -18,11 +20,8 @@ body {
   color: #1f2937;
 }
 
+/* ========================= */
 /* NAVBAR */
-
-
-  /* ========================= */
-/* NAV (UPDATED ONLY) */
 /* ========================= */
 .navbar {
   background: linear-gradient(90deg, #00264d, #004080);
@@ -42,165 +41,22 @@ body {
   gap: 8px;
 }
 
-/* LINKS */
 .nav-inner a {
   color: white;
   text-decoration: none;
   font-weight: 700;
   padding: 6px 10px;
   border-radius: 5px;
-  transition: 0.25s;
   font-size: 15px;
 }
 
 .nav-inner a:hover {
-  color: #60a5fa;
   background: rgba(255,255,255,0.12);
 }
 
-.nav-inner .dropdown {
-  position: relative;
-}
-
-.nav-inner .dropbtn {
-  background: none;
-  border: none;
-  color: white;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 5px;
-}
-
-.nav-inner .dropbtn:hover {
-  color: #60a5fa;
-  background: rgba(255,255,255,0.12);
-}
-
-/* DROPDOWN */
-.nav-inner .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #0b2d5c;
-  min-width: 160px;
-  border-radius: 6px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  top: 100%;
-  left: 0;
-  z-index: 9999;
-}
-
-.nav-inner .dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.nav-inner .dropdown.active .dropdown-content {
-  display: block;
-}
-
-.nav-inner .dropdown-content a {
-  display: block;
-  padding: 10px 12px;
-  color: #cbd5e1;
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.nav-inner .dropdown-content a:hover {
-  background-color: #1e3a8a;
-  color: white;
-}
-
 /* ========================= */
-/* DROPDOWN (FIXED ONLY) */
-/* ========================= */
-
-.nav-inner .dropdown {
-  position: relative;
-}
-
-.nav-inner .dropbtn {
-  background: none;
-  border: none;
-  color: #fafbfc;
-  font-weight: 700;
-  font-size: 15px;
-  font-family: inherit;
-  cursor: pointer;
-  padding: 0;
-  margin-right: 18px;
-}
-
-/* dropdown hidden state */
-.nav-inner .dropdown-content {
-  display: block;
-  position: absolute;
-  background-color: #0b2d5c;
-  min-width: 160px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-  border-radius: 6px;
-  z-index: 9999;
-  top: 100%;
-  left: 0;
-
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(6px);
-  transition: 0.2s ease;
-  pointer-events: none;
-}
-
-/* links */
-.nav-inner .dropdown-content a {
-  color: #cbd5e1;
-  padding: 8px 12px;
-  text-decoration: none;
-  display: block;
-  font-weight: 700;
-}
-
-.nav-inner .dropdown-content a:hover {
-  background-color: #1e3a8a;
-  color: white;
-}
-
-/* hover open */
-.nav-inner .dropdown:hover .dropdown-content {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* click open */
-.nav-inner .dropdown.active .dropdown-content {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* ========================= */
-/* MOBILE */
-/* ========================= */
-@media (max-width: 768px) {
-
-  body {
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .nav-inner {
-    justify-content: center;
-  }
-
-  .nav-inner a {
-    margin: 8px 10px;
-    font-size: 13px;
-  }
-  
 /* HEADER */
+/* ========================= */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
   color: white;
@@ -208,14 +64,18 @@ body {
   padding: 40px 15px;
 }
 
+/* ========================= */
 /* CONTAINER */
+/* ========================= */
 .container {
   max-width: 1100px;
   margin: auto;
   padding: 25px 20px;
 }
 
+/* ========================= */
 /* CARD */
+/* ========================= */
 .card {
   background: white;
   padding: 18px;
@@ -224,19 +84,37 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-/* TABLE */
+/* ========================= */
+/* TABLE (SCROLLABLE) */
+/* ========================= */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 700px;
 }
 
 th, td {
   border: 1px solid #e5e7eb;
   padding: 8px;
-  font-size: 14px;
+  font-size: 13px;
+  white-space: nowrap;
 }
 
+th {
+  background: #0b3a6e;
+  color: white;
+}
+
+/* ========================= */
 /* BUTTON */
+/* ========================= */
 button {
   background: #1d4ed8;
   color: white;
@@ -244,18 +122,22 @@ button {
   padding: 8px 14px;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 button:hover {
   background: #1e40af;
 }
 
+/* ========================= */
 /* FOOTER */
+/* ========================= */
 footer {
   text-align: center;
   background: #020617;
   color: #e2e8f0;
   padding: 20px;
+  margin-top: 30px;
 }
 
 </style>
@@ -267,37 +149,11 @@ footer {
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-inner">
-
     <a href="home.html">Home</a>
     <a href="publications.html">Publications</a>
- <a href="service.html">Services</a>
-    <div class="dropdown">
-      <button class="dropbtn">Digital Lab ▼</button>
-      <div class="dropdown-content">
-        <a href="projects.html">Projects</a>
-        <a href="data-code.html">Data & Code</a>
-      </div>
-    </div>
-
-    <div class="dropdown">
-      <button class="dropbtn">Learning & Events ▼</button>
-      <div class="dropdown-content">
-        <a href="courses.html">Courses & Training</a>
-        <a href="conference-and-workshop.html">Conferences & Workshops</a>
-      </div>
-    </div>
-
-   
-
-    <div class="dropdown">
-      <button class="dropbtn">Insights ▼</button>
-      <div class="dropdown-content">
-        <a href="insights.html">Posts</a>
-        <a href="videos.html">Videos</a>
-        <a href="archive.html">Photos & Archive</a>
-      </div>
-    </div>
-
+    <a href="service.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="data-code.html">Data & Code</a>
   </div>
 </nav>
 
@@ -307,15 +163,15 @@ footer {
   <p>AI-based analysis of socioeconomic, environmental, and healthcare factors</p>
 </div>
 
-<!-- CONTENT -->
+<!-- MAIN CONTAINER -->
 <div class="container">
 
-  <!-- DATASET -->
+  <!-- DATA CARD -->
   <div class="card">
     <h2>Dataset</h2>
 
     <p>
-      Download datasets:
+      Download:
       <br>
       <a href="https://github.com/user-attachments/files/26576279/GlobalTB.csv" target="_blank">
         GlobalTB.csv
@@ -326,35 +182,32 @@ footer {
       </a>
     </p>
 
-    <h3>Preview CSV</h3>
-
     <input type="file" id="fileInput" accept=".csv">
-    <button onclick="loadCSV()">Load CSV</button>
+    <button onclick="loadCSV()">Preview CSV</button>
 
-    <div style="overflow-x:auto; margin-top:15px;">
+    <div class="table-wrapper">
       <table id="table"></table>
     </div>
 
   </div>
 
-  <!-- VARIABLES -->
+  <!-- VARIABLES CARD -->
   <div class="card">
-    <h2>Variables Description</h2>
+    <h2>Variables</h2>
 
-    <p>
-      The dataset includes variables related to tuberculosis incidence along with:
-    </p>
+    <p>Key variables used in the dataset:</p>
 
     <ul>
-      <li>Socioeconomic indicators (GDP, education, income)</li>
-      <li>Healthcare factors (hospital beds, access)</li>
-      <li>Environmental variables (temperature, precipitation)</li>
-      <li>Demographic variables (population, density)</li>
+      <li>TB incidence and prevalence</li>
+      <li>GDP and socioeconomic indicators</li>
+      <li>Healthcare access indicators</li>
+      <li>Environmental factors (temperature, precipitation)</li>
+      <li>Demographic data (population, density)</li>
     </ul>
 
   </div>
 
-  <!-- PUBLICATION -->
+  <!-- PUBLICATION CARD -->
   <div class="card">
     <h2>Publication</h2>
 
