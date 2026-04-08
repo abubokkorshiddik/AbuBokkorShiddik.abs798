@@ -282,6 +282,11 @@ footer {
 
 
 <!-- MAIN CARD -->
+<!-- REQUIRED LIBRARIES -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+<!-- ================= MAIN CARD ================= -->
 <div class="card">
 
   <h2>Global TB Project</h2>
@@ -289,21 +294,21 @@ footer {
   <!-- DOWNLOAD -->
   <button class="btn" onclick="downloadFile(dataURL)">Download Dataset</button>
   <button class="btn" onclick="downloadFile(varURL)">Download Variables</button>
-  <button class="btn" onclick="downloadFile(codeURL)">Download Code</button>
+  <button class="btn" onclick="downloadFile(rCodeURL)">Download R Code</button>
+  <button class="btn" onclick="downloadFile(pyCodeURL)">Download Python Code</button>
+  <button class="btn" onclick="downloadAll()">Download All</button>
 
   <div class="flex">
 
-    <!-- DATA -->
     <div class="box">
-      <h3>Dataset</h3>
+      <h3>Dataset (20 rows)</h3>
       <div class="scroll">
         <table id="dataTable"></table>
       </div>
     </div>
 
-    <!-- VARIABLES -->
     <div class="box">
-      <h3>Variables</h3>
+      <h3>Variables (100 rows)</h3>
       <div class="scroll">
         <table id="varTable"></table>
       </div>
@@ -311,64 +316,87 @@ footer {
 
   </div>
 
-  <!-- CODE -->
-  <h3 style="margin-top:15px;">Code Preview</h3>
+  <!-- R CODE -->
+  <h3 style="margin-top:15px;">R Code</h3>
+  <button class="btn" onclick="copyCode('rCodeBox')">Copy R Code</button>
+  <textarea id="rCodeBox" readonly></textarea>
 
-  <button class="btn" onclick="copyCode()">Copy Code</button>
+  <!-- PYTHON CODE -->
+  <h3 style="margin-top:15px;">Python Code</h3>
+  <button class="btn" onclick="copyCode('pyCodeBox')">Copy Python Code</button>
+  <textarea id="pyCodeBox" readonly></textarea>
 
-  <textarea id="codeBox" readonly></textarea>
+  <!-- PUBLICATION -->
+  <h3 style="margin-top:15px;">Publication</h3>
+  <p>
+    Rahman, M.S. & Shiddik, A.B. (2025).  
+    Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally.  
+    <em>Scientific Reports</em>.
+  </p>
 
 </div>
 
-<!-- DRAFT CARD -->
+<!-- ================= DRAFT CARD ================= -->
 <div class="card">
 
-  <h2>Dataset (Comming soon)</h2>
+  <h2>Draft Dataset (Future Project)</h2>
 
-
-
-  <!-- DUMMY LINKS -->
+  <!-- DOWNLOAD -->
   <button class="btn" onclick="downloadFile(dataURL2)">Download Dataset</button>
   <button class="btn" onclick="downloadFile(varURL2)">Download Variables</button>
-  <button class="btn" onclick="downloadFile(codeURL2)">Download Code</button>
+  <button class="btn" onclick="downloadFile(rCodeURL2)">Download R Code</button>
+  <button class="btn" onclick="downloadFile(pyCodeURL2)">Download Python Code</button>
+  <button class="btn" onclick="downloadAllDraft()">Download All</button>
 
   <div class="flex">
 
     <div class="box">
-      <h3>Dataset</h3>
+      <h3>Dataset (20 rows)</h3>
       <div class="scroll">
-        <table></table>
+        <table id="dataTable2"></table>
       </div>
     </div>
 
     <div class="box">
-      <h3>Variables</h3>
+      <h3>Variables (100 rows)</h3>
       <div class="scroll">
-        <table></table>
+        <table id="varTable2"></table>
       </div>
     </div>
 
   </div>
 
-  <h3 style="margin-top:15px;">Code Preview</h3>
+  <!-- R CODE -->
+  <h3 style="margin-top:15px;">R Code</h3>
+  <button class="btn" onclick="copyCode('rCodeBox2')">Copy R Code</button>
+  <textarea id="rCodeBox2" readonly></textarea>
 
-  <textarea readonly></textarea>
+  <!-- PYTHON CODE -->
+  <h3 style="margin-top:15px;">Python Code</h3>
+  <button class="btn" onclick="copyCode('pyCodeBox2')">Copy Python Code</button>
+  <textarea id="pyCodeBox2" readonly></textarea>
+
+  <!-- PUBLICATION -->
+  <h3 style="margin-top:15px;">Publication</h3>
+  <p>Add your future publication here.</p>
 
 </div>
 
 <script>
 
-/* REAL LINKS */
+/* ================= MAIN LINKS ================= */
 const dataURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv";
 const varURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv";
-const codeURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt";
+const rCodeURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt";
+const pyCodeURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt";
 
-/* DUMMY LINKS (DRAFT) */
-const dataURL2 = "https://example.com/dummy-data.csv";
-const varURL2 = "https://example.com/dummy-variables.csv";
-const codeURL2 = "https://example.com/dummy-code.txt";
+/* ================= DRAFT LINKS ================= */
+const dataURL2 = "https://example.com/dataset.csv";
+const varURL2 = "https://example.com/variables.csv";
+const rCodeURL2 = "https://example.com/r-code.txt";
+const pyCodeURL2 = "https://example.com/python-code.txt";
 
-/* LOAD TABLE */
+/* ================= TABLE LOADER ================= */
 function loadTable(url, id, limit) {
 
   fetch(url)
@@ -388,63 +416,99 @@ function loadTable(url, id, limit) {
 
     document.getElementById(id).innerHTML = html;
 
+  })
+  .catch(() => {
+    if(document.getElementById(id)){
+      document.getElementById(id).innerHTML = "<tr><td>No data</td></tr>";
+    }
   });
 
 }
 
-/* LOAD CODE */
-function loadCode() {
-  fetch(codeURL)
+/* ================= CODE LOADER ================= */
+function loadCode(url, id) {
+  fetch(url)
   .then(res => res.text())
   .then(text => {
-    document.getElementById("codeBox").value = text.split("\n").slice(0, 600).join("\n");
+    document.getElementById(id).value = text.split("\n").slice(0, 600).join("\n");
+  })
+  .catch(() => {
+    if(document.getElementById(id)){
+      document.getElementById(id).value = "No code available";
+    }
   });
 }
 
-/* COPY CODE */
-function copyCode() {
-  const code = document.getElementById("codeBox");
-  code.select();
-  code.setSelectionRange(0, 999999);
+/* ================= COPY ================= */
+function copyCode(id) {
+  const box = document.getElementById(id);
+  box.select();
   document.execCommand("copy");
-  alert("Code copied successfully");
+  alert("Copied");
 }
 
-/* DOWNLOAD */
+/* ================= DOWNLOAD SINGLE ================= */
 function downloadFile(url) {
 
   fetch(url)
-  .then(response => response.blob())
+  .then(r => r.blob())
   .then(blob => {
 
-    const blobUrl = window.URL.createObjectURL(blob);
-
     const a = document.createElement("a");
-    a.href = blobUrl;
-
-    // extract filename from URL
-    const fileName = url.split("/").pop();
-
-    a.download = fileName;
-
+    a.href = URL.createObjectURL(blob);
+    a.download = url.split("/").pop();
     document.body.appendChild(a);
     a.click();
-
     document.body.removeChild(a);
 
-    window.URL.revokeObjectURL(blobUrl);
-
   })
-  .catch(() => {
-    alert("Download failed. Please try again.");
-  });
+  .catch(() => alert("File not available"));
 
 }
 
-/* INIT */
-loadTable(dataURL, "dataTable", 600);
-loadTable(varURL, "varTable", 50);
-loadCode();
+/* ================= DOWNLOAD MAIN ZIP ================= */
+async function downloadAll() {
+
+  const zip = new JSZip();
+
+  zip.file("GlobalTB.csv", await fetch(dataURL).then(r => r.text()));
+  zip.file("Variables.csv", await fetch(varURL).then(r => r.text()));
+  zip.file("R_Code.txt", await fetch(rCodeURL).then(r => r.text()));
+  zip.file("Python_Code.txt", await fetch(pyCodeURL).then(r => r.text()));
+
+  zip.generateAsync({type:"blob"}).then(c => saveAs(c, "TB_Project.zip"));
+
+}
+
+/* ================= DOWNLOAD DRAFT ZIP ================= */
+async function downloadAllDraft() {
+
+  const zip = new JSZip();
+
+  try {
+    zip.file("dataset.csv", await fetch(dataURL2).then(r => r.text()));
+    zip.file("variables.csv", await fetch(varURL2).then(r => r.text()));
+    zip.file("R_Code.txt", await fetch(rCodeURL2).then(r => r.text()));
+    zip.file("Python_Code.txt", await fetch(pyCodeURL2).then(r => r.text()));
+  } catch {
+    alert("Draft files not available yet");
+    return;
+  }
+
+  zip.generateAsync({type:"blob"}).then(c => saveAs(c, "Draft_Project.zip"));
+
+}
+
+/* ================= INIT ================= */
+loadTable(dataURL, "dataTable", 20);
+loadTable(varURL, "varTable", 100);
+loadCode(rCodeURL, "rCodeBox");
+loadCode(pyCodeURL, "pyCodeBox");
+
+loadTable(dataURL2, "dataTable2", 20);
+loadTable(varURL2, "varTable2", 100);
+loadCode(rCodeURL2, "rCodeBox2");
+loadCode(pyCodeURL2, "pyCodeBox2");
 
 </script>
 
