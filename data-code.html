@@ -130,10 +130,10 @@ th {
   color: white;
 }
 
-/* TEXT AREA FOR CODE */
+/* CODE BOX */
 .code-box {
   width: 100%;
-  height: 150px;
+  height: 180px;
   margin-top: 10px;
   padding: 10px;
   font-family: monospace;
@@ -217,17 +217,26 @@ footer {
 <!-- MAIN -->
 <div class="container">
 
-  <!-- SINGLE DATASET CARD -->
+  <!-- DATASET CARD -->
   <div class="card">
 
     <h2>Global Tuberculosis Dataset</h2>
 
     <!-- DOWNLOAD -->
     <p>
-      <strong>Download dataset:</strong><br>
-      <a href="https://github.com/user-attachments/files/26576279/GlobalTB.csv" target="_blank">GlobalTB.csv</a><br>
-      <a href="https://github.com/user-attachments/files/26576280/GlobalTBVariables.csv" target="_blank">Variables.csv</a>
+      <strong>Download complete package:</strong><br>
+      <button onclick="downloadAll()">Download Dataset + Code</button>
     </p>
+
+    <!-- LINKS -->
+    <p><strong>Dataset files:</strong></p>
+    <ul>
+      <li><a href="https://github.com/user-attachments/files/26576279/GlobalTB.csv" target="_blank">GlobalTB.csv</a></li>
+      <li><a href="https://github.com/user-attachments/files/26576280/GlobalTBVariables.csv" target="_blank">Variables.csv</a></li>
+    </ul>
+
+    <p><strong>Code:</strong></p>
+    <a href="https://github.com/user-attachments/files/20176842/TBXAI.txt" target="_blank">TBXAI.txt</a>
 
     <!-- VARIABLES -->
     <p><strong>Variables:</strong></p>
@@ -236,23 +245,18 @@ footer {
       <li>GDP and socioeconomic indicators</li>
       <li>Healthcare access indicators</li>
       <li>Environmental factors</li>
-      <li>Demographic features</li>
+      <li>Demographic data</li>
     </ul>
 
     <!-- CSV PREVIEW -->
-    <input type="file" id="fileInput" accept=".csv">
     <button onclick="loadCSV()">Preview CSV</button>
-
     <div class="table-wrapper">
       <table id="table"></table>
     </div>
 
     <!-- CODE PREVIEW -->
-    <p><strong>Code preview:</strong></p>
-    <input type="file" id="codeInput" accept=".txt">
     <button onclick="loadCode()">Preview Code</button>
-
-    <textarea id="codeBox" class="code-box" placeholder="Code will appear here..."></textarea>
+    <textarea id="codeBox" class="code-box"></textarea>
 
     <!-- PUBLICATION -->
     <p><strong>Publication:</strong></p>
@@ -271,24 +275,20 @@ footer {
   © 2026 Md. Abu Bokkor Shiddik
 </footer>
 
+<!-- JSZIP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
 <script>
 
 /* CSV PREVIEW */
 function loadCSV() {
 
-  const file = document.getElementById("fileInput").files[0];
+  fetch("https://github.com/user-attachments/files/26576279/GlobalTB.csv")
+  .then(res => res.text())
+  .then(text => {
 
-  if (!file) {
-    alert("Select a CSV file");
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function(e) {
-
-    const rows = e.target.result.split("\n").map(r => r.split(","));
-
+    const rows = text.split("\n").map(r => r.split(","));
     let html = "";
 
     rows.forEach((row, i) => {
@@ -301,28 +301,38 @@ function loadCSV() {
 
     document.getElementById("table").innerHTML = html;
 
-  };
+  });
 
-  reader.readAsText(file);
 }
 
 /* CODE PREVIEW */
 function loadCode() {
 
-  const file = document.getElementById("codeInput").files[0];
+  fetch("https://github.com/user-attachments/files/20176842/TBXAI.txt")
+  .then(res => res.text())
+  .then(text => {
+    document.getElementById("codeBox").value = text;
+  });
 
-  if (!file) {
-    alert("Select a TXT code file");
-    return;
-  }
+}
 
-  const reader = new FileReader();
+/* DOWNLOAD ALL */
+async function downloadAll() {
 
-  reader.onload = function(e) {
-    document.getElementById("codeBox").value = e.target.result;
-  };
+  const zip = new JSZip();
 
-  reader.readAsText(file);
+  const csv1 = await fetch("https://github.com/user-attachments/files/26576279/GlobalTB.csv").then(r => r.text());
+  const csv2 = await fetch("https://github.com/user-attachments/files/26576280/GlobalTBVariables.csv").then(r => r.text());
+  const code = await fetch("https://github.com/user-attachments/files/20176842/TBXAI.txt").then(r => r.text());
+
+  zip.file("GlobalTB.csv", csv1);
+  zip.file("Variables.csv", csv2);
+  zip.file("TBXAI.txt", code);
+
+  zip.generateAsync({type:"blob"}).then(function(content) {
+    saveAs(content, "TB_Dataset_Package.zip");
+  });
+
 }
 
 </script>
