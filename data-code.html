@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Code and Data Lab</title>
+<title>Data and Code Lab</title>
+
+<link rel="stylesheet" href="style.css">
 
 <style>
 
+/* BASIC */
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
@@ -16,41 +20,17 @@ body {
   color: #1f2937;
 }
 
-.header {
-  background: linear-gradient(135deg, #020617, #0b3a6e);
-  color: white;
-  text-align: center;
-  padding: 40px 15px;
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 25px 20px;
-}
-
+/* CARD */
 .card {
   background: white;
   padding: 22px;
-  margin-bottom: 25px;
+  margin: 25px auto;
+  max-width: 1100px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-button {
-  background: #1d4ed8;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-button:hover {
-  background: #1e40af;
-}
-
+/* TABLE */
 .table-wrapper {
   overflow-x: auto;
   margin-top: 12px;
@@ -73,9 +53,25 @@ th {
   color: white;
 }
 
+/* BUTTON */
+button {
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #1e40af;
+}
+
+/* CODE BOX */
 .code-box {
   width: 100%;
-  height: 200px;
+  height: 180px;
   margin-top: 10px;
   padding: 10px;
   font-family: monospace;
@@ -83,11 +79,19 @@ th {
   border-radius: 6px;
 }
 
-footer {
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #020617, #0b3a6e);
+  color: white;
   text-align: center;
-  background: #020617;
-  color: #e2e8f0;
-  padding: 20px;
+  padding: 35px 15px;
+}
+
+/* DOWNLOAD AREA */
+.download-box {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 </style>
@@ -96,66 +100,92 @@ footer {
 
 <body>
 
+<!-- YOUR MAIN NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="logo">
+      <a href="index.html" style="color:white; text-decoration:none;">ABS</a>
+    </div>
+
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="data.html">Data</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HEADER -->
 <div class="header">
-  <h1>Code and Data Lab</h1>
-  <p>Dataset, variables, and code in one place</p>
+  <h1>Data and Code Lab</h1>
+  <p>Preview and download datasets, variables, and code</p>
 </div>
 
-<div class="container">
+<!-- DOWNLOAD SECTION -->
+<div class="card">
 
-  <div class="card">
+  <h2>Downloads</h2>
 
-    <h2>Global Tuberculosis AI Dataset</h2>
-
-    <button onclick="downloadAll()">Download Full Package</button>
-
-    <p>
-      <strong>Files:</strong><br>
-      <a href="https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv" target="_blank">GlobalTB.csv</a><br>
-      <a href="https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv" target="_blank">Variables.csv</a><br>
-      <a href="https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt" target="_blank">TBXAI.txt</a>
-    </p>
-
-    <h3>Dataset Preview</h3>
-    <button onclick="loadCSV()">Load Dataset</button>
-    <div class="table-wrapper">
-      <table id="table"></table>
-    </div>
-
-    <h3>Variables Preview</h3>
-    <button onclick="loadVariables()">Load Variables</button>
-    <div class="table-wrapper">
-      <table id="varTable"></table>
-    </div>
-
-    <h3>Code Preview</h3>
-    <button onclick="loadCode()">Load Code</button>
-    <textarea id="codeBox" class="code-box"></textarea>
-
+  <div class="download-box">
+    <button onclick="downloadFile('data')">Download Data</button>
+    <button onclick="downloadFile('variables')">Download Variables</button>
+    <button onclick="downloadFile('code')">Download Code</button>
+    <button onclick="downloadAll()">Download All (ZIP)</button>
   </div>
 
 </div>
 
-<footer>
-  © 2026 Md. Abu Bokkor Shiddik
-</footer>
+<!-- DATASET -->
+<div class="card">
+  <h2>Dataset Preview</h2>
+  <div class="table-wrapper">
+    <table id="table"></table>
+  </div>
+  <button onclick="showMore('table')">See more</button>
+</div>
 
+<!-- VARIABLES -->
+<div class="card">
+  <h2>Variables Preview</h2>
+  <div class="table-wrapper">
+    <table id="varTable"></table>
+  </div>
+  <button onclick="showMore('varTable')">See more</button>
+</div>
+
+<!-- CODE -->
+<div class="card">
+  <h2>Code Preview</h2>
+  <textarea id="codeBox" class="code-box"></textarea>
+  <button onclick="showMoreCode()">See more</button>
+</div>
+
+<!-- JS ZIP LIBRARIES -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
 <script>
 
-/* DATASET */
-function loadCSV() {
+/* LINKS */
+const dataURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv";
+const varURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv";
+const codeURL = "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt";
 
-  fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv")
+const previewLimit = 5;
+
+/* LOAD CSV */
+function loadCSV(url, tableId) {
+
+  fetch(url)
   .then(r => r.text())
   .then(text => {
 
     const rows = text.split("\n").map(r => r.split(","));
+
     let html = "";
 
-    rows.forEach((row, i) => {
+    rows.slice(0, previewLimit).forEach((row, i) => {
       html += "<tr>";
       row.forEach(cell => {
         html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
@@ -163,40 +193,52 @@ function loadCSV() {
       html += "</tr>";
     });
 
-    document.getElementById("table").innerHTML = html;
+    document.getElementById(tableId).innerHTML = html;
 
   });
 
 }
 
-/* VARIABLES */
-function loadVariables() {
-
-  fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv")
-  .then(r => r.text())
-  .then(text => {
-
-    const rows = text.split("\n").map(r => r.split(","));
-    let html = "";
-
-    rows.forEach((row, i) => {
-      html += "<tr>";
-      row.forEach(cell => {
-        html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
-      });
-      html += "</tr>";
-    });
-
-    document.getElementById("varTable").innerHTML = html;
-
-  });
-
-}
-
-/* CODE */
+/* LOAD CODE */
 function loadCode() {
 
-  fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt")
+  fetch(codeURL)
+  .then(r => r.text())
+  .then(text => {
+    document.getElementById("codeBox").value = text.split("\n").slice(0, 10).join("\n");
+  });
+
+}
+
+/* SEE MORE TABLE */
+function showMore(tableId) {
+
+  fetch(tableId === "table" ? dataURL : varURL)
+  .then(r => r.text())
+  .then(text => {
+
+    const rows = text.split("\n").map(r => r.split(","));
+
+    let html = "";
+
+    rows.forEach((row, i) => {
+      html += "<tr>";
+      row.forEach(cell => {
+        html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
+      });
+      html += "</tr>";
+    });
+
+    document.getElementById(tableId).innerHTML = html;
+
+  });
+
+}
+
+/* SEE MORE CODE */
+function showMoreCode() {
+
+  fetch(codeURL)
   .then(r => r.text())
   .then(text => {
     document.getElementById("codeBox").value = text;
@@ -204,24 +246,58 @@ function loadCode() {
 
 }
 
-/* DOWNLOAD ZIP */
+/* DOWNLOAD SINGLE FILE */
+async function downloadFile(type) {
+
+  let url, name;
+
+  if(type === "data") {
+    url = dataURL;
+    name = "GlobalTB.csv";
+  }
+
+  if(type === "variables") {
+    url = varURL;
+    name = "Variables.csv";
+  }
+
+  if(type === "code") {
+    url = codeURL;
+    name = "TBXAI.txt";
+  }
+
+  const file = await fetch(url).then(r => r.blob());
+
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(file);
+  a.download = name;
+  a.click();
+
+}
+
+/* DOWNLOAD ALL */
 async function downloadAll() {
 
   const zip = new JSZip();
 
-  const csv1 = await fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTB.csv").then(r => r.text());
-  const csv2 = await fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalTBVariables.csv").then(r => r.text());
-  const code = await fetch("https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt").then(r => r.text());
+  const data = await fetch(dataURL).then(r => r.text());
+  const variables = await fetch(varURL).then(r => r.text());
+  const code = await fetch(codeURL).then(r => r.text());
 
-  zip.file("GlobalTB.csv", csv1);
-  zip.file("Variables.csv", csv2);
+  zip.file("GlobalTB.csv", data);
+  zip.file("Variables.csv", variables);
   zip.file("TBXAI.txt", code);
 
   zip.generateAsync({type:"blob"}).then(function(content) {
-    saveAs(content, "TB_Package.zip");
+    saveAs(content, "TB_Data_Package.zip");
   });
 
 }
+
+/* AUTO LOAD */
+loadCSV(dataURL, "table");
+loadCSV(varURL, "varTable");
+loadCode();
 
 </script>
 
