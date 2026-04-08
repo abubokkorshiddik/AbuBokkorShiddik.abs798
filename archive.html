@@ -22,6 +22,69 @@ body {
   color: #1f2937;
 }
 
+/* NAVBAR */
+.navbar {
+  background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 15px;
+  flex-wrap: wrap;
+}
+
+.nav-inner a,
+.dropbtn {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.nav-inner a:hover,
+.dropbtn:hover {
+  background: #1f2937;
+  border-radius: 6px;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #0f172a;
+  min-width: 180px;
+  top: 35px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+}
+
+.dropdown-content a:hover {
+  background: #1f2937;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 /* HEADER */
 .header {
   background: linear-gradient(90deg, #00264d, #004080);
@@ -131,7 +194,6 @@ body {
   background: #1d4ed8;
 }
 
-/* MOBILE BUTTON IMPROVEMENT */
 @media (max-width: 599px) {
   .show-btn {
     width: 100%;
@@ -144,6 +206,44 @@ body {
 </head>
 <body>
 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+
+    <a href="home.html">Home</a>
+    <a href="publications.html">Publications</a>
+
+    <div class="dropdown">
+      <button class="dropbtn">Digital Lab ▼</button>
+      <div class="dropdown-content">
+        <a href="projects.html">Projects</a>
+        <a href="data-code.html">Data & Code</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Learning & Events ▼</button>
+      <div class="dropdown-content">
+        <a href="courses.html">Courses & Training</a>
+        <a href="conference-and-workshop.html">Conferences & Workshops</a>
+      </div>
+    </div>
+
+    <a href="service.html">Services</a>
+
+    <div class="dropdown">
+      <button class="dropbtn">Insights ▼</button>
+      <div class="dropdown-content">
+        <a href="insights.html">Posts</a>
+        <a href="videos.html">Videos</a>
+        <a href="archive.html">Photos & Archive</a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- HEADER -->
 <div class="header">
   <h1>Archive</h1>
   <p>Moments, Achievements & Experiences</p>
@@ -211,7 +311,6 @@ body {
   <button class="show-btn" onclick="showMore('workshop', this)">Show More</button>
 </div>
 
-<!-- SCRIPT -->
 <script>
 function showMore(sectionId, btn) {
   let section = document.getElementById(sectionId);
