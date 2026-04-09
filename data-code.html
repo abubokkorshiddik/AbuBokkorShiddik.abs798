@@ -43,35 +43,136 @@ body {
 }
 
 /* ================= NAVBAR ================= */
+/* ================= NAVBAR BASE ================= */
+
 .navbar {
   background: linear-gradient(90deg, #00264d, #004080);
   position: sticky;
   top: 0;
   z-index: 9999;
+  width: 100%;
 }
 
+/* container */
 .nav-inner {
   max-width: 1100px;
   margin: auto;
-  padding: 10px;
+  padding: 10px 12px;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 6px;
 }
 
+/* links */
 .nav-inner a,
-.nav-inner .dropbtn {
-  color: white;
+.dropbtn {
+  color: #ffffff;
+  text-decoration: none;
   font-weight: 700;
+  font-size: 15px;
   padding: 6px 10px;
   border-radius: 5px;
-  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
 }
 
 .nav-inner a:hover,
-.nav-inner .dropbtn:hover {
+.dropbtn:hover {
   background: rgba(255,255,255,0.15);
+  color: #93c5fd;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown {
+  position: relative;
+}
+
+/* hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: #0b2d5c;
+  border-radius: 6px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  z-index: 10000;
+}
+
+/* desktop hover */
+@media (min-width: 768px) {
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+}
+
+/* dropdown links */
+.dropdown-content a {
+  display: block;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ================= TABLET ================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .nav-inner {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .nav-inner a,
+  .dropbtn {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .dropdown-content {
+    min-width: 160px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 767px) {
+
+  .nav-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .nav-inner a,
+  .dropbtn {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* dropdown becomes static for mobile */
+  .dropdown-content {
+    position: relative;
+    display: none;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
 }
 
 /* ================= HEADER ================= */
