@@ -138,6 +138,7 @@ body {
 .grid {
   display: grid;
   gap: 15px;
+  align-items: stretch;
 }
 
 /* RESPONSIVE GRID */
@@ -175,9 +176,9 @@ body {
 /* IMAGE */
 .card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
-  background: #e5e7eb; /* fallback gray */
+  display: block;
 }
 
 /* TEXT */
@@ -189,7 +190,7 @@ body {
 
 /* HIDDEN */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* BUTTON */
@@ -1058,20 +1059,25 @@ footer a:hover {
 /* SHOW MORE / SHOW LESS (safe toggle per section) */
 function showMore(sectionId, btn) {
   const section = document.getElementById(sectionId);
-  const cards = section.querySelectorAll('.card');
+  if (!section) return;
 
-  const isExpanded = btn.getAttribute("data-expanded") === "true";
+  const cards = section.querySelectorAll('.card');
+  const isExpanded = btn.dataset.expanded === "true";
 
   if (!isExpanded) {
     cards.forEach(card => card.classList.remove('hidden'));
+
     btn.innerText = "Show Less";
-    btn.setAttribute("data-expanded", "true");
+    btn.dataset.expanded = "true";
   } else {
     cards.forEach((card, index) => {
-      if (index >= 4) card.classList.add('hidden');
+      if (index >= 4) {
+        card.classList.add('hidden');
+      }
     });
+
     btn.innerText = "Show More";
-    btn.setAttribute("data-expanded", "false");
+    btn.dataset.expanded = "false";
   }
 }
 
@@ -1080,38 +1086,47 @@ function openLightbox(img) {
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
 
+  if (!lightbox || !lightboxImg) return;
+
   lightbox.style.display = "flex";
-  lightboxImg.src = img.src;
+  lightboxImg.src = img.src || "";
 }
 
 /* LIGHTBOX CLOSE */
 function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
+  const lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    lightbox.style.display = "none";
+  }
 }
 
 /* INIT */
 document.addEventListener("DOMContentLoaded", () => {
 
   const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
 
-  /* close when clicking outside image */
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
-  });
+  if (lightbox) {
+    const lightboxImg = document.getElementById("lightbox-img");
 
-  /* ESC key support */
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeLightbox();
-    }
-  });
+    /* close when clicking outside image */
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
 
-  /* ensure first 4 cards visible */
+    /* ESC key support */
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeLightbox();
+      }
+    });
+  }
+
+  /* set initial state for all sections */
   document.querySelectorAll(".section").forEach(section => {
     const cards = section.querySelectorAll(".card");
+    const btn = section.querySelector(".show-btn");
 
     cards.forEach((card, index) => {
       if (index >= 4) {
@@ -1119,9 +1134,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    const btn = section.querySelector(".show-btn");
     if (btn) {
-      btn.setAttribute("data-expanded", "false");
+      btn.dataset.expanded = "false";
       btn.innerText = "Show More";
     }
   });
