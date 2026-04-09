@@ -233,11 +233,12 @@ textarea {
 }
 
 /* FOOTER */
+/* FOOTER */
 footer {
   text-align: center;
+  padding: 25px;
   background: #020617;
-  color: white;
-  padding: 15px;
+  color: #e2e8f0;
 }
 .container {
   max-width: 1200px;
@@ -246,6 +247,112 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 25px;
+}
+
+ /* ================= TABLET ================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .container {
+    padding: 10px;
+  }
+
+  .card {
+    margin: 20px;
+    padding: 18px;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  .box {
+    min-width: 100%;
+  }
+
+  table {
+    min-width: 500px;
+  }
+
+  .nav-inner {
+    justify-content: space-around;
+  }
+
+  textarea {
+    height: 160px;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+@media (max-width: 767px) {
+
+  /* overall fix */
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 8px;
+  }
+
+  /* card */
+  .card {
+    margin: 12px;
+    padding: 14px;
+    box-shadow: 
+      -4px -4px 0px #0b3a6e,
+      0px 3px 10px rgba(0,0,0,0.08);
+  }
+
+  /* layout */
+  .flex {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .box {
+    min-width: 100%;
+  }
+
+  /* table scroll fix */
+  .scroll {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 500px;
+  }
+
+  /* navbar */
+  .nav-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-inner a,
+  .nav-inner .dropbtn {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* dropdown fix */
+  .nav-inner .dropdown-content {
+    position: relative;
+    width: 100%;
+  }
+
+  /* button */
+  .btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* textarea */
+  textarea {
+    height: 140px;
+    font-size: 13px;
+  }
 }
 </style>
 
