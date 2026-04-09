@@ -820,6 +820,28 @@ projects.forEach(p => {
 
 });
 
+ document.querySelectorAll(".dropbtn").forEach(btn => {
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+
+    const parent = this.parentElement;
+
+    // close other dropdowns
+    document.querySelectorAll(".dropdown").forEach(d => {
+      if (d !== parent) d.classList.remove("active");
+    });
+
+    parent.classList.toggle("active");
+  });
+});
+
+/* close when clicking outside */
+document.addEventListener("click", () => {
+  document.querySelectorAll(".dropdown").forEach(d => {
+    d.classList.remove("active");
+  });
+});
+
 </script>
 
 
