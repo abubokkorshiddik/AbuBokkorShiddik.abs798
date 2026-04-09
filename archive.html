@@ -10,12 +10,36 @@
 
 <style>
 
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --navy:       #0b1f3a;
+      --navy2:      #122444;
+      --navy3:      #1a3460;
+      --blue:       #1a56db;
+      --blue-hover: #1648c0;
+      --sky:        #e8f0fe;
+      --sky2:       #d2e3fc;
+      --green:      #166534;
+      --green-bg:   #f0fdf4;
+      --green-bd:   #bbf7d0;
+      --purple:     #5b21b6;
+      --purple-bg:  #f5f3ff;
+      --purple-bd:  #ddd6fe;
+      --text:       #0f172a;
+      --text2:      #334155;
+      --text3:      #64748b;
+      --border:     #e2e8f0;
+      --border2:    #cbd5e1;
+      --bg:         #f8fafc;
+      --white:      #ffffff;
+      --radius:     8px;
+      --radius-lg:  14px;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow:     0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+    }
+
 
 /* BODY */
 body {
@@ -30,72 +54,150 @@ body {
   margin-top: 15px;
   color: #1f2937;
 }
-/* NAVBAR */
-.navbar {
-  background: linear-gradient(90deg, #00264d, #004080);
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
 
-.nav-inner {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 15px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+  
+/* ── NAVBAR ── */
+    .navbar {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-bar-inner {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      height: 56px;
+    }
+    .nav-brand {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.2px;
+      margin-right: auto;
+      white-space: nowrap;
+    }
+    .nav-brand span { color: #93c5fd; font-weight: 300; }
 
-.nav-inner a,
-.dropbtn {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  padding: 7px 10px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-weight: 600;
-}
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links > a, .dropbtn {
+      color: rgba(255,255,255,0.75);
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 6px 11px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,0.09); }
 
-.nav-inner a:hover,
-.dropbtn:hover {
-  background: rgba(255,255,255,0.15);
-  border-radius: 5px;
-}
+    .dropdown { position: relative; }
+    .dropdown-content {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: #132444;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      min-width: 190px;
+      padding: 6px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown.active .dropdown-content {
+      opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
+    }
+    .dropdown-content a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown-content a:hover { background: rgba(255,255,255,0.08); color: #fff; }
 
-/* DROPDOWN */
-.dropdown {
-  position: relative;
-}
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 7px;
+      border-radius: 6px;
+      margin-left: 10px;
+      transition: background 0.2s;
+    }
+    .hamburger:hover { background: rgba(255,255,255,0.1); }
+    .hamburger span {
+      display: block;
+      width: 21px;
+      height: 2px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2px;
+      transition: transform 0.28s, opacity 0.28s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #0f172a;
-  min-width: 180px;
-  top: 35px;
-  border-radius: 6px;
-}
+    /* Drawer */
+    .nav-drawer {
+      display: none;
+      background: #0d1c38;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1);
+    }
+    .nav-drawer.open { max-height: 700px; }
+    .drawer-inner { padding: 8px 0 16px; }
+    .drawer-link {
+      display: block;
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 11px 24px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .drawer-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+    .drawer-section-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: rgba(255,255,255,0.3);
+      padding: 14px 24px 4px;
+    }
+    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,0.58); }
+    .drawer-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0; }
 
-.dropdown-content a {
-  display: block;
-  padding: 10px;
-  color: #cbd5e1;
-}
-
-.dropdown-content a:hover {
-  background: #1f2937;
-  color: white;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-drawer { display: block; }
+    }
 /* HEADER */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
@@ -244,40 +346,73 @@ footer a:hover {
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="nav-inner">
+  <div class="nav-bar-inner">
+    <div class="nav-brand">ABS<span> · </span>Abu Bokkor Shiddik</div>
 
-    <a href="home.html">Home</a>
-    <a href="publications.html">Publications</a>
-<a href="service.html">Services</a>
-    <div class="dropdown">
-      <button class="dropbtn">Digital Lab ▼</button>
-      <div class="dropdown-content">
-        <a href="projects.html">Projects</a>
-        <a href="data-code.html">Data & Code</a>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <a href="service.html">Service</a>
+
+      <div class="dropdown">
+        <button class="dropbtn">Digital Lab ▾</button>
+        <div class="dropdown-content">
+          <a href="projects.html">⚗ Projects</a>
+          <a href="data-code.html">💾 Data &amp; Code</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Learning ▾</button>
+        <div class="dropdown-content">
+          <a href="courses.html">🎓 Courses &amp; Training</a>
+          <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Insights ▾</button>
+        <div class="dropdown-content">
+          <a href="insights.html">✍ Posts</a>
+          <a href="videos.html">▶ Videos</a>
+          <a href="archive.html">📷 Photos &amp; Archive</a>
+        </div>
       </div>
     </div>
 
-    <div class="dropdown">
-      <button class="dropbtn">Learning & Events ▼</button>
-      <div class="dropdown-content">
-        <a href="courses.html">Courses & Training</a>
-        <a href="conference-and-workshop.html">Conferences & Workshops</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-drawer" id="nav-drawer">
+    <div class="drawer-inner">
+      <a class="drawer-link" href="home.html">Home</a>
+      <a class="drawer-link" href="publications.html">Publications</a>
+      <a class="drawer-link" href="service.html">Service</a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Digital Lab</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="projects.html">Projects</a>
+        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Learning &amp; Events</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
+        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Insights</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="insights.html">Posts</a>
+        <a class="drawer-link" href="videos.html">Videos</a>
+        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
       </div>
     </div>
-
-    
-
-    <div class="dropdown">
-      <button class="dropbtn">Insights ▼</button>
-      <div class="dropdown-content">
-        <a href="insights.html">Posts</a>
-        <a href="videos.html">Videos</a>
-        <a href="archive.html">Photos & Archive</a>
-      </div>
-    </div>
-
   </div>
 </nav>
+
 
 <div id="lightbox" style="
   position: fixed;
@@ -1247,6 +1382,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+    document.querySelectorAll('.dropbtn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const dd = btn.closest('.dropdown');
+      const open = dd.classList.contains('active');
+      document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
+      if (!open) dd.classList.add('active');
+    });
+  });
+  
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
+  });
+
+  const ham = document.getElementById('hamburger');
+  const drawer = document.getElementById('nav-drawer');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      drawer.classList.remove('open');
+    });
+  });
 </script>
 
 </body>
