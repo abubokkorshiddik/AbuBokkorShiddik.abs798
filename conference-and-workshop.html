@@ -281,26 +281,40 @@ Health Data Analysis
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* ========================= */
-/* FOOTER */
-/* ========================= */
-footer {
-  background: #020617;
-  color: #e2e8f0;
-  text-align: center;
-  padding: 25px;
-  margin-top: 40px;
-}
+ /* ── FOOTER ── */
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 44px 24px 32px; margin-top: 60px; }
+    .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .footer-col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+    .footer-name { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 8px; }
+    .footer-desc { font-size: 12.5px; line-height: 1.7; }
+    .footer-nav-links, .footer-social-links { display: flex; flex-direction: column; gap: 7px; }
+    .footer-nav-links a, .footer-social-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.15s; }
+    .footer-nav-links a:hover { color: rgba(255,255,255,0.9); }
+    .footer-social-links a:hover { color: #93c5fd; }
+    .footer-bottom { max-width: 1180px; margin: 22px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom p { font-size: 12px; }
 
-footer a {
-  color: #93c5fd;
-  margin: 0 8px;
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: white;
-}
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .pub-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 48px 20px 40px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero h1 { font-size: 1.75rem; }
+      .hero-photo-wrap { order: -1; flex-direction: row; align-items: center; gap: 20px; }
+      .hero-photo-ring { width: 100px; height: 100px; }
+      .hero-affil { text-align: left; }
+    }
+    @media (max-width: 600px) {
+      .pub-grid { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .interest-grid { grid-template-columns: 1fr 1fr; }
+    }
 
 /* ========================= */
 /* TABLET */
