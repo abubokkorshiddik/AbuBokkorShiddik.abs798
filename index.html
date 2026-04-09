@@ -1,798 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Md. Abu Bokkor Shiddik — Researcher in Machine Learning, Explainable AI & Global Health Analytics. Statistics, BRUR, Bangladesh.">
-  <meta name="keywords" content="ABS798, Abu Bokkor Shiddik, Machine Learning, Explainable AI, Public Health, Epidemiology, Bangladesh, BRUR, Statistics, Dengue, Spatial Analysis">
-  <meta name="google-site-verification" content="google62120b7b4457ee75">
-  <title>Md. Abu Bokkor Shiddik — Researcher</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Md. Abu Bokkor Shiddik - Researcher in machine learning, health data analysis, and global studies.">
+    <meta name="keywords" content="ABS798, Abu Bokkor Shiddik, Machine Learning, Public Health, Researcher Bangladesh">
+    <title>Md. Abu Bokkor Shiddik — Researcher</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: #1d4ed8;
+        }
+        a:hover {
+            color: #3b82f6;
+        }
 
-    :root {
-      --navy:       #0b1f3a;
-      --navy2:      #122444;
-      --navy3:      #1a3460;
-      --blue:       #1a56db;
-      --blue-hover: #1648c0;
-      --sky:        #e8f0fe;
-      --sky2:       #d2e3fc;
-      --green:      #166534;
-      --green-bg:   #f0fdf4;
-      --green-bd:   #bbf7d0;
-      --purple:     #5b21b6;
-      --purple-bg:  #f5f3ff;
-      --purple-bd:  #ddd6fe;
-      --text:       #0f172a;
-      --text2:      #334155;
-      --text3:      #64748b;
-      --border:     #e2e8f0;
-      --border2:    #cbd5e1;
-      --bg:         #f8fafc;
-      --white:      #ffffff;
-      --radius:     8px;
-      --radius-lg:  14px;
-      --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow:     0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
-    }
+        /* Navbar Styles */
+        .navbar {
+            background-color: #0f2044;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .hamburger {
+            display: none;
+        }
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+            }
+            .hamburger span {
+                height: 3px;
+                width: 25px;
+                background-color: white;
+                margin: 3px 0;
+            }
+        }
 
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: var(--text);
-      font-size: 15.5px;
-      line-height: 1.75;
-      background: var(--bg);
-    }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a1628, #0f2044);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
 
-    a { color: inherit; text-decoration: none; }
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        
+        /* Section Styles */
+        .section {
+            margin: 40px 0;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #1d4ed8;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
-    /* ── NAVBAR ── */
-    .navbar {
-      background: var(--navy);
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .nav-bar-inner {
-      max-width: 1180px;
-      margin: auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      height: 56px;
-    }
-    .nav-brand {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: 0.2px;
-      margin-right: auto;
-      white-space: nowrap;
-    }
-    .nav-brand span { color: #93c5fd; font-weight: 300; }
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
 
-    .nav-links { display: flex; align-items: center; gap: 2px; }
-    .nav-links > a, .dropbtn {
-      color: rgba(255,255,255,0.75);
-      font-size: 13.5px;
-      font-weight: 500;
-      padding: 6px 11px;
-      border-radius: 6px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.18s, color 0.18s;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,0.09); }
-
-    .dropdown { position: relative; }
-    .dropdown-content {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      background: #132444;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      min-width: 190px;
-      padding: 6px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(6px);
-      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-      pointer-events: none;
-      z-index: 9999;
-    }
-    .dropdown:hover .dropdown-content,
-    .dropdown.active .dropdown-content {
-      opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
-    }
-    .dropdown-content a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      color: rgba(255,255,255,0.72);
-      font-size: 13px;
-      font-weight: 500;
-      border-radius: 6px;
-      transition: background 0.15s, color 0.15s;
-    }
-    .dropdown-content a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 7px;
-      border-radius: 6px;
-      margin-left: 10px;
-      transition: background 0.2s;
-    }
-    .hamburger:hover { background: rgba(255,255,255,0.1); }
-    .hamburger span {
-      display: block;
-      width: 21px;
-      height: 2px;
-      background: rgba(255,255,255,0.85);
-      border-radius: 2px;
-      transition: transform 0.28s, opacity 0.28s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* Drawer */
-    .nav-drawer {
-      display: none;
-      background: #0d1c38;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1);
-    }
-    .nav-drawer.open { max-height: 700px; }
-    .drawer-inner { padding: 8px 0 16px; }
-    .drawer-link {
-      display: block;
-      color: rgba(255,255,255,0.78);
-      font-size: 15px;
-      font-weight: 500;
-      padding: 11px 24px;
-      transition: background 0.15s, color 0.15s;
-    }
-    .drawer-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
-    .drawer-section-label {
-      font-size: 10.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: rgba(255,255,255,0.3);
-      padding: 14px 24px 4px;
-    }
-    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,0.58); }
-    .drawer-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0; }
-
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .nav-drawer { display: block; }
-    }
-
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(140deg, #07152a 0%, #0d2247 50%, #0f2d5c 100%);
-      color: white;
-      padding: 70px 24px 60px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 80% 20%, rgba(59,130,246,0.12) 0%, transparent 50%),
-        radial-gradient(circle at 10% 80%, rgba(99,102,241,0.08) 0%, transparent 40%);
-      pointer-events: none;
-    }
-    .hero-inner {
-      max-width: 1180px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 48px;
-      align-items: center;
-      position: relative;
-    }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: #93c5fd;
-      margin-bottom: 18px;
-    }
-    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
-    .hero h1 {
-      font-family: 'Lora', serif;
-      font-size: 2.4rem;
-      font-weight: 600;
-      line-height: 1.18;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
-    }
-    .hero-role { font-size: 1rem; color: #93c5fd; margin-bottom: 22px; }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 24px; }
-    .hero-meta-item { display: flex; align-items: center; gap: 7px; font-size: 13.5px; color: rgba(255,255,255,0.62); }
-    .hero-social { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-    .social-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 24px;
-      font-size: 12.5px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.78);
-      transition: background 0.18s, border-color 0.18s, color 0.18s;
-    }
-    .social-pill:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); color: #fff; }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--blue);
-      color: #fff;
-      padding: 11px 24px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { background: var(--blue-hover); transform: translateY(-1px); }
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: rgba(255,255,255,0.8);
-      padding: 11px 24px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.35); color: #fff; }
-    .hero-stats {
-      display: flex;
-      gap: 28px;
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      flex-wrap: wrap;
-    }
-    .hero-stat-num { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 4px; }
-    .hero-stat-label { font-size: 11.5px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.7px; font-weight: 500; }
-
-    .hero-photo-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-    .hero-photo-ring {
-      width: 210px; height: 210px;
-      border-radius: 50%;
-      padding: 4px;
-      background: linear-gradient(135deg, #3b82f6, #6366f1, #06b6d4);
-    }
-    .hero-photo-ring img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--navy);
-    }
-    .hero-affil { text-align: center; font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; }
-    .hero-affil strong { color: rgba(255,255,255,0.82); font-weight: 600; display: block; font-size: 12.5px; }
-
-    /* ── PAGE STRUCTURE ── */
-    .page-body { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-    .section-block { padding: 52px 0 0; }
-    .section-block:last-child { padding-bottom: 60px; }
-    .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; gap: 12px; }
-    .section-head h2 {
-      font-family: 'Lora', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text);
-      position: relative;
-      padding-bottom: 8px;
-    }
-    .section-head h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 36px; height: 2.5px;
-      background: var(--blue);
-      border-radius: 2px;
-    }
-    .see-all { font-size: 13px; font-weight: 600; color: var(--blue); white-space: nowrap; display: flex; align-items: center; gap: 4px; transition: gap 0.15s; }
-    .see-all:hover { gap: 7px; }
-
-    /* ── ABOUT ── */
-    .about-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 30px 32px;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-      overflow: hidden;
-    }
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
-      background: linear-gradient(to bottom, var(--blue), #6366f1);
-      border-radius: 4px 0 0 4px;
-    }
-    .about-card p { color: var(--text2); margin-bottom: 12px; }
-    .about-card p:last-child { margin-bottom: 0; }
-
-    /* ── INTERESTS ── */
-    .interest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .interest-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 18px;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    }
-    .interest-card:hover { border-color: var(--blue); box-shadow: var(--shadow); transform: translateY(-2px); }
-    .interest-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--sky); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-    .interest-label { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.4; margin-top: 2px; }
-
-    /* ── SKILLS ── */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-    .skill-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow-sm); }
-    .skill-card-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 10px; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .skill-tag { background: var(--sky); color: #1e3a8a; border: 1px solid var(--sky2); border-radius: 5px; font-size: 12px; font-weight: 500; padding: 3px 9px; }
-
-    /* ── PUBLICATIONS ── */
-    .pub-section { background: var(--white); padding: 52px 0; margin-top: 52px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .pub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .pub-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .pub-card:hover { border-color: #bfdbfe; box-shadow: var(--shadow); background: var(--white); }
-    .pub-card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .pub-journal-badge { font-size: 11px; font-weight: 700; color: var(--green); background: var(--green-bg); border: 1px solid var(--green-bd); border-radius: 5px; padding: 2px 8px; white-space: nowrap; }
-    .pub-year-badge { font-size: 11px; font-weight: 600; color: var(--text3); background: #f1f5f9; border: 1px solid var(--border); border-radius: 5px; padding: 2px 7px; }
-    .pub-title { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
-    .pub-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: var(--blue); margin-top: auto; transition: gap 0.15s; }
-    .pub-link:hover { gap: 8px; }
-
-    /* ── PROJECTS ── */
-    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .project-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-    }
-    .project-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); border-color: #bfdbfe; }
-    .project-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #1a56db, #6366f1); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 4px; }
-    .project-name { font-size: 14px; font-weight: 700; color: var(--text); }
-    .project-desc { font-size: 12.5px; color: var(--text3); line-height: 1.6; }
-
-    /* ── COURSES ── */
-    .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-    .course-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow-sm); display: flex; gap: 14px; align-items: flex-start; transition: border-color 0.2s; }
-    .course-card:hover { border-color: var(--border2); }
-    .course-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 6px; }
-    .course-name { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-    .course-org { font-size: 12px; color: var(--text3); }
-
-    /* ── SERVICE ── */
-    .service-list { display: flex; flex-direction: column; gap: 10px; }
-    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 20px; display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow-sm); }
-    .service-badge { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: var(--purple); background: var(--purple-bg); border: 1px solid var(--purple-bd); border-radius: 5px; padding: 3px 9px; white-space: nowrap; flex-shrink: 0; }
-    .service-name { font-size: 14px; font-weight: 500; color: var(--text); }
-    .service-dot { width: 4px; height: 4px; background: var(--border2); border-radius: 50%; flex-shrink: 0; }
-
-    /* ── FOOTER ── */
-    footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 44px 24px 32px; margin-top: 60px; }
-    .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .footer-col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
-    .footer-name { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 8px; }
-    .footer-desc { font-size: 12.5px; line-height: 1.7; }
-    .footer-nav-links, .footer-social-links { display: flex; flex-direction: column; gap: 7px; }
-    .footer-nav-links a, .footer-social-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.15s; }
-    .footer-nav-links a:hover { color: rgba(255,255,255,0.9); }
-    .footer-social-links a:hover { color: #93c5fd; }
-    .footer-bottom { max-width: 1180px; margin: 22px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-    .footer-bottom p { font-size: 12px; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .pub-grid { grid-template-columns: repeat(2, 1fr); }
-      .project-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 768px) {
-      .hero { padding: 48px 20px 40px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-      .hero h1 { font-size: 1.75rem; }
-      .hero-photo-wrap { order: -1; flex-direction: row; align-items: center; gap: 20px; }
-      .hero-photo-ring { width: 100px; height: 100px; }
-      .hero-affil { text-align: left; }
-    }
-    @media (max-width: 600px) {
-      .pub-grid { grid-template-columns: 1fr; }
-      .project-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .interest-grid { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
+        /* Footer Styles */
+        footer {
+            background-color: #0f2044;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        footer a {
+            color: #93c5fd;
+        }
+    </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="nav-bar-inner">
-    <div class="nav-brand">ABS<span> · </span>Abu Bokkor Shiddik</div>
-
-    <div class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="publications.html">Publications</a>
-      <a href="service.html">Service</a>
-
-      <div class="dropdown">
-        <button class="dropbtn">Digital Lab ▾</button>
-        <div class="dropdown-content">
-          <a href="projects.html">⚗ Projects</a>
-          <a href="data-code.html">💾 Data &amp; Code</a>
+    <div class="nav-inner">
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="publications.html">Publications</a>
+            <a href="service.html">Services</a>
+            <div class="dropdown">
+                <button class="dropbtn">Digital Lab ▼</button>
+                <div class="dropdown-content">
+                    <a href="projects.html">Projects</a>
+                    <a href="data-code.html">Data & Code</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Learning & Events ▼</button>
+                <div class="dropdown-content">
+                    <a href="courses.html">Courses</a>
+                    <a href="conference-and-workshop.html">Conferences</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Insights ▼</button>
+                <div class="dropdown-content">
+                    <a href="insights.html">Posts</a>
+                    <a href="videos.html">Videos</a>
+                    <a href="archive.html">Photos & Archive</a>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">Learning ▾</button>
-        <div class="dropdown-content">
-          <a href="courses.html">🎓 Courses &amp; Training</a>
-          <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">Insights ▾</button>
-        <div class="dropdown-content">
-          <a href="insights.html">✍ Posts</a>
-          <a href="videos.html">▶ Videos</a>
-          <a href="archive.html">📷 Photos &amp; Archive</a>
-        </div>
-      </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
-
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-  <div class="nav-drawer" id="nav-drawer">
-    <div class="drawer-inner">
-      <a class="drawer-link" href="home.html">Home</a>
-      <a class="drawer-link" href="publications.html">Publications</a>
-      <a class="drawer-link" href="service.html">Service</a>
-      <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Digital Lab</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="projects.html">Projects</a>
-        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
-      </div>
-      <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Learning &amp; Events</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
-        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
-      </div>
-      <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Insights</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="insights.html">Posts</a>
-        <a class="drawer-link" href="videos.html">Videos</a>
-        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
-      </div>
-    </div>
-  </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO SECTION -->
 <section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">Available for Collaboration</div>
-      <h1>Md. Abu Bokkor Shiddik</h1>
-      <p class="hero-role">Researcher · Machine Learning · Explainable AI · Global Health Analytics</p>
-
-      <div class="hero-meta">
-        <span class="hero-meta-item">✉ abubokkor.brur60@gmail.com</span>
-        <span class="hero-meta-item">📍 Rangpur, Bangladesh</span>
-        <span class="hero-meta-item">🎓 Begum Rokeya University, Rangpur</span>
-      </div>
-
-      <div class="hero-social">
-        <a class="social-pill" href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">🌐 Portfolio</a>
-        <a class="social-pill" href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
-        <a class="social-pill" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Scholar</a>
-        <a class="social-pill" href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
-        <a class="social-pill" href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
-      </div>
-
-      <div class="hero-actions">
-        <a class="btn-primary" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/1006AbuBokkorShiddik_CV_2026_STAT_BRUR.pdf" target="_blank">↓ Download CV</a>
-        <a class="btn-outline" href="publications.html">View Publications →</a>
-      </div>
-
-      <div class="hero-stats">
-        <div><div class="hero-stat-num">9+</div><div class="hero-stat-label">Publications</div></div>
-        <div><div class="hero-stat-num">4</div><div class="hero-stat-label">Journals Reviewed</div></div>
-        <div><div class="hero-stat-num">15+</div><div class="hero-stat-label">Certifications</div></div>
-        <div><div class="hero-stat-num">2025–26</div><div class="hero-stat-label">Active</div></div>
-      </div>
-    </div>
-
-    <div class="hero-photo-wrap">
-      <div class="hero-photo-ring">
-        <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg" alt="Md. Abu Bokkor Shiddik">
-      </div>
-      <div class="hero-affil">
-        <strong>Dept. of Statistics</strong>
-        Begum Rokeya University<br>Rangpur, Bangladesh
-      </div>
-    </div>
-  </div>
+    <h1>Md. Abu Bokkor Shiddik</h1>
+    <p>Researcher · Machine Learning · Explainable AI · Global Health Analytics</p>
+    <a href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/1006AbuBokkorShiddik_CV_2026_STAT_BRUR.pdf" class="cv-button">Download Academic CV</a>
 </section>
 
-<!-- MAIN -->
-<div class="page-body">
+<!-- MAIN CONTENT -->
+<div class="container">
 
-  <div class="section-block">
-    <div class="section-head"><h2>Research Profile</h2></div>
-    <div class="about-card">
-      <p>I am a researcher with multiple peer-reviewed publications in high-impact international journals, including work on global disease modeling, dengue early warning systems, and climate-health interactions. My research integrates <strong>machine learning</strong>, <strong>explainable AI</strong>, and <strong>spatial analysis</strong> to support evidence-based decision-making in public health.</p>
-      <p>My work appears in internationally recognized venues including <em>Scientific Reports</em>, <em>BMJ Open</em>, <em>Global Epidemiology</em>, and <em>International Journal of Health Geographics</em>, contributing to the understanding of health risks across countries using large-scale multi-source datasets.</p>
-    </div>
-  </div>
+    <!-- RESEARCH PROFILE -->
+    <section class="section">
+        <h2 class="section-title">Research Profile</h2>
+        <div class="card">
+            <p>I am a researcher with multiple peer-reviewed publications in high-impact international journals, focusing on global disease modeling, dengue early warning systems, and climate-health interactions.</p>
+        </div>
+    </section>
 
-  <div class="section-block">
-    <div class="section-head"><h2>Research Interests</h2></div>
-    <div class="interest-grid">
-      <div class="interest-card"><div class="interest-icon">🤖</div><div class="interest-label">Machine Learning in Public Health</div></div>
-      <div class="interest-card"><div class="interest-icon">🔍</div><div class="interest-label">Explainable AI (XAI)</div></div>
-      <div class="interest-card"><div class="interest-icon">📊</div><div class="interest-label">Epidemiological Modeling</div></div>
-      <div class="interest-card"><div class="interest-icon">🗺</div><div class="interest-label">Spatiotemporal Analysis</div></div>
-      <div class="interest-card"><div class="interest-icon">🦠</div><div class="interest-label">Disease Prediction Systems</div></div>
-      <div class="interest-card"><div class="interest-icon">🌡</div><div class="interest-label">Climate &amp; Health</div></div>
-    </div>
-  </div>
+    <!-- RESEARCH INTERESTS -->
+    <section class="section">
+        <h2 class="section-title">Research Interests</h2>
+        <div class="card">
+            <p>Machine Learning in Public Health, Explainable AI, Epidemiological Modeling, Spatiotemporal Analysis, Disease Prediction Systems, Climate & Health</p>
+        </div>
+    </section>
 
-  <div class="section-block">
-    <div class="section-head"><h2>Technical Skills</h2></div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-label">Core Methods</div>
-        <div class="skill-tags"><span class="skill-tag">Machine Learning</span><span class="skill-tag">SHAP</span><span class="skill-tag">LIME</span><span class="skill-tag">Statistical Modeling</span></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-label">Programming &amp; Tools</div>
-        <div class="skill-tags"><span class="skill-tag">R</span><span class="skill-tag">Python</span><span class="skill-tag">SPSS</span><span class="skill-tag">LaTeX</span><span class="skill-tag">Git / GitHub</span></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-label">Advanced Analytics</div>
-        <div class="skill-tags"><span class="skill-tag">ARIMA / SARIMA</span><span class="skill-tag">Spatial Analysis</span><span class="skill-tag">Bayesian Modeling</span><span class="skill-tag">Deep Learning</span></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-label">Application Domains</div>
-        <div class="skill-tags"><span class="skill-tag">Epidemiology</span><span class="skill-tag">Climate-Health</span><span class="skill-tag">Disease Prediction</span><span class="skill-tag">Health Geographics</span></div>
-      </div>
-    </div>
-  </div>
+    <!-- SKILLS -->
+    <section class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="card">
+            <p>Core Methods: Machine Learning, Explainable AI (SHAP, LIME), Statistical Modeling</p>
+            <p>Tools: R, Python, SPSS, LaTeX, Git, GitHub</p>
+        </div>
+    </section>
 
-</div>
-
-<!-- PUBLICATIONS -->
-<section class="pub-section">
-  <div class="page-body">
-    <div class="section-head">
-      <h2>Selected Publications</h2>
-      <a href="publications.html" class="see-all">View all →</a>
-    </div>
-    <div class="pub-grid">
-      <div class="pub-card">
-        <div class="pub-card-meta"><span class="pub-journal-badge">Scientific Reports</span><span class="pub-year-badge">2025</span></div>
-        <p class="pub-title">Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</p>
-        <a class="pub-link" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">View paper →</a>
-      </div>
-      <div class="pub-card">
-        <div class="pub-card-meta"><span class="pub-journal-badge">Health Science Reports</span><span class="pub-year-badge">2025</span></div>
-        <p class="pub-title">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model</p>
-        <a class="pub-link" href="https://doi.org/10.1002/hsr2.70726" target="_blank">View paper →</a>
-      </div>
-      <div class="pub-card">
-        <div class="pub-card-meta"><span class="pub-journal-badge">Global Epidemiology</span><span class="pub-year-badge">2025</span></div>
-        <p class="pub-title">Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</p>
-        <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S2590113325000288" target="_blank">View paper →</a>
-      </div>
-      <div class="pub-card">
-        <div class="pub-card-meta"><span class="pub-journal-badge">Scientific Reports</span><span class="pub-year-badge">2025</span></div>
-        <p class="pub-title">Unraveling global malaria incidence and mortality using machine learning and AI-driven spatial analysis</p>
-        <a class="pub-link" href="https://www.nature.com/articles/s41598-025-12872-0" target="_blank">View paper →</a>
-      </div>
-      <div class="pub-card">
-        <div class="pub-card-meta"><span class="pub-journal-badge">Int. J. Health Geographics</span><span class="pub-year-badge">2025</span></div>
-        <p class="pub-title">Leveraging explainable AI and spatial analysis for communicable diseases in Asia (2000–2022)</p>
-        <a class="pub-link" href="https://link.springer.com/article/10.1186/s12942-025-00433-7" target="_blank">View paper →</a>
-      </div>
-      <div class="pub-card">
-        <div class="pub-card-meta"><span class="pub-journal-badge">Tropical Med. &amp; Infect. Dis.</span><span class="pub-year-badge">2026</span></div>
-        <p class="pub-title">District-Level Dengue Early Warning System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</p>
-        <a class="pub-link" href="https://www.mdpi.com/2414-6366/11/3/73" target="_blank">View paper →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS · COURSES · SERVICE -->
-<div class="page-body">
-
-  <div class="section-block">
-    <div class="section-head"><h2>Projects</h2><a href="projects.html" class="see-all">See all →</a></div>
-    <div class="project-grid">
-      <div class="project-card">
-        <div class="project-icon">🗺</div>
-        <div class="project-name">Dengue Dashboard</div>
-        <div class="project-desc">Interactive district-level early warning visualization for dengue outbreaks in Bangladesh.</div>
-      </div>
-      <div class="project-card">
-        <div class="project-icon">📋</div>
-        <div class="project-name">Systematic Review Tool</div>
-        <div class="project-desc">Automated literature screening and data extraction workflow for health research.</div>
-      </div>
-      <div class="project-card">
-        <div class="project-icon">📦</div>
-        <div class="project-name">R Package</div>
-        <div class="project-desc">Open-source R package for epidemiological time-series modeling and visualization.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-block">
-    <div class="section-head"><h2>Courses &amp; Training</h2><a href="courses.html" class="see-all">See all →</a></div>
-    <div class="course-grid">
-      <div class="course-card"><div class="course-dot"></div><div><div class="course-name">Gen AI in Research Workflow</div><div class="course-org">Elsevier Researcher Academy · 2026</div></div></div>
-      <div class="course-card"><div class="course-dot"></div><div><div class="course-name">Technical Writing Skills</div><div class="course-org">Elsevier Researcher Academy · 2026</div></div></div>
-      <div class="course-card"><div class="course-dot"></div><div><div class="course-name">Practical Time Series Analysis</div><div class="course-org">State University of New York · 2025</div></div></div>
-      <div class="course-card"><div class="course-dot"></div><div><div class="course-name">Machine Learning with Python</div><div class="course-org">IBM · 2024</div></div></div>
-      <div class="course-card"><div class="course-dot"></div><div><div class="course-name">Climate Risk Informed Decision Analysis</div><div class="course-org">UNESCO · 2024</div></div></div>
-      <div class="course-card"><div class="course-dot"></div><div><div class="course-name">Data Visualization with R</div><div class="course-org">IBM · 2024</div></div></div>
-    </div>
-  </div>
-
-  <div class="section-block">
-    <div class="section-head"><h2>Academic Service</h2><a href="service.html" class="see-all">See all →</a></div>
-    <div class="service-list">
-      <div class="service-item"><span class="service-badge">Peer Reviewer</span><span class="service-dot"></span><span class="service-name">BMJ Global Health</span></div>
-      <div class="service-item"><span class="service-badge">Peer Reviewer</span><span class="service-dot"></span><span class="service-name">PLOS Digital Health</span></div>
-      <div class="service-item"><span class="service-badge">Peer Reviewer</span><span class="service-dot"></span><span class="service-name">Health Science Reports</span></div>
-      <div class="service-item"><span class="service-badge">Peer Reviewer</span><span class="service-dot"></span><span class="service-name">BMJ Public Health</span></div>
-    </div>
-  </div>
+    <!-- RECENT PUBLICATIONS -->
+    <section class="section">
+        <h2 class="section-title">Recent Publications</h2>
+        <div class="card">
+            <p>Utilizing artificial intelligence to predict tuberculosis globally... <a href="https://doi.org/10.1038/s41598-025-96973-w">View paper</a></p>
+        </div>
+    </section>
 
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-name">Md. Abu Bokkor Shiddik</div>
-      <p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p>
-    </div>
-    <div>
-      <div class="footer-col-title">Navigation</div>
-      <div class="footer-nav-links">
-        <a href="home.html">Home</a>
-        <a href="publications.html">Publications</a>
+    <p>© 2026 Md. Abu Bokkor Shiddik</p>
+    <p>
+        <a href="home.html">Home</a> |
+        <a href="publications.html">Publications</a> |
         <a href="projects.html">Projects</a>
-        <a href="courses.html">Courses &amp; Training</a>
-        <a href="service.html">Service</a>
-        <a href="conference-and-workshop.html">Conferences</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-title">Connect</div>
-      <div class="footer-social-links">
-        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">🌐 Portfolio</a>
-        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
-        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Google Scholar</a>
-        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
-        <a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Md. Abu Bokkor Shiddik · All rights reserved</p>
-    <p>abubokkor.brur60@gmail.com · +880 1874 001360</p>
-  </div>
+    </p>
 </footer>
 
 <script>
-  document.querySelectorAll('.dropbtn').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      const dd = btn.closest('.dropdown');
-      const open = dd.classList.contains('active');
-      document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
-      if (!open) dd.classList.add('active');
+    // Hamburger menu toggle
+    document.getElementById('hamburger').addEventListener('click', function () {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
     });
-  });
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
-  });
-
-  const ham = document.getElementById('hamburger');
-  const drawer = document.getElementById('nav-drawer');
-  ham.addEventListener('click', () => {
-    ham.classList.toggle('open');
-    drawer.classList.toggle('open');
-  });
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      ham.classList.remove('open');
-      drawer.classList.remove('open');
-    });
-  });
 </script>
+
 </body>
 </html>
