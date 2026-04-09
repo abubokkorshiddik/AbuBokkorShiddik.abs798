@@ -617,9 +617,9 @@ const projects = [
     rcode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/TBXAI.txt",
     tableId: "dataTable",
     varId: "varTable",
-    rId: "rCodeBox",
-    pyId: null
+    rId: "rCodeBox"
   },
+
   {
     name: "District Level Dengue Project",
     data1: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/DistricLevelDengueBD_Yearly_Data.csv",
@@ -635,6 +635,7 @@ const projects = [
     rId: "rCodeBox2",
     pyId: "pyCodeBox2"
   },
+
   {
     name: "Global malaria project",
     data: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/GlobalMalariaDataset.csv",
@@ -642,91 +643,94 @@ const projects = [
     rcode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/10325MalariaR.txt",
     tableId: "dataTable4",
     varId: "varTable4",
-    rId: "rCodeBox3",
-    pyId: null
+    rId: "rCodeBox3"
   },
+
   {
     name: "Dengue AI and EWS",
-
     data: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/MonthlyDengueBDData.csv",
     var: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/MonthlyDengueBDVariable.csv",
-
     pycode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/CAIPythonCodeDengue.txt",
     rcode: "https://raw.githubusercontent.com/abubokkorshiddik/Research-and-Publication/main/EWS_DengueRcode.txt",
-
     tableId: "dataTable1",
     varId: "varTable1",
-
     rId: "rCodeBox1",
     pyId: "pyCodeBox1"
   }
 ];
 
-/* ================= SAFE LOAD TABLE ================= */
-function loadTable(url, id, limit) {
-  if (!url || !id) return;
-
-  fetch(url)
-    .then(res => res.text())
-    .then(text => {
-      let rows = text.split("\n").slice(0, limit);
-      let html = "";
-
-      rows.forEach((row, i) => {
-        html += "<tr>";
-        row.split(",").forEach(cell => {
-          html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
-        });
-        html += "</tr>";
-      });
-
-      document.getElementById(id).innerHTML = html;
-    })
-    .catch(() => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = "<tr><td>No data</td></tr>";
-    });
+/* ================= SAFE FETCH ================= */
+async function safeFetchText(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Fetch failed");
+    return await res.text();
+  } catch (err) {
+    return null;
+  }
 }
 
-/* ================= SAFE LOAD CODE ================= */
-function loadCode(url, id) {
+/* ================= LOAD TABLE ================= */
+async function loadTable(url, id, limit = 500) {
   if (!url || !id) return;
 
-  fetch(url)
-    .then(res => res.text())
-    .then(text => {
-      const el = document.getElementById(id);
-      if (el) el.value = text.split("\n").slice(0, 600).join("\n");
-    })
-    .catch(() => {
-      const el = document.getElementById(id);
-      if (el) el.value = "No code available";
+  const text = await safeFetchText(url);
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  if (!text) {
+    el.innerHTML = "<tr><td>No data</td></tr>";
+    return;
+  }
+
+  const rows = text.split("\n").slice(0, limit);
+  let html = "";
+
+  rows.forEach((row, i) => {
+    html += "<tr>";
+    row.split(",").forEach(cell => {
+      html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
     });
+    html += "</tr>";
+  });
+
+  el.innerHTML = html;
 }
 
-/* ================= COPY ================= */
+/* ================= LOAD CODE ================= */
+async function loadCode(url, id, limit = 600) {
+  if (!url || !id) return;
+
+  const text = await safeFetchText(url);
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  el.value = text ? text.split("\n").slice(0, limit).join("\n") : "No code available";
+}
+
+/* ================= COPY CODE ================= */
 function copyCode(id) {
   const box = document.getElementById(id);
   if (!box) return;
 
-  box.select();
-  document.execCommand("copy");
-  alert("Copied");
+  navigator.clipboard.writeText(box.value)
+    .then(() => alert("Copied"))
+    .catch(() => alert("Copy failed"));
 }
 
-/* ================= DOWNLOAD ================= */
+/* ================= DOWNLOAD PROJECT ================= */
 async function downloadProject(index) {
 
   const p = projects[index];
   const zip = new JSZip();
 
   try {
-    if (p.data) zip.file("Dataset.csv", await fetch(p.data).then(r => r.text()));
-    if (p.var) zip.file("Variables.csv", await fetch(p.var).then(r => r.text()));
-    if (p.rcode) zip.file("R_Code.txt", await fetch(p.rcode).then(r => r.text()));
-    if (p.pycode) zip.file("Python_Code.txt", await fetch(p.pycode).then(r => r.text()));
-  } catch {
-    alert("Files not available");
+    if (p.data) zip.file("Dataset.csv", await safeFetchText(p.data));
+    if (p.var) zip.file("Variables.csv", await safeFetchText(p.var));
+    if (p.rcode) zip.file("R_Code.txt", await safeFetchText(p.rcode));
+    if (p.pycode) zip.file("Python_Code.txt", await safeFetchText(p.pycode));
+  } catch (err) {
+    alert("Download failed");
     return;
   }
 
@@ -735,27 +739,26 @@ async function downloadProject(index) {
   });
 }
 
-/* ================= INIT ================= */
+/* ================= INIT ALL ================= */
 projects.forEach(p => {
 
-  // dataset
-  if (p.data) loadTable(p.data, p.tableId, 500);
-  if (p.data1) loadTable(p.data1, p.tableId1, 500);
-  if (p.data2) loadTable(p.data2, p.tableId2, 500);
+  // datasets
+  if (p.data) loadTable(p.data, p.tableId);
+  if (p.data1) loadTable(p.data1, p.tableId1);
+  if (p.data2) loadTable(p.data2, p.tableId2);
 
   // variables
   if (p.var) loadTable(p.var, p.varId, 100);
   if (p.var1) loadTable(p.var1, p.varId1, 100);
   if (p.var2) loadTable(p.var2, p.varId2, 100);
 
-  // code (only one python + one r)
+  // code
   loadCode(p.rcode, p.rId);
   loadCode(p.pycode, p.pyId);
 
 });
 
 </script>
- 
 
 
 
