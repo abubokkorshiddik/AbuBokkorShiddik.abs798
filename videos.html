@@ -396,37 +396,70 @@ footer {
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="nav-inner">
+  <div class="nav-bar-inner">
+    <div class="nav-brand">ABS<span> · </span>Abu Bokkor Shiddik</div>
 
-    <a href="home.html">Home</a>
-    <a href="publications.html">Publications</a>
- <a href="service.html">Services</a>
-    <div class="dropdown">
-      <button class="dropbtn">Digital Lab ▼</button>
-      <div class="dropdown-content">
-        <a href="projects.html">Projects</a>
-        <a href="data-code.html">Data & Code</a>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <a href="service.html">Service</a>
+
+      <div class="dropdown">
+        <button class="dropbtn">Digital Lab ▾</button>
+        <div class="dropdown-content">
+          <a href="projects.html">⚗ Projects</a>
+          <a href="data-code.html">💾 Data &amp; Code</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Learning ▾</button>
+        <div class="dropdown-content">
+          <a href="courses.html">🎓 Courses &amp; Training</a>
+          <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Insights ▾</button>
+        <div class="dropdown-content">
+          <a href="insights.html">✍ Posts</a>
+          <a href="videos.html">▶ Videos</a>
+          <a href="archive.html">📷 Photos &amp; Archive</a>
+        </div>
       </div>
     </div>
 
-    <div class="dropdown">
-      <button class="dropbtn">Learning & Events ▼</button>
-      <div class="dropdown-content">
-        <a href="courses.html">Courses & Training</a>
-        <a href="conference-and-workshop.html">Conferences & Workshops</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-drawer" id="nav-drawer">
+    <div class="drawer-inner">
+      <a class="drawer-link" href="home.html">Home</a>
+      <a class="drawer-link" href="publications.html">Publications</a>
+      <a class="drawer-link" href="service.html">Service</a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Digital Lab</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="projects.html">Projects</a>
+        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Learning &amp; Events</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
+        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Insights</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="insights.html">Posts</a>
+        <a class="drawer-link" href="videos.html">Videos</a>
+        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
       </div>
     </div>
-
-   
-    <div class="dropdown">
-      <button class="dropbtn">Insights ▼</button>
-      <div class="dropdown-content">
-        <a href="insights.html">Posts</a>
-        <a href="videos.html">Videos</a>
-        <a href="archive.html">Photos & Archive</a>
-      </div>
-    </div>
-
   </div>
 </nav>
 
