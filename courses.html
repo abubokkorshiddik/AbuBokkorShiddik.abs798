@@ -13,7 +13,7 @@
 
 <style>
 
-/* base */
+/* reset */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Inter',sans-serif;
@@ -21,7 +21,7 @@ body{
   color:#0f172a;
 }
 
-/* navbar (aligned with homepage) */
+/* NAVBAR (aligned with homepage) */
 .navbar{
   background:#0b1f3a;
   position:sticky;
@@ -34,18 +34,18 @@ body{
   padding:10px 20px;
   display:flex;
   justify-content:center;
-  gap:8px;
   flex-wrap:wrap;
+  gap:6px;
 }
-.nav-inner a, .dropbtn{
+.nav-inner a,.dropbtn{
   color:rgba(255,255,255,0.8);
   font-size:14px;
   font-weight:500;
   padding:6px 10px;
   border-radius:6px;
   text-decoration:none;
-  background:none;
   border:none;
+  background:none;
   cursor:pointer;
 }
 .nav-inner a:hover,.dropbtn:hover{
@@ -61,8 +61,8 @@ body{
   left:0;
   background:#132444;
   border-radius:8px;
-  display:none;
   min-width:180px;
+  display:none;
 }
 .dropdown-content a{
   display:block;
@@ -80,12 +80,12 @@ body{
 .header{
   background:linear-gradient(140deg,#07152a,#0f2d5c);
   color:white;
+  padding:55px 20px 50px;
   text-align:center;
-  padding:60px 20px 50px;
 }
 .header h1{
   font-family:'Lora',serif;
-  font-size:28px;
+  font-size:30px;
   margin-bottom:8px;
 }
 .header p{
@@ -95,25 +95,25 @@ body{
 
 /* container */
 .container{
-  max-width:900px;
+  max-width:1000px;
   margin:auto;
   padding:40px 20px;
 }
 
-/* course card upgraded */
+/* course card */
 .course{
   background:#ffffff;
   border:1px solid #e2e8f0;
   border-radius:10px;
   padding:18px 20px;
   margin-bottom:14px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.04);
-  transition:0.25s;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
   position:relative;
+  transition:0.25s;
 }
 .course:hover{
   transform:translateY(-3px);
-  box-shadow:0 8px 18px rgba(0,0,0,0.08);
+  box-shadow:0 10px 22px rgba(0,0,0,0.08);
   border-color:#bfdbfe;
 }
 
@@ -130,18 +130,19 @@ body{
 }
 
 /* content */
+.date{
+  font-size:13px;
+  font-weight:600;
+  color:#1a56db;
+  margin-bottom:4px;
+}
 .course-title{
   font-size:14.5px;
   font-weight:600;
   margin-bottom:4px;
 }
-.date{
-  font-size:12.5px;
-  font-weight:600;
-  color:#1a56db;
-}
 .provider{
-  font-size:12.5px;
+  font-size:13px;
   color:#64748b;
 }
 
@@ -160,7 +161,7 @@ footer a{
 
 /* responsive */
 @media(max-width:600px){
-  .header h1{font-size:22px;}
+  .header h1{font-size:24px;}
   .container{padding:25px 15px;}
 }
 
@@ -169,16 +170,16 @@ footer a{
 
 <body>
 
-<!-- navbar -->
+<!-- NAVBAR -->
 <nav class="navbar">
 <div class="nav-inner">
 
 <a href="home.html">Home</a>
 <a href="publications.html">Publications</a>
-<a href="service.html">Service</a>
+<a href="service.html">Services</a>
 
 <div class="dropdown">
-<button class="dropbtn">Digital lab ▾</button>
+<button class="dropbtn">Digital Lab ▾</button>
 <div class="dropdown-content">
 <a href="projects.html">Projects</a>
 <a href="data-code.html">Data & Code</a>
@@ -186,7 +187,7 @@ footer a{
 </div>
 
 <div class="dropdown">
-<button class="dropbtn">Learning ▾</button>
+<button class="dropbtn">Learning & Events ▾</button>
 <div class="dropdown-content">
 <a href="courses.html">Courses & Training</a>
 <a href="conference-and-workshop.html">Conferences & Workshops</a>
@@ -205,54 +206,140 @@ footer a{
 </div>
 </nav>
 
-<!-- header -->
+<!-- HEADER -->
 <div class="header">
 <h1>Courses and training</h1>
-<p>Professional learning and certified research development</p>
+<p>Professional development and certified learning in research, machine learning, and data science</p>
 </div>
 
-<!-- content -->
+<!-- CONTENT -->
 <div class="container">
+
+<!-- KEEPING ALL YOUR DATA -->
 
 <div class="course">
 <div class="date">21 March, 2026</div>
 <div class="course-title">Gen AI use in the research workflow</div>
-<div class="provider">Elsevier researcher academy</div>
+<div class="provider">Researcher Academy, Elsevier</div>
 </div>
 
 <div class="course">
 <div class="date">14 January, 2026</div>
-<div class="course-title">How to write for interdisciplinary audience</div>
-<div class="provider">Elsevier researcher academy</div>
+<div class="course-title">How to write for an interdisciplinary audience</div>
+<div class="provider">Researcher Academy, Elsevier</div>
+</div>
+
+<div class="course">
+<div class="date">14 January, 2026</div>
+<div class="course-title">How to write case reports</div>
+<div class="provider">Researcher Academy, Elsevier</div>
+</div>
+
+<div class="course">
+<div class="date">12 January, 2026</div>
+<div class="course-title">How to identify research gaps</div>
+<div class="provider">Researcher Academy, Elsevier</div>
+</div>
+
+<div class="course">
+<div class="date">11 January, 2026</div>
+<div class="course-title">Beginners guide to writing a manuscript in LaTeX</div>
+<div class="provider">Researcher Academy, Elsevier</div>
+</div>
+
+<div class="course">
+<div class="date">10 January, 2026</div>
+<div class="course-title">How to write and review a methods article</div>
+<div class="provider">Researcher Academy, Elsevier</div>
+</div>
+
+<div class="course">
+<div class="date">10 January, 2026</div>
+<div class="course-title">An editors guide to writing a review article</div>
+<div class="provider">Researcher Academy, Elsevier</div>
 </div>
 
 <div class="course">
 <div class="date">15 March, 2025</div>
-<div class="course-title">Practical time series analysis</div>
-<div class="provider">State university of New York</div>
+<div class="course-title">Practical Time Series Analysis</div>
+<div class="provider">State University of New York</div>
 </div>
 
 <div class="course">
 <div class="date">10 September, 2024</div>
-<div class="course-title">Climate risk informed decision analysis</div>
+<div class="course-title">Climate Risk Informed Decision Analysis (CRIDA)</div>
 <div class="provider">UNESCO</div>
 </div>
 
 <div class="course">
 <div class="date">7 June, 2024</div>
-<div class="course-title">Python for data science</div>
+<div class="course-title">Python 101 for Data Science</div>
 <div class="provider">IBM</div>
 </div>
 
 <div class="course">
+<div class="date">4 January, 2024</div>
+<div class="course-title">Machine Learning with Python</div>
+<div class="provider">IBM</div>
+</div>
+
+<div class="course">
+<div class="date">16 January, 2024</div>
+<div class="course-title">Data Visualization with R</div>
+<div class="provider">IBM</div>
+</div>
+
+<div class="course">
+<div class="date">30 December, 2023</div>
+<div class="course-title">R for Data Science</div>
+<div class="provider">IBM</div>
+</div>
+
+<div class="course">
+<div class="date">26 December, 2023</div>
+<div class="course-title">Research Methodologies</div>
+<div class="provider">Queen Mary University of London</div>
+</div>
+
+<div class="course">
+<div class="date">23 December, 2023</div>
+<div class="course-title">Introduction to Computer Programming</div>
+<div class="provider">University of London</div>
+</div>
+
+<div class="course">
+<div class="date">4 December, 2023</div>
+<div class="course-title">Machine Learning for All</div>
+<div class="provider">University of London</div>
+</div>
+
+<div class="course">
+<div class="date">6 November, 2023</div>
+<div class="course-title">Education in Emergencies Global Course</div>
+<div class="provider">UNICEF</div>
+</div>
+
+<div class="course">
+<div class="date">24 November, 2023</div>
+<div class="course-title">What is Data Science?</div>
+<div class="provider">IBM</div>
+</div>
+
+<div class="course">
+<div class="date">1 November, 2023</div>
+<div class="course-title">Leadership for Planning and Decision-Making with Adolescents</div>
+<div class="provider">UNICEF</div>
+</div>
+
+<div class="course">
 <div class="date">2016</div>
-<div class="course-title">Diploma in computer science</div>
-<div class="provider">Bangladesh computer education</div>
+<div class="course-title">Diploma in Computer Science</div>
+<div class="provider">Bangladesh Computer Education (BCE)</div>
 </div>
 
 </div>
 
-<!-- footer -->
+<!-- FOOTER -->
 <footer>
 <p>Md. Abu Bokkor Shiddik</p>
 <p>
