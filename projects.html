@@ -34,105 +34,188 @@ Health Data Analysis
 
 <style>
 
-html { scroll-behavior: smooth; }
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f8fafc;
-  color: #1f2937;
-}
+    :root {
+      --navy:       #0b1f3a;
+      --navy2:      #122444;
+      --navy3:      #1a3460;
+      --blue:       #1a56db;
+      --blue-hover: #1648c0;
+      --sky:        #e8f0fe;
+      --sky2:       #d2e3fc;
+      --green:      #166534;
+      --green-bg:   #f0fdf4;
+      --green-bd:   #bbf7d0;
+      --purple:     #5b21b6;
+      --purple-bg:  #f5f3ff;
+      --purple-bd:  #ddd6fe;
+      --text:       #0f172a;
+      --text2:      #334155;
+      --text3:      #64748b;
+      --border:     #e2e8f0;
+      --border2:    #cbd5e1;
+      --bg:         #f8fafc;
+      --white:      #ffffff;
+      --radius:     8px;
+      --radius-lg:  14px;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow:     0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+    }
 
-/* ========================= */
-/* NAV (UPDATED ONLY) */
-/* ========================= */
-.navbar {
-  background: linear-gradient(90deg, #00264d, #004080);
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-}
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      font-size: 15.5px;
+      line-height: 1.75;
+      background: var(--bg);
+    }
 
-.nav-inner {
-  max-width: 1100px;
-  margin: auto;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
+    a { color: inherit; text-decoration: none; }
 
-.nav-inner a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 6px 10px;
-  border-radius: 5px;
-  transition: 0.25s;
-  margin-right: 0;
-}
+    /* ── NAVBAR ── */
+    .navbar {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-bar-inner {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      height: 56px;
+    }
+    .nav-brand {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.2px;
+      margin-right: auto;
+      white-space: nowrap;
+    }
+    .nav-brand span { color: #93c5fd; font-weight: 300; }
 
-.nav-inner a:hover {
-  color: #60a5fa;
-  background: rgba(255,255,255,0.12);
-}
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links > a, .dropbtn {
+      color: rgba(255,255,255,0.75);
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 6px 11px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,0.09); }
 
-.nav-inner .dropdown {
-  position: relative;
-}
+    .dropdown { position: relative; }
+    .dropdown-content {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: #132444;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      min-width: 190px;
+      padding: 6px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown.active .dropdown-content {
+      opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
+    }
+    .dropdown-content a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown-content a:hover { background: rgba(255,255,255,0.08); color: #fff; }
 
-.nav-inner .dropbtn {
-  background: none;
-  border: none;
-  color: white;
-  font-weight: 500;
-  font-size: 17px;
-  font-family: inherit;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 5px;
-}
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 7px;
+      border-radius: 6px;
+      margin-left: 10px;
+      transition: background 0.2s;
+    }
+    .hamburger:hover { background: rgba(255,255,255,0.1); }
+    .hamburger span {
+      display: block;
+      width: 21px;
+      height: 2px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2px;
+      transition: transform 0.28s, opacity 0.28s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-.nav-inner .dropbtn:hover {
-  color: #60a5fa;
-  background: rgba(255,255,255,0.12);
-}
+    /* Drawer */
+    .nav-drawer {
+      display: none;
+      background: #0d1c38;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1);
+    }
+    .nav-drawer.open { max-height: 700px; }
+    .drawer-inner { padding: 8px 0 16px; }
+    .drawer-link {
+      display: block;
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 11px 24px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .drawer-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+    .drawer-section-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: rgba(255,255,255,0.3);
+      padding: 14px 24px 4px;
+    }
+    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,0.58); }
+    .drawer-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0; }
 
-.nav-inner .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #0b2d5c;
-  min-width: 160px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-  border-radius: 6px;
-  z-index: 9999;
-  top: 100%;
-  left: 0;
-}
-
-.nav-inner .dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.nav-inner .dropdown.active .dropdown-content {
-  display: block;
-}
-
-.nav-inner .dropdown-content a {
-  color: #cbd5e1;
-  padding: 8px 12px;
-  text-decoration: none;
-  display: block;
-  font-weight: 500;
-}
-
-.nav-inner .dropdown-content a:hover {
-  background-color: #1e3a8a;
-  color: white;
-}
-
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-drawer { display: block; }
+    }
 /* HEADER */
 .header {
   background: linear-gradient(135deg, #020617, #0b3a6e);
@@ -319,5 +402,32 @@ footer a:hover {
   </p>
 </footer>
 
+  <script> 
+  document.querySelectorAll('.dropbtn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const dd = btn.closest('.dropdown');
+      const open = dd.classList.contains('active');
+      document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
+      if (!open) dd.classList.add('active');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
+  });
+
+  const ham = document.getElementById('hamburger');
+  const drawer = document.getElementById('nav-drawer');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      drawer.classList.remove('open');
+    });
+  });
+</script>
 </body>
 </html>
