@@ -680,7 +680,7 @@ Health Data Analysis
 
    <!-- POST (2) -->
 <div class="post" id="post-gather-guidelines-02" data-category="Public Health">
-
+<div class="share-preview" style="display:none;">
   <img src="https://github.com/user-attachments/assets/bb76126f-aa6f-4c7f-ab7e-e03ef4f3afd0">
 
   <div class="post-content">
@@ -849,7 +849,7 @@ GATHER promotes transparent and trustworthy science. It helps ensure that resear
 
   <!-- POST (1) -->
 <div class="post" id="post-normalization-standardization-01" data-category="Machine Learning">
-
+<div class="share-preview" style="display:none;">
   <img src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5">
 
   <div class="post-content">
@@ -1087,9 +1087,21 @@ function toggleText(el) {
 }
 
 function copyLink(postId) {
-  const url = window.location.href + "#" + postId;
-  navigator.clipboard.writeText(url);
-  alert("Link copied!");
+  const post = document.getElementById(postId);
+
+  const title = post.querySelector(".post-title")?.innerText || "";
+  const preview = post.querySelector(".share-preview")?.innerText || "";
+  const url = window.location.origin + window.location.pathname + "#" + postId;
+
+  const textToCopy =
+`${title}
+
+${preview}
+
+Read more: ${url}`;
+
+  navigator.clipboard.writeText(textToCopy);
+  alert("Post link copied!");
 }
 // AUTO INDEX POSTS INTO QUICK VIEW
 document.addEventListener("DOMContentLoaded", function () {
