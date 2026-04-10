@@ -1,33 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Courses and training | Md. Abu Bokkor Shiddik</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:wght@500;600&display=swap" rel="stylesheet">
-
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Courses & Training — Md. Abu Bokkor Shiddik. Professional development and certified learning.">
+  <title>Courses & Training | Md. Abu Bokkor Shiddik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --navy:       #0b1f3a;
-      --navy2:      #122444;
-      --navy3:      #1a3460;
       --blue:       #1a56db;
       --blue-hover: #1648c0;
       --sky:        #e8f0fe;
       --sky2:       #d2e3fc;
-      --green:      #166534;
-      --green-bg:   #f0fdf4;
-      --green-bd:   #bbf7d0;
-      --purple:     #5b21b6;
-      --purple-bg:  #f5f3ff;
-      --purple-bd:  #ddd6fe;
       --text:       #0f172a;
       --text2:      #334155;
       --text3:      #64748b;
@@ -40,259 +31,208 @@
       --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
       --shadow:     0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
     }
-/* RESET */
 
-body{
-  font-family:'Inter',sans-serif;
-  background:#f8fafc;
-  color:#0f172a;
-}
- a { color: inherit; text-decoration: none; }
- /* ── NAVBAR ── */
-    .navbar {
-      background: var(--navy);
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15.5px;
+      line-height: 1.75;
     }
-    .nav-bar-inner {
-      max-width: 1180px;
-      margin: auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      height: 56px;
-    }
-    .nav-brand {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: 0.2px;
-      margin-right: auto;
-      white-space: nowrap;
-    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAVBAR ── */
+    .navbar { background: var(--navy); position: sticky; top: 0; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-bar-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; align-items: center; height: 56px; }
+    .nav-brand { font-size: 14.5px; font-weight: 600; color: #fff; letter-spacing: 0.2px; margin-right: auto; white-space: nowrap; }
     .nav-brand span { color: #93c5fd; font-weight: 300; }
-
     .nav-links { display: flex; align-items: center; gap: 2px; }
     .nav-links > a, .dropbtn {
-      color: rgba(255,255,255,0.75);
-      font-size: 13.5px;
-      font-weight: 500;
-      padding: 6px 11px;
-      border-radius: 6px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.18s, color 0.18s;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      color: rgba(255,255,255,0.75); font-size: 13.5px; font-weight: 500; padding: 6px 11px;
+      border-radius: 6px; border: none; background: none; cursor: pointer; font-family: inherit;
+      transition: background 0.18s, color 0.18s; white-space: nowrap; display: flex; align-items: center; gap: 4px;
     }
     .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,0.09); }
-
     .dropdown { position: relative; }
     .dropdown-content {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      background: #132444;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      min-width: 190px;
-      padding: 6px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(6px);
-      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-      pointer-events: none;
-      z-index: 9999;
+      position: absolute; top: calc(100% + 6px); left: 0; background: #132444;
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; min-width: 190px; padding: 6px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transform: translateY(6px);
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s; pointer-events: none; z-index: 9999;
     }
-    .dropdown:hover .dropdown-content,
-    .dropdown.active .dropdown-content {
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content {
       opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
     }
     .dropdown-content a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      color: rgba(255,255,255,0.72);
-      font-size: 13px;
-      font-weight: 500;
-      border-radius: 6px;
+      display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+      color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 500; border-radius: 6px;
       transition: background 0.15s, color 0.15s;
     }
     .dropdown-content a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 7px;
-      border-radius: 6px;
-      margin-left: 10px;
-      transition: background 0.2s;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 6px; margin-left: 10px; transition: background 0.2s; }
     .hamburger:hover { background: rgba(255,255,255,0.1); }
-    .hamburger span {
-      display: block;
-      width: 21px;
-      height: 2px;
-      background: rgba(255,255,255,0.85);
-      border-radius: 2px;
-      transition: transform 0.28s, opacity 0.28s;
-    }
+    .hamburger span { display: block; width: 21px; height: 2px; background: rgba(255,255,255,0.85); border-radius: 2px; transition: transform 0.28s, opacity 0.28s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* Drawer */
-    .nav-drawer {
-      display: none;
-      background: #0d1c38;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1);
-    }
+    .nav-drawer { display: none; background: #0d1c38; border-top: 1px solid rgba(255,255,255,0.07); overflow: hidden; max-height: 0; transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1); }
     .nav-drawer.open { max-height: 700px; }
     .drawer-inner { padding: 8px 0 16px; }
-    .drawer-link {
-      display: block;
-      color: rgba(255,255,255,0.78);
-      font-size: 15px;
-      font-weight: 500;
-      padding: 11px 24px;
-      transition: background 0.15s, color 0.15s;
-    }
+    .drawer-link { display: block; color: rgba(255,255,255,0.78); font-size: 15px; font-weight: 500; padding: 11px 24px; transition: background 0.15s, color 0.15s; }
     .drawer-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
-    .drawer-section-label {
+    .drawer-section-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,0.3); padding: 14px 24px 4px; }
+    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,0.58); }
+    .drawer-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0; }
+    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-drawer { display: block; } }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(140deg, #07152a 0%, #0d2247 50%, #0f2d5c 100%);
+      color: white; padding: 56px 24px 48px; position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 75% 30%, rgba(59,130,246,0.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .page-hero-inner { max-width: 1180px; margin: auto; position: relative; }
+    .page-hero-label {
+      display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase; color: #93c5fd; margin-bottom: 12px;
+    }
+    .page-hero h1 { font-family: 'Lora', serif; font-size: 2rem; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
+    .page-hero p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 560px; }
+
+    /* Stats strip in hero */
+    .hero-stats { display: flex; flex-wrap: wrap; gap: 24px 40px; margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .hero-stat-num { font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 3px; }
+    .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.7px; font-weight: 500; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 56px; z-index: 100; }
+    .filter-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .filter-inner::-webkit-scrollbar { display: none; }
+    .filter-tab {
+      display: inline-flex; align-items: center; gap: 5px; padding: 12px 16px;
+      font-size: 13px; font-weight: 500; color: var(--text3);
+      border-bottom: 2.5px solid transparent; border-top: none; border-left: none; border-right: none;
+      white-space: nowrap; cursor: pointer; transition: color 0.18s, border-color 0.18s;
+      background: none; font-family: inherit; -webkit-tap-highlight-color: transparent; min-height: 44px;
+    }
+    .filter-tab:hover { color: var(--blue); }
+    .filter-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .filter-count {
+      font-size: 11px; font-weight: 700; background: var(--sky); color: var(--blue);
+      border-radius: 10px; padding: 1px 7px; min-width: 20px; text-align: center;
+    }
+    .filter-tab.active .filter-count { background: var(--blue); color: #fff; }
+
+    /* ── MAIN ── */
+    .page-body { max-width: 1180px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* ── SECTION BLOCK ── */
+    .section-block { padding: 44px 0 0; }
+    .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; gap: 12px; }
+    .section-head h2 { font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 600; color: var(--text); position: relative; padding-bottom: 8px; }
+    .section-head h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2.5px; background: var(--blue); border-radius: 2px; }
+    .section-count { font-size: 12.5px; color: var(--text3); font-weight: 500; }
+
+    /* ── COURSE GRID ── */
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 1100px) { .course-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 760px)  { .course-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px)  { .course-grid { grid-template-columns: 1fr; } }
+
+    /* ── COURSE CARD ── */
+    .course-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .course-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 3.5px; height: 100%;
+      background: linear-gradient(to bottom, var(--blue), #6366f1);
+      border-radius: 4px 0 0 4px;
+    }
+    .course-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--border2); }
+
+    .course-date {
+      font-size: 11.5px; font-weight: 600; color: var(--blue);
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .course-title {
+      font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.5;
+    }
+    .course-provider {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--text3); font-weight: 500;
+    }
+    .provider-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border2); flex-shrink: 0; }
+
+    /* provider color dots */
+    .provider-elsevier  .provider-dot { background: #e05a2b; }
+    .provider-ibm       .provider-dot { background: #0043ce; }
+    .provider-coursera  .provider-dot { background: #0056d2; }
+    .provider-unesco    .provider-dot { background: #009fda; }
+    .provider-unicef    .provider-dot { background: #00aeef; }
+    .provider-other     .provider-dot { background: #8b5cf6; }
+
+    .cert-btn {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--blue);
+      color: #fff;
+      padding: 9px 14px;
+      border-radius: 7px;
+      font-size: 12.5px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cert-btn:hover { background: var(--blue-hover); transform: translateY(-1px); }
+    .cert-btn::before { content: '↗'; font-size: 11px; }
+
+    /* ── PROVIDER BADGE ── */
+    .provider-badge {
+      display: inline-block;
       font-size: 10.5px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: rgba(255,255,255,0.3);
-      padding: 14px 24px 4px;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 5px;
+      margin-bottom: 2px;
+      width: fit-content;
     }
-    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,0.58); }
-    .drawer-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0; }
+    .badge-elsevier  { background: #fff0eb; color: #c04a1e; border: 1px solid #fbd0c0; }
+    .badge-ibm       { background: #e8f0fe; color: #0043ce; border: 1px solid #c7d9fd; }
+    .badge-coursera  { background: #e8f0fe; color: #0056d2; border: 1px solid #c7d9fd; }
+    .badge-suny      { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-unesco    { background: #e0f4ff; color: #006fa6; border: 1px solid #b3e4ff; }
+    .badge-unicef    { background: #e0f4ff; color: #007daf; border: 1px solid #b3e4ff; }
+    .badge-uol       { background: #f5f3ff; color: #5b21b6; border: 1px solid #ddd6fe; }
+    .badge-other     { background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
 
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .nav-drawer { display: block; }
-    }
+    /* ── DIVIDER ── */
+    .section-divider { height: 1px; background: var(--border); margin: 40px 0 0; }
 
-/* ================= HEADER ================= */
-.header{
-  background:linear-gradient(140deg,#07152a,#0f2d5c);
-  color:white;
-  text-align:center;
-  padding:55px 20px;
-}
-.header h1{
-  font-family:'Lora',serif;
-  font-size:30px;
-}
-.header p{color:#93c5fd;}
-
-/* ================= CONTENT ================= */
-.container {
-  max-width:1000px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-/* grid system */
-.course-grid {
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:14px;
-}
-
-/* card style */
-.course {
-  background:#fff;
-  border:1px solid #e2e8f0;
-  border-radius:10px;
-  padding:18px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  position:relative;
-  transition:0.2s;
-}
-
-.course:hover {
-  transform:translateY(-2px);
-  box-shadow:0 6px 16px rgba(0,0,0,0.08);
-}
-
-/* left accent line */
-.course::before {
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:4px;
-  height:100%;
-  background:linear-gradient(#1a56db,#6366f1);
-  border-radius:6px 0 0 6px;
-}
-
-/* text */
-.date {
-  color:#1a56db;
-  font-weight:600;
-  font-size:13px;
-}
-
-.course-title {
-  font-weight:600;
-}
-
-.provider {
-  color:#64748b;
-  font-size:13px;
-}
- .cert-btn {
-  margin-top:auto;
-  display:inline-block;
-  text-align:center;
-  background:#1a56db;
-  color:#fff;
-  padding:9px 12px;
-  border-radius:6px;
-  font-size:13px;
-  font-weight:600;
-  text-decoration:none;
-  transition:0.2s;
-}
-
-.cert-btn:hover {
-  background:#1648c0;
-  transform:translateY(-1px);
-}
- @media (max-width: 900px) {
-  .course-grid {
-    grid-template-columns:repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .course-grid {
-    grid-template-columns:1fr;
-  }
-}
- /* ── FOOTER ── */
+    /* ── FOOTER ── */
     footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 44px 24px 32px; margin-top: 60px; }
     .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .footer-col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
@@ -304,46 +244,20 @@ body{
     .footer-social-links a:hover { color: #93c5fd; }
     .footer-bottom { max-width: 1180px; margin: 22px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
     .footer-bottom p { font-size: 12px; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .pub-grid { grid-template-columns: repeat(2, 1fr); }
-      .project-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 768px) {
-      .hero { padding: 48px 20px 40px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-      .hero h1 { font-size: 1.75rem; }
-      .hero-photo-wrap { order: -1; flex-direction: row; align-items: center; gap: 20px; }
-      .hero-photo-ring { width: 100px; height: 100px; }
-      .hero-affil { text-align: left; }
-    }
-    @media (max-width: 600px) {
-      .pub-grid { grid-template-columns: 1fr; }
-      .project-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .interest-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-
-
-</style>
+    @media (max-width: 1024px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+  </style>
 </head>
-
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-bar-inner">
     <div class="nav-brand">ABS<span> · </span>Abu Bokkor Shiddik</div>
-
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
       <a href="service.html">Service</a>
-
       <div class="dropdown">
         <button class="dropbtn">Digital Lab ▾</button>
         <div class="dropdown-content">
@@ -351,7 +265,6 @@ body{
           <a href="data-code.html">💾 Data &amp; Code</a>
         </div>
       </div>
-
       <div class="dropdown">
         <button class="dropbtn">Learning ▾</button>
         <div class="dropdown-content">
@@ -359,7 +272,6 @@ body{
           <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
         </div>
       </div>
-
       <div class="dropdown">
         <button class="dropbtn">Insights ▾</button>
         <div class="dropdown-content">
@@ -369,12 +281,10 @@ body{
         </div>
       </div>
     </div>
-
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-
   <div class="nav-drawer" id="nav-drawer">
     <div class="drawer-inner">
       <a class="drawer-link" href="home.html">Home</a>
@@ -403,256 +313,261 @@ body{
   </div>
 </nav>
 
-<!-- HEADER -->
-<div class="header">
-<h1>Courses and training</h1>
-<p>Professional development and certified learning</p>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">🎓 Learning &amp; Development</div>
+    <h1>Courses &amp; Training</h1>
+    <p>Professional development, certified learning, and continuous skill-building across statistics, data science, and research.</p>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">22</div><div class="hero-stat-label">Certificates</div></div>
+      <div><div class="hero-stat-num">8</div><div class="hero-stat-label">Institutions</div></div>
+      <div><div class="hero-stat-num">2016–2026</div><div class="hero-stat-label">Span</div></div>
+    </div>
+  </div>
 </div>
 
-<!-- CONTENT -->
-<div class="container">
-
-<!-- ALL YOUR COURSES -->
-<div class="container">
-
-  <div class="course-grid">
-
-    <!-- 1 -->
-    <div class="course">
-      <div class="date">21 March, 2026</div>
-      <div class="course-title">Gen AI use in the research workflow</div>
-      <div class="provider">Researcher Academy, Elsevier</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1c3DxxbyENfF5AlkMfhf6zCzL8_U91Lnw/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 2 -->
-    <div class="course">
-      <div class="date">14 January, 2026</div>
-      <div class="course-title">How to write for an interdisciplinary audience</div>
-      <div class="provider">Researcher Academy, Elsevier</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/177YTJvhqZCHTMP_4e4ZKp4rMSE4XJDlW/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 3 -->
-    <div class="course">
-      <div class="date">14 January, 2026</div>
-      <div class="course-title">How to write case reports</div>
-      <div class="provider">Researcher Academy, Elsevier</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1Juawkok2HeHYFD_Y_eWSzUyElE6sJgzb/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 4 -->
-    <div class="course">
-      <div class="date">12 January, 2026</div>
-      <div class="course-title">How to identify research gaps</div>
-      <div class="provider">Researcher Academy, Elsevier</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/11bEJqyFv1wsURinPp0gkAYxj4OLiRtsS/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 5 -->
-    <div class="course">
-      <div class="date">11 January, 2026</div>
-      <div class="course-title">Beginners guide to writing a manuscript in LaTeX</div>
-      <div class="provider">Researcher Academy, Elsevier</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1caeTNkPjbKz6TwrlSToWLFwlsMWoSI8G/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 6 -->
-    <div class="course">
-      <div class="date">10 January, 2026</div>
-      <div class="course-title">How to write and review a methods article</div>
-      <div class="provider">Researcher Academy, Elsevier</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1VHgxOUBgKgQDLlODOeNz8hj-L05dm3zN/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 7 -->
-    <div class="course">
-      <div class="date">10 January, 2026</div>
-      <div class="course-title">An editors guide to writing a review article</div>
-      <div class="provider">Researcher Academy, Elsevier</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1kuwoF0YIcBm9lpp71gJ_VykD_vqh997j/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
- 
-
-
- 
-
-
-    <!-- 1 -->
-    <div class="course">
-      <div class="date">15 March, 2025</div>
-      <div class="course-title">Practical Time Series Analysis</div>
-      <div class="provider">State University of New York</div>
-
-      <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/EKSLS6EK24FY?utm_source=android&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 2 -->
-    <div class="course">
-      <div class="date">10 September, 2024</div>
-      <div class="course-title">Climate Risk Informed Decision Analysis (CRIDA)</div>
-      <div class="provider">UNESCO</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1P6nnMT-yiRCqLH_aUILjLL2MiAVjM0MP/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 3 -->
-    <div class="course">
-      <div class="date">7 June, 2024</div>
-      <div class="course-title">Python 101 for Data Science</div>
-      <div class="provider">IBM</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1XWX_YXs8WNfpdgHjvecXimMflhhRtYgI/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 4 -->
-    <div class="course">
-      <div class="date">4 January, 2024</div>
-      <div class="course-title">Machine Learning with Python</div>
-      <div class="provider">IBM</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1cXw5CQg7yf1f61gNqNp3LQEwVudymfOi/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 5 -->
-    <div class="course">
-      <div class="date">16 January, 2024</div>
-      <div class="course-title">Data Visualization with R</div>
-      <div class="provider">IBM</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1TUDFbsi2xs3t2qgVJ4kdYwN6OvpIOpFN/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 6 -->
-    <div class="course">
-      <div class="date">30 December, 2023</div>
-      <div class="course-title">R for Data Science</div>
-      <div class="provider">IBM</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1MSHKnh9SPxGmzZXX1gG8m23_-1qpxZx5/view" target="_blank">
-        View Certificate
-      </a>
-    
-
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-tab active" data-filter="all">All <span class="filter-count">22</span></button>
+    <button class="filter-tab" data-filter="elsevier">Elsevier <span class="filter-count">7</span></button>
+    <button class="filter-tab" data-filter="ibm">IBM <span class="filter-count">5</span></button>
+    <button class="filter-tab" data-filter="university">University <span class="filter-count">4</span></button>
+    <button class="filter-tab" data-filter="un">UN Agencies <span class="filter-count">3</span></button>
+    <button class="filter-tab" data-filter="other">Other <span class="filter-count">3</span></button>
   </div>
-
-
-
-
-    <!-- 1 -->
-    <div class="course">
-      <div class="date">26 December, 2023</div>
-      <div class="course-title">Research Methodologies</div>
-      <div class="provider">Queen Mary University of London</div>
-
-      <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/ZURLFFDHTC8T?utm_source=android&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 2 -->
-    <div class="course">
-      <div class="date">23 December, 2023</div>
-      <div class="course-title">Introduction to Computer Programming</div>
-      <div class="provider">University of London</div>
-
-      <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/F562ZKZ5ACF2?utm_source=android&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 3 -->
-    <div class="course">
-      <div class="date">4 December, 2023</div>
-      <div class="course-title">Machine Learning for All</div>
-      <div class="provider">University of London</div>
-
-      <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/GLR7ERSMAT62?utm_source=android&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 4 -->
-    <div class="course">
-      <div class="date">6 November, 2023</div>
-      <div class="course-title">Education in Emergencies Global Course</div>
-      <div class="provider">UNICEF</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1EzPyTiMWD8JFPs2FlSF60VFisho652Hi/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 5 -->
-    <div class="course">
-      <div class="date">24 November, 2023</div>
-      <div class="course-title">What is Data Science?</div>
-      <div class="provider">IBM</div>
-
-      <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/3QAF93ETC845?utm_source=android&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 6 -->
-    <div class="course">
-      <div class="date">1 November, 2023</div>
-      <div class="course-title">Leadership for Planning and Decision-Making with Adolescents</div>
-      <div class="provider">UNICEF</div>
-
-      <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/65NX9KQ8HXUS?utm_source=android&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-    <!-- 7 -->
-    <div class="course">
-      <div class="date">2016</div>
-      <div class="course-title">Diploma in Computer Science</div>
-      <div class="provider">Bangladesh Computer Education (BCE)</div>
-
-      <a class="cert-btn" href="https://drive.google.com/file/d/1xQfRa95d3mOGYc7xtpeACa21fPtcsNV2/view" target="_blank">
-        View Certificate
-      </a>
-    </div>
-
-  </div>
- </div>
-
 </div>
 
+<!-- MAIN -->
+<div class="page-body">
+
+  <!-- 2026 — ELSEVIER -->
+  <div class="section-block" id="sec-2026">
+    <div class="section-head">
+      <h2>2026 — Research &amp; Writing Skills</h2>
+      <span class="section-count">7 courses</span>
+    </div>
+    <div class="course-grid">
+
+      <div class="course-card" data-category="elsevier">
+        <span class="provider-badge badge-elsevier">Elsevier</span>
+        <div class="course-date">21 March 2026</div>
+        <div class="course-title">Gen AI Use in the Research Workflow</div>
+        <div class="course-provider provider-elsevier"><span class="provider-dot"></span>Researcher Academy, Elsevier</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1c3DxxbyENfF5AlkMfhf6zCzL8_U91Lnw/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="elsevier">
+        <span class="provider-badge badge-elsevier">Elsevier</span>
+        <div class="course-date">14 January 2026</div>
+        <div class="course-title">How to Write for an Interdisciplinary Audience</div>
+        <div class="course-provider provider-elsevier"><span class="provider-dot"></span>Researcher Academy, Elsevier</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/177YTJvhqZCHTMP_4e4ZKp4rMSE4XJDlW/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="elsevier">
+        <span class="provider-badge badge-elsevier">Elsevier</span>
+        <div class="course-date">14 January 2026</div>
+        <div class="course-title">How to Write Case Reports</div>
+        <div class="course-provider provider-elsevier"><span class="provider-dot"></span>Researcher Academy, Elsevier</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1Juawkok2HeHYFD_Y_eWSzUyElE6sJgzb/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="elsevier">
+        <span class="provider-badge badge-elsevier">Elsevier</span>
+        <div class="course-date">12 January 2026</div>
+        <div class="course-title">How to Identify Research Gaps</div>
+        <div class="course-provider provider-elsevier"><span class="provider-dot"></span>Researcher Academy, Elsevier</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/11bEJqyFv1wsURinPp0gkAYxj4OLiRtsS/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="elsevier">
+        <span class="provider-badge badge-elsevier">Elsevier</span>
+        <div class="course-date">11 January 2026</div>
+        <div class="course-title">Beginner's Guide to Writing a Manuscript in LaTeX</div>
+        <div class="course-provider provider-elsevier"><span class="provider-dot"></span>Researcher Academy, Elsevier</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1caeTNkPjbKz6TwrlSToWLFwlsMWoSI8G/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="elsevier">
+        <span class="provider-badge badge-elsevier">Elsevier</span>
+        <div class="course-date">10 January 2026</div>
+        <div class="course-title">How to Write and Review a Methods Article</div>
+        <div class="course-provider provider-elsevier"><span class="provider-dot"></span>Researcher Academy, Elsevier</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1VHgxOUBgKgQDLlODOeNz8hj-L05dm3zN/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="elsevier">
+        <span class="provider-badge badge-elsevier">Elsevier</span>
+        <div class="course-date">10 January 2026</div>
+        <div class="course-title">An Editor's Guide to Writing a Review Article</div>
+        <div class="course-provider provider-elsevier"><span class="provider-dot"></span>Researcher Academy, Elsevier</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1kuwoF0YIcBm9lpp71gJ_VykD_vqh997j/view" target="_blank">View Certificate</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- 2025 -->
+  <div class="section-block" id="sec-2025">
+    <div class="section-head">
+      <h2>2025 — Statistics &amp; Climate Analysis</h2>
+      <span class="section-count">1 course</span>
+    </div>
+    <div class="course-grid">
+
+      <div class="course-card" data-category="university">
+        <span class="provider-badge badge-suny">University</span>
+        <div class="course-date">15 March 2025</div>
+        <div class="course-title">Practical Time Series Analysis</div>
+        <div class="course-provider provider-coursera"><span class="provider-dot"></span>State University of New York</div>
+        <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/EKSLS6EK24FY" target="_blank">View Certificate</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- 2024 -->
+  <div class="section-block" id="sec-2024">
+    <div class="section-head">
+      <h2>2024 — Data Science &amp; Machine Learning</h2>
+      <span class="section-count">4 courses</span>
+    </div>
+    <div class="course-grid">
+
+      <div class="course-card" data-category="un">
+        <span class="provider-badge badge-unesco">UNESCO</span>
+        <div class="course-date">10 September 2024</div>
+        <div class="course-title">Climate Risk Informed Decision Analysis (CRIDA)</div>
+        <div class="course-provider provider-unesco"><span class="provider-dot"></span>UNESCO</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1P6nnMT-yiRCqLH_aUILjLL2MiAVjM0MP/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="ibm">
+        <span class="provider-badge badge-ibm">IBM</span>
+        <div class="course-date">7 June 2024</div>
+        <div class="course-title">Python 101 for Data Science</div>
+        <div class="course-provider provider-ibm"><span class="provider-dot"></span>IBM</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1XWX_YXs8WNfpdgHjvecXimMflhhRtYgI/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="ibm">
+        <span class="provider-badge badge-ibm">IBM</span>
+        <div class="course-date">16 January 2024</div>
+        <div class="course-title">Data Visualization with R</div>
+        <div class="course-provider provider-ibm"><span class="provider-dot"></span>IBM</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1TUDFbsi2xs3t2qgVJ4kdYwN6OvpIOpFN/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="ibm">
+        <span class="provider-badge badge-ibm">IBM</span>
+        <div class="course-date">4 January 2024</div>
+        <div class="course-title">Machine Learning with Python</div>
+        <div class="course-provider provider-ibm"><span class="provider-dot"></span>IBM</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1cXw5CQg7yf1f61gNqNp3LQEwVudymfOi/view" target="_blank">View Certificate</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- 2023 -->
+  <div class="section-block" id="sec-2023">
+    <div class="section-head">
+      <h2>2023 — Foundations in Data Science &amp; Research</h2>
+      <span class="section-count">9 courses</span>
+    </div>
+    <div class="course-grid">
+
+      <div class="course-card" data-category="ibm">
+        <span class="provider-badge badge-ibm">IBM</span>
+        <div class="course-date">30 December 2023</div>
+        <div class="course-title">R for Data Science</div>
+        <div class="course-provider provider-ibm"><span class="provider-dot"></span>IBM</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1MSHKnh9SPxGmzZXX1gG8m23_-1qpxZx5/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="university">
+        <span class="provider-badge badge-uol">University</span>
+        <div class="course-date">26 December 2023</div>
+        <div class="course-title">Research Methodologies</div>
+        <div class="course-provider provider-coursera"><span class="provider-dot"></span>Queen Mary University of London</div>
+        <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/ZURLFFDHTC8T" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="university">
+        <span class="provider-badge badge-uol">University</span>
+        <div class="course-date">23 December 2023</div>
+        <div class="course-title">Introduction to Computer Programming</div>
+        <div class="course-provider provider-coursera"><span class="provider-dot"></span>University of London</div>
+        <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/F562ZKZ5ACF2" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="university">
+        <span class="provider-badge badge-uol">University</span>
+        <div class="course-date">4 December 2023</div>
+        <div class="course-title">Machine Learning for All</div>
+        <div class="course-provider provider-coursera"><span class="provider-dot"></span>University of London</div>
+        <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/GLR7ERSMAT62" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="ibm">
+        <span class="provider-badge badge-ibm">IBM</span>
+        <div class="course-date">24 November 2023</div>
+        <div class="course-title">What is Data Science?</div>
+        <div class="course-provider provider-ibm"><span class="provider-dot"></span>IBM</div>
+        <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/3QAF93ETC845" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="un">
+        <span class="provider-badge badge-unicef">UNICEF</span>
+        <div class="course-date">6 November 2023</div>
+        <div class="course-title">Education in Emergencies Global Course</div>
+        <div class="course-provider provider-unicef"><span class="provider-dot"></span>UNICEF</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1EzPyTiMWD8JFPs2FlSF60VFisho652Hi/view" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="course-card" data-category="un">
+        <span class="provider-badge badge-unicef">UNICEF</span>
+        <div class="course-date">1 November 2023</div>
+        <div class="course-title">Leadership for Planning and Decision-Making with Adolescents</div>
+        <div class="course-provider provider-unicef"><span class="provider-dot"></span>UNICEF</div>
+        <a class="cert-btn" href="https://www.coursera.org/account/accomplishments/verify/65NX9KQ8HXUS" target="_blank">View Certificate</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- OLDER -->
+  <div class="section-block" id="sec-older">
+    <div class="section-head">
+      <h2>Earlier Training</h2>
+      <span class="section-count">1 course</span>
+    </div>
+    <div class="course-grid">
+
+      <div class="course-card" data-category="other">
+        <span class="provider-badge badge-other">Diploma</span>
+        <div class="course-date">2016</div>
+        <div class="course-title">Diploma in Computer Science</div>
+        <div class="course-provider provider-other"><span class="provider-dot"></span>Bangladesh Computer Education (BCE)</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1xQfRa95d3mOGYc7xtpeACa21fPtcsNV2/view" target="_blank">View Certificate</a>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /page-body -->
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
@@ -673,7 +588,7 @@ body{
     <div>
       <div class="footer-col-title">Connect</div>
       <div class="footer-social-links">
-        <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/" target="_blank">🌐 Portfolio</a>
+        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">🌐 Portfolio</a>
         <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
         <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Google Scholar</a>
         <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
@@ -687,31 +602,56 @@ body{
   </div>
 </footer>
 
-
 <script>
-  document.querySelectorAll('.dropbtn').forEach(btn => {
-    btn.addEventListener('click', e => {
+  /* ── NAVBAR ── */
+  document.querySelectorAll('.dropbtn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
       e.stopPropagation();
-      const dd = btn.closest('.dropdown');
-      const open = dd.classList.contains('active');
-      document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
+      var dd = btn.closest('.dropdown');
+      var open = dd.classList.contains('active');
+      document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
       if (!open) dd.classList.add('active');
     });
   });
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
+  });
+  var ham = document.getElementById('hamburger');
+  var drawer = document.getElementById('nav-drawer');
+  ham.addEventListener('click', function() { ham.classList.toggle('open'); drawer.classList.toggle('open'); });
+  drawer.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { ham.classList.remove('open'); drawer.classList.remove('open'); });
   });
 
-  const ham = document.getElementById('hamburger');
-  const drawer = document.getElementById('nav-drawer');
-  ham.addEventListener('click', () => {
-    ham.classList.toggle('open');
-    drawer.classList.toggle('open');
-  });
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      ham.classList.remove('open');
-      drawer.classList.remove('open');
+  /* ── FILTER TABS ── */
+  document.querySelectorAll('.filter-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+
+      var filter = tab.dataset.filter;
+      document.querySelectorAll('.course-card').forEach(function(card) {
+        if (filter === 'all') {
+          card.style.display = '';
+        } else {
+          var cat = card.dataset.category;
+          var show = false;
+          if (filter === 'elsevier' && cat === 'elsevier') show = true;
+          if (filter === 'ibm'      && cat === 'ibm')      show = true;
+          if (filter === 'university' && cat === 'university') show = true;
+          if (filter === 'un'       && cat === 'un')       show = true;
+          if (filter === 'other'    && cat === 'other')    show = true;
+          card.style.display = show ? '' : 'none';
+        }
+      });
+
+      /* hide empty section blocks */
+      document.querySelectorAll('.section-block').forEach(function(block) {
+        var visible = Array.from(block.querySelectorAll('.course-card')).some(function(c) { return c.style.display !== 'none'; });
+        block.style.display = visible ? '' : 'none';
+      });
+      document.querySelectorAll('.section-divider').forEach(function(d) { d.style.display = filter === 'all' ? '' : 'none'; });
     });
   });
 </script>
