@@ -675,7 +675,176 @@ Health Data Analysis
   <!-- POST (FULL CONTENT PRESERVED) -->
   <!-- POST (FULL CONTENT PRESERVED) -->
   <!-- POST (FULL CONTENT PRESERVED) -->
+
+<!-- POST (3) -->
+<div class="post" id="post14703-threshold-selection-outbreak" data-category="Machine Learning">
+<img src="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0">
+
+ <div class="share-preview" style="display:none;">
+     <img src="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0">
+    Threshold selection in outbreak prediction models.
+    Outbreak prediction models generate probability outputs that must be converted into binary decisions such as outbreak or non outbreak. This step is called threshold selection. It strongly affects sensitivity, false alarms, and early warning performance in public health systems.
+ </div>
+
+  <div class="post-content">
+
+    <div class="post-title">Threshold selection in outbreak prediction models</div>
+
+    <div class="author-line">
+      <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/stst.jpeg" class="author-pic">
+      <a href="index.html" class="author-name">Md. Abu Bokkor Shiddik</a>
+    </div>
+
+    <div class="meta">📅 10 April 2026 | ⏰ 12:00 AM</div>
+
+   <div class="short-text">
+
+  <h3>Threshold selection in outbreak prediction models a comprehensive guide</h3>
+
+  <p>
+    Outbreak prediction models generate probability outputs that represent risk of disease occurrence. These probabilities cannot be used directly for decision making, so they are converted into binary outcomes using a threshold. This step is very important because it directly affects sensitivity, false alarm rate, and early warning ability in public health systems.
+  </p>
+
+  <h3>Suitability levels of threshold methods</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width:100%;">
+    <tr>
+      <th>Suitability level</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>Highly suitable</td>
+      <td>Most practical and widely used in real outbreak systems</td>
+    </tr>
+    <tr>
+      <td>Moderately suitable</td>
+      <td>Useful in some cases but not always stable</td>
+    </tr>
+    <tr>
+      <td>Less suitable</td>
+      <td>Mainly for research or baseline comparison</td>
+    </tr>
+  </table>
+
+  <h3>Highly suitable threshold methods</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width:100%;">
+    <tr>
+      <th>Method</th>
+      <th>Why it is useful</th>
+    </tr>
+    <tr>
+      <td>Precision recall based (F1, F2, recall)</td>
+      <td>Handles imbalance well and focuses on outbreak detection</td>
+    </tr>
+    <tr>
+      <td>Cost sensitive thresholding</td>
+      <td>Reflects real public health decision costs</td>
+    </tr>
+    <tr>
+      <td>Percentile based threshold</td>
+      <td>Simple and useful for monitoring systems</td>
+    </tr>
+    <tr>
+      <td>Mean minus standard deviation</td>
+      <td>Detects abnormal risk increases</td>
+    </tr>
+    <tr>
+      <td>Seasonal adaptive threshold</td>
+      <td>Adjusts for seasonal disease patterns</td>
+    </tr>
+    <tr>
+      <td>Spatial adaptive threshold</td>
+      <td>Handles regional variation in disease risk</td>
+    </tr>
+  </table>
+
+  <h3>Moderately suitable threshold methods</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width:100%;">
+    <tr>
+      <th>Method</th>
+      <th>Limitation</th>
+    </tr>
+    <tr>
+      <td>ROC based (Youden Index)</td>
+      <td>Not ideal for imbalanced outbreak data</td>
+    </tr>
+    <tr>
+      <td>Maximum sensitivity</td>
+      <td>Too many false alarms</td>
+    </tr>
+    <tr>
+      <td>Maximum specificity</td>
+      <td>May miss early outbreaks</td>
+    </tr>
+    <tr>
+      <td>Z score threshold</td>
+      <td>Not well calibrated for ML probabilities</td>
+    </tr>
+    <tr>
+      <td>Rolling threshold</td>
+      <td>Can be unstable in small datasets</td>
+    </tr>
+  </table>
+
+  <h3>Less suitable methods</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width:100%;">
+    <tr>
+      <th>Method</th>
+      <th>Reason</th>
+    </tr>
+    <tr>
+      <td>Standard 0.5 threshold</td>
+      <td>Assumes balanced data, not realistic</td>
+    </tr>
+    <tr>
+      <td>Mean probability threshold</td>
+      <td>No epidemiological meaning</td>
+    </tr>
+    <tr>
+      <td>Median threshold</td>
+      <td>Ignores outbreak structure</td>
+    </tr>
+    <tr>
+      <td>Control chart methods</td>
+      <td>Old epidemiology approach</td>
+    </tr>
+    <tr>
+      <td>Bayesian threshold</td>
+      <td>Needs strong prior knowledge</td>
+    </tr>
+    <tr>
+      <td>Expected utility threshold</td>
+      <td>Difficult to define real costs</td>
+    </tr>
+  </table>
+
+  <h3>General recommendation</h3>
+
+  <p>
+    Best outbreak systems do not use a single threshold method. They combine precision recall based optimization,
+    cost sensitive adjustment, and adaptive methods like seasonal or spatial thresholds.
+  </p>
+
+  <h3>Final insight</h3>
+
+  <p>
+    Threshold selection is not only a statistical step, it is a decision making bridge between machine learning models
+    and public health action. Strong systems combine multiple methods and validate them across time and regions.
+  </p>
+
+</div>
  
+    <span class="read-more" onclick="toggleText(this)">Read more</span>
+
+    <button class="share-btn" onclick="copyLink('post14703-threshold-selection-outbreak')">Share</button>
+
+  </div>
+</div>
+
+  
  
 
 
