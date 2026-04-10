@@ -5,317 +5,219 @@
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Publications — Md. Abu Bokkor Shiddik. Peer-reviewed research in machine learning, epidemiology, and global public health.">
-  <meta name="keywords" content="ABS798, Abu Bokkor Shiddik, Publications, Machine Learning, Epidemiology, Dengue, Malaria, Tuberculosis, XAI, Bangladesh, BRUR">
+  <meta name="description" content="Publications - Md. Abu Bokkor Shiddik. Peer-reviewed research in machine learning, epidemiology, and global public health.">
   <title>Publications | Md. Abu Bokkor Shiddik</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:       #0b1f3a;
-      --navy2:      #122444;
-      --blue:       #1a56db;
-      --blue-hover: #1648c0;
-      --sky:        #e8f0fe;
-      --sky2:       #d2e3fc;
-      --green:      #166534;
-      --green-bg:   #f0fdf4;
-      --green-bd:   #bbf7d0;
-      --amber:      #92400e;
-      --amber-bg:   #fffbeb;
-      --amber-bd:   #fde68a;
-      --purple:     #5b21b6;
-      --purple-bg:  #f5f3ff;
-      --purple-bd:  #ddd6fe;
-      --text:       #0f172a;
-      --text2:      #334155;
-      --text3:      #64748b;
-      --border:     #e2e8f0;
-      --border2:    #cbd5e1;
-      --bg:         #f8fafc;
-      --white:      #ffffff;
-      --radius:     8px;
-      --radius-lg:  14px;
-      --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow:     0 4px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
-      --shadow-lg:  0 10px 40px rgba(0,0,0,0.12);
+      --navy:#0b1f3a; --navy2:#122444; --blue:#1a56db; --blue-hover:#1648c0;
+      --sky:#e8f0fe; --sky2:#d2e3fc;
+      --text:#0f172a; --text2:#334155; --text3:#64748b;
+      --border:#e2e8f0; --border2:#cbd5e1; --bg:#f8fafc; --white:#ffffff;
+      --radius:8px; --radius-lg:14px;
+      --shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+      --shadow:0 4px 20px rgba(0,0,0,0.08),0 1px 4px rgba(0,0,0,0.04);
     }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 15.5px;
-      line-height: 1.75;
-    }
-    a { color: inherit; text-decoration: none; }
-
-    /* ── NAVBAR ── */
-    .navbar { background: var(--navy); position: sticky; top: 0; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .nav-bar-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; align-items: center; height: 56px; }
-    .nav-brand { font-size: 14.5px; font-weight: 600; color: #fff; letter-spacing: 0.2px; margin-right: auto; white-space: nowrap; }
-    .nav-brand span { color: #93c5fd; font-weight: 300; }
-    .nav-links { display: flex; align-items: center; gap: 2px; }
-    .nav-links > a, .dropbtn {
-      color: rgba(255,255,255,0.75); font-size: 13.5px; font-weight: 500; padding: 6px 11px;
-      border-radius: 6px; border: none; background: none; cursor: pointer; font-family: inherit;
-      transition: background 0.18s, color 0.18s; white-space: nowrap; display: flex; align-items: center; gap: 4px;
-    }
-    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,0.09); }
-    .dropdown { position: relative; }
-    .dropdown-content {
-      position: absolute; top: calc(100% + 6px); left: 0; background: #132444;
-      border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; min-width: 190px; padding: 6px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transform: translateY(6px);
-      transition: opacity 0.2s, transform 0.2s, visibility 0.2s; pointer-events: none; z-index: 9999;
-    }
-    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content {
-      opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
-    }
-    .dropdown-content a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 500; border-radius: 6px; transition: background 0.15s, color 0.15s; }
-    .dropdown-content a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 6px; margin-left: 10px; transition: background 0.2s; }
-    .hamburger:hover { background: rgba(255,255,255,0.1); }
-    .hamburger span { display: block; width: 21px; height: 2px; background: rgba(255,255,255,0.85); border-radius: 2px; transition: transform 0.28s, opacity 0.28s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .nav-drawer { display: none; background: #0d1c38; border-top: 1px solid rgba(255,255,255,0.07); overflow: hidden; max-height: 0; transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1); }
-    .nav-drawer.open { max-height: 700px; }
-    .drawer-inner { padding: 8px 0 16px; }
-    .drawer-link { display: block; color: rgba(255,255,255,0.78); font-size: 15px; font-weight: 500; padding: 11px 24px; transition: background 0.15s, color 0.15s; }
-    .drawer-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
-    .drawer-section-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,0.3); padding: 14px 24px 4px; }
-    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,0.58); }
-    .drawer-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0; }
-    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-drawer { display: block; } }
-
-    /* ── HERO ── */
-    .page-hero {
-      background: linear-gradient(140deg, #07152a 0%, #0d2247 50%, #0f2d5c 100%);
-      color: white; padding: 60px 24px 50px; position: relative; overflow: hidden;
-    }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(circle at 80% 20%, rgba(59,130,246,0.13) 0%, transparent 50%),
-        radial-gradient(circle at 10% 80%, rgba(99,102,241,0.08) 0%, transparent 40%);
-      pointer-events: none;
-    }
-    .hero-inner { max-width: 1100px; margin: auto; position: relative; }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #93c5fd; margin-bottom: 14px; }
-    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
-    .page-hero h1 { font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 600; line-height: 1.18; margin-bottom: 10px; letter-spacing: -0.3px; }
-    .page-hero p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 600px; margin-bottom: 28px; }
-    .hero-metrics { display: flex; flex-wrap: wrap; gap: 20px 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
-    .metric-num { font-size: 1.7rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 4px; }
-    .metric-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 500; }
-
-    /* ── FILTER BAR ── */
-    .filter-bar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 56px; z-index: 100; }
-    .filter-inner { max-width: 1100px; margin: auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-    .filter-inner::-webkit-scrollbar { display: none; }
-    .filter-tab {
-      display: inline-flex; align-items: center; gap: 6px; padding: 12px 16px;
-      font-size: 13px; font-weight: 500; color: var(--text3); border-bottom: 2.5px solid transparent;
-      border-top: none; border-left: none; border-right: none; white-space: nowrap; cursor: pointer;
-      transition: color 0.18s, border-color 0.18s; background: none; font-family: inherit;
-      -webkit-tap-highlight-color: transparent; min-height: 44px;
-    }
-    .filter-tab:hover { color: var(--blue); }
-    .filter-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
-    .ftag { font-size: 10.5px; font-weight: 700; background: var(--sky); color: var(--blue); border-radius: 10px; padding: 1px 7px; }
-    .filter-tab.active .ftag { background: var(--blue); color: #fff; }
-
-    /* ── PAGE BODY ── */
-    .page-body { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
-
-    /* ── PUB CARD ── */
-    .pub-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      margin-bottom: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s;
-      position: relative;
-    }
-    .pub-card:hover { box-shadow: var(--shadow); border-color: #bfdbfe; transform: translateY(-1px); }
-
-    /* top accent bar per journal family */
-    .pub-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: linear-gradient(90deg, var(--blue), #6366f1);
-    }
-    .pub-card.nature::before  { background: linear-gradient(90deg, #e05a2b, #f59e0b); }
-    .pub-card.bmj::before     { background: linear-gradient(90deg, #0891b2, #0284c7); }
-    .pub-card.elsevier::before{ background: linear-gradient(90deg, #f97316, #ef4444); }
-    .pub-card.mdpi::before    { background: linear-gradient(90deg, #059669, #0d9488); }
-    .pub-card.local::before   { background: linear-gradient(90deg, #7c3aed, #a855f7); }
-    .pub-card.springer::before{ background: linear-gradient(90deg, #0f766e, #14b8a6); }
-
-    .pub-body { padding: 24px 28px 0; }
-
-    /* meta row */
-    .pub-meta-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-    .journal-badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
-      padding: 3px 10px; border-radius: 5px; white-space: nowrap;
-    }
-    .badge-nature   { background: #fff3e0; color: #c2410c; border: 1px solid #fdba74; }
-    .badge-hsr      { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
-    .badge-gloepi   { background: #fff0f3; color: #be185d; border: 1px solid #fbcfe8; }
-    .badge-bmj      { background: #e0f7fa; color: #0e7490; border: 1px solid #67e8f9; }
-    .badge-springer { background: #ecfdf5; color: #065f46; border: 1px solid #6ee7b7; }
-    .badge-mdpi     { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-    .badge-ijss     { background: #f5f3ff; color: #5b21b6; border: 1px solid #ddd6fe; }
-    .year-pill { font-size: 11px; font-weight: 600; color: var(--text3); background: #f1f5f9; border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; }
-    .oa-pill { font-size: 10.5px; font-weight: 700; color: #d97706; background: #fffbeb; border: 1px solid #fde68a; border-radius: 5px; padding: 2px 8px; }
-
-    /* title */
-    .pub-title {
-      font-family: 'Lora', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.45;
-      margin-bottom: 10px;
-    }
-
-    /* authors */
-    .pub-authors { font-size: 13px; color: var(--text3); margin-bottom: 10px; line-height: 1.5; }
-    .pub-authors strong { color: var(--text2); font-weight: 600; }
-
-    /* doi / links */
-    .pub-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-    .pub-link-btn {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 6px;
-      transition: background 0.18s, color 0.18s, border-color 0.18s;
-    }
-    .btn-doi  { background: var(--blue); color: #fff; }
-    .btn-doi:hover { background: var(--blue-hover); }
-    .btn-journal { background: var(--white); color: var(--blue); border: 1px solid #bfdbfe; }
-    .btn-journal:hover { background: var(--sky); }
-
-    /* abstract */
-    .pub-abstract { border-top: 1px solid var(--border); padding: 18px 28px; background: #fcfdfe; }
-    .abstract-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 10px; }
-    .abstract-text { font-size: 13.5px; color: var(--text2); line-height: 1.75; }
-    .abstract-text p { margin-bottom: 8px; }
-    .abstract-text p:last-child { margin-bottom: 0; }
-    .abstract-text strong { color: var(--text); }
-    .abstract-clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    .read-more-btn {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 12.5px; font-weight: 600; color: var(--blue); cursor: pointer;
-      background: none; border: none; font-family: inherit; padding: 6px 0 0; transition: gap 0.15s;
-    }
-    .read-more-btn:hover { gap: 7px; }
-
-    /* figures */
-    .pub-figures { border-top: 1px solid var(--border); padding: 18px 28px 22px; }
-    .figures-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 12px; }
-    .fig-strip { display: flex; gap: 10px; flex-wrap: wrap; }
-    .fig-thumb {
-      width: 110px; height: 78px; object-fit: cover; border-radius: 6px;
-      border: 1px solid var(--border); cursor: zoom-in;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    }
-    .fig-thumb:hover { transform: scale(1.04); box-shadow: var(--shadow); border-color: #93c5fd; }
-    .fig-more-btn {
-      display: inline-flex; align-items: center; gap: 4px; margin-top: 10px;
-      font-size: 12.5px; font-weight: 600; color: var(--blue); cursor: pointer;
-      background: none; border: none; font-family: inherit; padding: 0; transition: gap 0.15s;
-    }
-    .fig-more-btn:hover { gap: 7px; }
-
-    /* ── FIGURE LIGHTBOX ── */
-    #fig-lightbox {
-      position: fixed; inset: 0; background: rgba(5,10,20,0.96);
-      display: none; align-items: center; justify-content: center;
-      flex-direction: column; z-index: 99999; padding: 20px;
-    }
-    #fig-lightbox.open { display: flex; }
-    .lb-wrap { position: relative; max-width: min(94vw, 1000px); max-height: 85vh; }
-    #lb-img { display: block; max-width: 100%; max-height: 82vh; border-radius: 10px; object-fit: contain; }
-    #lb-caption { margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.5); text-align: center; max-width: 600px; line-height: 1.5; }
-    .lb-x { position: absolute; top: -14px; right: -14px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.18s; }
-    .lb-x:hover { background: rgba(220,38,38,0.7); }
-    .lb-arr { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.18s; }
-    .lb-arr:hover { background: rgba(255,255,255,0.2); }
-    #lb-prev { left: -56px; } #lb-next { right: -56px; }
-    @media (max-width: 600px) { #lb-prev { left: 4px; } #lb-next { right: 4px; } .lb-x { position: fixed; top: 10px; right: 10px; } }
-
-    /* ── SEARCH BAR ── */
-    .search-wrap { margin-bottom: 28px; position: relative; }
-    .search-input {
-      width: 100%; padding: 12px 16px 12px 44px; font-size: 14px; font-family: inherit;
-      background: var(--white); border: 1px solid var(--border2); border-radius: var(--radius-lg);
-      color: var(--text); outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-      box-shadow: var(--shadow-sm);
-    }
-    .search-input:focus { border-color: #93c5fd; box-shadow: 0 0 0 3px rgba(147,197,253,0.2); }
-    .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 16px; pointer-events: none; }
-    .no-results { text-align: center; padding: 60px 0; color: var(--text3); font-size: 15px; display: none; }
-
-    /* ── FOOTER ── */
-    footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 44px 24px 32px; margin-top: 0; }
-    .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .footer-col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
-    .footer-name { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 8px; }
-    .footer-desc { font-size: 12.5px; line-height: 1.7; }
-    .footer-nav-links, .footer-social-links { display: flex; flex-direction: column; gap: 7px; }
-    .footer-nav-links a, .footer-social-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.15s; }
-    .footer-nav-links a:hover { color: rgba(255,255,255,0.9); }
-    .footer-social-links a:hover { color: #93c5fd; }
-    .footer-bottom { max-width: 1180px; margin: 22px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-    .footer-bottom p { font-size: 12px; }
-    @media (max-width: 1024px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } .pub-body, .pub-abstract, .pub-figures { padding-left: 18px; padding-right: 18px; } .pub-title { font-size: 1rem; } }
-  </style>
+    body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--text); font-size:15.5px; line-height:1.75; }
+    a { color:inherit; text-decoration:none; }
+    .navbar { background:var(--navy); position:sticky; top:0; z-index:9999; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .nav-bar-inner { max-width:1180px; margin:auto; padding:0 24px; display:flex; align-items:center; height:56px; }
+    .nav-brand { font-size:14.5px; font-weight:600; color:#fff; letter-spacing:0.2px; margin-right:auto; white-space:nowrap; }
+    .nav-brand span { color:#93c5fd; font-weight:300; }
+    .nav-links { display:flex; align-items:center; gap:2px; }
+    .nav-links > a, .dropbtn { color:rgba(255,255,255,0.75); font-size:13.5px; font-weight:500; padding:6px 11px; border-radius:6px; border:none; background:none; cursor:pointer; font-family:inherit; transition:background 0.18s,color 0.18s; white-space:nowrap; display:flex; align-items:center; gap:4px; }
+    .nav-links > a:hover, .dropbtn:hover { color:#fff; background:rgba(255,255,255,0.09); }
+    .dropdown { position:relative; }
+    .dropdown-content { position:absolute; top:calc(100% + 6px); left:0; background:#132444; border:1px solid rgba(255,255,255,0.1); border-radius:10px; min-width:190px; padding:6px; box-shadow:0 12px 32px rgba(0,0,0,0.3); opacity:0; visibility:hidden; transform:translateY(6px); transition:opacity 0.2s,transform 0.2s,visibility 0.2s; pointer-events:none; z-index:9999; }
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto; }
+    .dropdown-content a { display:flex; align-items:center; gap:8px; padding:8px 12px; color:rgba(255,255,255,0.72); font-size:13px; font-weight:500; border-radius:6px; transition:background 0.15s,color 0.15s; }
+    .dropdown-content a:hover { background:rgba(255,255,255,0.08); color:#fff; }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:7px; border-radius:6px; margin-left:10px; transition:background 0.2s; }
+    .hamburger:hover { background:rgba(255,255,255,0.1); }
+    .hamburger span { display:block; width:21px; height:2px; background:rgba(255,255,255,0.85); border-radius:2px; transition:transform 0.28s,opacity 0.28s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display:none; background:#0d1c38; border-top:1px solid rgba(255,255,255,0.07); overflow:hidden; max-height:0; transition:max-height 0.38s cubic-bezier(0.4,0,0.2,1); }
+    .nav-drawer.open { max-height:700px; }
+    .drawer-inner { padding:8px 0 16px; }
+    .drawer-link { display:block; color:rgba(255,255,255,0.78); font-size:15px; font-weight:500; padding:11px 24px; transition:background 0.15s,color 0.15s; }
+    .drawer-link:hover { background:rgba(255,255,255,0.06); color:#fff; }
+    .drawer-section-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:rgba(255,255,255,0.3); padding:14px 24px 4px; }
+    .drawer-sub .drawer-link { padding-left:38px; font-size:14px; color:rgba(255,255,255,0.58); }
+    .drawer-divider { height:1px; background:rgba(255,255,255,0.06); margin:4px 0; }
+    @media (max-width:900px) { .nav-links { display:none; } .hamburger { display:flex; } .nav-drawer { display:block; } }
+    .page-hero { background:linear-gradient(140deg,#07152a 0%,#0d2247 50%,#0f2d5c 100%); color:white; padding:60px 24px 50px; position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 80% 20%,rgba(59,130,246,0.13) 0%,transparent 50%),radial-gradient(circle at 10% 80%,rgba(99,102,241,0.08) 0%,transparent 40%); pointer-events:none; }
+    .hero-inner { max-width:1100px; margin:auto; position:relative; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:7px; font-size:11.5px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#93c5fd; margin-bottom:14px; }
+    .hero-eyebrow::before { content:''; width:6px; height:6px; background:#4ade80; border-radius:50%; }
+    .page-hero h1 { font-family:'Lora',serif; font-size:2.2rem; font-weight:600; line-height:1.18; margin-bottom:10px; letter-spacing:-0.3px; }
+    .page-hero p { font-size:15px; color:rgba(255,255,255,0.6); max-width:600px; margin-bottom:28px; }
+    .hero-metrics { display:flex; flex-wrap:wrap; gap:20px 40px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.1); }
+    .metric-num { font-size:1.7rem; font-weight:700; color:#fff; line-height:1; margin-bottom:4px; }
+    .metric-label { font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.8px; font-weight:500; }
+    /* SUMMARY PANEL */
+    .summary-panel { background:var(--white); border-bottom:1px solid var(--border); }
+    .summary-inner { max-width:1100px; margin:auto; padding:28px 24px; display:grid; grid-template-columns:1fr 1fr 1fr 1.4fr; gap:0; }
+    .sum-block { padding:0 28px 0 0; border-right:1px solid var(--border); margin-right:28px; }
+    .sum-block:last-child { border-right:none; margin-right:0; padding-right:0; }
+    .sum-block-title { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.9px; color:var(--text3); margin-bottom:14px; display:flex; align-items:center; gap:6px; }
+    .sum-block-title::before { content:''; width:3px; height:14px; border-radius:2px; }
+    .sum-block:nth-child(1) .sum-block-title::before { background:#e05a2b; }
+    .sum-block:nth-child(2) .sum-block-title::before { background:#1a56db; }
+    .sum-block:nth-child(3) .sum-block-title::before { background:#059669; }
+    .sum-block:nth-child(4) .sum-block-title::before { background:#7c3aed; }
+    .topic-row { display:flex; align-items:center; gap:10px; margin-bottom:9px; }
+    .topic-row:last-child { margin-bottom:0; }
+    .topic-name { font-size:12.5px; color:var(--text2); min-width:90px; }
+    .topic-track { flex:1; height:6px; background:#f1f5f9; border-radius:3px; overflow:hidden; border:1px solid var(--border); }
+    .topic-fill { height:100%; border-radius:3px; }
+    .topic-count { font-size:12px; font-weight:700; color:var(--text3); min-width:20px; text-align:right; }
+    .jlist { display:flex; flex-direction:column; gap:8px; }
+    .jitem { display:flex; align-items:center; gap:9px; font-size:12.5px; }
+    .jdot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+    .jname { color:var(--text2); flex:1; line-height:1.3; }
+    .jcount { font-size:11.5px; font-weight:700; color:var(--text3); background:#f1f5f9; border-radius:4px; padding:1px 6px; }
+    .kstat-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .kstat { background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:10px 12px; }
+    .kstat-n { font-size:1.2rem; font-weight:700; color:var(--text); line-height:1; margin-bottom:3px; font-family:'Lora',serif; }
+    .kstat-l { font-size:11px; color:var(--text3); line-height:1.3; }
+    .pub-pills { display:flex; flex-wrap:wrap; gap:7px; }
+    .pub-pill { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; padding:5px 11px; border-radius:6px; border:1px solid; white-space:nowrap; }
+    .method-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); }
+    .mtag { font-size:11.5px; padding:3px 9px; border-radius:5px; font-weight:600; border:1px solid; }
+    @media (max-width:900px) { .summary-inner { grid-template-columns:1fr 1fr; gap:20px; } .sum-block { border-right:none; margin-right:0; padding-right:0; padding-bottom:20px; border-bottom:1px solid var(--border); } .sum-block:last-child { border-bottom:none; padding-bottom:0; } }
+    @media (max-width:560px) { .summary-inner { grid-template-columns:1fr; } }
+    /* FILTER */
+    .filter-bar { background:var(--white); border-bottom:1px solid var(--border); position:sticky; top:56px; z-index:100; }
+    .filter-inner { max-width:1100px; margin:auto; padding:0 24px; display:flex; gap:0; overflow-x:auto; scrollbar-width:none; }
+    .filter-inner::-webkit-scrollbar { display:none; }
+    .filter-tab { display:inline-flex; align-items:center; gap:6px; padding:12px 16px; font-size:13px; font-weight:500; color:var(--text3); border-bottom:2.5px solid transparent; border-top:none; border-left:none; border-right:none; white-space:nowrap; cursor:pointer; transition:color 0.18s,border-color 0.18s; background:none; font-family:inherit; min-height:44px; }
+    .filter-tab:hover { color:var(--blue); }
+    .filter-tab.active { color:var(--blue); border-bottom-color:var(--blue); }
+    .ftag { font-size:10.5px; font-weight:700; background:var(--sky); color:var(--blue); border-radius:10px; padding:1px 7px; }
+    .filter-tab.active .ftag { background:var(--blue); color:#fff; }
+    /* BODY */
+    .page-body { max-width:1100px; margin:0 auto; padding:40px 24px 80px; }
+    /* PUB CARD */
+    .pub-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); margin-bottom:20px; overflow:hidden; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s,border-color 0.25s,transform 0.2s; position:relative; }
+    .pub-card:hover { box-shadow:var(--shadow); border-color:#bfdbfe; transform:translateY(-1px); }
+    .pub-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),#6366f1); }
+    .pub-card.nature::before  { background:linear-gradient(90deg,#e05a2b,#f59e0b); }
+    .pub-card.bmj::before     { background:linear-gradient(90deg,#0891b2,#0284c7); }
+    .pub-card.elsevier::before{ background:linear-gradient(90deg,#f97316,#ef4444); }
+    .pub-card.mdpi::before    { background:linear-gradient(90deg,#059669,#0d9488); }
+    .pub-card.local::before   { background:linear-gradient(90deg,#7c3aed,#a855f7); }
+    .pub-card.springer::before{ background:linear-gradient(90deg,#0f766e,#14b8a6); }
+    .pub-card.wiley::before   { background:linear-gradient(90deg,#b45309,#d97706); }
+    .pub-body { padding:24px 28px 0; }
+    .pub-meta-row { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+    .journal-badge { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; padding:3px 10px; border-radius:5px; white-space:nowrap; }
+    .badge-nature   { background:#fff3e0; color:#c2410c; border:1px solid #fdba74; }
+    .badge-hsr      { background:#fef3c7; color:#92400e; border:1px solid #fcd34d; }
+    .badge-gloepi   { background:#fff0f3; color:#be185d; border:1px solid #fbcfe8; }
+    .badge-bmj      { background:#e0f7fa; color:#0e7490; border:1px solid #67e8f9; }
+    .badge-springer { background:#ecfdf5; color:#065f46; border:1px solid #6ee7b7; }
+    .badge-mdpi     { background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; }
+    .badge-ijss     { background:#f5f3ff; color:#5b21b6; border:1px solid #ddd6fe; }
+    .pub-sub-badge { display:inline-flex; align-items:center; gap:4px; font-size:10.5px; font-weight:600; padding:2px 8px; border-radius:4px; white-space:nowrap; border:1px solid; }
+    .psb-wiley    { background:#fffbeb; color:#92400e; border-color:#fde68a; }
+    .psb-nature   { background:#fff3e0; color:#9a3412; border-color:#fed7aa; }
+    .psb-elsevier { background:#fef2f2; color:#991b1b; border-color:#fca5a5; }
+    .psb-bmj      { background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe; }
+    .psb-springer { background:#ecfdf5; color:#065f46; border-color:#6ee7b7; }
+    .psb-mdpi     { background:#f0fdf4; color:#166534; border-color:#bbf7d0; }
+    .psb-banglajol{ background:#f5f3ff; color:#5b21b6; border-color:#ddd6fe; }
+    .year-pill { font-size:11px; font-weight:600; color:var(--text3); background:#f1f5f9; border:1px solid var(--border); border-radius:5px; padding:2px 8px; }
+    .oa-pill { font-size:10.5px; font-weight:700; color:#d97706; background:#fffbeb; border:1px solid #fde68a; border-radius:5px; padding:2px 8px; }
+    /* METRICS STRIP */
+    .pub-metrics-strip { display:flex; flex-wrap:wrap; gap:0; background:#f8fafc; border:1px solid var(--border); border-radius:8px; margin:0 0 16px; overflow:hidden; }
+    .pm-item { flex:1; min-width:90px; padding:10px 14px; border-right:1px solid var(--border); text-align:center; }
+    .pm-item:last-child { border-right:none; }
+    .pm-val { font-size:13.5px; font-weight:700; color:var(--text); font-family:'Lora',serif; line-height:1; margin-bottom:3px; }
+    .pm-lbl { font-size:10px; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px; font-weight:500; }
+    .pub-title { font-family:'Lora',serif; font-size:1.1rem; font-weight:600; color:var(--text); line-height:1.45; margin-bottom:10px; }
+    .pub-authors { font-size:13px; color:var(--text3); margin-bottom:10px; line-height:1.5; }
+    .pub-authors strong { color:var(--text2); font-weight:600; }
+    .pub-links { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+    .pub-link-btn { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; padding:5px 12px; border-radius:6px; transition:background 0.18s,color 0.18s,border-color 0.18s; }
+    .btn-doi { background:var(--blue); color:#fff; }
+    .btn-doi:hover { background:var(--blue-hover); }
+    .btn-journal { background:var(--white); color:var(--blue); border:1px solid #bfdbfe; }
+    .btn-journal:hover { background:var(--sky); }
+    .btn-cite { background:var(--white); color:var(--text3); border:1px solid var(--border); font-size:12px; font-weight:600; padding:5px 12px; border-radius:6px; cursor:pointer; font-family:inherit; transition:background 0.15s,color 0.15s; }
+    .btn-cite:hover { background:var(--bg); color:var(--text); }
+    .cite-box { display:none; background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:14px 16px; font-size:12.5px; font-family:'Courier New',monospace; color:var(--text2); line-height:1.7; margin-bottom:14px; word-break:break-word; position:relative; }
+    .cite-box.open { display:block; }
+    .cite-copy { position:absolute; top:8px; right:8px; font-size:11px; font-weight:600; color:var(--blue); background:var(--sky); border:none; border-radius:4px; padding:3px 8px; cursor:pointer; font-family:inherit; }
+    .cite-copy:hover { background:var(--sky2); }
+    .pub-abstract { border-top:1px solid var(--border); padding:18px 28px; background:#fcfdfe; }
+    .abstract-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--text3); margin-bottom:10px; }
+    .abstract-text { font-size:13.5px; color:var(--text2); line-height:1.75; }
+    .abstract-text p { margin-bottom:8px; }
+    .abstract-text p:last-child { margin-bottom:0; }
+    .abstract-text strong { color:var(--text); }
+    .abstract-clamp { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+    .read-more-btn { display:inline-flex; align-items:center; gap:4px; font-size:12.5px; font-weight:600; color:var(--blue); cursor:pointer; background:none; border:none; font-family:inherit; padding:6px 0 0; transition:gap 0.15s; }
+    .read-more-btn:hover { gap:7px; }
+    .pub-figures { border-top:1px solid var(--border); padding:18px 28px 22px; }
+    .figures-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--text3); margin-bottom:12px; }
+    .fig-strip { display:flex; gap:10px; flex-wrap:wrap; }
+    .fig-thumb { width:110px; height:78px; object-fit:cover; border-radius:6px; border:1px solid var(--border); cursor:zoom-in; transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s; }
+    .fig-thumb:hover { transform:scale(1.04); box-shadow:var(--shadow); border-color:#93c5fd; }
+    .fig-more-btn { display:inline-flex; align-items:center; gap:4px; margin-top:10px; font-size:12.5px; font-weight:600; color:var(--blue); cursor:pointer; background:none; border:none; font-family:inherit; padding:0; transition:gap 0.15s; }
+    .fig-more-btn:hover { gap:7px; }
+    /* LIGHTBOX */
+    #fig-lightbox { position:fixed; inset:0; background:rgba(5,10,20,0.96); display:none; align-items:center; justify-content:center; flex-direction:column; z-index:99999; padding:20px; }
+    #fig-lightbox.open { display:flex; }
+    .lb-wrap { position:relative; max-width:min(94vw,1000px); max-height:85vh; }
+    #lb-img { display:block; max-width:100%; max-height:82vh; border-radius:10px; object-fit:contain; }
+    #lb-caption { margin-top:12px; font-size:13px; color:rgba(255,255,255,0.5); text-align:center; max-width:600px; line-height:1.5; }
+    .lb-x { position:absolute; top:-14px; right:-14px; width:32px; height:32px; border-radius:50%; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:15px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.18s; }
+    .lb-x:hover { background:rgba(220,38,38,0.7); }
+    .lb-arr { position:absolute; top:50%; transform:translateY(-50%); width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.18s; }
+    .lb-arr:hover { background:rgba(255,255,255,0.2); }
+    #lb-prev { left:-56px; } #lb-next { right:-56px; }
+    @media (max-width:600px) { #lb-prev { left:4px; } #lb-next { right:4px; } .lb-x { position:fixed; top:10px; right:10px; } }
+    /* SEARCH */
+    .search-wrap { margin-bottom:28px; position:relative; }
+    .search-input { width:100%; padding:12px 16px 12px 44px; font-size:14px; font-family:inherit; background:var(--white); border:1px solid var(--border2); border-radius:var(--radius-lg); color:var(--text); outline:none; transition:border-color 0.2s,box-shadow 0.2s; box-shadow:var(--shadow-sm); }
+    .search-input:focus { border-color:#93c5fd; box-shadow:0 0 0 3px rgba(147,197,253,0.2); }
+    .search-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text3); font-size:16px; pointer-events:none; }
+    .no-results { text-align:center; padding:60px 0; color:var(--text3); font-size:15px; display:none; }
+    /* FOOTER */
+    footer { background:var(--navy); color:rgba(255,255,255,0.5); padding:44px 24px 32px; }
+    .footer-inner { max-width:1180px; margin:auto; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,0.07); }
+    .footer-col-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.35); margin-bottom:14px; }
+    .footer-name { font-family:'Lora',serif; font-size:16px; font-weight:600; color:rgba(255,255,255,0.9); margin-bottom:8px; }
+    .footer-desc { font-size:12.5px; line-height:1.7; }
+    .footer-nav-links, .footer-social-links { display:flex; flex-direction:column; gap:7px; }
+    .footer-nav-links a, .footer-social-links a { font-size:13px; color:rgba(255,255,255,0.55); transition:color 0.15s; }
+    .footer-nav-links a:hover { color:rgba(255,255,255,0.9); }
+    .footer-social-links a:hover { color:#93c5fd; }
+    .footer-bottom { max-width:1180px; margin:22px auto 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+    .footer-bottom p { font-size:12px; }
+    @media (max-width:1024px) { .footer-inner { grid-template-columns:1fr 1fr; } }
+    @media (max-width:600px) { .footer-inner { grid-template-columns:1fr; } .footer-bottom { flex-direction:column; text-align:center; } .pub-body,.pub-abstract,.pub-figures { padding-left:18px; padding-right:18px; } .pub-title { font-size:1rem; } .pm-item { min-width:70px; padding:8px 10px; } }
+</style>
 </head>
 <body>
-
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-bar-inner">
-    <div class="nav-brand">ABS<span> · </span>Abu Bokkor Shiddik</div>
+    <div class="nav-brand">ABS<span> &middot; </span>Abu Bokkor Shiddik</div>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
       <a href="service.html">Service</a>
-      <div class="dropdown">
-        <button class="dropbtn">Digital Lab ▾</button>
-        <div class="dropdown-content">
-          <a href="projects.html">⚗ Projects</a>
-          <a href="data-code.html">💾 Data &amp; Code</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Learning ▾</button>
-        <div class="dropdown-content">
-          <a href="courses.html">🎓 Courses &amp; Training</a>
-          <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Insights ▾</button>
-        <div class="dropdown-content">
-          <a href="insights.html">✍ Posts</a>
-          <a href="videos.html">▶ Videos</a>
-          <a href="archive.html">📷 Photos &amp; Archive</a>
-        </div>
-      </div>
+      <div class="dropdown"><button class="dropbtn">Digital Lab &#9660;</button><div class="dropdown-content"><a href="projects.html">&#9883; Projects</a><a href="data-code.html">&#128190; Data &amp; Code</a></div></div>
+      <div class="dropdown"><button class="dropbtn">Learning &#9660;</button><div class="dropdown-content"><a href="courses.html">&#127891; Courses &amp; Training</a><a href="conference-and-workshop.html">&#127963; Conferences &amp; Workshops</a></div></div>
+      <div class="dropdown"><button class="dropbtn">Insights &#9660;</button><div class="dropdown-content"><a href="insights.html">&#9997; Posts</a><a href="videos.html">&#9654; Videos</a><a href="archive.html">&#128247; Photos &amp; Archive</a></div></div>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </div>
   <div class="nav-drawer" id="nav-drawer">
     <div class="drawer-inner">
@@ -324,43 +226,90 @@
       <a class="drawer-link" href="service.html">Service</a>
       <div class="drawer-divider"></div>
       <div class="drawer-section-label">Digital Lab</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="projects.html">Projects</a>
-        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
-      </div>
+      <div class="drawer-sub"><a class="drawer-link" href="projects.html">Projects</a><a class="drawer-link" href="data-code.html">Data &amp; Code</a></div>
       <div class="drawer-divider"></div>
       <div class="drawer-section-label">Learning &amp; Events</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
-        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
-      </div>
+      <div class="drawer-sub"><a class="drawer-link" href="courses.html">Courses &amp; Training</a><a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a></div>
       <div class="drawer-divider"></div>
       <div class="drawer-section-label">Insights</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="insights.html">Posts</a>
-        <a class="drawer-link" href="videos.html">Videos</a>
-        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
-      </div>
+      <div class="drawer-sub"><a class="drawer-link" href="insights.html">Posts</a><a class="drawer-link" href="videos.html">Videos</a><a class="drawer-link" href="archive.html">Photos &amp; Archive</a></div>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="page-hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">Peer-Reviewed Research</div>
     <h1>Publications</h1>
-    <p>Peer-reviewed research in machine learning, explainable AI, epidemiology, and global public health — published in high-impact international journals.</p>
+    <p>Peer-reviewed research in machine learning, explainable AI, epidemiology, and global public health &mdash; published in high-impact international journals.</p>
     <div class="hero-metrics">
       <div><div class="metric-num">9</div><div class="metric-label">Publications</div></div>
       <div><div class="metric-num">7</div><div class="metric-label">Journals</div></div>
-      <div><div class="metric-num">2025–26</div><div class="metric-label">Recent</div></div>
-      <div><div class="metric-num">Nature · BMJ · Springer</div><div class="metric-label">Publishers</div></div>
+      <div><div class="metric-num">194</div><div class="metric-label">Countries Studied</div></div>
+      <div><div class="metric-num">Nature &middot; BMJ &middot; Springer</div><div class="metric-label">Publishers</div></div>
     </div>
   </div>
 </section>
 
-<!-- FILTER BAR -->
+<div class="summary-panel">
+  <div class="summary-inner">
+    <div class="sum-block">
+      <div class="sum-block-title">Research Topics</div>
+      <div class="topic-row"><span class="topic-name">Dengue</span><div class="topic-track"><div class="topic-fill" style="width:100%;background:#e05a2b"></div></div><span class="topic-count">5</span></div>
+      <div class="topic-row"><span class="topic-name">Tuberculosis</span><div class="topic-track"><div class="topic-fill" style="width:20%;background:#7c3aed"></div></div><span class="topic-count">1</span></div>
+      <div class="topic-row"><span class="topic-name">Malaria</span><div class="topic-track"><div class="topic-fill" style="width:20%;background:#d97706"></div></div><span class="topic-count">1</span></div>
+      <div class="topic-row"><span class="topic-name">Asia (Comm.)</span><div class="topic-track"><div class="topic-fill" style="width:20%;background:#059669"></div></div><span class="topic-count">1</span></div>
+      <div class="topic-row"><span class="topic-name">Child Mortality</span><div class="topic-track"><div class="topic-fill" style="width:20%;background:#0891b2"></div></div><span class="topic-count">1</span></div>
+    </div>
+    <div class="sum-block">
+      <div class="sum-block-title">Journals</div>
+      <div class="jlist">
+        <div class="jitem"><div class="jdot" style="background:#e05a2b"></div><span class="jname">Scientific Reports</span><span class="jcount">2</span></div>
+        <div class="jitem"><div class="jdot" style="background:#be185d"></div><span class="jname">Global Epidemiology</span><span class="jcount">2</span></div>
+        <div class="jitem"><div class="jdot" style="background:#92400e"></div><span class="jname">Health Science Reports</span><span class="jcount">1</span></div>
+        <div class="jitem"><div class="jdot" style="background:#0e7490"></div><span class="jname">BMJ Open</span><span class="jcount">1</span></div>
+        <div class="jitem"><div class="jdot" style="background:#065f46"></div><span class="jname">Int. J. Health Geographics</span><span class="jcount">1</span></div>
+        <div class="jitem"><div class="jdot" style="background:#166534"></div><span class="jname">Trop. Med. &amp; Infect. Dis.</span><span class="jcount">1</span></div>
+        <div class="jitem"><div class="jdot" style="background:#5b21b6"></div><span class="jname">Int. J. Statistical Sciences</span><span class="jcount">1</span></div>
+      </div>
+    </div>
+    <div class="sum-block">
+      <div class="sum-block-title">Key Statistics</div>
+      <div class="kstat-grid">
+        <div class="kstat"><div class="kstat-n">R&#178; 0.99</div><div class="kstat-l">Best model fit</div></div>
+        <div class="kstat"><div class="kstat-n">Acc 0.93</div><div class="kstat-l">MLP accuracy</div></div>
+        <div class="kstat"><div class="kstat-n">194</div><div class="kstat-l">Countries (TB)</div></div>
+        <div class="kstat"><div class="kstat-n">AUC 0.99</div><div class="kstat-l">ROC-AUC (dengue)</div></div>
+        <div class="kstat"><div class="kstat-n">64</div><div class="kstat-l">Districts studied</div></div>
+        <div class="kstat"><div class="kstat-n">106</div><div class="kstat-l">Countries (malaria)</div></div>
+      </div>
+    </div>
+    <div class="sum-block">
+      <div class="sum-block-title">Publishers</div>
+      <div class="pub-pills">
+        <span class="pub-pill" style="background:#fff3e0;color:#c2410c;border-color:#fdba74">Nature Portfolio</span>
+        <span class="pub-pill" style="background:#fffbeb;color:#92400e;border-color:#fde68a">Wiley</span>
+        <span class="pub-pill" style="background:#fef2f2;color:#991b1b;border-color:#fca5a5">Elsevier</span>
+        <span class="pub-pill" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe">BMJ</span>
+        <span class="pub-pill" style="background:#ecfdf5;color:#065f46;border-color:#6ee7b7">Springer</span>
+        <span class="pub-pill" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">MDPI</span>
+        <span class="pub-pill" style="background:#f5f3ff;color:#5b21b6;border-color:#ddd6fe">BanglaJOL</span>
+      </div>
+      <div class="method-tags">
+        <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.9px;color:#64748b;margin-bottom:8px;width:100%">Methods</div>
+        <span class="mtag" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe">XGBoost</span>
+        <span class="mtag" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">LightGBM</span>
+        <span class="mtag" style="background:#f5f3ff;color:#5b21b6;border-color:#ddd6fe">SHAP</span>
+        <span class="mtag" style="background:#fff0f3;color:#be185d;border-color:#fbcfe8">LIME</span>
+        <span class="mtag" style="background:#fef3c7;color:#92400e;border-color:#fcd34d">Moran&apos;s I</span>
+        <span class="mtag" style="background:#e0f7fa;color:#0e7490;border-color:#67e8f9">Bayesian</span>
+        <span class="mtag" style="background:#fff3e0;color:#c2410c;border-color:#fdba74">ConvLSTM</span>
+        <span class="mtag" style="background:#ecfdf5;color:#065f46;border-color:#6ee7b7">Getis-Ord Gi*</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="filter-bar">
   <div class="filter-inner">
     <button class="filter-tab active" data-filter="all">All <span class="ftag">9</span></button>
@@ -374,50 +323,46 @@
   </div>
 </div>
 
-<!-- FIGURE LIGHTBOX -->
 <div id="fig-lightbox">
   <div class="lb-wrap">
-    <button class="lb-x" id="lb-close">✕</button>
-    <button class="lb-arr" id="lb-prev">‹</button>
+    <button class="lb-x" id="lb-close">&#10005;</button>
+    <button class="lb-arr" id="lb-prev">&#8249;</button>
     <img id="lb-img" src="" alt="">
-    <button class="lb-arr" id="lb-next">›</button>
+    <button class="lb-arr" id="lb-next">&#8250;</button>
   </div>
   <div id="lb-caption"></div>
 </div>
 
-<!-- MAIN -->
 <div class="page-body">
-
-  <!-- SEARCH -->
   <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input class="search-input" id="search" type="text" placeholder="Search by title, keyword, journal…" autocomplete="off">
+    <span class="search-icon">&#128269;</span>
+    <input class="search-input" id="search" type="text" placeholder="Search by title, keyword, journal, method&#8230;" autocomplete="off">
   </div>
   <div class="no-results" id="no-results">No publications match your search.</div>
 
-  <!-- ═══ PUB 1 ═══ -->
-  <article class="pub-card nature" data-tags="tb 2025 xai ml spatial nature">
+  <article class="pub-card nature" data-tags="tb 2025 xai ml spatial nature xgboost shap global">
     <div class="pub-body">
-      <div class="pub-meta-row">
-        <span class="journal-badge badge-nature">Scientific Reports</span>
-        <span class="year-pill">2025</span>
-        <span class="oa-pill">Open Access</span>
-      </div>
+      <div class="pub-meta-row"><span class="journal-badge badge-nature">Scientific Reports</span><span class="pub-sub-badge psb-nature">Nature Portfolio</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
       <h2 class="pub-title">Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</h2>
       <p class="pub-authors">Md. Siddikur Rahman, <strong>Abu Bokkor Shiddik</strong></p>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">↗ DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.nature.com/articles/s41598-025-96973-w" target="_blank">View in Journal</a>
+      <div class="pub-metrics-strip">
+        <div class="pm-item"><div class="pm-val">194</div><div class="pm-lbl">Countries</div></div>
+        <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
+        <div class="pm-item"><div class="pm-val">SHAP 0.874</div><div class="pm-lbl">Peak Impact</div></div>
+        <div class="pm-item"><div class="pm-val">R&sup2; 0.67</div><div class="pm-lbl">Model Fit</div></div>
+        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
       </div>
+      <div class="pub-links">
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">&#8599; DOI</a>
+        <a class="pub-link-btn btn-journal" href="https://www.nature.com/articles/s41598-025-96973-w" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite1',this)">Cite</button>
+      </div>
+      <div class="cite-box" id="cite1"><button class="cite-copy" onclick="copyCite('cite1')">Copy</button>Rahman, M.S. &amp; Shiddik, A.B. (2025). Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally. Scientific Reports. https://doi.org/10.1038/s41598-025-96973-w</div>
     </div>
     <div class="pub-abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="abstract-text">
-        <div class="abstract-clamp" id="abs-1">
-          <p>Tuberculosis (TB) is a major global health issue, contributing significantly to mortality and morbidity rates worldwide. This study employed the advanced machine learning (ML) model, XGBoost, combined with XAI and spatial analysis to describe global TB incidence and mortality rates across 194 countries from 2000 to 2022. Spatial autocorrelation analysis utilizing Moran's I revealed geographical clusters and significant determinants affecting TB incidence. Treatment success rates and MDR-TB treatment initiation were identified as pivotal determinants. Confirmed cases of MDR-TB had the most significant impact on TB incidence (SHAP = 0.874). Additionally, air pollution had a notable impact (SHAP = 1.36). The XGBoost model demonstrated the best predictive performance (RMSE = 0.88, R² = 0.67). This study highlights the potential of integrating XGBoost and XAI methodologies as a holistic framework for effectively tackling global tuberculosis incidence and mortality rates.</p>
-        </div>
-        <button class="read-more-btn" data-target="abs-1">Read more →</button>
-      </div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-1"><p>Tuberculosis (TB) is a major global health issue, contributing significantly to mortality and morbidity rates worldwide. This study employed the advanced machine learning model XGBoost, combined with XAI and spatial analysis, to describe global TB incidence and mortality rates across 194 countries from 2000 to 2022. Spatial autocorrelation analysis utilizing Moran&apos;s I revealed geographical clusters and significant determinants affecting TB incidence. Treatment success rates and MDR-TB treatment initiation were identified as pivotal determinants. Confirmed cases of MDR-TB had the most significant impact on TB incidence (SHAP = 0.874). Additionally, air pollution had a notable impact (SHAP = 1.36). The XGBoost model demonstrated the best predictive performance (RMSE = 0.88, R&sup2; = 0.67, Adjusted R&sup2; = 0.65). This study highlights the potential of integrating XGBoost and XAI methodologies as a holistic framework for effectively tackling global tuberculosis incidence and mortality rates.</p></div>
+      <button class="read-more-btn" data-target="abs-1">Read more &rarr;</button></div>
     </div>
     <div class="pub-figures">
       <div class="figures-label">Figures</div>
@@ -428,36 +373,33 @@
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/dab00be0-e460-47ba-975c-d1f593172106" alt="Figure 4" data-full="https://github.com/user-attachments/assets/dab00be0-e460-47ba-975c-d1f593172106" style="display:none">
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/90a6b33e-aa01-4ff8-a645-e1b80f046f28" alt="Figure 5" data-full="https://github.com/user-attachments/assets/90a6b33e-aa01-4ff8-a645-e1b80f046f28" style="display:none">
       </div>
-      <button class="fig-more-btn" data-card="1">Show all figures (5) →</button>
+      <button class="fig-more-btn" data-card="1">Show all figures (5) &rarr;</button>
     </div>
   </article>
 
-  <!-- ═══ PUB 2 ═══ -->
-  <article class="pub-card" data-tags="dengue 2025 ml tree bangladesh warning">
+  <article class="pub-card wiley" data-tags="dengue 2025 ml tree bangladesh warning lightgbm shap wiley hsr">
     <div class="pub-body">
-      <div class="pub-meta-row">
-        <span class="journal-badge badge-hsr">Health Science Reports</span>
-        <span class="year-pill">2025</span>
-        <span class="oa-pill">Open Access</span>
-      </div>
+      <div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
       <h2 class="pub-title">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model</h2>
       <p class="pub-authors">Md. Siddikur Rahman, Miftahuzzannat Amrin, <strong>Md. Abu Bokkor Shiddik</strong></p>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/hsr2.70726" target="_blank">↗ DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://onlinelibrary.wiley.com/doi/10.1002/hsr2.70726" target="_blank">View in Journal</a>
+      <div class="pub-metrics-strip">
+        <div class="pm-item"><div class="pm-val">LightGBM</div><div class="pm-lbl">Best Model</div></div>
+        <div class="pm-item"><div class="pm-val">2000&ndash;21</div><div class="pm-lbl">Data Span</div></div>
+        <div class="pm-item"><div class="pm-val">27&deg;C</div><div class="pm-lbl">Optimal Mean Temp</div></div>
+        <div class="pm-item"><div class="pm-val">82%</div><div class="pm-lbl">Risk Humidity</div></div>
+        <div class="pm-item"><div class="pm-val">SHAP</div><div class="pm-lbl">XAI Method</div></div>
       </div>
+      <div class="pub-links">
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/hsr2.70726" target="_blank">&#8599; DOI</a>
+        <a class="pub-link-btn btn-journal" href="https://onlinelibrary.wiley.com/doi/10.1002/hsr2.70726" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite2',this)">Cite</button>
+      </div>
+      <div class="cite-box" id="cite2"><button class="cite-copy" onclick="copyCite('cite2')">Copy</button>Rahman, M.S., Amrin, M. &amp; Shiddik, M.A.B. (2025). Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model. Health Science Reports, 8(5), e70726. https://doi.org/10.1002/hsr2.70726</div>
     </div>
     <div class="pub-abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="abstract-text">
-        <div class="abstract-clamp" id="abs-2">
-          <p><strong>Background:</strong> A life-threatening vector-borne disease, dengue fever poses significant global public health and economic threats, including Bangladesh. This study proposes an interpretable tree-based ML model for dengue early warning systems using climatic, sociodemographic, and landscape factors.</p>
-          <p><strong>Methods:</strong> High-performance ML algorithms — Random Forests, XGBoost, and LightGBM — were applied to surveillance data from January 2000 to December 2021. SHAP values identified the most significant dengue drivers.</p>
-          <p><strong>Results:</strong> Optimal thresholds were identified: mean temperature 27°C, minimum temperature 22°C, humidity 82%. The LightGBM model accurately forecasts dengue, with agricultural land, population density, and minimum temperature as key outbreak drivers.</p>
-          <p><strong>Conclusion:</strong> The proposed ML model functions as an early warning system, providing a framework for sophisticated analytical techniques in public health.</p>
-        </div>
-        <button class="read-more-btn" data-target="abs-2">Read more →</button>
-      </div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-2"><p><strong>Background:</strong> A life-threatening vector-borne disease, dengue fever poses significant global public health and economic threats, including Bangladesh. This study proposes an interpretable tree-based ML model for dengue early warning systems using climatic, sociodemographic, and landscape factors.</p><p><strong>Methods:</strong> High-performance ML algorithms &mdash; Random Forests, XGBoost, and LightGBM &mdash; were applied to surveillance data from January 2000 to December 2021. SHAP values identified the most significant dengue drivers.</p><p><strong>Results:</strong> Optimal thresholds: mean temperature 27&deg;C, minimum temperature 22&deg;C, humidity 82%. LightGBM accurately forecasts dengue, with agricultural land, population density, and minimum temperature as key outbreak drivers.</p><p><strong>Conclusion:</strong> The proposed ML model functions as an early warning system, providing a framework for sophisticated analytical techniques in public health.</p></div>
+      <button class="read-more-btn" data-target="abs-2">Read more &rarr;</button></div>
     </div>
     <div class="pub-figures">
       <div class="figures-label">Figures</div>
@@ -470,36 +412,33 @@
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/0bd7315d-cdc9-407c-8509-a373d578d18b" alt="Figure 6" data-full="https://github.com/user-attachments/assets/0bd7315d-cdc9-407c-8509-a373d578d18b" style="display:none">
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/774c5933-498a-4334-ac0f-35664405a77b" alt="Figure 7" data-full="https://github.com/user-attachments/assets/774c5933-498a-4334-ac0f-35664405a77b" style="display:none">
       </div>
-      <button class="fig-more-btn" data-card="2">Show all figures (7) →</button>
+      <button class="fig-more-btn" data-card="2">Show all figures (7) &rarr;</button>
     </div>
   </article>
 
-  <!-- ═══ PUB 3 ═══ -->
-  <article class="pub-card elsevier" data-tags="dengue 2025 xai climate bangladesh eco">
+  <article class="pub-card elsevier" data-tags="dengue 2025 xai climate bangladesh eco shap lime auc elsevier">
     <div class="pub-body">
-      <div class="pub-meta-row">
-        <span class="journal-badge badge-gloepi">Global Epidemiology</span>
-        <span class="year-pill">2025</span>
-        <span class="oa-pill">Open Access</span>
-      </div>
+      <div class="pub-meta-row"><span class="journal-badge badge-gloepi">Global Epidemiology</span><span class="pub-sub-badge psb-elsevier">Elsevier</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
       <h2 class="pub-title">Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</h2>
       <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">↗ DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.sciencedirect.com/science/article/pii/S2590113325000288" target="_blank">View in Journal</a>
+      <div class="pub-metrics-strip">
+        <div class="pm-item"><div class="pm-val">AUC 0.89</div><div class="pm-lbl">Performance</div></div>
+        <div class="pm-item"><div class="pm-val">2000&ndash;23</div><div class="pm-lbl">Data Span</div></div>
+        <div class="pm-item"><div class="pm-val">SHAP+LIME</div><div class="pm-lbl">XAI Methods</div></div>
+        <div class="pm-item"><div class="pm-val">2024&ndash;30</div><div class="pm-lbl">Forecast</div></div>
+        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
       </div>
+      <div class="pub-links">
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">&#8599; DOI</a>
+        <a class="pub-link-btn btn-journal" href="https://www.sciencedirect.com/science/article/pii/S2590113325000288" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite3',this)">Cite</button>
+      </div>
+      <div class="cite-box" id="cite3"><button class="cite-copy" onclick="copyCite('cite3')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers. Global Epidemiology, 10, 100210. https://doi.org/10.1016/j.gloepi.2025.100210</div>
     </div>
     <div class="pub-abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="abstract-text">
-        <div class="abstract-clamp" id="abs-3">
-          <p><strong>Background:</strong> Dengue represents a significant public health threat in Bangladesh, characterized by complex ecological transmission dynamics. This study employs state-of-the-art AI methods to identify the roles of eco-climatic factors in predicting dengue outbreaks.</p>
-          <p><strong>Methods:</strong> XGBoost and LightGBM combined with XAI (SHAP and LIME) evaluated predictive performance of dengue determinants from 2000 to 2023. Models also predicted dengue cases and early warning trends from 2024 to 2030.</p>
-          <p><strong>Findings:</strong> Bangladesh experienced the highest dengue cases in August, most fatalities in November. XGBoost achieved AUC = 0.89 and Log Loss = 0.64. Key predictors: population density, precipitation, temperature, and land-use patterns.</p>
-          <p><strong>Interpretation:</strong> This study showcases XAI's potential in uncovering dengue outbreak complexities, providing a robust tool for public health interventions and generating timely alerts.</p>
-        </div>
-        <button class="read-more-btn" data-target="abs-3">Read more →</button>
-      </div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-3"><p><strong>Background:</strong> Dengue represents a significant public health threat in Bangladesh, characterized by complex ecological transmission dynamics. This study employs state-of-the-art AI methods to identify eco-climatic factors in predicting dengue outbreaks.</p><p><strong>Methods:</strong> XGBoost and LightGBM combined with XAI (SHAP and LIME) evaluated predictive performance of dengue determinants from 2000 to 2023. Models also predicted dengue cases and early warning trends from 2024 to 2030.</p><p><strong>Findings:</strong> Bangladesh experienced the highest dengue cases in August, most fatalities in November. XGBoost achieved AUC = 0.89 and Log Loss = 0.64. Key predictors: population density, precipitation, temperature, and land-use patterns.</p><p><strong>Interpretation:</strong> This study showcases XAI&apos;s potential in uncovering dengue outbreak complexities, providing a robust tool for public health interventions and generating timely alerts to prevent outbreaks.</p></div>
+      <button class="read-more-btn" data-target="abs-3">Read more &rarr;</button></div>
     </div>
     <div class="pub-figures">
       <div class="figures-label">Figures</div>
@@ -510,65 +449,56 @@
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/45875f05-8074-4bd5-98d5-b535450927ed" alt="Figure 4" data-full="https://github.com/user-attachments/assets/45875f05-8074-4bd5-98d5-b535450927ed" style="display:none">
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/d160fbf2-f5f2-4fb7-ae19-c1697b061686" alt="Figure 5" data-full="https://github.com/user-attachments/assets/d160fbf2-f5f2-4fb7-ae19-c1697b061686" style="display:none">
       </div>
-      <button class="fig-more-btn" data-card="3">Show all figures (5) →</button>
+      <button class="fig-more-btn" data-card="3">Show all figures (5) &rarr;</button>
     </div>
   </article>
 
-  <!-- ═══ PUB 4 ═══ -->
-  <article class="pub-card elsevier" data-tags="dengue 2025 xai reflections bangladesh">
+  <article class="pub-card elsevier" data-tags="dengue 2025 xai reflections bangladesh elsevier">
     <div class="pub-body">
-      <div class="pub-meta-row">
-        <span class="journal-badge badge-gloepi">Global Epidemiology</span>
-        <span class="year-pill">2025</span>
-        <span class="oa-pill">Open Access</span>
-      </div>
+      <div class="pub-meta-row"><span class="journal-badge badge-gloepi">Global Epidemiology</span><span class="pub-sub-badge psb-elsevier">Elsevier</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
       <h2 class="pub-title">Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</h2>
       <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
       <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1016/j.gloepi.2025.100230" target="_blank">↗ DOI</a>
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1016/j.gloepi.2025.100230" target="_blank">&#8599; DOI</a>
         <a class="pub-link-btn btn-journal" href="https://www.sciencedirect.com/science/article/pii/S2590113325000483" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite4',this)">Cite</button>
       </div>
+      <div class="cite-box" id="cite4"><button class="cite-copy" onclick="copyCite('cite4')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh. Global Epidemiology, p.100230. https://doi.org/10.1016/j.gloepi.2025.100230</div>
     </div>
     <div class="pub-abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="abstract-text">
-        <div class="abstract-clamp" id="abs-4">
-          <p>This paper reflects on XAI's vast implications in public health research and its potential to inform climate-sensitive disease prediction in low-income settings. We developed a novel framework combining predictive accuracy with interpretability through XAI — enabling actionable insights for early warning systems (EWS) and dengue prevention in densely populated and climate-sensitive regions like Bangladesh.</p>
-        </div>
-        <button class="read-more-btn" data-target="abs-4">Read more →</button>
-      </div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-4"><p>This paper reflects on XAI&apos;s vast implications in public health research and its potential to inform climate-sensitive disease prediction in low-income settings. A novel framework combining predictive accuracy with interpretability through XAI enables actionable insights for early warning systems (EWS) and dengue prevention in densely populated and climate-sensitive regions like Bangladesh.</p></div>
+      <button class="read-more-btn" data-target="abs-4">Read more &rarr;</button></div>
     </div>
     <div class="pub-figures">
       <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/6f349c6a-78ce-479d-8c75-6a78bc79b071" alt="Figure 1" data-full="https://github.com/user-attachments/assets/6f349c6a-78ce-479d-8c75-6a78bc79b071">
-      </div>
+      <div class="fig-strip"><img class="fig-thumb" src="https://github.com/user-attachments/assets/6f349c6a-78ce-479d-8c75-6a78bc79b071" alt="Figure 1" data-full="https://github.com/user-attachments/assets/6f349c6a-78ce-479d-8c75-6a78bc79b071"></div>
     </div>
   </article>
 
-  <!-- ═══ PUB 5 ═══ -->
-  <article class="pub-card nature" data-tags="malaria 2025 ml spatial nature xai global">
+  <article class="pub-card nature" data-tags="malaria 2025 ml spatial nature xai global xgboost getis-ord">
     <div class="pub-body">
-      <div class="pub-meta-row">
-        <span class="journal-badge badge-nature">Scientific Reports</span>
-        <span class="year-pill">2025</span>
-        <span class="oa-pill">Open Access</span>
-      </div>
-      <h2 class="pub-title">Unraveling global malaria incidence and mortality using machine learning and artificial intelligence–driven spatial analysis</h2>
+      <div class="pub-meta-row"><span class="journal-badge badge-nature">Scientific Reports</span><span class="pub-sub-badge psb-nature">Nature Portfolio</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
+      <h2 class="pub-title">Unraveling global malaria incidence and mortality using machine learning and artificial intelligence&ndash;driven spatial analysis</h2>
       <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">↗ DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.nature.com/articles/s41598-025-12872-0" target="_blank">View in Journal</a>
+      <div class="pub-metrics-strip">
+        <div class="pm-item"><div class="pm-val">106</div><div class="pm-lbl">Countries</div></div>
+        <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
+        <div class="pm-item"><div class="pm-val">R&sup2; 0.93</div><div class="pm-lbl">Model Fit</div></div>
+        <div class="pm-item"><div class="pm-val">RMSE 0.63</div><div class="pm-lbl">Error</div></div>
+        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
       </div>
+      <div class="pub-links">
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">&#8599; DOI</a>
+        <a class="pub-link-btn btn-journal" href="https://www.nature.com/articles/s41598-025-12872-0" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite5',this)">Cite</button>
+      </div>
+      <div class="cite-box" id="cite5"><button class="cite-copy" onclick="copyCite('cite5')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Unraveling global malaria incidence and mortality using machine learning and AI-driven spatial analysis. Scientific Reports, 15(1), 28334. https://doi.org/10.1038/s41598-025-12872-0</div>
     </div>
     <div class="pub-abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="abstract-text">
-        <div class="abstract-clamp" id="abs-5">
-          <p>This study utilized spatial analysis, advanced ML, and XAI to identify high-risk areas, uncover key determinants, and predict malaria outcomes across 106 countries (2000–2022). XGBoost combined with XAI and causal AI techniques was employed. Spatial analyses (Getis-Ord Gi* and Moran's I) detected significant geographical clusters. In 2022, malaria cases reached 251.75 million. Nigeria recorded the highest incidence (1,332.99 million cases). The XGBoost model demonstrated best predictive performance (RMSE = 0.63, R² = 0.93). Key determinants included access to basic sanitation, electricity availability, population growth, and under-5 mortality rate.</p>
-        </div>
-        <button class="read-more-btn" data-target="abs-5">Read more →</button>
-      </div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-5"><p>This study utilized spatial analysis, advanced ML, and XAI to identify high-risk areas, uncover key determinants, and predict malaria outcomes across 106 countries (2000&ndash;2022). XGBoost combined with XAI and causal AI techniques was employed. Spatial analyses (Getis-Ord Gi* and Moran&apos;s I) detected significant geographical clusters. In 2022, malaria cases reached 251.75 million; Nigeria recorded the highest incidence (1,332.99 million cases). The XGBoost model demonstrated best predictive performance (RMSE = 0.63, R&sup2; = 0.93). Key determinants included access to basic sanitation, electricity availability, population growth, and under-5 mortality rate.</p></div>
+      <button class="read-more-btn" data-target="abs-5">Read more &rarr;</button></div>
     </div>
     <div class="pub-figures">
       <div class="figures-label">Figures</div>
@@ -577,32 +507,32 @@
         <img class="fig-thumb" src="https://github.com/user-attachments/assets/4ceee8c6-c31c-4d5d-b69b-f7f48c2a34ca" alt="Figure 2" data-full="https://github.com/user-attachments/assets/4ceee8c6-c31c-4d5d-b69b-f7f48c2a34ca">
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/012fdb2b-d919-474a-9568-7047a0268879" alt="Figure 3" data-full="https://github.com/user-attachments/assets/012fdb2b-d919-474a-9568-7047a0268879" style="display:none">
       </div>
-      <button class="fig-more-btn" data-card="5">Show all figures (3) →</button>
+      <button class="fig-more-btn" data-card="5">Show all figures (3) &rarr;</button>
     </div>
   </article>
 
-  <!-- ═══ PUB 6 ═══ -->
-  <article class="pub-card local" data-tags="dengue 2025 xai causal bangladesh ijss">
+  <article class="pub-card local" data-tags="dengue 2025 xai causal bangladesh ijss banglajol dowhy">
     <div class="pub-body">
-      <div class="pub-meta-row">
-        <span class="journal-badge badge-ijss">Int. J. Statistical Sciences</span>
-        <span class="year-pill">2025</span>
-      </div>
+      <div class="pub-meta-row"><span class="journal-badge badge-ijss">Int. J. Statistical Sciences</span><span class="pub-sub-badge psb-banglajol">BanglaJOL</span><span class="year-pill">2025</span></div>
       <h2 class="pub-title">Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</h2>
       <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.3329/ijss.v25i2.85772" target="_blank">↗ DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.banglajol.info/index.php/ijss/article/view/85772" target="_blank">View in Journal</a>
+      <div class="pub-metrics-strip">
+        <div class="pm-item"><div class="pm-val">2010&ndash;24</div><div class="pm-lbl">Data Span</div></div>
+        <div class="pm-item"><div class="pm-val">41.87%</div><div class="pm-lbl">Climate Factor</div></div>
+        <div class="pm-item"><div class="pm-val">DoWhy</div><div class="pm-lbl">Causal Framework</div></div>
+        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
       </div>
+      <div class="pub-links">
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.3329/ijss.v25i2.85772" target="_blank">&#8599; DOI</a>
+        <a class="pub-link-btn btn-journal" href="https://www.banglajol.info/index.php/ijss/article/view/85772" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite6',this)">Cite</button>
+      </div>
+      <div class="cite-box" id="cite6"><button class="cite-copy" onclick="copyCite('cite6')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference. Int. J. Statistical Sciences, 25(2), 101-113. https://doi.org/10.3329/ijss.v25i2.85772</div>
     </div>
     <div class="pub-abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="abstract-text">
-        <div class="abstract-clamp" id="abs-6">
-          <p>This study employed high-performance ML (XGBoost) combined with XAI and causal inference (DoWhy framework) to evaluate dengue incidence in Bangladesh from January 2010 to December 2024. Dengue cases exceeded 100,000 total in 2019, 2023, and 2024, with monthly peaks of 50,000. The XGBoost model was the top performer (RMSE: 11,365.2; MAE: 7,014.68). Climate indicators were the strongest contributor to dengue prediction (41.87%), followed by sociodemographic (35.03%), healthcare (19.16%), and landscape factors (3.95%).</p>
-        </div>
-        <button class="read-more-btn" data-target="abs-6">Read more →</button>
-      </div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-6"><p>This study employed high-performance ML (XGBoost) combined with XAI and causal inference (DoWhy framework) to evaluate dengue incidence in Bangladesh from January 2010 to December 2024. Dengue cases exceeded 100,000 total in 2019, 2023, and 2024, with monthly peaks of 50,000. The XGBoost model was the top performer (RMSE: 11,365.2; MAE: 7,014.68). Climate indicators were the strongest contributor to dengue prediction (41.87%), followed by sociodemographic (35.03%), healthcare (19.16%), and landscape factors (3.95%).</p></div>
+      <button class="read-more-btn" data-target="abs-6">Read more &rarr;</button></div>
     </div>
     <div class="pub-figures">
       <div class="figures-label">Figures</div>
@@ -613,35 +543,33 @@
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/120e4814-f8ad-45de-8443-ddb3c9ed3611" alt="Figure 4" data-full="https://github.com/user-attachments/assets/120e4814-f8ad-45de-8443-ddb3c9ed3611" style="display:none">
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/cbca4dda-69ad-48be-9d58-c6700d9b2389" alt="Figure 5" data-full="https://github.com/user-attachments/assets/cbca4dda-69ad-48be-9d58-c6700d9b2389" style="display:none">
       </div>
-      <button class="fig-more-btn" data-card="6">Show all figures (5) →</button>
+      <button class="fig-more-btn" data-card="6">Show all figures (5) &rarr;</button>
     </div>
   </article>
 
-  <!-- ═══ PUB 7 ═══ -->
-  <article class="pub-card springer" data-tags="asia 2025 xai spatial communicable springer health">
+  <article class="pub-card springer" data-tags="asia 2025 xai spatial communicable springer health tb malaria dengue">
     <div class="pub-body">
-      <div class="pub-meta-row">
-        <span class="journal-badge badge-springer">Int. J. Health Geographics</span>
-        <span class="year-pill">2025</span>
-        <span class="oa-pill">Open Access</span>
-      </div>
-      <h2 class="pub-title">Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000–2022) based on health, climate, and socioeconomic factors</h2>
+      <div class="pub-meta-row"><span class="journal-badge badge-springer">Int. J. Health Geographics</span><span class="pub-sub-badge psb-springer">Springer</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
+      <h2 class="pub-title">Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000&ndash;2022) based on health, climate, and socioeconomic factors</h2>
       <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">↗ DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://link.springer.com/article/10.1186/s12942-025-00433-7" target="_blank">View in Journal</a>
+      <div class="pub-metrics-strip">
+        <div class="pm-item"><div class="pm-val">41</div><div class="pm-lbl">Countries</div></div>
+        <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
+        <div class="pm-item"><div class="pm-val">R&sup2; 0.91</div><div class="pm-lbl">TB Model Fit</div></div>
+        <div class="pm-item"><div class="pm-val">Gi*+Moran</div><div class="pm-lbl">Spatial Methods</div></div>
+        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
       </div>
+      <div class="pub-links">
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">&#8599; DOI</a>
+        <a class="pub-link-btn btn-journal" href="https://link.springer.com/article/10.1186/s12942-025-00433-7" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite7',this)">Cite</button>
+      </div>
+      <div class="cite-box" id="cite7"><button class="cite-copy" onclick="copyCite('cite7')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000-2022). Int. J. Health Geographics. https://doi.org/10.1186/s12942-025-00433-7</div>
     </div>
     <div class="pub-abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="abstract-text">
-        <div class="abstract-clamp" id="abs-7">
-          <p><strong>Background:</strong> Communicable diseases remain a significant challenge in Asia. This study applies ML and spatial analysis to examine patterns and determinants across 41 countries (2000–2022).</p>
-          <p><strong>Results:</strong> TB cases declined from 8.01M (2000) to 7.54M (2022), with hotspots in India (Gi* = 3.07) and Nepal (Gi* = 4.67). Malaria dropped from 27.00M to 7.96M, yet Bangladesh (Gi* = 4.13) and Pakistan (Gi* = 4.17) exhibited sustained risk. Dengue peaked at 2.71M cases in 2019. XGBoost achieved RMSE = 0.94, R² = 0.91 for tuberculosis.</p>
-          <p><strong>Conclusion:</strong> Integrating ML, spatial analysis, and XAI uncovers disease determinants and guides targeted interventions across Asia.</p>
-        </div>
-        <button class="read-more-btn" data-target="abs-7">Read more →</button>
-      </div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-7"><p><strong>Background:</strong> Communicable diseases remain a significant challenge in Asia. This study applies ML and spatial analysis to examine patterns and determinants across 41 countries (2000&ndash;2022).</p><p><strong>Results:</strong> TB cases declined from 8.01M (2000) to 7.54M (2022), with hotspots in India (Gi* = 3.07) and Nepal (Gi* = 4.67). Malaria dropped from 27.00M to 7.96M, yet Bangladesh (Gi* = 4.13) and Pakistan (Gi* = 4.17) exhibited sustained risk. Dengue peaked at 2.71M cases in 2019. XGBoost achieved RMSE = 0.94, R&sup2; = 0.91 for tuberculosis.</p><p><strong>Conclusion:</strong> Integrating ML, spatial analysis, and XAI uncovers disease determinants and guides targeted interventions across Asia.</p></div>
+      <button class="read-more-btn" data-target="abs-7">Read more &rarr;</button></div>
     </div>
     <div class="pub-figures">
       <div class="figures-label">Figures</div>
@@ -651,35 +579,33 @@
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/1c4f1c8a-6bb1-4d68-9859-b3ec70359e80" alt="Figure 3" data-full="https://github.com/user-attachments/assets/1c4f1c8a-6bb1-4d68-9859-b3ec70359e80" style="display:none">
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/018930f2-4fe7-4da1-8ef8-bb3f3354454c" alt="Figure 4" data-full="https://github.com/user-attachments/assets/018930f2-4fe7-4da1-8ef8-bb3f3354454c" style="display:none">
       </div>
-      <button class="fig-more-btn" data-card="7">Show all figures (4) →</button>
+      <button class="fig-more-btn" data-card="7">Show all figures (4) &rarr;</button>
     </div>
   </article>
 
-  <!-- ═══ PUB 8 ═══ -->
-  <article class="pub-card bmj" data-tags="mortality 2026 bayesian spatiotemporal bmj asia child">
+  <article class="pub-card bmj" data-tags="mortality 2026 bayesian spatiotemporal bmj asia child neonatal infant">
     <div class="pub-body">
-      <div class="pub-meta-row">
-        <span class="journal-badge badge-bmj">BMJ Open</span>
-        <span class="year-pill">2026</span>
-        <span class="oa-pill">Open Access</span>
-      </div>
-      <h2 class="pub-title">Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000–2022) in 41 Asian countries: a population-level observational study</h2>
+      <div class="pub-meta-row"><span class="journal-badge badge-bmj">BMJ Open</span><span class="pub-sub-badge psb-bmj">BMJ</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
+      <h2 class="pub-title">Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000&ndash;2022) in 41 Asian countries: a population-level observational study</h2>
       <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1136/bmjopen-2025-108632" target="_blank">↗ DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://bmjopen.bmj.com/content/16/2/e108632" target="_blank">View in Journal</a>
+      <div class="pub-metrics-strip">
+        <div class="pm-item"><div class="pm-val">41</div><div class="pm-lbl">Countries</div></div>
+        <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
+        <div class="pm-item"><div class="pm-val">R&sup2; 0.99</div><div class="pm-lbl">Neonatal Model</div></div>
+        <div class="pm-item"><div class="pm-val">r = &minus;0.79</div><div class="pm-lbl">Rubella Corr.</div></div>
+        <div class="pm-item"><div class="pm-val">Bayesian</div><div class="pm-lbl">Approach</div></div>
       </div>
+      <div class="pub-links">
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1136/bmjopen-2025-108632" target="_blank">&#8599; DOI</a>
+        <a class="pub-link-btn btn-journal" href="https://bmjopen.bmj.com/content/16/2/e108632" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite8',this)">Cite</button>
+      </div>
+      <div class="cite-box" id="cite8"><button class="cite-copy" onclick="copyCite('cite8')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2026). Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000-2022) in 41 Asian countries. BMJ Open, 16(2), e108632. https://doi.org/10.1136/bmjopen-2025-108632</div>
     </div>
     <div class="pub-abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="abstract-text">
-        <div class="abstract-clamp" id="abs-8">
-          <p><strong>Background:</strong> Child mortality continues to pose a major public health challenge across Asia. This study examines trends in under-5, infant and neonatal mortality and identifies key determinants using spatiotemporal modelling across 41 Asian countries (2000–2022).</p>
-          <p><strong>Results:</strong> Under-5 mortality decreased significantly from 46.73 to 18.53 per 1000 live births. Strong negative associations were found with vaccination coverage — rubella (r = −0.79), DTP (r = −0.74). Afghanistan (77.12), Bangladesh (57.12) and Myanmar (63.16) were identified as high-risk hotspots. Predictive accuracy was highest for neonatal mortality (R² = 0.99; RMSE = 1.93).</p>
-          <p><strong>Conclusion:</strong> Immunisation and maternal education are critical to reducing mortality. The white-box modelling framework supports data-driven policy planning toward SDG 3.2.</p>
-        </div>
-        <button class="read-more-btn" data-target="abs-8">Read more →</button>
-      </div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-8"><p><strong>Background:</strong> Child mortality continues to pose a major public health challenge across Asia. This study examines trends in under-5, infant, and neonatal mortality and identifies key determinants using spatiotemporal modelling across 41 Asian countries (2000&ndash;2022).</p><p><strong>Results:</strong> Under-5 mortality decreased significantly from 46.73 to 18.53 per 1000 live births. Strong negative associations were found with vaccination coverage &mdash; rubella (r = &minus;0.79), DTP (r = &minus;0.74). Afghanistan (77.12), Bangladesh (57.12), and Myanmar (63.16) were identified as high-risk hotspots. Predictive accuracy was highest for neonatal mortality (R&sup2; = 0.99; RMSE = 1.93).</p><p><strong>Conclusion:</strong> Immunisation and maternal education are critical to reducing mortality. The white-box modelling framework supports data-driven policy planning toward SDG 3.2.</p></div>
+      <button class="read-more-btn" data-target="abs-8">Read more &rarr;</button></div>
     </div>
     <div class="pub-figures">
       <div class="figures-label">Figures</div>
@@ -689,33 +615,33 @@
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/16230e9f-b203-4ed0-9933-86f7c772f8d7" alt="Figure 3" data-full="https://github.com/user-attachments/assets/16230e9f-b203-4ed0-9933-86f7c772f8d7" style="display:none">
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/9c26fd4a-0938-4a8b-8c6c-f7ba50bcd66e" alt="Figure 4" data-full="https://github.com/user-attachments/assets/9c26fd4a-0938-4a8b-8c6c-f7ba50bcd66e" style="display:none">
       </div>
-      <button class="fig-more-btn" data-card="8">Show all figures (4) →</button>
+      <button class="fig-more-btn" data-card="8">Show all figures (4) &rarr;</button>
     </div>
   </article>
 
-  <!-- ═══ PUB 9 ═══ -->
-  <article class="pub-card mdpi" data-tags="dengue 2026 xai bayesian district bangladesh mdpi deep learning">
+  <article class="pub-card mdpi" data-tags="dengue 2026 xai bayesian district bangladesh mdpi deep learning mlp convlstm shap">
     <div class="pub-body">
-      <div class="pub-meta-row">
-        <span class="journal-badge badge-mdpi">Trop. Med. &amp; Infect. Dis.</span>
-        <span class="year-pill">2026</span>
-        <span class="oa-pill">Open Access</span>
-      </div>
+      <div class="pub-meta-row"><span class="journal-badge badge-mdpi">Trop. Med. &amp; Infect. Dis.</span><span class="pub-sub-badge psb-mdpi">MDPI</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
       <h2 class="pub-title">District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</h2>
       <p class="pub-authors"><strong>Md. Abu Bokkor Shiddik</strong>, Farzana Zannat Toshi, Sadia Yesmin, Md. Siddikur Rahman</p>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">↗ DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.mdpi.com/2414-6366/11/3/73" target="_blank">View in Journal</a>
+      <div class="pub-metrics-strip">
+        <div class="pm-item"><div class="pm-val">64</div><div class="pm-lbl">Districts</div></div>
+        <div class="pm-item"><div class="pm-val">2017&ndash;24</div><div class="pm-lbl">Data Span</div></div>
+        <div class="pm-item"><div class="pm-val">Acc 0.93</div><div class="pm-lbl">MLP Accuracy</div></div>
+        <div class="pm-item"><div class="pm-val">AUC 0.99</div><div class="pm-lbl">ROC-AUC</div></div>
+        <div class="pm-item"><div class="pm-val">SHAP 0.314</div><div class="pm-lbl">Humidity Peak</div></div>
       </div>
+      <div class="pub-links">
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">&#8599; DOI</a>
+        <a class="pub-link-btn btn-journal" href="https://www.mdpi.com/2414-6366/11/3/73" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite9',this)">Cite</button>
+      </div>
+      <div class="cite-box" id="cite9"><button class="cite-copy" onclick="copyCite('cite9')">Copy</button>Shiddik, M.A.B., Toshi, F.Z., Yesmin, S. &amp; Rahman, M.S. (2026). District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning. Tropical Medicine and Infectious Disease, 11(3), 73. https://doi.org/10.3390/tropicalmed11030073</div>
     </div>
     <div class="pub-abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="abstract-text">
-        <div class="abstract-clamp" id="abs-9">
-          <p>In Bangladesh, 321,179 dengue cases were reported in 2023, followed by 101,214 cases in 2024. This study developed a district-level dengue early warning system integrating climatic, socio-demographic, economic, healthcare, and environmental determinants across all 64 districts (2017–2024). ML and deep learning approaches — MLP and ConvLSTM — were combined with SHAP-based XAI and Bayesian spatio-temporal models. Climate was the strongest predictor (humidity SHAP = 0.314; minimum temperature SHAP = 0.146). Poverty (SHAP = 0.193) and healthcare capacity also contributed significantly. The MLP model achieved accuracy = 0.93, ROC-AUC = 0.99. The integrated framework delivers transparent, interpretable district-level early warnings for dengue outbreak preparedness.</p>
-        </div>
-        <button class="read-more-btn" data-target="abs-9">Read more →</button>
-      </div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-9"><p>In Bangladesh, 321,179 dengue cases were reported in 2023, followed by 101,214 cases in 2024. This study developed a district-level dengue early warning system integrating climatic, socio-demographic, economic, healthcare, and environmental determinants across all 64 districts (2017&ndash;2024). ML and deep learning approaches &mdash; MLP and ConvLSTM &mdash; were combined with SHAP-based XAI and Bayesian spatio-temporal models. Climate was the strongest predictor (humidity SHAP = 0.314; minimum temperature SHAP = 0.146). Poverty (SHAP = 0.193) and healthcare capacity also contributed significantly. The MLP model achieved accuracy = 0.93, ROC-AUC = 0.99. The integrated framework delivers transparent, interpretable district-level early warnings for dengue outbreak preparedness.</p></div>
+      <button class="read-more-btn" data-target="abs-9">Read more &rarr;</button></div>
     </div>
     <div class="pub-figures">
       <div class="figures-label">Figures</div>
@@ -726,166 +652,48 @@
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/06613ffe-9938-4c9e-9d04-222252660bc3" alt="Figure 4" data-full="https://github.com/user-attachments/assets/06613ffe-9938-4c9e-9d04-222252660bc3" style="display:none">
         <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/a438cd93-e2d2-4008-be15-326190a81a6c" alt="Figure 5" data-full="https://github.com/user-attachments/assets/a438cd93-e2d2-4008-be15-326190a81a6c" style="display:none">
       </div>
-      <button class="fig-more-btn" data-card="9">Show all figures (5) →</button>
+      <button class="fig-more-btn" data-card="9">Show all figures (5) &rarr;</button>
     </div>
   </article>
 
-</div><!-- /page-body -->
+</div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div>
-      <div class="footer-name">Md. Abu Bokkor Shiddik</div>
-      <p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p>
-    </div>
+    <div><div class="footer-name">Md. Abu Bokkor Shiddik</div><p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p></div>
     <div>
       <div class="footer-col-title">Navigation</div>
-      <div class="footer-nav-links">
-        <a href="home.html">Home</a>
-        <a href="publications.html">Publications</a>
-        <a href="projects.html">Projects</a>
-        <a href="courses.html">Courses &amp; Training</a>
-        <a href="service.html">Service</a>
-        <a href="conference-and-workshop.html">Conferences</a>
-      </div>
+      <div class="footer-nav-links"><a href="home.html">Home</a><a href="publications.html">Publications</a><a href="projects.html">Projects</a><a href="courses.html">Courses &amp; Training</a><a href="service.html">Service</a><a href="conference-and-workshop.html">Conferences</a></div>
     </div>
     <div>
       <div class="footer-col-title">Connect</div>
-      <div class="footer-social-links">
-        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">🌐 Portfolio</a>
-        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
-        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Google Scholar</a>
-        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
-        <a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
-      </div>
+      <div class="footer-social-links"><a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">&#127760; Portfolio</a><a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a><a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">&#127891; Google Scholar</a><a href="https://orcid.org/0009-0002-0424-446X" target="_blank">&#10022; ORCID</a><a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a></div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 Md. Abu Bokkor Shiddik · All rights reserved</p>
-    <p>abubokkor.brur60@gmail.com · +880 1874 001360</p>
-  </div>
+  <div class="footer-bottom"><p>&copy; 2026 Md. Abu Bokkor Shiddik &middot; All rights reserved</p><p>abubokkor.brur60@gmail.com &middot; +880 1874 001360</p></div>
 </footer>
 
 <script>
-/* ── NAVBAR ── */
-document.querySelectorAll('.dropbtn').forEach(function(btn) {
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    var dd = btn.closest('.dropdown');
-    var open = dd.classList.contains('active');
-    document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
-    if (!open) dd.classList.add('active');
-  });
-});
-document.addEventListener('click', function() {
-  document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
-});
-var ham = document.getElementById('hamburger');
-var navDrawer = document.getElementById('nav-drawer');
-ham.addEventListener('click', function() { ham.classList.toggle('open'); navDrawer.classList.toggle('open'); });
-navDrawer.querySelectorAll('a').forEach(function(a) {
-  a.addEventListener('click', function() { ham.classList.remove('open'); navDrawer.classList.remove('open'); });
-});
-
-/* ── READ MORE (abstract) ── */
-document.querySelectorAll('.read-more-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var target = document.getElementById(btn.dataset.target);
-    if (!target) return;
-    var expanded = target.classList.contains('abstract-clamp');
-    target.classList.toggle('abstract-clamp', !expanded);
-    btn.textContent = expanded ? 'Show less ↑' : 'Read more →';
-  });
-});
-
-/* ── SHOW ALL FIGURES ── */
-document.querySelectorAll('.fig-more-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var card = btn.closest('.pub-figures');
-    var hidden = card.querySelectorAll('.hidden-fig');
-    var open = btn.dataset.open === '1';
-    hidden.forEach(function(img) { img.style.display = open ? 'none' : 'block'; });
-    btn.dataset.open = open ? '0' : '1';
-    var total = parseInt(btn.textContent.match(/\d+/)) || 0;
-    btn.textContent = open ? 'Show all figures (' + total + ') →' : 'Hide extra figures ↑';
-  });
-});
-
-/* ── FIGURE LIGHTBOX ── */
-var lbImages = [];
-var lbIdx = 0;
-
-document.querySelectorAll('.fig-thumb').forEach(function(img) {
-  img.addEventListener('click', function() {
-    var strip = img.closest('.fig-strip');
-    lbImages = Array.from(strip.querySelectorAll('.fig-thumb')).filter(function(i) { return i.style.display !== 'none'; });
-    lbIdx = lbImages.indexOf(img);
-    showLbImg(lbIdx);
-    document.getElementById('fig-lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-});
-
-function showLbImg(idx) {
-  var img = lbImages[idx];
-  if (!img) return;
-  document.getElementById('lb-img').src = img.dataset.full || img.src;
-  document.getElementById('lb-caption').textContent = img.alt || '';
-  lbIdx = idx;
-  document.getElementById('lb-prev').style.opacity = idx === 0 ? '0.3' : '1';
-  document.getElementById('lb-next').style.opacity = idx === lbImages.length - 1 ? '0.3' : '1';
-}
-
-function closeLb() {
-  document.getElementById('fig-lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('lb-close').onclick = closeLb;
-document.getElementById('lb-prev').onclick = function() { if (lbIdx > 0) showLbImg(lbIdx - 1); };
-document.getElementById('lb-next').onclick = function() { if (lbIdx < lbImages.length - 1) showLbImg(lbIdx + 1); };
-document.getElementById('fig-lightbox').addEventListener('click', function(e) { if (e.target === e.currentTarget) closeLb(); });
-document.addEventListener('keydown', function(e) {
-  if (!document.getElementById('fig-lightbox').classList.contains('open')) return;
-  if (e.key === 'Escape') closeLb();
-  if (e.key === 'ArrowLeft' && lbIdx > 0) showLbImg(lbIdx - 1);
-  if (e.key === 'ArrowRight' && lbIdx < lbImages.length - 1) showLbImg(lbIdx + 1);
-});
-
-/* ── FILTER TABS ── */
-document.querySelectorAll('.filter-tab').forEach(function(tab) {
-  tab.addEventListener('click', function() {
-    document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
-    tab.classList.add('active');
-    tab.scrollIntoView({ inline: 'nearest', block: 'nearest' });
-    var f = tab.dataset.filter;
-    var count = 0;
-    document.querySelectorAll('.pub-card').forEach(function(card) {
-      var tags = card.dataset.tags || '';
-      var show = f === 'all' || tags.indexOf(f) !== -1;
-      card.style.display = show ? '' : 'none';
-      if (show) count++;
-    });
-    document.getElementById('no-results').style.display = count === 0 ? 'block' : 'none';
-  });
-});
-
-/* ── LIVE SEARCH ── */
-document.getElementById('search').addEventListener('input', function() {
-  var q = this.value.toLowerCase().trim();
-  var count = 0;
-  document.querySelectorAll('.pub-card').forEach(function(card) {
-    var text = card.textContent.toLowerCase();
-    var show = !q || text.indexOf(q) !== -1;
-    card.style.display = show ? '' : 'none';
-    if (show) count++;
-  });
-  document.getElementById('no-results').style.display = count === 0 ? 'block' : 'none';
-  /* reset filter tabs when searching */
-  if (q) {
-    document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
-  }
-});
+document.querySelectorAll('.dropbtn').forEach(function(btn){btn.addEventListener('click',function(e){e.stopPropagation();var dd=btn.closest('.dropdown');var open=dd.classList.contains('active');document.querySelectorAll('.dropdown.active').forEach(function(d){d.classList.remove('active')});if(!open)dd.classList.add('active')})});
+document.addEventListener('click',function(){document.querySelectorAll('.dropdown.active').forEach(function(d){d.classList.remove('active')})});
+var ham=document.getElementById('hamburger');var navDrawer=document.getElementById('nav-drawer');
+ham.addEventListener('click',function(){ham.classList.toggle('open');navDrawer.classList.toggle('open')});
+navDrawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){ham.classList.remove('open');navDrawer.classList.remove('open')})});
+document.querySelectorAll('.read-more-btn').forEach(function(btn){btn.addEventListener('click',function(){var target=document.getElementById(btn.dataset.target);if(!target)return;var expanded=target.classList.contains('abstract-clamp');target.classList.toggle('abstract-clamp',!expanded);btn.textContent=expanded?'Show less ↑':'Read more →'})});
+document.querySelectorAll('.fig-more-btn').forEach(function(btn){btn.addEventListener('click',function(){var card=btn.closest('.pub-figures');var hidden=card.querySelectorAll('.hidden-fig');var open=btn.dataset.open==='1';hidden.forEach(function(img){img.style.display=open?'none':'block'});btn.dataset.open=open?'0':'1';var total=parseInt((btn.textContent.match(/\d+/)||[''])[0])||0;btn.textContent=open?'Show all figures ('+total+') →':'Hide extra figures ↑'})});
+function toggleCite(id,btn){var box=document.getElementById(id);if(!box)return;var open=box.classList.toggle('open');btn.textContent=open?'Hide Cite':'Cite'}
+function copyCite(id){var box=document.getElementById(id);if(!box)return;var text=box.innerText.replace('Copy','').trim();navigator.clipboard.writeText(text).then(function(){var cb=box.querySelector('.cite-copy');if(cb){cb.textContent='Copied!';setTimeout(function(){cb.textContent='Copy'},2000)}}).catch(function(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta)})}
+var lbImages=[],lbIdx=0;
+document.querySelectorAll('.fig-thumb').forEach(function(img){img.addEventListener('click',function(){var strip=img.closest('.fig-strip');lbImages=Array.from(strip.querySelectorAll('.fig-thumb')).filter(function(i){return i.style.display!=='none'});lbIdx=lbImages.indexOf(img);showLbImg(lbIdx);document.getElementById('fig-lightbox').classList.add('open');document.body.style.overflow='hidden'})});
+function showLbImg(idx){var img=lbImages[idx];if(!img)return;document.getElementById('lb-img').src=img.dataset.full||img.src;document.getElementById('lb-caption').textContent=img.alt||'';lbIdx=idx;document.getElementById('lb-prev').style.opacity=idx===0?'0.3':'1';document.getElementById('lb-next').style.opacity=idx===lbImages.length-1?'0.3':'1'}
+function closeLb(){document.getElementById('fig-lightbox').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('lb-close').onclick=closeLb;
+document.getElementById('lb-prev').onclick=function(){if(lbIdx>0)showLbImg(lbIdx-1)};
+document.getElementById('lb-next').onclick=function(){if(lbIdx<lbImages.length-1)showLbImg(lbIdx+1)};
+document.getElementById('fig-lightbox').addEventListener('click',function(e){if(e.target===e.currentTarget)closeLb()});
+document.addEventListener('keydown',function(e){if(!document.getElementById('fig-lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft'&&lbIdx>0)showLbImg(lbIdx-1);if(e.key==='ArrowRight'&&lbIdx<lbImages.length-1)showLbImg(lbIdx+1)});
+document.querySelectorAll('.filter-tab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.filter-tab').forEach(function(t){t.classList.remove('active')});tab.classList.add('active');tab.scrollIntoView({inline:'nearest',block:'nearest'});var f=tab.dataset.filter;var count=0;document.querySelectorAll('.pub-card').forEach(function(card){var tags=card.dataset.tags||'';var show=f==='all'||tags.indexOf(f)!==-1;card.style.display=show?'':'none';if(show)count++});document.getElementById('no-results').style.display=count===0?'block':'none'})});
+document.getElementById('search').addEventListener('input',function(){var q=this.value.toLowerCase().trim();var count=0;document.querySelectorAll('.pub-card').forEach(function(card){var text=card.textContent.toLowerCase();var show=!q||text.indexOf(q)!==-1;card.style.display=show?'':'none';if(show)count++});document.getElementById('no-results').style.display=count===0?'block':'none';if(q)document.querySelectorAll('.filter-tab').forEach(function(t){t.classList.remove('active')})});
 </script>
 </body>
 </html>
