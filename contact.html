@@ -2,130 +2,189 @@
 <html lang="en">
 <head>
   <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Md. Abu Bokkor Shiddik</title>
+  <title>Contact — Md. Abu Bokkor Shiddik</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
+    *{margin:0;padding:0;box-sizing:border-box}
     body{
-      margin:0;
-      font-family:Inter, sans-serif;
+      font-family:'Inter',sans-serif;
       background:#f8fafc;
       color:#0f172a;
+      overflow-x:hidden;
     }
 
-    a{ text-decoration:none; color:inherit; }
+     a { color: inherit; text-decoration: none; }
 
-    /* keep navbar untouched */
-    /* ===== HERO CONTACT LAYOUT ===== */
-    .contact-wrap{
-      max-width:1180px;
-      margin:40px auto;
-      padding:0 24px;
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:40px;
-      align-items:center;
+    :root {
+      --navy: #0b1f3a; --blue: #1a56db; --blue-h: #1648c0;
+      --sky: #e8f0fe; --sky2: #d2e3fc;
+      --green: #166534; --green-bg: #f0fdf4; --green-bd: #bbf7d0;
+      --purple: #5b21b6; --purple-bg: #f5f3ff; --purple-bd: #ddd6fe;
+      --text: #0f172a; --text2: #334155; --text3: #64748b;
+      --border: #e2e8f0; --border2: #cbd5e1;
+      --bg: #f8fafc; --white: #fff;
+      --r: 8px; --rl: 14px;
+      --sh: 0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+      --sh2: 0 4px 20px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
     }
 
-    .welcome{
-      font-family:Lora, serif;
-      font-size:30px;
-      font-weight:600;
-      margin-bottom:10px;
-    }
+    /* ══ NAVBAR ══ */
+    .navbar { background: var(--navy); position: sticky; top: 0; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; align-items: center; height: 56px; }
+    .nav-brand { font-size: 14.5px; font-weight: 600; color: #fff; margin-right: auto; white-space: nowrap; }
+    .nav-brand span { color: #93c5fd; font-weight: 300; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links > a, .dropbtn { color: rgba(255,255,255,.75); font-size: 13.5px; font-weight: 500; padding: 6px 11px; border-radius: 6px; border: none; background: none; cursor: pointer; font-family: inherit; transition: background .18s, color .18s; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,.09); }
+    .dropdown { position: relative; }
+    .dropdown-content { position: absolute; top: calc(100% + 6px); left: 0; background: #132444; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; min-width: 190px; padding: 6px; box-shadow: 0 12px 32px rgba(0,0,0,.3); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .2s, transform .2s, visibility .2s; pointer-events: none; z-index: 9999; }
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .dropdown-content a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: rgba(255,255,255,.72); font-size: 13px; font-weight: 500; border-radius: 6px; transition: background .15s, color .15s; }
+    .dropdown-content a:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 6px; margin-left: 10px; transition: background .2s; }
+    .hamburger:hover { background: rgba(255,255,255,.1); }
+    .hamburger span { display: block; width: 21px; height: 2px; background: rgba(255,255,255,.85); border-radius: 2px; transition: transform .28s, opacity .28s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display: none; background: #0d1c38; border-top: 1px solid rgba(255,255,255,.07); overflow: hidden; max-height: 0; transition: max-height .38s cubic-bezier(.4,0,.2,1); }
+    .nav-drawer.open { max-height: 700px; }
+    .drawer-inner { padding: 8px 0 16px; }
+    .drawer-link { display: block; color: rgba(255,255,255,.78); font-size: 15px; font-weight: 500; padding: 11px 24px; transition: background .15s, color .15s; }
+    .drawer-link:hover { background: rgba(255,255,255,.06); color: #fff; }
+    .drawer-sec { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,.3); padding: 14px 24px 4px; }
+    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,.58); }
+    .drawer-div { height: 1px; background: rgba(255,255,255,.06); margin: 4px 0; }
+    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-drawer { display: block; } }
 
-    .sub{
-      font-size:14px;
-      color:#475569;
-      line-height:1.8;
-    }
-
-    .info{
-      margin-top:18px;
-      font-size:14px;
-      line-height:2;
-      color:#334155;
-    }
-
-    .info a{
-      color:#1a56db;
-      font-weight:500;
-    }
-
-    /* SAME PHOTO STYLE AS HOMEPAGE */
-    .photo-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .photo-ring {
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      padding:4px;
-      background:linear-gradient(135deg,#3b82f6,#6366f1,#06b6d4);
+    /* ================= HERO IMAGE ================= */
+    .hero{
       position:relative;
+      height:420px;
+      background:url('https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/ABS.jpeg') center/cover no-repeat;
     }
 
-    .photo-ring img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:50%;
-      border:3px solid #0b1f3a;
+    /* dark overlay */
+    .hero::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(11,31,58,.85) 35%, rgba(11,31,58,.2) 100%);
     }
 
-    /* GRID INFO */
-    .grid{
+    /* text LEFT side */
+    .hero-content{
+      position:relative;
+      z-index:1;
       max-width:1180px;
-      margin:50px auto;
+      margin:auto;
+      height:100%;
+      display:flex;
+      align-items:center;
       padding:0 24px;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
     }
 
-    .box{
-      background:#fff;
-      border:1px solid #e2e8f0;
-      border-radius:10px;
-      padding:18px;
-      box-shadow:0 2px 10px rgba(0,0,0,.05);
+    .hero-text{
+      max-width:500px;
+      color:#fff;
     }
 
-    .box h3{
+    .dot{
+      width:8px;
+      height:8px;
+      background:#4ade80;
+      border-radius:50%;
+      display:inline-block;
+      margin-right:8px;
+      animation:pulse 1.8s infinite;
+    }
+
+    @keyframes pulse{
+      0%,100%{transform:scale(1);opacity:1}
+      50%{transform:scale(.7);opacity:.5}
+    }
+
+    .hero-text h1{
+      font-family:'Lora',serif;
+      font-size:30px;
+      margin:10px 0;
+    }
+
+    .hero-text p{
       font-size:14px;
+      line-height:1.7;
+      color:rgba(255,255,255,.8);
+    }
+
+    /* ================= CONTACT SECTION ================= */
+    .container{
+      max-width:900px;
+      margin:50px auto;
+      padding:0 20px;
+    }
+
+    .title{
+      font-family:'Lora',serif;
+      font-size:22px;
       margin-bottom:8px;
     }
 
-    .box p{
-      font-size:13px;
+    .sub{
       color:#475569;
-      line-height:1.7;
+      margin-bottom:18px;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:24px;
+    }
+
+    .item{
+      padding:12px;
+      border:1px solid var(--border);
+      border-radius:8px;
+      margin-bottom:10px;
+      background:#f9fbff;
+      font-size:14px;
+    }
+
+    .label{
+      font-weight:600;
+      color:var(--blue);
+      display:block;
+      margin-bottom:4px;
+    }
+
+    /* footer */
+    footer{
+      background:var(--navy);
+      color:rgba(255,255,255,.6);
+      text-align:center;
+      padding:18px;
+      margin-top:50px;
+      font-size:13px;
     }
 
     /* responsive */
-    @media(max-width:900px){
-      .contact-wrap{
-        grid-template-columns:1fr;
-        text-align:left;
-      }
-      .grid{
-        grid-template-columns:1fr;
-      }
+    @media(max-width:768px){
+      .hero{height:320px}
+      .hero-text{text-align:left}
     }
+
   </style>
 </head>
 
 <body>
 
-<!-- ================= NAVBAR (UNCHANGED AS YOU SAID) ================= -->
+<!-- ═══ NAVBAR ═══ -->
 <nav class="navbar">
   <div class="nav-inner">
     <div class="nav-brand">
@@ -133,182 +192,145 @@
         ABS<span> · </span>Abu Bokkor Shiddik
       </a>
     </div>
-
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
       <a href="service.html">Service</a>
-
       <div class="dropdown">
         <button class="dropbtn">Digital Lab ▾</button>
         <div class="dropdown-content">
           <a href="projects.html">⚗ Projects</a>
-          <a href="data-code.html">💾 Data & Code</a>
+          <a href="data-code.html">💾 Data &amp; Code</a>
         </div>
       </div>
-
       <div class="dropdown">
         <button class="dropbtn">Learning ▾</button>
         <div class="dropdown-content">
-          <a href="courses.html">🎓 Courses & Training</a>
-          <a href="conference-and-workshop.html">🏛 Conferences & Workshops</a>
+          <a href="courses.html">🎓 Courses &amp; Training</a>
+          <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
         </div>
       </div>
-
       <div class="dropdown">
         <button class="dropbtn">Insights ▾</button>
         <div class="dropdown-content">
           <a href="insights.html">✍ Posts</a>
           <a href="videos.html">▶ Videos</a>
-          <a href="archive.html">📷 Photos & Archive</a>
+          <a href="archive.html">📷 Photos &amp; Archive</a>
         </div>
       </div>
     </div>
-
-    <button class="hamburger" id="hamburger">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-
   <div class="nav-drawer" id="nav-drawer">
     <div class="drawer-inner">
       <a class="drawer-link" href="home.html">Home</a>
       <a class="drawer-link" href="publications.html">Publications</a>
       <a class="drawer-link" href="service.html">Service</a>
-      <a class="drawer-link" href="projects.html">Projects</a>
-      <a class="drawer-link" href="data-code.html">Data & Code</a>
-      <a class="drawer-link" href="courses.html">Courses</a>
-      <a class="drawer-link" href="insights.html">Insights</a>
-      <a class="drawer-link" href="contact.html">Contact</a>
+      <div class="drawer-div"></div>
+      <div class="drawer-sec">Digital Lab</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="projects.html">Projects</a>
+        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+      </div>
+      <div class="drawer-div"></div>
+      <div class="drawer-sec">Learning &amp; Events</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
+        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+      </div>
+      <div class="drawer-div"></div>
+      <div class="drawer-sec">Insights</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="insights.html">Posts</a>
+        <a class="drawer-link" href="videos.html">Videos</a>
+        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- ================= CONTACT HERO ================= -->
-<section class="contact-wrap">
 
-  <div>
-    <div class="welcome">Welcome</div>
-
-    <div class="sub">
-      Md. Abu Bokkor Shiddik<br>
-      B.S. Hon’s, Department of Statistics<br>
-      Begum Rokeya University, Rangpur
-    </div>
-
-    <div class="info">
-      Email: <a href="mailto:abubokkor.brur60@gmail.com">abubokkor.brur60@gmail.com</a><br>
-      Phone: <a href="tel:+8801874001360">+880 1874 001360</a><br>
-      Portfolio: <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">Visit</a><br>
-      GitHub: <a href="https://github.com/abubokkorshiddik" target="_blank">Profile</a><br>
-      LinkedIn: <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">Connect</a>
-    </div>
-  </div>
-
-  <!-- PHOTO SAME STYLE -->
-  <div class="photo-wrap">
-    <div class="photo-ring">
-      <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/ABS.jpeg">
-    </div>
-  </div>
-
-</section>
-
-<!-- ================= INFO BOXES ================= -->
-<section class="grid">
-
-  <div class="box">
-    <h3>Academic Address</h3>
-    <p>Department of Statistics<br>Begum Rokeya University<br>Rangpur, Bangladesh</p>
-  </div>
-
-  <div class="box">
-    <h3>Research Focus</h3>
-    <p>Machine Learning, Explainable AI, Epidemiology, Climate Health, Spatial Modeling</p>
-  </div>
-
-  <div class="box">
-    <h3>Collaboration</h3>
-    <p>Open for research collaboration, thesis supervision, and data science projects</p>
-  </div>
-
-</section>
-
-<!-- ================= FOOTER (YOU SAID UNIFIED LIKE HOMEPAGE) ================= -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-name">Md. Abu Bokkor Shiddik</div>
-      <p class="footer-desc">
-        Researcher in Machine Learning, Explainable AI & Global Health Analytics.
-        Dept. of Statistics, BRUR, Rangpur, Bangladesh.
+<!-- HERO IMAGE WITH LEFT TEXT -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div><span class="dot"></span>Open for Collaboration</div>
+      <h1>Welcome</h1>
+      <p>
+        Feel free to contact me for research collaboration, academic discussion,
+        or data science projects in machine learning and global health analytics.
       </p>
     </div>
+  </div>
+</section>
 
-    <div>
-      <div class="footer-col-title">Navigation</div>
-      <div class="footer-links">
-        <a href="home.html">Home</a>
-        <a href="publications.html">Publications</a>
-        <a href="projects.html">Projects</a>
-        <a href="courses.html">Courses</a>
-        <a href="service.html">Service</a>
-        <a href="data-code.html">Data & Code</a>
-        <a href="insights.html">Insights</a>
-      </div>
-    </div>
+<!-- CONTACT BODY -->
+<div class="container">
 
-    <div>
-      <div class="footer-col-title">Connect</div>
-      <div class="footer-links social">
-        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/">LinkedIn</a>
-        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ">Google Scholar</a>
-        <a href="https://github.com/abubokkorshiddik">GitHub</a>
-      </div>
-    </div>
+  <div class="title">
+    Md. Abu Bokkor Shiddik
   </div>
 
-  <div class="footer-bottom">
-    <p>© 2026 Md. Abu Bokkor Shiddik</p>
-    <p>All rights reserved</p>
+  <div class="sub">
+    B.S. Hon’s, Dept. of Statistics, Begum Rokeya University, Rangpur
   </div>
+
+  <div class="card">
+
+    <div class="item">
+      <span class="label">Email</span>
+      <a href="mailto:abubokkor.brur60@gmail.com">abubokkor.brur60@gmail.com</a>
+    </div>
+
+    <div class="item">
+      <span class="label">Phone</span>
+      <a href="tel:+8801874001360">+880 1874 001360</a>
+    </div>
+
+    <div class="item">
+      <span class="label">Portfolio</span>
+      <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/" target="_blank">Visit Site</a>
+    </div>
+
+    <div class="item">
+      <span class="label">LinkedIn</span>
+      <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">Profile</a>
+    </div>
+
+    <div class="item">
+      <span class="label">GitHub</span>
+      <a href="https://github.com/abubokkorshiddik" target="_blank">Repository</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Md. Abu Bokkor Shiddik · All rights reserved
 </footer>
-
-<!-- ================= KEEP YOUR NAV JS EXACT ================= -->
 <script>
+  /* Navbar */
   document.querySelectorAll('.dropbtn').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
       var dd = btn.closest('.dropdown');
       var open = dd.classList.contains('active');
-      document.querySelectorAll('.dropdown.active').forEach(function(d) {
-        d.classList.remove('active');
-      });
+      document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
       if (!open) dd.classList.add('active');
     });
   });
-
   document.addEventListener('click', function() {
-    document.querySelectorAll('.dropdown.active').forEach(function(d) {
-      d.classList.remove('active');
-    });
+    document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
   });
-
   var ham = document.getElementById('hamburger');
   var drawer = document.getElementById('nav-drawer');
-
-  ham.addEventListener('click', function() {
-    ham.classList.toggle('open');
-    drawer.classList.toggle('open');
-  });
-
+  ham.addEventListener('click', function() { ham.classList.toggle('open'); drawer.classList.toggle('open'); });
   drawer.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      ham.classList.remove('open');
-      drawer.classList.remove('open');
-    });
+    a.addEventListener('click', function() { ham.classList.remove('open'); drawer.classList.remove('open'); });
   });
 </script>
-
 </body>
 </html>
