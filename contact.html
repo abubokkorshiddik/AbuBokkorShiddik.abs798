@@ -18,61 +18,95 @@
       --border:#e2e8f0;
       --text2:#475569;
       --white:#fff;
-      --r:10px;
     }
 
-    /* navbar */
+    /* navbar (homepage style) */
     .navbar{background:var(--navy);position:sticky;top:0;z-index:999}
     .nav-inner{max-width:1180px;margin:auto;padding:0 24px;height:56px;display:flex;align-items:center}
-    .nav-brand{color:#fff;font-size:14px;font-weight:600;margin-right:auto}
+    .nav-brand{font-size:14px;font-weight:600;color:#fff;margin-right:auto}
     .nav-brand span{color:#93c5fd}
-    .nav-links a{color:rgba(255,255,255,.75);font-size:13px;padding:6px 10px}
     .nav-links{display:flex;gap:6px}
+    .nav-links a{color:rgba(255,255,255,.75);font-size:13px;padding:6px 10px}
+    .nav-links a:hover{color:#fff}
 
-    /* main layout */
-    .container{
+    /* hero */
+    .hero{
+      position:relative;
+      height:420px;
+      background:url('https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+    }
+
+    /* overlay */
+    .hero::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(11,31,58,.85) 40%, rgba(11,31,58,.3) 100%);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:1;
       max-width:1100px;
+      margin:auto;
+      width:100%;
+      padding:0 24px;
+      display:flex;
+      justify-content:flex-end;
+    }
+
+    .hero-text{
+      max-width:420px;
+      color:white;
+    }
+
+    .dot{
+      width:8px;
+      height:8px;
+      background:#4ade80;
+      border-radius:50%;
+      display:inline-block;
+      margin-right:8px;
+      animation:pulse 1.8s infinite;
+    }
+
+    @keyframes pulse{
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:.5;transform:scale(.8)}
+    }
+
+    .hero-text h1{
+      font-family:'Lora',serif;
+      font-size:30px;
+      margin:10px 0;
+    }
+
+    .hero-text p{
+      font-size:14px;
+      line-height:1.7;
+      color:rgba(255,255,255,.8);
+    }
+
+    /* contact section */
+    .section{
+      max-width:900px;
       margin:50px auto;
-      display:grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap:40px;
       padding:0 20px;
     }
 
-    /* image */
-    .profile-img{
-      width:100%;
-      border-radius:14px;
-      box-shadow:0 10px 30px rgba(0,0,0,.1);
-      object-fit:cover;
-    }
-
-    /* right content */
-    .content{
-      background:var(--white);
+    .contact-card{
+      background:#fff;
       border:1px solid var(--border);
       border-radius:14px;
-      padding:30px 34px;
+      padding:30px;
     }
 
-    h1{
-      font-family:'Lora',serif;
-      font-size:26px;
-      margin-bottom:10px;
-    }
-
-    .welcome{
-      color:var(--text2);
-      margin-bottom:20px;
-      line-height:1.7;
-    }
-
-    /* contact items */
     .contact-list{
       display:flex;
       flex-direction:column;
       gap:14px;
-      margin-top:10px;
     }
 
     .item{
@@ -87,15 +121,37 @@
       font-weight:600;
       display:block;
       margin-bottom:4px;
-      color:#1a56db;
+      color:var(--blue);
+    }
+
+    /* footer */
+    footer{
+      background:var(--navy);
+      color:rgba(255,255,255,.6);
+      text-align:center;
+      padding:20px;
+      margin-top:60px;
+      font-size:13px;
+    }
+
+    footer span{
+      color:#fff;
+      font-weight:500;
     }
 
     /* responsive */
-    @media(max-width:800px){
-      .container{
-        grid-template-columns:1fr;
+    @media(max-width:700px){
+      .hero{
+        height:320px;
+      }
+      .hero-content{
+        justify-content:center;
+      }
+      .hero-text{
+        text-align:center;
       }
     }
+
   </style>
 </head>
 
@@ -116,20 +172,22 @@
   </div>
 </nav>
 
-<!-- main -->
-<div class="container">
-
-  <!-- left image -->
-  <div>
-    <img src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg" class="profile-img" alt="Profile Photo">
+<!-- hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div><span class="dot"></span>Available for Collaboration</div>
+      <h1>Welcome</h1>
+      <p>
+        I am always open to research collaboration, academic discussion, and innovative ideas in machine learning and global health analytics.
+      </p>
+    </div>
   </div>
+</section>
 
-  <!-- right content -->
-  <div class="content">
-    <h1>Welcome</h1>
-    <p class="welcome">
-      Thank you for visiting my profile. I am always open to research collaboration, academic discussion, and innovative ideas in machine learning and global health analytics. Feel free to connect with me through any of the following channels.
-    </p>
+<!-- contact -->
+<div class="section">
+  <div class="contact-card">
 
     <div class="contact-list">
       <div class="item">
@@ -167,9 +225,14 @@
         github.com/abubokkorshiddik
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
+
+<!-- footer -->
+<footer>
+  © <span>2026 Md. Abu Bokkor Shiddik</span>. All rights reserved.
+</footer>
 
 </body>
 </html>
