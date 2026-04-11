@@ -122,10 +122,11 @@
     .no-results { text-align: center; padding: 48px 0; color: var(--text3); font-size: 15px; display: none; }
 
     /* ── POST CARD ── */
-    .post-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px; box-shadow: var(--shadow-sm); transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s; min-width: 0; width: 100%; max-width: 100%; box-sizing: border-box; }
+    .post-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: visible; margin-bottom: 20px; box-shadow: var(--shadow-sm); transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s; min-width: 0; width: 100%; max-width: 100%; box-sizing: border-box; }
     .post-card:hover { box-shadow: var(--shadow); border-color: #bfdbfe; transform: translateY(-1px); }
     .post-card * { box-sizing: border-box; max-width: 100%; word-break: break-word; }
-    .post-cover { width: 100%; height: 200px; object-fit: cover; display: block; border-bottom: 1px solid var(--border); }
+    .post-cover-wrap { overflow: hidden; border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-bottom: 1px solid var(--border); line-height: 0; }
+    .post-cover { width: 100%; height: 200px; object-fit: cover; display: block; }
     @media (max-width: 480px) { .post-cover { height: 160px; } }
 
     /* header */
@@ -183,7 +184,7 @@
     .share-trigger:hover { background: var(--sky); color: var(--blue); border-color: #93c5fd; }
 
     /* share dropdown panel */
-    .share-panel { position: absolute; bottom: calc(100% + 8px); right: 0; background: var(--white); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.12); padding: 14px; width: 260px; z-index: 200; display: none; }
+    .share-panel { position: absolute; bottom: calc(100% + 8px); right: 0; background: var(--white); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.12); padding: 14px; width: 280px; max-width: calc(100vw - 32px); z-index: 500; display: none; }
     .share-panel.open { display: block; }
     .share-panel-title { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: var(--text3); margin-bottom: 10px; }
 
@@ -235,7 +236,7 @@
     .footer-bottom p { font-size: 12px; }
     /* ── MOBILE SAFETY NET ── */
     @media (max-width: 600px) {
-      .post-full, .post-excerpt, .post-body, .post-header, .post-footer { overflow: hidden; }
+      .post-body, .post-header, .post-footer { overflow: visible; }
       .post-full table { font-size: 11.5px; }
       .post-full th, .post-full td { padding: 6px 8px; }
       .post-full pre { font-size: 11px; padding: 10px 12px; }
@@ -349,7 +350,7 @@
       data-desc="Outbreak prediction models generate probability outputs that represent risk of disease occurrence. These probabilities cannot be directly used for decision making — they are converted into binary outcomes using a threshold. This step strongly affects early detection, false alarms, and overall reliability."
       data-img="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0">
 
-      <img class="post-cover" src="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0" alt="Threshold selection" loading="lazy">
+      <div class="post-cover-wrap"><img class="post-cover" src="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0" alt="Threshold selection" loading="lazy"></div>
       <div class="post-header">
         <div class="post-meta-row">
           <span class="cat-badge cat-ml">Machine Learning</span>
@@ -441,7 +442,7 @@
       data-desc="In health research, we often produce numbers that directly influence decisions — national rates, trends, and future projections. GATHER (Guidelines for Accurate and Transparent Health Estimates Reporting) provides a structured framework to report health estimates clearly and reproducibly."
       data-img="https://github.com/user-attachments/assets/bb76126f-aa6f-4c7f-ab7e-e03ef4f3afd0">
 
-      <img class="post-cover" src="https://github.com/user-attachments/assets/bb76126f-aa6f-4c7f-ab7e-e03ef4f3afd0" alt="GATHER guidelines" loading="lazy">
+      <div class="post-cover-wrap"><img class="post-cover" src="https://github.com/user-attachments/assets/bb76126f-aa6f-4c7f-ab7e-e03ef4f3afd0" alt="GATHER guidelines" loading="lazy"></div>
       <div class="post-header">
         <div class="post-meta-row">
           <span class="cat-badge cat-ph">Public Health</span>
@@ -537,7 +538,7 @@
       data-desc="When preparing data for machine learning models, features often have very different ranges and units. Without scaling, models that rely on distances or gradient-based optimization can perform poorly. Normalization and standardization are two core feature scaling techniques — but they work differently."
       data-img="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5">
 
-      <img class="post-cover" src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5" alt="Normalization vs Standardization" loading="lazy">
+      <div class="post-cover-wrap"><img class="post-cover" src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5" alt="Normalization vs Standardization" loading="lazy"></div>
       <div class="post-header">
         <div class="post-meta-row">
           <span class="cat-badge cat-ml">Machine Learning</span>
