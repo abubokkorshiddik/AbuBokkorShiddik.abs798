@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    html { overflow-x: hidden; }
     body { font-family: 'Inter', system-ui, sans-serif; color: #0f172a; font-size: 15.5px; line-height: 1.75; background: #f8fafc; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
 
@@ -32,23 +32,57 @@
       --bg: #f8fafc; --white: #fff;
       --r: 8px; --rl: 14px;
       --sh: 0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
-      --sh2: 0 4px 20px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
+      --sh2: 0 4px 20px rgba(0,0,0,.09),0 1px 4px rgba(0,0,0,.05);
     }
 
-    /* ══ NAVBAR ══ */
-    .navbar { background: var(--navy); position: sticky; top: 0; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,.06); }
+    /* ══════════════════════════
+       NAVBAR — always visible, never hides
+    ══════════════════════════ */
+    .navbar {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      /* NO opacity/transform tricks — stays fully visible always */
+    }
     .nav-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; align-items: center; height: 56px; }
-    .nav-brand { font-size: 14.5px; font-weight: 600; color: #fff; margin-right: auto; white-space: nowrap; }
+    .nav-brand { font-size: 14.5px; font-weight: 600; color: #fff; margin-right: auto; white-space: nowrap; letter-spacing: .1px; }
     .nav-brand span { color: #93c5fd; font-weight: 300; }
     .nav-links { display: flex; align-items: center; gap: 2px; }
-    .nav-links > a, .dropbtn { color: rgba(255,255,255,.75); font-size: 13.5px; font-weight: 500; padding: 6px 11px; border-radius: 6px; border: none; background: none; cursor: pointer; font-family: inherit; transition: background .18s, color .18s; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
-    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,.09); }
+    .nav-links > a, .dropbtn {
+      color: rgba(255,255,255,.75); font-size: 13.5px; font-weight: 500;
+      padding: 6px 11px; border-radius: 6px; border: none; background: none;
+      cursor: pointer; font-family: inherit;
+      transition: background .18s, color .18s;
+      white-space: nowrap; display: flex; align-items: center; gap: 4px;
+    }
+    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,.1); }
+    .nav-links > a.active { color: #93c5fd; }
     .dropdown { position: relative; }
-    .dropdown-content { position: absolute; top: calc(100% + 6px); left: 0; background: #132444; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; min-width: 190px; padding: 6px; box-shadow: 0 12px 32px rgba(0,0,0,.3); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .2s, transform .2s, visibility .2s; pointer-events: none; z-index: 9999; }
-    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
-    .dropdown-content a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: rgba(255,255,255,.72); font-size: 13px; font-weight: 500; border-radius: 6px; transition: background .15s, color .15s; }
-    .dropdown-content a:hover { background: rgba(255,255,255,.08); color: #fff; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 6px; margin-left: 10px; transition: background .2s; }
+    .dropdown-content {
+      position: absolute; top: calc(100% + 6px); left: 0;
+      background: #132444; border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px; min-width: 190px; padding: 6px;
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
+      opacity: 0; visibility: hidden; transform: translateY(6px);
+      transition: opacity .2s, transform .2s, visibility .2s;
+      pointer-events: none; z-index: 9999;
+    }
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content {
+      opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
+    }
+    .dropdown-content a {
+      display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+      color: rgba(255,255,255,.72); font-size: 13px; font-weight: 500;
+      border-radius: 6px; transition: background .15s, color .15s;
+    }
+    .dropdown-content a:hover { background: rgba(255,255,255,.09); color: #fff; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 7px;
+      border-radius: 6px; margin-left: 10px; transition: background .2s;
+    }
     .hamburger:hover { background: rgba(255,255,255,.1); }
     .hamburger span { display: block; width: 21px; height: 2px; background: rgba(255,255,255,.85); border-radius: 2px; transition: transform .28s, opacity .28s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -64,110 +98,126 @@
     .drawer-div { height: 1px; background: rgba(255,255,255,.06); margin: 4px 0; }
     @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-drawer { display: block; } }
 
-    /* ══ HERO ══ */
+    /* ══════════════════════════
+       SECTION JUMP BAR — sticky below navbar
+    ══════════════════════════ */
+    .jump-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 56px; /* exactly below navbar */
+      z-index: 200;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+    }
+    .jump-bar-inner {
+      max-width: 1180px; margin: auto; padding: 0 24px;
+      display: flex; gap: 0; overflow-x: auto;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    }
+    .jump-bar-inner::-webkit-scrollbar { display: none; }
+    .jump-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 11px 16px; font-size: 13px; font-weight: 500; color: var(--text3);
+      border-bottom: 2.5px solid transparent;
+      border-top: none; border-left: none; border-right: none;
+      white-space: nowrap; cursor: pointer; background: none; font-family: inherit;
+      transition: color .18s, border-color .18s;
+      -webkit-tap-highlight-color: transparent; min-height: 44px;
+    }
+    .jump-btn:hover { color: var(--blue); }
+    .jump-btn.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
+    .jump-btn-icon { font-size: 13px; }
+
+    /* ══════════════════════════
+       HERO
+    ══════════════════════════ */
     .hero {
       background: linear-gradient(140deg, #050e1f 0%, #0a1e3d 40%, #0d2550 70%, #0f2d5c 100%);
-      color: #fff; position: relative; overflow: hidden; padding: 80px 24px 70px;
+      color: #fff; position: relative; overflow: hidden; padding: 76px 24px 68px;
     }
-    /* animated grid lines */
     .hero::before {
-      content: '';
-      position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
+        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
     }
-    /* glowing orbs */
     .hero::after {
-      content: '';
-      position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 600px 400px at 85% 10%, rgba(59,130,246,.14) 0%, transparent 60%),
-        radial-gradient(ellipse 400px 300px at 5% 90%, rgba(99,102,241,.1) 0%, transparent 55%),
+        radial-gradient(ellipse 640px 400px at 88% 8%, rgba(59,130,246,.15) 0%, transparent 60%),
+        radial-gradient(ellipse 420px 300px at 4% 92%, rgba(99,102,241,.11) 0%, transparent 55%),
         radial-gradient(ellipse 300px 200px at 50% 50%, rgba(14,165,233,.05) 0%, transparent 50%);
       pointer-events: none;
     }
     .hero-inner {
       max-width: 1180px; margin: auto;
       display: grid; grid-template-columns: 1fr auto;
-      gap: 48px; align-items: center; position: relative; z-index: 1;
+      gap: 52px; align-items: center; position: relative; z-index: 1;
     }
-
-    /* eyebrow */
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13);
       border-radius: 24px; padding: 5px 16px;
       font-size: 11.5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
       color: #93c5fd; margin-bottom: 20px;
     }
-    .hero-eyebrow-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: pulse-dot 2s infinite; }
-    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
-
-    /* name */
+    .eyebrow-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: pdot 2.2s infinite; }
+    @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.75)} }
     .hero h1 {
       font-family: 'Lora', serif;
-      font-size: clamp(1.9rem, 4vw, 2.8rem);
-      font-weight: 600; line-height: 1.15; letter-spacing: -.5px;
-      margin-bottom: 8px;
-      background: linear-gradient(135deg, #ffffff 0%, #e0eaff 50%, #93c5fd 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 600; line-height: 1.14; letter-spacing: -.5px; margin-bottom: 8px;
+      background: linear-gradient(130deg, #fff 0%, #dde9ff 55%, #93c5fd 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .hero-role { font-size: 1rem; color: #93c5fd; margin-bottom: 6px; font-weight: 400; }
-    .hero-affil { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 24px; }
-
-    /* contact chips */
-    .hero-contact { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .contact-chip {
+    .hero-role { font-size: 1rem; color: #93c5fd; margin-bottom: 6px; font-weight: 400; letter-spacing: .1px; }
+    .hero-affil { font-size: 13px; color: rgba(255,255,255,.42); margin-bottom: 24px; }
+    .hero-contact { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .cc {
       display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 7px; padding: 6px 12px; font-size: 12.5px; color: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.11);
+      border-radius: 7px; padding: 6px 12px; font-size: 12.5px; color: rgba(255,255,255,.68);
     }
-    .contact-chip-icon { font-size: 13px; }
-
-    /* social pills */
     .hero-social { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-    .social-pill {
+    .sp {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 14px; border: 1px solid rgba(255,255,255,.15);
+      padding: 6px 14px; border: 1px solid rgba(255,255,255,.16);
       border-radius: 24px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.78);
       transition: background .2s, border-color .2s, color .2s;
     }
-    .social-pill:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.3); color: #fff; }
-
-    /* action buttons */
+    .sp:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.32); color: #fff; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary {
+    .btn-p {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--blue); color: #fff; padding: 12px 26px;
       border-radius: 9px; font-size: 14px; font-weight: 600;
-      transition: background .2s, transform .15s;
-      border: 1px solid transparent;
+      transition: background .2s, transform .15s; border: 1px solid transparent;
     }
-    .btn-primary:hover { background: var(--blue-h); transform: translateY(-1px); }
-    .btn-ghost {
+    .btn-p:hover { background: var(--blue-h); transform: translateY(-1px); }
+    .btn-g {
       display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: rgba(255,255,255,.8); padding: 12px 26px;
+      background: transparent; color: rgba(255,255,255,.82); padding: 12px 26px;
       border-radius: 9px; font-size: 14px; font-weight: 600;
-      border: 1px solid rgba(255,255,255,.2); transition: background .2s, border-color .2s, color .2s;
+      border: 1px solid rgba(255,255,255,.22);
+      transition: background .2s, border-color .2s, color .2s;
     }
-    .btn-ghost:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.38); color: #fff; }
+    .btn-g:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.4); color: #fff; }
 
-    /* stats strip */
-    .hero-stats {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px; padding-top: 28px;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
+    /* stats */
+    .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 34px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.1); }
     .stat-box {
       display: flex; flex-direction: column; align-items: flex-start;
-      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.1);
       border-radius: 10px; padding: 12px 20px; min-width: 110px;
     }
     .stat-num { font-size: 1.65rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 4px; }
-    .stat-label { font-size: 11px; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .7px; font-weight: 500; }
+    .stat-lbl { font-size: 11px; color: rgba(255,255,255,.38); text-transform: uppercase; letter-spacing: .7px; font-weight: 500; }
+
+    /* publisher strip */
+    .pub-strip { margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.08); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .pub-strip-lbl { font-size: 11px; color: rgba(255,255,255,.28); text-transform: uppercase; letter-spacing: .8px; font-weight: 600; }
+    .pchip { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.11); border-radius: 6px; padding: 4px 12px; font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,.62); white-space: nowrap; }
 
     /* photo */
     .hero-photo { display: flex; flex-direction: column; align-items: center; gap: 14px; }
@@ -177,33 +227,20 @@
       position: relative;
     }
     .photo-ring::before {
-      content: ''; position: absolute; inset: -6px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(59,130,246,.25), rgba(99,102,241,.15), rgba(6,182,212,.2));
-      animation: ring-pulse 3s ease-in-out infinite;
+      content: ''; position: absolute; inset: -7px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(59,130,246,.2), rgba(99,102,241,.13), rgba(6,182,212,.18));
+      animation: rpulse 3.2s ease-in-out infinite;
     }
-    @keyframes ring-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.04)} }
-    .photo-ring img {
-      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
-      border: 3px solid #0b1f3a; display: block; position: relative; z-index: 1;
-    }
-    .photo-caption { text-align: center; font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.6; }
-    .photo-caption strong { color: rgba(255,255,255,.82); font-weight: 600; display: block; font-size: 13px; }
+    @keyframes rpulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(1.045)} }
+    .photo-ring img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 3px solid #0b1f3a; display: block; position: relative; z-index: 1; }
+    .photo-caption { text-align: center; font-size: 12px; color: rgba(255,255,255,.42); line-height: 1.6; }
+    .photo-caption strong { color: rgba(255,255,255,.8); font-weight: 600; display: block; font-size: 12.5px; }
 
-    /* publisher logos strip in hero */
-    .publisher-strip {
-      margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.08);
-      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-    }
-    .publisher-label { font-size: 11px; color: rgba(255,255,255,.3); text-transform: uppercase; letter-spacing: .8px; font-weight: 600; margin-right: 4px; }
-    .pub-chip {
-      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 6px; padding: 4px 12px; font-size: 11.5px; font-weight: 600;
-      color: rgba(255,255,255,.65); white-space: nowrap;
-    }
-
-    /* ══ SECTION STRUCTURE ══ */
+    /* ══════════════════════════
+       PAGE BODY & SECTIONS
+    ══════════════════════════ */
     .page-body { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 56px 0 0; }
+    .section { padding: 54px 0 0; scroll-margin-top: 110px; /* offset for sticky nav + jump bar */ }
     .section:last-child { padding-bottom: 64px; }
     .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; gap: 12px; }
     .section-head h2 { font-family: 'Lora', serif; font-size: 1.25rem; font-weight: 600; color: var(--text); position: relative; padding-bottom: 8px; }
@@ -211,23 +248,20 @@
     .see-all { font-size: 13px; font-weight: 600; color: var(--blue); white-space: nowrap; display: flex; align-items: center; gap: 4px; transition: gap .15s; }
     .see-all:hover { gap: 7px; }
 
-    /* ══ ABOUT CARD ══ */
+    /* ══ ABOUT ══ */
     .about-card {
       background: var(--white); border: 1px solid var(--border); border-radius: var(--rl);
       padding: 28px 32px; box-shadow: var(--sh); position: relative; overflow: hidden;
     }
-    .about-card::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-      background: linear-gradient(to bottom, var(--blue), #6366f1); border-radius: 4px 0 0 4px;
-    }
+    .about-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--blue), #6366f1); border-radius: 4px 0 0 4px; }
     .about-card p { color: var(--text2); margin-bottom: 12px; font-size: 15px; }
     .about-card p:last-child { margin-bottom: 0; }
 
-    /* ══ INTEREST CHIPS ══ */
+    /* ══ INTERESTS ══ */
     .interest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px,1fr)); gap: 12px; }
     .interest-card {
       background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
-      padding: 14px 7px; display: flex; align-items: flex-start; gap: 5px;
+      padding: 15px 17px; display: flex; align-items: flex-start; gap: 12px;
       box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .2s;
     }
     .interest-card:hover { border-color: var(--blue); box-shadow: var(--sh2); transform: translateY(-2px); }
@@ -237,41 +271,49 @@
     /* ══ SKILLS ══ */
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(255px,1fr)); gap: 14px; }
     .skill-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; box-shadow: var(--sh); }
-    .skill-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 10px; }
+    .skill-lbl { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 10px; }
     .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
     .tag { background: var(--sky); color: #1e3a8a; border: 1px solid var(--sky2); border-radius: 5px; font-size: 12px; font-weight: 500; padding: 3px 9px; }
 
-    /* ══ PUBLICATIONS (alt bg) ══ */
-    .pub-section { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 56px 0; margin-top: 56px; }
+    /* ══ PUBLICATIONS (white alt) ══ */
+    .pub-section { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 54px 0; margin-top: 54px; scroll-margin-top: 110px; }
     .pub-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
     .pub-card {
       background: var(--bg); border: 1px solid var(--border); border-radius: var(--r);
       padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
       transition: border-color .2s, box-shadow .2s, background .2s; position: relative;
     }
-    /* top micro-bar per journal color */
     .pub-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2.5px; border-radius: var(--r) var(--r) 0 0; }
-    .pub-card.j-nature::before  { background: linear-gradient(90deg, #e05a2b, #f59e0b); }
-    .pub-card.j-hsr::before     { background: linear-gradient(90deg, #0891b2, #0ea5e9); }
-    .pub-card.j-elsevier::before{ background: linear-gradient(90deg, #f97316, #ef4444); }
-    .pub-card.j-springer::before{ background: linear-gradient(90deg, #059669, #14b8a6); }
-    .pub-card.j-mdpi::before    { background: linear-gradient(90deg, #166534, #4ade80); }
-    .pub-card.j-ijss::before    { background: linear-gradient(90deg, #7c3aed, #a855f7); }
+    .pub-card.j-n::before { background: linear-gradient(90deg,#e05a2b,#f59e0b); }
+    .pub-card.j-h::before { background: linear-gradient(90deg,#0891b2,#0ea5e9); }
+    .pub-card.j-e::before { background: linear-gradient(90deg,#f97316,#ef4444); }
+    .pub-card.j-s::before { background: linear-gradient(90deg,#059669,#14b8a6); }
+    .pub-card.j-m::before { background: linear-gradient(90deg,#166534,#4ade80); }
     .pub-card:hover { border-color: #bfdbfe; box-shadow: var(--sh2); background: var(--white); }
-    .pub-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .jbadge { font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 5px; white-space: nowrap; }
-    .jb-n { background: #fff3e0; color: #c2410c; border: 1px solid #fdba74; }
-    .jb-h { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
-    .jb-g { background: #fff0f3; color: #be185d; border: 1px solid #fbcfe8; }
-    .jb-s { background: #ecfdf5; color: #065f46; border: 1px solid #6ee7b7; }
-    .jb-m { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-    .jb-i { background: #f5f3ff; color: #5b21b6; border: 1px solid #ddd6fe; }
-    .jb-b { background: #e0f7fa; color: #0e7490; border: 1px solid #67e8f9; }
-    .ybadge { font-size: 11px; font-weight: 600; color: var(--text3); background: #f1f5f9; border: 1px solid var(--border); border-radius: 5px; padding: 2px 7px; }
-    .oa-pill { font-size: 10.5px; font-weight: 700; color: #d97706; background: #fffbeb; border: 1px solid #fde68a; border-radius: 5px; padding: 2px 7px; }
-    .pub-title-text { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.55; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    .pub-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: var(--blue); margin-top: auto; transition: gap .15s; }
-    .pub-link:hover { gap: 8px; }
+    .pub-meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+    .jb { font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 5px; white-space: nowrap; }
+    .jb-n { background:#fff3e0;color:#c2410c;border:1px solid #fdba74; }
+    .jb-h { background:#e0f2fe;color:#0369a1;border:1px solid #7dd3fc; }
+    .jb-g { background:#fff0f3;color:#be185d;border:1px solid #fbcfe8; }
+    .jb-s { background:#ecfdf5;color:#065f46;border:1px solid #6ee7b7; }
+    .jb-m { background:#f0fdf4;color:#166534;border:1px solid #bbf7d0; }
+    .yb { font-size:11px;font-weight:600;color:var(--text3);background:#f1f5f9;border:1px solid var(--border);border-radius:5px;padding:2px 7px; }
+    .oa { font-size:10.5px;font-weight:700;color:#d97706;background:#fffbeb;border:1px solid #fde68a;border-radius:5px;padding:2px 7px; }
+    .pub-title-text { font-size:13.5px;font-weight:600;color:var(--text);line-height:1.55;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden; }
+    .pub-link { display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--blue);margin-top:auto;transition:gap .15s; }
+    .pub-link:hover { gap:8px; }
+
+    /* ══ DATA LAB ══ */
+    .data-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    .data-chip {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 20px 16px; text-align: center; box-shadow: var(--sh);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .data-chip:hover { border-color: var(--blue); box-shadow: var(--sh2); transform: translateY(-2px); }
+    .dc-icon { font-size: 26px; margin-bottom: 9px; }
+    .dc-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .dc-sub { font-size: 11.5px; color: var(--text3); }
 
     /* ══ PROJECTS ══ */
     .project-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
@@ -285,48 +327,37 @@
     .p-name { font-size: 14.5px; font-weight: 700; color: var(--text); }
     .p-desc { font-size: 13px; color: var(--text3); line-height: 1.6; }
 
+    /* ══ POSTS ══ */
+    .posts-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .post-mini {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
+      overflow: hidden; box-shadow: var(--sh);
+      transition: box-shadow .2s, border-color .2s, transform .2s;
+    }
+    .post-mini:hover { box-shadow: var(--sh2); border-color: #bfdbfe; transform: translateY(-2px); }
+    .pm-img { width: 100%; height: 130px; object-fit: cover; display: block; }
+    .pm-body { padding: 13px 15px; }
+    .pm-cat { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--blue); margin-bottom: 5px; }
+    .pm-title { font-family: 'Lora', serif; font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.45; margin-bottom: 7px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .pm-date { font-size: 11.5px; color: var(--text3); }
+
     /* ══ COURSES ══ */
     .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 13px; }
     .course-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 15px 18px; display: flex; gap: 13px; align-items: flex-start; box-shadow: var(--sh); transition: border-color .2s; }
     .course-card:hover { border-color: var(--border2); }
-    .c-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 6px; }
-    .c-name { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-    .c-org { font-size: 12px; color: var(--text3); }
+    .cdot { width: 9px; height: 9px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 7px; }
+    .cname { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .corg { font-size: 12px; color: var(--text3); }
 
     /* ══ SERVICE ══ */
     .service-list { display: flex; flex-direction: column; gap: 10px; }
-    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 20px; display: flex; align-items: center; gap: 14px; box-shadow: var(--sh); }
-    .s-badge { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; color: var(--purple); background: var(--purple-bg); border: 1px solid var(--purple-bd); border-radius: 5px; padding: 3px 9px; white-space: nowrap; flex-shrink: 0; }
-    .s-dot { width: 4px; height: 4px; background: var(--border2); border-radius: 50%; flex-shrink: 0; }
-    .s-name { font-size: 14px; font-weight: 500; color: var(--text); }
-
-    /* ══ LATEST POSTS STRIP ══ */
-    .posts-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .post-mini {
-      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
-      overflow: hidden; box-shadow: var(--sh); transition: box-shadow .2s, border-color .2s, transform .2s;
-    }
-    .post-mini:hover { box-shadow: var(--sh2); border-color: #bfdbfe; transform: translateY(-2px); }
-    .post-mini-img { width: 100%; height: 130px; object-fit: cover; display: block; }
-    .post-mini-body { padding: 14px 16px; }
-    .post-mini-cat { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--blue); margin-bottom: 6px; }
-    .post-mini-title { font-family: 'Lora', serif; font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.45; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .post-mini-date { font-size: 11.5px; color: var(--text3); }
-
-    /* ══ DATA LAB TEASER ══ */
-    .data-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
-    .data-chip {
-      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
-      padding: 18px 16px; text-align: center; box-shadow: var(--sh);
-      transition: border-color .2s, box-shadow .2s, transform .2s;
-    }
-    .data-chip:hover { border-color: var(--blue); box-shadow: var(--sh2); transform: translateY(-2px); }
-    .data-chip-icon { font-size: 24px; margin-bottom: 8px; }
-    .data-chip-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .data-chip-sub { font-size: 11.5px; color: var(--text3); }
+    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 13px 20px; display: flex; align-items: center; gap: 14px; box-shadow: var(--sh); }
+    .sbadge { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; color: var(--purple); background: var(--purple-bg); border: 1px solid var(--purple-bd); border-radius: 5px; padding: 3px 9px; white-space: nowrap; flex-shrink: 0; }
+    .sdot { width: 4px; height: 4px; background: var(--border2); border-radius: 50%; flex-shrink: 0; }
+    .sname { font-size: 14px; font-weight: 500; color: var(--text); }
 
     /* ══ FOOTER ══ */
-    footer { background: var(--navy); color: rgba(255,255,255,.5); padding: 44px 24px 32px; margin-top: 0; }
+    footer { background: var(--navy); color: rgba(255,255,255,.5); padding: 44px 24px 32px; }
     .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.07); }
     .footer-col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.35); margin-bottom: 14px; }
     .footer-name { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: rgba(255,255,255,.9); margin-bottom: 8px; }
@@ -347,27 +378,27 @@
       .footer-inner { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      .hero { padding: 52px 20px 44px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+      .hero { padding: 50px 20px 44px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 34px; }
       .hero-photo { order: -1; flex-direction: row; align-items: center; gap: 20px; }
       .photo-ring { width: 110px; height: 110px; }
       .photo-caption { text-align: left; }
       .hero h1 { font-size: 1.75rem; }
-      .hero-stats { gap: 8px; }
-      .stat-box { min-width: 90px; padding: 10px 14px; }
-      .stat-num { font-size: 1.35rem; }
+      .stat-box { min-width: 88px; padding: 10px 14px; }
+      .stat-num { font-size: 1.3rem; }
+      .jump-btn { font-size: 12px; padding: 10px 12px; }
     }
     @media (max-width: 600px) {
+      /* interest-card: keep same size as desktop — DO NOT change */
       .pub-grid { grid-template-columns: 1fr; }
       .project-grid { grid-template-columns: 1fr; }
       .data-strip { grid-template-columns: repeat(2,1fr); }
       .posts-strip { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .interest-grid { grid-template-columns: 1fr 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
       .hero-contact { gap: 6px; }
-      .contact-chip { font-size: 11.5px; padding: 5px 10px; }
+      .cc { font-size: 11.5px; padding: 5px 10px; }
     }
   </style>
 </head>
@@ -436,53 +467,50 @@
   </div>
 </nav>
 
+
+
 <!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-inner">
-
     <div>
-      <div class="hero-eyebrow">
-        <span class="hero-eyebrow-dot"></span>
-        Available for Collaboration · 2026
-      </div>
-
+      <div class="hero-eyebrow"><span class="eyebrow-dot"></span> Available for Collaboration · 2026</div>
       <h1>Md. Abu Bokkor Shiddik</h1>
       <p class="hero-role">Researcher · Machine Learning · Explainable AI · Global Health Analytics</p>
       <p class="hero-affil">Dept. of Statistics, Begum Rokeya University, Rangpur, Bangladesh</p>
 
       <div class="hero-contact">
-        <span class="contact-chip"><span class="contact-chip-icon">✉</span> abubokkor.brur60@gmail.com</span>
-        <span class="contact-chip"><span class="contact-chip-icon">📞</span> +880 1874 001360</span>
-        <span class="contact-chip"><span class="contact-chip-icon">📍</span> Rangpur, Bangladesh</span>
+        <span class="cc">✉ abubokkor.brur60@gmail.com</span>
+        <span class="cc">📞 +880 1874 001360</span>
+        <span class="cc">📍 Rangpur, Bangladesh</span>
       </div>
 
       <div class="hero-social">
-        <a class="social-pill" href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">🌐 Portfolio</a>
-        <a class="social-pill" href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
-        <a class="social-pill" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Scholar</a>
-        <a class="social-pill" href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
-        <a class="social-pill" href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
+        <a class="sp" href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">🌐 Portfolio</a>
+        <a class="sp" href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
+        <a class="sp" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Scholar</a>
+        <a class="sp" href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
+        <a class="sp" href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
       </div>
 
       <div class="hero-actions">
-        <a class="btn-primary" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/1006AbuBokkorShiddik_CV_2026_STAT_BRUR.pdf" target="_blank">↓ Download CV</a>
-        <a class="btn-ghost" href="publications.html">View Publications →</a>
+        <a class="btn-p" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/1006AbuBokkorShiddik_CV_2026_STAT_BRUR.pdf" target="_blank">↓ Download CV</a>
+        <a class="btn-g" href="publications.html">View Publications →</a>
       </div>
 
       <div class="hero-stats">
-        <div class="stat-box"><div class="stat-num">9+</div><div class="stat-label">Publications</div></div>
-        <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">Journals Reviewed</div></div>
-        <div class="stat-box"><div class="stat-num">22</div><div class="stat-label">Certifications</div></div>
-        <div class="stat-box"><div class="stat-num">8</div><div class="stat-label">Institutions</div></div>
+        <div class="stat-box"><div class="stat-num" data-val="9" data-suffix="+">9+</div><div class="stat-lbl">Publications</div></div>
+        <div class="stat-box"><div class="stat-num" data-val="4" data-suffix="">4</div><div class="stat-lbl">Journals Reviewed</div></div>
+        <div class="stat-box"><div class="stat-num" data-val="22" data-suffix="">22</div><div class="stat-lbl">Certifications</div></div>
+        <div class="stat-box"><div class="stat-num" data-val="8" data-suffix="">8</div><div class="stat-lbl">Institutions</div></div>
       </div>
 
-      <div class="publisher-strip">
-        <span class="publisher-label">Published in</span>
-        <span class="pub-chip">Nature / Scientific Reports</span>
-        <span class="pub-chip">BMJ Open</span>
-        <span class="pub-chip">Springer</span>
-        <span class="pub-chip">Elsevier</span>
-        <span class="pub-chip">MDPI</span>
+      <div class="pub-strip">
+        <span class="pub-strip-lbl">Published in</span>
+        <span class="pchip">Nature / Scientific Reports</span>
+        <span class="pchip">BMJ Open</span>
+        <span class="pchip">Springer</span>
+        <span class="pchip">Elsevier</span>
+        <span class="pchip">MDPI</span>
       </div>
     </div>
 
@@ -495,24 +523,36 @@
         Begum Rokeya University<br>Rangpur, Bangladesh
       </div>
     </div>
-
   </div>
 </section>
-
-<!-- ═══ MAIN ═══ -->
+<!-- ═══ SECTION JUMP BAR ═══ -->
+<div class="jump-bar" id="jump-bar">
+  <div class="jump-bar-inner">
+    <button class="jump-btn active" data-target="sec-about"><span class="jump-btn-icon">👤</span> About</button>
+    <button class="jump-btn" data-target="sec-interests"><span class="jump-btn-icon">🔬</span> Interests</button>
+    <button class="jump-btn" data-target="sec-skills"><span class="jump-btn-icon">⚙</span> Skills</button>
+    <button class="jump-btn" data-target="sec-publications"><span class="jump-btn-icon">📄</span> Publications</button>
+    <button class="jump-btn" data-target="sec-data"><span class="jump-btn-icon">💾</span> Data &amp; Code</button>
+    <button class="jump-btn" data-target="sec-projects"><span class="jump-btn-icon">⚗</span> Projects</button>
+    <button class="jump-btn" data-target="sec-insights"><span class="jump-btn-icon">✍</span> Insights</button>
+    <button class="jump-btn" data-target="sec-courses"><span class="jump-btn-icon">🎓</span> Courses</button>
+    <button class="jump-btn" data-target="sec-service"><span class="jump-btn-icon">🔖</span> Service</button>
+  </div>
+</div>
+<!-- ═══ PAGE BODY ═══ -->
 <div class="page-body">
 
   <!-- ABOUT -->
-  <div class="section">
+  <div class="section" id="sec-about">
     <div class="section-head"><h2>Research Profile</h2></div>
     <div class="about-card">
       <p>I am a researcher with <strong>9+ peer-reviewed publications</strong> in high-impact international journals including <em>Scientific Reports</em>, <em>BMJ Open</em>, <em>Global Epidemiology</em>, and <em>International Journal of Health Geographics</em>. My research covers global disease modeling, dengue early warning systems, and climate-health interactions.</p>
-      <p>My work integrates <strong>machine learning</strong>, <strong>explainable AI (SHAP, LIME)</strong>, <strong>Bayesian deep learning</strong>, and <strong>spatial analysis</strong> to support evidence-based decision-making in public health — across 194 countries and using large-scale multi-source datasets.</p>
+      <p>My work integrates <strong>machine learning</strong>, <strong>explainable AI (SHAP, LIME)</strong>, <strong>Bayesian deep learning</strong>, and <strong>spatial analysis</strong> to support evidence-based decision-making in public health — across 194 countries using large-scale multi-source datasets.</p>
     </div>
   </div>
 
-  <!-- RESEARCH INTERESTS -->
-  <div class="section">
+  <!-- INTERESTS -->
+  <div class="section" id="sec-interests">
     <div class="section-head"><h2>Research Interests</h2></div>
     <div class="interest-grid">
       <div class="interest-card"><div class="i-icon">🤖</div><div class="i-label">Machine Learning in Public Health</div></div>
@@ -525,75 +565,68 @@
   </div>
 
   <!-- SKILLS -->
-  <div class="section">
+  <div class="section" id="sec-skills">
     <div class="section-head"><h2>Technical Skills</h2></div>
     <div class="skills-grid">
       <div class="skill-card">
-        <div class="skill-label">Core Methods</div>
+        <div class="skill-lbl">Core Methods</div>
         <div class="tag-row"><span class="tag">Machine Learning</span><span class="tag">SHAP</span><span class="tag">LIME</span><span class="tag">Statistical Modeling</span><span class="tag">Causal AI</span></div>
       </div>
       <div class="skill-card">
-        <div class="skill-label">Programming &amp; Tools</div>
+        <div class="skill-lbl">Programming &amp; Tools</div>
         <div class="tag-row"><span class="tag">R</span><span class="tag">Python</span><span class="tag">SPSS</span><span class="tag">LaTeX</span><span class="tag">Git / GitHub</span></div>
       </div>
       <div class="skill-card">
-        <div class="skill-label">Advanced Analytics</div>
+        <div class="skill-lbl">Advanced Analytics</div>
         <div class="tag-row"><span class="tag">ARIMA / SARIMA</span><span class="tag">Spatial Analysis</span><span class="tag">Bayesian Modeling</span><span class="tag">Deep Learning</span><span class="tag">XGBoost</span></div>
       </div>
       <div class="skill-card">
-        <div class="skill-label">Application Domains</div>
+        <div class="skill-lbl">Application Domains</div>
         <div class="tag-row"><span class="tag">Epidemiology</span><span class="tag">Climate-Health</span><span class="tag">Disease Prediction</span><span class="tag">Health Geographics</span></div>
       </div>
     </div>
   </div>
 
-</div><!-- /page-body -->
+</div>
 
-<!-- ═══ PUBLICATIONS (alt bg) ═══ -->
-<section class="pub-section">
+<!-- ═══ PUBLICATIONS ═══ -->
+<section class="pub-section" id="sec-publications">
   <div class="page-body">
-    <div class="section-head" style="margin-top:0; padding-top:0;">
+    <div class="section-head" style="margin-top:0;padding-top:0;">
       <h2>Selected Publications</h2>
       <a href="publications.html" class="see-all">View all 9 →</a>
     </div>
     <div class="pub-grid">
-
-      <div class="pub-card j-nature">
-        <div class="pub-meta"><span class="jbadge jb-n">Scientific Reports</span><span class="ybadge">2025</span><span class="oa-pill">OA</span></div>
+      <div class="pub-card j-n">
+        <div class="pub-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
         <p class="pub-title-text">Utilizing AI to predict socioeconomic, environmental, and healthcare factors driving tuberculosis globally</p>
         <a class="pub-link" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">View paper →</a>
       </div>
-
-      <div class="pub-card j-hsr">
-        <div class="pub-meta"><span class="jbadge jb-h">Health Science Reports</span><span class="ybadge">2025</span><span class="oa-pill">OA</span></div>
+      <div class="pub-card j-h">
+        <div class="pub-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
         <p class="pub-title-text">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based ML Model</p>
         <a class="pub-link" href="https://doi.org/10.1002/hsr2.70726" target="_blank">View paper →</a>
       </div>
-
-      <div class="pub-card j-elsevier">
-        <div class="pub-meta"><span class="jbadge jb-g">Global Epidemiology</span><span class="ybadge">2025</span><span class="oa-pill">OA</span></div>
+      <div class="pub-card j-e">
+        <div class="pub-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div>
         <p class="pub-title-text">Explainable AI for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</p>
         <a class="pub-link" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">View paper →</a>
       </div>
-
-      <div class="pub-card j-nature">
-        <div class="pub-meta"><span class="jbadge jb-n">Scientific Reports</span><span class="ybadge">2025</span><span class="oa-pill">OA</span></div>
+      <div class="pub-card j-n">
+        <div class="pub-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
         <p class="pub-title-text">Unraveling global malaria incidence and mortality using machine learning and AI-driven spatial analysis</p>
         <a class="pub-link" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">View paper →</a>
       </div>
-
-      <div class="pub-card j-springer">
-        <div class="pub-meta"><span class="jbadge jb-s">Int. J. Health Geographics</span><span class="ybadge">2025</span><span class="oa-pill">OA</span></div>
+      <div class="pub-card j-s">
+        <div class="pub-meta"><span class="jb jb-s">Int. J. Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div>
         <p class="pub-title-text">Leveraging explainable AI and spatial analysis for communicable diseases in Asia (2000–2022)</p>
         <a class="pub-link" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">View paper →</a>
       </div>
-
-      <div class="pub-card j-mdpi">
-        <div class="pub-meta"><span class="jbadge jb-m">Trop. Med. &amp; Infect. Dis.</span><span class="ybadge">2026</span><span class="oa-pill">OA</span></div>
+      <div class="pub-card j-m">
+        <div class="pub-meta"><span class="jb jb-m">Trop. Med. &amp; Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div>
         <p class="pub-title-text">District-Level Dengue Early Warning System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</p>
         <a class="pub-link" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">View paper →</a>
       </div>
-
     </div>
   </div>
 </section>
@@ -601,107 +634,67 @@
 <!-- ═══ REST ═══ -->
 <div class="page-body">
 
-  <!-- DATA LAB TEASER -->
-  <div class="section">
+  <!-- DATA LAB -->
+  <div class="section" id="sec-data">
     <div class="section-head"><h2>Open Data &amp; Code Lab</h2><a href="data-code.html" class="see-all">Explore →</a></div>
     <div class="data-strip">
-      <a href="data-code.html" class="data-chip">
-        <div class="data-chip-icon">🦟</div>
-        <div class="data-chip-title">Dengue District</div>
-        <div class="data-chip-sub">64 Districts · 2017–2024</div>
-      </a>
-      <a href="data-code.html" class="data-chip">
-        <div class="data-chip-icon">🦟</div>
-        <div class="data-chip-title">Dengue EWS</div>
-        <div class="data-chip-sub">National · 2000–2024</div>
-      </a>
-      <a href="data-code.html" class="data-chip">
-        <div class="data-chip-icon">🌍</div>
-        <div class="data-chip-title">Global TB</div>
-        <div class="data-chip-sub">194 Countries · 2000–2022</div>
-      </a>
-      <a href="data-code.html" class="data-chip">
-        <div class="data-chip-icon">🌍</div>
-        <div class="data-chip-title">Global Malaria</div>
-        <div class="data-chip-sub">106 Countries · 2000–2022</div>
-      </a>
+      <a href="data-code.html" class="data-chip"><div class="dc-icon">🦟</div><div class="dc-title">Dengue District</div><div class="dc-sub">64 Districts · 2017–2024</div></a>
+      <a href="data-code.html" class="data-chip"><div class="dc-icon">🦟</div><div class="dc-title">Dengue EWS</div><div class="dc-sub">National · 2000–2024</div></a>
+      <a href="data-code.html" class="data-chip"><div class="dc-icon">🌍</div><div class="dc-title">Global TB</div><div class="dc-sub">194 Countries · 2000–2022</div></a>
+      <a href="data-code.html" class="data-chip"><div class="dc-icon">🌍</div><div class="dc-title">Global Malaria</div><div class="dc-sub">106 Countries · 2000–2022</div></a>
     </div>
   </div>
 
   <!-- PROJECTS -->
-  <div class="section">
+  <div class="section" id="sec-projects">
     <div class="section-head"><h2>Projects</h2><a href="projects.html" class="see-all">See all →</a></div>
     <div class="project-grid">
-      <div class="project-card">
-        <div class="p-icon">🗺</div>
-        <div class="p-name">Dengue Dashboard</div>
-        <div class="p-desc">Interactive district-level early warning visualization for dengue outbreaks across all 64 districts of Bangladesh.</div>
-      </div>
-      <div class="project-card">
-        <div class="p-icon">📋</div>
-        <div class="p-name">Systematic Review Tool</div>
-        <div class="p-desc">Automated literature screening and data extraction workflow designed for health and epidemiology research.</div>
-      </div>
-      <div class="project-card">
-        <div class="p-icon">📦</div>
-        <div class="p-name">R Package</div>
-        <div class="p-desc">Open-source R package for epidemiological time-series modeling, SHAP analysis, and visualization.</div>
-      </div>
+      <div class="project-card"><div class="p-icon">🗺</div><div class="p-name">Dengue Dashboard</div><div class="p-desc">Interactive district-level early warning visualization for dengue outbreaks across all 64 districts of Bangladesh.</div></div>
+      <div class="project-card"><div class="p-icon">📋</div><div class="p-name">Systematic Review Tool</div><div class="p-desc">Automated literature screening and data extraction workflow designed for health and epidemiology research.</div></div>
+      <div class="project-card"><div class="p-icon">📦</div><div class="p-name">R Package</div><div class="p-desc">Open-source R package for epidemiological time-series modeling, SHAP analysis, and visualization.</div></div>
     </div>
   </div>
 
   <!-- LATEST INSIGHTS -->
-  <div class="section">
+  <div class="section" id="sec-insights">
     <div class="section-head"><h2>Latest Insights</h2><a href="insights.html" class="see-all">See all posts →</a></div>
     <div class="posts-strip">
       <a href="insights.html#post-threshold-selection-outbreak-03" class="post-mini">
-        <img class="post-mini-img" src="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0" alt="Threshold selection" loading="lazy">
-        <div class="post-mini-body">
-          <div class="post-mini-cat">Machine Learning</div>
-          <div class="post-mini-title">Threshold selection in outbreak prediction models</div>
-          <div class="post-mini-date">📅 10 April 2026</div>
-        </div>
+        <img class="pm-img" src="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0" alt="Threshold" loading="lazy">
+        <div class="pm-body"><div class="pm-cat">Machine Learning</div><div class="pm-title">Threshold selection in outbreak prediction models</div><div class="pm-date">📅 10 April 2026</div></div>
       </a>
       <a href="insights.html#post-gather-guidelines-02" class="post-mini">
-        <img class="post-mini-img" src="https://github.com/user-attachments/assets/bb76126f-aa6f-4c7f-ab7e-e03ef4f3afd0" alt="GATHER" loading="lazy">
-        <div class="post-mini-body">
-          <div class="post-mini-cat">Public Health</div>
-          <div class="post-mini-title">Understanding GATHER and making health estimates transparent</div>
-          <div class="post-mini-date">📅 6 April 2026</div>
-        </div>
+        <img class="pm-img" src="https://github.com/user-attachments/assets/bb76126f-aa6f-4c7f-ab7e-e03ef4f3afd0" alt="GATHER" loading="lazy">
+        <div class="pm-body"><div class="pm-cat">Public Health</div><div class="pm-title">Understanding GATHER and making health estimates transparent</div><div class="pm-date">📅 6 April 2026</div></div>
       </a>
       <a href="insights.html#post-normalization-standardization-01" class="post-mini">
-        <img class="post-mini-img" src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5" alt="Normalization" loading="lazy">
-        <div class="post-mini-body">
-          <div class="post-mini-cat">Machine Learning</div>
-          <div class="post-mini-title">Normalization vs. Standardization in data preprocessing</div>
-          <div class="post-mini-date">📅 6 April 2026</div>
-        </div>
+        <img class="pm-img" src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5" alt="Normalization" loading="lazy">
+        <div class="pm-body"><div class="pm-cat">Machine Learning</div><div class="pm-title">Normalization vs. Standardization in data preprocessing</div><div class="pm-date">📅 6 April 2026</div></div>
       </a>
     </div>
   </div>
 
   <!-- COURSES -->
-  <div class="section">
+  <div class="section" id="sec-courses">
     <div class="section-head"><h2>Recent Courses &amp; Training</h2><a href="courses.html" class="see-all">See all 22 →</a></div>
     <div class="course-grid">
-      <div class="course-card"><div class="c-dot"></div><div><div class="c-name">Gen AI in Research Workflow</div><div class="c-org">Elsevier Researcher Academy · 2026</div></div></div>
-      <div class="course-card"><div class="c-dot"></div><div><div class="c-name">Technical Writing Skills</div><div class="c-org">Elsevier Researcher Academy · 2026</div></div></div>
-      <div class="course-card"><div class="c-dot"></div><div><div class="c-name">Practical Time Series Analysis</div><div class="c-org">State University of New York · 2025</div></div></div>
-      <div class="course-card"><div class="c-dot"></div><div><div class="c-name">Machine Learning with Python</div><div class="c-org">IBM · 2024</div></div></div>
-      <div class="course-card"><div class="c-dot"></div><div><div class="c-name">Climate Risk Informed Decision Analysis</div><div class="c-org">UNESCO · 2024</div></div></div>
-      <div class="course-card"><div class="c-dot"></div><div><div class="c-name">Data Visualization with R</div><div class="c-org">IBM · 2024</div></div></div>
+      <div class="course-card"><div class="cdot"></div><div><div class="cname">Gen AI in Research Workflow</div><div class="corg">Elsevier Researcher Academy · 2026</div></div></div>
+      <div class="course-card"><div class="cdot"></div><div><div class="cname">Technical Writing Skills</div><div class="corg">Elsevier Researcher Academy · 2026</div></div></div>
+      <div class="course-card"><div class="cdot"></div><div><div class="cname">Practical Time Series Analysis</div><div class="corg">State University of New York · 2025</div></div></div>
+      <div class="course-card"><div class="cdot"></div><div><div class="cname">Machine Learning with Python</div><div class="corg">IBM · 2024</div></div></div>
+      <div class="course-card"><div class="cdot"></div><div><div class="cname">Climate Risk Informed Decision Analysis</div><div class="corg">UNESCO · 2024</div></div></div>
+      <div class="course-card"><div class="cdot"></div><div><div class="cname">Data Visualization with R</div><div class="corg">IBM · 2024</div></div></div>
     </div>
   </div>
 
   <!-- SERVICE -->
-  <div class="section">
+  <div class="section" id="sec-service">
     <div class="section-head"><h2>Academic Service</h2><a href="service.html" class="see-all">See all →</a></div>
     <div class="service-list">
-      <div class="service-item"><span class="s-badge">Peer Reviewer</span><span class="s-dot"></span><span class="s-name">BMJ Global Health</span></div>
-      <div class="service-item"><span class="s-badge">Peer Reviewer</span><span class="s-dot"></span><span class="s-name">PLOS Digital Health</span></div>
-      <div class="service-item"><span class="s-badge">Peer Reviewer</span><span class="s-dot"></span><span class="s-name">Health Science Reports</span></div>
-      <div class="service-item"><span class="s-badge">Peer Reviewer</span><span class="s-dot"></span><span class="s-name">BMJ Public Health</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Global Health</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">PLOS Digital Health</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Health Science Reports</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Public Health</span></div>
     </div>
   </div>
 
@@ -745,68 +738,113 @@
 </footer>
 
 <script>
-  /* Navbar */
-  document.querySelectorAll('.dropbtn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var dd = btn.closest('.dropdown');
-      var open = dd.classList.contains('active');
-      document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
-      if (!open) dd.classList.add('active');
-    });
-  });
-  document.addEventListener('click', function() {
+/* ── NAVBAR ── */
+document.querySelectorAll('.dropbtn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var dd = btn.closest('.dropdown');
+    var open = dd.classList.contains('active');
     document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
+    if (!open) dd.classList.add('active');
   });
-  var ham = document.getElementById('hamburger');
-  var drawer = document.getElementById('nav-drawer');
-  ham.addEventListener('click', function() { ham.classList.toggle('open'); drawer.classList.toggle('open'); });
-  drawer.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() { ham.classList.remove('open'); drawer.classList.remove('open'); });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
+});
+var ham = document.getElementById('hamburger');
+var drawer = document.getElementById('nav-drawer');
+ham.addEventListener('click', function() { ham.classList.toggle('open'); drawer.classList.toggle('open'); });
+drawer.querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() { ham.classList.remove('open'); drawer.classList.remove('open'); });
+});
+
+/* ── SECTION JUMP BAR ──
+   Clicking scrolls to section with exact offset for navbar + jump bar.
+   Never uses the forbidden scrollTo name. */
+function jumpTo(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var navbar  = document.querySelector('.navbar');
+  var jumpBar = document.querySelector('.jump-bar');
+  var navH    = navbar  ? navbar.offsetHeight  : 56;
+  var barH    = jumpBar ? jumpBar.offsetHeight : 44;
+  var top     = el.getBoundingClientRect().top + window.pageYOffset - navH - barH - 8;
+  window.scrollTo({ top: top, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.jump-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    jumpTo(btn.dataset.target);
+    btn.scrollIntoView({ inline: 'nearest', block: 'nearest' });
   });
+});
 
-  /* Animate stats on scroll into view */
-  var stats = document.querySelectorAll('.stat-num');
-  var animated = false;
-  function animateStats() {
-    if (animated) return;
-    var first = document.querySelector('.hero-stats');
-    if (!first) return;
-    var rect = first.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      animated = true;
-      stats.forEach(function(el) {
-        var raw = el.textContent;
-        var num = parseFloat(raw);
-        var suffix = raw.replace(String(num), '');
-        if (isNaN(num)) return;
-        var start = 0; var dur = 1200; var t0 = null;
-        function step(ts) {
-          if (!t0) t0 = ts;
-          var p = Math.min((ts - t0) / dur, 1);
-          var ease = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(ease * num) + suffix;
-          if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      });
-    }
-  }
-  window.addEventListener('scroll', animateStats, { passive: true });
-  animateStats();
-
-  /* Scroll-in fade for cards */
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+/* Auto-highlight active jump button on scroll */
+var sectionIds = ['sec-about','sec-interests','sec-skills','sec-publications','sec-data','sec-projects','sec-insights','sec-courses','sec-service'];
+var scrollRaf = null;
+window.addEventListener('scroll', function() {
+  if (scrollRaf) return;
+  scrollRaf = requestAnimationFrame(function() {
+    scrollRaf = null;
+    var navbar  = document.querySelector('.navbar');
+    var jumpBar = document.querySelector('.jump-bar');
+    var offset  = (navbar ? navbar.offsetHeight : 56) + (jumpBar ? jumpBar.offsetHeight : 44) + 24;
+    var current = sectionIds[0];
+    sectionIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= offset) current = id;
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-  document.querySelectorAll('.interest-card,.skill-card,.pub-card,.project-card,.course-card,.service-item,.data-chip,.post-mini').forEach(function(el) {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(18px)';
-    el.style.transition = 'opacity .45s ease, transform .45s ease';
-    observer.observe(el);
+    document.querySelectorAll('.jump-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.target === current);
+    });
   });
+}, { passive: true });
+
+/* ── STAT COUNT-UP ── */
+var statsAnimated = false;
+function animateStats() {
+  if (statsAnimated) return;
+  var statsEl = document.querySelector('.hero-stats');
+  if (!statsEl) return;
+  if (statsEl.getBoundingClientRect().top < window.innerHeight) {
+    statsAnimated = true;
+    document.querySelectorAll('.stat-num').forEach(function(el) {
+      var val    = parseInt(el.dataset.val)    || 0;
+      var suffix = el.dataset.suffix || '';
+      var dur = 1100; var t0 = null;
+      function step(ts) {
+        if (!t0) t0 = ts;
+        var p    = Math.min((ts - t0) / dur, 1);
+        var ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(ease * val) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+}
+window.addEventListener('scroll', animateStats, { passive: true });
+animateStats();
+
+/* ── SCROLL-IN FADE ── */
+var fadeObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      fadeObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
+
+document.querySelectorAll(
+  '.interest-card,.skill-card,.pub-card,.project-card,.course-card,.service-item,.data-chip,.post-mini,.about-card'
+).forEach(function(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity .42s ease, transform .42s ease';
+  fadeObserver.observe(el);
+});
 </script>
 </body>
 </html>
