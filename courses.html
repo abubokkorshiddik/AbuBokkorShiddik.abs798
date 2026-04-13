@@ -504,7 +504,7 @@ document.querySelectorAll('.filter-tab').forEach(function(tab){
     document.querySelectorAll('.course-card').forEach(function(card){
       if(f==='all'||f==='undergraduate'){ card.style.display=f==='undergraduate'?'none':''; return; }
       var cat=card.dataset.category;
-      var show=(f==='elsevier'&&cat==='elsevier')||(f==='ibm'&&cat==='ibm')||(f==='university'&&cat==='university')||(f==='un'&&cat==='un')||(f==='other'&&cat==='other');
+      var show=(f==='elsevier'&&cat==='elsevier')||(f==='springer'&&cat==='springer')|| (f==='ibm'&&cat==='ibm')||(f==='university'&&cat==='university')||(f==='un'&&cat==='un')||(f==='other'&&cat==='other');
       card.style.display=show?'':'none';
     });
 
