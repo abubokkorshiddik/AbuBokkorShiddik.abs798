@@ -208,8 +208,19 @@ function buildBar(){
   });
 }
 function cleanView(){
-  document.getElementById('gview').innerHTML='';
+  // stop keyboard controls
+  document.onkeydown = null;
+
+  // clear game area
+  const gv = document.getElementById('gview');
+  gv.innerHTML = '';
+
+  // remove controls
   document.querySelectorAll('.dpad,.act-btn').forEach(e=>e.remove());
+
+  // clone to remove all old event listeners (VERY IMPORTANT)
+  const newGv = gv.cloneNode(false);
+  gv.parentNode.replaceChild(newGv, gv);
 }
 function stopLoop(){
   if(intervalId!==null){
