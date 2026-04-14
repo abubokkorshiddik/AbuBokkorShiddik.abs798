@@ -301,13 +301,13 @@
   <section class="hub-hero">
     <div class="hub-hero-inner">
       <div class="hub-eyebrow"><span class="hub-eyebrow-dot"></span> Play · Learn · Challenge</div>
-      <div class="hub-title">Games-ABS798</div>
+      <div class="hub-title">ARCADE NEXUS</div>
       <div class="hub-sub">10 Games &middot; 60 Stages &middot; Zero Limits</div>
       <div class="hub-stats">
         <div class="hub-stat"><div class="hub-stat-n">10</div><div class="hub-stat-l">Games</div></div>
         <div class="hub-stat"><div class="hub-stat-n">60</div><div class="hub-stat-l">Stages</div></div>
         <div class="hub-stat"><div class="hub-stat-n">∞</div><div class="hub-stat-l">Replayable</div></div>
-        
+        <div class="hub-stat"><div class="hub-stat-n">0</div><div class="hub-stat-l">Downloads</div></div>
       </div>
     </div>
   </section>
@@ -925,27 +925,8 @@ RUNNERS.math = function(cfg, play) {
     });
   }
   render();
-  gLoop=setInterval(function(){ 
-  timeLeft--;
-
-  // ✅ update only text
-  var status = document.getElementById('status');
-  if(status){
-    status.innerText = 'Correct: '+correct+'/'+cfg.target+' | Time: '+timeLeft+'s';
-  }
-
-  // ✅ update only progress bar
-  var bar = document.getElementById('timebar');
-  if(bar){
-    bar.style.width = (timeLeft/cfg.time*100)+'%';
-    bar.style.background = timeLeft<6 ? '#ff006e' : '#ffd700';
-  }
-
-  if(timeLeft<=0){
-    clearInterval(gLoop);
-    showLose('Only '+correct+'/'+cfg.target);
-  } 
-},1000);
+  gLoop=setInterval(function(){ timeLeft--; render(); if(timeLeft<=0){clearInterval(gLoop);showLose('Only '+correct+'/'+cfg.target);} },1000);
+};
 
 /* ── 5. TYPE RUSH ── */
 RUNNERS.typing = function(cfg, play) {
