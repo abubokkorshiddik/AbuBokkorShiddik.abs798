@@ -5,8 +5,8 @@
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="description" content="Arcade Nexus — Mini Game Hub by Md. Abu Bokkor Shiddik. 10 games, 60 stages.">
-  <title>Arcade Nexus | Md. Abu Bokkor Shiddik</title>
+  <meta name="description" content="ABS Mini Games — A fun browser game hub by Md. Abu Bokkor Shiddik. 10 games, 60 stages, no downloads needed.">
+  <title>ABS Mini Games | Md. Abu Bokkor Shiddik</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -89,7 +89,11 @@
       background: radial-gradient(ellipse 600px 350px at 85% 10%, rgba(59,130,246,.14) 0%, transparent 60%), radial-gradient(ellipse 350px 250px at 5% 90%, rgba(0,245,255,.08) 0%, transparent 55%);
       pointer-events: none;
     }
-    .hub-hero-inner { max-width: 1180px; margin: auto; position: relative; z-index: 1; }
+    .hub-hero-inner { max-width: 1180px; margin: auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+    .hub-hero-right { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: .55; }
+    .hub-hero-right-icon { font-size: clamp(64px, 10vw, 110px); filter: drop-shadow(0 0 20px rgba(0,245,255,.4)); animation: icon-float 3s ease-in-out infinite; }
+    @keyframes icon-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .hub-hero-right-label { font-size: 10px; color: rgba(255,255,255,.3); letter-spacing: .15em; text-transform: uppercase; font-family: 'Share Tech Mono', monospace; }
     .hub-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13); border-radius: 24px; padding: 5px 16px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #93c5fd; margin-bottom: 16px; }
     .hub-eyebrow-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: pdot 2s infinite; }
     @keyframes pdot { 0%,100%{opacity:1} 50%{opacity:.4} }
@@ -112,7 +116,7 @@
     /* Game grid */
     .hub-body { max-width: 1180px; margin: 0 auto; padding: 32px 24px 60px; position: relative; z-index: 2; }
     .hub-section-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text3); margin-bottom: 16px; }
-    .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
 
     .game-card {
       position: relative; border: 1px solid #1a2a4a; border-radius: 14px;
@@ -212,12 +216,67 @@
     .footer-links.social a:hover { color: #93c5fd; }
     .footer-bottom { max-width: 1180px; margin: 22px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
     .footer-bottom p { font-size: 12px; font-family: 'Inter', sans-serif; }
-    @media (max-width: 1024px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .game-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    }
+    @media (max-width: 768px) {
+      .hub-hero { padding: 36px 18px 30px; }
+      .hub-hero-inner { grid-template-columns: 1fr; gap: 0; }
+      .hub-hero-right { display: none; }
+      .hub-title { letter-spacing: .08em; }
+      .hub-stats { gap: 6px; }
+      .hub-stat { padding: 8px 14px; min-width: 82px; }
+      .hub-stat-n { font-size: 1.2rem; }
+      .hub-body { padding: 24px 16px 48px; }
+      .game-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+      /* overlay: tighter header on small screens */
+      .ov-header { padding: 8px 12px; gap: 8px; }
+      .ov-title { font-size: 11px; }
+      .ov-stage-label { display: none; }
+      .stage-bar { padding: 5px 10px; gap: 4px; }
+      .stbtn { font-size: 9px; padding: 3px 8px; }
+      .hud { padding: 5px 12px; font-size: 10px; }
+      .hud strong { font-size: 12px; }
+      /* d-pad smaller on tablet */
+      .dpad { grid-template-columns: repeat(3, 38px); grid-template-rows: repeat(3, 38px); bottom: 8px; left: 8px; }
+      .dpad button { font-size: 15px; }
+      .act-btn { width: 50px; height: 50px; font-size: 18px; bottom: 16px; right: 12px; }
+    }
     @media (max-width: 600px) {
       .footer-inner { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .game-grid { grid-template-columns: repeat(2, 1fr); }
-      .hub-hero { padding: 36px 16px 30px; }
+      /* hub: 2 columns on small phones */
+      .game-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .game-card { padding: 16px 10px 14px; }
+      .game-card-icon { font-size: 30px; }
+      .game-card-name { font-size: 9px; }
+      .hub-hero { padding: 28px 14px 24px; }
+      .hub-title { font-size: clamp(1.3rem, 7vw, 1.8rem); letter-spacing: .06em; }
+      .hub-sub { font-size: 11px; letter-spacing: .12em; }
+      .hub-eyebrow { font-size: 9.5px; padding: 4px 12px; }
+      .hub-stat { padding: 7px 12px; min-width: 72px; }
+      .hub-stat-n { font-size: 1.1rem; }
+      .hub-stat-l { font-size: 9px; }
+      .hub-body { padding: 18px 12px 40px; }
+      /* overlay on phone: ultra-compact */
+      .ov-header { padding: 7px 10px; }
+      #backBtn { padding: 4px 8px; font-size: 10px; }
+      .ov-title { font-size: 10px; }
+      .stage-bar { padding: 4px 8px; }
+      .stbtn { font-size: 8.5px; padding: 3px 7px; }
+      .hud { padding: 4px 10px; font-size: 9.5px; }
+      /* d-pad even smaller on phones */
+      .dpad { grid-template-columns: repeat(3, 34px); grid-template-rows: repeat(3, 34px); gap: 2px; bottom: 6px; left: 6px; }
+      .dpad button { font-size: 13px; border-radius: 6px; }
+      .act-btn { width: 46px; height: 46px; font-size: 16px; bottom: 12px; right: 10px; }
+    }
+    @media (max-width: 360px) {
+      .game-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .game-card { padding: 14px 8px 12px; }
+      .game-card-icon { font-size: 26px; }
+      .hub-title { font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -300,21 +359,27 @@
   <!-- Hero -->
   <section class="hub-hero">
     <div class="hub-hero-inner">
-      <div class="hub-eyebrow"><span class="hub-eyebrow-dot"></span> Play · Learn · Challenge</div>
-      <div class="hub-title">ARCADE NEXUS</div>
-      <div class="hub-sub">10 Games &middot; 60 Stages &middot; Zero Limits</div>
-      <div class="hub-stats">
-        <div class="hub-stat"><div class="hub-stat-n">10</div><div class="hub-stat-l">Games</div></div>
-        <div class="hub-stat"><div class="hub-stat-n">60</div><div class="hub-stat-l">Stages</div></div>
-        <div class="hub-stat"><div class="hub-stat-n">∞</div><div class="hub-stat-l">Replayable</div></div>
-        <div class="hub-stat"><div class="hub-stat-n">0</div><div class="hub-stat-l">Downloads</div></div>
+      <div>
+        <div class="hub-eyebrow"><span class="hub-eyebrow-dot"></span> Md. Abu Bokkor Shiddik · Fun Corner</div>
+        <div class="hub-title">ABS MINI GAMES</div>
+        <div class="hub-sub">10 Games &middot; 60 Stages &middot; All Devices</div>
+        <div class="hub-stats">
+          <div class="hub-stat"><div class="hub-stat-n">10</div><div class="hub-stat-l">Games</div></div>
+          <div class="hub-stat"><div class="hub-stat-n">60</div><div class="hub-stat-l">Stages</div></div>
+          <div class="hub-stat"><div class="hub-stat-n">∞</div><div class="hub-stat-l">Replayable</div></div>
+          <div class="hub-stat"><div class="hub-stat-n">Free</div><div class="hub-stat-l">No Download</div></div>
+        </div>
+      </div>
+      <div class="hub-hero-right">
+        <div class="hub-hero-right-icon">🕹️</div>
+        <div class="hub-hero-right-label">Browser · No Install</div>
       </div>
     </div>
   </section>
 
   <!-- Game Grid -->
   <div class="hub-body">
-    <div class="hub-section-title">Choose your game</div>
+    <div class="hub-section-title">🎮 Choose your game — click to play</div>
     <div class="game-grid" id="gameGrid"></div>
   </div>
 
