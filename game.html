@@ -493,20 +493,81 @@ RUNNERS.flappy=function(cfg,play){if(!play){showStart(cfg);return;}var cv=makeCa
 RUNNERS.ttt=function(cfg,play){if(!play){showStart(cfg);return;}var board=Array(9).fill(null),human='X',ai='O',turn='X',wins=0,losses=0;score=0;var WLS=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];function chkW(b,p){return WLS.some(function(l){return b[l[0]]===p&&b[l[1]]===p&&b[l[2]]===p;});}function isDraw(b){return b.every(Boolean);}function getWL(b,p){return WLS.find(function(l){return b[l[0]]===p&&b[l[1]]===p&&b[l[2]]===p;});}function mm(b,d,isMax){if(chkW(b,ai))return 10;if(chkW(b,human))return -10;if(isDraw(b)||d===0)return 0;var e=b.map(function(_,i){return i;}).filter(function(i){return !b[i];});if(!e.length)return 0;if(isMax){var best=-99;e.forEach(function(i){b[i]=ai;best=Math.max(best,mm(b,d-1,false));b[i]=null;});return best;}var best2=99;e.forEach(function(i){b[i]=human;best2=Math.min(best2,mm(b,d-1,true));b[i]=null;});return best2;}function aiMove(){var e=board.map(function(_,i){return i;}).filter(function(i){return !board[i];});if(cfg.ai==='random'){board[e[Math.floor(Math.random()*e.length)]]=ai;return;}if(cfg.ai==='block'){for(var i=0;i<9;i++){if(!board[i]){board[i]=ai;if(chkW(board,ai))return;board[i]=null;}}for(var j=0;j<9;j++){if(!board[j]){board[j]=human;if(chkW(board,human)){board[j]=ai;return;}board[j]=null;}}board[e[Math.floor(Math.random()*e.length)]]=ai;return;}var depth=cfg.ai==='minimax'?9:+cfg.ai.replace('minimax','');var best=-99,bm=e[0];e.forEach(function(i){board[i]=ai;var s=mm(board.slice(),depth-1,false);board[i]=null;if(s>best){best=s;bm=i;}});board[bm]=ai;}function render(){var wH=getWL(board,human),wA=getWL(board,ai);var gv=document.getElementById('gview');gv.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;padding:20px;background:#07090f"><div style="display:flex;gap:24px;font-size:11px;font-family:Share Tech Mono,monospace"><span style="color:#00f5ff">YOU: '+wins+'W</span><span style="color:#4a6080">TURN: '+(turn==='X'?'YOU':'AI')+'</span><span style="color:#ff006e">AI: '+losses+'W</span></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(230px,66vw)">'+board.map(function(v,i){return'<div data-ti="'+i+'" style="aspect-ratio:1;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;cursor:'+((!v&&turn===human)?'pointer':'default')+';background:'+(wH&&wH.includes(i)?'#1a4a1a':wA&&wA.includes(i)?'#4a1a1a':'#0a0f1e')+';border:2px solid '+(wH&&wH.includes(i)?'#aaff00':wA&&wA.includes(i)?'#ff006e':'#1a2a4a')+';color:'+(v==='X'?'#00f5ff':v==='O'?'#ff006e':'transparent')+';transition:all .2s;min-height:58px">'+(v||'·')+'</div>';}).join('')+'</div><div style="font-size:10px;color:#4a6080;font-family:Share Tech Mono,monospace">Win 3 rounds to clear stage</div></div>';gv.querySelectorAll('[data-ti]').forEach(function(el){el.onclick=function(){var i=+el.dataset.ti;if(board[i]||turn!==human)return;board[i]=human;turn=ai;render();if(chkW(board,human)){wins++;setScore(score+10);render();setTimeout(function(){if(wins>=3)showWin('You beat the AI!');else{board=Array(9).fill(null);turn='X';render();}},700);return;}if(isDraw(board)){board=Array(9).fill(null);turn='X';render();return;}setTimeout(function(){aiMove();turn=human;render();if(chkW(board,ai)){losses++;render();setTimeout(function(){showLose('AI won this round!');},600);}else if(isDraw(board)){board=Array(9).fill(null);turn='X';render();}},420);};});}render();};
 
 /* ══════════════════════════════════════════════════════════════
-   LUDO KING — Advanced with AI, 3D Board, Move History
+   LUDO KING — Advanced with AI + Human vs Human
+   Correct 15×15 board: Red=bottom-left, Blue=top-right,
+   Green=top-left, Yellow=bottom-right
    Full rules: 52-step path, home stretches, captures,
-   safe squares, bonus turns, 3x6 penalty, smart AI (3 levels)
+   safe squares, bonus turns, 3×6 penalty, smart AI (3 levels)
 ══════════════════════════════════════════════════════════════ */
 var LD={alive:false,raf:null,resizeH:null};
 function ludoKill(){LD.alive=false;if(LD.raf){cancelAnimationFrame(LD.raf);LD.raf=null;}if(LD.resizeH){window.removeEventListener('resize',LD.resizeH);LD.resizeH=null;}}
 
-/* Board geometry */
-var LP=[[1,6],[2,6],[3,6],[4,6],[5,6],[6,5],[6,4],[6,3],[6,2],[6,1],[6,0],[7,0],[8,0],[8,1],[8,2],[8,3],[8,4],[8,5],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[14,7],[14,8],[13,8],[12,8],[11,8],[10,8],[9,8],[8,9],[8,10],[8,11],[8,12],[8,13],[8,14],[7,14],[6,14],[6,13],[6,12],[6,11],[6,10],[6,9],[5,8],[4,8],[3,8],[2,8],[1,8],[0,8],[0,7],[0,6]];
-var LH=[[[1,7],[2,7],[3,7],[4,7],[5,7],[7,7]],[[13,7],[12,7],[11,7],[10,7],[9,7],[7,7]],[[7,13],[7,12],[7,11],[7,10],[7,9],[7,7]],[[7,1],[7,2],[7,3],[7,4],[7,5],[7,7]]];
+/*
+  STANDARD LUDO 15×15 grid — columns (x) then rows (y) — clockwise from Red start:
+  Red   starts at path index 0  (col 1, row 6)
+  Blue  starts at path index 13 (col 8, row 1) — corrected from 13
+  Green starts at path index 26 (col 14,row 8) — corrected
+  Yellow starts at path index 39 (col 6, row 13) — corrected
+
+  Colour → quadrant assignment (CORRECT):
+    0 Red    → bottom-left  (col 0-5,  row 9-14)
+    1 Blue   → top-right    (col 9-14, row 0-5)
+    2 Green  → top-left     (col 0-5,  row 0-5)
+    3 Yellow → bottom-right (col 9-14, row 9-14)
+*/
+
+/* Main 52-square clockwise path [col,row] */
+var LP=[
+  [1,6],[2,6],[3,6],[4,6],[5,6],           /* 0-4   Red entry side */
+  [6,5],[6,4],[6,3],[6,2],[6,1],[6,0],     /* 5-10  */
+  [7,0],[8,0],                             /* 11-12 Blue entry row */
+  [8,1],[8,2],[8,3],[8,4],[8,5],           /* 13-17 */
+  [9,6],[10,6],[11,6],[12,6],[13,6],[14,6],/* 18-23 */
+  [14,7],[14,8],                           /* 24-25 Yellow entry side */
+  [13,8],[12,8],[11,8],[10,8],[9,8],       /* 26-30 */
+  [8,9],[8,10],[8,11],[8,12],[8,13],[8,14],/* 31-36 */
+  [7,14],[6,14],                           /* 37-38 Green entry row */
+  [6,13],[6,12],[6,11],[6,10],[6,9],       /* 39-43 */
+  [5,8],[4,8],[3,8],[2,8],[1,8],[0,8],     /* 44-49 */
+  [0,7],[0,6]                              /* 50-51 */
+];
+
+/* Home stretches: 5 coloured cells → centre [7,7] */
+var LH=[
+  [[1,7],[2,7],[3,7],[4,7],[5,7],[7,7]],   /* Red   → rightward along row 7 */
+  [[13,7],[12,7],[11,7],[10,7],[9,7],[7,7]],/* Blue  → leftward  along row 7 */
+  [[7,13],[7,12],[7,11],[7,10],[7,9],[7,7]],/* Green → upward    along col 7 */
+  [[7,1],[7,2],[7,3],[7,4],[7,5],[7,7]]    /* Yellow→ downward  along col 7 */
+];
+
+/*
+  L_START[p] = index in LP where player p enters the board on rolling 6
+  L_ENTRY[p] = last LP index before turning into home lane
+  Correct per standard Ludo:
+    Red    starts LP[0]  = [1,6],  enters home after LP[50] = [0,7]
+    Blue   starts LP[13] = [8,1],  enters home after LP[11] = [7,0]  → wrap = last index before home = 11
+    Green  starts LP[26] = [9,8],  enters home after LP[24] = [14,7] → 24
+    Yellow starts LP[39] = [6,13], enters home after LP[37] = [7,14] → 37
+*/
 var L_START=[0,13,26,39];
 var L_ENTRY=[50,11,24,37];
 var L_SAFE=[0,8,13,21,26,34,39,47];
-var L_YARD=[[[2,11],[4,11],[2,13],[4,13]],[[10,1],[12,1],[10,3],[12,3]],[[2,1],[4,1],[2,3],[4,3]],[[10,11],[12,11],[10,13],[12,13]]];
+
+/*
+  Yard token positions [col,row] for each player — must be INSIDE the correct 6×6 quadrant:
+    Red    quadrant: cols 0-5,  rows 9-14  → yard tokens at (1,10),(3,10),(1,12),(3,12)
+    Blue   quadrant: cols 9-14, rows 0-5   → yard tokens at (10,1),(12,1),(10,3),(12,3)
+    Green  quadrant: cols 0-5,  rows 0-5   → yard tokens at (1,1),(3,1),(1,3),(3,3)
+    Yellow quadrant: cols 9-14, rows 9-14  → yard tokens at (10,10),(12,10),(10,12),(12,12)
+*/
+var L_YARD=[
+  [[1,10],[3,10],[1,12],[3,12]],   /* Red    bottom-left  */
+  [[10,1],[12,1],[10,3],[12,3]],   /* Blue   top-right    */
+  [[1,1], [3,1], [1,3], [3,3]],   /* Green  top-left     */
+  [[10,10],[12,10],[10,12],[12,12]] /* Yellow bottom-right */
+];
+
+/* Colour order: Red, Blue, Green, Yellow */
 var LC=['#e74c3c','#3498db','#2ecc71','#f1c40f'];
 var LN=['Red','Blue','Green','Yellow'];
 var LPIP={1:[0,0,0,0,1,0,0,0,0],2:[1,0,0,0,0,0,0,0,1],3:[1,0,0,0,1,0,0,0,1],4:[1,0,1,0,0,0,1,0,1],5:[1,0,1,0,1,0,1,0,1],6:[1,0,1,1,0,1,1,0,1]};
@@ -523,22 +584,31 @@ RUNNERS.ludo=function(cfg,play){
   var setupDiv=document.createElement('div');setupDiv.id='ludoSetup';
   setupDiv.innerHTML=
     '<div class="ludo-setup-title">🎲 LUDO KING</div>'+
-    '<div class="ludo-setup-sub">Advanced Edition · AI Opponents</div>'+
+    '<div class="ludo-setup-sub">Advanced Edition · Real Board</div>'+
+    /* Mode select */
+    '<div class="setup-section"><div class="setup-label">Game Mode</div>'+
+    '<div class="ai-row">'+
+    '<div class="ai-btn easy sel easy" data-mode="hvh" style="flex:1.2">👥 Human vs Human</div>'+
+    '<div class="ai-btn" data-mode="hvai">🤖 Human vs AI</div>'+
+    '</div></div>'+
+    /* Player count */
     '<div class="setup-section"><div class="setup-label">Number of Players</div>'+
     '<div class="ludo-p-row">'+
     [2,3,4].map(function(n){
       return'<div class="ludo-p-btn'+(n===numP?' sel':'')+'" data-np="'+n+'">'+
         '<div class="p-icons">'+(['👥','👥👤','👥👥'][n-2])+'</div>'+
-        '<span>'+n+' Players</span>'+
+        '<span>'+n+'P</span>'+
         '<div style="display:flex;gap:3px;margin-top:2px">'+
         Array.from({length:n},function(_,i){return'<div style="width:9px;height:9px;border-radius:50%;background:'+LC[i]+'"></div>';}).join('')+
         '</div></div>';
     }).join('')+'</div></div>'+
-    '<div class="setup-section"><div class="setup-label">AI Difficulty</div>'+
+    /* AI difficulty — only shown in HvAI mode */
+    '<div class="setup-section" id="aiSection" style="display:none"><div class="setup-label">AI Difficulty</div>'+
     '<div class="ai-row">'+
     [{k:'easy',l:'Easy'},{k:'medium',l:'Medium'},{k:'hard',l:'Hard'}].map(function(d){
       return'<div class="ai-btn '+d.k+(d.k===aiLevel?' sel '+d.k:'')+'" data-ai="'+d.k+'">'+d.l+'</div>';
     }).join('')+'</div></div>'+
+    /* Rules reminder */
     '<div class="setup-section" style="background:rgba(255,153,0,.06);border:1px solid rgba(255,153,0,.15);border-radius:10px;padding:10px 12px">'+
     '<div style="font-size:9px;color:#4a6080;font-family:Share Tech Mono,monospace;line-height:1.8">'+
     '🎯 Roll 6 to enter · ♻️ Roll 6 = bonus turn · 💥 Land on enemy = capture<br>'+
@@ -547,25 +617,43 @@ RUNNERS.ludo=function(cfg,play){
     '<button class="ludo-go-btn" id="ludoGoBtn">▶ START GAME</button>';
   gv.appendChild(setupDiv);
 
-  var chosenP=numP,chosenAI=aiLevel;
+  var chosenP=numP,chosenAI=aiLevel,chosenMode='hvh';
+  /* Mode toggle */
+  setupDiv.querySelectorAll('[data-mode]').forEach(function(btn){
+    btn.onclick=function(){
+      setupDiv.querySelectorAll('[data-mode]').forEach(function(b){b.classList.remove('sel','easy','medium','hard');});
+      btn.classList.add('sel','easy');
+      chosenMode=btn.dataset.mode;
+      var aiSec=document.getElementById('aiSection');
+      if(aiSec)aiSec.style.display=chosenMode==='hvai'?'':'none';
+    };
+  });
   setupDiv.querySelectorAll('.ludo-p-btn').forEach(function(btn){
     btn.onclick=function(){setupDiv.querySelectorAll('.ludo-p-btn').forEach(function(b){b.classList.remove('sel');});btn.classList.add('sel');chosenP=+btn.dataset.np;};
   });
-  setupDiv.querySelectorAll('.ai-btn').forEach(function(btn){
-    btn.onclick=function(){setupDiv.querySelectorAll('.ai-btn').forEach(function(b){b.classList.remove('sel','easy','medium','hard');});btn.classList.add('sel',btn.dataset.ai);chosenAI=btn.dataset.ai;};
+  setupDiv.querySelectorAll('[data-ai]').forEach(function(btn){
+    btn.onclick=function(){setupDiv.querySelectorAll('[data-ai]').forEach(function(b){b.classList.remove('sel','easy','medium','hard');});btn.classList.add('sel',btn.dataset.ai);chosenAI=btn.dataset.ai;};
   });
-  document.getElementById('ludoGoBtn').onclick=function(){setupDiv.remove();ludoStartGame(chosenP,chosenAI,gv);};
+  document.getElementById('ludoGoBtn').onclick=function(){
+    setupDiv.remove();
+    /* In HvH all players are human; in HvAI only player 0 is human */
+    var humans=[];
+    for(var i=0;i<chosenP;i++){if(chosenMode==='hvh')humans.push(i);else if(i===0)humans.push(i);}
+    ludoStartGame(chosenP,chosenAI,humans,gv);
+  };
 };
 
-function ludoStartGame(numP,aiLevel,gv){
+function ludoStartGame(numP,aiLevel,humanPlayers,gv){
   if(!LD.alive)return;
+  /* humanPlayers is an array of player indices who are human */
+  if(!gv){gv=humanPlayers;humanPlayers=[0];}  /* backwards-compat fallback */
   gv.innerHTML='';
 
   /* Game state */
   var S={numP:numP,aiLevel:aiLevel,
     tokens:[],turn:0,dice:0,rolled:false,waiting:false,movable:[],
     sixStreak:0,finished:[],gameOver:false,history:[],captureCount:0,
-    humanPlayers:[0]  /* Player 0 is always human; rest are AI */
+    humanPlayers:humanPlayers||[0]
   };
   for(var p=0;p<numP;p++){S.tokens[p]=[];for(var t=0;t<4;t++)S.tokens[p].push({pos:-1});}
 
@@ -620,8 +708,8 @@ function ludoStartGame(numP,aiLevel,gv){
     (function(p){
       var tag=document.createElement('div');tag.className='lptag';tag.id='lptag'+p;
       tag.style.borderColor=LC[p];tag.style.color=LC[p];
-      var isHuman=S.humanPlayers.indexOf(p)>=0;
-      tag.innerHTML='<span class="tag-icon">'+(isHuman?'👤':'🤖')+'</span>'+LN[p];
+      var isH=S.humanPlayers.indexOf(p)>=0;
+      tag.innerHTML='<span class="tag-icon">'+(isH?'👤':'🤖')+'</span>'+LN[p];
       topBar.appendChild(tag);
     })(pi);
   }
@@ -882,30 +970,37 @@ function ludoStartGame(numP,aiLevel,gv){
     refreshTags();
     var isHuman=S.humanPlayers.indexOf(p)>=0;
     var btn=document.getElementById('rollBtn');
-    if(btn){btn.disabled=!isHuman||S.gameOver;if(isHuman&&!S.gameOver)btn.classList.add('pulse-roll');}
-    setStatus(isHuman?'<span style="color:'+LC[p]+'">'+LN[p]+'</span> — Roll!':'<span style="color:'+LC[p]+'">🤖 '+LN[p]+'</span> thinking…');
+    if(btn){btn.disabled=!isHuman||S.gameOver;if(isHuman&&!S.gameOver)btn.classList.add('pulse-roll');else btn.classList.remove('pulse-roll');}
+    var allHuman=S.humanPlayers.length===S.numP;
+    if(allHuman){
+      setStatus('<span style="color:'+LC[p]+'">'+LN[p]+'</span> — Roll the dice!');
+    }else{
+      setStatus(isHuman?'<span style="color:'+LC[p]+'">'+LN[p]+'</span> — Roll!':'<span style="color:'+LC[p]+'">🤖 '+LN[p]+'</span> thinking…');
+    }
     draw();
     if(!isHuman)aiTurn();
   }
 
   function gameEnd(){
     S.gameOver=true;
-    var btn=document.getElementById('rollBtn');if(btn)btn.disabled=true;
+    var btn=document.getElementById('rollBtn');if(btn){btn.disabled=true;btn.classList.remove('pulse-roll');}
     var ov=document.getElementById('winOverlay');if(!ov)return;
     var winner=S.finished[0];
+    var allHuman=S.humanPlayers.length===S.numP;
     var isHuman=S.humanPlayers.indexOf(winner)>=0;
-    document.getElementById('woIcon').textContent=isHuman?'🏆':'🤖';
+    document.getElementById('woIcon').textContent='🏆';
     document.getElementById('woTitle').textContent=LN[winner]+' WINS!';
     document.getElementById('woTitle').style.color=LC[winner];
-    /* Rank display */
     var ranksEl=document.getElementById('woRanks');
     var medals=['🥇','🥈','🥉','4️⃣'];
     var rankHTML='';
     S.finished.forEach(function(p,i){
-      rankHTML+='<div class="rank-badge" style="background:'+LC[p]+'22;border:1px solid '+LC[p]+'55;color:'+LC[p]+'">'+medals[i]+' '+LN[p]+(S.humanPlayers.indexOf(p)>=0?' (You)':'')+'</div>';
+      var lbl=allHuman?LN[p]:(S.humanPlayers.indexOf(p)>=0?(LN[p]+' (You)'):('🤖 '+LN[p]));
+      rankHTML+='<div class="rank-badge" style="background:'+LC[p]+'22;border:1px solid '+LC[p]+'55;color:'+LC[p]+'">'+medals[i]+' '+lbl+'</div>';
     });
     if(ranksEl)ranksEl.innerHTML=rankHTML;
-    document.getElementById('woText').textContent=(isHuman?'Amazing! You got all tokens home first! 🎉':'The AI won this round. Try again?')+' Captures: '+S.captureCount;
+    var wonText=allHuman?'🎉 Congratulations, '+LN[winner]+'!':(isHuman?'Amazing! You got all tokens home first! 🎉':'The AI won this round. Try again?');
+    document.getElementById('woText').textContent=wonText+' Total captures: '+S.captureCount;
     spawnConfetti();
     ov.classList.add('show');
     unlockNext(cGame.id);buildBar();
@@ -1014,12 +1109,12 @@ function ludoStartGame(numP,aiLevel,gv){
         var inC=col>=6&&col<=8&&row>=6&&row<=8;
         var inCross=(col>=6&&col<=8)||(row>=6&&row<=8);
         if(inY||inC||!inCross)continue;
-        /* Lane colours */
+        /* Lane colours — tinted per player */
         var fill='#1c2038';
-        if(row===7&&col>=1&&col<=5)fill='#3d1515';
-        if(row===7&&col>=9&&col<=13)fill='#0e1a3d';
-        if(col===7&&row>=9&&row<=13)fill='#0e3d1a';
-        if(col===7&&row>=1&&row<=5)fill='#3d2e00';
+        if(row===7&&col>=1&&col<=5)fill='#3d1212';        /* Red    home lane */
+        if(row===7&&col>=9&&col<=13)fill='#0d1a3a';       /* Blue   home lane */
+        if(col===7&&row>=9&&row<=13)fill='#0d3016';       /* Green  home lane */
+        if(col===7&&row>=1&&row<=5)fill='#3a2c00';        /* Yellow home lane */
         ctx.fillStyle=fill;ctx.fillRect(col*CS+.5,row*CS+.5,CS-1,CS-1);
         ctx.fillStyle='rgba(255,255,255,.025)';ctx.fillRect(col*CS+.5,row*CS+.5,CS-1,2);
         ctx.fillStyle='rgba(0,0,0,.15)';ctx.fillRect(col*CS+.5,row*CS+CS-3,CS-1,2);
@@ -1042,16 +1137,25 @@ function ludoStartGame(numP,aiLevel,gv){
       });
     });
 
-    /* Center triangles */
+    /* Center 3×3 triangles — each points toward its player's side
+       Red   → left side  (cols 6-8, rows 6-9): triangle pointing left
+       Blue  → right side (cols 6-8, rows 6-9): triangle pointing right
+       Green → bottom     (cols 6-9, rows 6-8): triangle pointing down
+       Yellow→ top        (cols 6-9, rows 6-8): triangle pointing up
+    */
     var cc=7.5*CS;
-    [[6*CS,9*CS,9*CS,9*CS,cc,cc,'#e74c3c'],
-     [6*CS,6*CS,9*CS,6*CS,cc,cc,'#3498db'],
-     [6*CS,6*CS,6*CS,9*CS,cc,cc,'#2ecc71'],
-     [9*CS,6*CS,9*CS,9*CS,cc,cc,'#f1c40f']
-    ].forEach(function(tri,i){
+    var triDefs=[
+      {c:'#e74c3c', pts:[[6*CS,6*CS],[6*CS,9*CS],[cc,cc]]},  /* Red    left  */
+      {c:'#3498db', pts:[[9*CS,6*CS],[9*CS,9*CS],[cc,cc]]},  /* Blue   right */
+      {c:'#2ecc71', pts:[[6*CS,9*CS],[9*CS,9*CS],[cc,cc]]},  /* Green  bottom*/
+      {c:'#f1c40f', pts:[[6*CS,6*CS],[9*CS,6*CS],[cc,cc]]}   /* Yellow top   */
+    ];
+    triDefs.forEach(function(tri,i){
       if(i>=numP)return;
-      ctx.fillStyle=tri[6]+'55';ctx.beginPath();
-      ctx.moveTo(tri[0],tri[1]);ctx.lineTo(tri[2],tri[3]);ctx.lineTo(tri[4],tri[5]);
+      ctx.fillStyle=tri.c+'55';ctx.beginPath();
+      ctx.moveTo(tri.pts[0][0],tri.pts[0][1]);
+      ctx.lineTo(tri.pts[1][0],tri.pts[1][1]);
+      ctx.lineTo(tri.pts[2][0],tri.pts[2][1]);
       ctx.closePath();ctx.fill();
     });
 
