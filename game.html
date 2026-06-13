@@ -501,60 +501,93 @@ function ludoKill(){LD.alive=false;if(LD.raf){cancelAnimationFrame(LD.raf);LD.ra
     3 Yellow → bottom-right (col 9-14, row 9-14)
 */
 
-/* Main 52-square clockwise path [col,row] */
+/*
+  DEFINITIVE STANDARD LUDO 15x15 GEOMETRY
+  =========================================
+  Quadrants:
+    Red    = bottom-left  cols 0-5,  rows 9-14
+    Green  = top-left     cols 0-5,  rows 0-5
+    Yellow = top-right    cols 9-14, rows 0-5
+    Blue   = bottom-right cols 9-14, rows 9-14
+
+  Player 0=Red, 1=Green, 2=Yellow, 3=Blue
+  Colours: LC[0]=Red, LC[1]=Green, LC[2]=Yellow, LC[3]=Blue
+
+  Clockwise path starting at Red's entry:
+    Red    enters at col6,row13 → moves UP col6 → right row6 ...
+    Green  enters at col1,row6  → moves RIGHT row6 → up col6 ...
+    Yellow enters at col8,row1  → moves DOWN col8 → left row8 ...
+    Blue   enters at col13,row8 → moves LEFT row8 → down col8 ...
+
+  Home lanes (5 steps into centre):
+    Red   : col7 rows 13→9 (upward)
+    Green : row7 cols 1→5  (rightward)
+    Yellow: col7 rows 1→5  (downward)
+    Blue  : row7 cols 13→9 (leftward)
+*/
+
+/* 52-step main path [col,row] clockwise starting from Red entry */
 var LP=[
-  [1,6],[2,6],[3,6],[4,6],[5,6],           /* 0-4   Red entry side */
-  [6,5],[6,4],[6,3],[6,2],[6,1],[6,0],     /* 5-10  */
-  [7,0],[8,0],                             /* 11-12 Blue entry row */
-  [8,1],[8,2],[8,3],[8,4],[8,5],           /* 13-17 */
-  [9,6],[10,6],[11,6],[12,6],[13,6],[14,6],/* 18-23 */
-  [14,7],[14,8],                           /* 24-25 Yellow entry side */
-  [13,8],[12,8],[11,8],[10,8],[9,8],       /* 26-30 */
-  [8,9],[8,10],[8,11],[8,12],[8,13],[8,14],/* 31-36 */
-  [7,14],[6,14],                           /* 37-38 Green entry row */
-  [6,13],[6,12],[6,11],[6,10],[6,9],       /* 39-43 */
-  [5,8],[4,8],[3,8],[2,8],[1,8],[0,8],     /* 44-49 */
-  [0,7],[0,6]                              /* 50-51 */
+  /* 0-4   Red start col6 going UP */
+  [6,13],[6,12],[6,11],[6,10],[6,9],
+  /* 5-11  across top of Red yard into Green's zone row8→row6 */
+  [6,8],[5,8],[4,8],[3,8],[2,8],[1,8],[0,8],
+  /* 12    corner */
+  [0,7],
+  /* 13-18 Green start: row6 going RIGHT */
+  [0,6],[1,6],[2,6],[3,6],[4,6],[5,6],
+  /* 19-25 up col6 through Green yard top */
+  [6,5],[6,4],[6,3],[6,2],[6,1],[6,0],[7,0],
+  /* 26-31 Yellow start: col8 going DOWN */
+  [8,0],[8,1],[8,2],[8,3],[8,4],[8,5],
+  /* 32-38 across Yellow/Blue zone row6 going RIGHT */
+  [9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[14,7],
+  /* 39-44 Blue start: row8 going LEFT */
+  [14,8],[13,8],[12,8],[11,8],[10,8],[9,8],
+  /* 45-51 down col8 through Blue yard bottom */
+  [8,9],[8,10],[8,11],[8,12],[8,13],[8,14],[7,14]
 ];
 
-/* Home stretches: 5 coloured cells → centre [7,7] */
+/* Home stretches [col,row] × 5 steps + centre [7,7] */
 var LH=[
-  [[1,7],[2,7],[3,7],[4,7],[5,7],[7,7]],   /* Red   → rightward along row 7 */
-  [[13,7],[12,7],[11,7],[10,7],[9,7],[7,7]],/* Blue  → leftward  along row 7 */
-  [[7,13],[7,12],[7,11],[7,10],[7,9],[7,7]],/* Green → upward    along col 7 */
-  [[7,1],[7,2],[7,3],[7,4],[7,5],[7,7]]    /* Yellow→ downward  along col 7 */
+  [[7,13],[7,12],[7,11],[7,10],[7,9],[7,7]],  /* Red    col7 upward   */
+  [[1,7],[2,7],[3,7],[4,7],[5,7],[7,7]],       /* Green  row7 rightward*/
+  [[7,1],[7,2],[7,3],[7,4],[7,5],[7,7]],       /* Yellow col7 downward */
+  [[13,7],[12,7],[11,7],[10,7],[9,7],[7,7]]    /* Blue   row7 leftward */
 ];
 
 /*
-  L_START[p] = index in LP where player p enters the board on rolling 6
-  L_ENTRY[p] = last LP index before turning into home lane
-  Correct per standard Ludo:
-    Red    starts LP[0]  = [1,6],  enters home after LP[50] = [0,7]
-    Blue   starts LP[13] = [8,1],  enters home after LP[11] = [7,0]  → wrap = last index before home = 11
-    Green  starts LP[26] = [9,8],  enters home after LP[24] = [14,7] → 24
-    Yellow starts LP[39] = [6,13], enters home after LP[37] = [7,14] → 37
+  L_START[p] = LP index of entry square (token placed here on rolling 6)
+  L_ENTRY[p] = LP index of LAST square before home lane begins
+    Red   : enters LP[0]=[6,13],  last main=LP[51]=[7,14], entry after LP[51]
+    Green : enters LP[13]=[0,6],  last main=LP[12]=[0,7],  entry after LP[12]
+    Yellow: enters LP[26]=[8,0],  last main=LP[25]=[7,0],  entry after LP[25]
+    Blue  : enters LP[39]=[14,8], last main=LP[38]=[14,7], entry after LP[38]
 */
 var L_START=[0,13,26,39];
-var L_ENTRY=[50,11,24,37];
+var L_ENTRY=[51,12,25,38];
+
+/* Safe squares on path (no capture) - LP indices */
 var L_SAFE=[0,8,13,21,26,34,39,47];
 
 /*
-  Yard token positions [col,row] for each player — must be INSIDE the correct 6×6 quadrant:
-    Red    quadrant: cols 0-5,  rows 9-14  → yard tokens at (1,10),(3,10),(1,12),(3,12)
-    Blue   quadrant: cols 9-14, rows 0-5   → yard tokens at (10,1),(12,1),(10,3),(12,3)
-    Green  quadrant: cols 0-5,  rows 0-5   → yard tokens at (1,1),(3,1),(1,3),(3,3)
-    Yellow quadrant: cols 9-14, rows 9-14  → yard tokens at (10,10),(12,10),(10,12),(12,12)
+  Yard token slot positions [col,row] inside each quadrant
+  4 tokens per player in a 2×2 layout within the 4×4 inner pad
+    Red    (bottom-left  cols 0-5  rows 9-14):  [1,10][3,10][1,12][3,12]
+    Green  (top-left     cols 0-5  rows 0-5 ):  [1,1] [3,1] [1,3] [3,3]
+    Yellow (top-right    cols 9-14 rows 0-5 ):  [10,1][12,1][10,3][12,3]
+    Blue   (bottom-right cols 9-14 rows 9-14):  [10,10][12,10][10,12][12,12]
 */
 var L_YARD=[
-  [[1,10],[3,10],[1,12],[3,12]],   /* Red    bottom-left  */
-  [[10,1],[12,1],[10,3],[12,3]],   /* Blue   top-right    */
-  [[1,1], [3,1], [1,3], [3,3]],   /* Green  top-left     */
-  [[10,10],[12,10],[10,12],[12,12]] /* Yellow bottom-right */
+  [[1,10],[3,10],[1,12],[3,12]],    /* Red    bottom-left  */
+  [[1,1], [3,1], [1,3], [3,3]],    /* Green  top-left     */
+  [[10,1],[12,1],[10,3],[12,3]],    /* Yellow top-right    */
+  [[10,10],[12,10],[10,12],[12,12]] /* Blue   bottom-right */
 ];
 
-/* Colour order: Red, Blue, Green, Yellow */
-var LC=['#e74c3c','#3498db','#2ecc71','#f1c40f'];
-var LN=['Red','Blue','Green','Yellow'];
+/* Player 0=Red 1=Green 2=Yellow 3=Blue */
+var LC=['#e74c3c','#2ecc71','#f1c40f','#3498db'];
+var LN=['Red','Green','Yellow','Blue'];
 
 RUNNERS.ludo=function(cfg,play){
   if(!play){showStart(cfg);return;}
@@ -1101,19 +1134,14 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
 
     /* Yard quadrants */
     /*
-      Yard quadrants — correct colour mapping:
-        Index 0 = Red    = bottom-left  {x:0, y:9}
-        Index 1 = Blue   = top-right    {x:9, y:0}
-        Index 2 = Green  = top-left     {x:0, y:0}
-        Index 3 = Yellow = bottom-right {x:9, y:9}
-      These match LC[0..3] = Red, Blue, Green, Yellow
-      and L_YARD[0..3] token positions inside these quadrants.
+      Quadrant order matches LC/LN: 0=Red(BL), 1=Green(TL), 2=Yellow(TR), 3=Blue(BR)
+      yard x,y = top-left corner of the 6x6 quadrant in grid coords
     */
     var yards=[
       {x:0,y:9,c:'#e74c3c'},   /* 0=Red    bottom-left  */
-      {x:9,y:0,c:'#3498db'},   /* 1=Blue   top-right    */
-      {x:0,y:0,c:'#2ecc71'},   /* 2=Green  top-left     */
-      {x:9,y:9,c:'#f1c40f'}    /* 3=Yellow bottom-right */
+      {x:0,y:0,c:'#2ecc71'},   /* 1=Green  top-left     */
+      {x:9,y:0,c:'#f1c40f'},   /* 2=Yellow top-right    */
+      {x:9,y:9,c:'#3498db'}    /* 3=Blue   bottom-right */
     ];
     yards.forEach(function(y,yi){
       if(yi>=numP)return;
@@ -1169,24 +1197,24 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
         var inC=col>=6&&col<=8&&row>=6&&row<=8;
         var inCross=(col>=6&&col<=8)||(row>=6&&row<=8);
         if(inY||inC||!inCross)continue;
-        /* Lane colours — tinted per player */
+        /* Home lane tints — col7 = Red(up) and Yellow(down); row7 = Green(right) and Blue(left) */
         var fill='#1c2038';
-        if(row===7&&col>=1&&col<=5)fill='#3d1212';        /* Red    home lane */
-        if(row===7&&col>=9&&col<=13)fill='#0d1a3a';       /* Blue   home lane */
-        if(col===7&&row>=9&&row<=13)fill='#0d3016';       /* Green  home lane */
-        if(col===7&&row>=1&&row<=5)fill='#3a2c00';        /* Yellow home lane */
+        if(col===7&&row>=9&&row<=13) fill='#3d1212';   /* Red    col7 rows 9-13   */
+        if(row===7&&col>=1&&col<=5)  fill='#0d3016';   /* Green  row7 cols 1-5    */
+        if(col===7&&row>=1&&row<=5)  fill='#3a2c00';   /* Yellow col7 rows 1-5    */
+        if(row===7&&col>=9&&col<=13) fill='#0d1a3a';   /* Blue   row7 cols 9-13   */
         ctx.fillStyle=fill;ctx.fillRect(col*CS+.5,row*CS+.5,CS-1,CS-1);
         ctx.fillStyle='rgba(255,255,255,.025)';ctx.fillRect(col*CS+.5,row*CS+.5,CS-1,2);
         ctx.fillStyle='rgba(0,0,0,.15)';ctx.fillRect(col*CS+.5,row*CS+CS-3,CS-1,2);
       }
     }
 
-    /* Home stretch lane highlights */
+    /* Home stretch lane highlights — drawn over path squares */
     var lanes=[
-      {c:'#e74c3c',cells:[[1,7],[2,7],[3,7],[4,7],[5,7]]},
-      {c:'#3498db',cells:[[13,7],[12,7],[11,7],[10,7],[9,7]]},
-      {c:'#2ecc71',cells:[[7,13],[7,12],[7,11],[7,10],[7,9]]},
-      {c:'#f1c40f',cells:[[7,1],[7,2],[7,3],[7,4],[7,5]]}
+      {c:'#e74c3c',cells:[[7,13],[7,12],[7,11],[7,10],[7,9]]},  /* Red    col7 upward   */
+      {c:'#2ecc71',cells:[[1,7],[2,7],[3,7],[4,7],[5,7]]},       /* Green  row7 right    */
+      {c:'#f1c40f',cells:[[7,1],[7,2],[7,3],[7,4],[7,5]]},       /* Yellow col7 downward */
+      {c:'#3498db',cells:[[13,7],[12,7],[11,7],[10,7],[9,7]]}    /* Blue   row7 left     */
     ];
     lanes.forEach(function(ln,li){
       if(li>=numP)return;
@@ -1198,17 +1226,17 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
     });
 
     /* Center 3×3 triangles — each points toward its player's side
-       Red   → left side  (cols 6-8, rows 6-9): triangle pointing left
-       Blue  → right side (cols 6-8, rows 6-9): triangle pointing right
-       Green → bottom     (cols 6-9, rows 6-8): triangle pointing down
-       Yellow→ top        (cols 6-9, rows 6-8): triangle pointing up
+       Red   (0) → bottom  (col7 is Red's home lane going up from bottom)
+       Green (1) → left    (row7 is Green's home lane going right from left)
+       Yellow(2) → top     (col7 is Yellow's home lane going down from top)
+       Blue  (3) → right   (row7 is Blue's home lane going left from right)
     */
     var cc=7.5*CS;
     var triDefs=[
-      {c:'#e74c3c', pts:[[6*CS,6*CS],[6*CS,9*CS],[cc,cc]]},  /* Red    left  */
-      {c:'#3498db', pts:[[9*CS,6*CS],[9*CS,9*CS],[cc,cc]]},  /* Blue   right */
-      {c:'#2ecc71', pts:[[6*CS,9*CS],[9*CS,9*CS],[cc,cc]]},  /* Green  bottom*/
-      {c:'#f1c40f', pts:[[6*CS,6*CS],[9*CS,6*CS],[cc,cc]]}   /* Yellow top   */
+      {c:'#e74c3c', pts:[[6*CS,9*CS],[9*CS,9*CS],[cc,cc]]},  /* Red    bottom */
+      {c:'#2ecc71', pts:[[6*CS,6*CS],[6*CS,9*CS],[cc,cc]]},  /* Green  left   */
+      {c:'#f1c40f', pts:[[6*CS,6*CS],[9*CS,6*CS],[cc,cc]]},  /* Yellow top    */
+      {c:'#3498db', pts:[[9*CS,6*CS],[9*CS,9*CS],[cc,cc]]}   /* Blue   right  */
     ];
     triDefs.forEach(function(tri,i){
       if(i>=numP)return;
@@ -1230,17 +1258,20 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
       var c=LP[si];drawStar((c[0]+.5)*CS,(c[1]+.5)*CS,5,CS*.22,CS*.09,'rgba(255,255,255,.22)');
     });
 
-    /* Start squares — draw a filled coloured star + arrow showing entry direction */
-    var startArrows=['→','↑','←','↓']; /* Red goes right, Blue goes down, Green goes left, Yellow goes up */
+    /* Start squares — coloured circle + entry direction arrow
+       Red(0)   enters LP[0]=[6,13] moving UP    ↑
+       Green(1) enters LP[13]=[0,6] moving RIGHT →
+       Yellow(2)enters LP[26]=[8,0] moving DOWN  ↓
+       Blue(3)  enters LP[39]=[14,8]moving LEFT  ←
+    */
+    var startArrows=['↑','→','↓','←'];
     L_START.forEach(function(si,pi){
       if(pi>=numP)return;
       var c=LP[si];
       var scx=(c[0]+.5)*CS,scy=(c[1]+.5)*CS;
-      /* Coloured circle */
       ctx.fillStyle=LC[pi]+'cc';ctx.shadowBlur=10;ctx.shadowColor=LC[pi];
       ctx.beginPath();ctx.arc(scx,scy,CS*.35,0,Math.PI*2);ctx.fill();
       ctx.shadowBlur=0;
-      /* Direction arrow */
       ctx.fillStyle='rgba(0,0,0,.85)';
       ctx.font='bold '+Math.round(CS*.38)+'px sans-serif';
       ctx.textAlign='center';ctx.textBaseline='middle';
