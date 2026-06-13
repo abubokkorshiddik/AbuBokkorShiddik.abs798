@@ -146,28 +146,20 @@
     #ludoCanvas{display:block;cursor:pointer;border-radius:14px;box-shadow:0 0 40px rgba(0,0,0,.6);max-width:100%;max-height:100%}
     #ludoSidePanel{width:130px;min-width:110px;display:flex;flex-direction:column;align-items:center;gap:10px;padding:10px 6px;background:rgba(4,7,14,.95);border-left:1px solid #1a2a4a;flex-shrink:0;overflow-y:auto}
 
-    /* 3D Dice */
-    .dice-scene{perspective:500px;cursor:pointer;user-select:none;width:64px;height:64px}
-    .dice-3d{width:64px;height:64px;position:relative;transform-style:preserve-3d;transition:transform .1s linear;border-radius:10px}
-    .dice-3d.rolling{animation:diceRoll3d .65s ease-out forwards}
-    @keyframes diceRoll3d{
-      0%  {transform:rotateX(0)   rotateY(0)   rotateZ(0)}
-      20% {transform:rotateX(200deg) rotateY(100deg) rotateZ(60deg)}
-      40% {transform:rotateX(100deg) rotateY(280deg) rotateZ(120deg)}
-      60% {transform:rotateX(310deg) rotateY(180deg) rotateZ(200deg)}
-      80% {transform:rotateX(360deg) rotateY(340deg) rotateZ(280deg)}
-      100%{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotateZ(0deg)}
+    /* 2D Canvas Dice */
+    .dice-scene{cursor:pointer;user-select:none;width:68px;height:68px;display:flex;align-items:center;justify-content:center}
+    #diceCanvas{border-radius:12px;display:block;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5))}
+    #diceCanvas.rolling{animation:diceShake .6s ease-out}
+    @keyframes diceShake{
+      0%  {transform:rotate(0deg)   scale(1)}
+      15% {transform:rotate(-18deg) scale(1.1)}
+      30% {transform:rotate(22deg)  scale(0.95)}
+      45% {transform:rotate(-14deg) scale(1.08)}
+      60% {transform:rotate(10deg)  scale(0.97)}
+      75% {transform:rotate(-6deg)  scale(1.03)}
+      90% {transform:rotate(3deg)   scale(0.99)}
+      100%{transform:rotate(0deg)   scale(1)}
     }
-    .dice-face{position:absolute;width:64px;height:64px;border-radius:10px;display:grid;align-items:center;justify-items:center;background:linear-gradient(145deg,#fff,#e8e8e8);border:2px solid rgba(0,0,0,.12);padding:8px}
-    .dice-face-front {transform:translateZ(32px)}
-    .dice-face-back  {transform:rotateY(180deg) translateZ(32px)}
-    .dice-face-right {transform:rotateY(90deg)  translateZ(32px)}
-    .dice-face-left  {transform:rotateY(-90deg) translateZ(32px)}
-    .dice-face-top   {transform:rotateX(90deg)  translateZ(32px)}
-    .dice-face-bottom{transform:rotateX(-90deg) translateZ(32px)}
-    .dice-pip-grid{display:grid;width:48px;height:48px;gap:5px}
-    .dp{width:8px;height:8px;border-radius:50%;background:#1a1a2e;box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
-    .dp.h{visibility:hidden}
 
     #rollBtn{width:88px;padding:9px 0;border-radius:10px;background:linear-gradient(135deg,#e74c3c,#991111);border:none;color:#fff;font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;cursor:pointer;letter-spacing:.05em;transition:transform .15s,box-shadow .15s,opacity .2s;box-shadow:0 3px 12px rgba(231,76,60,.3)}
     #rollBtn:hover:not(:disabled){transform:scale(1.07);box-shadow:0 4px 20px rgba(231,76,60,.5)}
@@ -206,14 +198,7 @@
       .footer-inner{grid-template-columns:1fr}
       .hub-hero{padding:28px 14px 24px}
       #ludoSidePanel{width:88px;min-width:72px;gap:7px;padding:7px 3px}
-      .dice-scene,.dice-3d,.dice-face{width:50px;height:50px}
-      .dice-face-front {transform:translateZ(25px)}
-      .dice-face-back  {transform:rotateY(180deg) translateZ(25px)}
-      .dice-face-right {transform:rotateY(90deg)  translateZ(25px)}
-      .dice-face-left  {transform:rotateY(-90deg) translateZ(25px)}
-      .dice-face-top   {transform:rotateX(90deg)  translateZ(25px)}
-      .dice-face-bottom{transform:rotateX(-90deg) translateZ(25px)}
-      .dice-pip-grid{width:38px;height:38px}
+      #diceCanvas{width:52px;height:52px}
       #rollBtn,#ludoRestartBtn{width:72px}
     }
     @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr}}
@@ -570,8 +555,6 @@ var L_YARD=[
 /* Colour order: Red, Blue, Green, Yellow */
 var LC=['#e74c3c','#3498db','#2ecc71','#f1c40f'];
 var LN=['Red','Blue','Green','Yellow'];
-var LPIP={1:[0,0,0,0,1,0,0,0,0],2:[1,0,0,0,0,0,0,0,1],3:[1,0,0,0,1,0,0,0,1],4:[1,0,1,0,0,0,1,0,1],5:[1,0,1,0,1,0,1,0,1],6:[1,0,1,1,0,1,1,0,1]};
-var DICE_ROT={1:{rx:'0deg',ry:'0deg'},2:{rx:'90deg',ry:'0deg'},3:{rx:'0deg',ry:'-90deg'},4:{rx:'0deg',ry:'90deg'},5:{rx:'-90deg',ry:'0deg'},6:{rx:'180deg',ry:'0deg'}};
 
 RUNNERS.ludo=function(cfg,play){
   if(!play){showStart(cfg);return;}
@@ -667,14 +650,7 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
         '<div style="font-size:8px;color:#4a6080;font-family:Share Tech Mono,monospace;text-align:center;letter-spacing:.1em">TURN</div>'+
         '<div id="turnDot" style="width:16px;height:16px;border-radius:50%;margin:0 auto;transition:background .3s,box-shadow .3s"></div>'+
         '<div class="dice-scene" id="diceSceneWrap" title="Click to roll">'+
-          '<div class="dice-3d" id="dice3d">'+
-            '<div class="dice-face dice-face-front"  id="df1"></div>'+
-            '<div class="dice-face dice-face-back"   id="df6"></div>'+
-            '<div class="dice-face dice-face-right"  id="df3"></div>'+
-            '<div class="dice-face dice-face-left"   id="df4"></div>'+
-            '<div class="dice-face dice-face-top"    id="df5"></div>'+
-            '<div class="dice-face dice-face-bottom" id="df2"></div>'+
-          '</div>'+
+          '<canvas id="diceCanvas" width="68" height="68"></canvas>'+
         '</div>'+
         '<div id="ludoDiceVal">–</div>'+
         '<button id="rollBtn">🎲 ROLL</button>'+
@@ -727,33 +703,86 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
 
   function setStatus(t){var el=document.getElementById('ludoStatus');if(el)el.innerHTML=t;}
 
-  /* Pip face HTML */
-  function pipHTML(val){
-    var pips=LPIP[val]||LPIP[1];
-    return'<div class="dice-pip-grid" style="grid-template-columns:repeat(3,1fr)">'+
-      pips.map(function(on){return'<div class="dp'+(on?'':' h')+'"></div>';}).join('')+'</div>';
-  }
-  function renderDiceFaces(val){
-    var opp={1:6,2:5,3:4,4:3,5:2,6:1};
-    var faceVals=[val,opp[val],3,4,5,2];
-    ['df1','df6','df3','df4','df5','df2'].forEach(function(id,i){
-      var el=document.getElementById(id);if(el)el.innerHTML=pipHTML(faceVals[i]);
+  /* ── 2D Canvas Dice ── draws correct pip layout for any value 1-6 */
+  /*
+    Pip positions on a 3×3 grid (indexed 0-8):
+    0=top-left  1=top-mid  2=top-right
+    3=mid-left  4=centre   5=mid-right
+    6=bot-left  7=bot-mid  8=bot-right
+    Face layouts (which positions are filled):
+  */
+  var DICE_PIPS={
+    1:[4],
+    2:[0,8],
+    3:[0,4,8],
+    4:[0,2,6,8],
+    5:[0,2,4,6,8],
+    6:[0,2,3,5,6,8]
+  };
+
+  function drawDiceCanvas(val,rolling){
+    var dc=document.getElementById('diceCanvas');
+    if(!dc)return;
+    var ctx2=dc.getContext('2d');
+    var sz=68,r=10,pip=7,pad=10,gap=(sz-pad*2-pip*3)/2;
+    /* Background */
+    ctx2.clearRect(0,0,sz,sz);
+    /* Shadow */
+    ctx2.fillStyle='rgba(0,0,0,.35)';
+    ctx2.beginPath();if(ctx2.roundRect)ctx2.roundRect(2,3,sz-4,sz-4,r);else ctx2.rect(2,3,sz-4,sz-4);
+    ctx2.fill();
+    /* Face gradient */
+    var g=ctx2.createLinearGradient(0,0,sz,sz);
+    g.addColorStop(0,'#ffffff');g.addColorStop(1,'#dde4f0');
+    ctx2.fillStyle=g;
+    ctx2.beginPath();if(ctx2.roundRect)ctx2.roundRect(0,0,sz-2,sz-2,r);else ctx2.rect(0,0,sz-2,sz-2);
+    ctx2.fill();
+    /* Border */
+    ctx2.strokeStyle='rgba(100,120,160,.3)';ctx2.lineWidth=1.5;
+    ctx2.beginPath();if(ctx2.roundRect)ctx2.roundRect(0,0,sz-2,sz-2,r);else ctx2.rect(0,0,sz-2,sz-2);
+    ctx2.stroke();
+    /* Pips */
+    var positions=DICE_PIPS[val]||DICE_PIPS[1];
+    /* 3×3 grid cell positions */
+    var cols=[pad, pad+(pip+gap), pad+(pip+gap)*2];
+    var rows=[pad, pad+(pip+gap), pad+(pip+gap)*2];
+    var gridX=[cols[0],cols[1],cols[2],cols[0],cols[1],cols[2],cols[0],cols[1],cols[2]];
+    var gridY=[rows[0],rows[0],rows[0],rows[1],rows[1],rows[1],rows[2],rows[2],rows[2]];
+    positions.forEach(function(idx){
+      var cx=gridX[idx]+pip/2, cy=gridY[idx]+pip/2;
+      /* Pip shadow */
+      ctx2.fillStyle='rgba(0,0,0,.18)';
+      ctx2.beginPath();ctx2.arc(cx+0.5,cy+1,pip/2,0,Math.PI*2);ctx2.fill();
+      /* Pip */
+      var pg=ctx2.createRadialGradient(cx-1,cy-1,0,cx,cy,pip/2);
+      pg.addColorStop(0,'#2a2a4a');pg.addColorStop(1,'#111128');
+      ctx2.fillStyle=pg;
+      ctx2.beginPath();ctx2.arc(cx,cy,pip/2,0,Math.PI*2);ctx2.fill();
     });
+    /* Shake animation class */
+    dc.classList.remove('rolling');
+    if(rolling){void dc.offsetWidth;dc.classList.add('rolling');}
   }
-  renderDiceFaces(1);
+
+  /* Initial dice display */
+  drawDiceCanvas(1,false);
 
   function animDice(val,cb){
-    var d=document.getElementById('dice3d');if(!d)return;
-    var rot=DICE_ROT[val]||{rx:'0deg',ry:'0deg'};
-    d.style.setProperty('--rx',rot.rx);d.style.setProperty('--ry',rot.ry);
-    d.classList.remove('rolling');void d.offsetWidth;d.classList.add('rolling');
-    setTimeout(function(){
-      d.classList.remove('rolling');
-      d.style.transform='rotateX('+rot.rx+') rotateY('+rot.ry+')';
-      var dv=document.getElementById('ludoDiceVal');
-      if(dv)dv.textContent=val;
-      if(cb)cb();
-    },700);
+    /* Show random faces during shake, then settle on val */
+    var frames=0,maxFrames=8;
+    var interval=setInterval(function(){
+      drawDiceCanvas(Math.floor(Math.random()*6)+1,false);
+      frames++;
+      if(frames>=maxFrames){
+        clearInterval(interval);
+        drawDiceCanvas(val,true);
+        var dv=document.getElementById('ludoDiceVal');
+        if(dv)dv.textContent=val;
+        setTimeout(cb,650);
+      }
+    },55);
+    /* Also trigger CSS shake on first frame */
+    drawDiceCanvas(Math.floor(Math.random()*6)+1,true);
   }
 
   function addHistory(msg,color){
@@ -784,7 +813,6 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
     var btn=document.getElementById('rollBtn');if(btn){btn.disabled=true;btn.classList.remove('pulse-roll');}
     var d=Math.floor(Math.random()*6)+1;
     S.dice=d;
-    renderDiceFaces(d);
     animDice(d,function(){
       if(!LD.alive)return;
       S.rolled=true;
@@ -810,7 +838,6 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
       var btn=document.getElementById('rollBtn');if(btn)btn.disabled=true;
       var d=Math.floor(Math.random()*6)+1;
       S.dice=d;
-      renderDiceFaces(d);
       animDice(d,function(){
         if(!LD.alive)return;
         S.rolled=true;
@@ -1073,33 +1100,66 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
     ctx.fill();
 
     /* Yard quadrants */
+    /*
+      Yard quadrants — correct colour mapping:
+        Index 0 = Red    = bottom-left  {x:0, y:9}
+        Index 1 = Blue   = top-right    {x:9, y:0}
+        Index 2 = Green  = top-left     {x:0, y:0}
+        Index 3 = Yellow = bottom-right {x:9, y:9}
+      These match LC[0..3] = Red, Blue, Green, Yellow
+      and L_YARD[0..3] token positions inside these quadrants.
+    */
     var yards=[
-      {x:0,y:9,bg:'#2a0d0d',acc:'#e74c3c'},
-      {x:9,y:0,bg:'#0d1430',acc:'#3498db'},
-      {x:0,y:0,bg:'#0d2612',acc:'#2ecc71'},
-      {x:9,y:9,bg:'#2a2000',acc:'#f1c40f'}
+      {x:0,y:9,c:'#e74c3c'},   /* 0=Red    bottom-left  */
+      {x:9,y:0,c:'#3498db'},   /* 1=Blue   top-right    */
+      {x:0,y:0,c:'#2ecc71'},   /* 2=Green  top-left     */
+      {x:9,y:9,c:'#f1c40f'}    /* 3=Yellow bottom-right */
     ];
     yards.forEach(function(y,yi){
       if(yi>=numP)return;
-      /* Outer fill */
-      var grd=ctx.createLinearGradient(y.x*CS,y.y*CS,(y.x+6)*CS,(y.y+6)*CS);
-      grd.addColorStop(0,y.bg);grd.addColorStop(1,'#12141e');
-      ctx.fillStyle=grd;
-      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(y.x*CS+1,y.y*CS+1,6*CS-2,6*CS-2,CS*.35);else ctx.rect(y.x*CS+1,y.y*CS+1,6*CS-2,6*CS-2);
+      var qx=y.x*CS,qy=y.y*CS,qs=6*CS;
+      /* Outer yard background */
+      var bg=ctx.createLinearGradient(qx,qy,qx+qs,qy+qs);
+      bg.addColorStop(0,y.c+'22');bg.addColorStop(1,'#0d0f18');
+      ctx.fillStyle=bg;
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(qx+1,qy+1,qs-2,qs-2,CS*.35);else ctx.rect(qx+1,qy+1,qs-2,qs-2);
       ctx.fill();
-      /* Inner pad glow */
-      var cx2=(y.x+3)*CS,cy2=(y.y+3)*CS,r2=CS*1.8;
-      var ig=ctx.createRadialGradient(cx2,cy2,r2*.1,cx2,cy2,r2);
-      ig.addColorStop(0,y.acc+'40');ig.addColorStop(1,'transparent');
-      ctx.fillStyle=ig;ctx.beginPath();ctx.arc(cx2,cy2,r2,0,Math.PI*2);ctx.fill();
-      /* Border */
-      ctx.strokeStyle=y.acc+'44';ctx.lineWidth=1.5;
-      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(y.x*CS+1,y.y*CS+1,6*CS-2,6*CS-2,CS*.35);else ctx.rect(y.x*CS+1,y.y*CS+1,6*CS-2,6*CS-2);
+      /* Outer border */
+      ctx.strokeStyle=y.c+'66';ctx.lineWidth=2;
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(qx+1,qy+1,qs-2,qs-2,CS*.35);else ctx.rect(qx+1,qy+1,qs-2,qs-2);
       ctx.stroke();
-      /* Player label */
-      ctx.fillStyle=y.acc+'66';ctx.font='bold '+Math.round(CS*.5)+'px Orbitron,sans-serif';
+      /* Inner pad (circle area where tokens sit) — 4×4 cells inset by 1 cell */
+      var px=qx+CS,py=qy+CS,ps=4*CS;
+      var padG=ctx.createRadialGradient(px+ps/2,py+ps/2,ps*.05,px+ps/2,py+ps/2,ps*.72);
+      padG.addColorStop(0,y.c+'33');padG.addColorStop(1,y.c+'08');
+      ctx.fillStyle=padG;
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(px+CS*.15,py+CS*.15,ps-CS*.3,ps-CS*.3,CS*.5);else ctx.rect(px+CS*.15,py+CS*.15,ps-CS*.3,ps-CS*.3);
+      ctx.fill();
+      ctx.strokeStyle=y.c+'44';ctx.lineWidth=1.5;
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(px+CS*.15,py+CS*.15,ps-CS*.3,ps-CS*.3,CS*.5);else ctx.rect(px+CS*.15,py+CS*.15,ps-CS*.3,ps-CS*.3);
+      ctx.stroke();
+      /* Draw 4 empty token slots (circles) inside the yard pad */
+      var slots=L_YARD[yi];
+      slots.forEach(function(slot){
+        var scx=(slot[0]+.5)*CS,scy=(slot[1]+.5)*CS,sr=CS*.32;
+        /* Slot shadow */
+        ctx.fillStyle='rgba(0,0,0,.3)';
+        ctx.beginPath();ctx.arc(scx+1,scy+2,sr,0,Math.PI*2);ctx.fill();
+        /* Slot background circle */
+        ctx.fillStyle=y.c+'25';
+        ctx.beginPath();ctx.arc(scx,scy,sr,0,Math.PI*2);ctx.fill();
+        /* Slot border */
+        ctx.strokeStyle=y.c+'77';ctx.lineWidth=1.5;
+        ctx.beginPath();ctx.arc(scx,scy,sr,0,Math.PI*2);ctx.stroke();
+        /* Inner gloss ring */
+        ctx.strokeStyle='rgba(255,255,255,.12)';ctx.lineWidth=1;
+        ctx.beginPath();ctx.arc(scx,scy,sr*.65,0,Math.PI*2);ctx.stroke();
+      });
+      /* Player name label in corner */
+      ctx.fillStyle=y.c+'aa';
+      ctx.font='bold '+Math.round(CS*.42)+'px Orbitron,sans-serif';
       ctx.textAlign='center';ctx.textBaseline='middle';
-      ctx.fillText(LN[yi][0],(y.x+3)*CS,(y.y+3)*CS);
+      ctx.fillText(LN[yi],(y.x+3)*CS,(y.y+5.4)*CS);
     });
 
     /* Path squares */
@@ -1170,13 +1230,21 @@ function ludoStartGame(numP,aiLevel,humanPlayers,gv){
       var c=LP[si];drawStar((c[0]+.5)*CS,(c[1]+.5)*CS,5,CS*.22,CS*.09,'rgba(255,255,255,.22)');
     });
 
-    /* Start squares */
+    /* Start squares — draw a filled coloured star + arrow showing entry direction */
+    var startArrows=['→','↑','←','↓']; /* Red goes right, Blue goes down, Green goes left, Yellow goes up */
     L_START.forEach(function(si,pi){
       if(pi>=numP)return;
       var c=LP[si];
-      ctx.fillStyle=LC[pi]+'bb';ctx.shadowBlur=8;ctx.shadowColor=LC[pi];
-      ctx.beginPath();ctx.arc((c[0]+.5)*CS,(c[1]+.5)*CS,CS*.26,0,Math.PI*2);ctx.fill();
+      var scx=(c[0]+.5)*CS,scy=(c[1]+.5)*CS;
+      /* Coloured circle */
+      ctx.fillStyle=LC[pi]+'cc';ctx.shadowBlur=10;ctx.shadowColor=LC[pi];
+      ctx.beginPath();ctx.arc(scx,scy,CS*.35,0,Math.PI*2);ctx.fill();
       ctx.shadowBlur=0;
+      /* Direction arrow */
+      ctx.fillStyle='rgba(0,0,0,.85)';
+      ctx.font='bold '+Math.round(CS*.38)+'px sans-serif';
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(startArrows[pi],scx,scy+1);
     });
 
     /* Movable destination highlights */
