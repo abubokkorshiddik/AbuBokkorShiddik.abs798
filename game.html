@@ -420,6 +420,11 @@ RUNNERS.ludo=function(cfg,play){
   wrap.appendChild(boardArea);
 
   /* Bottom HUD */
+  var hud=document.createElement('div');hud.id='ldHud';
+  var rollZone=document.createElement('div');rollZone.id='ldRollZone';
+  rollZone.innerHTML='<button id="ldRollBtn" disabled><span class="roll-ico">🎲</span><span class="roll-lbl">ROLL</span></button><div id="ldDiceRes"></div>';
+  hud.appendChild(rollZone);
+  wrap.appendChild(hud);
   gv.appendChild(wrap);
 
   /* Setup overlay */
