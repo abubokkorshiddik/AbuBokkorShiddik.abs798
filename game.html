@@ -120,6 +120,155 @@
     #ldTurnAction{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,.45)}
     #ldCapBadge{background:rgba(255,0,110,.18);border:1px solid #ff006e;border-radius:10px;padding:3px 10px;font-size:9px;font-weight:700;color:#ff006e;font-family:'Orbitron',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none}
     #ldCapBadge.show{opacity:1}
+    #ludoBoardWrap{flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:4px 4px 4px;min-height:0}
+    #ludoCanvas{display:block;cursor:pointer;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 16px 60px rgba(0,0,0,.8)}
+    /* In-board dice canvases (overlay on boardwrap) */
+    .ld-dice-cv{position:absolute;border-radius:8px;cursor:pointer;z-index:10;transition:transform .15s,box-shadow .15s}
+    .ld-dice-cv.active-dice{box-shadow:0 0 0 3px #fff,0 0 18px rgba(255,200,0,.8);transform:scale(1.12);cursor:pointer}
+    .ld-dice-cv.active-dice:hover{transform:scale(1.18)}
+    .ld-dice-cv:active{transform:scale(.95)!important}
+    #ldWinOv{position:absolute;inset:0;z-index:30;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(4,6,14,.95);text-align:center;padding:24px;backdrop-filter:blur(10px)}
+    #ldWinOv.show{display:flex}
+    #ldWinOv h2{font-family:'Orbitron',sans-serif;font-size:clamp(20px,5vw,34px);font-weight:900;letter-spacing:.08em}
+    #ldWinOv p{font-size:12px;color:rgba(255,255,255,.45);max-width:280px;line-height:1.8;font-family:'Share Tech Mono',monospace}
+    .lwo-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+    .lwo-btn{padding:11px 26px;border-radius:50px;border:none;font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.06em}
+    .lwo-btn.pri{background:linear-gradient(135deg,#ff6b35,#ffd700);color:#000;box-shadow:0 4px 18px rgba(255,107,53,.4)}
+    .lwo-btn.sec{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff}
+    .lwo-confp{position:absolute;width:8px;height:8px;border-radius:2px;animation:lwocf var(--d,3s) ease forwards}
+    @keyframes lwocf{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(600px) rotate(720deg);opacity:0}}
+    .lwo-rank{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:22px;font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;margin:3px}
+    #ldSetup{position:absolute;inset:0;z-index:25;background:linear-gradient(160deg,#09090f 0%,#0d1020 50%,#0e1628 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px 16px;overflow-y:auto}
+    #ldSetup h1{font-family:'Orbitron',sans-serif;font-size:clamp(20px,5vw,34px);font-weight:900;background:linear-gradient(135deg,#ff6b35,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.1em}
+    .lds-sub{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.25em;text-transform:uppercase;font-family:'Share Tech Mono',monospace}
+    .lds-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:14px 18px;width:100%;max-width:380px}
+    .lds-card h3{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;font-family:'Share Tech Mono',monospace}
+    .lds-row{display:flex;gap:8px;flex-wrap:wrap}
+    .lds-btn{flex:1;min-width:60px;padding:9px 5px;border-radius:9px;border:2px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:rgba(255,255,255,.55);font-size:11px;font-weight:700;cursor:pointer;transition:all .18s;text-align:center;font-family:'Share Tech Mono',monospace}
+    .lds-btn:hover{border-color:rgba(255,255,255,.3);color:#fff}
+    .lds-btn.sel{background:rgba(255,215,0,.12);border-color:#ffd700;color:#ffd700}
+    .lds-start{background:linear-gradient(135deg,#ff6b35,#ffd700);color:#000;border:none;padding:13px 44px;border-radius:50px;font-family:'Orbitron',sans-serif;font-size:13px;font-weight:900;cursor:pointer;letter-spacing:.08em;transition:all .2s;box-shadow:0 5px 24px rgba(255,107,53,.4)}
+    .lds-start:hover{transform:scale(1.04);box-shadow:0 7px 32px rgba(255,215,0,.5)}
+    .lds-hint{font-size:9px;color:rgba(255,255,255,.22);text-align:center;font-family:'Share Tech Mono',monospace;line-height:1.9}
+    .lds-pdots{display:flex;gap:3px;justify-content:center;margin-top:4px}
+    .lds-pdot{width:9px;height:9px;border-radius:50%}
+    @keyframes ldDiceShake{0%{transform:rotate(0) scale(1)}15%{transform:rotate(-20deg) scale(1.15)}35%{transform:rotate(24deg) scale(.88)}55%{transform:rotate(-14deg) scale(1.1)}75%{transform:rotate(8deg) scale(.94)}90%{transform:rotate(-3deg) scale(1.04)}100%{transform:rotate(0) scale(1)}}
+  <title>ABS Mini Games | Md. Abu Bokkor Shiddik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    html{overflow-x:hidden}
+    :root{--navy:#0b1f3a;--blue:#1a56db;--border:#e2e8f0;--bg:#f8fafc;--white:#fff;--text:#0f172a;--text3:#64748b}
+    body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    .site-navbar{background:var(--navy);position:sticky;top:0;z-index:9999;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{max-width:1180px;margin:auto;padding:0 24px;display:flex;align-items:center;height:56px}
+    .nav-brand{font-size:14.5px;font-weight:600;color:#fff;letter-spacing:.2px;margin-right:auto}
+    .nav-brand span{color:#93c5fd;font-weight:300}
+    .nav-links{display:flex;align-items:center;gap:2px}
+    .nav-links>a,.dropbtn{color:rgba(255,255,255,.75);font-size:13.5px;font-weight:500;padding:6px 11px;border-radius:6px;border:none;background:none;cursor:pointer;transition:background .18s,color .18s;white-space:nowrap;display:flex;align-items:center;gap:4px}
+    .nav-links>a:hover,.dropbtn:hover{color:#fff;background:rgba(255,255,255,.09)}
+    .dropdown{position:relative}
+    .dropdown-content{position:absolute;top:calc(100% + 6px);left:0;background:#132444;border:1px solid rgba(255,255,255,.1);border-radius:10px;min-width:190px;padding:6px;box-shadow:0 12px 32px rgba(0,0,0,.3);opacity:0;visibility:hidden;transform:translateY(6px);transition:all .2s;pointer-events:none;z-index:9999}
+    .dropdown:hover .dropdown-content,.dropdown.active .dropdown-content{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+    .dropdown-content a{display:flex;align-items:center;gap:8px;padding:8px 12px;color:rgba(255,255,255,.72);font-size:13px;font-weight:500;border-radius:6px;transition:background .15s,color .15s}
+    .dropdown-content a:hover{background:rgba(255,255,255,.08);color:#fff}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:7px;border-radius:6px;margin-left:10px}
+    .hamburger span{display:block;width:21px;height:2px;background:rgba(255,255,255,.85);border-radius:2px;transition:transform .28s,opacity .28s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .nav-drawer{display:none;background:#0d1c38;border-top:1px solid rgba(255,255,255,.07);overflow:hidden;max-height:0;transition:max-height .38s cubic-bezier(.4,0,.2,1)}
+    .nav-drawer.open{max-height:700px}
+    .drawer-inner{padding:8px 0 16px}
+    .drawer-link{display:block;color:rgba(255,255,255,.78);font-size:15px;font-weight:500;padding:11px 24px;transition:background .15s,color .15s}
+    .drawer-link:hover{background:rgba(255,255,255,.06);color:#fff}
+    .drawer-sec{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.3);padding:14px 24px 4px}
+    .drawer-sub .drawer-link{padding-left:38px;font-size:14px;color:rgba(255,255,255,.58)}
+    .drawer-div{height:1px;background:rgba(255,255,255,.06);margin:4px 0}
+    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:block}}
+    #stars{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+    .star{position:absolute;border-radius:50%;animation:tw var(--d,3s) infinite alternate}
+    @keyframes tw{from{opacity:.15;transform:scale(.8)}to{opacity:.8;transform:scale(1.2)}}
+    .scanlines{position:fixed;inset:0;pointer-events:none;z-index:1;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px)}
+    .hub-hero{background:linear-gradient(140deg,#050e1f 0%,#0a1e3d 40%,#0d2550 70%,#0f2d5c 100%);color:#fff;padding:48px 24px 40px;position:relative;overflow:hidden}
+    .hub-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+    .hub-hero-inner{max-width:1180px;margin:auto;position:relative;z-index:1}
+    .hub-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:24px;padding:5px 16px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#93c5fd;margin-bottom:16px}
+    .hub-eyebrow-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pdot 2s infinite}
+    @keyframes pdot{0%,100%{opacity:1}50%{opacity:.4}}
+    .hub-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;letter-spacing:.12em;color:#00f5ff;text-shadow:0 0 24px rgba(0,245,255,.5);margin-bottom:6px;animation:glow 2.5s infinite alternate}
+    @keyframes glow{from{text-shadow:0 0 10px #00f5ff}to{text-shadow:0 0 30px #00f5ff,0 0 60px rgba(0,245,255,.35)}}
+    .hub-sub{font-size:13px;color:rgba(255,255,255,.45);letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px}
+    .hub-stats{display:flex;flex-wrap:wrap;gap:8px}
+    .hub-stat{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;display:flex;flex-direction:column;min-width:100px}
+    .hub-stat-n{font-size:1.45rem;font-weight:700;color:#fff;line-height:1;margin-bottom:3px;font-family:'Orbitron',sans-serif}
+    .hub-stat-l{font-size:10px;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.7px}
+    .hub-body{max-width:1180px;margin:0 auto;padding:32px 24px 60px;position:relative;z-index:2}
+    .hub-section-title{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:16px}
+    .game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+    .game-card{position:relative;border:1px solid #1a2a4a;border-radius:14px;background:linear-gradient(145deg,#0a0f1e,#0d1428);padding:20px 14px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;transition:transform .2s,border-color .2s,box-shadow .2s;animation:card-in .5s both;animation-delay:calc(var(--i)*.06s);overflow:hidden}
+    @keyframes card-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .game-card:hover{transform:translateY(-4px) scale(1.03);border-color:var(--c,#00f5ff);box-shadow:0 8px 28px rgba(0,0,0,.4),0 0 20px rgba(0,245,255,.15)}
+    .game-card-top-bar{position:absolute;top:0;left:0;right:0;height:2.5px;border-radius:14px 14px 0 0;background:var(--c,#00f5ff)}
+    .game-card-badge{position:absolute;top:9px;right:9px;background:var(--c,#00f5ff);color:#000;font-size:7px;font-weight:800;letter-spacing:.1em;padding:2px 6px;border-radius:4px;font-family:'Orbitron',sans-serif}
+    .game-card-icon{font-size:38px;line-height:1;filter:drop-shadow(0 0 8px var(--c,#00f5ff));margin-top:4px}
+    .game-card-name{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-align:center;color:#fff}
+    .game-card-meta{font-size:9px;color:#4a6080;text-align:center}
+    .game-card-stages{display:flex;gap:3px;justify-content:center;flex-wrap:wrap;margin-top:2px}
+    .stage-dot{width:5px;height:5px;border-radius:50%;background:#1a2a4a}
+    .stage-dot.done{background:#aaff00}
+    .stage-dot.unlocked{background:#00f5ff}
+    #overlay{position:fixed;inset:0;z-index:10000;background:#07090f;display:none;flex-direction:column}
+    #overlay.active{display:flex}
+    .ov-header{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid #1a2a4a;flex-shrink:0;background:#0a0f1e}
+    #backBtn{background:none;border:1px solid #1a2a4a;color:#00f5ff;cursor:pointer;padding:5px 12px;border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:11px;transition:all .2s}
+    #backBtn:hover{border-color:#00f5ff;box-shadow:0 0 10px rgba(0,245,255,.3)}
+    .ov-title{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:#fff;letter-spacing:.08em;flex:1}
+    .ov-stage-label{font-size:10px;color:#4a6080;white-space:nowrap}
+    .stage-bar{display:flex;gap:5px;padding:7px 14px;flex-shrink:0;overflow-x:auto;scrollbar-width:none;background:rgba(8,12,26,.9);border-bottom:1px solid #1a2a4a}
+    .stage-bar::-webkit-scrollbar{display:none}
+    .stbtn{flex-shrink:0;background:none;border:1px solid #1a2a4a;color:#4a6080;padding:4px 11px;border-radius:14px;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;transition:all .2s}
+    .stbtn.active{border-color:#00f5ff;color:#00f5ff;background:rgba(0,245,255,.07)}
+    .stbtn.locked{opacity:.3;cursor:not-allowed}
+    .stbtn.done{border-color:#aaff00;color:#aaff00}
+    .hud{display:flex;justify-content:space-between;align-items:center;padding:6px 16px;font-size:11px;background:rgba(4,7,14,.97);border-bottom:1px solid #1a2a4a;flex-shrink:0;font-family:'Share Tech Mono',monospace}
+    .hud span{color:#4a6080}
+    .hud strong{color:#00f5ff;font-size:14px}
+    #livesDisp{color:#ff006e;font-size:13px;letter-spacing:2px}
+    .gview{flex:1;position:relative;overflow:hidden;touch-action:none}
+    .screen{position:absolute;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;background:rgba(4,7,14,.97);text-align:center;font-family:'Share Tech Mono',monospace}
+    .screen.hidden{display:none!important}
+    .screen h2{font-family:'Orbitron',sans-serif;font-size:clamp(18px,4vw,28px);font-weight:900}
+    .screen p{font-size:11px;color:#4a6080;max-width:300px;line-height:1.8}
+    .diff-badge{display:inline-block;padding:3px 9px;border-radius:10px;font-size:9px;font-weight:700;letter-spacing:.1em;font-family:'Orbitron',sans-serif}
+    .diff-easy{background:#1a3a1a;color:#aaff00;border:1px solid #aaff00}
+    .diff-medium{background:#3a2a0a;color:#ffd700;border:1px solid #ffd700}
+    .diff-hard{background:#3a0a1a;color:#ff006e;border:1px solid #ff006e}
+    .diff-extreme{background:#2a0a3a;color:#cc44ff;border:1px solid #cc44ff}
+    .play-btn{background:linear-gradient(135deg,#00f5ff,#0080ff);color:#000;border:none;padding:11px 30px;border-radius:9px;font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.08em;transition:transform .15s,box-shadow .15s}
+    .play-btn:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(0,245,255,.4)}
+    .sec-btn{background:none;border:1px solid #1a2a4a;color:#c8d8f0;padding:8px 20px;border-radius:8px;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;transition:border-color .2s}
+    .sec-btn:hover{border-color:#4a6080}
+    .dpad{position:absolute;bottom:12px;left:12px;display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(3,44px);gap:3px;z-index:60}
+    .dpad button{background:rgba(10,15,30,.9);border:1px solid #1a2a4a;border-radius:8px;color:#00f5ff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:none;user-select:none;transition:background .1s}
+    .dpad button:active{background:rgba(0,245,255,.25)}
+    .dpad .blank{background:none!important;border-color:transparent!important;pointer-events:none}
+    .act-btn{position:absolute;bottom:24px;right:16px;z-index:60;width:58px;height:58px;border-radius:50%;border:2px solid #ff006e;background:rgba(255,0,110,.15);color:#ff006e;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:none;transition:background .1s,transform .1s}
+    .act-btn:active{background:rgba(255,0,110,.4);transform:scale(.92)}
+
+    /* ══ LUDO STYLES ══ */
+    #ludoWrap{position:absolute;inset:0;display:flex;flex-direction:column;background:radial-gradient(ellipse at 50% 0%,#0d1a2e 0%,#07090f 70%)}
+    #ldTopBar{flex-shrink:0;height:46px;display:flex;align-items:center;justify-content:center;position:relative;background:rgba(5,8,18,.92);border-bottom:1px solid rgba(255,255,255,.07);z-index:15;gap:10px;padding:0 10px}
+    #ldTurnPill{display:flex;align-items:center;gap:8px;padding:6px 16px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:all .35s;backdrop-filter:blur(8px)}
+    #ldTurnPill.flash{animation:pillFlash .35s ease}
+    @keyframes pillFlash{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+    #ldTurnIcon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;font-family:'Orbitron',sans-serif;transition:all .35s;flex-shrink:0;border:2px solid #fff}
+    #ldTurnName{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;color:#fff;transition:color .35s}
+    #ldTurnAction{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,.45)}
+    #ldCapBadge{background:rgba(255,0,110,.18);border:1px solid #ff006e;border-radius:10px;padding:3px 10px;font-size:9px;font-weight:700;color:#ff006e;font-family:'Orbitron',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none}
+    #ldCapBadge.show{opacity:1}
     #ludoBoardWrap{flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:4px 4px 0;min-height:0}
     #ludoCanvas{display:block;cursor:pointer;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 16px 60px rgba(0,0,0,.8)}
     #ldHud{flex-shrink:0;background:rgba(5,8,18,.96);padding:8px 10px 10px;display:flex;align-items:center;gap:6px;z-index:15;border-top:1px solid rgba(255,255,255,.07)}
@@ -324,73 +473,59 @@ RUNNERS.flappy=function(cfg,play){if(!play){showStart(cfg);return;}var cv=makeCa
 RUNNERS.ttt=function(cfg,play){if(!play){showStart(cfg);return;}var board=Array(9).fill(null),human='X',ai='O',turn='X',wins=0,losses=0;score=0;var WLS=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];function chkW(b,p){return WLS.some(function(l){return b[l[0]]===p&&b[l[1]]===p&&b[l[2]]===p;});}function isDraw(b){return b.every(Boolean);}function getWL(b,p){return WLS.find(function(l){return b[l[0]]===p&&b[l[1]]===p&&b[l[2]]===p;});}function mm(b,d,isMax){if(chkW(b,ai))return 10;if(chkW(b,human))return -10;if(isDraw(b)||d===0)return 0;var e=b.map(function(_,i){return i;}).filter(function(i){return !b[i];});if(!e.length)return 0;if(isMax){var best=-99;e.forEach(function(i){b[i]=ai;best=Math.max(best,mm(b,d-1,false));b[i]=null;});return best;}var best2=99;e.forEach(function(i){b[i]=human;best2=Math.min(best2,mm(b,d-1,true));b[i]=null;});return best2;}function aiMove(){var e=board.map(function(_,i){return i;}).filter(function(i){return !board[i];});if(cfg.ai==='random'){board[e[Math.floor(Math.random()*e.length)]]=ai;return;}if(cfg.ai==='block'){for(var i=0;i<9;i++){if(!board[i]){board[i]=ai;if(chkW(board,ai))return;board[i]=null;}}for(var j=0;j<9;j++){if(!board[j]){board[j]=human;if(chkW(board,human)){board[j]=ai;return;}board[j]=null;}}board[e[Math.floor(Math.random()*e.length)]]=ai;return;}var depth=cfg.ai==='minimax'?9:+cfg.ai.replace('minimax','');var best=-99,bm=e[0];e.forEach(function(i){board[i]=ai;var s=mm(board.slice(),depth-1,false);board[i]=null;if(s>best){best=s;bm=i;}});board[bm]=ai;}function render(){var wH=getWL(board,human),wA=getWL(board,ai);var gv=document.getElementById('gview');gv.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;padding:20px;background:#07090f"><div style="display:flex;gap:24px;font-size:11px;font-family:Share Tech Mono,monospace"><span style="color:#00f5ff">YOU: '+wins+'W</span><span style="color:#4a6080">TURN: '+(turn==='X'?'YOU':'AI')+'</span><span style="color:#ff006e">AI: '+losses+'W</span></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(230px,66vw)">'+board.map(function(v,i){return'<div data-ti="'+i+'" style="aspect-ratio:1;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;cursor:'+((!v&&turn===human)?'pointer':'default')+';background:'+(wH&&wH.includes(i)?'#1a4a1a':wA&&wA.includes(i)?'#4a1a1a':'#0a0f1e')+';border:2px solid '+(wH&&wH.includes(i)?'#aaff00':wA&&wA.includes(i)?'#ff006e':'#1a2a4a')+';color:'+(v==='X'?'#00f5ff':v==='O'?'#ff006e':'transparent')+';transition:all .2s;min-height:58px">'+(v||'·')+'</div>';}).join('')+'</div><div style="font-size:10px;color:#4a6080;font-family:Share Tech Mono,monospace">Win 3 rounds to clear stage</div></div>';gv.querySelectorAll('[data-ti]').forEach(function(el){el.onclick=function(){var i=+el.dataset.ti;if(board[i]||turn!==human)return;board[i]=human;turn=ai;render();if(chkW(board,human)){wins++;setScore(score+10);render();setTimeout(function(){if(wins>=3)showWin('You beat the AI!');else{board=Array(9).fill(null);turn='X';render();}},700);return;}if(isDraw(board)){board=Array(9).fill(null);turn='X';render();return;}setTimeout(function(){aiMove();turn=human;render();if(chkW(board,ai)){losses++;render();setTimeout(function(){showLose('AI won this round!');},600);}else if(isDraw(board)){board=Array(9).fill(null);turn='X';render();}},420);};});}render();};
 
 /* ═══════════════════════════════════════════════════════════════
-   LUDO KING — Authentic board, dice in quadrant, stars on path
-   2P = Red(BL) vs Yellow(TR) [diagonal opposites]
-   3P = Red(BL) + Green(TL) + Yellow(TR)
-   4P = All four
+   LUDO KING — Authentic board
+   • Stars on safe squares (⭐ bold, visible)
+   • Token starts on START square (coloured circle) when entering
+   • Centre triangles fixed
+   • NO bottom HUD strip
+   • 4 in-yard dice: active/clickable only on that player's turn
+   • 2P = Red(BL) vs Yellow(TR) diagonal
 ═══════════════════════════════════════════════════════════════ */
 var LD={alive:false,raf:null,rszH:null};
-function ldKill(){LD.alive=false;if(LD.raf){cancelAnimationFrame(LD.raf);LD.raf=null;}if(LD.rszH){window.removeEventListener('resize',LD.rszH);LD.rszH=null;}}
+function ldKill(){
+  LD.alive=false;
+  if(LD.raf){cancelAnimationFrame(LD.raf);LD.raf=null;}
+  if(LD.rszH){window.removeEventListener('resize',LD.rszH);LD.rszH=null;}
+  /* Remove floating dice canvases */
+  document.querySelectorAll('.ld-dice-cv').forEach(function(e){e.remove();});
+}
 
-/* ── Board geometry (standard 15×15 Ludo) ── */
+/* ── Board geometry ── */
 var LP=[
-  /* 0-4   Red   col6 UP */
   [6,13],[6,12],[6,11],[6,10],[6,9],
-  /* 5-11  row8 ← */
   [6,8],[5,8],[4,8],[3,8],[2,8],[1,8],[0,8],
-  /* 12 corner */[0,7],
-  /* 13-18 Green row6 → */
+  [0,7],
   [0,6],[1,6],[2,6],[3,6],[4,6],[5,6],
-  /* 19-25 col6→col7 UP */
   [6,5],[6,4],[6,3],[6,2],[6,1],[6,0],[7,0],
-  /* 26-31 Yellow col8 DOWN */
   [8,0],[8,1],[8,2],[8,3],[8,4],[8,5],
-  /* 32-37 row6 → */
   [9,6],[10,6],[11,6],[12,6],[13,6],[14,6],
-  /* 38 corner */[14,7],
-  /* 39-44 Blue  row8 ← */
+  [14,7],
   [14,8],[13,8],[12,8],[11,8],[10,8],[9,8],
-  /* 45-51 col8 DOWN */
-  [8,9],[8,10],[8,11],[8,12],[8,13],[8,14],[7,14]
+  [8,9],[8,10],[8,11],[8,12],[8,13],[8,14],
+  [7,14]
 ];
-
 var LH=[
-  [[7,13],[7,12],[7,11],[7,10],[7,9],[7,7]],  /* Red   col7 up   */
-  [[1,7],[2,7],[3,7],[4,7],[5,7],[7,7]],        /* Green row7 →    */
-  [[7,1],[7,2],[7,3],[7,4],[7,5],[7,7]],        /* Yellow col7 ↓   */
-  [[13,7],[12,7],[11,7],[10,7],[9,7],[7,7]]     /* Blue  row7 ←   */
+  [[7,13],[7,12],[7,11],[7,10],[7,9],[7,7]],
+  [[1,7],[2,7],[3,7],[4,7],[5,7],[7,7]],
+  [[7,1],[7,2],[7,3],[7,4],[7,5],[7,7]],
+  [[13,7],[12,7],[11,7],[10,7],[9,7],[7,7]]
 ];
-
 var L_START=[0,13,26,39];
 var L_ENTRY=[51,12,25,38];
+/* Safe squares — ⭐ marker drawn here, no capture */
 var L_SAFE=new Set([0,8,13,21,26,34,39,47]);
-
-/* Yard token slots [col,row] */
 var L_YARD=[
-  [[1,10],[3,10],[1,12],[3,12]],   /* Red    BL */
-  [[1,1],[3,1],[1,3],[3,3]],        /* Green  TL */
-  [[10,1],[12,1],[10,3],[12,3]],   /* Yellow TR */
-  [[10,10],[12,10],[10,12],[12,12]]/* Blue   BR */
+  [[1,10],[3,10],[1,12],[3,12]],
+  [[1,1],[3,1],[1,3],[3,3]],
+  [[10,1],[12,1],[10,3],[12,3]],
+  [[10,10],[12,10],[10,12],[12,12]]
 ];
-
-/* COLOURS: 0=Red 1=Green 2=Yellow 3=Blue */
 var LC=['#e74c3c','#2ecc71','#f1c40f','#3498db'];
 var LRGB=['231,76,60','46,204,113','241,196,15','52,152,219'];
-/* Solid board quad colours (like real Ludo) */
-var LQC=['#c0392b','#27ae60','#d4ac0d','#2980b9'];
 var LN=['Red','Green','Yellow','Blue'];
 var L_SYM=['●','■','▲','◆'];
-
-/*
- 2P → Red(0) vs Yellow(2) — diagonal TL↔BR
- 3P → Red(0) + Green(1) + Yellow(2)
- 4P → all
-*/
-var L_P2=[0,2];  /* Red BL  vs  Yellow TR  (diagonal) */
-var L_P3=[0,1,2];
-var L_P4=[0,1,2,3];
-
-/* Dice pip layout */
+/* 2P diagonal: Red(BL) vs Yellow(TR) */
+var L_P2=[0,2], L_P3=[0,1,2], L_P4=[0,1,2,3];
 var LD_PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
 
 RUNNERS.ludo=function(cfg,play){
@@ -400,7 +535,6 @@ RUNNERS.ludo=function(cfg,play){
   var numP=cfg.numP||4,aiLevel=cfg.aiLevel||'easy';
   var activePlayers=numP===2?L_P2:numP===3?L_P3:L_P4;
 
-  /* Build DOM */
   var wrap=document.createElement('div');wrap.id='ludoWrap';
 
   /* Top turn bar */
@@ -408,7 +542,7 @@ RUNNERS.ludo=function(cfg,play){
   topBar.innerHTML='<div id="ldTurnPill"><div id="ldTurnIcon"></div><div style="display:flex;flex-direction:column;gap:1px"><div id="ldTurnName">Loading…</div><div id="ldTurnAction"></div></div></div><div id="ldCapBadge">💥 CAPTURED!</div>';
   wrap.appendChild(topBar);
 
-  /* Board area */
+  /* Board canvas — takes ALL remaining height (no bottom strip) */
   var boardArea=document.createElement('div');boardArea.id='ludoBoardWrap';
   var canvas=document.createElement('canvas');canvas.id='ludoCanvas';
   boardArea.appendChild(canvas);
@@ -418,13 +552,6 @@ RUNNERS.ludo=function(cfg,play){
   winOv.innerHTML='<div id="ldWinCf" style="position:absolute;inset:0;pointer-events:none;overflow:hidden"></div><div style="font-size:58px">🏆</div><h2 id="ldWinTitle"></h2><div id="ldWinRanks" style="display:flex;flex-direction:column;align-items:center;gap:5px"></div><p id="ldWinMsg"></p><div class="lwo-btns"><button class="lwo-btn pri" id="ldWoReplay">▶ Play Again</button><button class="lwo-btn sec" id="ldWoMenu">⬅ Menu</button></div>';
   boardArea.appendChild(winOv);
   wrap.appendChild(boardArea);
-
-  /* Bottom HUD */
-  var hud=document.createElement('div');hud.id='ldHud';
-  var rollZone=document.createElement('div');rollZone.id='ldRollZone';
-  rollZone.innerHTML='<button id="ldRollBtn" disabled><span class="roll-ico">🎲</span><span class="roll-lbl">ROLL</span></button><div id="ldDiceRes"></div>';
-  hud.appendChild(rollZone);
-  wrap.appendChild(hud);
   gv.appendChild(wrap);
 
   /* Setup overlay */
@@ -438,9 +565,9 @@ RUNNERS.ludo=function(cfg,play){
       return'<div class="lds-btn'+(n===numP?' sel':'')+'" data-ldn="'+n+'">'+n+'P<div class="lds-pdots">'+dots+'</div></div>';
     }).join('')+'</div></div>'+
     '<div class="lds-card" id="ldAICard" style="display:none"><h3>AI Level</h3><div class="lds-row"><div class="lds-btn sel" data-ldai="easy">Easy</div><div class="lds-btn" data-ldai="medium">Medium</div><div class="lds-btn" data-ldai="hard">Hard</div></div></div>'+
-    '<div class="lds-card" style="background:rgba(255,153,0,.05);border-color:rgba(255,153,0,.18)"><div style="font-size:8.5px;color:rgba(255,255,255,.3);font-family:Share Tech Mono,monospace;line-height:2">🎯 Roll 6 to enter · ↩️ Roll 6 again = bonus turn · 💥 Land on enemy = send home<br>⭐ Star squares are safe · 🚫 Three 6s = lose turn · 🏠 Exact roll needed to finish</div></div>'+
+    '<div class="lds-card" style="background:rgba(255,153,0,.05);border-color:rgba(255,153,0,.18)"><div style="font-size:8.5px;color:rgba(255,255,255,.3);font-family:Share Tech Mono,monospace;line-height:2">🎯 Roll 6 to enter the board · ↩️ Roll 6 = bonus turn · 💥 Land on enemy = capture<br>⭐ Star squares are safe · 🚫 Three 6s in a row = lose turn · 🏠 Exact roll to finish</div></div>'+
     '<button class="lds-start" id="ldStartBtn">▶ START GAME</button>'+
-    '<div class="lds-hint">Tap a glowing token after rolling to move it</div>';
+    '<div class="lds-hint">Tap your dice (in your yard) to roll when it's your turn</div>';
   gv.appendChild(setupDiv);
 
   var _mode='hvh',_n=numP,_ai=aiLevel;
@@ -451,71 +578,76 @@ RUNNERS.ludo=function(cfg,play){
     var active=_n===2?L_P2:_n===3?L_P3:L_P4;
     var humans=_mode==='hvh'?active.slice():[active[0]];
     setupDiv.remove();
-    ldStartGame(active,humans,_ai,canvas,gv,hud);
+    ldStartGame(active,humans,_ai,canvas,gv);
   };
 };
 
-/* ── 3D-look dice on canvas ── */
-function ldDraw3DDice(canvasId,val,col){
-  var dc=document.getElementById(canvasId);if(!dc)return;
+/* ── 3D-style dice drawn on small canvas ── */
+function ldDraw3DDice(dc,val,col,isActive){
+  if(!dc)return;
   var ctx=dc.getContext('2d'),W=dc.width,H=dc.height;
   ctx.clearRect(0,0,W,H);
-  var pad=W*.05;
-  /* isometric top face */
-  ctx.fillStyle='rgba(255,255,255,.18)';
-  ctx.beginPath();ctx.moveTo(W*.12+pad,H*.04+pad);ctx.lineTo(W*.88-pad,H*.04+pad);ctx.lineTo(W*.92-pad,H*.1+pad);ctx.lineTo(W*.16+pad,H*.1+pad);ctx.closePath();ctx.fill();
-  /* right side face (darker) */
-  ctx.fillStyle='rgba(0,0,0,.25)';
-  ctx.beginPath();ctx.moveTo(W*.88-pad,H*.04+pad);ctx.lineTo(W*.92-pad,H*.1+pad);ctx.lineTo(W*.92-pad,H*.9-pad);ctx.lineTo(W*.88-pad,H*.86-pad);ctx.closePath();ctx.fill();
-  /* main face gradient */
-  var g=ctx.createLinearGradient(pad,H*.1+pad,W-pad,H-pad);
-  g.addColorStop(0,'#fff');g.addColorStop(.6,'#f0f2f8');g.addColorStop(1,'#d8dce8');
+  if(!isActive){
+    /* Inactive: just a subtle circle placeholder */
+    ctx.fillStyle='rgba(255,255,255,.10)';
+    ctx.beginPath();ctx.arc(W/2,H/2,W*.42,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,.22)';ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(W/2,H/2,W*.42,0,Math.PI*2);ctx.stroke();
+    /* Tiny dice icon hint */
+    ctx.fillStyle='rgba(255,255,255,.18)';
+    ctx.font='bold '+Math.round(W*.38)+'px sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('🎲',W/2,H/2+1);
+    return;
+  }
+  /* Active dice — 3D cube look */
+  var pad=W*.06;
+  /* isometric top strip */
+  ctx.fillStyle='rgba(255,255,255,.22)';
+  ctx.beginPath();ctx.moveTo(W*.12+pad,H*.04+pad);ctx.lineTo(W*.88-pad,H*.04+pad);ctx.lineTo(W*.92-pad,H*.11+pad);ctx.lineTo(W*.16+pad,H*.11+pad);ctx.closePath();ctx.fill();
+  /* right side */
+  ctx.fillStyle='rgba(0,0,0,.22)';
+  ctx.beginPath();ctx.moveTo(W*.88-pad,H*.04+pad);ctx.lineTo(W*.92-pad,H*.11+pad);ctx.lineTo(W*.92-pad,H*.9-pad);ctx.lineTo(W*.88-pad,H*.83-pad);ctx.closePath();ctx.fill();
+  /* main face */
+  var g=ctx.createLinearGradient(pad,H*.11+pad,W-pad,H-pad);
+  g.addColorStop(0,'#ffffff');g.addColorStop(.55,'#f0f2f8');g.addColorStop(1,'#d5dae8');
   ctx.fillStyle=g;
-  ctx.beginPath();
-  if(ctx.roundRect)ctx.roundRect(pad,H*.1+pad,W-pad*2,H-H*.1-pad*2,W*.12);
-  else ctx.rect(pad,H*.1+pad,W-pad*2,H-H*.1-pad*2);
-  ctx.fill();
-  /* face border */
-  ctx.strokeStyle='rgba(100,120,160,.3)';ctx.lineWidth=1.5;
-  ctx.beginPath();if(ctx.roundRect)ctx.roundRect(pad,H*.1+pad,W-pad*2,H-H*.1-pad*2,W*.12);else ctx.rect(pad,H*.1+pad,W-pad*2,H-H*.1-pad*2);ctx.stroke();
+  ctx.beginPath();if(ctx.roundRect)ctx.roundRect(pad,H*.11+pad,W-pad*2,H-H*.11-pad*2,W*.14);else ctx.rect(pad,H*.11+pad,W-pad*2,H-H*.11-pad*2);ctx.fill();
+  ctx.strokeStyle='rgba(0,0,0,.15)';ctx.lineWidth=1.5;
+  ctx.beginPath();if(ctx.roundRect)ctx.roundRect(pad,H*.11+pad,W-pad*2,H-H*.11-pad*2,W*.14);else ctx.rect(pad,H*.11+pad,W-pad*2,H-H*.11-pad*2);ctx.stroke();
   /* inner shine */
-  ctx.strokeStyle='rgba(255,255,255,.8)';ctx.lineWidth=1.5;
-  ctx.beginPath();ctx.moveTo(pad+3,H*.12+pad);ctx.lineTo(W-pad-3,H*.12+pad);ctx.stroke();
-
+  ctx.strokeStyle='rgba(255,255,255,.85)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(pad+3,H*.13+pad);ctx.lineTo(W-pad-3,H*.13+pad);ctx.stroke();
   /* Pips */
   var pips=LD_PIPS[val]||LD_PIPS[1];
-  var faceX=pad,faceY=H*.1+pad,faceW=W-pad*2,faceH=H-H*.1-pad*2;
-  var pipR=faceW*.085;
-  var ipx=faceX+faceW*.18,ipy=faceY+faceH*.15,ipW=faceW*.64,ipH=faceH*.7;
-  var gx=[ipx,ipx+ipW/2,ipx+ipW];
-  var gy=[ipy,ipy+ipH/2,ipy+ipH];
+  var fX=pad,fY=H*.11+pad,fW=W-pad*2,fH=H-H*.11-pad*2;
+  var pipR=fW*.088;
+  var ipx=fX+fW*.18,ipy=fY+fH*.14,ipW=fW*.64,ipH=fH*.72;
+  var gx=[ipx,ipx+ipW/2,ipx+ipW],gy=[ipy,ipy+ipH/2,ipy+ipH];
   var GX=[gx[0],gx[1],gx[2],gx[0],gx[1],gx[2],gx[0],gx[1],gx[2]];
   var GY=[gy[0],gy[0],gy[0],gy[1],gy[1],gy[1],gy[2],gy[2],gy[2]];
   pips.forEach(function(idx){
     var cx=GX[idx],cy=GY[idx];
-    /* shadow */
-    ctx.fillStyle='rgba(0,0,0,.2)';ctx.beginPath();ctx.arc(cx+1,cy+1.5,pipR,0,Math.PI*2);ctx.fill();
-    /* pip with player colour tint */
+    ctx.fillStyle='rgba(0,0,0,.18)';ctx.beginPath();ctx.arc(cx+1,cy+1.5,pipR,0,Math.PI*2);ctx.fill();
     var pg=ctx.createRadialGradient(cx-pipR*.3,cy-pipR*.3,0,cx,cy,pipR);
-    pg.addColorStop(0,col?col+'dd':'#2c2c44');
-    pg.addColorStop(1,col?col+'88':'#0a0a1a');
+    pg.addColorStop(0,col?col+'ee':'#2c2c44');
+    pg.addColorStop(1,col?col+'77':'#0a0a1a');
     ctx.fillStyle=pg;ctx.beginPath();ctx.arc(cx,cy,pipR,0,Math.PI*2);ctx.fill();
   });
 }
 
-/* Animate dice (shake + random faces then settle) */
-function ldAnimDice(canvasId,finalVal,col,cb){
-  var dc=document.getElementById(canvasId);if(!dc)return;
+function ldAnimDiceEl(dc,finalVal,col,cb){
+  if(!dc)return;
   dc.style.animation='none';void dc.offsetWidth;dc.style.animation='ldDiceShake .55s ease-out';
   var frames=0,max=12,iv=setInterval(function(){
-    ldDraw3DDice(canvasId,Math.floor(Math.random()*6)+1,col);
+    ldDraw3DDice(dc,Math.floor(Math.random()*6)+1,col,true);
     frames++;
-    if(frames>=max){clearInterval(iv);ldDraw3DDice(canvasId,finalVal,col);if(cb)setTimeout(cb,80);}
+    if(frames>=max){clearInterval(iv);ldDraw3DDice(dc,finalVal,col,true);if(cb)setTimeout(cb,80);}
   },45);
 }
 
 /* ── Main game ── */
-function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
+function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv){
   if(!LD.alive)return;
   var ctx=canvas.getContext('2d'),CS=1;
 
@@ -524,28 +656,14 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
     tokens:[],turn:activePlayers[0],dice:0,
     rolled:false,waiting:false,movable:[],
     sixStreak:0,finished:[],over:false,captures:0,animating:false,
-    diceVal:{}  /* last dice value per player, shown in quadrant */
+    diceVal:{},diceEl:{}  /* per-player dice canvas elements */
   };
-  activePlayers.forEach(function(p){S.tokens[p]=[];for(var t=0;t<4;t++)S.tokens[p].push({pos:-1});S.diceVal[p]=0;});
-
-  /* Build player card chips */
-  var rollZone=document.getElementById('ldRollZone');
-  activePlayers.forEach(function(pi){
-    var card=document.createElement('div');card.className='ld-pcard';card.id='ldpc'+pi;
-    card.style.cssText='--pc:'+LC[pi]+';--prgb:'+LRGB[pi];
-    card.innerHTML=
-      '<div class="ld-pcard-avatar" id="ldav'+pi+'">'+L_SYM[pi]+'</div>'+
-      '<div class="ld-pcard-name">'+LN[pi]+'</div>'+
-      '<div class="ld-pcard-type" id="ldwho'+pi+'">'+(humanPlayers.indexOf(pi)>=0?'👤 Human':'🤖 AI')+'</div>'+
-      '<div class="ld-pcard-dice" id="lddv'+pi+'">–</div>'+
-      '<div class="ld-pcard-stat" id="ldps'+pi+'">–</div>';
-    hud.insertBefore(card,rollZone);
+  activePlayers.forEach(function(p){
+    S.tokens[p]=[];for(var t=0;t<4;t++)S.tokens[p].push({pos:-1});
+    S.diceVal[p]=0;
   });
 
-  var rollBtn=document.getElementById('ldRollBtn');
-  var diceRes=document.getElementById('ldDiceRes');
-  rollBtn.onclick=function(){if(S.over||S.animating||S.rolled||S.waiting||S.humans.indexOf(S.turn)<0)return;ldDoRoll();};
-
+  /* Win overlay buttons */
   var woR=document.getElementById('ldWoReplay'),woM=document.getElementById('ldWoMenu');
   if(woR)woR.onclick=function(){ldKill();loadStage(cStage);};
   if(woM)woM.onclick=function(){ldKill();closeGame();};
@@ -558,13 +676,80 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
     var bh=boardArea?boardArea.clientHeight:gv.clientHeight;
     var sz=Math.min(bw,bh)-4;sz=Math.max(sz,160);
     if(canvas.width!==sz||canvas.height!==sz){canvas.width=sz;canvas.height=sz;}
-    CS=sz/15;ldDraw();
+    CS=sz/15;
+    positionDiceEls();
+    ldDraw();
   }
   LD.rszH=sizeCanvas;
   window.addEventListener('resize',LD.rszH);
   setTimeout(sizeCanvas,60);
 
-  /* Helpers */
+  /* ── Create floating dice canvas for each active player ──
+     Positioned over the yard corner, on top of the board canvas
+  */
+  function createDiceEls(){
+    document.querySelectorAll('.ld-dice-cv').forEach(function(e){e.remove();});
+    activePlayers.forEach(function(pi){
+      var dc=document.createElement('canvas');
+      dc.className='ld-dice-cv';
+      dc.id='lddc_'+pi;
+      boardArea.appendChild(dc);
+      S.diceEl[pi]=dc;
+      /* Click handler */
+      dc.addEventListener('click',function(){
+        if(S.over||S.animating||S.rolled||S.waiting)return;
+        if(S.turn!==pi||S.humans.indexOf(pi)<0)return;
+        ldDoRoll();
+      });
+      dc.addEventListener('touchend',function(e){
+        e.preventDefault();
+        if(S.over||S.animating||S.rolled||S.waiting)return;
+        if(S.turn!==pi||S.humans.indexOf(pi)<0)return;
+        ldDoRoll();
+      },{passive:false});
+    });
+  }
+  createDiceEls();
+
+  /* Position dice canvases over their yard corners */
+  function positionDiceEls(){
+    if(!canvas||!CS)return;
+    var canvasRect=canvas.getBoundingClientRect();
+    var areaRect=boardArea.getBoundingClientRect();
+    var offX=canvasRect.left-areaRect.left;
+    var offY=canvasRect.top-areaRect.top;
+    /* Dice size = 1.8 cells */
+    var dcsz=Math.round(CS*1.8);
+    /* Positions: outer corner of each yard quadrant */
+    var corners={
+      0:{x:offX+CS*.05,  y:offY+CS*13.15},  /* Red   BL */
+      1:{x:offX+CS*.05,  y:offY+CS*.05},     /* Green TL */
+      2:{x:offX+CS*13.15,y:offY+CS*.05},     /* Yellow TR */
+      3:{x:offX+CS*13.15,y:offY+CS*13.15}    /* Blue  BR */
+    };
+    activePlayers.forEach(function(pi){
+      var dc=S.diceEl[pi];if(!dc)return;
+      var pos=corners[pi];if(!pos)return;
+      dc.width=dcsz;dc.height=dcsz;
+      dc.style.width=dcsz+'px';dc.style.height=dcsz+'px';
+      dc.style.left=pos.x+'px';dc.style.top=pos.y+'px';
+      /* Redraw at new size */
+      var isActive=(S.turn===pi&&!S.rolled&&!S.over);
+      ldDraw3DDice(dc,S.diceVal[pi]||0,LC[pi],isActive);
+    });
+  }
+
+  /* Update dice visuals (active/inactive state) */
+  function updateDiceEls(){
+    activePlayers.forEach(function(pi){
+      var dc=S.diceEl[pi];if(!dc)return;
+      var isActive=(S.turn===pi&&!S.rolled&&!S.over&&!S.animating);
+      if(isActive)dc.classList.add('active-dice');else dc.classList.remove('active-dice');
+      ldDraw3DDice(dc,S.diceVal[pi]||0,LC[pi],isActive);
+    });
+  }
+
+  /* ── Helpers ── */
   function tokCell(p,t){
     var tok=S.tokens[p][t];
     if(tok.pos===-1)return L_YARD[p][t];
@@ -584,7 +769,7 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
         if(d===rem+1)moves.push({p:p,t:t,type:'home_done'});
         else if(d<=rem)moves.push({p:p,t:t,type:'home'});
       }else{
-        var cur=tok.pos,entry=L_ENTRY[p],dist=(entry===cur)?52:(entry-cur+52)%52;
+        var cur=tok.pos,entry=L_ENTRY[p],dist=(cur===entry)?52:(entry-cur+52)%52;
         if(dist===0)dist=52;
         if(d<=dist){moves.push({p:p,t:t,type:'path'});}
         else{var hs=d-dist-1;if(hs<0)hs=0;if(hs<=5)moves.push({p:p,t:t,type:'enter_home',hs:hs});else if(hs===6)moves.push({p:p,t:t,type:'enter_home_done',hs:5});}
@@ -607,7 +792,7 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
         activePlayers.forEach(function(op){if(op===p)return;S.tokens[op].forEach(function(oTok){if(oTok.pos>=0&&oTok.pos<100&&oTok.pos===tok.pos){oTok.pos=-1;captured=true;S.captures++;}});});
       }
     }
-    if(captured){var cb=document.getElementById('ldCapBadge');if(cb){cb.classList.add('show');setTimeout(function(){cb.classList.remove('show');},1100);}}
+    if(captured){var cbel=document.getElementById('ldCapBadge');if(cbel){cbel.classList.add('show');setTimeout(function(){cbel.classList.remove('show');},1100);}}
     ldDraw();
     setTimeout(function(){
       S.animating=false;
@@ -618,74 +803,83 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
         if(rem.length<=1||S.active.length===2){S.over=true;ldShowWin(p);return;}
       }
       ldNextTurn(dice===6||captured);
-    },280);
+    },300);
   }
 
   function ldDoRoll(){
     if(S.rolled||S.animating||S.over)return;
     S.rolled=true;
     var p=S.turn;
-    rollBtn.disabled=true;rollBtn.classList.remove('can-roll');
     var d=Math.floor(Math.random()*6)+1;
     S.dice=d;S.diceVal[p]=d;
     if(d===6)S.sixStreak=(S.sixStreak||0)+1;else S.sixStreak=0;
-    /* Animate the in-quadrant dice canvas */
-    ldAnimDice('lddc_'+p,d,LC[p],function(){
-      if(!LD.alive)return;
-      if(diceRes){diceRes.textContent=d===6?'⭐ SIX! BONUS TURN':'Rolled '+d;diceRes.style.color=d===6?'#ffd700':'#ff9900';}
-      var dv=document.getElementById('lddv'+p);if(dv)dv.textContent=d;
-      var moves=getMovable(p,d);S.movable=moves;
-      if(moves.length===0){
-        ldSetStatus(p,'No moves – skip');
-        if(diceRes)diceRes.textContent='No moves → skip';
-        setTimeout(function(){if(LD.alive)ldNextTurn(false);},850);
-      }else{
-        ldSetStatus(p,S.humans.indexOf(p)>=0?'Tap a token':'…');
-        S.waiting=true;ldDraw();
-        if(S.humans.indexOf(p)<0){
-          setTimeout(function(){if(!LD.alive||S.over||S.turn!==p)return;execMove(p,ldAIPick(p,moves,d),d);},480+Math.random()*280);
+    /* Animate that player's dice canvas */
+    var dc=S.diceEl[p];
+    if(dc){
+      dc.style.animation='none';void dc.offsetWidth;dc.style.animation='ldDiceShake .55s ease-out';
+      var frames=0,max=12,iv=setInterval(function(){
+        ldDraw3DDice(dc,Math.floor(Math.random()*6)+1,LC[p],true);
+        frames++;
+        if(frames>=max){
+          clearInterval(iv);
+          ldDraw3DDice(dc,d,LC[p],true);
+          afterRoll(p,d);
         }
+      },45);
+    }else{afterRoll(p,d);}
+  }
+
+  function afterRoll(p,d){
+    if(!LD.alive)return;
+    updateDiceEls();
+    var moves=getMovable(p,d);S.movable=moves;
+    if(moves.length===0){
+      setTurnAction('No moves — turn skipped');
+      setTimeout(function(){if(LD.alive)ldNextTurn(false);},850);
+    }else{
+      setTurnAction(S.humans.indexOf(p)>=0?'Tap a glowing token to move':'Moving…');
+      S.waiting=true;ldDraw();
+      if(S.humans.indexOf(p)<0){
+        setTimeout(function(){if(!LD.alive||S.over||S.turn!==p)return;execMove(p,ldAIPick(p,moves,d),d);},480+Math.random()*280);
       }
-    });
+    }
   }
 
   function ldNextTurn(bonus){
     if(!LD.alive||S.over)return;
     S.rolled=false;S.waiting=false;S.movable=[];
     var fin=S.finished.indexOf(S.turn)>=0;
-    if(bonus&&!fin){if(S.sixStreak>=3){S.sixStreak=0;ldSetStatus(S.turn,'3×6 – skip!');setTimeout(function(){if(LD.alive)ldAdvance();},700);}else ldStartTurn(S.turn);}
-    else{S.sixStreak=0;ldAdvance();}
+    if(bonus&&!fin){
+      if(S.sixStreak>=3){S.sixStreak=0;setTurnAction('Three 6s! Turn skipped.');setTimeout(function(){if(LD.alive)ldAdvance();},700);}
+      else ldStartTurn(S.turn);
+    }else{S.sixStreak=0;ldAdvance();}
   }
-  function ldAdvance(){if(!LD.alive)return;var idx=(S.active.indexOf(S.turn)+1)%S.active.length,tries=0;while(S.finished.indexOf(S.active[idx])>=0&&tries<S.active.length){idx=(idx+1)%S.active.length;tries++;}ldStartTurn(S.active[idx]);}
+  function ldAdvance(){
+    if(!LD.alive)return;
+    var idx=(S.active.indexOf(S.turn)+1)%S.active.length,tries=0;
+    while(S.finished.indexOf(S.active[idx])>=0&&tries<S.active.length){idx=(idx+1)%S.active.length;tries++;}
+    ldStartTurn(S.active[idx]);
+  }
+
+  function setTurnAction(msg){var el=document.getElementById('ldTurnAction');if(el)el.textContent=msg;}
 
   function ldStartTurn(p){
     if(!LD.alive)return;
     S.turn=p;S.rolled=false;S.waiting=false;S.movable=[];
     var isH=S.humans.indexOf(p)>=0;
-    activePlayers.forEach(function(pi){
-      var card=document.getElementById('ldpc'+pi);if(!card)return;
-      card.classList.remove('active','done-p');
-      if(S.finished.indexOf(pi)>=0)card.classList.add('done-p');
-      else if(pi===p)card.classList.add('active');
-      ldSetStatus(pi,'');
-    });
     /* Update pill */
     var pill=document.getElementById('ldTurnPill');
     var ico=document.getElementById('ldTurnIcon');
     var name=document.getElementById('ldTurnName');
-    var action=document.getElementById('ldTurnAction');
     if(pill){pill.style.borderColor=LC[p]+'80';pill.style.boxShadow='0 0 16px rgba('+LRGB[p]+',.35)';pill.classList.remove('flash');void pill.offsetWidth;pill.classList.add('flash');}
     if(ico){ico.style.background='rgba('+LRGB[p]+',.3)';ico.style.boxShadow='0 0 8px rgba('+LRGB[p]+',.7)';ico.style.borderColor=LC[p];ico.style.color=LC[p];ico.textContent=L_SYM[p];}
     if(name){name.textContent=LN[p];name.style.color=LC[p];}
-    if(action)action.textContent=isH?'Your turn — Roll!':'AI is thinking…';
-    rollBtn.disabled=!isH;
-    if(isH)rollBtn.classList.add('can-roll');else rollBtn.classList.remove('can-roll');
-    if(diceRes)diceRes.textContent='';
+    setTurnAction(isH?'Tap your dice to roll!':'AI is thinking…');
+    /* Update dice elements — only current player's dice is active */
+    updateDiceEls();
     ldDraw();
     if(!isH)setTimeout(function(){if(LD.alive&&S.turn===p&&!S.over)ldDoRoll();},700+Math.random()*300);
   }
-
-  function ldSetStatus(pi,msg){var el=document.getElementById('ldps'+pi);if(el)el.textContent=msg;}
 
   /* AI */
   function ldAIPick(p,moves,dice){
@@ -696,7 +890,7 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
   function ldCanCap(p,pos){if(L_SAFE.has(pos))return false;return S.active.some(function(op){return op!==p&&S.tokens[op].some(function(tk){return tk.pos>=0&&tk.pos<100&&tk.pos===pos;});});}
   function ldInDang(p,t,pos){return S.active.some(function(op){return op!==p&&S.tokens[op].some(function(tk){if(tk.pos<0||tk.pos>=100)return false;for(var d=1;d<=6;d++)if((tk.pos+d)%52===pos)return true;return false;});});}
 
-  /* Canvas click */
+  /* Canvas tap to pick token */
   canvas.onclick=function(e){
     if(!S.waiting||S.animating||S.over||S.humans.indexOf(S.turn)<0)return;
     var rect=canvas.getBoundingClientRect(),sx=canvas.width/rect.width,sy=canvas.height/rect.height;
@@ -707,7 +901,7 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
   };
   canvas.addEventListener('touchend',function(e){e.preventDefault();var t=e.changedTouches[0];canvas.dispatchEvent(new MouseEvent('click',{clientX:t.clientX,clientY:t.clientY,bubbles:true}));},{passive:false});
 
-  /* Win */
+  /* Win screen */
   function ldShowWin(winner){
     if(!cGame)return;
     var ov=document.getElementById('ldWinOv');if(!ov)return;
@@ -720,171 +914,165 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
     ov.classList.add('show');unlockNext(cGame.id);buildBar();
   }
 
-  /* ════════════════════════════════════
-     BOARD DRAWING — Authentic Ludo look
-     ════════════════════════════════════ */
+  /* ══════════════════════════════════════════
+     BOARD DRAWING
+  ══════════════════════════════════════════ */
   function ldDraw(){
     if(!canvas||!ctx||!LD.alive)return;
     if(LD.raf){cancelAnimationFrame(LD.raf);LD.raf=null;}
     var sz=canvas.width;CS=sz/15;
     ctx.clearRect(0,0,sz,sz);
 
-    /* ── 1. BOARD BACKGROUND ── */
-    ctx.fillStyle='#fff';
+    /* 1. WHITE BOARD BACKGROUND */
+    ctx.fillStyle='#f8f8f8';
     if(ctx.roundRect)ctx.roundRect(0,0,sz,sz,8);else ctx.rect(0,0,sz,sz);
     ctx.fill();
 
-    /* ── 2. YARD QUADRANTS (solid colour fill, like real Ludo) ──
-       Red BL, Green TL, Yellow TR, Blue BR
+    /* 2. YARD QUADRANTS — solid real-Ludo colours
+       Red BL (0): cols 0-5, rows 9-14
+       Green TL (1): cols 0-5, rows 0-5
+       Yellow TR (2): cols 9-14, rows 0-5
+       Blue BR (3): cols 9-14, rows 9-14
     */
     var yards=[
-      {qx:0,   qy:9*CS, hex:'#e74c3c', qhex:'#c0392b', pi:0, labelY:14.3, diceX:0.5,  diceY:9.5  },
-      {qx:0,   qy:0,    hex:'#2ecc71', qhex:'#27ae60',  pi:1, labelY:0.7,  diceX:0.5,  diceY:0.15 },
-      {qx:9*CS,qy:0,    hex:'#f1c40f', qhex:'#d4ac0d',  pi:2, labelY:0.7,  diceX:13.5, diceY:0.15 },
-      {qx:9*CS,qy:9*CS, hex:'#3498db', qhex:'#2980b9',  pi:3, labelY:14.3, diceX:13.5, diceY:9.5  }
+      {qc:0,qr:9, c:'#e53935',pi:0},
+      {qc:0,qr:0, c:'#43a047',pi:1},
+      {qc:9,qr:0, c:'#f9a825',pi:2},
+      {qc:9,qr:9, c:'#1e88e5',pi:3}
     ];
-
     yards.forEach(function(y){
       if(activePlayers.indexOf(y.pi)<0)return;
-      var qs=6*CS;
-      /* Solid yard fill */
-      ctx.fillStyle=y.hex;
-      if(ctx.roundRect){ctx.beginPath();ctx.roundRect(y.qx,y.qy,qs,qs,6);ctx.fill();}
-      else{ctx.fillRect(y.qx,y.qy,qs,qs);}
-      /* Subtle inner shade */
-      var shade=ctx.createLinearGradient(y.qx,y.qy,y.qx+qs,y.qy+qs);
-      shade.addColorStop(0,'rgba(255,255,255,.12)');shade.addColorStop(1,'rgba(0,0,0,.18)');
-      ctx.fillStyle=shade;
-      if(ctx.roundRect){ctx.beginPath();ctx.roundRect(y.qx,y.qy,qs,qs,6);ctx.fill();}
-      else ctx.fillRect(y.qx,y.qy,qs,qs);
-
-      /* White inner pad (the big inner square where tokens sit) */
-      var pad=CS*0.82,ipx=y.qx+pad,ipy=y.qy+pad,ips=qs-pad*2;
-      ctx.fillStyle='rgba(255,255,255,.88)';
-      if(ctx.roundRect){ctx.beginPath();ctx.roundRect(ipx,ipy,ips,ips,ips*.08);ctx.fill();}
-      else ctx.fillRect(ipx,ipy,ips,ips);
-      /* Coloured border on inner pad */
-      ctx.strokeStyle=y.hex;ctx.lineWidth=3;
-      if(ctx.roundRect){ctx.beginPath();ctx.roundRect(ipx,ipy,ips,ips,ips*.08);ctx.stroke();}
-      else{ctx.beginPath();ctx.rect(ipx,ipy,ips,ips);ctx.stroke();}
-
-      /* 4 token slot circles inside inner pad */
+      var qx=y.qc*CS,qy=y.qr*CS,qs=6*CS;
+      /* Solid colour fill */
+      ctx.fillStyle=y.c;
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(qx,qy,qs,qs,6);else ctx.rect(qx,qy,qs,qs);ctx.fill();
+      /* Subtle inner shadow at edges */
+      var sg=ctx.createLinearGradient(qx,qy,qx+qs,qy+qs);
+      sg.addColorStop(0,'rgba(255,255,255,.14)');sg.addColorStop(1,'rgba(0,0,0,.14)');
+      ctx.fillStyle=sg;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(qx,qy,qs,qs,6);else ctx.rect(qx,qy,qs,qs);ctx.fill();
+      /* White inner pad */
+      var pad=CS*.78,ipx=qx+pad,ipy=qy+pad,ips=qs-pad*2;
+      ctx.fillStyle='#ffffff';
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(ipx,ipy,ips,ips,ips*.08);else ctx.rect(ipx,ipy,ips,ips);ctx.fill();
+      ctx.strokeStyle=y.c;ctx.lineWidth=3;
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(ipx,ipy,ips,ips,ips*.08);else ctx.rect(ipx,ipy,ips,ips);ctx.stroke();
+      /* Token slot circles (4 per player) */
       L_YARD[y.pi].forEach(function(sl){
         var scx=(sl[0]+.5)*CS,scy=(sl[1]+.5)*CS,sr=CS*.36;
-        /* slot shadow */
-        ctx.fillStyle='rgba(0,0,0,.12)';ctx.beginPath();ctx.arc(scx+1,scy+2,sr,0,Math.PI*2);ctx.fill();
-        /* slot fill matching yard colour (semi-transparent on white) */
-        ctx.fillStyle=y.hex+'cc';ctx.beginPath();ctx.arc(scx,scy,sr,0,Math.PI*2);ctx.fill();
-        /* white highlight ring */
-        ctx.strokeStyle='rgba(255,255,255,.7)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(scx,scy,sr*.72,0,Math.PI*2);ctx.stroke();
-        /* inner dark ring */
-        ctx.strokeStyle='rgba(0,0,0,.15)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(scx,scy,sr,0,Math.PI*2);ctx.stroke();
+        ctx.fillStyle='rgba(0,0,0,.1)';ctx.beginPath();ctx.arc(scx+1,scy+2,sr,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle=y.c+'cc';ctx.beginPath();ctx.arc(scx,scy,sr,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle='rgba(255,255,255,.75)';ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(scx,scy,sr*.72,0,Math.PI*2);ctx.stroke();
+        ctx.strokeStyle='rgba(0,0,0,.18)';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(scx,scy,sr,0,Math.PI*2);ctx.stroke();
       });
-
-      /* ── DICE CANVAS embedded in each active yard corner ──
-         Position: near outer corner of yard, not covering slots
-         Canvas element is created/reused per player
-      */
-      var diceId='lddc_'+y.pi;
-      var dc=document.getElementById(diceId);
-      if(!dc){
-        dc=document.createElement('canvas');dc.id=diceId;
-        dc.width=Math.round(CS*2);dc.height=Math.round(CS*2);
-        dc.style.cssText='position:absolute;pointer-events:none;border-radius:6px';
-        document.getElementById('ludoBoardWrap').appendChild(dc);
-      }
-      /* Position the dice canvas in the outer corner of the yard */
-      var rect=canvas.getBoundingClientRect();
-      var bwRect=document.getElementById('ludoBoardWrap').getBoundingClientRect();
-      var offX=rect.left-bwRect.left,offY=rect.top-bwRect.top;
-      var dcsz=Math.round(CS*2);
-      dc.width=dcsz;dc.height=dcsz;
-      dc.style.width=dcsz+'px';dc.style.height=dcsz+'px';
-      /* Choose corner positions */
-      var dcx,dcy;
-      if(y.pi===0){dcx=CS*.1;dcy=13*CS+CS*.1;}         /* Red   BL outer corner   */
-      else if(y.pi===1){dcx=CS*.1;dcy=CS*.1;}             /* Green TL outer corner   */
-      else if(y.pi===2){dcx=13*CS-CS*.1;dcy=CS*.1;}      /* Yellow TR outer corner  */
-      else{dcx=13*CS-CS*.1;dcy=13*CS+CS*.1;}              /* Blue  BR outer corner   */
-      dc.style.left=(offX+dcx)+'px';dc.style.top=(offY+dcy)+'px';
-      /* Draw current dice value */
-      var val=S.diceVal[y.pi]||0;
-      if(val>0)ldDraw3DDice(diceId,val,LC[y.pi]);else{var dctx=dc.getContext('2d');dctx.clearRect(0,0,dcsz,dcsz);}
+      /* Player name label */
+      ctx.fillStyle='rgba(255,255,255,.75)';
+      ctx.font='bold '+Math.round(CS*.34)+'px Orbitron,sans-serif';
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(L_SYM[y.pi]+' '+LN[y.pi],(y.qc+3)*CS,(y.qr+5.38)*CS);
     });
 
-    /* ── 3. PATH SQUARES ── */
+    /* 3. PATH SQUARES */
     for(var row=0;row<15;row++){
       for(var col=0;col<15;col++){
-        var inYard=(col<6&&row<6)||(col>8&&row<6)||(col<6&&row>8)||(col>8&&row>8);
-        var inCenter=col>=6&&col<=8&&row>=6&&row<=8;
-        var onCross=(col>=6&&col<=8)||(row>=6&&row<=8);
-        if(inYard||inCenter||!onCross)continue;
-
-        /* White base for path square */
+        var inY=(col<6&&row<6)||(col>8&&row<6)||(col<6&&row>8)||(col>8&&row>8);
+        var inC=col>=6&&col<=8&&row>=6&&row<=8;
+        var onCr=(col>=6&&col<=8)||(row>=6&&row<=8);
+        if(inY||inC||!onCr)continue;
         ctx.fillStyle='#ffffff';ctx.fillRect(col*CS,row*CS,CS,CS);
-
-        /* Coloured home lane overlays */
-        var pathFill=null;
-        if(col===7&&row>=9&&row<=13&&activePlayers.indexOf(0)>=0)pathFill='#e74c3c'; /* Red home */
-        if(row===7&&col>=1&&col<=5&&activePlayers.indexOf(1)>=0)pathFill='#2ecc71'; /* Green home */
-        if(col===7&&row>=1&&row<=5&&activePlayers.indexOf(2)>=0)pathFill='#f1c40f'; /* Yellow home */
-        if(row===7&&col>=9&&col<=13&&activePlayers.indexOf(3)>=0)pathFill='#3498db'; /* Blue home */
-        if(pathFill){ctx.fillStyle=pathFill+'cc';ctx.fillRect(col*CS,row*CS,CS,CS);}
-
-        /* Grid line */
-        ctx.strokeStyle='rgba(0,0,0,.15)';ctx.lineWidth=.5;ctx.strokeRect(col*CS+.25,row*CS+.25,CS-.5,CS-.5);
+        /* Coloured home lane strips */
+        var lf=null;
+        if(col===7&&row>=9&&row<=13&&activePlayers.indexOf(0)>=0)lf='#e53935';
+        if(row===7&&col>=1&&col<=5&&activePlayers.indexOf(1)>=0)lf='#43a047';
+        if(col===7&&row>=1&&row<=5&&activePlayers.indexOf(2)>=0)lf='#f9a825';
+        if(row===7&&col>=9&&col<=13&&activePlayers.indexOf(3)>=0)lf='#1e88e5';
+        if(lf){ctx.fillStyle=lf+'cc';ctx.fillRect(col*CS,row*CS,CS,CS);}
+        /* Path grid lines */
+        ctx.strokeStyle='rgba(0,0,0,.12)';ctx.lineWidth=.5;ctx.strokeRect(col*CS+.25,row*CS+.25,CS-.5,CS-.5);
       }
     }
 
-    /* ── 4. CENTRE 3×3 COLOURED TRIANGLES ── */
+    /* 4. HOME LANE INTENSITY GRADIENT (darker near centre) */
+    var hlanes=[
+      {c:'#e53935',cells:[[7,13],[7,12],[7,11],[7,10],[7,9]],pi:0},
+      {c:'#43a047',cells:[[1,7],[2,7],[3,7],[4,7],[5,7]],pi:1},
+      {c:'#f9a825',cells:[[7,1],[7,2],[7,3],[7,4],[7,5]],pi:2},
+      {c:'#1e88e5',cells:[[13,7],[12,7],[11,7],[10,7],[9,7]],pi:3}
+    ];
+    hlanes.forEach(function(ln,li){
+      if(activePlayers.indexOf(li)<0)return;
+      ln.cells.forEach(function(cell,ci){
+        var a=Math.round((0.20+ci*.16)*255).toString(16).padStart(2,'0');
+        ctx.fillStyle=ln.c+a;ctx.fillRect(cell[0]*CS,cell[1]*CS,CS,CS);
+        ctx.strokeStyle='rgba(0,0,0,.1)';ctx.lineWidth=.5;ctx.strokeRect(cell[0]*CS+.25,cell[1]*CS+.25,CS-.5,CS-.5);
+      });
+    });
+
+    /* 5. CENTRE 3×3 TRIANGLES
+       Each triangle points FROM the centre TOWARD the player's home lane.
+       Red home  = col7 going UP   → triangle points DOWN  (base at top of centre)
+       Green home = row7 going →   → triangle points LEFT  (base at left)
+       Yellow home= col7 going ↓   → triangle points UP    (base at bottom)
+       Blue home  = row7 going ←   → triangle points RIGHT (base at right)
+       Centre square = 3×3 cells from [6,6] to [8,8] inclusive
+    */
     var cc=7.5*CS;
+    /* White base for whole centre */
+    ctx.fillStyle='#ffffff';ctx.fillRect(6*CS,6*CS,3*CS,3*CS);
     [
-      [0,'#e74c3c',[[6*CS,9*CS],[9*CS,9*CS],[cc,cc]]],
-      [1,'#2ecc71',[[6*CS,6*CS],[6*CS,9*CS],[cc,cc]]],
-      [2,'#f1c40f',[[6*CS,6*CS],[9*CS,6*CS],[cc,cc]]],
-      [3,'#3498db',[[9*CS,6*CS],[9*CS,9*CS],[cc,cc]]]
+      /* Red: base=top edge (row6), apex=centre → triangle at BOTTOM */
+      {pi:0,c:'#e53935',pts:[[6*CS,9*CS],[9*CS,9*CS],[cc,cc]]},
+      /* Green: base=left edge (col6), apex=centre → triangle on LEFT */
+      {pi:1,c:'#43a047',pts:[[6*CS,6*CS],[6*CS,9*CS],[cc,cc]]},
+      /* Yellow: base=bottom edge (row9), apex=centre → triangle at TOP */
+      {pi:2,c:'#f9a825',pts:[[6*CS,6*CS],[9*CS,6*CS],[cc,cc]]},
+      /* Blue: base=right edge (col9), apex=centre → triangle on RIGHT */
+      {pi:3,c:'#1e88e5',pts:[[9*CS,6*CS],[9*CS,9*CS],[cc,cc]]}
     ].forEach(function(tr){
-      if(activePlayers.indexOf(tr[0])<0)return;
-      /* White bg for centre */
-      ctx.fillStyle='#fff';
-      ctx.beginPath();ctx.moveTo(tr[2][0][0],tr[2][0][1]);ctx.lineTo(tr[2][1][0],tr[2][1][1]);ctx.lineTo(tr[2][2][0],tr[2][2][1]);ctx.closePath();ctx.fill();
-      /* Solid triangle */
-      ctx.fillStyle=tr[1];
-      ctx.beginPath();ctx.moveTo(tr[2][0][0],tr[2][0][1]);ctx.lineTo(tr[2][1][0],tr[2][1][1]);ctx.lineTo(tr[2][2][0],tr[2][2][1]);ctx.closePath();ctx.fill();
+      if(activePlayers.indexOf(tr.pi)<0)return;
+      ctx.fillStyle=tr.c;
+      ctx.beginPath();ctx.moveTo(tr.pts[0][0],tr.pts[0][1]);ctx.lineTo(tr.pts[1][0],tr.pts[1][1]);ctx.lineTo(tr.pts[2][0],tr.pts[2][1]);
+      ctx.closePath();ctx.fill();
     });
-    /* Centre star */
-    ctx.fillStyle='rgba(255,255,255,.9)';ctx.beginPath();ctx.arc(cc,cc,CS*.55,0,Math.PI*2);ctx.fill();
-    drawStar6(ctx,cc,cc,CS*.52,CS*.22,'rgba(200,200,100,.6)');
+    /* Centre white circle with star */
+    ctx.fillStyle='rgba(255,255,255,.92)';ctx.beginPath();ctx.arc(cc,cc,CS*.58,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='rgba(200,180,60,.6)';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(cc,cc,CS*.58,0,Math.PI*2);ctx.stroke();
+    drawLudoStar(ctx,cc,cc,CS*.52,CS*.22,'rgba(220,180,0,.55)');
 
-    /* ── 5. SAFE SQUARE STAR MARKERS ── */
-    /* Draw a yellow star on each safe square (⭐ style) */
+    /* 6. SAFE SQUARE STARS (⭐ bold, clearly visible)
+       These are the BLACK dotted squares that need stars!
+       L_SAFE = indices in LP: 0,8,13,21,26,34,39,47
+    */
     L_SAFE.forEach(function(si){
-      var c=LP[si];
-      var scx=(c[0]+.5)*CS,scy=(c[1]+.5)*CS;
-      drawStar6(ctx,scx,scy,CS*.28,CS*.12,'#ffd700');
-      ctx.strokeStyle='rgba(0,0,0,.2)';ctx.lineWidth=.5;
-      ctx.beginPath();drawStarPath(ctx,scx,scy,CS*.28,CS*.12);ctx.stroke();
+      var c=LP[si],scx=(c[0]+.5)*CS,scy=(c[1]+.5)*CS;
+      /* Yellow filled star — clearly visible on white */
+      drawLudoStar(ctx,scx,scy,CS*.32,CS*.13,'#ffd700');
+      /* Dark outline */
+      ctx.strokeStyle='rgba(0,0,0,.25)';ctx.lineWidth=1;
+      ctx.beginPath();drawLudoStarPath(ctx,scx,scy,CS*.32,CS*.13);ctx.stroke();
     });
 
-    /* ── 6. START SQUARES — coloured circle + arrow ── */
+    /* 7. START SQUARES — coloured circle + arrow
+       These are the ENTRY squares where tokens land when rolling a 6.
+       LP[0]=[6,13]=Red, LP[13]=[0,6]=Green, LP[26]=[8,0]=Yellow, LP[39]=[14,8]=Blue
+    */
     var arrows=['↑','→','↓','←'];
     L_START.forEach(function(si,pi){
       if(activePlayers.indexOf(pi)<0)return;
-      var c=LP[si],scx=(c[0]+.5)*CS,scy=(c[1]+.5)*CS,sr=CS*.38;
-      /* Home colour circle */
-      ctx.fillStyle=LC[pi];
+      var c=LP[si],scx=(c[0]+.5)*CS,scy=(c[1]+.5)*CS,sr=CS*.40;
+      ctx.fillStyle=yards.find(function(y){return y.pi===pi;})?LC[pi]:LC[pi];
       ctx.shadowBlur=12;ctx.shadowColor=LC[pi];
-      ctx.beginPath();ctx.arc(scx,scy,sr,0,Math.PI*2);ctx.fill();
-      ctx.shadowBlur=0;
-      /* White arrow */
+      ctx.beginPath();ctx.arc(scx,scy,sr,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+      ctx.strokeStyle='rgba(255,255,255,.8)';ctx.lineWidth=2.5;
+      ctx.beginPath();ctx.arc(scx,scy,sr,0,Math.PI*2);ctx.stroke();
       ctx.fillStyle='#fff';
-      ctx.font='bold '+Math.round(CS*.38)+'px sans-serif';
+      ctx.font='bold '+Math.round(CS*.40)+'px sans-serif';
       ctx.textAlign='center';ctx.textBaseline='middle';
       ctx.fillText(arrows[pi],scx,scy+1);
     });
 
-    /* ── 7. DESTINATION HIGHLIGHTS (when movable) ── */
+    /* 8. DESTINATION HIGHLIGHTS */
     if(S.movable.length>0&&S.waiting){
+      var now2=Date.now();
       S.movable.forEach(function(m){
         var tok=S.tokens[m.p][m.t],dc2=null;
         if(m.type==='enter')dc2=LP[L_START[m.p]];
@@ -892,22 +1080,22 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
         else if(m.type==='enter_home'||m.type==='enter_home_done')dc2=LH[m.p][Math.min(m.hs,5)];
         else if(tok.pos>=0)dc2=LP[(tok.pos+S.dice)%52];
         if(dc2){
-          var pulse=(Math.sin(Date.now()/200)*0.5+0.5);
-          ctx.fillStyle=LC[m.p]+''+Math.round(pulse*60+15).toString(16).padStart(2,'0');
+          var pulse=(Math.sin(now2/200)*0.5+0.5);
+          ctx.fillStyle=LC[m.p]+''+Math.round(pulse*55+15).toString(16).padStart(2,'0');
           ctx.strokeStyle=LC[m.p];ctx.lineWidth=2.5;
-          ctx.beginPath();if(ctx.roundRect)ctx.roundRect(dc2[0]*CS+2,dc2[1]*CS+2,CS-4,CS-4,CS*.22);else ctx.rect(dc2[0]*CS+2,dc2[1]*CS+2,CS-4,CS-4);
+          ctx.beginPath();if(ctx.roundRect)ctx.roundRect(dc2[0]*CS+2,dc2[1]*CS+2,CS-4,CS-4,CS*.2);else ctx.rect(dc2[0]*CS+2,dc2[1]*CS+2,CS-4,CS-4);
           ctx.fill();ctx.stroke();
         }
       });
     }
 
-    /* ── 8. TOKENS ── */
+    /* 9. TOKENS — large, domed, numbered */
     var now=Date.now();
     S.active.forEach(function(p){
-      /* Home centre cluster (finished tokens) */
+      /* Finished tokens cluster at centre */
       var hDone=S.tokens[p].filter(function(tk){return tk.pos>=106;}).length;
       if(hDone>0){
-        var hOff=[[-CS*.24,-CS*.24],[CS*.24,-CS*.24],[-CS*.24,CS*.24],[CS*.24,CS*.24]];
+        var hOff=[[-CS*.22,-CS*.22],[CS*.22,-CS*.22],[-CS*.22,CS*.22],[CS*.22,CS*.22]];
         var oIdx=S.active.indexOf(p),ho=hOff[oIdx%4]||[0,0];
         ctx.fillStyle=LC[p];ctx.shadowBlur=10;ctx.shadowColor=LC[p];
         ctx.beginPath();ctx.arc(cc+ho[0],cc+ho[1],CS*.22+hDone*CS*.03,0,Math.PI*2);ctx.fill();
@@ -915,54 +1103,51 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
         ctx.fillStyle='#fff';ctx.font='bold '+Math.round(CS*.2)+'px Inter,sans-serif';
         ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(hDone,cc+ho[0],cc+ho[1]+.5);
       }
-
       for(var t=0;t<4;t++){
         var tok=S.tokens[p][t];
         if(tok.pos>=106)continue;
         var cell=tokCell(p,t);
-        /* stack offset */
         var sN=0;
         for(var pt=0;pt<t;pt++){if(S.tokens[p][pt].pos===tok.pos&&tok.pos>=0){var pc=tokCell(p,pt);if(pc[0]===cell[0]&&pc[1]===cell[1])sN++;}}
-        var sOf=[[0,0],[-.18,-.18],[.18,-.18],[0,.18]][Math.min(sN,3)];
+        var sOf=[[0,0],[-.19,-.19],[.19,-.19],[0,.19]][Math.min(sN,3)];
         var tcx=(cell[0]+.5+sOf[0])*CS,tcy=(cell[1]+.5+sOf[1])*CS;
         var isM=S.movable.some(function(m){return m.p===p&&m.t===t;});
-        /* LARGE token radius */
-        var R=CS*(isM?.44:.37);
+        /* LARGE tokens */
+        var R=CS*(isM?.45:.38);
         if(isM)R*=(1+Math.sin(now/240)*.07);
 
-        /* Outer shadow */
-        ctx.fillStyle='rgba(0,0,0,.35)';ctx.beginPath();ctx.arc(tcx+1.5,tcy+3,R,0,Math.PI*2);ctx.fill();
+        /* Shadow */
+        ctx.fillStyle='rgba(0,0,0,.3)';ctx.beginPath();ctx.arc(tcx+1.5,tcy+3,R,0,Math.PI*2);ctx.fill();
 
-        /* Glow when movable */
+        /* Glow */
         if(isM){ctx.shadowBlur=26;ctx.shadowColor=LC[p];}
 
-        /* Token body — radial gradient for 3D dome look */
-        var tg=ctx.createRadialGradient(tcx-R*.4,tcy-R*.45,0,tcx,tcy,R);
+        /* Body radial gradient — 3D dome */
+        var tg=ctx.createRadialGradient(tcx-R*.42,tcy-R*.45,0,tcx,tcy,R);
         tg.addColorStop(0,ldLighten(LC[p],.5));
         tg.addColorStop(.55,LC[p]);
         tg.addColorStop(1,ldDarken(LC[p],.3));
         ctx.fillStyle=tg;ctx.beginPath();ctx.arc(tcx,tcy,R,0,Math.PI*2);ctx.fill();
         ctx.shadowBlur=0;
 
-        /* White border ring */
-        ctx.strokeStyle=isM?'#fff':'rgba(255,255,255,.7)';ctx.lineWidth=isM?3:2;
+        /* White ring */
+        ctx.strokeStyle=isM?'#fff':'rgba(255,255,255,.75)';ctx.lineWidth=isM?3:2.2;
         ctx.beginPath();ctx.arc(tcx,tcy,R,0,Math.PI*2);ctx.stroke();
-
         /* Dark outline */
-        ctx.strokeStyle='rgba(0,0,0,.25)';ctx.lineWidth=1;
+        ctx.strokeStyle='rgba(0,0,0,.2)';ctx.lineWidth=1;
         ctx.beginPath();ctx.arc(tcx,tcy,R+1,0,Math.PI*2);ctx.stroke();
 
-        /* Gloss highlight (white arc top-left) */
-        var gl=ctx.createRadialGradient(tcx-R*.35,tcy-R*.4,0,tcx,tcy,R*.85);
-        gl.addColorStop(0,'rgba(255,255,255,.55)');gl.addColorStop(.45,'rgba(255,255,255,.08)');gl.addColorStop(1,'transparent');
+        /* Gloss */
+        var gl=ctx.createRadialGradient(tcx-R*.36,tcy-R*.42,0,tcx,tcy,R*.88);
+        gl.addColorStop(0,'rgba(255,255,255,.55)');gl.addColorStop(.45,'rgba(255,255,255,.07)');gl.addColorStop(1,'transparent');
         ctx.fillStyle=gl;ctx.beginPath();ctx.arc(tcx,tcy,R,0,Math.PI*2);ctx.fill();
 
         /* Token number */
-        ctx.fillStyle='rgba(0,0,0,.9)';
-        ctx.font='bold '+Math.round(R*.95)+'px Inter,sans-serif';
+        ctx.fillStyle='rgba(0,0,0,.88)';
+        ctx.font='bold '+Math.round(R*.96)+'px Inter,sans-serif';
         ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t+1,tcx,tcy+.5);
 
-        /* Pulsing ring for movable tokens */
+        /* Pulse ring */
         if(isM){
           var pA=1-((now%650)/650);
           ctx.strokeStyle=LC[p];ctx.lineWidth=2.5;ctx.globalAlpha=pA*.7;
@@ -973,13 +1158,12 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
     });
     ctx.textAlign='left';ctx.textBaseline='alphabetic';
 
-    /* ── 9. BOARD OUTER BORDER ── */
+    /* 10. BOARD OUTER GLOW BORDER */
     ctx.strokeStyle=LC[S.turn];ctx.lineWidth=4;
     ctx.shadowBlur=18;ctx.shadowColor=LC[S.turn];
     ctx.beginPath();if(ctx.roundRect)ctx.roundRect(2,2,sz-4,sz-4,10);else ctx.rect(2,2,sz-4,sz-4);
     ctx.stroke();ctx.shadowBlur=0;
 
-    /* ── Schedule next frame if tokens are animating ── */
     if(S.movable.length>0&&S.waiting&&LD.alive){LD.raf=requestAnimationFrame(ldDraw);}
   }
 
@@ -987,16 +1171,8 @@ function ldStartGame(activePlayers,humanPlayers,aiLevel,canvas,gv,hud){
 }
 
 /* ── Drawing helpers ── */
-function drawStar6(ctx,cx,cy,r1,r2,fill){
-  ctx.fillStyle=fill;ctx.beginPath();
-  drawStarPath(ctx,cx,cy,r1,r2);
-  ctx.fill();
-}
-function drawStarPath(ctx,cx,cy,r1,r2){
-  var n=5;
-  for(var i=0;i<n*2;i++){var r=i%2===0?r1:r2,a=(i*Math.PI/n)-Math.PI/2;if(i===0)ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a));else ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));}
-  ctx.closePath();
-}
+function drawLudoStar(ctx,cx,cy,r1,r2,fill){ctx.fillStyle=fill;ctx.beginPath();drawLudoStarPath(ctx,cx,cy,r1,r2);ctx.fill();}
+function drawLudoStarPath(ctx,cx,cy,r1,r2){var n=5;for(var i=0;i<n*2;i++){var r=i%2===0?r1:r2,a=(i*Math.PI/n)-Math.PI/2;if(i===0)ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a));else ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));}ctx.closePath();}
 function ldLighten(hex,amt){var n=parseInt(hex.replace('#',''),16);return'rgb('+Math.min(255,(n>>16)+Math.round(255*amt))+','+Math.min(255,((n>>8)&0xff)+Math.round(255*amt))+','+Math.min(255,(n&0xff)+Math.round(255*amt))+')';}
 function ldDarken(hex,amt){var n=parseInt(hex.replace('#',''),16);return'rgb('+Math.max(0,(n>>16)-Math.round(255*amt))+','+Math.max(0,((n>>8)&0xff)-Math.round(255*amt))+','+Math.max(0,(n&0xff)-Math.round(255*amt))+')';}
 
