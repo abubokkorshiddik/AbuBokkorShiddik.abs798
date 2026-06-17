@@ -323,25 +323,25 @@ RUNNERS.ttt=function(cfg,play){if(!play){showStart(cfg);return;}var board=Array(
 var LP=[
   /* 0-4: Blue enters col6 going UP */
   [6,13],[6,12],[6,11],[6,10],[6,9],
-  /* 5-11: row8 arm going LEFT (from col6 junction leftward) */
-  [6,8],[5,8],[4,8],[3,8],[2,8],[1,8],[0,8],
-  /* 12-13: left edge connector going UP */
+  /* 5-10: row8 arm going LEFT — [6,8] removed (was inside centre box) */
+  [5,8],[4,8],[3,8],[2,8],[1,8],[0,8],
+  /* 11-12: left edge connector going UP */
   [0,7],[0,6],
-  /* 14-18: row6 arm going RIGHT (Red enters here at LP[14]=[1,6]) */
+  /* 13-17: row6 arm going RIGHT (Red enters here at LP[13]=[1,6]) */
   [1,6],[2,6],[3,6],[4,6],[5,6],
-  /* 19-25: col6 going UP */
+  /* 18-23: col6 going UP */
   [6,5],[6,4],[6,3],[6,2],[6,1],[6,0],
-  /* 25-26: top edge corner */
+  /* 24-25: top edge corner */
   [7,0],[8,0],
-  /* 27-31: col8 going DOWN (Green enters here at LP[27]=[8,1]) */
+  /* 26-30: col8 going DOWN (Green enters here at LP[26]=[8,1]) */
   [8,1],[8,2],[8,3],[8,4],[8,5],
-  /* 32-37: row6 going RIGHT */
+  /* 31-36: row6 going RIGHT */
   [9,6],[10,6],[11,6],[12,6],[13,6],[14,6],
-  /* 38-39: right edge connector going DOWN */
+  /* 37-38: right edge connector going DOWN */
   [14,7],[14,8],
-  /* 40-44: row8 going LEFT (Yellow enters here at LP[40]=[13,8]) */
+  /* 39-43: row8 going LEFT (Yellow enters here at LP[39]=[13,8]) */
   [13,8],[12,8],[11,8],[10,8],[9,8],
-  /* 45-51: col8 going DOWN then corner */
+  /* 44-50: col8 going DOWN then corner */
   [8,9],[8,10],[8,11],[8,12],[8,13],[8,14],[7,14]
 ];
 
@@ -352,7 +352,7 @@ var LP=[
   Yellow(BR): LP[40] = [13,8] — enters row8 going left ✓
   Blue  (BL): LP[0]  = [6,13] — enters col6 going up ✓
 */
-var L_START=[14,27,40,0]; /* FIXED: Red=14, Green=27, Yellow=40, Blue=0 */
+var L_START=[13,26,39,0]; /* Red=13=[1,6], Green=26=[8,1], Yellow=39=[13,8], Blue=0=[6,13] */
 
 /*
   Home lanes (6 steps to reach centre [7,7]):
@@ -399,7 +399,7 @@ var L_YARD=[
   LP[0]=[6,13]  - Blue start (star)
 */
 var L_SAFE_CELLS=[
-  LP[8], LP[14], LP[21], LP[27], LP[34], LP[40], LP[47], LP[0]
+  LP[8], LP[13], LP[21], LP[26], LP[34], LP[39], LP[47], LP[0]
 ];
 function isSafeCell(col,row){
   return L_SAFE_CELLS.some(function(c){return c[0]===col&&c[1]===row;});
@@ -668,7 +668,7 @@ function ldRun(activePlayers,humanPlayers,aiLevel,canvas,boardArea){
         if(d===rem+1)moves.push({p:p,t:t,type:'home_done'});
         else if(d<=rem)moves.push({p:p,t:t,type:'home'});
       }else{
-        var ste=51-tok.pos;
+        var ste=50-tok.pos;
         if(d<=ste){
           moves.push({p:p,t:t,type:'path'});
         }else{
@@ -686,9 +686,9 @@ function ldRun(activePlayers,humanPlayers,aiLevel,canvas,boardArea){
     var tok=S.tokens[p][mv.t],captured=false;
     if(mv.type==='enter'){tok.pos=0;}
     else if(mv.type==='path'){tok.pos+=dice;}
-    else if(mv.type==='home'){tok.pos+=dice;}
+    else if(mv.type==='home'){tok.pos+=dice;if(tok.pos>=105)tok.pos=106;}
     else if(mv.type==='home_done'){tok.pos=106;}
-    else if(mv.type==='enter_home'){tok.pos=100+mv.hs;}
+    else if(mv.type==='enter_home'){tok.pos=100+mv.hs;if(tok.pos>=105)tok.pos=106;}
 
     if(mv.type==='path'||mv.type==='enter'){
       var myCell=tokCell(p,mv.t);
@@ -839,7 +839,7 @@ function ldRun(activePlayers,humanPlayers,aiLevel,canvas,boardArea){
       return op!==p&&S.tokens[op].some(function(tk,ti){
         if(tk.pos<0||tk.pos>=100)return false;
         for(var d=1;d<=6;d++){
-          var np=tk.pos+d;if(np>51)continue;
+          var np=tk.pos+d;if(np>50)continue;
           var c=LP[absIdx(op,np)];if(c[0]===cell[0]&&c[1]===cell[1])return true;
         }
         return false;
@@ -950,9 +950,11 @@ function ldRun(activePlayers,humanPlayers,aiLevel,canvas,boardArea){
     for(var row=0;row<15;row++){
       for(var col=0;col<15;col++){
         var inYard=(col<6&&row<6)||(col>8&&row<6)||(col<6&&row>8)||(col>8&&row>8);
-        var inCentre=(col>=6&&col<=8&&row>=6&&row<=8);
+        /* Centre excludes the 4 corner junction squares [6,8],[8,6],[6,6 doesn't exist],[8,8]
+           which are also LP path squares — those must stay as path cells drawn on top */
+        var isTrueCentre=(col>=6&&col<=8&&row>=6&&row<=8)&&!(col===6&&row===8)&&!(col===8&&row===6)&&!(col===6&&row===6)&&!(col===8&&row===8);
         var onCross=(col>=6&&col<=8)||(row>=6&&row<=8);
-        if(inYard||inCentre||!onCross)continue;
+        if(inYard||isTrueCentre||!onCross)continue;
         /* Home lane colouring */
         var pf=null;
         /* Red home lane: row7, cols 1-5 */
@@ -974,22 +976,42 @@ function ldRun(activePlayers,humanPlayers,aiLevel,canvas,boardArea){
     }
 
     /* 4 — Centre triangles (one per active player) */
-    ctx.fillStyle='#fff';ctx.fillRect(6*CS,6*CS,3*CS,3*CS);
-    /* Triangle definitions: fill from outer corners toward centre */
+    /* Draw centre as cross shape only (5 inner cells), NOT the 4 corner junctions
+       which are path squares: [6,8],[8,6],[6,6],[8,8] */
+    ctx.fillStyle='#fff';
+    /* Inner cross: top-mid, mid-left, centre, mid-right, bottom-mid */
+    [[7,6],[6,7],[7,7],[8,7],[7,8]].forEach(function(c){
+      ctx.fillRect(c[0]*CS,c[1]*CS,CS,CS);
+    });
+    /* Triangle definitions clipped to cross shape so corners [6,6],[8,6],[6,8],[8,8] stay as path */
     [
-      {pi:0,col:'#e74c3c',pts:[[6*CS,9*CS],[9*CS,9*CS],[cc,cc]]},   /* Red    — bottom triangle */
-      {pi:1,col:'#27ae60',pts:[[9*CS,6*CS],[9*CS,9*CS],[cc,cc]]},   /* Green  — right triangle  */
-      {pi:2,col:'#f39c12',pts:[[6*CS,6*CS],[9*CS,6*CS],[cc,cc]]},   /* Yellow — top triangle    */
-      {pi:3,col:'#2980b9',pts:[[6*CS,6*CS],[6*CS,9*CS],[cc,cc]]}    /* Blue   — left triangle   */
+      {pi:0,col:'#e74c3c',pts:[[6*CS,9*CS],[9*CS,9*CS],[cc,cc]]},
+      {pi:1,col:'#27ae60',pts:[[9*CS,6*CS],[9*CS,9*CS],[cc,cc]]},
+      {pi:2,col:'#f39c12',pts:[[6*CS,6*CS],[9*CS,6*CS],[cc,cc]]},
+      {pi:3,col:'#2980b9',pts:[[6*CS,6*CS],[6*CS,9*CS],[cc,cc]]}
     ].forEach(function(tr){
       if(activePlayers.indexOf(tr.pi)<0)return;
+      ctx.save();
+      /* Cross-shaped clip: excludes 4 corner junction cells */
+      ctx.beginPath();
+      ctx.moveTo(7*CS,6*CS);ctx.lineTo(8*CS,6*CS);
+      ctx.lineTo(8*CS,7*CS);ctx.lineTo(9*CS,7*CS);
+      ctx.lineTo(9*CS,8*CS);ctx.lineTo(8*CS,8*CS);
+      ctx.lineTo(8*CS,9*CS);ctx.lineTo(7*CS,9*CS);
+      ctx.lineTo(7*CS,8*CS);ctx.lineTo(6*CS,8*CS);
+      ctx.lineTo(6*CS,7*CS);ctx.lineTo(7*CS,7*CS);
+      ctx.closePath();
+      ctx.clip();
       ctx.fillStyle=tr.col;
       ctx.beginPath();ctx.moveTo(tr.pts[0][0],tr.pts[0][1]);ctx.lineTo(tr.pts[1][0],tr.pts[1][1]);ctx.lineTo(tr.pts[2][0],tr.pts[2][1]);ctx.closePath();ctx.fill();
+      ctx.restore();
     });
     /* Centre star circle */
     ctx.fillStyle='rgba(255,255,255,.95)';ctx.beginPath();ctx.arc(cc,cc,CS*.52,0,Math.PI*2);ctx.fill();
     ldDrawStarShape(ctx,cc,cc,CS*.48,CS*.2,'rgba(220,200,60,.8)',6);
-    ctx.strokeStyle='rgba(0,0,0,.08)';ctx.lineWidth=1;ctx.strokeRect(6*CS,6*CS,3*CS,3*CS);
+    ctx.strokeStyle='rgba(0,0,0,.08)';ctx.lineWidth=1;
+    /* Only stroke inner cross boundary, not full 3x3 square */
+    ctx.strokeRect(6*CS,6*CS,3*CS,3*CS);
 
     /* 5 — Safe square stars ⭐ drawn at CORRECT positions */
     L_SAFE_CELLS.forEach(function(sc2){
