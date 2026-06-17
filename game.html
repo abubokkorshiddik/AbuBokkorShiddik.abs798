@@ -645,7 +645,7 @@ function ldRun(activePlayers,humanPlayers,aiLevel,canvas,boardArea){
     });
   }
 
-  function absIdx(p,relPos){return(L_START[p]+relPos)%52;}
+  function absIdx(p,relPos){return(L_START[p]+relPos)%51;}
 
   function tokCell(p,t){
     var tok=S.tokens[p][t];
@@ -1058,7 +1058,7 @@ function ldRun(activePlayers,humanPlayers,aiLevel,canvas,boardArea){
       S.movable.forEach(function(m){
         var tok=S.tokens[m.p][m.t],dc2=null;
         if(m.type==='enter'){dc2=LP[L_START[m.p]];}
-        else if(m.type==='path'){var np=tok.pos+S.dice;if(np<=51)dc2=LP[absIdx(m.p,np)];}
+        else if(m.type==='path'){var np=tok.pos+S.dice;if(np<=50)dc2=LP[absIdx(m.p,np)];}
         else if(m.type==='home'){dc2=LH[m.p][Math.min(tok.pos-100+S.dice,5)];}
         else if(m.type==='home_done'){dc2=LH[m.p][5];}
         else if(m.type==='enter_home'){dc2=LH[m.p][Math.min(m.hs,5)];}
