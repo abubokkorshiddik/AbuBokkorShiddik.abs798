@@ -161,6 +161,9 @@
     .note { background: var(--hi); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: 13px 16px; margin: 14px 0; font-size: 13px; line-height: 1.75; color: #4a3b1a; font-style: italic; }
     .note strong { font-style: normal; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 4px; }
 
+    .joke { background: #fff0f6; border-left: 3px solid #db2777; border-radius: 0 6px 6px 0; padding: 13px 16px; margin: 14px 0; font-size: 13px; line-height: 1.75; color: #5c1a3a; }
+    .joke strong { font-style: normal; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: #db2777; display: block; margin-bottom: 4px; }
+
     .eq-block {
       background: #0f172a; color: #e2e8f0; border-radius: 10px;
       padding: 20px 24px; margin: 16px 0; position: relative; overflow: hidden;
@@ -298,7 +301,7 @@
   <div class="hero-inner">
     <div class="hero-eyebrow">Personal Learning Notes · BRUR · Statistics · M.Sc.</div>
     <h1>Postgraduate Course<br><em>Learning Notes</em></h1>
-    <p class="hero-sub">A growing personal reference covering M.Sc.-level statistics courses — exam-style questions with detailed answers, derivations, definitions, and applications from lectures, textbooks, and past papers at Begum Rokeya University, Rangpur.</p>
+    <p class="hero-sub">A growing personal reference covering M.Sc.-level statistics courses — friendly, in-depth explanations, derivations, definitions, and applications from lectures, textbooks, and real-world examples at Begum Rokeya University, Rangpur. Written so anyone, statistician or not, can actually enjoy reading it.</p>
     <div class="hero-badges">
       <span class="hbadge hb1" onclick="jumpTo('c-gen')" style="cursor:pointer;">STAT5103 · Statistical Genomics &amp; Bioinformatics</span>
       <span class="hbadge-soon">+ More M.Sc. courses coming soon</span>
@@ -323,14 +326,9 @@
 <div class="course-block" id="c-gen">
   <div class="course-banner cb-gen">
     <div class="cb-watermark">🧬</div>
-    <div class="cb-code">STAT5103 · M.Sc. Statistics · BRUR · Exam Prep Notes (2022 &amp; 2023 Papers)</div>
+    <div class="cb-code">STAT5103 · M.Sc. Statistics · BRUR · Learning Notes</div>
     <div class="cb-title">Statistical Genomics &amp; Bioinformatics</div>
     <div class="cb-sub">Bioinformatics &amp; Statistics · Cell Division · Linkage &amp; Recombination · Central Dogma · QTL Mapping · Map Functions · Differential Gene Expression · Genome Sequencing · OMICS</div>
-  </div>
-
-  <div class="note" style="background:#eafaf3;border-left-color:#0e5c4a;font-style:normal;margin-bottom:32px;">
-    <strong style="color:#0e5c4a;">📋 About These Notes</strong>
-    These notes are organised as exam preparation material, combining the original 2022 exam question set with new topics introduced in the 2023 exam paper. Each section follows a question → detailed answer structure rather than a textbook narrative — ideal for revision before the final exam. Where a 2023-paper topic overlaps with 2022 content (e.g., mitosis/meiosis, linkage basics), it has been merged into one section rather than repeated.
   </div>
 
   <div class="toc-box">
@@ -364,7 +362,8 @@
       <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">More Contributions</div><h3>Probability, ML &amp; Bayesian Methods</h3><ul><li><strong>Probability models:</strong> Markov chains/HMMs for sequence alignment; Poisson/negative-binomial for read counts</li><li><strong>Multivariate &amp; ML:</strong> clustering, PCA, classification for -omics data</li><li><strong>Bayesian inference:</strong> incorporating prior biological knowledge into gene mapping</li></ul></div>
       <div class="card c-warn"><span class="card-icon">⚠️</span><div class="card-lbl">Why It Matters</div><h3>Trust in the Signal</h3><p>Modern biology produces extremely large, high-dimensional, noisy datasets. Without statistics' inferential rigour (significance, confidence, error control), patterns found by bioinformatics tools could not be trusted as real rather than due to chance.</p></div>
     </div>
-    <div class="note"><strong>Memory Tip</strong>Bio + Informatics = using computational and statistical tools to make sense of biological information.</div>
+    <div class="note"><strong>Memory Tip</strong>Bio + Informatics = using computational and statistical tools to make sense of biological information. Think of it as Excel for life itself, except the spreadsheet is 3 billion rows long and was written by evolution, not your colleague in accounting.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Why did the statistician break up with the biologist? Too much unexplained variance in the relationship. Also: a biologist walks into a bar, orders a beer, then orders half a beer, then a quarter, an eighth... the bartender says "I think you don't understand limits," and the statistician at the next table mutters, "I think you don't understand sample size."</div>
   </div>
   <div class="divider">· · ·</div>
 
@@ -414,6 +413,8 @@
       <div class="eq-row"><span class="eq-name">Mitosis result</span><span class="eq-val">1 cell (2n) → 2 cells (2n, 2n) — identical</span></div>
       <div class="eq-row"><span class="eq-name">Meiosis result</span><span class="eq-val">1 cell (2n) → 4 cells (n, n, n, n) — recombined</span></div>
     </div>
+    <div class="note"><strong>Plain-English Recap</strong>Mitosis is your body photocopying cells for everyday repairs — same content, just more copies. Meiosis is your body shuffling a deck of cards (your chromosomes), cutting it twice, and dealing out four hands that no one has ever seen before — that's why siblings (except identical twins) never look exactly alike.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Mitosis and meiosis walk into a bar. Mitosis orders one drink and gets two identical copies of it. Meiosis orders one drink and somehow leaves with four completely different cocktails, half-finished, and no memory of how. Also — meiosis is basically your cells going "let's mix things up" while mitosis is your cells going "no thanks, I like things exactly the way they are."</div>
   </div>
   <div class="divider">· · ·</div>
 
@@ -430,6 +431,8 @@
       <div class="eq-row"><span class="eq-name">Range &amp; meaning</span><span class="eq-val">r=0: complete linkage &nbsp;|&nbsp; r=0.5: unlinked &nbsp;|&nbsp; 0&lt;r&lt;0.5: partial linkage</span></div>
       <div class="eq-row"><span class="eq-name">Map unit</span><span class="eq-val">1 cM ≈ 1% recombination (short distances only)</span></div>
     </div>
+    <div class="note"><strong>Think of it like roommates</strong>Genes that live close together on a chromosome are like roommates who always show up to parties together — they rarely get "separated" because there's so little chromosome between them for a crossover to slip in. Genes far apart, or on different chromosomes entirely, are more like distant acquaintances — they show up independently of each other.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Two genes are sitting next to each other on a chromosome. One says, "We've been inherited together for 40 generations, I think it's time we made it official." The other says, "Careful, one crossover event and we're getting separated."</div>
   </div>
   <div class="divider">· · ·</div>
 
@@ -467,6 +470,8 @@
         <defs><marker id="arrC" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/></marker></defs>
       </svg>
     </div>
+    <div class="note"><strong>Plain-English Recap</strong>DNA is the master recipe book locked safely in the kitchen office (the nucleus). RNA is the photocopy of one recipe page that's allowed to leave the office and go to the kitchen counter (the ribosome). The protein is the actual dish that gets cooked from that recipe. Reverse transcription is a retrovirus sneaking in and rewriting a page of the recipe book using its own photocopy — which is exactly how HIV works.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>DNA never leaves the house, RNA is the intern who runs errands, and the ribosome is the over-caffeinated chef who reads the intern's handwriting and somehow still makes a five-star protein. Also: why did the mRNA break up with the ribosome? It said, "You only ever read me once and then degrade me."</div>
   </div>
   <div class="divider">· · ·</div>
 
@@ -488,6 +493,8 @@
       <div class="eq-row"><span class="eq-name">Pooled variance</span><span class="eq-val">sp² = [(n₁−1)s₁² + (n₀−1)s₀²] / (n₁+n₀−2)</span></div>
     </div>
     <div class="note"><strong>One-Way ANOVA for 3 F2 Genotype Groups</strong>H₀: μ_AA=μ_Aa=μ_aa. SST=SSB+SSW; F = MSB/MSW ~ F(2, n−3). If F exceeds the critical value, the marker shows an overall genotype effect — evidence it is linked to a QTL. Follow-up t-tests on â and d̂ separately test the additive and dominance components.</div>
+    <div class="note"><strong>Plain-English Recap</strong>Unlike a single Mendelian gene that flips a trait on/off (like pea colour), a QTL is more like one of many tiny dimmer switches that together control something continuous, like height or milk yield. We can't see the switch directly, so we watch a nearby DNA "marker" instead — if individuals with a particular marker genotype consistently have higher/lower trait values, that marker is probably sitting close to a real QTL.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>A single Mendelian gene is like a light switch — on or off, tall or short, round or wrinkled. A QTL is like a room with 200 dimmer switches, all slightly randomly set, and your job is to figure out which switch is connected to the lamp just by watching the brightness change. Geneticists call this "polygenic inheritance." Everyone else calls it "why does my family reunion look like a genetics lecture."</div>
   </div>
   <div class="divider">· · ·</div>
 
@@ -506,6 +513,8 @@
       <div class="eq-row"><span class="eq-name">LOD score</span><span class="eq-val">Z(r) = log₁₀[L(r̂)/L(0.5)] &nbsp;&nbsp;significant if Z ≥ 3</span></div>
       <div class="eq-row"><span class="eq-name">LR ↔ LOD</span><span class="eq-val">LR = 10^Z &nbsp;&nbsp;; &nbsp;&nbsp;Λ = 2ln(LR) = 4.605·Z ~ χ²(1) under H₀</span></div>
     </div>
+    <div class="note"><strong>Plain-English Recap</strong>A LOD score of 3 means the data is 1,000 times more likely to occur if the genes really are linked than if they were totally independent — that's why "LOD ≥ 3" became the gold-standard bar for claiming linkage, much like p &lt; 0.05 in ordinary stats, except scaled in powers of 10 instead of probabilities.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Getting a LOD score of 3 is geneticists' version of a court verdict: "beyond reasonable doubt, these two genes are definitely hanging out together." A LOD score of 0.5 is more like, "well, they were at the same party once, that proves nothing."</div>
   </div>
   <div class="divider">· · ·</div>
 
@@ -545,6 +554,8 @@
         <text x="60" y="200" font-size="8.5" fill="#94a3b8">0</text>
       </svg>
     </div>
+    <div class="note"><strong>Plain-English Recap</strong>Recombination fraction r can never exceed 0.5, no matter how far apart two genes are — once they're far enough apart, crossovers happen so often between them that they behave as if unlinked. Map distance d, however, just keeps adding up the more crossovers occur. A mapping function is the translator that converts "what we can observe" (r, capped at 0.5) into "what's physically true" (d, unbounded).</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Recombination fraction r is like a strict speed limit sign that caps out at 50 mph no matter how hard you press the gas. Map distance d is the actual odometer — it keeps climbing even after r has long since given up. Haldane basically built the GPS that converts "miles you think you drove" back into "miles you actually drove."</div>
   </div>
   <div class="divider">· · ·</div>
 
@@ -563,6 +574,8 @@
       <div class="eq-row"><span class="eq-name">Multiple testing</span><span class="eq-val">Benjamini–Hochberg FDR correction across thousands of genes</span></div>
     </div>
     <div class="note"><strong>cDNA Microarray Workflow</strong>RNA extraction → reverse transcription to fluorescently-labelled cDNA → hybridisation onto the array → scanning to quantify signal intensity → normalisation (correcting dye/array bias) → statistical DE testing (t-test/SAM/limma) with FDR correction.</div>
+    <div class="note"><strong>Plain-English Recap</strong>Running a plain t-test separately on 20,000 genes is like flipping 20,000 coins and being shocked that a few hundred land on six heads in a row by pure chance — that's why multiple-testing correction (FDR) is non-negotiable in genomics. SAM's "fudge factor" simply stops genes with almost-zero natural variability from looking falsely dramatic.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Testing 20,000 genes without correcting for multiple testing is like buying 20,000 lottery tickets and announcing to the world that you've discovered a "winning strategy" because three of them happened to match a few numbers. FDR correction is statistics gently tapping you on the shoulder and saying, "maybe sit down."</div>
   </div>
   <div class="divider">· · ·</div>
 
@@ -575,6 +588,8 @@
       <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">WGS, WES &amp; Shotgun Strategy</div><h3>Strategic Choices</h3><p>Whole Genome Sequencing (WGS) covers everything; Whole Exome Sequencing (WES) targets only protein-coding exons — cheaper, focused on coding variants. Shotgun sequencing randomly fragments the genome, sequences overlapping pieces, and computationally reassembles them.</p></div>
       <div class="card c-where"><span class="card-icon">✅</span><div class="card-lbl">Applications</div><h3>Where Sequencing Is Used</h3><ul><li>Disease-gene &amp; cancer-driver mutation discovery</li><li>Personalised/precision medicine</li><li>Pathogen genomics &amp; outbreak surveillance</li><li>Agricultural genomics, forensics, pharmacogenomics</li><li>Comparative &amp; evolutionary genomics</li></ul></div>
     </div>
+    <div class="note"><strong>Plain-English Recap</strong>Sanger sequencing is like carefully reading one sentence out loud, word by word, very accurately — perfect for double-checking a single gene. NGS is like photocopying the whole book into a million tiny shredded scraps, reading each scrap fast and cheaply, then using a computer to puzzle them all back together based on overlaps.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Shotgun sequencing got its name because the strategy is basically: blast the genome into tiny pieces first, ask questions later. It's the scientific equivalent of shredding a novel, reading each scrap, and reassembling the whole story from the torn edges — and somehow it works.</div>
   </div>
   <div class="divider">· · ·</div>
 
@@ -592,6 +607,8 @@
       <div class="eq-row"><span class="eq-name">LE condition</span><span class="eq-val">D ≈ 0 &nbsp;&nbsp;(alleles associate as expected by chance)</span></div>
     </div>
     <div class="note"><strong>Why Bioinformatics Matters in Health</strong>Disease diagnosis &amp; biomarker discovery, precision medicine, drug discovery &amp; design, genetic counselling, pathogen surveillance, vaccine development, cancer genomics, and large-scale clinical/EHR data mining all rely on the OMICS disciplines above, integrated through statistical genomics methods.</div>
+    <div class="note"><strong>Plain-English Recap</strong>Linkage equilibrium is two strangers who happen to sit together on a bus by pure coincidence — no real connection. Linkage disequilibrium is two old friends who always sit together because they live on the same street (i.e., are close on the chromosome) — that predictable pairing is exactly what GWAS exploits to find disease-associated regions without testing every single SNP.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>OMICS researchers have officially run out of restraint: first it was genomics, then transcriptomics, proteomics, metabolomics, epigenomics, metagenomics... at this rate we're one bad grant-writing day away from "snackomics" — the complete statistical study of what's in the lab fridge.</div>
   </div>
 
 </div><!-- /c-gen -->
@@ -617,7 +634,7 @@
   <div class="ref-entry"><div class="ref-n">[6]</div><div><div class="ref-title">Molecular Biology of the Cell</div><div class="ref-auth">Alberts, B. et al. — Garland Science · 6th Ed.</div></div></div>
 </div>
 
-<div class="nb-footer">STAT5103 &nbsp;·&nbsp; Dept. of Statistics, BRUR &nbsp;·&nbsp; Personal Exam-Prep Notes · Md. Abu Bokkor Shiddik &nbsp;·&nbsp; More M.Sc. courses to be added</div>
+<div class="nb-footer">STAT5103 &nbsp;·&nbsp; Dept. of Statistics, BRUR &nbsp;·&nbsp; Personal Learning Notes · Md. Abu Bokkor Shiddik &nbsp;·&nbsp; More M.Sc. courses to be added</div>
 
 </div><!-- /notebook-wrap -->
 
