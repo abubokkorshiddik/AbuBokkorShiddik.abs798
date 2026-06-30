@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Postgraduate (M.Sc.) statistics learning notes by Md. Abu Bokkor Shiddik — BRUR. Covers Statistical Genomics & Bioinformatics and more.">
+  <meta name="keywords" content="statistical genomics, bioinformatics, QTL mapping, linkage analysis, central dogma, differential gene expression, genome sequencing, MSc statistics, Begum Rokeya University, Abu Bokkor Shiddik">
+  <meta name="author" content="Md. Abu Bokkor Shiddik">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="M.Sc. Course Learning Notes — Md. Abu Bokkor Shiddik">
+  <meta property="og:description" content="Postgraduate statistics course notes — Statistical Genomics & Bioinformatics and more, BRUR.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="M.Sc. Course Learning Notes — Abu Bokkor Shiddik">
+  <meta name="twitter:description" content="Postgraduate statistics learning notes at BRUR — statistical genomics, bioinformatics, and more.">
+  <title>M.Sc. Course Learning Notes | Md. Abu Bokkor Shiddik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #f8fafc; color: #0f172a; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ════════════════════════════
+       NAVBAR — identical to BSc page
+    ════════════════════════════ */
+    .navbar { background: #0b1f3a; position: sticky; top: 0; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav-bar-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; align-items: center; height: 56px; }
+    .nav-brand { font-size: 14.5px; font-weight: 600; color: #fff; letter-spacing: .2px; margin-right: auto; white-space: nowrap; }
+    .nav-brand span { color: #93c5fd; font-weight: 300; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links > a, .dropbtn { color: rgba(255,255,255,.75); font-size: 13.5px; font-weight: 500; padding: 6px 11px; border-radius: 6px; border: none; background: none; cursor: pointer; font-family: inherit; transition: background .18s, color .18s; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,.09); }
+    .dropdown { position: relative; }
+    .dropdown-content { position: absolute; top: calc(100% + 6px); left: 0; background: #132444; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; min-width: 190px; padding: 6px; box-shadow: 0 12px 32px rgba(0,0,0,.3); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .2s, transform .2s, visibility .2s; pointer-events: none; z-index: 9999; }
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .dropdown-content a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: rgba(255,255,255,.72); font-size: 13px; font-weight: 500; border-radius: 6px; transition: background .15s, color .15s; }
+    .dropdown-content a:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 6px; margin-left: 10px; transition: background .2s; }
+    .hamburger:hover { background: rgba(255,255,255,.1); }
+    .hamburger span { display: block; width: 21px; height: 2px; background: rgba(255,255,255,.85); border-radius: 2px; transition: transform .28s, opacity .28s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display: none; background: #0d1c38; border-top: 1px solid rgba(255,255,255,.07); overflow: hidden; max-height: 0; transition: max-height .38s cubic-bezier(.4,0,.2,1); }
+    .nav-drawer.open { max-height: 700px; }
+    .drawer-inner { padding: 8px 0 16px; }
+    .drawer-link { display: block; color: rgba(255,255,255,.78); font-size: 15px; font-weight: 500; padding: 11px 24px; transition: background .15s, color .15s; }
+    .drawer-link:hover { background: rgba(255,255,255,.06); color: #fff; }
+    .drawer-section-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,.3); padding: 14px 24px 4px; }
+    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,.58); }
+    .drawer-divider { height: 1px; background: rgba(255,255,255,.06); margin: 4px 0; }
+    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-drawer { display: block; } }
+
+    /* ════════════════════════════
+       PAGE HERO
+    ════════════════════════════ */
+    .page-hero {
+      background: linear-gradient(140deg, #07152a 0%, #0d2247 50%, #0f2d5c 100%);
+      color: #fff; padding: 60px 24px 52px; position: relative; overflow: hidden;
+    }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 75% 25%, rgba(59,130,246,.13) 0%, transparent 55%), radial-gradient(circle at 5% 80%, rgba(74,222,128,.07) 0%, transparent 45%); pointer-events: none; }
+    .page-hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .hero-inner { max-width: 1180px; margin: auto; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #93c5fd; margin-bottom: 16px; }
+    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: 12px; }
+    .page-hero h1 em { color: #93c5fd; font-style: italic; }
+    .hero-sub { font-size: 14.5px; color: rgba(255,255,255,.55); max-width: 620px; margin-bottom: 24px; line-height: 1.75; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .hbadge { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 14px; border-radius: 5px; color: #fff; border: 1px solid rgba(255,255,255,.2); letter-spacing: .5px; }
+    .hb1 { background: rgba(14,92,74,.7); }
+    .hbadge-soon { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 14px; border-radius: 5px; color: rgba(255,255,255,.45); border: 1px dashed rgba(255,255,255,.25); letter-spacing: .5px; }
+
+    /* ════════════════════════════
+       COURSE JUMP NAV
+    ════════════════════════════ */
+    .course-nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 56px; z-index: 200; }
+    .course-nav-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; gap: 0; }
+    .course-nav-inner::-webkit-scrollbar { display: none; }
+    .cnav-btn { display: inline-flex; align-items: center; gap: 6px; padding: 12px 16px; font-size: 12.5px; font-weight: 500; color: #64748b; border-bottom: 2.5px solid transparent; border-top: none; border-left: none; border-right: none; white-space: nowrap; cursor: pointer; background: none; font-family: inherit; transition: color .18s, border-color .18s; min-height: 44px; -webkit-tap-highlight-color: transparent; }
+    .cnav-btn:hover { color: #0e5c4a; }
+    .cnav-btn.active { color: #0e5c4a; border-bottom-color: #0e5c4a; font-weight: 600; }
+    .cnav-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .cnav-soon { display: inline-flex; align-items: center; gap: 6px; padding: 12px 16px; font-size: 12px; font-weight: 500; color: #cbd5e1; white-space: nowrap; font-style: italic; }
+
+    /* ════════════════════════════
+       LAYOUT — notebook paper feel
+    ════════════════════════════ */
+    :root {
+      --ink: #1a1208; --paper: #fdfaf4; --parchment: #f4ede0;
+      --accent: #8b2e0a; --accent2: #1a4a6b; --gold: #b8820a;
+      --green-h: #1a5c2e; --teal-h: #0e5c6e; --purple-h: #5a2080;
+      --faded: #8a7e6e; --rule: #ddd0b8; --hi: #fef3c7;
+      --shadow: rgba(26,18,8,.1);
+    }
+
+    .notebook-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .course-block { padding: 52px 0 0; scroll-margin-top: 110px; }
+
+    .course-banner {
+      border-radius: 14px; padding: 32px 36px; margin-bottom: 40px;
+      position: relative; overflow: hidden; color: #fff;
+    }
+    .course-banner::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+    .cb-gen    { background: linear-gradient(135deg, #07241c, #0e5c4a); }
+    .cb-code { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px; }
+    .cb-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; margin-bottom: 6px; position: relative; z-index: 1; }
+    .cb-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,.6); letter-spacing: .5px; position: relative; z-index: 1; }
+    .cb-watermark { position: absolute; right: -10px; top: -10px; font-size: 100px; opacity: .08; font-family: 'Playfair Display', serif; font-weight: 900; line-height: 1; user-select: none; }
+
+    .toc-box { background: var(--parchment); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 24px 28px; margin-bottom: 40px; }
+    .toc-box-title { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 28px; }
+    .toc-link { font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--accent2); display: flex; align-items: center; gap: 8px; padding: 3px 0; transition: color .2s; }
+    .toc-link:hover { color: var(--accent); }
+    .toc-link::before { content: attr(data-n); color: var(--faded); font-size: 9.5px; min-width: 22px; }
+    @media (max-width: 600px) { .toc-grid { grid-template-columns: 1fr; } }
+
+    .topic-section { margin-bottom: 52px; scroll-margin-top: 110px; }
+    .topic-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 24px; }
+    .topic-num { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: #e2e8f0; line-height: 1; min-width: 60px; user-select: none; }
+    .topic-title-block { flex: 1; padding-top: 4px; }
+    .topic-label { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; color: var(--faded); margin-bottom: 4px; }
+    .topic-title { font-family: 'Playfair Display', serif; font-size: clamp(16px, 2.5vw, 22px); font-weight: 700; color: var(--ink); line-height: 1.2; }
+    .topic-title span { color: var(--accent); }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 18px; }
+    @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
+
+    .card { background: #fff; border: 1px solid #e8e0d0; border-radius: 10px; padding: 18px 20px; position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow); }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 10px 10px 0 0; }
+    .card.c-what::before  { background: var(--accent2); }
+    .card.c-how::before   { background: var(--accent); }
+    .card.c-where::before { background: var(--gold); }
+    .card.c-warn::before  { background: #94a3b8; }
+    .card.c-idea::before  { background: #1a5c2e; }
+    .card.c-form::before  { background: #5a2080; }
+
+    .card-icon { font-size: 20px; margin-bottom: 8px; display: block; }
+    .card-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 7px; }
+    .card.c-what  .card-lbl { color: var(--accent2); }
+    .card.c-how   .card-lbl { color: var(--accent); }
+    .card.c-where .card-lbl { color: var(--gold); }
+    .card.c-warn  .card-lbl { color: #64748b; }
+    .card.c-idea  .card-lbl { color: #1a5c2e; }
+    .card.c-form  .card-lbl { color: #5a2080; }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+    .card p, .card li { font-size: 13px; line-height: 1.72; color: #3d3020; }
+    .card ul { list-style: none; padding: 0; }
+    .card ul li::before { content: '—'; margin-right: 6px; color: var(--faded); }
+
+    .note { background: var(--hi); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: 13px 16px; margin: 14px 0; font-size: 13px; line-height: 1.75; color: #4a3b1a; font-style: italic; }
+    .note strong { font-style: normal; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 4px; }
+
+    .eq-block {
+      background: #0f172a; color: #e2e8f0; border-radius: 10px;
+      padding: 20px 24px; margin: 16px 0; position: relative; overflow: hidden;
+    }
+    .eq-block::before { content: 'Equations'; position: absolute; top: 10px; right: 14px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #475569; text-transform: uppercase; }
+    .eq-row { display: flex; align-items: baseline; gap: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .eq-row:last-child { border-bottom: none; }
+    .eq-name { font-family: 'DM Mono', monospace; font-size: 11.5px; color: #fbbf24; min-width: 200px; flex-shrink: 0; }
+    .eq-val { font-family: 'DM Mono', monospace; font-size: 13px; color: #93c5fd; }
+    .eq-val sub, .eq-val sup { font-size: .75em; }
+
+    .viz-wrap { background: #fff; border: 1px solid #e8e0d0; border-radius: 12px; padding: 20px; margin: 18px 0; overflow-x: auto; }
+    .viz-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--faded); margin-bottom: 14px; }
+    .viz-wrap svg { display: block; max-width: 100%; height: auto; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
+    .chip { background: var(--parchment); border: 1px solid var(--rule); border-radius: 5px; padding: 4px 12px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink); transition: background .2s; cursor: default; }
+    .chip:hover { background: var(--hi); }
+
+    .divider { display: flex; align-items: center; gap: 12px; margin: 40px 0; color: var(--faded); font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    .refs-box { background: var(--parchment); border: 1px solid var(--rule); border-radius: 10px; padding: 28px 32px; margin-top: 60px; }
+    .refs-box h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 20px; color: var(--ink); }
+    .ref-entry { border-bottom: 1px solid var(--rule); padding: 12px 0; display: flex; gap: 16px; align-items: flex-start; }
+    .ref-entry:last-child { border-bottom: none; }
+    .ref-n { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--faded); min-width: 28px; padding-top: 2px; }
+    .ref-title { font-family: 'Playfair Display', serif; font-size: 13.5px; font-weight: 700; font-style: italic; color: var(--accent); margin-bottom: 2px; }
+    .ref-auth { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--faded); }
+
+    .nb-footer { text-align: center; margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--rule); font-family: 'DM Mono', monospace; font-size: 9.5px; color: var(--faded); letter-spacing: 2px; text-transform: uppercase; }
+
+    .more-soon-box { background: #fff; border: 1.5px dashed var(--rule); border-radius: 14px; padding: 36px; text-align: center; margin-top: 60px; }
+    .more-soon-box h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); margin-bottom: 8px; }
+    .more-soon-box p { font-size: 13px; color: var(--faded); font-family: 'DM Mono', monospace; letter-spacing: .3px; }
+
+    /* ════════════════════════════
+       SITE FOOTER — identical to BSc page
+    ════════════════════════════ */
+    footer { background: #0b1f3a; color: rgba(255,255,255,.5); padding: 44px 24px 32px; }
+    .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.35); margin-bottom: 14px; }
+    .footer-name { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: rgba(255,255,255,.9); margin-bottom: 8px; }
+    .footer-desc { font-size: 12.5px; line-height: 1.7; }
+    .footer-nav-links, .footer-social-links { display: flex; flex-direction: column; gap: 7px; }
+    .footer-nav-links a, .footer-social-links a { font-size: 13px; color: rgba(255,255,255,.55); transition: color .15s; }
+    .footer-nav-links a:hover { color: rgba(255,255,255,.9); }
+    .footer-social-links a:hover { color: #93c5fd; }
+    .footer-bottom { max-width: 1180px; margin: 22px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom p { font-size: 12px; }
+    @media (max-width: 1024px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+
+    @media (max-width: 600px) {
+      .notebook-wrap { padding: 0 14px 60px; }
+      .course-banner { padding: 24px 20px; }
+      .toc-box { padding: 18px 18px; }
+      .eq-name { min-width: 150px; font-size: 10.5px; }
+      .eq-val { font-size: 11.5px; }
+      .topic-num { font-size: 38px; min-width: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <div class="nav-bar-inner">
+    <div class="nav-brand">ABS<span> · </span>Abu Bokkor Shiddik</div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <a href="service.html">Service</a>
+      <div class="dropdown">
+        <button class="dropbtn">Digital Lab ▾</button>
+        <div class="dropdown-content">
+          <a href="projects.html">⚗ Projects</a>
+          <a href="data-code.html">💾 Data &amp; Code</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Learning ▾</button>
+        <div class="dropdown-content">
+          <a href="courses.html">🎓 B.Sc. Courses</a>
+          <a href="msc-courses.html">🎓 M.Sc. Courses</a>
+          <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Insights ▾</button>
+        <div class="dropdown-content">
+          <a href="insights.html">✍ Posts</a>
+          <a href="videos.html">▶ Videos</a>
+          <a href="archive.html">📷 Photos &amp; Archive</a>
+        </div>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <div class="drawer-inner">
+      <a class="drawer-link" href="home.html">Home</a>
+      <a class="drawer-link" href="publications.html">Publications</a>
+      <a class="drawer-link" href="service.html">Service</a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Digital Lab</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="projects.html">Projects</a>
+        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Learning &amp; Events</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="courses.html">B.Sc. Courses</a>
+        <a class="drawer-link" href="msc-courses.html">M.Sc. Courses</a>
+        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Insights</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="insights.html">Posts</a>
+        <a class="drawer-link" href="videos.html">Videos</a>
+        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Personal Learning Notes · BRUR · Statistics · M.Sc.</div>
+    <h1>Postgraduate Course<br><em>Learning Notes</em></h1>
+    <p class="hero-sub">A growing personal reference covering M.Sc.-level statistics courses — exam-style questions with detailed answers, derivations, definitions, and applications from lectures, textbooks, and past papers at Begum Rokeya University, Rangpur.</p>
+    <div class="hero-badges">
+      <span class="hbadge hb1" onclick="jumpTo('c-gen')" style="cursor:pointer;">STAT5103 · Statistical Genomics &amp; Bioinformatics</span>
+      <span class="hbadge-soon">+ More M.Sc. courses coming soon</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COURSE JUMP NAV ═══ -->
+<div class="course-nav">
+  <div class="course-nav-inner">
+    <button class="cnav-btn active" onclick="jumpTo('c-gen')"><span class="cnav-dot" style="background:#0e5c4a"></span>Statistical Genomics &amp; Bioinformatics</button>
+    <span class="cnav-soon">more courses to be added →</span>
+  </div>
+</div>
+
+<!-- ═══ MAIN NOTEBOOK ═══ -->
+<div class="notebook-wrap">
+
+<!-- ══════════════════════════════════════════════
+     COURSE — STAT5103 · Statistical Genomics & Bioinformatics
+══════════════════════════════════════════════ -->
+<div class="course-block" id="c-gen">
+  <div class="course-banner cb-gen">
+    <div class="cb-watermark">🧬</div>
+    <div class="cb-code">STAT5103 · M.Sc. Statistics · BRUR · Exam Prep Notes (2022 &amp; 2023 Papers)</div>
+    <div class="cb-title">Statistical Genomics &amp; Bioinformatics</div>
+    <div class="cb-sub">Bioinformatics &amp; Statistics · Cell Division · Linkage &amp; Recombination · Central Dogma · QTL Mapping · Map Functions · Differential Gene Expression · Genome Sequencing · OMICS</div>
+  </div>
+
+  <div class="note" style="background:#eafaf3;border-left-color:#0e5c4a;font-style:normal;margin-bottom:32px;">
+    <strong style="color:#0e5c4a;">📋 About These Notes</strong>
+    These notes are organised as exam preparation material, combining the original 2022 exam question set with new topics introduced in the 2023 exam paper. Each section follows a question → detailed answer structure rather than a textbook narrative — ideal for revision before the final exam. Where a 2023-paper topic overlaps with 2022 content (e.g., mitosis/meiosis, linkage basics), it has been merged into one section rather than repeated.
+  </div>
+
+  <div class="toc-box">
+    <div class="toc-box-title">Topics Covered</div>
+    <div class="toc-grid">
+      <a class="toc-link" href="#g1"  data-n="01">Bioinformatics &amp; Its Role in Statistics</a>
+      <a class="toc-link" href="#g2"  data-n="02">Mitosis vs Meiosis — Cell Division</a>
+      <a class="toc-link" href="#g3"  data-n="03">Genetic Linkage, Recombination Fraction &amp; Map Distance</a>
+      <a class="toc-link" href="#g4"  data-n="04">Central Dogma &amp; Roles of RNA</a>
+      <a class="toc-link" href="#g5"  data-n="05">Quantitative Trait Loci (QTL) &amp; Regression Models</a>
+      <a class="toc-link" href="#g6"  data-n="06">Crossing Over &amp; Two-Point Linkage Analysis (LOD Score)</a>
+      <a class="toc-link" href="#g7"  data-n="07">Mendel's Laws &amp; Mapping Functions (Morgan, Haldane)</a>
+      <a class="toc-link" href="#g8"  data-n="08">Differential Gene Expression &amp; Microarray Workflow</a>
+      <a class="toc-link" href="#g9"  data-n="09">Genome Sequencing — Sanger vs NGS</a>
+      <a class="toc-link" href="#g10" data-n="10">Linkage Analysis, LD vs LE &amp; OMICS Overview</a>
+    </div>
+  </div>
+
+  <!-- G1 -->
+  <div class="topic-section" id="g1">
+    <div class="topic-header">
+      <div class="topic-num" style="color:#a8e0cc;">01</div>
+      <div class="topic-title-block">
+        <div class="topic-label">Foundations</div>
+        <div class="topic-title">Bioinformatics &amp; Its <span style="color:#0e5c4a;">Role in Statistics</span></div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🧬</span><div class="card-lbl">What it is</div><h3>An Interdisciplinary Field</h3><p>Bioinformatics combines biology, computer science, mathematics, and statistics to collect, store, manage, analyse, and interpret biological data — DNA sequences, RNA transcripts, protein structures, gene-expression profiles. It develops algorithms and statistical methods to turn raw biological data into biological knowledge.</p></div>
+      <div class="card c-how"><span class="card-icon">⚙️</span><div class="card-lbl">Statistics' Contribution</div><h3>The Inferential Backbone</h3><ul><li><strong>Experimental design:</strong> replication, randomisation, blocking in microarray/RNA-seq studies</li><li><strong>Hypothesis testing:</strong> t-tests, ANOVA, LOD-score tests for linkage</li><li><strong>Multiple testing correction:</strong> FDR (Benjamini–Hochberg) across thousands of genes/markers</li><li><strong>Regression &amp; GLMs:</strong> QTL regression, RNA-seq count models, GWAS logistic regression</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">More Contributions</div><h3>Probability, ML &amp; Bayesian Methods</h3><ul><li><strong>Probability models:</strong> Markov chains/HMMs for sequence alignment; Poisson/negative-binomial for read counts</li><li><strong>Multivariate &amp; ML:</strong> clustering, PCA, classification for -omics data</li><li><strong>Bayesian inference:</strong> incorporating prior biological knowledge into gene mapping</li></ul></div>
+      <div class="card c-warn"><span class="card-icon">⚠️</span><div class="card-lbl">Why It Matters</div><h3>Trust in the Signal</h3><p>Modern biology produces extremely large, high-dimensional, noisy datasets. Without statistics' inferential rigour (significance, confidence, error control), patterns found by bioinformatics tools could not be trusted as real rather than due to chance.</p></div>
+    </div>
+    <div class="note"><strong>Memory Tip</strong>Bio + Informatics = using computational and statistical tools to make sense of biological information.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- G2 -->
+  <div class="topic-section" id="g2">
+    <div class="topic-header"><div class="topic-num" style="color:#a8e0cc;">02</div><div class="topic-title-block"><div class="topic-label">Cell Biology</div><div class="topic-title">Mitosis vs <span style="color:#0e5c4a;">Meiosis</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🔁</span><div class="card-lbl">Mitosis</div><h3>Growth, Repair &amp; Asexual Reproduction</h3><ul><li>One division (PMAT: Prophase, Metaphase, Anaphase, Telophase)</li><li>2 daughter cells, diploid (2n)</li><li>Genetically identical to the parent cell</li><li>No homologous pairing or crossing over</li><li>Occurs in somatic cells</li></ul></div>
+      <div class="card c-how"><span class="card-icon">🧬</span><div class="card-lbl">Meiosis</div><h3>Production of Gametes</h3><ul><li>Two successive divisions (Meiosis I &amp; II)</li><li>4 daughter cells, haploid (n)</li><li>Genetically unique — recombined</li><li>Homologous pairing (synapsis) in Prophase I</li><li>Crossing over present — generates recombinants</li><li>Occurs in germ cells (gonads)</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Key Distinction</div><h3>Why Both Exist</h3><p>Mitosis maintains genetic constancy across somatic cell generations. Meiosis introduces genetic variation (via independent assortment and crossing over) while halving chromosome number, so fertilisation restores the diploid state in offspring.</p></div>
+    </div>
+
+    <div class="viz-wrap">
+      <div class="viz-title">Mitosis vs Meiosis — Outcome Comparison</div>
+      <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <!-- Mitosis -->
+        <text x="150" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5c4a">Mitosis</text>
+        <circle cx="60" cy="60" r="22" fill="#0e5c4a30" stroke="#0e5c4a" stroke-width="1.5"/>
+        <text x="60" y="65" text-anchor="middle" font-size="9" fill="#0e5c4a">2n</text>
+        <line x1="86" y1="60" x2="120" y2="60" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrM)"/>
+        <circle cx="150" cy="40" r="18" fill="#0e5c4a25" stroke="#0e5c4a" stroke-width="1.5"/>
+        <text x="150" y="45" text-anchor="middle" font-size="8.5" fill="#0e5c4a">2n</text>
+        <circle cx="150" cy="84" r="18" fill="#0e5c4a25" stroke="#0e5c4a" stroke-width="1.5"/>
+        <text x="150" y="89" text-anchor="middle" font-size="8.5" fill="#0e5c4a">2n</text>
+        <text x="150" y="115" text-anchor="middle" font-size="9" fill="#64748b">2 identical diploid cells</text>
+        <defs><marker id="arrM" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/></marker></defs>
+
+        <!-- Meiosis -->
+        <text x="480" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#7c3aed">Meiosis</text>
+        <circle cx="380" cy="60" r="22" fill="#7c3aed25" stroke="#7c3aed" stroke-width="1.5"/>
+        <text x="380" y="65" text-anchor="middle" font-size="9" fill="#7c3aed">2n</text>
+        <line x1="406" y1="60" x2="436" y2="60" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrM)"/>
+        <circle cx="465" cy="25" r="13" fill="#7c3aed20" stroke="#7c3aed" stroke-width="1.5"/>
+        <text x="465" y="29" text-anchor="middle" font-size="7.5" fill="#7c3aed">n</text>
+        <circle cx="465" cy="58" r="13" fill="#7c3aed20" stroke="#7c3aed" stroke-width="1.5"/>
+        <text x="465" y="62" text-anchor="middle" font-size="7.5" fill="#7c3aed">n</text>
+        <circle cx="465" cy="91" r="13" fill="#7c3aed20" stroke="#7c3aed" stroke-width="1.5"/>
+        <text x="465" y="95" text-anchor="middle" font-size="7.5" fill="#7c3aed">n</text>
+        <circle cx="465" cy="124" r="13" fill="#7c3aed20" stroke="#7c3aed" stroke-width="1.5"/>
+        <text x="465" y="128" text-anchor="middle" font-size="7.5" fill="#7c3aed">n</text>
+        <text x="480" y="155" text-anchor="middle" font-size="9" fill="#64748b">4 unique haploid gametes</text>
+        <text x="480" y="170" text-anchor="middle" font-size="8.5" fill="#94a3b8">(crossing over + independent assortment)</text>
+      </svg>
+    </div>
+
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Mitosis result</span><span class="eq-val">1 cell (2n) → 2 cells (2n, 2n) — identical</span></div>
+      <div class="eq-row"><span class="eq-name">Meiosis result</span><span class="eq-val">1 cell (2n) → 4 cells (n, n, n, n) — recombined</span></div>
+    </div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- G3 -->
+  <div class="topic-section" id="g3">
+    <div class="topic-header"><div class="topic-num" style="color:#a8e0cc;">03</div><div class="topic-title-block"><div class="topic-label">Linkage</div><div class="topic-title">Genetic Linkage, Recombination Fraction &amp; <span style="color:#0e5c4a;">Map Distance</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🔗</span><div class="card-lbl">Genetic Linkage</div><h3>Inherited Together</h3><p>Two or more loci located close together on the same chromosome tend to be inherited together more often than expected under independent assortment — because physically close loci are less likely to be separated by a crossover. Linkage is an exception to Mendel's Law of Independent Assortment.</p></div>
+      <div class="card c-how"><span class="card-icon">📐</span><div class="card-lbl">Recombination Fraction (r)</div><h3>Proportion of Recombinants</h3><p>r = (number of recombinant offspring) / (total offspring). r = 0 → complete linkage; r = 0.5 → independent assortment (unlinked); 0 &lt; r &lt; 0.5 → partial linkage (smaller r = loci physically closer).</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Map Distance</div><h3>Morgans &amp; centiMorgans</h3><p>Map distance expresses physical separation in terms of expected crossover frequency (Morgans/cM); 1 cM ≈ 1% recombination for closely-spaced loci. For distant loci, multiple crossovers can cancel out and go undetected, so observed r underestimates true distance — mapping functions correct for this.</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Recombination fraction</span><span class="eq-val">r = (# recombinant offspring) / (total offspring)</span></div>
+      <div class="eq-row"><span class="eq-name">Range &amp; meaning</span><span class="eq-val">r=0: complete linkage &nbsp;|&nbsp; r=0.5: unlinked &nbsp;|&nbsp; 0&lt;r&lt;0.5: partial linkage</span></div>
+      <div class="eq-row"><span class="eq-name">Map unit</span><span class="eq-val">1 cM ≈ 1% recombination (short distances only)</span></div>
+    </div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- G4 -->
+  <div class="topic-section" id="g4">
+    <div class="topic-header"><div class="topic-num" style="color:#a8e0cc;">04</div><div class="topic-title-block"><div class="topic-label">Molecular Biology</div><div class="topic-title">Central Dogma &amp; <span style="color:#0e5c4a;">Roles of RNA</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🧪</span><div class="card-lbl">The Central Dogma</div><h3>Crick (1958)</h3><p>Describes the directional flow of genetic information: DNA → (transcription) → RNA → (translation) → Protein. DNA also replicates (DNA→DNA). In retroviruses, reverse transcription (RNA→DNA) is an exception to the classical dogma.</p></div>
+      <div class="card c-how"><span class="card-icon">⚙️</span><div class="card-lbl">5 Steps</div><h3>Replication to Maturation</h3><ul><li><strong>1. Replication:</strong> semi-conservative copying of DNA</li><li><strong>2. Transcription:</strong> RNA polymerase synthesises pre-mRNA from the DNA template (nucleus)</li><li><strong>3. RNA processing:</strong> 5' capping, splicing, 3' polyadenylation → mature mRNA</li><li><strong>4. Translation:</strong> ribosomes read codons; tRNA delivers amino acids; rRNA catalyses peptide bonds</li><li><strong>5. Post-translational modification:</strong> folding &amp; chemical modification into a mature protein</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Roles of RNA</div><h3>Beyond mRNA</h3><ul><li><strong>mRNA:</strong> template for protein synthesis</li><li><strong>tRNA:</strong> delivers amino acids via anticodon–codon matching</li><li><strong>rRNA:</strong> structural/catalytic ribosome component</li><li><strong>miRNA / siRNA:</strong> post-transcriptional gene silencing</li><li><strong>snRNA:</strong> spliceosome component (intron removal)</li><li><strong>snoRNA:</strong> guides rRNA methylation</li><li><strong>lncRNA:</strong> regulates gene expression &amp; chromatin structure</li></ul></div>
+    </div>
+
+    <div class="viz-wrap">
+      <div class="viz-title">Central Dogma — Information Flow</div>
+      <svg viewBox="0 0 640 140" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <rect x="20" y="45" width="150" height="50" rx="8" fill="#0e5c4a15" stroke="#0e5c4a" stroke-width="1.5"/>
+        <text x="95" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#0e5c4a">DNA</text>
+        <path d="M170,55 A60,40 0 0 1 170,30" fill="none" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrC)"/>
+        <text x="95" y="22" text-anchor="middle" font-size="8.5" fill="#94a3b8">replication</text>
+
+        <line x1="170" y1="70" x2="245" y2="70" stroke="#0e5c4a" stroke-width="2" marker-end="url(#arrC)"/>
+        <text x="207" y="62" text-anchor="middle" font-size="9" fill="#0e5c4a">transcription</text>
+
+        <rect x="250" y="45" width="150" height="50" rx="8" fill="#1a4a6b15" stroke="#1a4a6b" stroke-width="1.5"/>
+        <text x="325" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#1a4a6b">RNA</text>
+
+        <line x1="400" y1="70" x2="475" y2="70" stroke="#1a4a6b" stroke-width="2" marker-end="url(#arrC)"/>
+        <text x="437" y="62" text-anchor="middle" font-size="9" fill="#1a4a6b">translation</text>
+
+        <rect x="480" y="45" width="150" height="50" rx="8" fill="#8b2e0a15" stroke="#8b2e0a" stroke-width="1.5"/>
+        <text x="555" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#8b2e0a">Protein</text>
+
+        <path d="M325,45 C300,15 250,15 220,38" fill="none" stroke="#c4302b" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrC)"/>
+        <text x="270" y="15" text-anchor="middle" font-size="8" fill="#c4302b">reverse transcription (retroviruses)</text>
+        <defs><marker id="arrC" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/></marker></defs>
+      </svg>
+    </div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- G5 -->
+  <div class="topic-section" id="g5">
+    <div class="topic-header"><div class="topic-num" style="color:#a8e0cc;">05</div><div class="topic-title-block"><div class="topic-label">Quantitative Genetics</div><div class="topic-title">Quantitative Trait Loci (QTL) &amp; <span style="color:#0e5c4a;">Regression Models</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">📍</span><div class="card-lbl">What is a QTL?</div><h3>A Mapped Genomic Region</h3><p>A QTL is a genome region statistically associated with variation in a continuous trait (body weight, milk yield, blood pressure). Identified not by direct observation of a single gene but by testing association between marker genotypes and phenotype in a segregating population.</p></div>
+      <div class="card c-how"><span class="card-icon">⚖️</span><div class="card-lbl">QTL vs Mendelian Locus</div><h3>Key Differences</h3><ul><li><strong>Trait type:</strong> continuous (QTL) vs discrete (Mendelian)</li><li><strong>Genes:</strong> many, small effects (QTL) vs single, major effect (Mendelian)</li><li><strong>Detection:</strong> regression/association (QTL) vs segregation ratios &amp; χ² (Mendelian)</li><li><strong>Penetrance:</strong> incomplete, polygenic background (QTL) vs complete (Mendelian)</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Simple QTL Regression</div><h3>Marker-Based Mapping</h3><p>Phenotype regressed on genotype score at a marker: yᵢ = μ + b·xᵢ + eᵢ, eᵢ~N(0,σ²). If the marker is linked to a QTL, b differs significantly from zero.</p></div>
+      <div class="card c-form"><span class="card-icon">🔢</span><div class="card-lbl">F2 Additive–Dominance Model</div><h3>Three Genotype Classes</h3><p>For AA / Aa / aa with additive score x = +1, 0, −1 and dominance score z = 0, 1, 0: yᵢ = μ + a·xᵢ + d·zᵢ + eᵢ. a = additive effect (half the homozygote-mean difference); d = dominance effect (heterozygote deviation from mid-parent).</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Simple QTL regression</span><span class="eq-val">yᵢ = μ + b·xᵢ + eᵢ &nbsp;&nbsp;, eᵢ ~ N(0,σ²)</span></div>
+      <div class="eq-row"><span class="eq-name">F2 additive–dominance model</span><span class="eq-val">yᵢ = μ + a·xᵢ + d·zᵢ + eᵢ</span></div>
+      <div class="eq-row"><span class="eq-name">Additive effect</span><span class="eq-val">â = (ȳ_AA − ȳ_aa) / 2</span></div>
+      <div class="eq-row"><span class="eq-name">Dominance effect</span><span class="eq-val">d̂ = ȳ_Aa − (ȳ_AA + ȳ_aa)/2</span></div>
+      <div class="eq-row"><span class="eq-name">Two-genotype t-test</span><span class="eq-val">t = (ȳ₁−ȳ₀) / √[sp²(1/n₁+1/n₀)] &nbsp;~ t(n₁+n₀−2)</span></div>
+      <div class="eq-row"><span class="eq-name">Pooled variance</span><span class="eq-val">sp² = [(n₁−1)s₁² + (n₀−1)s₀²] / (n₁+n₀−2)</span></div>
+    </div>
+    <div class="note"><strong>One-Way ANOVA for 3 F2 Genotype Groups</strong>H₀: μ_AA=μ_Aa=μ_aa. SST=SSB+SSW; F = MSB/MSW ~ F(2, n−3). If F exceeds the critical value, the marker shows an overall genotype effect — evidence it is linked to a QTL. Follow-up t-tests on â and d̂ separately test the additive and dominance components.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- G6 -->
+  <div class="topic-section" id="g6">
+    <div class="topic-header"><div class="topic-num" style="color:#a8e0cc;">06</div><div class="topic-title-block"><div class="topic-label">Mapping Mechanics</div><div class="topic-title">Crossing Over &amp; Two-Point Linkage Analysis <span style="color:#0e5c4a;">(LOD Score)</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">✂️</span><div class="card-lbl">Crossing Over</div><h3>Physical Exchange of Segments</h3><p>Crossing over is the exchange of chromosomal segments between non-sister chromatids of homologous chromosomes during pachytene (Prophase I). A crossover between loci A and B produces recombinant chromatids (Ab, aB) differing from parental (AB, ab). P(crossover) — and hence r — increases with physical distance, the basis of genetic mapping.</p></div>
+      <div class="card c-how"><span class="card-icon">🧮</span><div class="card-lbl">F1 Gamete Classes</div><h3>Parental vs Recombinant</h3><p>From F1 = AB/ab (coupling phase): gamete AB (parental, freq (1−r)/2), ab (parental, (1−r)/2), Ab (recombinant, r/2), aB (recombinant, r/2). With a fully informative marker, every offspring gamete is unambiguously classified, giving r̂ = (# recombinant)/(total).</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">LOD Score</div><h3>Testing H₀: r = 0.5</h3><p>Likelihood L(r) = (1−r)^nP · r^nR is binomial in the parental (nP) and recombinant (nR) offspring counts; r̂ = nR/n. LOD(r) = log₁₀[L(r̂)/L(0.5)]. <strong>LOD ≥ 3</strong> is the conventional threshold for declaring significant linkage (1000:1 odds); LOD ≤ −2 is significant evidence against linkage.</p></div>
+      <div class="card c-form"><span class="card-icon">🔢</span><div class="card-lbl">LOD ↔ Likelihood Ratio</div><h3>Connecting the Two Frameworks</h3><p>LR = L(r̂)/L(0.5) = 10^Z where Z is the LOD score. The likelihood-ratio chi-square statistic Λ = 2ln(LR) = 2ln(10)·Z ≈ 4.605·Z is approximately χ²(1) under H₀ — so LOD=3 ⇔ Λ≈13.8, far exceeding the χ²(1) critical value of 3.84 at α=0.05.</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Likelihood (binomial)</span><span class="eq-val">L(r) = (1−r)^nP · r^nR</span></div>
+      <div class="eq-row"><span class="eq-name">MLE of r</span><span class="eq-val">r̂ = nR / n &nbsp;&nbsp;(n = nP + nR)</span></div>
+      <div class="eq-row"><span class="eq-name">LOD score</span><span class="eq-val">Z(r) = log₁₀[L(r̂)/L(0.5)] &nbsp;&nbsp;significant if Z ≥ 3</span></div>
+      <div class="eq-row"><span class="eq-name">LR ↔ LOD</span><span class="eq-val">LR = 10^Z &nbsp;&nbsp;; &nbsp;&nbsp;Λ = 2ln(LR) = 4.605·Z ~ χ²(1) under H₀</span></div>
+    </div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- G7 -->
+  <div class="topic-section" id="g7">
+    <div class="topic-header"><div class="topic-num" style="color:#a8e0cc;">07</div><div class="topic-title-block"><div class="topic-label">Mapping Theory</div><div class="topic-title">Mendel's Laws &amp; <span style="color:#0e5c4a;">Mapping Functions</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">⚖️</span><div class="card-lbl">Mendel's Two Laws</div><h3>Segregation &amp; Independent Assortment</h3><ul><li><strong>Segregation:</strong> the two alleles of a gene separate during gamete formation — each gamete gets one allele</li><li><strong>Independent assortment:</strong> alleles of different genes assort independently if on different chromosomes (or far apart) — gives the 9:3:3:1 dihybrid F2 ratio</li><li>Linkage violates independent assortment for genes on the same chromosome</li></ul></div>
+      <div class="card c-how"><span class="card-icon">📐</span><div class="card-lbl">Why a Map Function?</div><h3>Correcting for Hidden Crossovers</h3><p>A map function m=f(r) converts observed recombination fraction r into additive map distance d. Needed because double crossovers between distant loci restore parental combinations and go undetected — so observed r underestimates d and saturates at 0.5 even as d grows.</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Morgan vs Haldane</div><h3>Two Mapping Functions</h3><ul><li><strong>Morgan:</strong> d = r (no correction) — accurate only for small r (≲0.10)</li><li><strong>Haldane:</strong> r = ½(1−e^(−2d)) ⇔ d = −½ln(1−2r) — assumes Poisson crossovers, no interference; valid over a wider range</li></ul></div>
+      <div class="card c-form"><span class="card-icon">🧮</span><div class="card-lbl">Derivation of Haldane's Function</div><h3>From Poisson Crossovers</h3><p>If N~Poisson(d) crossovers occur in interval AC, a gamete is recombinant iff N is odd. Using P(N even)−P(N odd)=e^(−2d) and P(even)+P(odd)=1 gives P(N odd) = ½(1−e^(−2d)) = r_AC. For small d, r≈d (consistent with 1 cM≈1%); as d→∞, r→0.5.</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Morgan function</span><span class="eq-val">d = r &nbsp;&nbsp;(valid only for short distances)</span></div>
+      <div class="eq-row"><span class="eq-name">Haldane function</span><span class="eq-val">r = ½(1 − e^(−2d)) &nbsp;⇔&nbsp; d = −½ ln(1 − 2r)</span></div>
+      <div class="eq-row"><span class="eq-name">Poisson crossover count</span><span class="eq-val">N ~ Poisson(d) &nbsp;&nbsp;; &nbsp;&nbsp;recombinant iff N is odd</span></div>
+      <div class="eq-row"><span class="eq-name">Additivity of map distance</span><span class="eq-val">d_AC = d_AB + d_BC &nbsp;&nbsp;(N_AC = N_AB + N_BC, sum of independent Poissons)</span></div>
+      <div class="eq-row"><span class="eq-name">Non-additivity of r</span><span class="eq-val">r_AC = r_AB + r_BC − 2·r_AB·r_BC &nbsp;&nbsp;(NOT simply additive)</span></div>
+    </div>
+
+    <div class="viz-wrap">
+      <div class="viz-title">Recombination Fraction r vs Map Distance d — Morgan vs Haldane</div>
+      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <line x1="50" y1="190" x2="520" y2="190" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="50" y1="190" x2="50" y2="20" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="285" y="210" text-anchor="middle" font-size="10" fill="#64748b">map distance d (Morgans)</text>
+        <text x="18" y="105" text-anchor="middle" font-size="10" fill="#64748b" transform="rotate(-90,18,105)">recombination fraction r</text>
+        <line x1="50" y1="90" x2="520" y2="90" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="525" y="93" font-size="9" fill="#94a3b8">r=0.5</text>
+        <!-- Morgan line d=r (capped visually) -->
+        <line x1="50" y1="190" x2="200" y2="90" stroke="#dc2626" stroke-width="2"/>
+        <line x1="200" y1="90" x2="520" y2="90" stroke="#dc2626" stroke-width="2" stroke-dasharray="2,3"/>
+        <text x="230" y="80" font-size="9" fill="#dc2626">Morgan: d = r (only valid near origin)</text>
+        <!-- Haldane curve r = 0.5(1-e^-2d) -->
+        <path d="M50,190 C 120,140 180,100 260,92 C 340,86 420,84 520,83" fill="none" stroke="#0e5c4a" stroke-width="2.5"/>
+        <text x="330" y="115" font-size="9" fill="#0e5c4a">Haldane: r = ½(1−e^(−2d))</text>
+        <text x="60" y="200" font-size="8.5" fill="#94a3b8">0</text>
+      </svg>
+    </div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- G8 -->
+  <div class="topic-section" id="g8">
+    <div class="topic-header"><div class="topic-num" style="color:#a8e0cc;">08</div><div class="topic-title-block"><div class="topic-label">Gene Expression</div><div class="topic-title">Differential Gene Expression &amp; <span style="color:#0e5c4a;">Microarray Workflow</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">📊</span><div class="card-lbl">DE Genes</div><h3>What "Differentially Expressed" Means</h3><p>Gene expression = abundance of the RNA transcript (and ultimately protein) in a cell/tissue. A gene is differentially expressed (DE) when its observed change between conditions (disease vs healthy, treated vs untreated) is unlikely to be due to random/technical variation alone.</p></div>
+      <div class="card c-how"><span class="card-icon">⚙️</span><div class="card-lbl">Detection Methods</div><h3>From Fold-Change to GLMs</h3><ul><li>Fold-change ratio with cut-off</li><li>Two-sample / Welch's t-test (gene-by-gene)</li><li>ANOVA for &gt;2 groups</li><li><strong>SAM:</strong> regularised t-statistic + permutation FDR</li><li><strong>Empirical Bayes (limma):</strong> borrows info across genes, stabilises variance for small n</li><li><strong>edgeR / DESeq2:</strong> negative-binomial GLMs for over-dispersed RNA-seq counts</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">SAM's Innovation</div><h3>The "Fudge Factor"</h3><p>SAM adds a small constant s₀ to the SE denominator, stabilising the test statistic for genes with very small variance (preventing spurious significance), and estimates FDR directly via permutation of group labels — more robust than a plain t-test in small-sample microarray settings.</p></div>
+      <div class="card c-warn"><span class="card-icon">⚠️</span><div class="card-lbl">Why DE Analysis Matters</div><h3>Importance</h3><ul><li>Identifies candidate genes/pathways for disease or treatment response</li><li>Discovers biomarkers for diagnosis, prognosis, drug targets</li><li>Reveals molecular mechanisms behind phenotypic differences</li><li>Forms the basis of precision medicine</li></ul></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Two-sample t-test (per gene)</span><span class="eq-val">t = (x̄₁ − x̄₂) / √(s₁²/n₁ + s₂²/n₂)</span></div>
+      <div class="eq-row"><span class="eq-name">SAM-modified statistic</span><span class="eq-val">d = (x̄₁−x̄₂) / (SE + s₀) &nbsp;&nbsp;(s₀ = fudge factor)</span></div>
+      <div class="eq-row"><span class="eq-name">Multiple testing</span><span class="eq-val">Benjamini–Hochberg FDR correction across thousands of genes</span></div>
+    </div>
+    <div class="note"><strong>cDNA Microarray Workflow</strong>RNA extraction → reverse transcription to fluorescently-labelled cDNA → hybridisation onto the array → scanning to quantify signal intensity → normalisation (correcting dye/array bias) → statistical DE testing (t-test/SAM/limma) with FDR correction.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- G9 -->
+  <div class="topic-section" id="g9">
+    <div class="topic-header"><div class="topic-num" style="color:#a8e0cc;">09</div><div class="topic-title-block"><div class="topic-label">Sequencing Technology</div><div class="topic-title">Genome Sequencing — <span style="color:#0e5c4a;">Sanger vs NGS</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🧫</span><div class="card-lbl">What it is</div><h3>Determining Base Order</h3><p>Genome sequencing determines the complete, precise order of nucleotide bases (A,T,G,C) across all chromosomes of an organism. Methods include Sanger (chain-termination), Next-Generation Sequencing (NGS), and third-generation long-read sequencing (PacBio, Oxford Nanopore).</p></div>
+      <div class="card c-how"><span class="card-icon">⚖️</span><div class="card-lbl">Sanger vs NGS</div><h3>Key Trade-offs</h3><ul><li><strong>Throughput:</strong> low, one fragment at a time (Sanger) vs millions in parallel (NGS)</li><li><strong>Read length:</strong> long &amp; accurate ~700–1000bp (Sanger) vs short ~100–300bp (short-read NGS)</li><li><strong>Cost/base:</strong> high (Sanger) vs dramatically lower (NGS)</li><li><strong>Accuracy:</strong> very high per-read (Sanger, gold standard) vs lower per-read but high aggregate accuracy via deep coverage (NGS)</li><li><strong>Use:</strong> single-gene confirmation (Sanger) vs whole-genome/exome, RNA-seq, population studies (NGS)</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">WGS, WES &amp; Shotgun Strategy</div><h3>Strategic Choices</h3><p>Whole Genome Sequencing (WGS) covers everything; Whole Exome Sequencing (WES) targets only protein-coding exons — cheaper, focused on coding variants. Shotgun sequencing randomly fragments the genome, sequences overlapping pieces, and computationally reassembles them.</p></div>
+      <div class="card c-where"><span class="card-icon">✅</span><div class="card-lbl">Applications</div><h3>Where Sequencing Is Used</h3><ul><li>Disease-gene &amp; cancer-driver mutation discovery</li><li>Personalised/precision medicine</li><li>Pathogen genomics &amp; outbreak surveillance</li><li>Agricultural genomics, forensics, pharmacogenomics</li><li>Comparative &amp; evolutionary genomics</li></ul></div>
+    </div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- G10 -->
+  <div class="topic-section" id="g10">
+    <div class="topic-header"><div class="topic-num" style="color:#a8e0cc;">10</div><div class="topic-title-block"><div class="topic-label">Genome-Wide Mapping</div><div class="topic-title">Linkage Analysis, LD vs LE &amp; <span style="color:#0e5c4a;">OMICS Overview</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🔬</span><div class="card-lbl">Linkage Analysis</div><h3>Goals in Statistical Genomics</h3><ul><li>Detect &amp; confirm linkage between trait/disease loci and markers</li><li>Construct genetic (linkage) maps — order &amp; distances of loci</li><li>Localise disease genes/QTLs to chromosomal regions</li><li>Estimate recombination fractions and modes of inheritance</li></ul></div>
+      <div class="card c-how"><span class="card-icon">⚖️</span><div class="card-lbl">LD vs LE</div><h3>Linkage Disequilibrium vs Equilibrium</h3><ul><li><strong>LE:</strong> alleles at two loci associate by chance (D≈0) — loci far apart or many generations of recombination</li><li><strong>LD:</strong> non-random allele association (D≠0) — loci physically close, recent mutation, selection, drift, admixture</li><li>LD is the basis of GWAS tag-SNP mapping; strong LD complicates fine-mapping of the causal variant</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Huntington's Disease</div><h3>A Landmark Linkage Success</h3><p>Gusella et al. (1983) mapped Huntington's disease to chromosome 4p16.3 using RFLP marker G8 in a Venezuelan family via LOD-score linkage analysis — before the causal gene (HTT) was known. HTT was cloned a decade later (1993), revealing the CAG-repeat expansion. This established the strategy of positional cloning for many Mendelian diseases.</p></div>
+      <div class="card c-form"><span class="card-icon">🧬</span><div class="card-lbl">OMICS Family</div><h3>Beyond the Genome</h3><ul><li><strong>Genomics:</strong> the complete DNA/gene set</li><li><strong>Transcriptomics:</strong> the complete RNA transcript set</li><li><strong>Proteomics:</strong> the complete protein set</li><li><strong>Metabolomics:</strong> the complete small-molecule metabolite set</li><li><strong>Epigenomics:</strong> genome-wide chemical/regulatory modifications</li><li><strong>Metagenomics:</strong> genetic material from environmental/microbial communities</li><li><strong>Pharmacogenomics:</strong> genome's influence on drug response</li></ul></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">LD measures</span><span class="eq-val">D = pᴬᴮ − pᴬ·pᴮ &nbsp;&nbsp;(also expressed as D' or r² for normalised LD)</span></div>
+      <div class="eq-row"><span class="eq-name">LE condition</span><span class="eq-val">D ≈ 0 &nbsp;&nbsp;(alleles associate as expected by chance)</span></div>
+    </div>
+    <div class="note"><strong>Why Bioinformatics Matters in Health</strong>Disease diagnosis &amp; biomarker discovery, precision medicine, drug discovery &amp; design, genetic counselling, pathogen surveillance, vaccine development, cancer genomics, and large-scale clinical/EHR data mining all rely on the OMICS disciplines above, integrated through statistical genomics methods.</div>
+  </div>
+
+</div><!-- /c-gen -->
+
+<!-- ══════════════════════════════════════════════
+     MORE COURSES COMING SOON
+══════════════════════════════════════════════ -->
+<div class="more-soon-box">
+  <h4>📚 More M.Sc. Courses Coming Soon</h4>
+  <p>This page will be extended with additional postgraduate course notes over time.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     REFERENCES
+══════════════════════════════════════════════ -->
+<div class="refs-box">
+  <h4>📚 Reference Texts</h4>
+  <div class="ref-entry"><div class="ref-n">[1]</div><div><div class="ref-title">An Introduction to Statistical Genetic Data Analysis</div><div class="ref-auth">Laird, N.M. &amp; Lange, C. — MIT Press</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[2]</div><div><div class="ref-title">Bioinformatics and Functional Genomics</div><div class="ref-auth">Pevsner, J. — John Wiley &amp; Sons · 3rd Ed.</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[3]</div><div><div class="ref-title">Statistical Methods in Bioinformatics: An Introduction</div><div class="ref-auth">Ewens, W.J. &amp; Grant, G.R. — Springer · 2nd Ed.</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[4]</div><div><div class="ref-title">Mapping and Analysis of Quantitative Trait Loci</div><div class="ref-auth">Lynch, M. &amp; Walsh, B. — Sinauer Associates</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[5]</div><div><div class="ref-title">Statistics for Microarrays — Design, Analysis and Inference</div><div class="ref-auth">Wit, E. &amp; McClure, J. — John Wiley &amp; Sons</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[6]</div><div><div class="ref-title">Molecular Biology of the Cell</div><div class="ref-auth">Alberts, B. et al. — Garland Science · 6th Ed.</div></div></div>
+</div>
+
+<div class="nb-footer">STAT5103 &nbsp;·&nbsp; Dept. of Statistics, BRUR &nbsp;·&nbsp; Personal Exam-Prep Notes · Md. Abu Bokkor Shiddik &nbsp;·&nbsp; More M.Sc. courses to be added</div>
+
+</div><!-- /notebook-wrap -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Md. Abu Bokkor Shiddik</div>
+      <p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <div class="footer-nav-links">
+        <a href="home.html">Home</a>
+        <a href="publications.html">Publications</a>
+        <a href="projects.html">Projects</a>
+        <a href="courses.html">B.Sc. Courses</a>
+        <a href="msc-courses.html">M.Sc. Courses</a>
+        <a href="service.html">Service</a>
+        <a href="conference-and-workshop.html">Conferences</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <div class="footer-social-links">
+        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">🌐 Portfolio</a>
+        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Google Scholar</a>
+        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
+        <a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Md. Abu Bokkor Shiddik · All rights reserved</p>
+    <p>abubokkor.brur60@gmail.com · +880 1874 001360</p>
+  </div>
+</footer>
+
+<script>
+/* ── NAVBAR ── */
+document.querySelectorAll('.dropbtn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var dd = btn.closest('.dropdown');
+    var open = dd.classList.contains('active');
+    document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
+    if (!open) dd.classList.add('active');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
+});
+var ham = document.getElementById('hamburger');
+var navDrawer = document.getElementById('nav-drawer');
+ham.addEventListener('click', function() { ham.classList.toggle('open'); navDrawer.classList.toggle('open'); });
+navDrawer.querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() { ham.classList.remove('open'); navDrawer.classList.remove('open'); });
+});
+
+/* ── COURSE JUMP NAV ── */
+function jumpTo(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var nb = document.querySelector('.navbar');
+  var cn = document.querySelector('.course-nav');
+  var offset = (nb ? nb.offsetHeight : 56) + (cn ? cn.offsetHeight : 44) + 12;
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
+}
+
+/* Auto-highlight course nav on scroll (single course for now, ready for more) */
+var courseIds = ['c-gen'];
+var raf = null;
+window.addEventListener('scroll', function() {
+  if (raf) return;
+  raf = requestAnimationFrame(function() {
+    raf = null;
+    var nb = document.querySelector('.navbar');
+    var cn = document.querySelector('.course-nav');
+    var offset = (nb ? nb.offsetHeight : 56) + (cn ? cn.offsetHeight : 44) + 30;
+    var current = courseIds[0];
+    courseIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= offset) current = id;
+    });
+    document.querySelectorAll('.cnav-btn').forEach(function(btn, i) {
+      btn.classList.toggle('active', courseIds[i] === current);
+    });
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
