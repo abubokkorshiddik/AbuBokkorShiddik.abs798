@@ -76,6 +76,7 @@
     .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
     .hbadge { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 14px; border-radius: 5px; color: #fff; border: 1px solid rgba(255,255,255,.2); letter-spacing: .5px; }
     .hb1 { background: rgba(14,92,74,.7); }
+    .hb2 { background: rgba(30,58,138,.7); }
     .hbadge-soon { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 14px; border-radius: 5px; color: rgba(255,255,255,.45); border: 1px dashed rgba(255,255,255,.25); letter-spacing: .5px; }
 
     /* ════════════════════════════
@@ -111,6 +112,7 @@
     }
     .course-banner::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
     .cb-gen    { background: linear-gradient(135deg, #07241c, #0e5c4a); }
+    .cb-ssp    { background: linear-gradient(135deg, #0a1533, #1e3a8a); }
     .cb-code { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px; }
     .cb-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; margin-bottom: 6px; position: relative; z-index: 1; }
     .cb-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,.6); letter-spacing: .5px; position: relative; z-index: 1; }
@@ -163,6 +165,11 @@
 
     .joke { background: #fff0f6; border-left: 3px solid #db2777; border-radius: 0 6px 6px 0; padding: 13px 16px; margin: 14px 0; font-size: 13px; line-height: 1.75; color: #5c1a3a; }
     .joke strong { font-style: normal; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: #db2777; display: block; margin-bottom: 4px; }
+
+    .deriv { background: #eef2ff; border-left: 3px solid #4338ca; border-radius: 0 6px 6px 0; padding: 15px 18px; margin: 14px 0; font-size: 13px; line-height: 1.8; color: #1e1b4b; }
+    .deriv strong { font-style: normal; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: #4338ca; display: block; margin-bottom: 6px; }
+    .deriv .dstep { display: block; margin: 4px 0; padding-left: 14px; border-left: 2px solid #c7d2fe; }
+    .deriv code { font-family: 'DM Mono', monospace; font-size: 12px; background: #e0e7ff; padding: 1px 5px; border-radius: 3px; color: #312e81; }
 
     .eq-block {
       background: #0f172a; color: #e2e8f0; border-radius: 10px;
@@ -304,6 +311,7 @@
     <p class="hero-sub">A growing personal reference covering M.Sc.-level statistics courses — friendly, in-depth explanations, derivations, definitions, and applications from lectures, textbooks, and real-world examples at Begum Rokeya University, Rangpur. Written so anyone, statistician or not, can actually enjoy reading it.</p>
     <div class="hero-badges">
       <span class="hbadge hb1" onclick="jumpTo('c-gen')" style="cursor:pointer;">STAT5103 · Statistical Genomics &amp; Bioinformatics</span>
+      <span class="hbadge hb2" onclick="jumpTo('c-ssp')" style="cursor:pointer;">STAT5102 · Statistical Signal Processing</span>
       <span class="hbadge-soon">+ More M.Sc. courses coming soon</span>
     </div>
   </div>
@@ -313,6 +321,7 @@
 <div class="course-nav">
   <div class="course-nav-inner">
     <button class="cnav-btn active" onclick="jumpTo('c-gen')"><span class="cnav-dot" style="background:#0e5c4a"></span>Statistical Genomics &amp; Bioinformatics</button>
+    <button class="cnav-btn" onclick="jumpTo('c-ssp')"><span class="cnav-dot" style="background:#1e3a8a"></span>Statistical Signal Processing</button>
     <span class="cnav-soon">more courses to be added →</span>
   </div>
 </div>
@@ -493,6 +502,36 @@
       <div class="eq-row"><span class="eq-name">Pooled variance</span><span class="eq-val">sp² = [(n₁−1)s₁² + (n₀−1)s₀²] / (n₁+n₀−2)</span></div>
     </div>
     <div class="note"><strong>One-Way ANOVA for 3 F2 Genotype Groups</strong>H₀: μ_AA=μ_Aa=μ_aa. SST=SSB+SSW; F = MSB/MSW ~ F(2, n−3). If F exceeds the critical value, the marker shows an overall genotype effect — evidence it is linked to a QTL. Follow-up t-tests on â and d̂ separately test the additive and dominance components.</div>
+    <div class="deriv">
+      <strong>📐 Where â and d̂ come from</strong>
+      Plug the coding scores (x=+1,0,−1 for AA,Aa,aa; z=0,1,0) into <code>yᵢ = μ + a·xᵢ + d·zᵢ + eᵢ</code> and take group means. For the AA group (x=1,z=0): <code>ȳ_AA = μ+a</code>. For aa (x=−1,z=0): <code>ȳ_aa = μ−a</code>. Subtracting and dividing by 2 isolates a cleanly:
+      <span class="dstep">ȳ_AA − ȳ_aa = 2a &nbsp;⇒&nbsp; â = (ȳ_AA − ȳ_aa)/2</span>
+      For the heterozygote Aa (x=0,z=1): <code>ȳ_Aa = μ+d</code>. Since μ = (ȳ_AA+ȳ_aa)/2 from the two homozygote means, substituting gives:
+      <span class="dstep">d̂ = ȳ_Aa − μ̂ = ȳ_Aa − (ȳ_AA+ȳ_aa)/2</span>
+      In words: a is literally half the gap between the two homozygous extremes (how far each allele copy pushes the trait), and d is how far the heterozygote's mean sits away from the midpoint of the two homozygotes (zero if inheritance is purely additive, non-zero if there's dominance).
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">Additive (a) &amp; Dominance (d) Effects — Visualised</div>
+      <svg viewBox="0 0 560 190" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <line x1="60" y1="160" x2="500" y2="160" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="280" y="180" text-anchor="middle" font-size="10" fill="#64748b">genotype</text>
+        <text x="140" y="30" text-anchor="middle" font-size="9.5" fill="#64748b">aa</text>
+        <text x="280" y="30" text-anchor="middle" font-size="9.5" fill="#64748b">Aa</text>
+        <text x="420" y="30" text-anchor="middle" font-size="9.5" fill="#64748b">AA</text>
+        <circle cx="140" cy="130" r="5" fill="#1a5c2e"/>
+        <circle cx="280" cy="80" r="5" fill="#5a2080"/>
+        <circle cx="420" cy="50" r="5" fill="#1a5c2e"/>
+        <line x1="140" y1="130" x2="420" y2="50" stroke="#1a5c2e" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="280" y1="90" x2="280" y2="80" stroke="#5a2080" stroke-width="2"/>
+        <text x="140" y="145" text-anchor="middle" font-size="8.5" fill="#1a5c2e">ȳ_aa</text>
+        <text x="420" y="42" text-anchor="middle" font-size="8.5" fill="#1a5c2e">ȳ_AA</text>
+        <text x="280" y="65" text-anchor="middle" font-size="8.5" fill="#5a2080">ȳ_Aa</text>
+        <line x1="500" y1="130" x2="500" y2="50" stroke="#8b2e0a" stroke-width="1"/>
+        <text x="510" y="92" font-size="9" fill="#8b2e0a">2a = ȳ_AA − ȳ_aa</text>
+        <line x1="280" y1="90" x2="330" y2="90" stroke="#5a2080" stroke-width="1"/>
+        <text x="335" y="93" font-size="9" fill="#5a2080">d = deviation from midpoint</text>
+      </svg>
+    </div>
     <div class="note"><strong>Plain-English Recap</strong>Unlike a single Mendelian gene that flips a trait on/off (like pea colour), a QTL is more like one of many tiny dimmer switches that together control something continuous, like height or milk yield. We can't see the switch directly, so we watch a nearby DNA "marker" instead — if individuals with a particular marker genotype consistently have higher/lower trait values, that marker is probably sitting close to a real QTL.</div>
     <div class="joke"><strong>😂 Lab Humor</strong>A single Mendelian gene is like a light switch — on or off, tall or short, round or wrinkled. A QTL is like a room with 200 dimmer switches, all slightly randomly set, and your job is to figure out which switch is connected to the lamp just by watching the brightness change. Geneticists call this "polygenic inheritance." Everyone else calls it "why does my family reunion look like a genetics lecture."</div>
   </div>
@@ -512,6 +551,33 @@
       <div class="eq-row"><span class="eq-name">MLE of r</span><span class="eq-val">r̂ = nR / n &nbsp;&nbsp;(n = nP + nR)</span></div>
       <div class="eq-row"><span class="eq-name">LOD score</span><span class="eq-val">Z(r) = log₁₀[L(r̂)/L(0.5)] &nbsp;&nbsp;significant if Z ≥ 3</span></div>
       <div class="eq-row"><span class="eq-name">LR ↔ LOD</span><span class="eq-val">LR = 10^Z &nbsp;&nbsp;; &nbsp;&nbsp;Λ = 2ln(LR) = 4.605·Z ~ χ²(1) under H₀</span></div>
+    </div>
+    <div class="deriv">
+      <strong>📐 Where the binomial likelihood and r̂ = nR/n come from</strong>
+      Every offspring gamete is independently classified as parental (probability 1−r) or recombinant (probability r) — a Bernoulli trial repeated n times, so the count of recombinants nR follows a Binomial(n, r) distribution:
+      <span class="dstep">L(r) = P(nR recombinants out of n) ∝ (1−r)^(n−nR) · r^(nR) = (1−r)^nP · r^nR</span>
+      To find the MLE, take the log and differentiate with respect to r:
+      <span class="dstep">ln L(r) = nP·ln(1−r) + nR·ln(r) &nbsp;⇒&nbsp; d(lnL)/dr = −nP/(1−r) + nR/r = 0</span>
+      <span class="dstep">⇒ nR(1−r) = nP·r &nbsp;⇒&nbsp; nR = r(nP+nR) = r·n &nbsp;⇒&nbsp; r̂ = nR/n</span>
+      So the "just count the fraction of recombinants" formula is, again, not a shortcut — it's exactly what maximising the binomial likelihood produces. The LOD score log₁₀[L(r̂)/L(0.5)] then compares how much more plausible the best-fitting r̂ is versus the "no linkage" baseline of r=0.5, expressed on a log₁₀ scale purely for historical convenience (easy to add LOD scores across markers when building a full genetic map).
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">LOD Score — How Confidently r̂ Beats r = 0.5</div>
+      <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <line x1="50" y1="170" x2="520" y2="170" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="50" y1="170" x2="50" y2="20" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="285" y="190" text-anchor="middle" font-size="10" fill="#64748b">recombination fraction r</text>
+        <text x="20" y="95" text-anchor="middle" font-size="10" fill="#64748b" transform="rotate(-90,20,95)">L(r)</text>
+        <path d="M60,165 C120,120 160,40 220,32 C280,26 340,60 420,130 C460,150 490,160 505,165" fill="none" stroke="#0e5c4a" stroke-width="2.5"/>
+        <line x1="222" y1="30" x2="222" y2="170" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="222" cy="30" r="4" fill="#dc2626"/>
+        <text x="222" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="700">r̂ = nR/n (peak)</text>
+        <line x1="470" y1="150" x2="470" y2="170" stroke="#1e3a8a" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="470" cy="150" r="4" fill="#1e3a8a"/>
+        <text x="470" y="185" text-anchor="middle" font-size="9" fill="#1e3a8a" font-weight="700">r = 0.5 (unlinked)</text>
+        <text x="345" y="90" font-size="9" fill="#64748b">LOD = log₁₀[L(r̂) / L(0.5)]</text>
+        <text x="345" y="102" font-size="8.5" fill="#94a3b8">— the vertical "gap" between the two points</text>
+      </svg>
     </div>
     <div class="note"><strong>Plain-English Recap</strong>A LOD score of 3 means the data is 1,000 times more likely to occur if the genes really are linked than if they were totally independent — that's why "LOD ≥ 3" became the gold-standard bar for claiming linkage, much like p &lt; 0.05 in ordinary stats, except scaled in powers of 10 instead of probabilities.</div>
     <div class="joke"><strong>😂 Lab Humor</strong>Getting a LOD score of 3 is geneticists' version of a court verdict: "beyond reasonable doubt, these two genes are definitely hanging out together." A LOD score of 0.5 is more like, "well, they were at the same party once, that proves nothing."</div>
@@ -533,6 +599,15 @@
       <div class="eq-row"><span class="eq-name">Poisson crossover count</span><span class="eq-val">N ~ Poisson(d) &nbsp;&nbsp;; &nbsp;&nbsp;recombinant iff N is odd</span></div>
       <div class="eq-row"><span class="eq-name">Additivity of map distance</span><span class="eq-val">d_AC = d_AB + d_BC &nbsp;&nbsp;(N_AC = N_AB + N_BC, sum of independent Poissons)</span></div>
       <div class="eq-row"><span class="eq-name">Non-additivity of r</span><span class="eq-val">r_AC = r_AB + r_BC − 2·r_AB·r_BC &nbsp;&nbsp;(NOT simply additive)</span></div>
+    </div>
+    <div class="deriv">
+      <strong>📐 Deriving Haldane's r = ½(1−e^(−2d)) step by step</strong>
+      Model the number of crossovers N in an interval of map length d as N ~ Poisson(d) — the standard assumption of no interference, crossovers occurring independently and uniformly. A gamete ends up recombinant exactly when an <em>odd</em> number of crossovers occurred (each crossover flips which parental strand you're tracking; an even number flips back to where you started).
+      <span class="dstep">P(N even) − P(N odd) = Σₖ (−1)^k P(N=k) = Σₖ (−d)^k/k! · e^(−d) = e^(−d)·e^(−d) = e^(−2d)</span>
+      (using the Poisson pmf and recognising the alternating sum as the series for e^(−d))
+      <span class="dstep">Also P(N even) + P(N odd) = 1. Solving the two equations together:</span>
+      <span class="dstep">P(N odd) = [1 − e^(−2d)] / 2 = r</span>
+      That's the full derivation of Haldane's function. Check the limits: as d→0, expanding e^(−2d)≈1−2d gives r≈d (matches "1 cM ≈ 1% recombination" for short distances). As d→∞, e^(−2d)→0 so r→0.5 — confirming that r can never exceed 0.5 no matter how far apart two loci are, even though map distance d keeps growing without bound.
     </div>
 
     <div class="viz-wrap">
@@ -612,6 +687,495 @@
   </div>
 
 </div><!-- /c-gen -->
+
+<!-- ══════════════════════════════════════════════
+     COURSE — STAT5102 · Statistical Signal Processing
+══════════════════════════════════════════════ -->
+<div class="course-block" id="c-ssp">
+  <div class="course-banner cb-ssp">
+    <div class="cb-watermark">📡</div>
+    <div class="cb-code">STAT5102 · M.Sc. Statistics · BRUR · Learning Notes</div>
+    <div class="cb-title">Statistical Signal Processing</div>
+    <div class="cb-sub">Signals &amp; Classification · Real-World Analog Signals · Sampling &amp; Digitisation · Transformations · Estimation Theory · ML &amp; EM · CRLB &amp; BLUE · Bayesian Estimation (MAP, MMSE, MAE) · Linear Bayesian Estimator · Detection Theory · Applications</div>
+  </div>
+
+  <div class="toc-box">
+    <div class="toc-box-title">Topics Covered</div>
+    <div class="toc-grid">
+      <a class="toc-link" href="#s1"  data-n="01">Signals &amp; Their Classification</a>
+      <a class="toc-link" href="#s2"  data-n="02">Real-World Analog Signals — Audio, Video &amp; Biomedical</a>
+      <a class="toc-link" href="#s3"  data-n="03">Digital Representation of Analog Signals</a>
+      <a class="toc-link" href="#s4"  data-n="04">Role of Transformation in Signal Processing</a>
+      <a class="toc-link" href="#s5"  data-n="05">Signal Estimation Theory — The Basics</a>
+      <a class="toc-link" href="#s6"  data-n="06">Maximum Likelihood Estimation of Signal Parameters</a>
+      <a class="toc-link" href="#s7"  data-n="07">The EM Algorithm</a>
+      <a class="toc-link" href="#s8"  data-n="08">Minimum Variance Unbiased Estimation — CRLB &amp; BLUE</a>
+      <a class="toc-link" href="#s9"  data-n="09">Bayesian Estimators — MAP, MMSE &amp; MAE</a>
+      <a class="toc-link" href="#s10" data-n="10">Linear Bayesian Estimator</a>
+      <a class="toc-link" href="#s11" data-n="11">Signal Detection Theory</a>
+      <a class="toc-link" href="#s12" data-n="12">Applications of Estimation &amp; Detection</a>
+    </div>
+  </div>
+
+  <!-- S1 -->
+  <div class="topic-section" id="s1">
+    <div class="topic-header">
+      <div class="topic-num" style="color:#c7d2fe;">01</div>
+      <div class="topic-title-block">
+        <div class="topic-label">Foundations</div>
+        <div class="topic-title">Signals &amp; Their <span style="color:#1e3a8a;">Classification</span></div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">📶</span><div class="card-lbl">What is a Signal?</div><h3>Information Carried by Variation</h3><p>A signal is any quantity that varies with an independent variable (usually time or space) and carries information — a voltage, a sound pressure wave, a pixel-intensity grid, a voltage trace from the heart. Signal processing is the statistical and mathematical toolkit for extracting the information hidden inside that variation, despite noise.</p></div>
+      <div class="card c-how"><span class="card-icon">🗂️</span><div class="card-lbl">Classification by Nature</div><h3>Continuous vs Discrete</h3><ul><li><strong>Continuous-time (analog):</strong> defined at every instant, e.g. voice pressure wave</li><li><strong>Discrete-time:</strong> defined only at sample instants, e.g. a sampled ECG trace</li><li><strong>Continuous-valued vs quantised (digital):</strong> amplitude can take any value vs a finite set of levels</li><li><strong>Digital signal</strong> = discrete-time AND quantised (what computers actually store)</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Classification by Behaviour</div><h3>Deterministic vs Random</h3><ul><li><strong>Deterministic:</strong> exactly reproducible by a formula, e.g. a pure sine wave</li><li><strong>Random (stochastic):</strong> only describable statistically, e.g. thermal noise, biological signals with trial-to-trial variability</li><li><strong>Periodic vs aperiodic:</strong> repeats after a fixed period or not</li><li><strong>Deterministic vs stochastic distinction is exactly why statistics enters signal processing</strong> — most real signals are noisy and must be estimated, not read off directly</li></ul></div>
+      <div class="card c-form"><span class="card-icon">🔢</span><div class="card-lbl">Classification by Energy</div><h3>Energy vs Power Signals</h3><p>An energy signal has finite total energy E=∫|x(t)|²dt and zero average power (e.g. a single pulse). A power signal has infinite energy but finite average power (e.g. a sinusoid that goes on forever). Most man-made communication and biomedical signals of interest are treated as power or finite-duration energy signals depending on context.</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">General model</span><span class="eq-val">x(t) = s(t) + n(t) &nbsp;&nbsp;(signal + noise)</span></div>
+      <div class="eq-row"><span class="eq-name">Signal energy</span><span class="eq-val">E = ∫ |x(t)|² dt</span></div>
+      <div class="eq-row"><span class="eq-name">Signal power</span><span class="eq-val">P = lim_(T→∞) (1/T) ∫_(-T/2)^(T/2) |x(t)|² dt</span></div>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>Almost nothing you record in the real world is a "clean" signal — a microphone, an ECG electrode, a satellite antenna all pick up your signal of interest tangled up with noise. Statistical signal processing exists precisely because we rarely see s(t) directly; we see x(t) = s(t) + n(t) and have to work backward.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>A deterministic signal is that one friend who always shows up exactly on time and says exactly the same thing. A random signal is the friend who shows up "sometime between 2 and 9pm" and you can only describe their behaviour using a probability distribution. Engineers call the second one "stochastic." Everyone else calls it "Dhaka traffic."</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S2 -->
+  <div class="topic-section" id="s2">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">02</div><div class="topic-title-block"><div class="topic-label">Applications</div><div class="topic-title">Real-World Analog Signals — <span style="color:#1e3a8a;">Audio, Video &amp; Biomedical</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🔊</span><div class="card-lbl">Audio Signals</div><h3>Acoustic Pressure Waves</h3><p>Sound is a continuous variation in air pressure over time, roughly 20 Hz–20 kHz for human hearing. Microphones convert pressure to a continuous voltage signal — the classic 1-D time-varying analog signal, the textbook starting point for sampling theory.</p></div>
+      <div class="card c-how"><span class="card-icon">🎞️</span><div class="card-lbl">Video Signals</div><h3>Intensity Varying in Space AND Time</h3><p>Video is a sequence of 2-D image frames (spatial intensity/colour signals) sampled rapidly in time — a 3-D signal (x, y, t). Statistically, each pixel is itself noisy, and frame-to-frame estimation/detection (motion, edges, objects) is a core signal-processing problem.</p></div>
+      <div class="card c-idea"><span class="card-icon">🩺</span><div class="card-lbl">Biomedical Signals</div><h3>EEG, ECG, PET, CT, US</h3><ul><li><strong>EEG:</strong> scalp electrical activity from neuronal firing — low amplitude (μV), heavily contaminated by muscle/eye-blink noise</li><li><strong>ECG:</strong> electrical activity of the heart — quasi-periodic, used for arrhythmia/QRS detection</li><li><strong>PET:</strong> detects gamma-ray pairs from a radioactive tracer — signal is a photon-count (Poisson) process, reconstructed into a metabolic image</li><li><strong>CT:</strong> X-ray attenuation measured from many angles, reconstructed via inverse transforms (Radon transform) into a cross-sectional image</li><li><strong>US (Ultrasound):</strong> reflected high-frequency sound pulses; signal = time-delay &amp; amplitude of echoes</li></ul></div>
+      <div class="card c-warn"><span class="card-icon">🛰️</span><div class="card-lbl">SAR &amp; Microarray Signals</div><h3>Non-Traditional "Signals"</h3><ul><li><strong>SAR (Synthetic Aperture Radar):</strong> a moving radar emits pulses and records the phase/amplitude of returned echoes; synthetic combination of many pulses over the platform's motion creates a high-resolution image — a classic statistical estimation problem, since raw radar echoes are extremely noisy</li><li><strong>Microarray signal:</strong> fluorescence intensity at each spot on a chip is treated as a "signal" whose true expression level must be estimated from noisy optical measurement — the same estimation theory used for radar or biomedical data applies directly to gene-expression quantification</li></ul></div>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>Whatever the source — sound waves, heartbeats, radar echoes, or glowing spots on a microarray chip — the underlying statistical problem is identical: a true quantity of interest is buried under measurement noise, and we need principled estimation/detection tools to dig it out. That's why the same estimation theory (ML, EM, CRLB, Bayesian estimators) shows up across audio engineering, medical imaging, radar, and genomics.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>An EEG signal is basically your brain trying to whisper something important while a blinking eyelid stands right next to the microphone shouting. Untangling the whisper from the shout is 90% of what a signal-processing statistician does for a living.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S3 -->
+  <div class="topic-section" id="s3">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">03</div><div class="topic-title-block"><div class="topic-label">Digitisation</div><div class="topic-title">Digital Representation of <span style="color:#1e3a8a;">Analog Signals</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">⏱️</span><div class="card-lbl">Sampling</div><h3>Continuous → Discrete Time</h3><p>Sampling reads the analog signal's value at regular instants tₙ = nTₛ, producing a discrete-time sequence x[n] = x(nTₛ). The sampling rate fₛ = 1/Tₛ must be chosen carefully — too low, and information is permanently lost (aliasing).</p></div>
+      <div class="card c-how"><span class="card-icon">📏</span><div class="card-lbl">Quantisation</div><h3>Continuous → Discrete Amplitude</h3><p>Quantisation rounds each sample's amplitude to the nearest of a finite set of levels (e.g. 2ᴮ levels for a B-bit ADC), introducing quantisation error/noise. Finer quantisation (more bits) reduces this error but increases data storage and bandwidth needs.</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Nyquist–Shannon Sampling Theorem</div><h3>The Golden Rule</h3><p>A band-limited signal with maximum frequency fₘₐₓ can be perfectly reconstructed from its samples only if fₛ &gt; 2fₘₐₓ (the Nyquist rate). Sampling below this rate causes aliasing — high frequencies masquerade as false low frequencies in the reconstructed signal.</p></div>
+      <div class="card c-form"><span class="card-icon">🔢</span><div class="card-lbl">ADC Pipeline</div><h3>End-to-End Digitisation</h3><p>Analog signal → anti-aliasing low-pass filter (removes frequencies above fₛ/2) → sample-and-hold → quantiser (ADC) → digital code (binary sequence) → stored/processed digital signal x[n].</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Sampling</span><span class="eq-val">x[n] = x(nTₛ), &nbsp;fₛ = 1/Tₛ</span></div>
+      <div class="eq-row"><span class="eq-name">Nyquist condition</span><span class="eq-val">fₛ &gt; 2·fₘₐₓ &nbsp;&nbsp;(else aliasing occurs)</span></div>
+      <div class="eq-row"><span class="eq-name">Quantisation step</span><span class="eq-val">Δ = (Vₘₐₓ − Vₘᵢₙ) / 2ᴮ &nbsp;&nbsp;(B = number of bits)</span></div>
+      <div class="eq-row"><span class="eq-name">Quantisation noise power</span><span class="eq-val">σ²_q = Δ² / 12 &nbsp;&nbsp;(uniform quantisation error model)</span></div>
+      <div class="eq-row"><span class="eq-name">SQNR (signal-to-quantisation-noise ratio)</span><span class="eq-val">SQNR (dB) ≈ 6.02·B + 1.76</span></div>
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">Sampling &amp; Aliasing — Adequate vs Insufficient Rate</div>
+      <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <text x="160" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">fₛ &gt; 2fₘₐₓ — correct reconstruction</text>
+        <path d="M20,60 Q60,20 100,60 T180,60 T260,60 T300,60" fill="none" stroke="#1e3a8a" stroke-width="1.5" opacity="0.4"/>
+        <g fill="#1e3a8a">
+          <circle cx="20" cy="60" r="3"/><circle cx="42" cy="34" r="3"/><circle cx="64" cy="60" r="3"/><circle cx="86" cy="86" r="3"/>
+          <circle cx="108" cy="60" r="3"/><circle cx="130" cy="34" r="3"/><circle cx="152" cy="60" r="3"/><circle cx="174" cy="86" r="3"/>
+          <circle cx="196" cy="60" r="3"/><circle cx="218" cy="34" r="3"/><circle cx="240" cy="60" r="3"/><circle cx="262" cy="86" r="3"/>
+        </g>
+        <text x="160" y="115" text-anchor="middle" font-size="9" fill="#64748b">enough samples per cycle to trace the true wave</text>
+
+        <text x="480" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">fₛ &lt; 2fₘₐₓ — aliasing (false low frequency)</text>
+        <path d="M340,60 Q380,20 420,60 T500,60 T580,60 T620,60" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.35"/>
+        <g fill="#dc2626">
+          <circle cx="340" cy="60" r="3.5"/><circle cx="395" cy="86" r="3.5"/><circle cx="450" cy="60" r="3.5"/><circle cx="505" cy="34" r="3.5"/><circle cx="560" cy="60" r="3.5"/>
+        </g>
+        <path d="M340,60 C 380,110 440,10 505,34 C 545,48 560,60 560,60" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="3,3"/>
+        <text x="480" y="140" text-anchor="middle" font-size="9" fill="#dc2626">too few samples — a slow "ghost" wave appears instead</text>
+        <text x="480" y="155" text-anchor="middle" font-size="8.5" fill="#94a3b8">(the actual fast wave in gray is invisible from the red dots alone)</text>
+      </svg>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>Sampling too slowly doesn't just give you a "blurry" version of the signal — it gives you a completely wrong, fake signal that looks perfectly legitimate (aliasing). That's the classic "wagon-wheel effect" in old movies where spinning wheels appear to rotate backward: the camera's frame rate (its sampling rate) is too slow for the wheel's true rotation speed.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Undersampling is like trying to summarise a 3-hour movie using only 5 screenshots taken at random — you might end up believing the hero spent the entire film standing perfectly still, when really they were sprinting the whole time. The Nyquist theorem is just statistics politely saying, "take more screenshots."</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S4 -->
+  <div class="topic-section" id="s4">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">04</div><div class="topic-title-block"><div class="topic-label">Transform Domain</div><div class="topic-title">Role of <span style="color:#1e3a8a;">Transformation</span> in Signal Processing</div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🔁</span><div class="card-lbl">Why Transform?</div><h3>A Different View of the Same Signal</h3><p>A signal viewed in the time domain can hide structure that becomes obvious in another domain (frequency, scale, etc.). Transformations re-express a signal in a basis where the properties we care about — periodicity, bandwidth, sparsity, noise separation — are easier to see and to exploit.</p></div>
+      <div class="card c-how"><span class="card-icon">🌊</span><div class="card-lbl">Fourier Transform</div><h3>Time → Frequency</h3><p>Decomposes a signal into a sum/integral of sinusoids at different frequencies: X(f) = ∫x(t)e^(−j2πft)dt. Reveals which frequencies are present and how strong they are — essential for filtering noise (e.g. removing 50/60 Hz power-line interference from EEG) and for compression (most energy concentrated in few frequencies).</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Other Key Transforms</div><h3>Beyond Fourier</h3><ul><li><strong>Z-transform:</strong> discrete-time generalisation of the Laplace transform; central to digital filter design and stability analysis</li><li><strong>Discrete Cosine Transform (DCT):</strong> energy-compaction transform behind JPEG/MPEG compression</li><li><strong>Wavelet transform:</strong> localises both time AND frequency — ideal for non-stationary signals like ECG/EEG where frequency content changes over time</li><li><strong>Radon transform:</strong> maps an image into line-integral "projections" — the mathematical basis of CT reconstruction</li></ul></div>
+      <div class="card c-warn"><span class="card-icon">⚙️</span><div class="card-lbl">Role in Estimation &amp; Detection</div><h3>Why This Matters Statistically</h3><p>Many estimation/detection problems become far simpler in a transform domain: noise that is complicated in time may be simple (e.g. white/uncorrelated) in frequency; a weak periodic signal buried in noise may show a sharp, easily-detected peak in its spectrum. Transformations are therefore a key pre-processing step before applying ML, Bayesian, or detection-theoretic methods.</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Fourier transform</span><span class="eq-val">X(f) = ∫ x(t) e^(−j2πft) dt</span></div>
+      <div class="eq-row"><span class="eq-name">Inverse Fourier transform</span><span class="eq-val">x(t) = ∫ X(f) e^(j2πft) df</span></div>
+      <div class="eq-row"><span class="eq-name">Discrete Fourier Transform (DFT)</span><span class="eq-val">X[k] = Σₙ x[n] e^(−j2πkn/N), &nbsp;n=0..N−1</span></div>
+      <div class="eq-row"><span class="eq-name">Z-transform</span><span class="eq-val">X(z) = Σₙ x[n] z^(−n)</span></div>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>Think of the time domain as hearing an entire orchestra play at once, and the frequency domain as being handed the actual sheet music — suddenly you can see exactly which instrument (frequency) is playing how loudly, and mute the one you don't want (noise).</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>The Fourier Transform is the ultimate gossip: it takes one messy, tangled-up time signal and instantly tells you "here's exactly who's involved and how loud each one is being." Engineers have been quietly obsessed with this one trick for about 200 years, and honestly, fair enough.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S5 -->
+  <div class="topic-section" id="s5">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">05</div><div class="topic-title-block"><div class="topic-label">Estimation Theory</div><div class="topic-title">Signal Estimation Theory — <span style="color:#1e3a8a;">The Basics</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🎯</span><div class="card-lbl">The Estimation Problem</div><h3>Recovering θ from Noisy Data</h3><p>Given observed data x = [x[0],...,x[N−1]] generated from a model x[n] = s(n;θ) + w[n] (signal depending on unknown parameter(s) θ, plus noise w[n]), estimation theory seeks a function θ̂(x) — an estimator — that produces a "best" guess of θ from the data.</p></div>
+      <div class="card c-how"><span class="card-icon">⚖️</span><div class="card-lbl">Estimator Properties</div><h3>Desirable Estimator Properties</h3><ul><li><strong>Unbiasedness:</strong> E[θ̂] = θ (correct "on average")</li><li><strong>Efficiency:</strong> achieves the lowest possible variance among unbiased estimators</li><li><strong>Consistency:</strong> θ̂ → θ as sample size N → ∞</li><li><strong>Minimum Mean Square Error (MSE):</strong> MSE = Var(θ̂) + Bias(θ̂)² — the fundamental bias–variance trade-off</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Two Philosophies</div><h3>Classical vs Bayesian</h3><ul><li><strong>Classical (frequentist):</strong> θ is an unknown but fixed constant; only the data is random (leads to ML, MVU, CRLB, BLUE)</li><li><strong>Bayesian:</strong> θ is itself a random variable with a prior distribution p(θ); we compute a posterior p(θ|x) (leads to MAP, MMSE, MAE)</li></ul></div>
+      <div class="card c-form"><span class="card-icon">🔢</span><div class="card-lbl">Common Signal Models</div><h3>What θ Might Represent</h3><p>θ could be a DC level in noise, an amplitude/phase/frequency of a sinusoid (radar, sonar), a time-delay (ultrasound, SAR ranging), or an expression-intensity level (microarray spot). The estimation machinery is identical — only the model s(n;θ) changes.</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Signal-plus-noise model</span><span class="eq-val">x[n] = s(n;θ) + w[n], &nbsp;n = 0,...,N−1</span></div>
+      <div class="eq-row"><span class="eq-name">Bias</span><span class="eq-val">Bias(θ̂) = E[θ̂] − θ</span></div>
+      <div class="eq-row"><span class="eq-name">Mean square error</span><span class="eq-val">MSE(θ̂) = E[(θ̂−θ)²] = Var(θ̂) + Bias(θ̂)²</span></div>
+    </div>
+    <div class="deriv">
+      <strong>📐 Where the MSE formula comes from</strong>
+      We want a single number that measures "how wrong is θ̂ typically?" The natural choice is the expected squared error, E[(θ̂−θ)²]. Add and subtract E[θ̂] inside the square, then expand:
+      <span class="dstep">E[(θ̂−θ)²] = E[((θ̂−E[θ̂]) + (E[θ̂]−θ))²]</span>
+      <span class="dstep">= E[(θ̂−E[θ̂])²] + 2(E[θ̂]−θ)·E[θ̂−E[θ̂]] + (E[θ̂]−θ)²</span>
+      The middle cross-term vanishes because <code>E[θ̂−E[θ̂]] = 0</code> by definition of the mean. What's left is exactly <code>Var(θ̂) + Bias(θ̂)²</code>. This is why every estimator faces a trade-off: you can sometimes shrink variance by accepting a little bias, or vice versa — MSE is what tells you if that trade was worth it.
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">Bias vs Variance — the Dartboard Picture</div>
+      <svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <!-- board 1: unbiased, low variance -->
+        <g>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="90" cy="90" r="46" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="90" cy="90" r="22" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="90" cy="90" r="3" fill="#dc2626"/>
+          <g fill="#1e3a8a"><circle cx="88" cy="86" r="3"/><circle cx="93" cy="92" r="3"/><circle cx="86" cy="93" r="3"/><circle cx="92" cy="87" r="3"/><circle cx="90" cy="90" r="3"/></g>
+          <text x="90" y="180" text-anchor="middle" font-size="9.5" fill="#1e3a8a" font-weight="700">Unbiased, low variance</text>
+          <text x="90" y="194" text-anchor="middle" font-size="8.5" fill="#64748b">MVU estimator — the goal</text>
+        </g>
+        <!-- board 2: unbiased, high variance -->
+        <g>
+          <circle cx="320" cy="90" r="70" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="320" cy="90" r="46" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="320" cy="90" r="22" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="320" cy="90" r="3" fill="#dc2626"/>
+          <g fill="#f59e0b"><circle cx="290" cy="60" r="3"/><circle cx="355" cy="115" r="3"/><circle cx="325" cy="45" r="3"/><circle cx="280" cy="120" r="3"/><circle cx="360" cy="70" r="3"/></g>
+          <text x="320" y="180" text-anchor="middle" font-size="9.5" fill="#b45309" font-weight="700">Unbiased, high variance</text>
+          <text x="320" y="194" text-anchor="middle" font-size="8.5" fill="#64748b">correct "on average" but noisy</text>
+        </g>
+        <!-- board 3: biased, low variance -->
+        <g>
+          <circle cx="550" cy="90" r="70" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="550" cy="90" r="46" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="550" cy="90" r="22" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+          <circle cx="550" cy="90" r="3" fill="#dc2626"/>
+          <g fill="#7c3aed"><circle cx="592" cy="58" r="3"/><circle cx="596" cy="64" r="3"/><circle cx="589" cy="61" r="3"/><circle cx="594" cy="55" r="3"/><circle cx="591" cy="66" r="3"/></g>
+          <text x="550" y="180" text-anchor="middle" font-size="9.5" fill="#5b21b6" font-weight="700">Biased, low variance</text>
+          <text x="550" y="194" text-anchor="middle" font-size="8.5" fill="#64748b">consistently off-target</text>
+        </g>
+      </svg>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>Estimation is just an educated, mathematically optimal form of guessing. We can't remove noise from a single measurement, but with a good model and enough data, we can construct a rule (the estimator) that gets us as close to the truth as physically possible, on average.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>An unbiased-but-high-variance estimator is like a dart player who, over a thousand throws, averages a perfect bullseye — but any single throw could land anywhere on the board, including the neighbour's yard. A biased-but-low-variance estimator is the player who always hits 2cm left of centre, every single time. Statisticians have strong opinions about which player they'd rather hire.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S6 -->
+  <div class="topic-section" id="s6">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">06</div><div class="topic-title-block"><div class="topic-label">Estimation Methods</div><div class="topic-title">Maximum Likelihood Estimation of <span style="color:#1e3a8a;">Signal Parameters</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">📈</span><div class="card-lbl">The ML Idea</div><h3>Pick the θ that Makes the Data Most Probable</h3><p>Given the likelihood p(x;θ) — the probability density of the observed data as a function of θ — the Maximum Likelihood Estimate (MLE) is the value θ̂ that maximises p(x;θ). Intuitively: "which parameter value would have made this exact data most likely to occur?"</p></div>
+      <div class="card c-how"><span class="card-icon">🧮</span><div class="card-lbl">Practical Recipe</div><h3>Log-Likelihood &amp; Calculus</h3><p>Since log is monotonic, maximising p(x;θ) is equivalent to maximising the log-likelihood ln p(x;θ) — usually easier since products of exponentials (e.g. Gaussian noise terms) become sums. Set ∂(ln p(x;θ))/∂θ = 0 and solve for θ̂ (checking it's a maximum).</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Worked Example</div><h3>DC Level in White Gaussian Noise</h3><p>Model x[n] = A + w[n], w[n]~N(0,σ²) i.i.d. The MLE of A turns out to be simply the sample mean: Â = (1/N)Σx[n]. This matches intuition — average out the noise — and is also the MVU estimator here, achieving the CRLB exactly.</p></div>
+      <div class="card c-form"><span class="card-icon">✅</span><div class="card-lbl">Large-Sample Properties</div><h3>Why ML Is So Popular</h3><ul><li>Asymptotically unbiased as N → ∞</li><li>Asymptotically efficient — attains the CRLB as N → ∞</li><li>Asymptotically Gaussian distributed — enables confidence intervals</li><li>Invariance property: if θ̂ is the MLE of θ, then g(θ̂) is the MLE of g(θ) for any function g</li></ul></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Likelihood function</span><span class="eq-val">L(θ) = p(x;θ)</span></div>
+      <div class="eq-row"><span class="eq-name">MLE definition</span><span class="eq-val">θ̂_ML = argmax_θ &nbsp;p(x;θ) = argmax_θ &nbsp;ln p(x;θ)</span></div>
+      <div class="eq-row"><span class="eq-name">Likelihood equation</span><span class="eq-val">∂ ln p(x;θ) / ∂θ = 0</span></div>
+      <div class="eq-row"><span class="eq-name">DC-level-in-noise example</span><span class="eq-val">x[n] = A + w[n] &nbsp;⇒&nbsp; Â_ML = (1/N) Σₙ x[n]</span></div>
+    </div>
+    <div class="deriv">
+      <strong>📐 Where Â = sample mean comes from</strong>
+      For x[n] = A + w[n] with w[n] ~ N(0,σ²) i.i.d., each observation has density <code>p(x[n];A) = (1/√(2πσ²))·exp(−(x[n]−A)²/2σ²)</code>. Because the samples are independent, the joint likelihood is a product, and the log-likelihood turns that product into a sum:
+      <span class="dstep">ln p(x;A) = −(N/2)ln(2πσ²) − (1/2σ²) Σₙ (x[n]−A)²</span>
+      Only the last term depends on A, so maximising the likelihood is the same as minimising Σₙ(x[n]−A)². Take the derivative with respect to A and set it to zero:
+      <span class="dstep">∂/∂A [ −(1/2σ²) Σₙ (x[n]−A)² ] = (1/σ²) Σₙ (x[n]−A) = 0</span>
+      <span class="dstep">⇒ Σₙ x[n] = N·A &nbsp;⇒&nbsp; Â = (1/N) Σₙ x[n]</span>
+      That's the whole reason "just average the data" turns out to be mathematically optimal here — it directly falls out of maximising the Gaussian likelihood, not just intuition.
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">The Likelihood Function — Finding Its Peak</div>
+      <svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <line x1="40" y1="180" x2="520" y2="180" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="40" y1="180" x2="40" y2="20" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="280" y="200" text-anchor="middle" font-size="10" fill="#64748b">θ (candidate parameter values)</text>
+        <text x="15" y="100" text-anchor="middle" font-size="10" fill="#64748b" transform="rotate(-90,15,100)">L(θ) = p(x;θ)</text>
+        <path d="M60,175 C150,175 190,30 280,30 C370,30 410,175 500,175" fill="none" stroke="#1e3a8a" stroke-width="2.5"/>
+        <line x1="280" y1="30" x2="280" y2="180" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="280" cy="30" r="4" fill="#dc2626"/>
+        <text x="280" y="15" text-anchor="middle" font-size="9.5" fill="#dc2626" font-weight="700">θ̂_ML — the peak</text>
+        <text x="280" y="196" text-anchor="middle" font-size="8.5" fill="#dc2626">∂lnL/∂θ = 0 here</text>
+        <text x="120" y="60" font-size="8.5" fill="#94a3b8">L(θ) low — data unlikely</text>
+        <text x="360" y="60" font-size="8.5" fill="#94a3b8">L(θ) low — data unlikely</text>
+      </svg>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>ML estimation flips the usual probability question around. Normally we ask "given θ, what's the chance of seeing this data?" ML instead asks "given this data, which θ made it most plausible?" — running probability in reverse to point back at the most believable explanation.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Maximum Likelihood Estimation is basically a detective walking into a crime scene and asking, "of all possible suspects, who would have made THIS EXACT mess most likely?" — then arresting that suspect. It works shockingly often, which says something either about the method or about detectives.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S7 -->
+  <div class="topic-section" id="s7">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">07</div><div class="topic-title-block"><div class="topic-label">Iterative Estimation</div><div class="topic-title">The <span style="color:#1e3a8a;">EM Algorithm</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🔄</span><div class="card-lbl">Why EM Exists</div><h3>ML When Data Is "Incomplete"</h3><p>Sometimes the log-likelihood has no closed-form maximiser — often because some relevant data is missing, hidden, or mixed together (e.g. which of several sources produced each observed sample). The Expectation-Maximization (EM) algorithm handles exactly this "incomplete data" ML problem iteratively.</p></div>
+      <div class="card c-how"><span class="card-icon">⚙️</span><div class="card-lbl">The Algorithm</div><h3>Two-Step Iteration</h3><ul><li><strong>E-step (Expectation):</strong> given the current parameter estimate θ⁽ᵏ⁾, compute the expected value of the complete-data log-likelihood over the missing/hidden data</li><li><strong>M-step (Maximization):</strong> maximise that expected log-likelihood over θ to obtain θ⁽ᵏ⁺¹⁾</li><li>Repeat E and M steps until θ converges</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Guaranteed Property</div><h3>Monotonic Improvement</h3><p>Each EM iteration is guaranteed to never decrease the observed-data log-likelihood — the algorithm climbs uphill (or stays flat) every step, though it may converge to a local rather than global maximum, so initialisation matters.</p></div>
+      <div class="card c-form"><span class="card-icon">🧬</span><div class="card-lbl">Signal-Processing Uses</div><h3>Where EM Shows Up</h3><ul><li>Separating overlapping/mixed source signals (e.g. multiple biological or radar sources)</li><li>Gaussian Mixture Model fitting for clustering noisy signal features</li><li>Missing-sample or corrupted-sample reconstruction</li><li>Channel/parameter estimation in communications when the transmitted symbol sequence is also unknown</li></ul></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">E-step</span><span class="eq-val">Q(θ|θ⁽ᵏ⁾) = E_{z|x,θ⁽ᵏ⁾} [ ln p(x,z;θ) ]</span></div>
+      <div class="eq-row"><span class="eq-name">M-step</span><span class="eq-val">θ⁽ᵏ⁺¹⁾ = argmax_θ &nbsp;Q(θ|θ⁽ᵏ⁾)</span></div>
+      <div class="eq-row"><span class="eq-name">Monotonicity guarantee</span><span class="eq-val">ln p(x;θ⁽ᵏ⁺¹⁾) ≥ ln p(x;θ⁽ᵏ⁾)</span></div>
+    </div>
+    <div class="deriv">
+      <strong>📐 Why Q(θ|θ⁽ᵏ⁾) is defined this way</strong>
+      We actually want to maximise the observed-data log-likelihood ln p(x;θ), but the hidden variable z makes that hard directly. Since <code>p(x;θ) = p(x,z;θ)/p(z|x;θ)</code>, taking logs gives <code>ln p(x;θ) = ln p(x,z;θ) − ln p(z|x;θ)</code>. Averaging both sides over the current best guess of z's distribution, p(z|x,θ⁽ᵏ⁾), removes z from the left side (it doesn't depend on z) and produces exactly the Q-function on the right:
+      <span class="dstep">ln p(x;θ) = Q(θ|θ⁽ᵏ⁾) − E_{z|x,θ⁽ᵏ⁾}[ln p(z|x;θ)]</span>
+      A key inequality (from Jensen's inequality / Gibbs' inequality) guarantees the second term is maximised — not minimised — when θ=θ⁽ᵏ⁾. So any θ that increases Q also increases (or at least doesn't decrease) the true log-likelihood. That's precisely why "maximise Q instead of the real thing" is a safe, monotonically-improving substitute.
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">EM Algorithm — The Iteration Loop</div>
+      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <rect x="60" y="30" width="180" height="60" rx="10" fill="#eef2ff" stroke="#4338ca" stroke-width="1.5"/>
+        <text x="150" y="55" text-anchor="middle" font-size="11" font-weight="700" fill="#4338ca">E-step</text>
+        <text x="150" y="72" text-anchor="middle" font-size="8.5" fill="#4338ca">guess distribution of</text>
+        <text x="150" y="83" text-anchor="middle" font-size="8.5" fill="#4338ca">hidden z given θ⁽ᵏ⁾</text>
+
+        <rect x="330" y="30" width="180" height="60" rx="10" fill="#fdf2f8" stroke="#be185d" stroke-width="1.5"/>
+        <text x="420" y="55" text-anchor="middle" font-size="11" font-weight="700" fill="#be185d">M-step</text>
+        <text x="420" y="72" text-anchor="middle" font-size="8.5" fill="#be185d">update θ⁽ᵏ⁺¹⁾ to</text>
+        <text x="420" y="83" text-anchor="middle" font-size="8.5" fill="#be185d">maximise Q(θ|θ⁽ᵏ⁾)</text>
+
+        <line x1="240" y1="60" x2="325" y2="60" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrE)"/>
+        <path d="M420,90 C420,140 150,140 150,90" fill="none" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrE)"/>
+        <text x="285" y="130" text-anchor="middle" font-size="9" fill="#64748b">repeat with new θ⁽ᵏ⁺¹⁾</text>
+        <defs><marker id="arrE" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/></marker></defs>
+
+        <text x="285" y="175" text-anchor="middle" font-size="9" fill="#0e5c4a">ln p(x;θ⁽⁰⁾) ≤ ln p(x;θ⁽¹⁾) ≤ ln p(x;θ⁽²⁾) ≤ ... → converges</text>
+        <text x="285" y="195" text-anchor="middle" font-size="8.5" fill="#94a3b8">(likelihood climbs, or stays flat, every single iteration)</text>
+      </svg>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>EM is what you do when direct maximum likelihood hits a wall because some crucial piece of the puzzle is hidden. Instead of solving the hard problem directly, EM alternates between (1) making its best guess about the missing piece given current parameters, and (2) updating parameters given that guess — repeating until both stop changing.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>EM is basically two roommates splitting a chore they don't fully understand: one guesses "I think this is probably what needs doing" (E-step), the other says "okay, given that guess, here's the best way to actually do it" (M-step) — and they keep swapping notes until the apartment stops getting messier. Somehow, this converges to a clean house.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S8 -->
+  <div class="topic-section" id="s8">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">08</div><div class="topic-title-block"><div class="topic-label">Optimality Bounds</div><div class="topic-title">Minimum Variance Unbiased Estimation — <span style="color:#1e3a8a;">CRLB &amp; BLUE</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🏆</span><div class="card-lbl">MVU Estimator</div><h3>The Best Unbiased Estimator</h3><p>Among all unbiased estimators of θ, the Minimum Variance Unbiased (MVU) estimator is the one with the smallest variance for every possible true θ. It's the theoretical "gold standard" — if it exists and can be found, no other unbiased estimator does better.</p></div>
+      <div class="card c-how"><span class="card-icon">📐</span><div class="card-lbl">Cramér–Rao Lower Bound (CRLB)</div><h3>The Speed Limit on Variance</h3><p>The CRLB gives the theoretical minimum possible variance any unbiased estimator can achieve, based on the Fisher Information I(θ) — how "sharply peaked" the likelihood is around the true θ. No unbiased estimator can beat this bound; an estimator that achieves it exactly is called <strong>efficient</strong>.</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">The Practical Alternative</div><h3>BLUE — Best Linear Unbiased Estimator</h3><p>When the exact MVU estimator is too hard to derive (e.g. noise PDF is unknown or non-Gaussian), the BLUE restricts the search to estimators that are linear functions of the data and finds the one with minimum variance among those — a practical compromise that only requires knowing the noise mean and covariance, not its full distribution.</p></div>
+      <div class="card c-form"><span class="card-icon">🔢</span><div class="card-lbl">The Information Measure</div><h3>Fisher Information</h3><p>Fisher Information I(θ) quantifies how much "information" the data carries about θ — formally, the expected curvature (negative second derivative) of the log-likelihood. Higher I(θ) → sharper likelihood peak → lower achievable variance → more precise estimation is possible.</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">CRLB (scalar θ)</span><span class="eq-val">Var(θ̂) ≥ 1 / I(θ)</span></div>
+      <div class="eq-row"><span class="eq-name">Fisher Information</span><span class="eq-val">I(θ) = −E[ ∂² ln p(x;θ) / ∂θ² ]</span></div>
+      <div class="eq-row"><span class="eq-name">Efficiency condition</span><span class="eq-val">∂ ln p(x;θ)/∂θ = I(θ)·(g(x) − θ) &nbsp;⇒&nbsp; θ̂ = g(x) is efficient</span></div>
+      <div class="eq-row"><span class="eq-name">BLUE (general linear model)</span><span class="eq-val">θ̂_BLUE = (Hᵀ C⁻¹ H)⁻¹ Hᵀ C⁻¹ x &nbsp;&nbsp;(H = model matrix, C = noise covariance)</span></div>
+    </div>
+    <div class="deriv">
+      <strong>📐 Why the bound is 1/I(θ) — and why I(θ) is called "information"</strong>
+      Start from the fact that the score function <code>∂lnp(x;θ)/∂θ</code> has mean zero (a standard regularity result) — it's a random quantity that, on average, doesn't push you away from the true θ. Its own variance, by definition, is:
+      <span class="dstep">Var(score) = E[(∂lnp/∂θ)²] = −E[∂²lnp/∂θ²] = I(θ)</span>
+      (the middle equality is a standard identity for well-behaved likelihoods). Now apply the Cauchy-Schwarz inequality to Cov(θ̂, score) — the correlation between your estimator and the score can never exceed 1 in magnitude. Working through that inequality and using E[score]=0 leads directly to:
+      <span class="dstep">Var(θ̂) ≥ 1 / I(θ)</span>
+      Intuitively: I(θ) measures how sharply the log-likelihood curves near the true θ (its negative curvature). A sharp, peaked likelihood (high curvature, high I(θ)) means even a tiny change in θ makes the data look very different — so the data carries a lot of "information" about θ, and a low-variance estimator is possible. A flat, broad likelihood (low I(θ)) means many θ values explain the data almost equally well — little information, and no estimator can pin θ down precisely, however clever it is.
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">CRLB — The Variance Floor No Unbiased Estimator Can Beat</div>
+      <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <line x1="50" y1="170" x2="520" y2="170" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="50" y1="170" x2="50" y2="20" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="285" y="190" text-anchor="middle" font-size="10" fill="#64748b">sample size N</text>
+        <text x="20" y="95" text-anchor="middle" font-size="10" fill="#64748b" transform="rotate(-90,20,95)">Var(θ̂)</text>
+        <path d="M60,40 C 150,90 220,130 300,148 C 380,158 450,163 510,165" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+        <text x="330" y="130" font-size="9.5" fill="#dc2626" font-weight="700">CRLB = 1/I(θ) — the floor</text>
+        <g fill="#1e3a8a">
+          <circle cx="90" cy="60" r="3"/><circle cx="150" cy="105" r="3"/><circle cx="220" cy="138" r="3"/><circle cx="300" cy="152" r="3"/><circle cx="380" cy="161" r="3"/><circle cx="450" cy="165" r="3"/>
+        </g>
+        <text x="380" y="70" font-size="9" fill="#1e3a8a">an efficient estimator</text>
+        <text x="380" y="82" font-size="9" fill="#1e3a8a">sits right on the curve</text>
+        <path d="M60,20 C60,20 90,60 90,60" fill="none" stroke="none"/>
+        <text x="65" y="35" font-size="8.5" fill="#94a3b8">no unbiased estimator can</text>
+        <text x="65" y="47" font-size="8.5" fill="#94a3b8">ever fall below this curve</text>
+      </svg>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>The CRLB is a "no free lunch" statement: however clever your unbiased estimator is, there's a hard floor on how small its variance can get, set entirely by how informative the data/model is. The BLUE is what you reach for when you want a good, mathematically simple estimator without needing to know the full noise distribution — you just need its mean and covariance.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>The CRLB is the universe's way of saying, "I don't care how smart your estimator is — there's a floor, and you WILL hit it." It's basically a cosmic credit limit for precision. BLUE is the estimator equivalent of "I don't know your whole financial history, just tell me your average income and how erratic your spending is, and I'll do my best."</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S9 -->
+  <div class="topic-section" id="s9">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">09</div><div class="topic-title-block"><div class="topic-label">Bayesian Estimation</div><div class="topic-title">Bayesian Estimators — <span style="color:#1e3a8a;">MAP, MMSE &amp; MAE</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🎲</span><div class="card-lbl">The Bayesian Shift</div><h3>θ Is Random, Not Fixed</h3><p>Instead of treating θ as an unknown constant, the Bayesian approach assigns it a prior distribution p(θ) representing what's known before seeing data, then combines it with the likelihood p(x|θ) via Bayes' rule to get the posterior p(θ|x) — the updated belief about θ after observing the data.</p></div>
+      <div class="card c-how"><span class="card-icon">🏔️</span><div class="card-lbl">Bayesian Point Estimators</div><h3>MAP — Maximum A Posteriori</h3><p>Chooses θ̂ as the value that maximises the posterior p(θ|x) — the single most probable value of θ given the data. Equivalent to ML when the prior is flat (non-informative), but MAP can incorporate genuine prior knowledge to stabilise noisy estimates.</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Bayesian Point Estimators</div><h3>MMSE — Minimum Mean Square Error</h3><p>Chooses θ̂ to minimise E[(θ−θ̂)²] under the posterior — the optimal solution turns out to be simply the posterior mean, E[θ|x]. MMSE penalises large errors quadratically, making it sensitive to outliers but easy to compute for Gaussian models.</p></div>
+      <div class="card c-form"><span class="card-icon">📊</span><div class="card-lbl">Bayesian Point Estimators</div><h3>MAE — Minimum Absolute Error</h3><p>Chooses θ̂ to minimise E[|θ−θ̂|] under the posterior — the optimal solution is the posterior median. MAE weighs errors linearly rather than quadratically, making it more robust to occasional large outliers than MMSE.</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Bayes' rule</span><span class="eq-val">p(θ|x) = p(x|θ)·p(θ) / p(x)</span></div>
+      <div class="eq-row"><span class="eq-name">MAP estimator</span><span class="eq-val">θ̂_MAP = argmax_θ &nbsp;p(θ|x) = argmax_θ &nbsp;[p(x|θ)·p(θ)]</span></div>
+      <div class="eq-row"><span class="eq-name">MMSE estimator</span><span class="eq-val">θ̂_MMSE = E[θ|x] &nbsp;&nbsp;(posterior mean)</span></div>
+      <div class="eq-row"><span class="eq-name">MAE estimator</span><span class="eq-val">θ̂_MAE = median of p(θ|x) &nbsp;&nbsp;(posterior median)</span></div>
+    </div>
+    <div class="deriv">
+      <strong>📐 Why each estimator lands where it does</strong>
+      All three estimators solve the same kind of problem — minimise E[Loss(θ,θ̂)|x] — just with a different loss function, and each has a clean, provable minimiser:
+      <span class="dstep"><strong style="display:inline;color:#4338ca;">MMSE (squared-error loss):</strong> minimise E[(θ−θ̂)²|x]. Differentiate w.r.t. θ̂ and set to zero: −2E[θ−θ̂|x]=0 ⟹ θ̂=E[θ|x]. The posterior mean is the unique minimiser of squared error — this is the exact same algebra as ordinary least squares, just conditioned on x.</span>
+      <span class="dstep"><strong style="display:inline;color:#4338ca;">MAE (absolute-error loss):</strong> minimise E[|θ−θ̂||x]. Splitting the expectation at θ̂ and differentiating shows the derivative is zero exactly when P(θ&lt;θ̂|x) = P(θ&gt;θ̂|x) = 0.5 — by definition, that point is the median.</span>
+      <span class="dstep"><strong style="display:inline;color:#4338ca;">MAP (0-1 / "all-or-nothing" loss):</strong> as the tolerance window around θ̂ shrinks to zero, the estimator that maximises the chance of being "exactly right" converges to wherever p(θ|x) is highest — the posterior mode.</span>
+      Since <code>p(x)</code> doesn't depend on θ, maximising the posterior is the same as maximising the numerator p(x|θ)·p(θ) alone — which is why the MAP formula only needs the likelihood times the prior, never the (often hard to compute) denominator p(x).
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">One Posterior, Three Different "Best Guesses"</div>
+      <svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <line x1="40" y1="175" x2="520" y2="175" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="280" y="195" text-anchor="middle" font-size="10" fill="#64748b">θ</text>
+        <text x="280" y="18" text-anchor="middle" font-size="10.5" fill="#64748b">Posterior density p(θ|x) — skewed (non-Gaussian)</text>
+        <path d="M60,175 C120,175 150,40 210,35 C260,32 260,90 300,120 C340,145 400,170 500,172" fill="none" stroke="#4338ca" stroke-width="2.5"/>
+        <!-- mode -->
+        <line x1="212" y1="34" x2="212" y2="175" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <circle cx="212" cy="34" r="4" fill="#dc2626"/>
+        <text x="212" y="195" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="700">MAP</text>
+        <text x="212" y="207" text-anchor="middle" font-size="8" fill="#dc2626">(mode — peak)</text>
+        <!-- median -->
+        <line x1="255" y1="80" x2="255" y2="175" stroke="#0e5c4a" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <circle cx="255" cy="80" r="4" fill="#0e5c4a"/>
+        <text x="290" y="150" text-anchor="middle" font-size="9" fill="#0e5c4a" font-weight="700">MAE</text>
+        <text x="290" y="162" text-anchor="middle" font-size="8" fill="#0e5c4a">(median — splits area 50/50)</text>
+        <!-- mean, pulled toward the long tail -->
+        <line x1="300" y1="120" x2="300" y2="175" stroke="#b45309" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <circle cx="300" cy="120" r="4" fill="#b45309"/>
+        <text x="380" y="55" text-anchor="middle" font-size="9" fill="#b45309" font-weight="700">MMSE</text>
+        <text x="380" y="67" text-anchor="middle" font-size="8" fill="#b45309">(mean — pulled toward the long tail)</text>
+      </svg>
+    </div>
+    <div class="note"><strong>Why the three points differ</strong>For a symmetric, single-peaked posterior (e.g. Gaussian), the mode, mean, and median all coincide — MAP = MMSE = MAE. They only pull apart when the posterior is skewed or multi-modal, as drawn above, which is exactly when it matters most which loss function you actually care about minimising.</div>
+    <div class="note"><strong>Plain-English Recap</strong>MAP asks "what's the single most likely value, given everything I know?" MMSE asks "what value minimises my average squared regret?" and lands on the posterior's centre of mass. MAE asks the same but for absolute regret, landing on the posterior's midpoint. All three are "correct" — they just optimise different notions of what a "good guess" means.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>MAP, MMSE, and MAE walk into a bar and are asked to guess a stranger's age from a blurry photo. MAP says "I'm going with my single most confident guess." MMSE says "I'll average all my plausible guesses, weighted by how sure I am." MAE says "I'll pick the guess right in the middle, so I'm never TOO embarrassingly wrong." All three leave the bar reasonably satisfied, which never happens with actual strangers guessing ages.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S10 -->
+  <div class="topic-section" id="s10">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">10</div><div class="topic-title-block"><div class="topic-label">Practical Bayesian Estimation</div><div class="topic-title"><span style="color:#1e3a8a;">Linear Bayesian Estimator</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">📏</span><div class="card-lbl">Why "Linear"?</div><h3>A Practical Compromise</h3><p>Computing the true MMSE/MAP estimator generally requires knowing the full joint distribution of x and θ. The Linear Bayesian estimator restricts θ̂ to be a linear (affine) function of the data, θ̂ = a + Bx, and finds the a, B that minimise Bayes MSE — needing only means and covariances, much like the BLUE does in the classical setting.</p></div>
+      <div class="card c-how"><span class="card-icon">🧮</span><div class="card-lbl">Closed-Form Solution</div><h3>General Form</h3><p>For jointly Gaussian x and θ, the Linear (and in fact optimal) Bayesian estimator has a clean closed form using the cross-covariance between θ and x and the covariance of x — this is exactly the structure behind the Kalman filter and Wiener filter, two workhorses of applied signal processing.</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">A Happy Coincidence</div><h3>Special Case: Jointly Gaussian</h3><p>When x and θ are jointly Gaussian, the MMSE estimator IS linear — so the Linear Bayesian estimator and the true MMSE estimator coincide exactly, no approximation needed. This is a major reason Gaussian noise assumptions are so convenient and widespread in signal processing.</p></div>
+      <div class="card c-form"><span class="card-icon">🛰️</span><div class="card-lbl">Where It's Used</div><h3>Real Applications</h3><ul><li>Kalman filtering — recursive linear Bayesian estimation for tracking (radar target tracking, GPS navigation)</li><li>Wiener filtering — optimal linear filter for signal-from-noise recovery (audio denoising, image restoration)</li><li>Channel equalisation in digital communications</li></ul></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Linear Bayesian estimator form</span><span class="eq-val">θ̂ = E[θ] + C_θx · C_xx⁻¹ · (x − E[x])</span></div>
+      <div class="eq-row"><span class="eq-name">Cross-covariance</span><span class="eq-val">C_θx = Cov(θ, x)</span></div>
+      <div class="eq-row"><span class="eq-name">Data covariance</span><span class="eq-val">C_xx = Cov(x, x)</span></div>
+      <div class="eq-row"><span class="eq-name">Gaussian special case</span><span class="eq-val">If (θ, x) jointly Gaussian ⇒ θ̂_MMSE = θ̂_linear &nbsp;(exact, not approximate)</span></div>
+    </div>
+    <div class="deriv">
+      <strong>📐 Where the linear formula comes from</strong>
+      Restrict the estimator to the affine form θ̂ = a + Bx and choose a, B to minimise the Bayes MSE, E[(θ−θ̂)²]. Two conditions from calculus pin the answer down:
+      <span class="dstep">Unbiasedness in expectation forces <code>a = E[θ] − B·E[x]</code>, so θ̂ = E[θ] + B(x − E[x]).</span>
+      <span class="dstep">The "orthogonality principle" requires the estimation error (θ−θ̂) to be uncorrelated with the data x — otherwise there'd be leftover structure in x you failed to use. Writing this out, <code>Cov(θ − B x, x) = 0</code>, gives <code>C_θx − B·C_xx = 0</code>, i.e. <code>B = C_θx · C_xx⁻¹</code>.</span>
+      Substituting B back gives the formula above. It only needs first and second moments (means, variances, covariances) — never the full joint density — which is exactly why it's the practical, "Bayesian BLUE" workhorse behind the Kalman and Wiener filters.
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>The Linear Bayesian estimator is the pragmatic Bayesian's toolkit: rather than needing the entire probability landscape, it just needs to know how θ and the data typically move together (their covariance) and adjusts a simple straight-line rule accordingly. When everything happens to be Gaussian, this "simple approximation" turns out to be the perfect answer anyway.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>The Linear Bayesian estimator is the friend who doesn't need your entire life story to give good advice — just tell them roughly how two things tend to move together, and they'll draw a surprisingly accurate straight line through your problems. Also, secretly, this friend IS the Kalman filter guiding your phone's GPS every time you walk somewhere.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S11 -->
+  <div class="topic-section" id="s11">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">11</div><div class="topic-title-block"><div class="topic-label">Decision Theory</div><div class="topic-title">Signal <span style="color:#1e3a8a;">Detection Theory</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🚦</span><div class="card-lbl">Detection vs Estimation</div><h3>A Different Kind of Question</h3><p>Estimation asks "what is the value of θ?" Detection asks a yes/no question: "is a signal present at all?" — formulated as choosing between two (or more) competing hypotheses based on noisy observations, e.g. H₀: x[n]=w[n] (noise only) vs H₁: x[n]=s[n]+w[n] (signal present).</p></div>
+      <div class="card c-how"><span class="card-icon">⚖️</span><div class="card-lbl">The Optimal Test</div><h3>Neyman-Pearson &amp; the Likelihood Ratio Test</h3><p>The Neyman-Pearson approach fixes an acceptable false-alarm probability P_FA and finds the test that maximises the probability of detection P_D subject to that constraint. The optimal test compares the likelihood ratio Λ(x)=p(x|H₁)/p(x|H₀) against a threshold γ — decide H₁ if Λ(x) &gt; γ.</p></div>
+      <div class="card c-idea"><span class="card-icon">💡</span><div class="card-lbl">Decision Table</div><h3>Four Outcomes</h3><ul><li><strong>Detection (true positive):</strong> say H₁, H₁ true — probability P_D</li><li><strong>False alarm (false positive):</strong> say H₁, H₀ true — probability P_FA</li><li><strong>Miss (false negative):</strong> say H₀, H₁ true — probability P_M = 1−P_D</li><li><strong>Correct rejection (true negative):</strong> say H₀, H₀ true</li></ul></div>
+      <div class="card c-form"><span class="card-icon">📈</span><div class="card-lbl">Visualising Trade-offs</div><h3>ROC Curve</h3><p>The Receiver Operating Characteristic (ROC) plots P_D against P_FA as the decision threshold γ varies, visually summarising the detector's fundamental trade-off — a better detector "bows" further toward the top-left corner (high P_D at low P_FA).</p></div>
+    </div>
+    <div class="eq-block">
+      <div class="eq-row"><span class="eq-name">Hypotheses</span><span class="eq-val">H₀: x[n]=w[n] &nbsp;&nbsp;vs&nbsp;&nbsp; H₁: x[n]=s[n]+w[n]</span></div>
+      <div class="eq-row"><span class="eq-name">Likelihood ratio test</span><span class="eq-val">Λ(x) = p(x|H₁) / p(x|H₀) &nbsp;≷&nbsp; γ</span></div>
+      <div class="eq-row"><span class="eq-name">Detection probability</span><span class="eq-val">P_D = P(decide H₁ | H₁ true)</span></div>
+      <div class="eq-row"><span class="eq-name">False alarm probability</span><span class="eq-val">P_FA = P(decide H₁ | H₀ true)</span></div>
+      <div class="eq-row"><span class="eq-name">Matched filter (known signal in WGN)</span><span class="eq-val">T(x) = Σₙ x[n]s[n] &nbsp;≷&nbsp; γ &nbsp;&nbsp;(optimal detector)</span></div>
+    </div>
+    <div class="deriv">
+      <strong>📐 Why the likelihood ratio is the optimal test (Neyman-Pearson)</strong>
+      We want to maximise P_D subject to a hard ceiling on P_FA — a constrained optimisation problem. Using a Lagrange multiplier λ to fold the constraint into the objective, we maximise:
+      <span class="dstep">P_D − λ(P_FA − α) = ∫_R p(x|H₁)dx − λ[∫_R p(x|H₀)dx − α]</span>
+      over the choice of decision region R (which x values trigger "decide H₁"). Rearranging, we want to include a point x in R whenever <code>p(x|H₁) − λ·p(x|H₀) &gt; 0</code>, i.e. whenever <code>p(x|H₁)/p(x|H₀) &gt; λ</code>. That ratio is exactly the likelihood ratio Λ(x), and λ becomes the threshold γ — so the Neyman-Pearson Lemma proves the likelihood-ratio test isn't just convenient, it's provably the single best possible test for any fixed P_FA.
+      <span class="dstep">For the matched-filter case (known signal s[n] in white Gaussian noise), plugging in the two Gaussian densities and taking logs of Λ(x) &gt; γ, all the terms that don't involve the data cancel, leaving only <code>Σₙ x[n]s[n] &gt; γ'</code> — correlating the received data against a copy of the signal you're looking for. That's why "matched filtering" (cross-correlation with a template) is the provably optimal way to detect a known signal in noise.</span>
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">Why Detection Always Trades Off P_D against P_FA</div>
+      <svg viewBox="0 0 560 190" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <line x1="40" y1="150" x2="520" y2="150" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="280" y="172" text-anchor="middle" font-size="10" fill="#64748b">test statistic T(x)</text>
+        <!-- H0 curve -->
+        <path d="M60,150 C110,150 130,40 175,40 C220,40 240,150 290,150" fill="none" stroke="#0e5c4a" stroke-width="2.5"/>
+        <text x="175" y="25" text-anchor="middle" font-size="9.5" fill="#0e5c4a" font-weight="700">p(x|H₀) — noise only</text>
+        <!-- H1 curve -->
+        <path d="M230,150 C280,150 300,55 345,55 C390,55 410,150 460,150" fill="none" stroke="#8b2e0a" stroke-width="2.5"/>
+        <text x="390" y="40" text-anchor="middle" font-size="9.5" fill="#8b2e0a" font-weight="700">p(x|H₁) — signal present</text>
+        <!-- threshold -->
+        <line x1="290" y1="150" x2="290" y2="35" stroke="#1e3a8a" stroke-width="2" stroke-dasharray="4,3"/>
+        <text x="290" y="165" text-anchor="middle" font-size="9" fill="#1e3a8a" font-weight="700">threshold γ</text>
+        <!-- shaded overlap approx as label -->
+        <text x="250" y="105" text-anchor="middle" font-size="8" fill="#b45309">shaded overlap →</text>
+        <text x="250" y="117" text-anchor="middle" font-size="8" fill="#b45309">P_FA (right of γ under H₀)</text>
+        <text x="250" y="129" text-anchor="middle" font-size="8" fill="#b45309">+ P_M (left of γ under H₁)</text>
+      </svg>
+    </div>
+    <div class="viz-wrap">
+      <div class="viz-title">The ROC Curve — Sweeping the Threshold γ</div>
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <line x1="50" y1="180" x2="350" y2="180" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="50" y1="180" x2="50" y2="20" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="200" y="200" text-anchor="middle" font-size="10" fill="#64748b">P_FA (false alarm probability)</text>
+        <text x="20" y="100" text-anchor="middle" font-size="10" fill="#64748b" transform="rotate(-90,20,100)">P_D (detection probability)</text>
+        <line x1="50" y1="180" x2="350" y2="20" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="300" y="35" font-size="8.5" fill="#94a3b8">random guessing</text>
+        <path d="M50,180 C 70,90 110,40 180,30 C 260,20 320,20 350,20" fill="none" stroke="#8b2e0a" stroke-width="2.5"/>
+        <text x="200" y="55" text-anchor="middle" font-size="9.5" fill="#8b2e0a" font-weight="700">a good detector bows toward top-left</text>
+        <circle cx="120" cy="70" r="4" fill="#1e3a8a"/>
+        <text x="130" y="65" font-size="8.5" fill="#1e3a8a">one choice of γ</text>
+      </svg>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>Detection theory is the mathematics behind every "is it there or not?" decision under uncertainty — a radar operator deciding if that blip is a real aircraft or just noise, a doctor deciding if a faint signal on an ECG is a genuine arrhythmia, or a spam filter deciding if an email is real or junk. There's always a trade-off: crank up sensitivity and you catch more true signals, but you also trigger more false alarms.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>A detector with a super low threshold is like a smoke alarm that goes off every time you make toast — technically it never misses a real fire, but everyone's ripped it off the ceiling by week two. A detector with a super high threshold is the smoke alarm that stays dead silent even as the kitchen genuinely burns down. The Neyman-Pearson approach is just statistics negotiating a reasonable middle ground between "paranoid" and "asleep at the wheel."</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- S12 -->
+  <div class="topic-section" id="s12">
+    <div class="topic-header"><div class="topic-num" style="color:#c7d2fe;">12</div><div class="topic-title-block"><div class="topic-label">Applications</div><div class="topic-title">Applications of Signal <span style="color:#1e3a8a;">Estimation &amp; Detection</span></div></div></div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🩺</span><div class="card-lbl">Biomedical</div><h3>Diagnosis from Noisy Physiology</h3><ul><li>ECG: QRS-complex detection (detection theory), heart-rate/arrhythmia parameter estimation</li><li>EEG: seizure/spike detection, source localisation (estimation of dipole parameters)</li><li>PET/CT: image reconstruction via ML/MAP estimation from noisy photon-count or attenuation data</li><li>Ultrasound: time-delay estimation for depth/velocity (Doppler) measurement</li></ul></div>
+      <div class="card c-how"><span class="card-icon">🛰️</span><div class="card-lbl">Remote Sensing</div><h3>Radar, Sonar &amp; SAR</h3><ul><li>Target detection: is a target present in a noisy return? (Neyman-Pearson / matched filter)</li><li>Parameter estimation: target range, velocity, angle from echo delay/Doppler/phase (ML, CRLB benchmarking)</li><li>SAR image formation: statistical estimation of reflectivity from raw radar phase history</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">🧬</span><div class="card-lbl">Bioinformatics Link</div><h3>Genomics &amp; Microarray</h3><ul><li>Estimating true expression intensity from noisy fluorescence measurements (MMSE/EM-based background correction)</li><li>Detecting differentially expressed genes — a detection-theoretic hypothesis test dressed up in biological language</li></ul></div>
+      <div class="card c-warn"><span class="card-icon">📡</span><div class="card-lbl">Signal Recovery</div><h3>Communications &amp; Audio</h3><ul><li>Channel estimation and equalisation (Linear Bayesian / Kalman-type estimators)</li><li>Speech/audio denoising (Wiener filtering)</li><li>Digital demodulation — deciding which symbol was sent is literally a detection problem</li></ul></div>
+    </div>
+    <div class="note"><strong>Why This Course Matters</strong>Estimation and detection theory form the shared statistical backbone underneath fields that look completely unrelated on the surface — a cardiologist reading an ECG, a radar engineer tracking a plane, and a geneticist screening a microarray are all, mathematically, solving the same kind of "find θ" or "is H₁ true?" problem, just dressed in different domain-specific clothing.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>By the end of this course you'll realise that a cardiologist reading an ECG, a radar operator watching a screen for enemy planes, and a bioinformatician squinting at a microarray chip are all, deep down, doing the exact same statistics homework — they just get very different amounts of respect at parties for it.</div>
+  </div>
+
+</div><!-- /c-ssp -->
 
 <!-- ══════════════════════════════════════════════
      MORE COURSES COMING SOON
@@ -706,7 +1270,7 @@ function jumpTo(id) {
 }
 
 /* Auto-highlight course nav on scroll (single course for now, ready for more) */
-var courseIds = ['c-gen'];
+var courseIds = ['c-gen', 'c-ssp'];
 var raf = null;
 window.addEventListener('scroll', function() {
   if (raf) return;
