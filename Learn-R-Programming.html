@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn R by example — a friendly, in-depth reference covering R basics, data structures, control flow, functions, importing/exporting data, base graphics and ggplot2, by Md. Abu Bokkor Shiddik.">
+  <meta name="keywords" content="learn R, R programming, R vector, R list, R matrix, R data frame, R factor, R for loop, R functions, apply family, ggplot2, R base graphics, Abu Bokkor Shiddik">
+  <meta name="author" content="Md. Abu Bokkor Shiddik">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Learn R By Example — Md. Abu Bokkor Shiddik">
+  <meta property="og:description" content="Start from basic level and move all the way up to professional references — R programming notes with runnable examples.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Learn R By Example — Abu Bokkor Shiddik">
+  <meta name="twitter:description" content="R programming learning notes — from basics to base graphics and ggplot2.">
+  <title>Learn R By Example | Md. Abu Bokkor Shiddik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #f8fafc; color: #0f172a; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ════════════════════════════
+       NAVBAR — identical to site
+    ════════════════════════════ */
+    .navbar { background: #0b1f3a; position: sticky; top: 0; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav-bar-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; align-items: center; height: 56px; }
+    .nav-brand { font-size: 14.5px; font-weight: 600; color: #fff; letter-spacing: .2px; margin-right: auto; white-space: nowrap; }
+    .nav-brand span { color: #93c5fd; font-weight: 300; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links > a, .dropbtn { color: rgba(255,255,255,.75); font-size: 13.5px; font-weight: 500; padding: 6px 11px; border-radius: 6px; border: none; background: none; cursor: pointer; font-family: inherit; transition: background .18s, color .18s; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,.09); }
+    .dropdown { position: relative; }
+    .dropdown-content { position: absolute; top: calc(100% + 6px); left: 0; background: #132444; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; min-width: 190px; padding: 6px; box-shadow: 0 12px 32px rgba(0,0,0,.3); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .2s, transform .2s, visibility .2s; pointer-events: none; z-index: 9999; }
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .dropdown-content a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: rgba(255,255,255,.72); font-size: 13px; font-weight: 500; border-radius: 6px; transition: background .15s, color .15s; }
+    .dropdown-content a:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 6px; margin-left: 10px; transition: background .2s; }
+    .hamburger:hover { background: rgba(255,255,255,.1); }
+    .hamburger span { display: block; width: 21px; height: 2px; background: rgba(255,255,255,.85); border-radius: 2px; transition: transform .28s, opacity .28s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display: none; background: #0d1c38; border-top: 1px solid rgba(255,255,255,.07); overflow: hidden; max-height: 0; transition: max-height .38s cubic-bezier(.4,0,.2,1); }
+    .nav-drawer.open { max-height: 700px; }
+    .drawer-inner { padding: 8px 0 16px; }
+    .drawer-link { display: block; color: rgba(255,255,255,.78); font-size: 15px; font-weight: 500; padding: 11px 24px; transition: background .15s, color .15s; }
+    .drawer-link:hover { background: rgba(255,255,255,.06); color: #fff; }
+    .drawer-section-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,.3); padding: 14px 24px 4px; }
+    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,.58); }
+    .drawer-divider { height: 1px; background: rgba(255,255,255,.06); margin: 4px 0; }
+    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-drawer { display: block; } }
+
+    /* ════════════════════════════
+       PAGE HERO
+    ════════════════════════════ */
+    .page-hero {
+      background: linear-gradient(140deg, #07152a 0%, #0d2247 50%, #0f2d5c 100%);
+      color: #fff; padding: 60px 24px 52px; position: relative; overflow: hidden;
+    }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 75% 25%, rgba(59,130,246,.13) 0%, transparent 55%), radial-gradient(circle at 5% 80%, rgba(74,222,128,.07) 0%, transparent 45%); pointer-events: none; }
+    .page-hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .hero-inner { max-width: 1180px; margin: auto; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #93c5fd; margin-bottom: 16px; }
+    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: 12px; }
+    .page-hero h1 em { color: #93c5fd; font-style: italic; }
+    .hero-sub { font-size: 14.5px; color: rgba(255,255,255,.55); max-width: 620px; margin-bottom: 24px; line-height: 1.75; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .hbadge { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 14px; border-radius: 5px; color: #fff; border: 1px solid rgba(255,255,255,.2); letter-spacing: .5px; }
+    .hb1 { background: rgba(37,99,235,.55); }
+    .hb2 { background: rgba(14,92,74,.6); }
+    .hbadge-soon { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 14px; border-radius: 5px; color: rgba(255,255,255,.45); border: 1px dashed rgba(255,255,255,.25); letter-spacing: .5px; }
+
+    /* ════════════════════════════
+       COURSE JUMP NAV
+    ════════════════════════════ */
+    .course-nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 56px; z-index: 200; }
+    .course-nav-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; gap: 0; }
+    .course-nav-inner::-webkit-scrollbar { display: none; }
+    .cnav-btn { display: inline-flex; align-items: center; gap: 6px; padding: 12px 16px; font-size: 12.5px; font-weight: 500; color: #64748b; border-bottom: 2.5px solid transparent; border-top: none; border-left: none; border-right: none; white-space: nowrap; cursor: pointer; background: none; font-family: inherit; transition: color .18s, border-color .18s; min-height: 44px; -webkit-tap-highlight-color: transparent; }
+    .cnav-btn:hover { color: #1d4ed8; }
+    .cnav-btn.active { color: #1d4ed8; border-bottom-color: #1d4ed8; font-weight: 600; }
+    .cnav-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* ════════════════════════════
+       LAYOUT — notebook paper feel
+    ════════════════════════════ */
+    :root {
+      --ink: #1a1208; --paper: #fdfaf4; --parchment: #f4ede0;
+      --accent: #8b2e0a; --accent2: #1a4a6b; --gold: #b8820a;
+      --green-h: #1a5c2e; --teal-h: #0e5c6e; --purple-h: #5a2080;
+      --faded: #8a7e6e; --rule: #ddd0b8; --hi: #fef3c7;
+      --shadow: rgba(26,18,8,.1);
+    }
+
+    .notebook-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .course-block { padding: 52px 0 0; scroll-margin-top: 110px; }
+
+    .course-banner {
+      border-radius: 14px; padding: 32px 36px; margin-bottom: 40px;
+      position: relative; overflow: hidden; color: #fff;
+      background: linear-gradient(135deg, #0b2140, #1d4ed8);
+    }
+    .course-banner::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+    .cb-code { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px; }
+    .cb-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; margin-bottom: 6px; position: relative; z-index: 1; }
+    .cb-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,.6); letter-spacing: .5px; position: relative; z-index: 1; }
+    .cb-watermark { position: absolute; right: 6px; top: -22px; font-size: 130px; opacity: .1; font-family: 'Playfair Display', serif; font-weight: 900; line-height: 1; user-select: none; }
+
+    .toc-box { background: var(--parchment); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 24px 28px; margin-bottom: 40px; }
+    .toc-box-title { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 28px; }
+    .toc-link { font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--accent2); display: flex; align-items: center; gap: 8px; padding: 3px 0; transition: color .2s; cursor: pointer; }
+    .toc-link:hover { color: var(--accent); }
+    .toc-link::before { content: attr(data-n); color: var(--faded); font-size: 9.5px; min-width: 22px; }
+    @media (max-width: 600px) { .toc-grid { grid-template-columns: 1fr; } }
+
+    .topic-section { margin-bottom: 52px; scroll-margin-top: 110px; }
+    .topic-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 24px; }
+    .topic-num { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: #e2e8f0; line-height: 1; min-width: 60px; user-select: none; }
+    .topic-title-block { flex: 1; padding-top: 4px; }
+    .topic-label { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; color: var(--faded); margin-bottom: 4px; }
+    .topic-title { font-family: 'Playfair Display', serif; font-size: clamp(16px, 2.5vw, 22px); font-weight: 700; color: var(--ink); line-height: 1.2; }
+    .topic-title span { color: var(--accent); }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 18px; }
+    @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
+
+    .card { background: #fff; border: 1px solid #e8e0d0; border-radius: 10px; padding: 18px 20px; position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow); }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 10px 10px 0 0; }
+    .card.c-what::before  { background: var(--accent2); }
+    .card.c-how::before   { background: var(--accent); }
+    .card.c-where::before { background: var(--gold); }
+    .card.c-warn::before  { background: #94a3b8; }
+    .card.c-idea::before  { background: #1a5c2e; }
+    .card.c-form::before  { background: #5a2080; }
+
+    .card-icon { font-size: 20px; margin-bottom: 8px; display: block; }
+    .card-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 7px; }
+    .card.c-what  .card-lbl { color: var(--accent2); }
+    .card.c-how   .card-lbl { color: var(--accent); }
+    .card.c-where .card-lbl { color: var(--gold); }
+    .card.c-warn  .card-lbl { color: #64748b; }
+    .card.c-idea  .card-lbl { color: #1a5c2e; }
+    .card.c-form  .card-lbl { color: #5a2080; }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+    .card p, .card li { font-size: 13px; line-height: 1.72; color: #3d3020; }
+    .card ul { list-style: none; padding: 0; }
+    .card ul li::before { content: '—'; margin-right: 6px; color: var(--faded); }
+    .card code { font-family: 'DM Mono', monospace; font-size: 11.5px; background: var(--parchment); padding: 1px 5px; border-radius: 3px; color: var(--accent); }
+
+    .note { background: var(--hi); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: 13px 16px; margin: 14px 0; font-size: 13px; line-height: 1.75; color: #4a3b1a; font-style: italic; }
+    .note strong { font-style: normal; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 4px; }
+
+    .joke { background: #fff0f6; border-left: 3px solid #db2777; border-radius: 0 6px 6px 0; padding: 13px 16px; margin: 14px 0; font-size: 13px; line-height: 1.75; color: #5c1a3a; }
+    .joke strong { font-style: normal; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: #db2777; display: block; margin-bottom: 4px; }
+
+    .deriv { background: #eef2ff; border-left: 3px solid #4338ca; border-radius: 0 6px 6px 0; padding: 15px 18px; margin: 14px 0; font-size: 13px; line-height: 1.8; color: #1e1b4b; }
+    .deriv strong { font-style: normal; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: #4338ca; display: block; margin-bottom: 6px; }
+    .deriv code { font-family: 'DM Mono', monospace; font-size: 12px; background: #e0e7ff; padding: 1px 5px; border-radius: 3px; color: #312e81; }
+
+    /* ── R code block ── */
+    .code-block { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 18px 22px; margin: 16px 0; position: relative; overflow-x: auto; font-family: 'DM Mono', monospace; font-size: 12.5px; line-height: 1.8; }
+    .code-block::before { content: 'R'; position: absolute; top: 10px; right: 14px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #475569; text-transform: uppercase; }
+    .code-block pre { white-space: pre-wrap; word-break: break-word; }
+    .code-block .com { color: #64748b; font-style: italic; }
+    .code-block .out { color: #4ade80; }
+    .code-block .kw  { color: #f472b6; }
+    .code-block .fn  { color: #fbbf24; }
+    .code-block .str { color: #93c5fd; }
+    .code-block .num { color: #c4b5fd; }
+
+    .eq-block { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 20px 24px; margin: 16px 0; position: relative; overflow: hidden; }
+    .eq-block::before { content: 'Reference'; position: absolute; top: 10px; right: 14px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #475569; text-transform: uppercase; }
+    .eq-row { display: flex; align-items: baseline; gap: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.06); flex-wrap: wrap; }
+    .eq-row:last-child { border-bottom: none; }
+    .eq-name { font-family: 'DM Mono', monospace; font-size: 11.5px; color: #fbbf24; min-width: 200px; flex-shrink: 0; }
+    .eq-val { font-family: 'DM Mono', monospace; font-size: 12.5px; color: #93c5fd; }
+
+    .viz-wrap { background: #fff; border: 1px solid #e8e0d0; border-radius: 12px; padding: 20px; margin: 18px 0; overflow-x: auto; }
+    .viz-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--faded); margin-bottom: 14px; }
+    .viz-wrap svg { display: block; max-width: 100%; height: auto; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
+    .chip { background: var(--parchment); border: 1px solid var(--rule); border-radius: 5px; padding: 4px 12px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink); transition: background .2s; cursor: default; }
+    .chip:hover { background: var(--hi); }
+
+    .divider { display: flex; align-items: center; gap: 12px; margin: 40px 0; color: var(--faded); font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    .refs-box { background: var(--parchment); border: 1px solid var(--rule); border-radius: 10px; padding: 28px 32px; margin-top: 60px; }
+    .refs-box h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 20px; color: var(--ink); }
+    .ref-entry { border-bottom: 1px solid var(--rule); padding: 12px 0; display: flex; gap: 16px; align-items: flex-start; }
+    .ref-entry:last-child { border-bottom: none; }
+    .ref-n { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--faded); min-width: 28px; padding-top: 2px; }
+    .ref-title { font-family: 'Playfair Display', serif; font-size: 13.5px; font-weight: 700; font-style: italic; color: var(--accent); margin-bottom: 2px; }
+    .ref-auth { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--faded); }
+    .ref-auth a { color: var(--accent2); }
+    .ref-auth a:hover { text-decoration: underline; }
+
+    .nb-footer { text-align: center; margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--rule); font-family: 'DM Mono', monospace; font-size: 9.5px; color: var(--faded); letter-spacing: 2px; text-transform: uppercase; }
+
+    .more-soon-box { background: #fff; border: 1.5px dashed var(--rule); border-radius: 14px; padding: 36px; text-align: center; margin-top: 60px; }
+    .more-soon-box h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); margin-bottom: 8px; }
+    .more-soon-box p { font-size: 13px; color: var(--faded); font-family: 'DM Mono', monospace; letter-spacing: .3px; }
+
+    /* ════════════════════════════
+       SITE FOOTER — identical to site
+    ════════════════════════════ */
+    footer { background: #0b1f3a; color: rgba(255,255,255,.5); padding: 44px 24px 32px; }
+    .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.35); margin-bottom: 14px; }
+    .footer-name { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: rgba(255,255,255,.9); margin-bottom: 8px; }
+    .footer-desc { font-size: 12.5px; line-height: 1.7; }
+    .footer-nav-links, .footer-social-links { display: flex; flex-direction: column; gap: 7px; }
+    .footer-nav-links a, .footer-social-links a { font-size: 13px; color: rgba(255,255,255,.55); transition: color .15s; }
+    .footer-nav-links a:hover { color: rgba(255,255,255,.9); }
+    .footer-social-links a:hover { color: #93c5fd; }
+    .footer-bottom { max-width: 1180px; margin: 22px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom p { font-size: 12px; }
+    @media (max-width: 1024px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+
+    @media (max-width: 600px) {
+      .notebook-wrap { padding: 0 14px 60px; }
+      .course-banner { padding: 24px 20px; }
+      .toc-box { padding: 18px 18px; }
+      .eq-name { min-width: 150px; font-size: 10.5px; }
+      .eq-val { font-size: 11.5px; }
+      .topic-num { font-size: 38px; min-width: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <div class="nav-bar-inner">
+    <div class="nav-brand">ABS<span> · </span>Abu Bokkor Shiddik</div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <a href="service.html">Service</a>
+      <div class="dropdown">
+        <button class="dropbtn">Digital Lab ▾</button>
+        <div class="dropdown-content">
+          <a href="projects.html">⚗ Projects</a>
+          <a href="data-code.html">💾 Data &amp; Code</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Learning ▾</button>
+        <div class="dropdown-content">
+          <a href="Learning Notes.html">📘 All Learning Notes</a>
+          <a href="BSc-courses.html">🎓 B.Sc. Courses</a>
+          <a href="MSc-courses.html">🎓 M.Sc. Courses</a>
+          <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Insights ▾</button>
+        <div class="dropdown-content">
+          <a href="insights.html">✍ Posts</a>
+          <a href="videos.html">▶ Videos</a>
+          <a href="archive.html">📷 Photos &amp; Archive</a>
+        </div>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <div class="drawer-inner">
+      <a class="drawer-link" href="home.html">Home</a>
+      <a class="drawer-link" href="publications.html">Publications</a>
+      <a class="drawer-link" href="service.html">Service</a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Digital Lab</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="projects.html">Projects</a>
+        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Learning &amp; Events</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
+        <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
+        <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
+        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Insights</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="insights.html">Posts</a>
+        <a class="drawer-link" href="videos.html">Videos</a>
+        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Personal Learning Notes · R Programming</div>
+    <h1>Learn R <em>By Example</em></h1>
+    <p class="hero-sub">Start from basic level and move all the way up to professional references. A friendly, example-driven walkthrough of R — the language statisticians actually live in — covering syntax, data structures, control flow, functions, importing/exporting data, and both base R and ggplot2 graphics.</p>
+    <div class="hero-badges">
+      <span class="hbadge hb1" onclick="jumpTo('t1')" style="cursor:pointer;">Base R · Beginner → Intermediate</span>
+      <span class="hbadge hb2" onclick="jumpTo('t7')" style="cursor:pointer;">ggplot2 · Visualisation</span>
+      <span class="hbadge-soon">+ More R topics coming soon</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CATEGORY JUMP NAV ═══ -->
+<div class="course-nav">
+  <div class="course-nav-inner">
+    <button class="cnav-btn active" onclick="jumpTo('t1')"><span class="cnav-dot" style="background:#1d4ed8"></span>Getting Started</button>
+    <button class="cnav-btn" onclick="jumpTo('t2')"><span class="cnav-dot" style="background:#8b2e0a"></span>Data Structures</button>
+    <button class="cnav-btn" onclick="jumpTo('t3')"><span class="cnav-dot" style="background:#b8820a"></span>Control Flow</button>
+    <button class="cnav-btn" onclick="jumpTo('t4')"><span class="cnav-dot" style="background:#5a2080"></span>Functions</button>
+    <button class="cnav-btn" onclick="jumpTo('t5')"><span class="cnav-dot" style="background:#1a5c2e"></span>Import &amp; Export</button>
+    <button class="cnav-btn" onclick="jumpTo('t6')"><span class="cnav-dot" style="background:#0e5c6e"></span>Base Graphics</button>
+    <button class="cnav-btn" onclick="jumpTo('t7')"><span class="cnav-dot" style="background:#db2777"></span>ggplot2 Graphics</button>
+  </div>
+</div>
+
+<!-- ═══ MAIN NOTEBOOK ═══ -->
+<div class="notebook-wrap">
+
+<div class="course-block" id="c-r">
+  <div class="course-banner">
+    <div class="cb-watermark">R</div>
+    <div class="cb-code">Learn By Example · Personal Programming Notes</div>
+    <div class="cb-title">R Programming Language</div>
+    <div class="cb-sub">Getting Started · Data Structures · Control Flow · Functions · Import &amp; Export · Base Graphics · ggplot2</div>
+  </div>
+
+  <div class="toc-box">
+    <div class="toc-box-title">Topics Covered</div>
+    <div class="toc-grid">
+      <a class="toc-link" data-n="01" onclick="jumpTo('t1')">Getting Started — Introduction &amp; Operators</a>
+      <a class="toc-link" data-n="02" onclick="jumpTo('t2')">Data Structures — Vector, List, Matrix, Data Frame, Factor</a>
+      <a class="toc-link" data-n="03" onclick="jumpTo('t3')">Control Flow — If/Else, switch, while, for, repeat</a>
+      <a class="toc-link" data-n="04" onclick="jumpTo('t4')">Functions &amp; the Apply Family</a>
+      <a class="toc-link" data-n="05" onclick="jumpTo('t5')">Import &amp; Export — CSV &amp; Excel Files</a>
+      <a class="toc-link" data-n="06" onclick="jumpTo('t6')">R Base Graphics — plot, bar, scatter, box, histogram, pie, QQ</a>
+      <a class="toc-link" data-n="07" onclick="jumpTo('t7')">ggplot2 Graphics — bar, scatter, box-whisker</a>
+    </div>
+  </div>
+
+  <!-- ═══════════ 01 GETTING STARTED ═══════════ -->
+  <div class="topic-section" id="t1">
+    <div class="topic-header">
+      <div class="topic-num">01</div>
+      <div class="topic-title-block">
+        <div class="topic-label">Getting Started</div>
+        <div class="topic-title">R <span>Introduction</span> &amp; Operators</div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🇷</span><div class="card-lbl">What is R</div><h3>Built for Statistics</h3><p>R is a free, open-source language and environment created specifically for statistical computing and graphics. Unlike general-purpose languages that treat statistics as an afterthought, R was designed from day one around vectors, data frames, and built-in statistical/plotting functions — which is why it feels unusually natural for data analysis once the syntax clicks.</p></div>
+      <div class="card c-how"><span class="card-icon">⌨️</span><div class="card-lbl">Assignment &amp; Basics</div><h3>Variables, Types, Comments</h3><ul><li><code>&lt;-</code> is the idiomatic assignment operator (<code>=</code> also works)</li><li>Basic types: <code>numeric</code>, <code>integer</code>, <code>character</code>, <code>logical</code>, <code>complex</code></li><li><code>#</code> starts a comment — R has no multi-line comment syntax</li><li><code>class()</code> and <code>typeof()</code> reveal a variable's type</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">🧮</span><div class="card-lbl">Arithmetic Operators</div><h3>+ − * / ^ %% %/%</h3><p>Standard arithmetic (<code>+ - * /</code>) plus exponentiation <code>^</code>, modulus <code>%%</code> (remainder), and integer division <code>%/%</code>. All of these are <em>vectorised</em> — applying an operator to two vectors works element-by-element automatically, no explicit loop required.</p></div>
+      <div class="card c-form"><span class="card-icon">⚖️</span><div class="card-lbl">Relational &amp; Logical</div><h3>Comparisons &amp; Boolean Logic</h3><ul><li>Relational: <code>== != &gt; &lt; &gt;= &lt;=</code> → return <code>TRUE</code>/<code>FALSE</code></li><li>Element-wise logical: <code>&amp;</code> (AND), <code>|</code> (OR), <code>!</code> (NOT)</li><li>Short-circuit logical (single result): <code>&amp;&amp;</code>, <code>||</code> — used in <code>if()</code> conditions</li><li>Special operator <code>%in%</code> tests membership in a vector</li></ul></div>
+    </div>
+    <div class="code-block"><pre><span class="com"># assignment, vectorised arithmetic, and comparisons</span>
+x <- <span class="num">10</span>
+y <- <span class="num">3</span>
+x %% y        <span class="com"># remainder</span>
+<span class="out">#&gt; [1] 1</span>
+x %/% y       <span class="com"># integer division</span>
+<span class="out">#&gt; [1] 3</span>
+
+v <- c(<span class="num">2</span>, <span class="num">4</span>, <span class="num">6</span>)
+v * <span class="num">10</span>          <span class="com"># vectorised — no loop needed</span>
+<span class="out">#&gt; [1] 20 40 60</span>
+
+<span class="num">5</span> %in% v      <span class="com"># membership test</span>
+<span class="out">#&gt; [1] FALSE</span></pre></div>
+    <div class="note"><strong>Why R Feels Different at First</strong>Coming from a language like Python or Java, the biggest mental shift is that almost everything in R is a vector — even a single number like <code>10</code> is technically a vector of length one. Once that clicks, operations that look like "magic" (applying <code>*10</code> to a whole column of data at once) stop feeling magical and start feeling obvious.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>R's assignment arrow <code>&lt;-</code> is basically the language's way of saying "I refuse to let you forget which direction data is flowing." Meanwhile <code>=</code> also works for assignment, just to keep everyone humble and occasionally confused during code review.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- ═══════════ 02 DATA STRUCTURES ═══════════ -->
+  <div class="topic-section" id="t2">
+    <div class="topic-header">
+      <div class="topic-num">02</div>
+      <div class="topic-title-block">
+        <div class="topic-label">Data Structures</div>
+        <div class="topic-title">Vector, List, Matrix, <span>Data Frame &amp; Factor</span></div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">📏</span><div class="card-lbl">Vector</div><h3>The Atomic Building Block</h3><p>A vector is an ordered, 1-D collection where <strong>every element must be the same type</strong> (all numeric, all character, etc.), created with <code>c()</code>. Nearly every other R structure — matrix, data frame column, factor — is built on top of the humble vector.</p></div>
+      <div class="card c-how"><span class="card-icon">🧺</span><div class="card-lbl">List</div><h3>The Flexible Container</h3><p>A list is also ordered and 1-D, but each element can be a <em>different</em> type or even a different structure entirely — a list can hold a number, a character vector, a data frame, and another list all at once. Access with <code>[[ ]]</code> (single element) vs <code>[ ]</code> (sub-list).</p></div>
+      <div class="card c-idea"><span class="card-icon">🔲</span><div class="card-lbl">Matrix</div><h3>2-D, Single Type</h3><p>A matrix is a vector reshaped into rows and columns via <code>matrix()</code> — still restricted to one data type. Useful for linear algebra (<code>%*%</code> matrix multiplication, <code>t()</code> transpose, <code>solve()</code> inverse) and any strictly numeric grid of data.</p></div>
+      <div class="card c-form"><span class="card-icon">📋</span><div class="card-lbl">Data Frame</div><h3>2-D, Mixed Types by Column</h3><p>A data frame is R's workhorse for real datasets — rectangular like a matrix, but each <em>column</em> can hold a different type (numeric age, character name, logical flag), while every value within a column still shares one type. Created with <code>data.frame()</code>; almost every dataset you import lands here.</p></div>
+      <div class="card c-where"><span class="card-icon">🏷️</span><div class="card-lbl">Factor</div><h3>Categorical Data</h3><p>A factor stores categorical variables (e.g. "Low"/"Medium"/"High") as integer codes plus a set of labelled <em>levels</em> — memory-efficient and lets R know the variable is categorical (or even ordered) rather than free text, which matters for modelling functions like <code>lm()</code>.</p></div>
+      <div class="card c-warn"><span class="card-icon">⚠️</span><div class="card-lbl">Choosing the Right One</div><h3>Quick Decision Guide</h3><ul><li>One type, 1-D → <strong>vector</strong></li><li>Mixed types, 1-D → <strong>list</strong></li><li>One type, 2-D → <strong>matrix</strong></li><li>Mixed types, 2-D (rectangular data) → <strong>data frame</strong></li><li>Fixed set of categories → <strong>factor</strong></li></ul></div>
+    </div>
+    <div class="code-block"><pre><span class="com"># vector — all one type</span>
+scores <- c(<span class="num">88</span>, <span class="num">92</span>, <span class="num">79</span>)
+
+<span class="com"># list — mixed types, mixed structures</span>
+student <- list(name = <span class="str">"Meera"</span>, age = <span class="num">23</span>, scores = scores)
+student$scores
+<span class="out">#&gt; [1] 88 92 79</span>
+
+<span class="com"># matrix — reshaped vector, 2 rows x 3 cols</span>
+m <- matrix(<span class="num">1</span>:<span class="num">6</span>, nrow = <span class="num">2</span>)
+t(m)                 <span class="com"># transpose</span>
+
+<span class="com"># data frame — mixed types by column</span>
+df <- data.frame(name = c(<span class="str">"Meera"</span>, <span class="str">"Rafi"</span>),
+                  score = c(<span class="num">88</span>, <span class="num">95</span>),
+                  pass  = c(TRUE, TRUE))
+str(df)
+
+<span class="com"># factor — categorical levels</span>
+grade <- factor(c(<span class="str">"B"</span>, <span class="str">"A"</span>, <span class="str">"C"</span>), levels = c(<span class="str">"C"</span>,<span class="str">"B"</span>,<span class="str">"A"</span>), ordered = TRUE)
+grade
+<span class="out">#&gt; [1] B A C</span>
+<span class="out">#&gt; Levels: C &lt; B &lt; A</span></pre></div>
+    <div class="viz-wrap">
+      <div class="viz-title">R's Core Data Structures at a Glance</div>
+      <svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <text x="90" y="20" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1d4ed8">Vector (1-D, 1 type)</text>
+        <rect x="30" y="35" width="30" height="26" fill="#1d4ed822" stroke="#1d4ed8"/><rect x="60" y="35" width="30" height="26" fill="#1d4ed822" stroke="#1d4ed8"/><rect x="90" y="35" width="30" height="26" fill="#1d4ed822" stroke="#1d4ed8"/><rect x="120" y="35" width="30" height="26" fill="#1d4ed822" stroke="#1d4ed8"/>
+        <text x="45" y="52" text-anchor="middle" font-size="9" fill="#1d4ed8">2</text><text x="75" y="52" text-anchor="middle" font-size="9" fill="#1d4ed8">4</text><text x="105" y="52" text-anchor="middle" font-size="9" fill="#1d4ed8">6</text><text x="135" y="52" text-anchor="middle" font-size="9" fill="#1d4ed8">8</text>
+
+        <text x="270" y="20" text-anchor="middle" font-size="10.5" font-weight="700" fill="#5a2080">List (1-D, mixed)</text>
+        <rect x="210" y="35" width="40" height="26" fill="#5a208022" stroke="#5a2080"/><rect x="250" y="35" width="40" height="26" fill="#8b2e0a22" stroke="#8b2e0a"/><rect x="290" y="35" width="40" height="26" fill="#1a5c2e22" stroke="#1a5c2e"/>
+        <text x="230" y="52" text-anchor="middle" font-size="8" fill="#5a2080">"a"</text><text x="270" y="52" text-anchor="middle" font-size="8" fill="#8b2e0a">3</text><text x="310" y="52" text-anchor="middle" font-size="8" fill="#1a5c2e">df</text>
+
+        <text x="470" y="20" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8b2e0a">Matrix (2-D, 1 type)</text>
+        <g stroke="#8b2e0a" fill="#8b2e0a22">
+          <rect x="410" y="30" width="35" height="24"/><rect x="445" y="30" width="35" height="24"/><rect x="480" y="30" width="35" height="24"/>
+          <rect x="410" y="54" width="35" height="24"/><rect x="445" y="54" width="35" height="24"/><rect x="480" y="54" width="35" height="24"/>
+        </g>
+
+        <text x="150" y="120" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0e5c6e">Data Frame (2-D, mixed by column)</text>
+        <g stroke="#0e5c6e">
+          <rect x="30" y="135" width="80" height="22" fill="#0e5c6e22"/><rect x="110" y="135" width="80" height="22" fill="#b8820a22"/><rect x="190" y="135" width="80" height="22" fill="#1a5c2e22"/>
+          <rect x="30" y="157" width="80" height="22" fill="#0e5c6e11"/><rect x="110" y="157" width="80" height="22" fill="#b8820a11"/><rect x="190" y="157" width="80" height="22" fill="#1a5c2e11"/>
+        </g>
+        <text x="70" y="149" text-anchor="middle" font-size="8" fill="#0e5c6e">name (chr)</text><text x="150" y="149" text-anchor="middle" font-size="8" fill="#b8820a">score (num)</text><text x="230" y="149" text-anchor="middle" font-size="8" fill="#1a5c2e">pass (lgl)</text>
+
+        <text x="470" y="120" text-anchor="middle" font-size="10.5" font-weight="700" fill="#db2777">Factor (categorical)</text>
+        <g font-size="9" fill="#db2777">
+          <rect x="410" y="135" width="50" height="22" fill="#db277722" stroke="#db2777"/><text x="435" y="149" text-anchor="middle">"Low"→1</text>
+          <rect x="465" y="135" width="60" height="22" fill="#db277722" stroke="#db2777"/><text x="495" y="149" text-anchor="middle">"Med"→2</text>
+          <rect x="530" y="135" width="55" height="22" fill="#db277722" stroke="#db2777"/><text x="557" y="149" text-anchor="middle">"High"→3</text>
+        </g>
+      </svg>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>A vector is a single-flavour box of items in a row. A list is a mixed bag — anything goes, in any order. A matrix is that same single-flavour box, folded into a grid. A data frame is a spreadsheet — each column has its own flavour, but every cell in that column matches. A factor is a spreadsheet column that's secretly just numbers wearing category name-tags.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>A vector is like a carton of eggs — twelve of the exact same thing. A list is like your backpack — a laptop, a sandwich, and somehow three pens that don't work. A data frame is what happens when you finally organise your backpack into labelled compartments and insist everyone follow the labelling rules.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- ═══════════ 03 CONTROL FLOW ═══════════ -->
+  <div class="topic-section" id="t3">
+    <div class="topic-header">
+      <div class="topic-num">03</div>
+      <div class="topic-title-block">
+        <div class="topic-label">Control Flow</div>
+        <div class="topic-title">If…Else, switch(), <span>while, for &amp; repeat</span></div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🔀</span><div class="card-lbl">if / else if / else</div><h3>Branching on a Condition</h3><p>Executes a block only if a single logical condition (<code>TRUE</code>/<code>FALSE</code>) holds; <code>else if</code> chains additional conditions, and a final <code>else</code> catches everything else. Note: the condition must resolve to exactly one <code>TRUE</code>/<code>FALSE</code>, not a vector (use <code>ifelse()</code> for vectorised branching).</p></div>
+      <div class="card c-how"><span class="card-icon">🎛️</span><div class="card-lbl">switch()</div><h3>Multi-Way Branching</h3><p>A cleaner alternative to a long <code>if/else if</code> chain when branching on the exact value of a single character or integer expression — matches a case and returns/executes the corresponding value, falling through to a default if none match.</p></div>
+      <div class="card c-idea"><span class="card-icon">🔁</span><div class="card-lbl">for Loop</div><h3>Iterate Over a Known Sequence</h3><p>Repeats a block once for each element of a vector or list — the go-to loop when you know in advance what you're iterating over (rows of data, elements of a vector, files in a folder).</p></div>
+      <div class="card c-form"><span class="card-icon">⏳</span><div class="card-lbl">while &amp; repeat</div><h3>Iterate Until a Condition Changes</h3><ul><li><strong>while(cond):</strong> checks the condition <em>before</em> each iteration — may run zero times</li><li><strong>repeat { ... break }</strong>: runs the body first and relies on an internal <code>break</code> to stop — guarantees at least one iteration</li><li><code>next</code> skips to the following iteration in any loop type</li></ul></div>
+    </div>
+    <div class="code-block"><pre><span class="kw">if</span> (score >= <span class="num">90</span>) {
+  grade <- <span class="str">"A"</span>
+} <span class="kw">else if</span> (score >= <span class="num">80</span>) {
+  grade <- <span class="str">"B"</span>
+} <span class="kw">else</span> {
+  grade <- <span class="str">"C"</span>
+}
+
+<span class="fn">switch</span>(day,
+  <span class="str">"Sat"</span> = ,
+  <span class="str">"Sun"</span> = <span class="str">"Weekend"</span>,
+  <span class="str">"Weekday"</span>)
+
+<span class="kw">for</span> (i <span class="kw">in</span> <span class="num">1</span>:<span class="num">5</span>) {
+  <span class="fn">print</span>(i^<span class="num">2</span>)
+}
+
+n <- <span class="num">1</span>
+<span class="kw">while</span> (n <= <span class="num">3</span>) { <span class="fn">print</span>(n); n <- n + <span class="num">1</span> }
+
+<span class="kw">repeat</span> {
+  <span class="fn">print</span>(<span class="str">"runs once, then checks"</span>)
+  <span class="kw">break</span>
+}</pre></div>
+    <div class="viz-wrap">
+      <div class="viz-title">for vs while vs repeat — When Each One Checks Its Condition</div>
+      <svg viewBox="0 0 620 170" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <text x="100" y="18" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b8820a">for (i in seq)</text>
+        <rect x="40" y="30" width="120" height="30" rx="6" fill="#b8820a15" stroke="#b8820a"/><text x="100" y="50" text-anchor="middle" font-size="9" fill="#b8820a">run body for each i</text>
+        <text x="100" y="80" text-anchor="middle" font-size="8.5" fill="#64748b">stops automatically when</text>
+        <text x="100" y="92" text-anchor="middle" font-size="8.5" fill="#64748b">the sequence is exhausted</text>
+
+        <text x="310" y="18" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1d4ed8">while (cond)</text>
+        <rect x="250" y="30" width="120" height="26" rx="6" fill="#1d4ed815" stroke="#1d4ed8"/><text x="310" y="47" text-anchor="middle" font-size="8.5" fill="#1d4ed8">check cond first</text>
+        <text x="310" y="70" font-size="14" text-anchor="middle" fill="#94a3b8">↓ TRUE</text>
+        <rect x="250" y="80" width="120" height="26" rx="6" fill="#1d4ed815" stroke="#1d4ed8"/><text x="310" y="97" text-anchor="middle" font-size="8.5" fill="#1d4ed8">run body, loop back</text>
+        <text x="310" y="125" text-anchor="middle" font-size="8.5" fill="#64748b">may run ZERO times</text>
+
+        <text x="510" y="18" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8b2e0a">repeat { ...; break }</text>
+        <rect x="450" y="30" width="120" height="26" rx="6" fill="#8b2e0a15" stroke="#8b2e0a"/><text x="510" y="47" text-anchor="middle" font-size="8.5" fill="#8b2e0a">run body first</text>
+        <text x="510" y="70" font-size="14" text-anchor="middle" fill="#94a3b8">↓</text>
+        <rect x="450" y="80" width="120" height="26" rx="6" fill="#8b2e0a15" stroke="#8b2e0a"/><text x="510" y="97" text-anchor="middle" font-size="8.5" fill="#8b2e0a">check for break</text>
+        <text x="510" y="125" text-anchor="middle" font-size="8.5" fill="#64748b">guarantees ≥ 1 run</text>
+      </svg>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>Use <code>for</code> when you already know exactly what you're looping over. Use <code>while</code> when you don't know how many iterations you'll need, but you can check "should I keep going?" before starting. Use <code>repeat</code> for the rarer case where the body absolutely must run at least once before that check makes sense (e.g. "ask for input, then validate it").</div>
+    <div class="joke"><strong>😂 Lab Humor</strong><code>for</code> is the disciplined student who knows exactly how many chapters are left to read. <code>while</code> is the person who keeps studying "until I feel ready," which could be ten minutes or ten hours. <code>repeat</code> is the person who starts the exam first and only afterwards asks, "wait, was I supposed to stop at some point?"</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- ═══════════ 04 FUNCTIONS ═══════════ -->
+  <div class="topic-section" id="t4">
+    <div class="topic-header">
+      <div class="topic-num">04</div>
+      <div class="topic-title-block">
+        <div class="topic-label">Functions</div>
+        <div class="topic-title">R Functions &amp; the <span>Apply Family</span></div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🧩</span><div class="card-lbl">Defining Functions</div><h3>function(args) { body }</h3><p>Functions are created with <code>function()</code> and assigned to a name like any other object — R treats functions as first-class values, so they can be passed as arguments to other functions. The last evaluated expression is returned automatically, or use explicit <code>return()</code>.</p></div>
+      <div class="card c-how"><span class="card-icon">🎚️</span><div class="card-lbl">Arguments &amp; Defaults</div><h3>Flexible Calling</h3><ul><li>Default values: <code>function(x, digits = 2)</code></li><li>Arguments matched by position or by name</li><li><code>...</code> ("dots") captures any extra, unnamed arguments — used heavily to pass options through to inner functions</li></ul></div>
+      <div class="card c-idea"><span class="card-icon">🔂</span><div class="card-lbl">Why the Apply Family Exists</div><h3>Vectorised Iteration Without Explicit Loops</h3><p>R functions like <code>sapply()</code>/<code>lapply()</code> replace many <code>for</code> loops with a single, often faster and more readable call: "apply this function to every element/row/column," letting R handle the iteration internally.</p></div>
+      <div class="card c-form"><span class="card-icon">🗂️</span><div class="card-lbl">The Main Players</div><h3>sapply, lapply, mapply, apply</h3><ul><li><strong>lapply(x, f):</strong> applies f to each element of x, always returns a <em>list</em></li><li><strong>sapply(x, f):</strong> like lapply, but simplifies the result to a vector/matrix when possible</li><li><strong>apply(m, MARGIN, f):</strong> applies f over rows (<code>MARGIN=1</code>) or columns (<code>MARGIN=2</code>) of a matrix/data frame</li><li><strong>mapply(f, x, y):</strong> applies f over multiple vectors in parallel, element-wise</li></ul></div>
+    </div>
+    <div class="code-block"><pre><span class="com"># defining a function with a default argument</span>
+bmi <- <span class="kw">function</span>(weight_kg, height_m, digits = <span class="num">1</span>) {
+  <span class="fn">round</span>(weight_kg / height_m^<span class="num">2</span>, digits)
+}
+<span class="fn">bmi</span>(<span class="num">70</span>, <span class="num">1.75</span>)
+<span class="out">#&gt; [1] 22.9</span>
+
+<span class="com"># apply family — no explicit for-loop needed</span>
+nums <- list(<span class="num">1</span>:<span class="num">3</span>, <span class="num">4</span>:<span class="num">6</span>, <span class="num">7</span>:<span class="num">9</span>)
+<span class="fn">sapply</span>(nums, sum)
+<span class="out">#&gt; [1]  6 15 24</span>
+
+m <- matrix(<span class="num">1</span>:<span class="num">6</span>, nrow = <span class="num">2</span>)
+<span class="fn">apply</span>(m, <span class="num">1</span>, sum)   <span class="com"># row sums</span>
+<span class="out">#&gt; [1]  9 12</span>
+<span class="fn">apply</span>(m, <span class="num">2</span>, sum)   <span class="com"># column sums</span>
+<span class="out">#&gt; [1]  3  7 11</span></pre></div>
+    <div class="note"><strong>Plain-English Recap</strong>Think of the apply family as saying "here's a job (a function), here's a stack of things to do it to (a list, vector, or matrix margin) — go." R loops internally, often faster than a hand-written <code>for</code> loop, and the code reads almost like a sentence describing the intent rather than the mechanics.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong><code>for</code> loops are you personally walking to every desk in the office handing out the same memo. <code>sapply()</code> is hiring an intern to do it for you and just come back with a neatly organised report. Same job, wildly different amount of your own typing.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- ═══════════ 05 IMPORT & EXPORT ═══════════ -->
+  <div class="topic-section" id="t5">
+    <div class="topic-header">
+      <div class="topic-num">05</div>
+      <div class="topic-title-block">
+        <div class="topic-label">Import &amp; Export Data</div>
+        <div class="topic-title">Reading &amp; Writing <span>CSV &amp; Excel Files</span></div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">📄</span><div class="card-lbl">CSV Files</div><h3>Base R, No Packages Needed</h3><p><code>read.csv()</code> reads a comma-separated file straight into a data frame; <code>write.csv()</code> writes one back out. Both are base-R functions — no installation required — which makes CSV the most portable, dependency-free format for sharing tabular data.</p></div>
+      <div class="card c-how"><span class="card-icon">📊</span><div class="card-lbl">Excel Files</div><h3>Needs a Package</h3><p>Base R can't read <code>.xlsx</code> natively. The <code>readxl</code> package's <code>read_excel()</code> reads Excel files (including choosing a specific sheet), and the <code>writexl</code> or <code>openxlsx</code> packages write data frames back out to <code>.xlsx</code>.</p></div>
+      <div class="card c-idea"><span class="card-icon">⚙️</span><div class="card-lbl">Useful Arguments</div><h3>Getting the Import Right</h3><ul><li><code>header = TRUE</code> — first row holds column names (default for CSV)</li><li><code>stringsAsFactors = FALSE</code> — keeps text as character, not factor (R's modern default)</li><li><code>sep = ";"</code> — for semicolon- or tab-delimited files</li><li><code>sheet = "Sheet2"</code> or <code>sheet = 2</code> — which Excel sheet to read</li></ul></div>
+      <div class="card c-warn"><span class="card-icon">⚠️</span><div class="card-lbl">Common Pitfalls</div><h3>Watch Out For</h3><ul><li>Wrong working directory → "file not found" (check with <code>getwd()</code>)</li><li>Locale-dependent decimal commas in European CSVs (<code>read.csv2()</code> handles these)</li><li>Row names accidentally imported as a data column</li></ul></div>
+    </div>
+    <div class="code-block"><pre><span class="com"># CSV — base R, no package needed</span>
+df <- <span class="fn">read.csv</span>(<span class="str">"students.csv"</span>, header = TRUE, stringsAsFactors = FALSE)
+<span class="fn">write.csv</span>(df, <span class="str">"students_out.csv"</span>, row.names = FALSE)
+
+<span class="com"># Excel — needs a package</span>
+<span class="fn">library</span>(readxl)
+df <- <span class="fn">read_excel</span>(<span class="str">"students.xlsx"</span>, sheet = <span class="str">"Sheet1"</span>)
+
+<span class="fn">library</span>(writexl)
+<span class="fn">write_xlsx</span>(df, <span class="str">"students_out.xlsx"</span>)</pre></div>
+    <div class="note"><strong>Plain-English Recap</strong>CSV is the plain-text, universally readable format — like a note written on a plain index card that anyone can read. Excel files are richer (multiple sheets, formatting, formulas) but that richness is exactly why R needs an extra package (<code>readxl</code>/<code>writexl</code>) to unpack them properly.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong><code>read.csv()</code> is the friend who shows up to a potluck with exactly what the invite said: rice, in a bowl. <code>read_excel()</code> is the friend who shows up with a seven-tier casserole dish, three garnishes, and a note about which layer is gluten-free — delicious, but you're definitely going to need the right utensils (packages) to serve it.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- ═══════════ 06 BASE GRAPHICS ═══════════ -->
+  <div class="topic-section" id="t6">
+    <div class="topic-header">
+      <div class="topic-num">06</div>
+      <div class="topic-title-block">
+        <div class="topic-label">R Base Graphics</div>
+        <div class="topic-title">plot(), bar, scatter, box, <span>histogram, pie &amp; QQ</span></div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">📈</span><div class="card-lbl">plot()</div><h3>The Universal Starting Point</h3><p><code>plot(x, y)</code> is base R's do-everything function — its behaviour adapts to the class of its input (numeric → scatter, factor → boxplot, a fitted model → diagnostic plots), making it the natural first stop for a quick look at data.</p></div>
+      <div class="card c-how"><span class="card-icon">📊</span><div class="card-lbl">barplot() &amp; pie()</div><h3>Categorical Summaries</h3><p><code>barplot(heights)</code> draws bars from a numeric vector (often a table of counts); <code>pie(values)</code> draws proportional slices from the same kind of summary. Bars are almost always preferred by statisticians for comparing magnitudes — pies make precise comparison harder for the human eye.</p></div>
+      <div class="card c-idea"><span class="card-icon">🔵</span><div class="card-lbl">Scatter &amp; Box-Whisker</div><h3>Relationships &amp; Spread</h3><ul><li><code>plot(x, y)</code> with two numeric vectors → scatter plot, for relationships between two variables</li><li><code>boxplot(x)</code> or <code>boxplot(y ~ group)</code> → shows median, quartiles, and outliers per group at a glance</li></ul></div>
+      <div class="card c-form"><span class="card-icon">📶</span><div class="card-lbl">hist() &amp; qqnorm()</div><h3>Distribution Shape</h3><ul><li><code>hist(x)</code> — bins a numeric vector to visualise its distribution's shape, skew, and modality</li><li><code>qqnorm(x)</code> + <code>qqline(x)</code> — plots sample quantiles against theoretical normal quantiles; points hugging the line suggest approximate normality, key for checking assumptions before t-tests/ANOVA</li></ul></div>
+    </div>
+    <div class="code-block"><pre>x <- c(<span class="num">2</span>,<span class="num">4</span>,<span class="num">6</span>,<span class="num">8</span>,<span class="num">10</span>); y <- c(<span class="num">3</span>,<span class="num">7</span>,<span class="num">6</span>,<span class="num">9</span>,<span class="num">12</span>)
+
+<span class="fn">plot</span>(x, y, main = <span class="str">"Scatter"</span>, pch = <span class="num">19</span>, col = <span class="str">"steelblue"</span>)
+<span class="fn">barplot</span>(<span class="fn">table</span>(c(<span class="str">"A"</span>,<span class="str">"B"</span>,<span class="str">"A"</span>,<span class="str">"C"</span>,<span class="str">"A"</span>)), col = <span class="str">"tomato"</span>)
+<span class="fn">boxplot</span>(y ~ <span class="fn">rep</span>(c(<span class="str">"grp1"</span>,<span class="str">"grp2"</span>), <span class="fn">c</span>(<span class="num">3</span>,<span class="num">2</span>)))
+<span class="fn">hist</span>(<span class="fn">rnorm</span>(<span class="num">200</span>), breaks = <span class="num">20</span>, col = <span class="str">"lightgreen"</span>)
+<span class="fn">pie</span>(<span class="fn">c</span>(<span class="num">30</span>,<span class="num">45</span>,<span class="num">25</span>), labels = <span class="fn">c</span>(<span class="str">"A"</span>,<span class="str">"B"</span>,<span class="str">"C"</span>))
+<span class="fn">qqnorm</span>(<span class="fn">rnorm</span>(<span class="num">100</span>)); <span class="fn">qqline</span>(<span class="fn">rnorm</span>(<span class="num">100</span>), col = <span class="str">"red"</span>)</pre></div>
+    <div class="note"><strong>Plain-English Recap</strong>Base graphics are R's "sketch it on a napkin" tools — fast, dependency-free, and perfectly fine for exploratory checks while you're actually doing the analysis. They trade some visual polish for speed and simplicity; that's exactly the gap ggplot2 fills below when a chart needs to leave the napkin and go into a report.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>A pie chart is what happens when a bar chart decides it wants to be dramatic and round instead of useful and comparable. Statisticians tolerate pie charts the way chefs tolerate pineapple on pizza — technically allowed, rarely the professional's first choice.</div>
+  </div>
+  <div class="divider">· · ·</div>
+
+  <!-- ═══════════ 07 GGPLOT2 ═══════════ -->
+  <div class="topic-section" id="t7">
+    <div class="topic-header">
+      <div class="topic-num">07</div>
+      <div class="topic-title-block">
+        <div class="topic-label">ggplot2 Graphics</div>
+        <div class="topic-title">The <span>Grammar of Graphics</span> — Bar, Scatter &amp; Box-Whisker</div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card c-what"><span class="card-icon">🧱</span><div class="card-lbl">The Core Idea</div><h3>Layered, Not Monolithic</h3><p>ggplot2 (part of the tidyverse) builds a plot as layers added with <code>+</code>: start with <code>ggplot(data, aes(x, y))</code> to map data to visual properties, then add a <em>geometry</em> layer (<code>geom_bar()</code>, <code>geom_point()</code>, <code>geom_boxplot()</code>) that decides how those mappings are drawn.</p></div>
+      <div class="card c-how"><span class="card-icon">📊</span><div class="card-lbl">geom_bar() / geom_col()</div><h3>Bar Plots</h3><p><code>geom_bar()</code> counts rows per category automatically; <code>geom_col()</code> plots pre-summarised values directly (you supply the bar heights). Add <code>fill = group</code> inside <code>aes()</code> to colour bars by a second categorical variable.</p></div>
+      <div class="card c-idea"><span class="card-icon">🔵</span><div class="card-lbl">geom_point()</div><h3>Scatter Plots</h3><p>Maps two numeric variables to x/y position as points; layering <code>geom_smooth(method="lm")</code> on top overlays a fitted trend line with a confidence band in a single extra line of code — a very common exploratory move.</p></div>
+      <div class="card c-form"><span class="card-icon">📦</span><div class="card-lbl">geom_boxplot()</div><h3>Box-Whisker Plots</h3><p><code>geom_boxplot(aes(x=group, y=value))</code> draws one box per group automatically, with outliers plotted as individual points — the ggplot2 equivalent of base R's <code>boxplot(y ~ group)</code>, but themeable and combinable with other layers.</p></div>
+    </div>
+    <div class="code-block"><pre><span class="fn">library</span>(ggplot2)
+
+<span class="com"># bar plot</span>
+<span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x = category, fill = category)) +
+  <span class="fn">geom_bar</span>() +
+  <span class="fn">theme_minimal</span>()
+
+<span class="com"># scatter plot with a fitted trend line</span>
+<span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x = height, y = weight)) +
+  <span class="fn">geom_point</span>(colour = <span class="str">"steelblue"</span>, size = <span class="num">2</span>) +
+  <span class="fn">geom_smooth</span>(method = <span class="str">"lm"</span>, se = TRUE)
+
+<span class="com"># box-whisker plot by group</span>
+<span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x = group, y = score, fill = group)) +
+  <span class="fn">geom_boxplot</span>() +
+  <span class="fn">labs</span>(title = <span class="str">"Score by Group"</span>, x = NULL, y = <span class="str">"Score"</span>)</pre></div>
+    <div class="viz-wrap">
+      <div class="viz-title">ggplot2's Layered Grammar — Building a Plot Piece by Piece</div>
+      <svg viewBox="0 0 620 150" xmlns="http://www.w3.org/2000/svg" font-family="'DM Mono',monospace">
+        <rect x="20" y="45" width="120" height="55" rx="8" fill="#db277715" stroke="#db2777" stroke-width="1.5"/>
+        <text x="80" y="68" text-anchor="middle" font-size="9.5" font-weight="700" fill="#db2777">ggplot(data,</text>
+        <text x="80" y="80" text-anchor="middle" font-size="9" fill="#db2777">aes(x, y))</text>
+        <text x="80" y="118" text-anchor="middle" font-size="8" fill="#64748b">data + mappings</text>
+
+        <text x="165" y="78" text-anchor="middle" font-size="16" fill="#94a3b8">+</text>
+
+        <rect x="190" y="45" width="120" height="55" rx="8" fill="#1d4ed815" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="250" y="68" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">geom_point()</text>
+        <text x="250" y="80" text-anchor="middle" font-size="9" fill="#1d4ed8">geom_bar()...</text>
+        <text x="250" y="118" text-anchor="middle" font-size="8" fill="#64748b">how to draw it</text>
+
+        <text x="335" y="78" text-anchor="middle" font-size="16" fill="#94a3b8">+</text>
+
+        <rect x="360" y="45" width="120" height="55" rx="8" fill="#1a5c2e15" stroke="#1a5c2e" stroke-width="1.5"/>
+        <text x="420" y="68" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1a5c2e">labs() / theme()</text>
+        <text x="420" y="80" text-anchor="middle" font-size="9" fill="#1a5c2e">facet_wrap()...</text>
+        <text x="420" y="118" text-anchor="middle" font-size="8" fill="#64748b">labels, style, panels</text>
+
+        <text x="505" y="78" text-anchor="middle" font-size="16" fill="#94a3b8">=</text>
+        <rect x="530" y="45" width="70" height="55" rx="8" fill="#b8820a15" stroke="#b8820a" stroke-width="1.5"/>
+        <text x="565" y="76" text-anchor="middle" font-size="10" font-weight="700" fill="#b8820a">finished plot</text>
+      </svg>
+    </div>
+    <div class="note"><strong>Plain-English Recap</strong>Base R graphics are a single command that draws one finished picture. ggplot2 instead treats a chart like a layered cake: data and mappings first, then a geometry decides the shape, then labels/themes/facets are stacked on top with <code>+</code> — which is why customising or extending a ggplot2 chart (add another layer, facet by a variable) is usually a one-line change rather than a rewrite.</div>
+    <div class="joke"><strong>😂 Lab Humor</strong>Base R plotting is ordering "the usual" at a diner — fast, no menu needed, done in ten seconds. ggplot2 is building a burger at one of those build-your-own places: bun layer, patty layer, toppings layer, sauce layer — slower to order the first time, but exactly the burger you actually wanted.</div>
+  </div>
+
+</div><!-- /c-r -->
+
+<!-- ══════════════════════════════════════════════
+     MORE TOPICS COMING SOON
+══════════════════════════════════════════════ -->
+<div class="more-soon-box">
+  <h4>📚 More R Topics Coming Soon</h4>
+  <p>This page will be extended with strings, dates, the tidyverse (dplyr/tidyr), statistical modelling, and R Markdown notes over time.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     REFERENCES
+══════════════════════════════════════════════ -->
+<div class="refs-box">
+  <h4>📚 Reference Texts &amp; Further Reading</h4>
+  <div class="ref-entry"><div class="ref-n">[1]</div><div><div class="ref-title">R for Data Science</div><div class="ref-auth">Wickham, H. &amp; Grolemund, G. — O'Reilly Media · 2nd Ed.</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[2]</div><div><div class="ref-title">The Art of R Programming</div><div class="ref-auth">Matloff, N. — No Starch Press</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[3]</div><div><div class="ref-title">ggplot2: Elegant Graphics for Data Analysis</div><div class="ref-auth">Wickham, H. — Springer · 3rd Ed.</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[4]</div><div><div class="ref-title">Advanced R</div><div class="ref-auth">Wickham, H. — CRC Press · 2nd Ed.</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[5]</div><div><div class="ref-title">Learn R By Example</div><div class="ref-auth"><a href="https://www.learnbyexample.org/r/" target="_blank">learnbyexample.org/r</a> — topic outline inspiration for this page</div></div></div>
+  <div class="ref-entry"><div class="ref-n">[6]</div><div><div class="ref-title">The Comprehensive R Archive Network (CRAN)</div><div class="ref-auth"><a href="https://cran.r-project.org/" target="_blank">cran.r-project.org</a> — official R documentation &amp; packages</div></div></div>
+</div>
+
+<div class="nb-footer">Learn R By Example &nbsp;·&nbsp; Personal Programming Notes · Md. Abu Bokkor Shiddik &nbsp;·&nbsp; More R topics to be added</div>
+
+</div><!-- /notebook-wrap -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Md. Abu Bokkor Shiddik</div>
+      <p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <div class="footer-nav-links">
+        <a href="home.html">Home</a>
+        <a href="publications.html">Publications</a>
+        <a href="projects.html">Projects</a>
+        <a href="BSc-courses.html">B.Sc. Courses</a>
+        <a href="MSc-courses.html">M.Sc. Courses</a>
+        <a href="service.html">Service</a>
+        <a href="conference-and-workshop.html">Conferences</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <div class="footer-social-links">
+        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">🌐 Portfolio</a>
+        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Google Scholar</a>
+        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
+        <a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Md. Abu Bokkor Shiddik · All rights reserved</p>
+    <p>abubokkor.brur60@gmail.com · +880 1874 001360</p>
+  </div>
+</footer>
+
+<script>
+/* ── NAVBAR ── */
+document.querySelectorAll('.dropbtn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var dd = btn.closest('.dropdown');
+    var open = dd.classList.contains('active');
+    document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
+    if (!open) dd.classList.add('active');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
+});
+var ham = document.getElementById('hamburger');
+var navDrawer = document.getElementById('nav-drawer');
+ham.addEventListener('click', function() { ham.classList.toggle('open'); navDrawer.classList.toggle('open'); });
+navDrawer.querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() { ham.classList.remove('open'); navDrawer.classList.remove('open'); });
+});
+
+/* ── CATEGORY JUMP NAV ── */
+function jumpTo(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var nb = document.querySelector('.navbar');
+  var cn = document.querySelector('.course-nav');
+  var offset = (nb ? nb.offsetHeight : 56) + (cn ? cn.offsetHeight : 44) + 12;
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
+}
+
+/* Auto-highlight category nav on scroll */
+var topicIds = ['t1','t2','t3','t4','t5','t6','t7'];
+var raf = null;
+window.addEventListener('scroll', function() {
+  if (raf) return;
+  raf = requestAnimationFrame(function() {
+    raf = null;
+    var nb = document.querySelector('.navbar');
+    var cn = document.querySelector('.course-nav');
+    var offset = (nb ? nb.offsetHeight : 56) + (cn ? cn.offsetHeight : 44) + 30;
+    var current = topicIds[0];
+    topicIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= offset) current = id;
+    });
+    document.querySelectorAll('.cnav-btn').forEach(function(btn, i) {
+      btn.classList.toggle('active', topicIds[i] === current);
+    });
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
