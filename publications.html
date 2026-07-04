@@ -141,8 +141,12 @@
     .pm-val { font-size:13.5px; font-weight:700; color:var(--text); font-family:'Lora',serif; line-height:1; margin-bottom:3px; }
     .pm-lbl { font-size:10px; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px; font-weight:500; }
     .pub-title { font-family:'Lora',serif; font-size:1.1rem; font-weight:600; color:var(--text); line-height:1.45; margin-bottom:10px; }
+    .pub-title a { color:var(--text); transition:color 0.15s; }
+    .pub-title a:hover { color:var(--blue); text-decoration:underline; }
     .pub-authors { font-size:13px; color:var(--text3); margin-bottom:10px; line-height:1.5; }
     .pub-authors strong { color:var(--text2); font-weight:600; }
+    .pub-authors a { color:inherit; transition:color 0.15s; }
+    .pub-authors a:hover { color:var(--blue); text-decoration:underline; }
     .pub-links { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
     .pub-link-btn { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; padding:5px 12px; border-radius:6px; transition:background 0.18s,color 0.18s,border-color 0.18s; }
     .btn-doi { background:var(--blue); color:#fff; }
@@ -281,8 +285,8 @@
     <h1>Publications</h1>
     <p>Peer-reviewed research in machine learning, explainable AI, epidemiology, and global public health &mdash; published in high-impact international journals.</p>
     <div class="hero-metrics">
-      <div><div class="metric-num">12</div><div class="metric-label">Publications</div></div>
-      <div><div class="metric-num">8</div><div class="metric-label">Journals</div></div>
+      <div><div class="metric-num">13</div><div class="metric-label">Publications</div></div>
+      <div><div class="metric-num">9</div><div class="metric-label">Journals</div></div>
       <div><div class="metric-num">194</div><div class="metric-label">Countries Studied</div></div>
       <div><div class="metric-num">Nature &middot; BMJ &middot; Springer &middot; Wiley</div><div class="metric-label">Publishers</div></div>
     </div>
@@ -330,8 +334,8 @@
       </div>
       <div class="topic-row">
         <span class="topic-name">Child Mortality</span>
-        <div class="topic-track"><div class="topic-fill" style="width:10%;background:#0891b2"></div></div>
-        <span class="topic-count">1</span>
+        <div class="topic-track"><div class="topic-fill" style="width:20%;background:#0891b2"></div></div>
+        <span class="topic-count">2</span>
       </div>
     </div>
     <div class="sum-block">
@@ -345,7 +349,7 @@
         <div class="jitem"><div class="jdot" style="background:#166534"></div><span class="jname">Trop. Med. &amp; Infect. Dis.</span><span class="jcount">1</span></div>
         <div class="jitem"><div class="jdot" style="background:#5b21b6"></div><span class="jname">Int. J. Statistical Sciences</span><span class="jcount">1</span></div>
         <div class="jitem"><div class="jdot" style="background:#1d4ed8"></div><span class="jname">BMC Medicine</span><span class="jcount">1</span></div>
-      
+        <div class="jitem"><div class="jdot" style="background:#b45309"></div><span class="jname">Public Health Challenges</span><span class="jcount">1</span></div>
       </div>
     </div>
     <div class="sum-block">
@@ -388,13 +392,13 @@
 
 <div class="filter-bar">
   <div class="filter-inner">
-    <button class="filter-tab active" data-filter="all">All <span class="ftag">12</span></button>
+    <button class="filter-tab active" data-filter="all">All <span class="ftag">13</span></button>
     <button class="filter-tab" data-filter="dengue">Dengue <span class="ftag">7</span></button>
     <button class="filter-tab" data-filter="malaria">Malaria <span class="ftag">2</span></button>
     <button class="filter-tab" data-filter="tb">Tuberculosis <span class="ftag">2</span></button>
-    <button class="filter-tab" data-filter="mortality">Child Mortality <span class="ftag">1</span></button>
+    <button class="filter-tab" data-filter="mortality">Child Mortality <span class="ftag">2</span></button>
     <button class="filter-tab" data-filter="asia">Asia <span class="ftag">2</span></button>
-    <button class="filter-tab" data-filter="2026">2026 <span class="ftag">5</span></button>
+    <button class="filter-tab" data-filter="2026">2026 <span class="ftag">6</span></button>
     <button class="filter-tab" data-filter="2025">2025 <span class="ftag">7</span></button>
   </div>
 </div>
@@ -417,12 +421,44 @@
   <div class="no-results" id="no-results">No publications match your search.</div>
 
   <!-- ═══════════════ 2026 PAPERS ═══════════════ -->
-  
- <article class="pub-card springer" data-tags="dengue malaria 2026 xai spatial vbd bangladesh springer xgboost">
+
+  <article class="pub-card wiley" data-tags="mortality 2026 stillbirth neonatal bangladesh wiley public health challenges">
+    <div class="pub-body">
+      <div class="pub-meta-row"><span class="journal-badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;">Public Health Challenges</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
+      <h2 class="pub-title"><a href="https://doi.org/10.1002/puh2.70312" target="_blank">Stillbirth, Neonatal, and Child Mortality in Bangladesh: Progress and Persistent Public Health Challenges</a></h2>
+      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+      <div class="pub-metrics-strip">
+        <div class="pm-item"><div class="pm-val">30&rarr;27</div><div class="pm-lbl">IMR Reversal</div></div>
+        <div class="pm-item"><div class="pm-val">16&rarr;20</div><div class="pm-lbl">Neonatal (2023)</div></div>
+        <div class="pm-item"><div class="pm-val">100,000+</div><div class="pm-lbl">Under-5 Deaths</div></div>
+        <div class="pm-item"><div class="pm-val">63,000</div><div class="pm-lbl">Annual Stillbirths</div></div>
+        <div class="pm-item"><div class="pm-val">2000&ndash;23</div><div class="pm-lbl">Data Span</div></div>
+      </div>
+      <div class="pub-links">
+        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/puh2.70312" target="_blank">&#8599; DOI</a>
+        <a class="pub-link-btn btn-journal" href="https://onlinelibrary.wiley.com/doi/10.1002/puh2.70312" target="_blank">View in Journal</a>
+        <button class="btn-cite" onclick="toggleCite('cite13',this)">Cite</button>
+      </div>
+      <div class="cite-box" id="cite13"><button class="cite-copy" onclick="copyCite('cite13')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2026). Stillbirth, Neonatal, and Child Mortality in Bangladesh: Progress and Persistent Public Health Challenges. Public Health Challenges. https://doi.org/10.1002/puh2.70312</div>
+    </div>
+    <div class="pub-abstract">
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-text"><div class="abstract-clamp" id="abs-13"><p>Bangladesh made substantial gains in child survival over two decades, with the under-five mortality rate falling from 94 to 30 per 1000 live births between 2000 and 2020. Recent data from the Bangladesh Bureau of Statistics, however, point to a troubling reversal. The infant mortality rate rose to 27 per 1000 live births in 2023, whereas neonatal mortality climbed from 16 to 20 per 1000 live births within a single year. More than 100,000 children under 5 died in 2023, with two-thirds of deaths occurring in the first month of life. Bangladesh also records around 63,000 stillbirths annually, representing a substantial public health burden and reflecting persistent gaps in maternal and antenatal care. Contributing factors include preterm birth, limited skilled attendance at delivery, pneumonia, malnutrition, and disruptions from the COVID-19 pandemic. Strengthening rural healthcare, expanding immunization, and improving maternal and neonatal care are essential if Bangladesh is to meet its Sustainable Development Goal (SDG) 3.2 targets by 2030.</p></div>
+      <button class="read-more-btn" data-target="abs-13">Read more &rarr;</button></div>
+    </div>
+    <div class="pub-figures">
+      <div class="figures-label">Figures</div>
+      <div class="fig-strip">
+        <img class="fig-thumb" src="https://github.com/user-attachments/assets/45af9eed-f320-4527-b684-b399035934b5" alt="Figure 1" data-full="https://github.com/user-attachments/assets/45af9eed-f320-4527-b684-b399035934b5">
+      </div>
+    </div>
+  </article>
+
+  <article class="pub-card springer" data-tags="dengue malaria 2026 xai spatial vbd bangladesh springer xgboost">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-springer" style="background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;">BMC Medicine</span><span class="pub-sub-badge psb-springer">Springer</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh: leveraging machine learning and spatial regression for intervention strategies</h2>
-     <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong>, Arman Hossain Chowdhury</p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1186/s12916-026-04857-1" target="_blank">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh: leveraging machine learning and spatial regression for intervention strategies</a></h2>
+     <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong>, <a href="https://scholar.google.com/citations?user=Z5Vu5OoAAAAJ&hl=en" target="_blank">Arman Hossain Chowdhury</a></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">64</div><div class="pm-lbl">Districts</div></div>
         <div class="pm-item"><div class="pm-val">2017&ndash;20</div><div class="pm-lbl">Data Span</div></div>
@@ -451,12 +487,12 @@
       <button class="fig-more-btn" data-card="12">Show all figures (3) &rarr;</button>
     </div>
   </article>
-  
+
   <article class="pub-card wiley" data-tags="dengue 2026 xai convlstm global ml shap ig lrp wiley hsr">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Global Prediction of Dengue Incidence Using an Explainable Artificial Intelligence-Driven ConvLSTM Integrating Environmental, Health, and Socio-Economic Determinants</h2>
-      <p class="pub-authors"><strong>Md. Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1002/hsr2.72280" target="_blank">Global Prediction of Dengue Incidence Using an Explainable Artificial Intelligence-Driven ConvLSTM Integrating Environmental, Health, and Socio-Economic Determinants</a></h2>
+      <p class="pub-authors"><strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">118</div><div class="pm-lbl">Countries</div></div>
         <div class="pm-item"><div class="pm-val">2000&ndash;21</div><div class="pm-lbl">Data Span</div></div>
@@ -493,8 +529,8 @@
   <article class="pub-card wiley" data-tags="xai 2026 systematic review healthcare ml deep learning shap lime wiley hsr">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Explainable Artificial Intelligence in Healthcare: Current Landscape, Challenges, and Future Directions</h2>
-      <p class="pub-authors"><strong>Md. Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1002/hsr2.72172" target="_blank">Explainable Artificial Intelligence in Healthcare: Current Landscape, Challenges, and Future Directions</a></h2>
+      <p class="pub-authors"><strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">70</div><div class="pm-lbl">Studies Reviewed</div></div>
         <div class="pm-item"><div class="pm-val">2017&ndash;25</div><div class="pm-lbl">Data Span</div></div>
@@ -523,15 +559,15 @@
     </div>
   </article>
 
- 
+
 
   <!-- ═══════════════ EXISTING PAPERS ═══════════════ -->
 
   <article class="pub-card nature" data-tags="tb 2025 xai ml spatial nature xgboost shap global">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-nature">Scientific Reports</span><span class="pub-sub-badge psb-nature">Nature Portfolio</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</h2>
-      <p class="pub-authors">Md. Siddikur Rahman, <strong>Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</a></h2>
+      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">194</div><div class="pm-lbl">Countries</div></div>
         <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
@@ -567,8 +603,8 @@
   <article class="pub-card wiley" data-tags="dengue 2025 ml tree bangladesh warning lightgbm shap wiley hsr">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model</h2>
-      <p class="pub-authors">Md. Siddikur Rahman, Miftahuzzannat Amrin, <strong>Md. Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1002/hsr2.70726" target="_blank">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model</a></h2>
+      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <a href="https://scholar.google.com/citations?user=R-SM8CEAAAAJ&hl=en" target="_blank">Miftahuzzannat Amrin</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">LightGBM</div><div class="pm-lbl">Best Model</div></div>
         <div class="pm-item"><div class="pm-val">2000&ndash;21</div><div class="pm-lbl">Data Span</div></div>
@@ -606,8 +642,8 @@
   <article class="pub-card elsevier" data-tags="dengue 2025 xai climate bangladesh eco shap lime auc elsevier">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-gloepi">Global Epidemiology</span><span class="pub-sub-badge psb-elsevier">Elsevier</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</h2>
-      <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</a></h2>
+      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">AUC 0.89</div><div class="pm-lbl">Performance</div></div>
         <div class="pm-item"><div class="pm-val">2000&ndash;23</div><div class="pm-lbl">Data Span</div></div>
@@ -643,8 +679,8 @@
   <article class="pub-card elsevier" data-tags="dengue 2025 xai reflections bangladesh elsevier">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-gloepi">Global Epidemiology</span><span class="pub-sub-badge psb-elsevier">Elsevier</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</h2>
-      <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1016/j.gloepi.2025.100230" target="_blank">Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</a></h2>
+      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-links">
         <a class="pub-link-btn btn-doi" href="https://doi.org/10.1016/j.gloepi.2025.100230" target="_blank">&#8599; DOI</a>
         <a class="pub-link-btn btn-journal" href="https://www.sciencedirect.com/science/article/pii/S2590113325000483" target="_blank">View in Journal</a>
@@ -666,8 +702,8 @@
   <article class="pub-card nature" data-tags="malaria 2025 ml spatial nature xai global xgboost getis-ord">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-nature">Scientific Reports</span><span class="pub-sub-badge psb-nature">Nature Portfolio</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Unraveling global malaria incidence and mortality using machine learning and artificial intelligence&ndash;driven spatial analysis</h2>
-      <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">Unraveling global malaria incidence and mortality using machine learning and artificial intelligence&ndash;driven spatial analysis</a></h2>
+      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">106</div><div class="pm-lbl">Countries</div></div>
         <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
@@ -701,8 +737,8 @@
   <article class="pub-card local" data-tags="dengue 2025 xai causal bangladesh ijss banglajol dowhy">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-ijss">Int. J. Statistical Sciences</span><span class="pub-sub-badge psb-banglajol">BanglaJOL</span><span class="year-pill">2025</span></div>
-      <h2 class="pub-title">Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</h2>
-      <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.3329/ijss.v25i2.85772" target="_blank">Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</a></h2>
+      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">2010&ndash;24</div><div class="pm-lbl">Data Span</div></div>
         <div class="pm-item"><div class="pm-val">41.87%</div><div class="pm-lbl">Climate Factor</div></div>
@@ -737,8 +773,8 @@
   <article class="pub-card springer" data-tags="asia 2025 xai spatial communicable springer health tb malaria dengue">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-springer">Int. J. Health Geographics</span><span class="pub-sub-badge psb-springer">Springer</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000&ndash;2022) based on health, climate, and socioeconomic factors</h2>
-      <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000&ndash;2022) based on health, climate, and socioeconomic factors</a></h2>
+      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">41</div><div class="pm-lbl">Countries</div></div>
         <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
@@ -773,8 +809,8 @@
   <article class="pub-card bmj" data-tags="mortality 2026 bayesian spatiotemporal bmj asia child neonatal infant">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-bmj">BMJ Open</span><span class="pub-sub-badge psb-bmj">BMJ</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000&ndash;2022) in 41 Asian countries: a population-level observational study</h2>
-      <p class="pub-authors">Md. Siddikur Rahman, <strong>Md. Abu Bokkor Shiddik</strong></p>
+      <h2 class="pub-title"><a href="https://doi.org/10.1136/bmjopen-2025-108632" target="_blank">Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000&ndash;2022) in 41 Asian countries: a population-level observational study</a></h2>
+      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">41</div><div class="pm-lbl">Countries</div></div>
         <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
@@ -809,8 +845,8 @@
   <article class="pub-card mdpi" data-tags="dengue 2026 xai bayesian district bangladesh mdpi deep learning mlp convlstm shap">
     <div class="pub-body">
       <div class="pub-meta-row"><span class="journal-badge badge-mdpi">Trop. Med. &amp; Infect. Dis.</span><span class="pub-sub-badge psb-mdpi">MDPI</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title">District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</h2>
-      <p class="pub-authors"><strong>Md. Abu Bokkor Shiddik</strong>, Farzana Zannat Toshi, Sadia Yesmin, Md. Siddikur Rahman</p>
+      <h2 class="pub-title"><a href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</a></h2>
+      <p class="pub-authors"><strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong>, Farzana Zannat Toshi, Sadia Yesmin, <a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a></p>
       <div class="pub-metrics-strip">
         <div class="pm-item"><div class="pm-val">64</div><div class="pm-lbl">Districts</div></div>
         <div class="pm-item"><div class="pm-val">2017&ndash;24</div><div class="pm-lbl">Data Span</div></div>
