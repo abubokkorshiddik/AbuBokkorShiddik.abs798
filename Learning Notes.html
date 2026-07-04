@@ -5,17 +5,17 @@
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learning Notes hub by Md. Abu Bokkor Shiddik — BRUR. Browse all B.Sc. and M.Sc. statistics course notes in one place.">
-  <meta name="keywords" content="learning notes, statistics courses, BSc statistics, MSc statistics, Begum Rokeya University, Abu Bokkor Shiddik">
+  <meta name="description" content="Learning Notes hub by Md. Abu Bokkor Shiddik — BRUR. Browse all B.Sc. and M.Sc. statistics course notes, plus programming notes, in one place.">
+  <meta name="keywords" content="learning notes, statistics courses, BSc statistics, MSc statistics, R programming, Begum Rokeya University, Abu Bokkor Shiddik">
   <meta name="author" content="Md. Abu Bokkor Shiddik">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Learning Notes — Md. Abu Bokkor Shiddik">
-  <meta property="og:description" content="All B.Sc. and M.Sc. statistics course learning notes in one place — BRUR.">
+  <meta property="og:description" content="All B.Sc. and M.Sc. statistics course notes, plus programming notes, in one place — BRUR.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Learning Notes — Abu Bokkor Shiddik">
-  <meta name="twitter:description" content="All B.Sc. and M.Sc. statistics course learning notes in one place — BRUR.">
+  <meta name="twitter:description" content="All B.Sc. and M.Sc. statistics course notes, plus programming notes, in one place — BRUR.">
   <title>Learning Notes | Md. Abu Bokkor Shiddik</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,6 +77,7 @@
     .hbadge { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 14px; border-radius: 5px; color: #fff; border: 1px solid rgba(255,255,255,.2); letter-spacing: .5px; }
     .hb-bsc { background: rgba(26,74,107,.7); }
     .hb-msc { background: rgba(14,92,74,.7); }
+    .hb-prog { background: rgba(37,99,235,.6); }
     .hbadge-soon { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 14px; border-radius: 5px; color: rgba(255,255,255,.45); border: 1px dashed rgba(255,255,255,.25); letter-spacing: .5px; }
 
     /* ════════════════════════════
@@ -114,6 +115,7 @@
     .degree-banner::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
     .db-bsc { background: linear-gradient(135deg, #07152a, #1a4a6b); }
     .db-msc { background: linear-gradient(135deg, #07241c, #0e5c4a); }
+    .db-prog { background: linear-gradient(135deg, #0b2140, #1d4ed8); }
     .db-code { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px; position: relative; z-index: 1; }
     .db-title { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 2.8vw, 1.9rem); font-weight: 700; margin-bottom: 6px; position: relative; z-index: 1; }
     .db-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,.6); letter-spacing: .5px; position: relative; z-index: 1; }
@@ -198,6 +200,7 @@
           <a href="Learning Notes.html">📘 All Learning Notes</a>
           <a href="BSc-courses.html">🎓 B.Sc. Courses</a>
           <a href="MSc-courses.html">🎓 M.Sc. Courses</a>
+          <a href="Learn-R-Programming.html">💻 Learn R Programming</a>
           <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
         </div>
       </div>
@@ -231,6 +234,7 @@
         <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
         <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
         <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
+        <a class="drawer-link" href="Learn-R-Programming.html">Learn R Programming</a>
         <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
       </div>
       <div class="drawer-divider"></div>
@@ -249,20 +253,22 @@
   <div class="hero-inner">
     <div class="hero-eyebrow">Personal Learning Notes · BRUR · Statistics</div>
     <h1>Learning <em>Notes</em></h1>
-    <p class="hero-sub">A single hub for every course-notes notebook on this site — undergraduate (B.Sc.) and postgraduate (M.Sc.) statistics, with definitions, formulas, derivations, and worked examples from Begum Rokeya University, Rangpur. Pick a degree below, then click any course to jump straight into its notes.</p>
+    <p class="hero-sub">A single hub for every course-notes notebook on this site — undergraduate (B.Sc.) and postgraduate (M.Sc.) statistics, plus programming language notes — with definitions, formulas, derivations, and worked examples from Begum Rokeya University, Rangpur. Pick a category below, then click any tile to jump straight into its notes.</p>
     <div class="hero-badges">
       <span class="hbadge hb-bsc" onclick="jumpTo('deg-bsc')" style="cursor:pointer;">🎓 14 B.Sc. Courses</span>
       <span class="hbadge hb-msc" onclick="jumpTo('deg-msc')" style="cursor:pointer;">🎓 2 M.Sc. Courses</span>
+      <span class="hbadge hb-prog" onclick="jumpTo('deg-prog')" style="cursor:pointer;">💻 R Programming</span>
       <span class="hbadge-soon">+ more added regularly</span>
     </div>
   </div>
 </section>
 
-<!-- ═══ DEGREE JUMP NAV ═══ -->
+<!-- ═══ CATEGORY JUMP NAV ═══ -->
 <div class="course-nav">
   <div class="course-nav-inner">
     <button class="cnav-btn active" onclick="jumpTo('deg-bsc')"><span class="cnav-dot" style="background:#1a4a6b"></span>B.Sc. Courses</button>
     <button class="cnav-btn" onclick="jumpTo('deg-msc')"><span class="cnav-dot" style="background:#0e5c4a"></span>M.Sc. Courses</button>
+    <button class="cnav-btn" onclick="jumpTo('deg-prog')"><span class="cnav-dot" style="background:#1d4ed8"></span>Programming</button>
   </div>
 </div>
 
@@ -271,7 +277,7 @@
 
   <div class="intro-note">
     <strong>How to Use This Page</strong>
-    Each tile below is a direct link to a specific course's section inside the full B.Sc. or M.Sc. notebook page. Clicking a tile opens that notebook and scrolls straight to the matching course — no need to hunt through the table of contents yourself.
+    Each tile below is a direct link to a specific course's section inside the full B.Sc. or M.Sc. notebook page, or to a standalone programming notes page. Clicking a tile opens that notebook and scrolls straight to the matching course — no need to hunt through the table of contents yourself.
   </div>
 
   <!-- ══════════════════════════════════════════════
@@ -445,7 +451,38 @@
     </div>
   </div>
 
-  <div class="nb-footer">B.Sc. Statistics (14 courses) &nbsp;·&nbsp; M.Sc. Statistics (2 courses, growing) &nbsp;·&nbsp; Dept. of Statistics, BRUR &nbsp;·&nbsp; Personal Study Notes · Md. Abu Bokkor Shiddik</div>
+  <div class="divider">· · ·</div>
+
+  <!-- ══════════════════════════════════════════════
+       PROGRAMMING NOTES
+  ══════════════════════════════════════════════ -->
+  <div class="degree-section" id="deg-prog">
+    <div class="degree-banner db-prog">
+      <div class="db-watermark">R</div>
+      <div class="db-code">PROGRAMMING LANGUAGES · LEARN BY EXAMPLE</div>
+      <div class="db-title">Programming Notes</div>
+      <div class="db-sub">Language references built the same way as the course notebooks — from basics to professional-level usage</div>
+    </div>
+
+    <div class="tile-grid">
+      <a class="course-tile" href="Learn-R-Programming.html" style="background:linear-gradient(135deg, #0b2140, #1d4ed8);">
+        <div>
+          <div class="tile-code">LEARN BY EXAMPLE</div>
+          <div class="tile-title">Learn R Programming</div>
+          <div class="tile-desc">Getting started, data structures, control flow, functions &amp; the apply family, import/export, base graphics &amp; ggplot2.</div>
+        </div>
+        <span class="tile-arrow">Read notes <span class="arrow-glyph">→</span></span>
+      </a>
+
+      <div class="tile-soon">
+        <div class="ts-icon">💻</div>
+        <div class="ts-title">More languages coming soon</div>
+        <div class="ts-sub">Python &amp; SQL notes planned</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nb-footer">B.Sc. Statistics (14 courses) &nbsp;·&nbsp; M.Sc. Statistics (2 courses, growing) &nbsp;·&nbsp; Programming Notes (R, growing) &nbsp;·&nbsp; Dept. of Statistics, BRUR &nbsp;·&nbsp; Personal Study Notes · Md. Abu Bokkor Shiddik</div>
 
 </div><!-- /notebook-wrap -->
 
@@ -462,9 +499,10 @@
         <a href="home.html">Home</a>
         <a href="publications.html">Publications</a>
         <a href="projects.html">Projects</a>
-        <a href="learning-notes.html">Learning Notes</a>
+        <a href="Learning Notes.html">Learning Notes</a>
         <a href="BSc-courses.html">B.Sc. Courses</a>
         <a href="MSc-courses.html">M.Sc. Courses</a>
+        <a href="Learn-R-Programming.html">Learn R Programming</a>
         <a href="service.html">Service</a>
         <a href="conference-and-workshop.html">Conferences</a>
       </div>
@@ -507,7 +545,7 @@ navDrawer.querySelectorAll('a').forEach(function(a) {
   a.addEventListener('click', function() { ham.classList.remove('open'); navDrawer.classList.remove('open'); });
 });
 
-/* ── DEGREE JUMP NAV ── */
+/* ── CATEGORY JUMP NAV ── */
 function jumpTo(id) {
   var el = document.getElementById(id);
   if (!el) return;
@@ -517,8 +555,8 @@ function jumpTo(id) {
   window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
 }
 
-/* Auto-highlight degree nav on scroll */
-var degIds = ['deg-bsc', 'deg-msc'];
+/* Auto-highlight category nav on scroll */
+var degIds = ['deg-bsc', 'deg-msc', 'deg-prog'];
 var raf = null;
 window.addEventListener('scroll', function() {
   if (raf) return;
