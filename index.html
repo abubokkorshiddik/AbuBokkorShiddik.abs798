@@ -5,10 +5,10 @@
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Md. Abu Bokkor Shiddik — Researcher in Machine Learning, Explainable AI & Global Health Analytics. 12+ peer-reviewed publications. Statistics, BRUR, Bangladesh.">
+  <meta name="description" content="Md. Abu Bokkor Shiddik — Researcher in Machine Learning, Explainable AI & Global Health Analytics. Peer-reviewed publications in leading journals. Statistics, BRUR, Bangladesh.">
   <meta name="keywords" content="ABS798, Abu Bokkor Shiddik, Machine Learning, Explainable AI, Public Health, Epidemiology, Bangladesh, BRUR, Statistics, Dengue, Malaria, Tuberculosis, Spatial Analysis, XGBoost, SHAP">
   <meta property="og:title" content="Md. Abu Bokkor Shiddik — Researcher">
-  <meta property="og:description" content="Researcher in Machine Learning, Explainable AI & Global Health Analytics. 12+ peer-reviewed publications in Nature, BMJ, Springer.">
+  <meta property="og:description" content="Researcher in Machine Learning, Explainable AI & Global Health Analytics. Peer-reviewed publications in Nature, BMJ, Springer.">
   <meta property="og:image" content="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/stst.jpeg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="google-site-verification" content="google62120b7b4457ee75">
@@ -729,7 +729,7 @@
       </div>
 
       <div class="hero-stats">
-        <div class="stat-box"><div class="stat-num" data-val="12" data-suffix="+">12+</div><div class="stat-lbl">Publications</div></div>
+        <div class="stat-box"><div class="stat-num">Multiple</div><div class="stat-lbl">Publications</div></div>
         <div class="stat-box"><div class="stat-num" data-val="18" data-suffix="">18</div><div class="stat-lbl">Peer Reviews</div></div>
         <div class="stat-box"><div class="stat-num" data-val="26" data-suffix="">26</div><div class="stat-lbl">Certifications</div></div>
         <div class="stat-box"><div class="stat-num" data-val="8" data-suffix="">8</div><div class="stat-lbl">Institutions</div></div>
@@ -753,7 +753,7 @@
           <span class="pb-dot green"></span> Open to Collaborate
         </div>
         <div class="photo-badge pb-bottom">
-          <span class="pb-dot blue"></span> 12+ Publications
+          <span class="pb-dot blue"></span> Published Researcher
         </div>
       </div>
       <div class="photo-caption">
@@ -786,7 +786,7 @@
   <div class="section" id="sec-about">
     <div class="section-head"><h2>Research Profile</h2></div>
     <div class="about-card">
-      <p>I am a researcher with <strong>12+ peer-reviewed publications</strong> in high-impact international journals including <em>Scientific Reports</em>, <em>BMJ Open</em>, <em>Global Epidemiology</em>, and <em>International Journal of Health Geographics</em>. My research covers global disease modeling, dengue early warning systems, and climate-health interactions.</p>
+      <p>I am a researcher with a growing portfolio of <strong>peer-reviewed publications</strong> in high-impact international journals including <em>Scientific Reports</em>, <em>BMJ Open</em>, <em>Global Epidemiology</em>, and <em>International Journal of Health Geographics</em>. My research covers global disease modeling, dengue early warning systems, and climate-health interactions.</p>
       <p>My work integrates <strong>machine learning</strong>, <strong>explainable AI (SHAP, LIME)</strong>, <strong>Bayesian deep learning</strong>, and <strong>spatial analysis</strong> to support evidence-based decision-making in public health — across 194 countries using large-scale multi-source datasets.</p>
     </div>
   </div>
@@ -834,7 +834,7 @@
   <div class="page-body">
     <div class="section-head" style="margin-top:0;padding-top:0;">
       <h2>Selected Publications</h2>
-      <a href="publications.html" class="see-all">View all 12 →</a>
+      <a href="publications.html" class="see-all">View all publications →</a>
     </div>
     <div class="pub-grid">
       <div class="pub-card j-n">
@@ -916,7 +916,7 @@
 
   <!-- COURSES -->
   <div class="section" id="sec-courses">
-    <div class="section-head"><h2>Recent Courses &amp; Training</h2><a href="courses.html" class="see-all">See all 26 →</a></div>
+    <div class="section-head"><h2>Recent Courses &amp; Training</h2><a href="courses.html" class="see-all">See all →</a></div>
     <div class="course-grid">
       <div class="course-card"><div class="cdot"></div><div><div class="cname">Gen AI in Research Workflow</div><div class="corg">Elsevier Researcher Academy · 2026</div></div></div>
       <div class="course-card"><div class="cdot"></div><div><div class="cname">Technical Writing Skills</div><div class="corg">Elsevier Researcher Academy · 2026</div></div></div>
@@ -1044,7 +1044,7 @@ function animateStats() {
   if (!statsEl) return;
   if (statsEl.getBoundingClientRect().top < window.innerHeight) {
     statsAnimated = true;
-    document.querySelectorAll('.stat-num').forEach(function(el) {
+    document.querySelectorAll('.stat-num[data-val]').forEach(function(el) {
       var val    = parseInt(el.dataset.val) || 0;
       var suffix = el.dataset.suffix || '';
       var dur = 1200; var t0 = null;
