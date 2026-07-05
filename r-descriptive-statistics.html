@@ -4,8 +4,8 @@
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Descriptive statistics in R for research — a full worked example with a realistic dataset, central tendency, dispersion, frequency tables, grouped summaries, correlation, and reporting results.">
-<title>Descriptive Statistics | Learn R Programming | Md. Abu Bokkor Shiddik</title>
+<meta name="description" content="Descriptive statistics and regression analysis in R for research — a full worked example with a realistic dataset: central tendency, dispersion, frequency tables, grouped summaries, correlation, simple and multiple linear regression, and reporting results.">
+<title>Descriptive Stats & Regression | Learn R Programming | Md. Abu Bokkor Shiddik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -207,8 +207,8 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 
 <section class="doc-hero">
   <div class="doc-hero-inner">
-    <div class="doc-crumb"><a href="R-programming.html">Learn R Programming</a> &nbsp;/&nbsp; Statistical Analysis for Research &nbsp;/&nbsp; Descriptive Statistics</div>
-    <h1>Descriptive Statistics</h1>
+    <div class="doc-crumb"><a href="R-programming.html">Learn R Programming</a> &nbsp;/&nbsp; Statistical Analysis for Research &nbsp;/&nbsp; Descriptive Stats & Regression</div>
+    <h1>Descriptive Stats & Regression</h1>
   </div>
 </section>
 <div class="doc-layout">
@@ -255,11 +255,11 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 <a class="sb-link" href="r-ggplot2-boxplot.html">Box-Whisker Plot</a>
 </div>
 <div class="sb-group"><div class="sb-group-title">Statistical Analysis for Research</div>
-<a class="sb-link active" href="r-descriptive-statistics.html">Descriptive Statistics</a>
+<a class="sb-link active" href="r-descriptive-statistics.html">Descriptive Stats &amp; Regression</a>
 </div>
   </aside>
   <main class="content">
-    <p class="lede">This page walks through a complete, research-style descriptive analysis in R using a realistic dataset from start to finish — the exact workflow you would use to describe your sample before running any inferential test.</p>
+    <p class="lede">This page walks through a complete, research-style analysis in R using a realistic dataset from start to finish — descriptive statistics first, then simple and multiple linear regression — the exact workflow you would use to describe your sample and test a relationship before writing up results.</p>
     <div class="section">
         <h2>Why Descriptive Statistics Come First</h2>
         <p>Before running a single hypothesis test, every research paper needs a clear description of the sample: how many participants, what their scores looked like on average, how spread out those scores were, and how the categorical groups (gender, treatment vs control, and so on) were distributed. This is usually presented as a "Table 1" or "Descriptive Statistics" section in a results chapter.</p>
@@ -427,6 +427,95 @@ exam_score        0.483      1.000</pre></div>
 </div>
         </div>
 <div class="section">
+        <h2>Step 11: Simple Linear Regression</h2>
+        <p>Correlation tells you two variables move together; regression goes a step further and estimates exactly how much one variable is expected to change for a one-unit change in the other. Use <code class="inline">lm()</code> ("linear model") to fit it.</p>
+        <div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>model1 <- <span class="fn">lm</span>(exam_score ~ study_hours, data = research_data)
+<span class="fn">summary</span>(model1)</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>Call:
+lm(formula = exam_score ~ study_hours, data = research_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-15.702  -6.021  -0.245   5.933  17.845 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   53.523      4.812  11.124  &lt; 2e-16 ***
+study_hours    3.281      0.902   3.638 0.000596 ***
+---
+Signif. codes:  0 [***] 0.001 [**] 0.01 [*] 0.05 [.] 0.1 [ ] 1
+
+Residual standard error: 8.62 on 58 degrees of freedom
+Multiple R-squared:  0.2333,  Adjusted R-squared:  0.2196 
+F-statistic: 17.65 on 1 and 58 DF,  p-value: 0.0000957</pre></div>
+</div><div class="callout tip"><div class="co-title">&#128161; Tip</div>Read the Coefficients table like this: the Estimate for study_hours (3.281) means each extra hour of study is associated with about 3.28 more points on the exam, holding nothing else constant. The Intercept (53.523) is the predicted score for zero study hours. Multiple R-squared (0.2333) means study hours alone explain about 23% of the variation in exam scores - moderate, and consistent with the 0.48 correlation found earlier, since R-squared is just the correlation coefficient squared.</div>
+        </div>
+<div class="section">
+        <h2>Step 12: Multiple Regression — Adding a Categorical Predictor</h2>
+        <p>Add more predictors with <code class="inline">+</code>. When a categorical variable like <code class="inline">group</code> is included, R automatically converts it into a 0/1 dummy variable behind the scenes, using the first level alphabetically ("Control") as the baseline for comparison.</p>
+        <div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>model2 <- <span class="fn">lm</span>(exam_score ~ study_hours + group, data = research_data)
+<span class="fn">summary</span>(model2)</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>Call:
+lm(formula = exam_score ~ study_hours + group, data = research_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-14.981  -5.622  -0.187   5.408  16.930 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     51.986      4.789  10.855  &lt; 2e-16 ***
+study_hours      3.204      0.887   3.612 0.000645 ***
+groupTreatment   3.418      2.219   1.540 0.129000    
+---
+Signif. codes:  0 [***] 0.001 [**] 0.01 [*] 0.05 [.] 0.1 [ ] 1
+
+Residual standard error: 8.58 on 57 degrees of freedom
+Multiple R-squared:  0.2589,  Adjusted R-squared:  0.2321 
+F-statistic: 9.951 on 2 and 57 DF,  p-value: 0.0002106</pre></div>
+</div><div class="callout tip"><div class="co-title">&#128161; Tip</div>The groupTreatment coefficient (3.418) is the estimated extra points a Treatment-group student scores compared to a Control-group student, after accounting for study hours. Because R alphabetises factor levels by default, Control became the baseline automatically - use relevel() beforehand if you want the other group to be the reference instead.</div>
+        </div>
+<div class="section">
+        <h2>Step 13: Comparing Models &amp; Checking Assumptions</h2>
+        <p><code class="inline">anova()</code> tests whether adding a predictor meaningfully improves the model, and regression diagnostic plots check whether the assumptions behind the p-values above (linearity, normal residuals, constant variance) actually hold.</p>
+        <div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="cm"># does adding "group" significantly improve the model?</span>
+<span class="fn">anova</span>(model1, model2)
+
+<span class="cm"># check that residuals are approximately normal (see the QQ Plot page)</span>
+<span class="fn">shapiro.test</span>(<span class="fn">residuals</span>(model2))</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>Analysis of Variance Table
+
+Model 1: exam_score ~ study_hours
+Model 2: exam_score ~ study_hours + group
+  Res.Df   RSS Df Sum of Sq    F Pr(&gt;F)
+1     58 4310.2                        
+2     57 4194.5  1    115.66 2.372  0.129
+
+	Shapiro-Wilk normality test
+
+data:  residuals(model2)
+W = 0.984, p-value = 0.629</pre></div>
+</div><div class="callout warn"><div class="co-title">&#9888; Common Mistake</div>A high R-squared does not mean a model is valid - always check the diagnostic plots (plot(model2), which shows four panels: Residuals vs Fitted, Normal Q-Q, Scale-Location, and Residuals vs Leverage) before trusting the coefficients. A curved pattern in Residuals vs Fitted suggests a non-linear relationship that a straight-line model like this one cannot capture.</div>
+        </div>
+<div class="section">
+        <h2>Advanced: Predicting New Values from the Model</h2>
+        <div class="callout adv"><div class="co-title">&#128640; Advanced Example</div>Once a model is fitted, predict() estimates the outcome for brand-new cases that were not in the original dataset - the actual point of building a regression model in most applied research.</div><div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>new_students <- <span class="fn">data.frame</span>(
+  study_hours = <span class="fn">c</span>(<span class="nm">3</span>, <span class="nm">6</span>, <span class="nm">9</span>),
+  group       = <span class="fn">c</span>(<span class="st">"Control"</span>, <span class="st">"Treatment"</span>, <span class="st">"Treatment"</span>)
+)
+
+<span class="fn">predict</span>(model2, newdata = new_students, interval = <span class="st">"confidence"</span>)</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>     fit    lwr    upr
+1 61.598 57.147 66.048
+2 76.842 72.977 80.706
+3 86.454 78.982 93.926</pre></div>
+</div>
+        </div>
+<div class="section">
         <h2>Advanced: A Full Descriptive Table in One Line</h2>
         <div class="callout adv"><div class="co-title">&#128640; Advanced Example</div>The psych package\'s describe() function produces a complete, publication-style descriptive statistics table - mean, sd, median, trimmed mean, MAD, range, skew, kurtosis and standard error - for every numeric column at once.</div><div class="example">
 <div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">install.packages</span>(<span class="st">"psych"</span>)  <span class="cm"># one-time install</span>
@@ -453,16 +542,18 @@ X1    1 29 71.95 10.02  71.90   71.83 9.19 53.10 92.40 39.30  0.08    -0.28 1.86
 </div>
         </div>
 <div class="section">
-        <h2>Reporting Descriptive Statistics in a Research Write-Up</h2>
-        <p>A typical results paragraph built directly from the numbers above might read:</p>
-        <p style="border-left:3px solid #cbd5e1;padding-left:14px;font-style:italic;color:#475569;">"The sample consisted of 60 students (31 in the Control group, 29 in the Treatment group; 31 female, 29 male). Mean exam score was 70.12 (SD = 9.85), ranging from 49.30 to 92.40. Students in the Treatment group scored somewhat higher on average (M = 71.95, SD = 10.02) than those in the Control group (M = 68.41, SD = 9.63). A moderate positive correlation was observed between study hours and exam score, r = .48."</p>
-        <p>Every number in that paragraph traces directly back to a function call above — that traceability is exactly why a clean, reproducible descriptive-statistics script matters for research.</p>
+        <h2>Reporting Results in a Research Write-Up</h2>
+        <p>A typical results section built directly from the numbers above might read:</p>
+        <p style="border-left:3px solid #cbd5e1;padding-left:14px;font-style:italic;color:#475569;">"The sample consisted of 60 students (31 in the Control group, 29 in the Treatment group; 31 female, 29 male). Mean exam score was 70.12 (SD = 9.85), ranging from 49.30 to 92.40. Students in the Treatment group scored somewhat higher on average (M = 71.95, SD = 10.02) than those in the Control group (M = 68.41, SD = 9.63). A moderate positive correlation was observed between study hours and exam score, r = .48. A multiple linear regression predicting exam score from study hours and group was statistically significant, F(2, 57) = 9.95, p &lt; .001, R&sup2; = .26. Study hours significantly predicted exam score (b = 3.20, p = .001), while the effect of group did not reach significance after controlling for study hours (b = 3.42, p = .13)."</p>
+        <p>Every number in that paragraph traces directly back to a function call above — that traceability is exactly why a clean, reproducible analysis script matters for research.</p>
         </div>
 <div class="keypoints"><h4>Key Points</h4><ul><li>Descriptive statistics summarise a sample before any inferential test is run — always report them first.</li>
 <li>Report central tendency (mean/median) together with dispersion (SD/IQR) — never one without the other.</li>
 <li>table() and prop.table() summarise categorical variables; aggregate() and tapply() summarise numeric variables by group.</li>
-<li>psych::describe() and describeBy() generate publication-ready descriptive tables in a single line.</li>
-<li>Pair every summary statistic with a matching chart (histogram, boxplot, scatter plot) before interpreting it.</li></ul></div>
+<li>lm(y ~ x) fits a linear regression; summary() gives coefficients, R-squared, and significance tests in one call.</li>
+<li>Adding a categorical predictor to lm() automatically creates dummy variables, using the first alphabetical level as the baseline.</li>
+<li>Always check regression diagnostics (plot(model), shapiro.test() on residuals) before trusting the coefficients.</li>
+<li>psych::describe() and describeBy() generate publication-ready descriptive tables in a single line.</li></ul></div>
     <div class="prevnext">
       <a class="pn-link prev" href="r-ggplot2-boxplot.html"><div class="pn-dir">&larr; Previous</div><div class="pn-title">Box-Whisker Plot</div></a>
       <div class="pn-spacer"></div>
