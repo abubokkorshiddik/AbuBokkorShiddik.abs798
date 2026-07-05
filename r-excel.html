@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Reading and writing Excel files in R explained with examples and output — using the readxl and writexl packages, choosing sheets, and common pitfalls.">
+<title>Excel Files | Learn R Programming | Md. Abu Bokkor Shiddik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#1e293b;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+code{font-family:'DM Mono',monospace;}
+
+/* NAVBAR (site-wide, unchanged) */
+.navbar{background:#0b1f3a;position:sticky;top:0;z-index:9999;border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-bar-inner{max-width:1280px;margin:auto;padding:0 24px;display:flex;align-items:center;height:56px;}
+.nav-brand{font-size:14.5px;font-weight:600;color:#fff;letter-spacing:.2px;margin-right:auto;white-space:nowrap;}
+.nav-brand span{color:#93c5fd;font-weight:300;}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-links>a,.dropbtn{color:rgba(255,255,255,.75);font-size:13.5px;font-weight:500;padding:6px 11px;border-radius:6px;border:none;background:none;cursor:pointer;font-family:inherit;transition:background .18s,color .18s;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.nav-links>a:hover,.dropbtn:hover{color:#fff;background:rgba(255,255,255,.09);}
+.dropdown{position:relative;}
+.dropdown-content{position:absolute;top:calc(100% + 6px);left:0;background:#132444;border:1px solid rgba(255,255,255,.1);border-radius:10px;min-width:200px;padding:6px;box-shadow:0 12px 32px rgba(0,0,0,.3);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .2s,transform .2s,visibility .2s;pointer-events:none;z-index:9999;}
+.dropdown:hover .dropdown-content,.dropdown.active .dropdown-content{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;}
+.dropdown-content a{display:flex;align-items:center;gap:8px;padding:8px 12px;color:rgba(255,255,255,.72);font-size:13px;font-weight:500;border-radius:6px;transition:background .15s,color .15s;}
+.dropdown-content a:hover{background:rgba(255,255,255,.08);color:#fff;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:7px;border-radius:6px;margin-left:10px;transition:background .2s;}
+.hamburger:hover{background:rgba(255,255,255,.1);}
+.hamburger span{display:block;width:21px;height:2px;background:rgba(255,255,255,.85);border-radius:2px;transition:transform .28s,opacity .28s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;background:#0d1c38;border-top:1px solid rgba(255,255,255,.07);overflow:hidden;max-height:0;transition:max-height .38s cubic-bezier(.4,0,.2,1);}
+.nav-drawer.open{max-height:700px;}
+.drawer-inner{padding:8px 0 16px;}
+.drawer-link{display:block;color:rgba(255,255,255,.78);font-size:15px;font-weight:500;padding:11px 24px;transition:background .15s,color .15s;}
+.drawer-link:hover{background:rgba(255,255,255,.06);color:#fff;}
+.drawer-section-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.3);padding:14px 24px 4px;}
+.drawer-sub .drawer-link{padding-left:38px;font-size:14px;color:rgba(255,255,255,.58);}
+.drawer-divider{height:1px;background:rgba(255,255,255,.06);margin:4px 0;}
+@media (max-width:900px){.nav-links{display:none;}.hamburger{display:flex;}.nav-drawer{display:block;}}
+
+/* DOC HERO */
+.doc-hero{background:linear-gradient(135deg,#0b2140,#1d4ed8);color:#fff;padding:26px 24px;}
+.doc-hero-inner{max-width:1280px;margin:auto;}
+.doc-crumb{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,.65);margin-bottom:8px;letter-spacing:.3px;}
+.doc-crumb a:hover{text-decoration:underline;color:#fff;}
+.doc-hero h1{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;}
+
+/* LAYOUT */
+.doc-layout{max-width:1280px;margin:auto;display:flex;align-items:flex-start;gap:0;}
+.sidebar{width:250px;flex-shrink:0;position:sticky;top:56px;max-height:calc(100vh - 56px);overflow-y:auto;padding:28px 18px 60px 24px;border-right:1px solid #e2e8f0;}
+.sb-group{margin-bottom:18px;}
+.sb-group-title{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;margin-bottom:6px;padding:0 10px;}
+.sb-link{display:block;font-size:13.5px;color:#475569;padding:7px 10px;border-radius:6px;border-left:2px solid transparent;transition:background .15s,color .15s;}
+.sb-link:hover{background:#f1f5f9;color:#1d4ed8;}
+.sb-link.active{background:#eff6ff;color:#1d4ed8;font-weight:600;border-left-color:#1d4ed8;}
+.sb-home{display:block;font-size:13px;font-weight:700;color:#1e293b;padding:8px 10px;margin-bottom:14px;border-radius:6px;background:#f8fafc;}
+.sb-home:hover{background:#f1f5f9;}
+@media (max-width:960px){.sidebar{display:none;}}
+
+.content{flex:1;min-width:0;padding:36px 40px 70px;max-width:820px;}
+@media (max-width:600px){.content{padding:24px 18px 50px;}}
+
+.lede{font-size:15.5px;color:#475569;margin:10px 0 28px;max-width:680px;}
+
+.section{margin:34px 0;}
+.section h2{font-size:20px;font-weight:700;color:#0f172a;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #e2e8f0;}
+.section h3{font-size:15.5px;font-weight:700;color:#1e293b;margin:20px 0 8px;}
+.section p{font-size:14.5px;color:#334155;margin-bottom:12px;}
+.section ul,.section ol{margin:0 0 14px 22px;font-size:14.5px;color:#334155;}
+.section li{margin-bottom:6px;}
+.section code.inline{background:#f1f5f9;color:#be185d;padding:2px 6px;border-radius:4px;font-size:13px;}
+
+/* EXAMPLE (code + output) */
+.example{margin:16px 0 22px;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;}
+.ex-label{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;padding:9px 16px;}
+.ex-code{background:#0f172a;}
+.ex-code .ex-label{color:#93c5fd;background:#0b1730;}
+.ex-code pre{color:#e2e8f0;padding:14px 18px;font-size:13px;line-height:1.75;overflow-x:auto;white-space:pre;}
+.ex-out{background:#f8fafc;border-top:1px solid #e2e8f0;}
+.ex-out .ex-label{color:#0e5c4a;background:#ecfdf5;}
+.ex-out pre{color:#0f172a;padding:12px 18px;font-size:13px;line-height:1.7;overflow-x:auto;white-space:pre;}
+.cm{color:#64748b;font-style:italic;}
+.kw{color:#f472b6;}
+.fn{color:#fbbf24;}
+.st{color:#93c5fd;}
+.nm{color:#c4b5fd;}
+
+/* CALLOUTS */
+.callout{border-radius:8px;padding:14px 18px;margin:16px 0;font-size:13.5px;line-height:1.7;}
+.callout .co-title{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.tip{background:#ecfdf5;border-left:3px solid #10b981;color:#064e3b;}
+.tip .co-title{color:#0e5c4a;}
+.warn{background:#fffbeb;border-left:3px solid #f59e0b;color:#5c3a05;}
+.warn .co-title{color:#b8820a;}
+.adv{background:#eef2ff;border-left:3px solid #4338ca;color:#1e1b4b;}
+.adv .co-title{color:#4338ca;}
+.tip ul,.warn ul{margin:6px 0 0 18px;}
+.tip li,.warn li{margin-bottom:4px;}
+
+/* KEY POINTS BOX */
+.keypoints{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px 22px;margin:26px 0;}
+.keypoints h4{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1d4ed8;margin-bottom:10px;}
+.keypoints ul{margin-left:18px;}
+.keypoints li{font-size:13.5px;color:#334155;margin-bottom:6px;}
+
+/* PREV/NEXT */
+.prevnext{display:flex;justify-content:space-between;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid #e2e8f0;}
+.pn-link{flex:1;border:1px solid #e2e8f0;border-radius:10px;padding:14px 18px;transition:border-color .15s,background .15s;}
+.pn-link:hover{border-color:#1d4ed8;background:#f8fafc;}
+.pn-link.next{text-align:right;}
+.pn-dir{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#94a3b8;margin-bottom:4px;}
+.pn-title{font-size:14px;font-weight:600;color:#1d4ed8;}
+.pn-spacer{flex:1;}
+
+/* SITE FOOTER (unchanged) */
+footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
+.footer-inner{max-width:1280px;margin:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07);}
+.footer-col-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:14px;}
+.footer-name{font-family:'Lora',serif;font-size:16px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:8px;}
+.footer-desc{font-size:12.5px;line-height:1.7;}
+.footer-nav-links,.footer-social-links{display:flex;flex-direction:column;gap:7px;}
+.footer-nav-links a,.footer-social-links a{font-size:13px;color:rgba(255,255,255,.55);transition:color .15s;}
+.footer-nav-links a:hover{color:rgba(255,255,255,.9);}
+.footer-social-links a:hover{color:#93c5fd;}
+.footer-bottom{max-width:1280px;margin:22px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.footer-bottom p{font-size:12px;}
+@media (max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;}}
+@media (max-width:600px){.footer-inner{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-bar-inner">
+    <div class="nav-brand">ABS<span> · </span>Abu Bokkor Shiddik</div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <a href="service.html">Service</a>
+      <div class="dropdown">
+        <button class="dropbtn">Digital Lab &#9662;</button>
+        <div class="dropdown-content">
+          <a href="projects.html">&#9879; Projects</a>
+          <a href="data-code.html">&#128190; Data &amp; Code</a>
+        </div>
+      </div>
+      <div class="dropdown active">
+        <button class="dropbtn">Learning &#9662;</button>
+        <div class="dropdown-content">
+          <a href="Learning Notes.html">&#128218; All Learning Notes</a>
+          <a href="BSc-courses.html">&#127891; B.Sc. Courses</a>
+          <a href="MSc-courses.html">&#127891; M.Sc. Courses</a>
+          <a href="R-programming.html">&#128187; Learn R Programming</a>
+          <a href="conference-and-workshop.html">&#127963; Conferences &amp; Workshops</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Insights &#9662;</button>
+        <div class="dropdown-content">
+          <a href="insights.html">&#9997; Posts</a>
+          <a href="videos.html">&#9654; Videos</a>
+          <a href="archive.html">&#128247; Photos &amp; Archive</a>
+        </div>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <div class="drawer-inner">
+      <a class="drawer-link" href="home.html">Home</a>
+      <a class="drawer-link" href="publications.html">Publications</a>
+      <a class="drawer-link" href="service.html">Service</a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Digital Lab</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="projects.html">Projects</a>
+        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Learning &amp; Events</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
+        <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
+        <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
+        <a class="drawer-link" href="R-programming.html">Learn R Programming</a>
+        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Insights</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="insights.html">Posts</a>
+        <a class="drawer-link" href="videos.html">Videos</a>
+        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="doc-hero">
+  <div class="doc-hero-inner">
+    <div class="doc-crumb"><a href="R-programming.html">Learn R Programming</a> &nbsp;/&nbsp; Import & Export &nbsp;/&nbsp; Excel Files</div>
+    <h1>Excel Files</h1>
+  </div>
+</section>
+<div class="doc-layout">
+  <aside class="sidebar">
+    <a class="sb-home" href="R-programming.html">&larr; All R Topics</a>
+    <div class="sb-group"><div class="sb-group-title">Getting Started</div>
+<a class="sb-link" href="r-introduction.html">Introduction</a>
+<a class="sb-link" href="r-operators.html">Operators</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Data Structures</div>
+<a class="sb-link" href="r-vector.html">Vector</a>
+<a class="sb-link" href="r-list.html">List</a>
+<a class="sb-link" href="r-matrix.html">Matrix</a>
+<a class="sb-link" href="r-dataframe.html">Data Frame</a>
+<a class="sb-link" href="r-factor.html">Factor</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Control Flow</div>
+<a class="sb-link" href="r-if-else.html">If...Else</a>
+<a class="sb-link" href="r-switch.html">switch()</a>
+<a class="sb-link" href="r-while-loop.html">While Loop</a>
+<a class="sb-link" href="r-for-loop.html">For Loop</a>
+<a class="sb-link" href="r-repeat-loop.html">Repeat Loop</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Functions</div>
+<a class="sb-link" href="r-functions.html">Functions</a>
+<a class="sb-link" href="r-apply-family.html">Apply Family</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Import &amp; Export</div>
+<a class="sb-link" href="r-csv.html">CSV Files</a>
+<a class="sb-link active" href="r-excel.html">Excel Files</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Base Graphics</div>
+<a class="sb-link" href="r-plot.html">plot() Basics</a>
+<a class="sb-link" href="r-bar-plot.html">Bar Plot</a>
+<a class="sb-link" href="r-scatter-plot.html">Scatter Plot</a>
+<a class="sb-link" href="r-boxplot.html">Box-Whisker Plot</a>
+<a class="sb-link" href="r-histogram.html">Histogram</a>
+<a class="sb-link" href="r-pie-chart.html">Pie Chart</a>
+<a class="sb-link" href="r-qqplot.html">QQ Plot</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">ggplot2 Graphics</div>
+<a class="sb-link" href="r-ggplot2-bar.html">Bar Plot</a>
+<a class="sb-link" href="r-ggplot2-scatter.html">Scatter Plot</a>
+<a class="sb-link" href="r-ggplot2-boxplot.html">Box-Whisker Plot</a>
+</div>
+  </aside>
+  <main class="content">
+    <p class="lede">Base R cannot read .xlsx files directly. The readxl and writexl packages, both free and widely used, add that capability with a simple, consistent interface.</p>
+    <div class="section">
+        <h2>Installing the Packages (One-Time Setup)</h2>
+        <div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">install.packages</span>(<span class="st">"readxl"</span>)
+<span class="fn">install.packages</span>(<span class="st">"writexl"</span>)</pre></div>
+</div><div class="callout tip"><div class="co-title">&#128161; Tip</div>You only need to install a package once per computer. After that, load it with library() at the start of every script where you use it.</div>
+        </div>
+<div class="section">
+        <h2>Reading an Excel File</h2>
+        <div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">library</span>(readxl)
+
+df <- <span class="fn">read_excel</span>(<span class="st">"students.xlsx"</span>)
+df</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre># A tibble: 2 x 2
+  name   score
+  &lt;chr&gt;  &lt;dbl&gt;
+1 Rafi      88
+2 Meera     92</pre></div>
+</div>
+        </div>
+<div class="section">
+        <h2>Reading a Specific Sheet</h2>
+        <div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">excel_sheets</span>(<span class="st">"students.xlsx"</span>)          <span class="cm"># list all sheet names first</span>
+
+<span class="fn">read_excel</span>(<span class="st">"students.xlsx"</span>, sheet = <span class="st">"Term2"</span>)
+<span class="fn">read_excel</span>(<span class="st">"students.xlsx"</span>, sheet = <span class="nm">2</span>)      <span class="cm"># or by position</span></pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>[1] "Term1" "Term2"</pre></div>
+</div>
+        </div>
+<div class="section">
+        <h2>Writing an Excel File</h2>
+        <div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">library</span>(writexl)
+
+<span class="fn">write_xlsx</span>(df, <span class="st">"students_out.xlsx"</span>)
+
+<span class="cm"># write multiple sheets in one file at once</span>
+<span class="fn">write_xlsx</span>(<span class="fn">list</span>(Term1 = df, Term2 = df), <span class="st">"report.xlsx"</span>)</pre></div>
+</div>
+        </div>
+<div class="section">
+        <h2>Advanced: Skipping Header Rows and Limiting Range</h2>
+        <div class="callout adv"><div class="co-title">&#128640; Advanced Example</div>Real Excel files often have title rows, notes, or merged cells above the actual data table. skip and range let you point precisely at the data you need.</div><div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="cm"># skip the first 3 rows (title/notes), then read the data</span>
+<span class="fn">read_excel</span>(<span class="st">"messy_report.xlsx"</span>, skip = <span class="nm">3</span>)
+
+<span class="cm"># or target an exact cell range</span>
+<span class="fn">read_excel</span>(<span class="st">"messy_report.xlsx"</span>, range = <span class="st">"B4:D20"</span>)</pre></div>
+</div>
+        </div>
+<div class="keypoints"><h4>Key Points</h4><ul><li>readxl::read_excel() reads .xlsx/.xls; writexl::write_xlsx() writes them back out.</li>
+<li>Use excel_sheets() first to see what sheets exist before choosing one with sheet = .</li>
+<li>write_xlsx() can write several data frames as separate sheets in one call using a named list.</li>
+<li>skip and range help you read messy, real-world spreadsheets with extra header rows.</li></ul></div>
+    <div class="prevnext">
+      <a class="pn-link prev" href="r-csv.html"><div class="pn-dir">&larr; Previous</div><div class="pn-title">CSV Files</div></a>
+      <a class="pn-link next" href="r-plot.html"><div class="pn-dir">Next &rarr;</div><div class="pn-title">plot() Basics</div></a>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Md. Abu Bokkor Shiddik</div>
+      <p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <div class="footer-nav-links">
+        <a href="home.html">Home</a>
+        <a href="publications.html">Publications</a>
+        <a href="projects.html">Projects</a>
+        <a href="Learning Notes.html">Learning Notes</a>
+        <a href="BSc-courses.html">B.Sc. Courses</a>
+        <a href="MSc-courses.html">M.Sc. Courses</a>
+        <a href="R-programming.html">Learn R Programming</a>
+        <a href="service.html">Service</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <div class="footer-social-links">
+        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">&#127760; Portfolio</a>
+        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">&#127891; Google Scholar</a>
+        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">&#10022; ORCID</a>
+        <a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Md. Abu Bokkor Shiddik &middot; All rights reserved</p>
+    <p>abubokkor.brur60@gmail.com &middot; +880 1874 001360</p>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('.dropbtn').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var dd = btn.closest('.dropdown');
+    var open = dd.classList.contains('active');
+    document.querySelectorAll('.dropdown.active').forEach(function(d){ d.classList.remove('active'); });
+    if(!open) dd.classList.add('active');
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.dropdown.active').forEach(function(d){ d.classList.remove('active'); });
+});
+var ham = document.getElementById('hamburger');
+var navDrawer = document.getElementById('nav-drawer');
+if(ham){
+  ham.addEventListener('click', function(){ ham.classList.toggle('open'); navDrawer.classList.toggle('open'); });
+  navDrawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ ham.classList.remove('open'); navDrawer.classList.remove('open'); });
+  });
+}
+</script>
+
+</body>
+</html>
