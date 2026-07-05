@@ -4,8 +4,8 @@
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ggplot2 scatter plots explained with examples — geom_point, colouring by group, and adding a fitted trend line with geom_smooth.">
-<title>Scatter Plot | Learn R Programming | Md. Abu Bokkor Shiddik</title>
+<meta name="description" content="R qqnorm() and qqline() explained with examples — checking whether data follows a normal distribution before running a t-test or ANOVA.">
+<title>QQ Plot | Learn R Programming | Md. Abu Bokkor Shiddik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -207,8 +207,8 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 
 <section class="doc-hero">
   <div class="doc-hero-inner">
-    <div class="doc-crumb"><a href="R-programming.html">Learn R Programming</a> &nbsp;/&nbsp; ggplot2 Graphics &nbsp;/&nbsp; Scatter Plot</div>
-    <h1>Scatter Plot</h1>
+    <div class="doc-crumb"><a href="R-programming.html">Learn R Programming</a> &nbsp;/&nbsp; Base Graphics &nbsp;/&nbsp; QQ Plot</div>
+    <h1>QQ Plot</h1>
   </div>
 </section>
 <div class="doc-layout">
@@ -247,65 +247,71 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 <a class="sb-link" href="r-boxplot.html">Box-Whisker Plot</a>
 <a class="sb-link" href="r-histogram.html">Histogram</a>
 <a class="sb-link" href="r-pie-chart.html">Pie Chart</a>
-<a class="sb-link" href="r-qqplot.html">QQ Plot</a>
+<a class="sb-link active" href="r-qqplot.html">QQ Plot</a>
 </div>
 <div class="sb-group"><div class="sb-group-title">ggplot2 Graphics</div>
 <a class="sb-link" href="r-ggplot2-bar.html">Bar Plot</a>
-<a class="sb-link active" href="r-ggplot2-scatter.html">Scatter Plot</a>
+<a class="sb-link" href="r-ggplot2-scatter.html">Scatter Plot</a>
 <a class="sb-link" href="r-ggplot2-boxplot.html">Box-Whisker Plot</a>
 </div>
   </aside>
   <main class="content">
-    <p class="lede">geom_point() is ggplot2's scatter plot layer. Combined with geom_smooth(), it is one of the fastest ways to explore a relationship between two numeric variables.</p>
+    <p class="lede">A Quantile-Quantile (QQ) plot compares your data's distribution to a theoretical normal distribution. It is a key diagnostic step before many statistical tests that assume normality.</p>
     <div class="section">
-        <h2>A Basic Scatter Plot</h2>
+        <h2>How to Read a QQ Plot</h2>
+        <p>Each point compares one of your data\'s quantiles to the matching quantile of a perfect normal distribution. If the data is approximately normal, the points fall close to a straight diagonal line.</p>
+        </div>
+<div class="section">
+        <h2>QQ Plot of Normally-Distributed Data</h2>
         <div class="example">
-<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">library</span>(ggplot2)
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">set.seed</span>(<span class="nm">1</span>)
+normal_data <- <span class="fn">rnorm</span>(<span class="nm">200</span>, mean = <span class="nm">50</span>, sd = <span class="nm">10</span>)
 
-df <- <span class="fn">data.frame</span>(
-  height = <span class="fn">c</span>(<span class="nm">150</span>,<span class="nm">160</span>,<span class="nm">165</span>,<span class="nm">170</span>,<span class="nm">180</span>),
-  weight = <span class="fn">c</span>(<span class="nm">50</span>,<span class="nm">55</span>,<span class="nm">60</span>,<span class="nm">65</span>,<span class="nm">75</span>)
-)
-
-<span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x = height, y = weight)) +
-  <span class="fn">geom_point</span>(colour = <span class="st">"steelblue"</span>, size = <span class="nm">3</span>) +
-  <span class="fn">labs</span>(title = <span class="st">"Height vs Weight"</span>)</pre></div>
+<span class="fn">qqnorm</span>(normal_data, main = <span class="st">"QQ Plot of Normal Data"</span>)
+<span class="fn">qqline</span>(normal_data, col = <span class="st">"red"</span>, lwd = <span class="nm">2</span>)</pre></div>
 </div>
         </div>
 <div class="section">
-        <h2>Colouring Points by a Category</h2>
+        <h2>QQ Plot of Skewed Data</h2>
+        <p>Compare that to skewed data, generated from an exponential distribution — notice how the points curve away from the line at the ends.</p>
         <div class="example">
-<div class="ex-code"><div class="ex-label">R Code</div><pre>df$gender <- <span class="fn">c</span>(<span class="st">"M"</span>,<span class="st">"F"</span>,<span class="st">"M"</span>,<span class="st">"F"</span>,<span class="st">"M"</span>)
+<div class="ex-code"><div class="ex-label">R Code</div><pre>skewed_data <- <span class="fn">rexp</span>(<span class="nm">200</span>, rate = <span class="nm">0.1</span>)
 
-<span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x = height, y = weight, colour = gender)) +
-  <span class="fn">geom_point</span>(size = <span class="nm">3</span>) +
-  <span class="fn">scale_colour_manual</span>(values = <span class="fn">c</span>(<span class="st">"M"</span> = <span class="st">"blue"</span>, <span class="st">"F"</span> = <span class="st">"deeppink"</span>))</pre></div>
+<span class="fn">qqnorm</span>(skewed_data, main = <span class="st">"QQ Plot of Skewed Data"</span>)
+<span class="fn">qqline</span>(skewed_data, col = <span class="st">"red"</span>, lwd = <span class="nm">2</span>)</pre></div>
 </div>
         </div>
 <div class="section">
-        <h2>Adding a Trend Line with geom_smooth()</h2>
-        <div class="example">
-<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x = height, y = weight)) +
-  <span class="fn">geom_point</span>(size = <span class="nm">3</span>, colour = <span class="st">"steelblue"</span>) +
-  <span class="fn">geom_smooth</span>(method = <span class="st">"lm"</span>, se = <span class="kw">TRUE</span>, colour = <span class="st">"darkred"</span>)</pre></div>
-</div><div class="callout tip"><div class="co-title">&#128161; Tip</div>se = TRUE (the default) shades a confidence band around the trend line - a visual sense of how uncertain the fit is, especially valuable with a small number of points.</div>
-        </div>
-<div class="section">
-        <h2>Advanced: Faceting into Small Multiples</h2>
-        <div class="callout adv"><div class="co-title">&#128640; Advanced Example</div>facet_wrap() splits one plot into a grid of small plots, one per category - excellent for comparing the same relationship across many groups at once.</div><div class="example">
-<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x = height, y = weight)) +
-  <span class="fn">geom_point</span>(size = <span class="nm">3</span>, colour = <span class="st">"steelblue"</span>) +
-  <span class="fn">facet_wrap</span>(~ gender) +
-  <span class="fn">labs</span>(title = <span class="st">"Height vs Weight, Split by Gender"</span>)</pre></div>
+        <h2>Backing Visual Judgement with a Formal Test</h2>
+        <div class="callout tip"><div class="co-title">&#128161; Tip</div>A QQ plot is a visual, somewhat subjective check. Pair it with a formal test like shapiro.test() for a numeric p-value, especially with small sample sizes where visual patterns can be misleading.</div><div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">shapiro.test</span>(normal_data)
+<span class="fn">shapiro.test</span>(skewed_data)</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>	Shapiro-Wilk normality test
+
+data:  normal_data
+W = 0.995, p-value = 0.7
+
+	Shapiro-Wilk normality test
+
+data:  skewed_data
+W = 0.82, p-value = 1.2e-13</pre></div>
 </div>
         </div>
-<div class="keypoints"><h4>Key Points</h4><ul><li>geom_point() maps two numeric variables to point position.</li>
-<li>Map a categorical variable to colour = to distinguish groups.</li>
-<li>geom_smooth(method = "lm") overlays a fitted trend line with a confidence band.</li>
-<li>facet_wrap(~ variable) splits one chart into a grid of small multiples by category.</li></ul></div>
+<div class="section">
+        <h2>Advanced: Checking Regression Residuals</h2>
+        <div class="callout adv"><div class="co-title">&#128640; Advanced Example</div>QQ plots are used constantly to check the residuals of a fitted regression model, not just raw data - a required assumption check before trusting a linear model\'s p-values.</div><div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>model <- <span class="fn">lm</span>(dist ~ speed, data = cars)   <span class="cm"># built-in R dataset</span>
+<span class="fn">qqnorm</span>(<span class="fn">residuals</span>(model), main = <span class="st">"QQ Plot of Model Residuals"</span>)
+<span class="fn">qqline</span>(<span class="fn">residuals</span>(model), col = <span class="st">"red"</span>)</pre></div>
+</div>
+        </div>
+<div class="keypoints"><h4>Key Points</h4><ul><li>qqnorm() plots your data against theoretical normal quantiles; qqline() adds the reference line.</li>
+<li>Points hugging the line suggest approximate normality; curves at the ends suggest skew.</li>
+<li>shapiro.test() gives a formal p-value to back up the visual check.</li>
+<li>QQ plots are routinely used to check regression residuals, not just raw data.</li></ul></div>
     <div class="prevnext">
-      <a class="pn-link prev" href="r-ggplot2-bar.html"><div class="pn-dir">&larr; Previous</div><div class="pn-title">Bar Plot</div></a>
-      <a class="pn-link next" href="r-ggplot2-boxplot.html"><div class="pn-dir">Next &rarr;</div><div class="pn-title">Box-Whisker Plot</div></a>
+      <a class="pn-link prev" href="r-pie-chart.html"><div class="pn-dir">&larr; Previous</div><div class="pn-title">Pie Chart</div></a>
+      <a class="pn-link next" href="r-ggplot2-bar.html"><div class="pn-dir">Next &rarr;</div><div class="pn-title">Bar Plot</div></a>
     </div>
   </main>
 </div>
