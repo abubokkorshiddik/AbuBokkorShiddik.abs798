@@ -157,6 +157,26 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 .hub-tile-num{font-family:'DM Mono',monospace;font-size:10px;color:#94a3b8;margin-bottom:6px;}
 .hub-tile-title{font-size:14.5px;font-weight:600;color:#0f172a;margin-bottom:6px;}
 .hub-tile-arrow{font-family:'DM Mono',monospace;font-size:11px;color:#1d4ed8;}
+
+/* YOUTUBE REVIEW BOX (hero) */
+.yt-review-box{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-left:4px solid #ff0000;border-radius:10px;padding:16px 20px;margin-top:24px;max-width:640px;flex-wrap:wrap;}
+.yt-review-icon{width:44px;height:44px;flex-shrink:0;border-radius:50%;background:#ff0000;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;}
+.yt-review-text{flex:1;min-width:200px;}
+.yt-review-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:3px;}
+.yt-review-desc{font-size:12px;color:rgba(255,255,255,.65);line-height:1.5;}
+.yt-review-btn{display:inline-flex;align-items:center;gap:6px;background:#ff0000;color:#fff;font-weight:600;font-size:12.5px;padding:9px 18px;border-radius:6px;white-space:nowrap;transition:background .15s;flex-shrink:0;}
+.yt-review-btn:hover{background:#cc0000;}
+
+/* YOUTUBE FOOTER PROMO */
+.footer-yt-promo{max-width:1280px;margin:0 auto 32px;padding:0 24px;}
+.footer-yt-promo-inner{display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,#1a0000,#3d0000);border:1px solid rgba(255,0,0,.3);border-radius:14px;padding:22px 28px;flex-wrap:wrap;}
+.footer-yt-icon{width:52px;height:52px;flex-shrink:0;border-radius:50%;background:#ff0000;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;}
+.footer-yt-text{flex:1;min-width:220px;}
+.footer-yt-title{font-family:'Lora',serif;font-size:16px;font-weight:600;color:#fff;margin-bottom:4px;}
+.footer-yt-desc{font-size:12.5px;color:rgba(255,255,255,.6);line-height:1.6;}
+.footer-yt-btn{display:inline-flex;align-items:center;gap:7px;background:#ff0000;color:#fff;font-weight:700;font-size:13px;padding:11px 22px;border-radius:8px;white-space:nowrap;transition:background .15s,transform .15s;flex-shrink:0;}
+.footer-yt-btn:hover{background:#cc0000;transform:translateY(-1px);}
+@media (max-width:600px){.footer-yt-promo-inner{padding:20px;}.footer-yt-btn{width:100%;justify-content:center;}}
 </style>
 </head>
 <body>
@@ -182,6 +202,7 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
           <a href="BSc-courses.html">&#127891; B.Sc. Courses</a>
           <a href="MSc-courses.html">&#127891; M.Sc. Courses</a>
           <a href="R-programming.html">&#128187; Learn R Programming</a>
+          <a href="Python-programming.html">&#128013; Learn Python Programming</a>
           <a href="conference-and-workshop.html">&#127963; Conferences &amp; Workshops</a>
         </div>
       </div>
@@ -216,6 +237,7 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
         <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
         <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
         <a class="drawer-link" href="R-programming.html">Learn R Programming</a>
+        <a class="drawer-link" href="Python-programming.html">Learn Python Programming</a>
         <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
       </div>
       <div class="drawer-divider"></div>
@@ -235,6 +257,15 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
     <h1>Learn R <em>Programming</em></h1>
     <p>A clear, example-first guide to R. Every topic has its own page with plain-English explanations, runnable code shown next to its actual output, practical tips, common mistakes to avoid, and at least one advanced example. Start at the top and work down, or jump straight to what you need.</p>
     <a class="hub-cta" href="r-introduction.html">Start Learning &rarr;</a>
+
+    <div class="yt-review-box">
+      <div class="yt-review-icon">&#9658;</div>
+      <div class="yt-review-text">
+        <div class="yt-review-title">Prefer video? Watch the R Programming playlist</div>
+        <div class="yt-review-desc">A full YouTube series that follows along with these topics, step by step.</div>
+      </div>
+      <a class="yt-review-btn" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">&#9658; Watch Playlist</a>
+    </div>
   </div>
 </section>
 <div class="hub-wrap">
@@ -435,6 +466,16 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 </div>
 
 <footer>
+  <div class="footer-yt-promo">
+    <div class="footer-yt-promo-inner">
+      <div class="footer-yt-icon">&#9658;</div>
+      <div class="footer-yt-text">
+        <div class="footer-yt-title">Learn R on YouTube</div>
+        <div class="footer-yt-desc">Follow the complete R Programming playlist — the same topics on this site, explained on video, step by step.</div>
+      </div>
+      <a class="footer-yt-btn" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">&#9658; Watch the Playlist</a>
+    </div>
+  </div>
   <div class="footer-inner">
     <div>
       <div class="footer-name">Md. Abu Bokkor Shiddik</div>
@@ -450,6 +491,7 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
         <a href="BSc-courses.html">B.Sc. Courses</a>
         <a href="MSc-courses.html">M.Sc. Courses</a>
         <a href="R-programming.html">Learn R Programming</a>
+        <a href="Python-programming.html">Learn Python Programming</a>
         <a href="service.html">Service</a>
       </div>
     </div>
