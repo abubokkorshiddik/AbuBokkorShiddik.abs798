@@ -159,13 +159,26 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 .hub-tile-arrow{font-family:'DM Mono',monospace;font-size:11px;color:#1d4ed8;}
 
 /* YOUTUBE REVIEW BOX (hero) */
-.yt-review-box{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-left:4px solid #ff0000;border-radius:10px;padding:16px 20px;margin-top:24px;max-width:640px;flex-wrap:wrap;}
-.yt-review-icon{width:44px;height:44px;flex-shrink:0;border-radius:50%;background:#ff0000;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;}
-.yt-review-text{flex:1;min-width:200px;}
-.yt-review-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:3px;}
-.yt-review-desc{font-size:12px;color:rgba(255,255,255,.65);line-height:1.5;}
-.yt-review-btn{display:inline-flex;align-items:center;gap:6px;background:#ff0000;color:#fff;font-weight:600;font-size:12.5px;padding:9px 18px;border-radius:6px;white-space:nowrap;transition:background .15s;flex-shrink:0;}
-.yt-review-btn:hover{background:#cc0000;}
+/* HERO TWO-COLUMN LAYOUT (text left, video preview right on desktop) */
+.hero-flex{display:flex;gap:44px;align-items:center;flex-wrap:wrap;}
+.hero-left{flex:1;min-width:280px;}
+.hero-right{width:320px;flex-shrink:0;}
+@media (max-width:900px){.hero-flex{flex-direction:column;}.hero-right{width:100%;max-width:420px;}}
+
+/* YOUTUBE PREVIEW CARD (fully clickable) */
+.yt-preview-card{display:block;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);text-decoration:none;transition:transform .2s,border-color .2s,box-shadow .2s;}
+.yt-preview-card:hover{transform:translateY(-4px);border-color:#ff0000;box-shadow:0 14px 32px rgba(0,0,0,.4);}
+.yt-preview-thumb{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,#2a0000,#4d0000);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.yt-preview-thumb::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 30% 30%, rgba(255,0,0,.25), transparent 55%),linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);background-size:auto,22px 22px,22px 22px;}
+.yt-play-circle{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;background:#ff0000;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(255,0,0,.5);transition:transform .2s;}
+.yt-preview-card:hover .yt-play-circle{transform:scale(1.08);}
+.yt-play-circle svg{width:20px;height:20px;fill:#fff;margin-left:3px;}
+.yt-badge{position:absolute;top:10px;left:10px;z-index:1;background:rgba(0,0,0,.55);color:#fff;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;padding:4px 9px;border-radius:5px;display:flex;align-items:center;gap:5px;}
+.yt-preview-body{padding:14px 16px 16px;}
+.yt-preview-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:5px;line-height:1.4;}
+.yt-preview-desc{font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.55;margin-bottom:10px;}
+.yt-preview-cta{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:#ff5252;display:flex;align-items:center;gap:5px;}
+.yt-preview-card:hover .yt-preview-cta{color:#ff7b7b;}
 
 /* YOUTUBE FOOTER PROMO */
 .footer-yt-promo{max-width:1280px;margin:0 auto 32px;padding:0 24px;}
@@ -253,18 +266,29 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 
 <section class="hub-hero">
   <div class="hub-hero-inner">
-    <div class="hub-eyebrow">Learn By Example &middot; Beginner to Advanced</div>
-    <h1>Learn R <em>Programming</em></h1>
-    <p>A clear, example-first guide to R. Every topic has its own page with plain-English explanations, runnable code shown next to its actual output, practical tips, common mistakes to avoid, and at least one advanced example. Start at the top and work down, or jump straight to what you need.</p>
-    <a class="hub-cta" href="r-introduction.html">Start Learning &rarr;</a>
-
-    <div class="yt-review-box">
-      <div class="yt-review-icon">&#9658;</div>
-      <div class="yt-review-text">
-        <div class="yt-review-title">Prefer video? Watch the R Programming playlist</div>
-        <div class="yt-review-desc">A full YouTube series that follows along with these topics, step by step.</div>
+    <div class="hero-flex">
+      <div class="hero-left">
+        <div class="hub-eyebrow">Learn By Example &middot; Beginner to Advanced</div>
+        <h1>Learn R <em>Programming</em></h1>
+        <p>A clear, example-first guide to R. Every topic has its own page with plain-English explanations, runnable code shown next to its actual output, practical tips, common mistakes to avoid, and at least one advanced example. Start at the top and work down, or jump straight to what you need.</p>
+        <a class="hub-cta" href="r-introduction.html">Start Learning &rarr;</a>
       </div>
-      <a class="yt-review-btn" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">&#9658; Watch Playlist</a>
+
+      <div class="hero-right">
+        <a class="yt-preview-card" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">
+          <div class="yt-preview-thumb">
+            <span class="yt-badge">&#9776; Full Playlist</span>
+            <div class="yt-play-circle">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="yt-preview-body">
+            <div class="yt-preview-title">R Programming — Video Playlist</div>
+            <div class="yt-preview-desc">Prefer watching over reading? Follow the same topics on YouTube, step by step.</div>
+            <div class="yt-preview-cta">&#9658; Watch on YouTube</div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </section>
