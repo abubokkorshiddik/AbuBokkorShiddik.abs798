@@ -207,7 +207,60 @@
     .footer-bottom p { font-size:12px; }
     @media (max-width:1024px) { .footer-inner { grid-template-columns:1fr 1fr; } }
     @media (max-width:600px) { .footer-inner { grid-template-columns:1fr; } .footer-bottom { flex-direction:column; text-align:center; } .pub-body,.pub-abstract,.pub-figures { padding-left:18px; padding-right:18px; } .pub-title { font-size:1rem; } .pm-item { min-width:70px; padding:8px 10px; } }
-</style>
+
+  /* ══ FLOATING MAIL BUTTON ══ */
+.float-mail-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a56db, #1648c0);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 9998;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.float-mail-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(26,86,219,0.5), 0 4px 12px rgba(0,0,0,0.2);
+}
+.float-mail-btn:active { transform: translateY(-1px) scale(0.98); }
+
+.float-mail-tooltip {
+  position: absolute;
+  right: 68px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0f172a;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  pointer-events: none;
+}
+.float-mail-btn:hover .float-mail-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 600px) {
+  .float-mail-btn { width: 52px; height: 52px; bottom: 20px; right: 20px; font-size: 21px; }
+  .float-mail-tooltip { display: none; }
+}
+  
+  </style>
 </head>
 <body>
 <!-- ═══ NAVBAR ═══ -->
@@ -912,6 +965,13 @@
   <div class="footer-bottom"><p>&copy; 2026 Md. Abu Bokkor Shiddik &middot; All rights reserved</p><p>abubokkor.brur60@gmail.com &middot; +880 1874 001360</p></div>
 </footer>
 
+<!-- ═══ FLOATING MAIL BUTTON ═══ -->
+<a href="mailto:abubokkor.brur60@gmail.com" class="float-mail-btn" aria-label="Send an email">
+  📧
+  <span class="float-mail-tooltip">abubokkor.brur60@gmail.com</span>
+</a>
+
+  
 <script>
 document.querySelectorAll('.dropbtn').forEach(function(btn){btn.addEventListener('click',function(e){e.stopPropagation();var dd=btn.closest('.dropdown');var open=dd.classList.contains('active');document.querySelectorAll('.dropdown.active').forEach(function(d){d.classList.remove('active')});if(!open)dd.classList.add('active')})});
 document.addEventListener('click',function(){document.querySelectorAll('.dropdown.active').forEach(function(d){d.classList.remove('active')})});
