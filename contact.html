@@ -675,21 +675,6 @@ ham.addEventListener('click', function() { ham.classList.toggle('open'); drawer.
 drawer.querySelectorAll('a').forEach(function(a) {
   a.addEventListener('click', function() { ham.classList.remove('open'); drawer.classList.remove('open'); });
 });
-
-
-/* ── HAMBURGER ── */
-var ham = document.getElementById('hamburger');
-var drawer = document.getElementById('nav-drawer');
-ham.addEventListener('click', function() {
-  ham.classList.toggle('open');
-  drawer.classList.toggle('open');
-});
-drawer.querySelectorAll('a').forEach(function(a) {
-  a.addEventListener('click', function() {
-    ham.classList.remove('open');
-    drawer.classList.remove('open');
-  });
-});
 </script>
   
 </body>
