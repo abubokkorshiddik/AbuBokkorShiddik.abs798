@@ -656,8 +656,7 @@
   <span class="float-mail-tooltip">abubokkor.brur60@gmail.com</span>
 </a>
 <script>
-/* ── NAVBAR DROPDOWN ── */
-/* ── NAVBAR ── */
+  /* ── NAVBAR ── */
 document.querySelectorAll('.dropbtn').forEach(function(btn) {
   btn.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -676,6 +675,7 @@ ham.addEventListener('click', function() { ham.classList.toggle('open'); drawer.
 drawer.querySelectorAll('a').forEach(function(a) {
   a.addEventListener('click', function() { ham.classList.remove('open'); drawer.classList.remove('open'); });
 });
+
 
 /* ── HAMBURGER ── */
 var ham = document.getElementById('hamburger');
