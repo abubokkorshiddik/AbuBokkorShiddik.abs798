@@ -210,15 +210,16 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropbtn">Learning &#9662;</button>
-        <div class="dropdown-content">
-          <a href="Learning Notes.html">&#128218; All Learning Notes</a>
-          <a href="BSc-courses.html">&#127891; B.Sc. Courses</a>
-          <a href="MSc-courses.html">&#127891; M.Sc. Courses</a>
-          <a href="R-programming.html">&#128187; Learn R Programming</a>
-          <a href="Python-programming.html">&#128013; Learn Python Programming</a>
-        </div>
-      </div>
+  <button class="dropbtn">Learning &#9662;</button>
+  <div class="dropdown-content">
+    <a href="Learning Notes.html">&#128218; All Learning Notes</a>
+    <a href="BSc-courses.html">&#127891; B.Sc. Courses</a>
+    <a href="MSc-courses.html">&#127891; M.Sc. Courses</a>
+    <a href="R-programming.html">&#128187; Learn R Programming</a>
+    <a href="Python-programming.html">&#128013; Learn Python Programming</a>
+    <a href="SQL-programming.html">&#128451; Learn SQL Programming</a>
+  </div>
+</div>
       <div class="dropdown">
         <button class="dropbtn">Insights &#9662;</button>
         <div class="dropdown-content">
@@ -251,13 +252,14 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
       </div>
       <div class="drawer-divider"></div>
       <div class="drawer-section-label">Learning</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
-        <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
-        <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
-        <a class="drawer-link" href="R-programming.html">Learn R Programming</a>
-        <a class="drawer-link" href="Python-programming.html">Learn Python Programming</a>
-      </div>
+<div class="drawer-sub">
+  <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
+  <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
+  <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
+  <a class="drawer-link" href="R-programming.html">Learn R Programming</a>
+  <a class="drawer-link" href="Python-programming.html">Learn Python Programming</a>
+  <a class="drawer-link" href="SQL-programming.html">Learn SQL Programming</a>
+</div>
       <div class="drawer-divider"></div>
       <div class="drawer-section-label">Insights</div>
       <div class="drawer-sub">
@@ -277,7 +279,7 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
     <div class="hub-badges">
       <span class="hub-badge" style="background:rgba(26,74,107,.55);" onclick="jumpTo('bsc')" role="button" tabindex="0">🎓 14 B.Sc. Courses</span>
       <span class="hub-badge" style="background:rgba(14,92,74,.55);" onclick="jumpTo('msc')" role="button" tabindex="0">🎓 2 M.Sc. Courses</span>
-      <span class="hub-badge" style="background:rgba(37,99,235,.5);" onclick="jumpTo('prog')" role="button" tabindex="0">💻 R &amp; Python Guides</span>
+      <span class="hub-badge" style="background:rgba(37,99,235,.5);" onclick="jumpTo('prog')" role="button" tabindex="0">💻 R, Python &amp; SQL Guides</span>
     </div>
   </div>
 </section>
@@ -429,14 +431,32 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
       <div class="hub-tile-desc">Getting started, data structures, control flow, functions & comprehensions, import/export, NumPy & pandas, Matplotlib/Seaborn, and research-ready descriptive statistics & regression.</div>
       <div class="hub-tile-arrow">Read notes &rarr;</div>
     </a>
-<div class="hub-tile-soon">
-      <div class="soon-icon">💻</div>
-      <div class="soon-title">More languages coming soon</div>
-      <div class="soon-sub">SQL notes planned</div>
-    </div>
-    </div>
+<div class="hub-cat" id="prog">
+  <div class="hub-cat-head">
+    <div class="hub-cat-title">Programming</div>
+    <div class="hub-cat-count">3 languages</div>
   </div>
-
+  <p style="font-size:13.5px;color:#64748b;margin-bottom:14px;max-width:640px;">Full learn-by-example guides for R, Python, and SQL, each with its own set of topic pages, runnable code, and output.</p>
+  <div class="hub-grid">
+    <a class="hub-tile" href="R-programming.html">
+      <div class="hub-tile-num">LEARN BY EXAMPLE</div>
+      <div class="hub-tile-title">Learn R Programming</div>
+      <div class="hub-tile-desc">Getting started, data structures, control flow, functions & the apply family, import/export, base graphics, ggplot2, and research-ready descriptive statistics & regression.</div>
+      <div class="hub-tile-arrow">Read notes &rarr;</div>
+    </a>
+    <a class="hub-tile" href="Python-programming.html">
+      <div class="hub-tile-num">LEARN BY EXAMPLE</div>
+      <div class="hub-tile-title">Learn Python Programming</div>
+      <div class="hub-tile-desc">Getting started, data structures, control flow, functions & comprehensions, import/export, NumPy & pandas, Matplotlib/Seaborn, and research-ready descriptive statistics & regression.</div>
+      <div class="hub-tile-arrow">Read notes &rarr;</div>
+    </a>
+    <a class="hub-tile" href="SQL-programming.html">
+      <div class="hub-tile-num">LEARN BY EXAMPLE</div>
+      <div class="hub-tile-title">Learn SQL Programming</div>
+      <div class="hub-tile-desc">Queries, joins, aggregations, subqueries, window functions, and database design for research and data analysis workflows.</div>
+      <div class="hub-tile-arrow">Read notes &rarr;</div>
+    </a>
+  </div>
 </div>
 
 <footer>
