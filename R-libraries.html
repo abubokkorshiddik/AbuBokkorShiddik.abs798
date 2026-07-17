@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The top 50 most widely used R libraries explained for beginners — what each package does, how it is structured, what kind of data it works with, and a short example for every one.">
+<title>Top 50 R Libraries | Learn R Programming | Md. Abu Bokkor Shiddik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#1e293b;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+code{font-family:'DM Mono',monospace;}
+
+/* NAVBAR (site-wide, unchanged) */
+.navbar{background:#0b1f3a;position:sticky;top:0;z-index:9999;border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-bar-inner{max-width:1280px;margin:auto;padding:0 24px;display:flex;align-items:center;height:56px;}
+.nav-brand{font-size:14.5px;font-weight:600;color:#fff;letter-spacing:.2px;margin-right:auto;white-space:nowrap;}
+.nav-brand span{color:#93c5fd;font-weight:300;}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-links>a,.dropbtn{color:rgba(255,255,255,.75);font-size:13.5px;font-weight:500;padding:6px 11px;border-radius:6px;border:none;background:none;cursor:pointer;font-family:inherit;transition:background .18s,color .18s;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.nav-links>a:hover,.dropbtn:hover{color:#fff;background:rgba(255,255,255,.09);}
+.dropdown{position:relative;}
+.dropdown-content{position:absolute;top:calc(100% + 6px);left:0;background:#132444;border:1px solid rgba(255,255,255,.1);border-radius:10px;min-width:200px;padding:6px;box-shadow:0 12px 32px rgba(0,0,0,.3);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .2s,transform .2s,visibility .2s;pointer-events:none;z-index:9999;}
+.dropdown:hover .dropdown-content,.dropdown.active .dropdown-content{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;}
+.dropdown-content a{display:flex;align-items:center;gap:8px;padding:8px 12px;color:rgba(255,255,255,.72);font-size:13px;font-weight:500;border-radius:6px;transition:background .15s,color .15s;}
+.dropdown-content a:hover{background:rgba(255,255,255,.08);color:#fff;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:7px;border-radius:6px;margin-left:10px;transition:background .2s;}
+.hamburger:hover{background:rgba(255,255,255,.1);}
+.hamburger span{display:block;width:21px;height:2px;background:rgba(255,255,255,.85);border-radius:2px;transition:transform .28s,opacity .28s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;background:#0d1c38;border-top:1px solid rgba(255,255,255,.07);overflow:hidden;max-height:0;transition:max-height .38s cubic-bezier(.4,0,.2,1);}
+.nav-drawer.open{max-height:700px;}
+.drawer-inner{padding:8px 0 16px;}
+.drawer-link{display:block;color:rgba(255,255,255,.78);font-size:15px;font-weight:500;padding:11px 24px;transition:background .15s,color .15s;}
+.drawer-link:hover{background:rgba(255,255,255,.06);color:#fff;}
+.drawer-section-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.3);padding:14px 24px 4px;}
+.drawer-sub .drawer-link{padding-left:38px;font-size:14px;color:rgba(255,255,255,.58);}
+.drawer-divider{height:1px;background:rgba(255,255,255,.06);margin:4px 0;}
+@media (max-width:900px){.nav-links{display:none;}.hamburger{display:flex;}.nav-drawer{display:block;}}
+
+/* DOC HERO */
+.doc-hero{background:linear-gradient(135deg,#0b2140,#1d4ed8);color:#fff;padding:26px 24px;}
+.doc-hero-inner{max-width:1280px;margin:auto;}
+.doc-crumb{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,.65);margin-bottom:8px;letter-spacing:.3px;}
+.doc-crumb a:hover{text-decoration:underline;color:#fff;}
+.doc-hero h1{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;}
+
+/* LAYOUT */
+.doc-layout{max-width:1280px;margin:auto;display:flex;align-items:flex-start;gap:0;}
+.sidebar{width:250px;flex-shrink:0;position:sticky;top:56px;max-height:calc(100vh - 56px);overflow-y:auto;padding:28px 18px 60px 24px;border-right:1px solid #e2e8f0;}
+.sb-group{margin-bottom:18px;}
+.sb-group-title{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;margin-bottom:6px;padding:0 10px;}
+.sb-link{display:block;font-size:13.5px;color:#475569;padding:7px 10px;border-radius:6px;border-left:2px solid transparent;transition:background .15s,color .15s;}
+.sb-link:hover{background:#f1f5f9;color:#1d4ed8;}
+.sb-link.active{background:#eff6ff;color:#1d4ed8;font-weight:600;border-left-color:#1d4ed8;}
+.sb-home{display:block;font-size:13px;font-weight:700;color:#1e293b;padding:8px 10px;margin-bottom:14px;border-radius:6px;background:#f8fafc;}
+.sb-home:hover{background:#f1f5f9;}
+@media (max-width:960px){.sidebar{display:none;}}
+
+.content{flex:1;min-width:0;padding:36px 40px 70px;max-width:820px;}
+@media (max-width:600px){.content{padding:24px 18px 50px;}}
+
+.lede{font-size:15.5px;color:#475569;margin:10px 0 28px;max-width:680px;}
+
+.section{margin:34px 0;}
+.section h2{font-size:20px;font-weight:700;color:#0f172a;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #e2e8f0;}
+.section h3{font-size:15.5px;font-weight:700;color:#1e293b;margin:20px 0 8px;}
+.section p{font-size:14.5px;color:#334155;margin-bottom:12px;}
+.section ul,.section ol{margin:0 0 14px 22px;font-size:14.5px;color:#334155;}
+.section li{margin-bottom:6px;}
+.section code.inline{background:#f1f5f9;color:#be185d;padding:2px 6px;border-radius:4px;font-size:13px;}
+
+/* EXAMPLE (code + output) */
+.example{margin:16px 0 22px;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;}
+.ex-label{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;padding:9px 16px;}
+.ex-code{background:#0f172a;}
+.ex-code .ex-label{color:#93c5fd;background:#0b1730;}
+.ex-code pre{color:#e2e8f0;padding:14px 18px;font-size:13px;line-height:1.75;overflow-x:auto;white-space:pre;}
+.ex-out{background:#f8fafc;border-top:1px solid #e2e8f0;}
+.ex-out .ex-label{color:#0e5c4a;background:#ecfdf5;}
+.ex-out pre{color:#0f172a;padding:12px 18px;font-size:13px;line-height:1.7;overflow-x:auto;white-space:pre;}
+.cm{color:#64748b;font-style:italic;}
+.kw{color:#f472b6;}
+.fn{color:#fbbf24;}
+.st{color:#93c5fd;}
+.nm{color:#c4b5fd;}
+
+/* CALLOUTS */
+.callout{border-radius:8px;padding:14px 18px;margin:16px 0;font-size:13.5px;line-height:1.7;}
+.callout .co-title{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.tip{background:#ecfdf5;border-left:3px solid #10b981;color:#064e3b;}
+.tip .co-title{color:#0e5c4a;}
+.warn{background:#fffbeb;border-left:3px solid #f59e0b;color:#5c3a05;}
+.warn .co-title{color:#b8820a;}
+.adv{background:#eef2ff;border-left:3px solid #4338ca;color:#1e1b4b;}
+.adv .co-title{color:#4338ca;}
+.tip ul,.warn ul{margin:6px 0 0 18px;}
+.tip li,.warn li{margin-bottom:4px;}
+
+/* KEY POINTS BOX */
+.keypoints{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px 22px;margin:26px 0;}
+.keypoints h4{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1d4ed8;margin-bottom:10px;}
+.keypoints ul{margin-left:18px;}
+.keypoints li{font-size:13.5px;color:#334155;margin-bottom:6px;}
+
+/* PREV/NEXT */
+.prevnext{display:flex;justify-content:space-between;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid #e2e8f0;}
+.pn-link{flex:1;border:1px solid #e2e8f0;border-radius:10px;padding:14px 18px;transition:border-color .15s,background .15s;}
+.pn-link:hover{border-color:#1d4ed8;background:#f8fafc;}
+.pn-link.next{text-align:right;}
+.pn-dir{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#94a3b8;margin-bottom:4px;}
+.pn-title{font-size:14px;font-weight:600;color:#1d4ed8;}
+.pn-spacer{flex:1;}
+
+/* SITE FOOTER (unchanged) */
+footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
+.footer-inner{max-width:1280px;margin:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07);}
+.footer-col-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:14px;}
+.footer-name{font-family:'Lora',serif;font-size:16px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:8px;}
+.footer-desc{font-size:12.5px;line-height:1.7;}
+.footer-nav-links,.footer-social-links{display:flex;flex-direction:column;gap:7px;}
+.footer-nav-links a,.footer-social-links a{font-size:13px;color:rgba(255,255,255,.55);transition:color .15s;}
+.footer-nav-links a:hover{color:rgba(255,255,255,.9);}
+.footer-social-links a:hover{color:#93c5fd;}
+.footer-bottom{max-width:1280px;margin:22px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.footer-bottom p{font-size:12px;}
+@media (max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;}}
+@media (max-width:600px){.footer-inner{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-bar-inner">
+    <div class="nav-brand">
+      <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/contact.html" style="color:#fff;">ABS<span> · </span>Abu Bokkor Shiddik</a>
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <div class="dropdown">
+        <button class="dropbtn">Academic &#9662;</button>
+        <div class="dropdown-content">
+          <a href="courses.html">&#127891; Courses &amp; Training</a>
+          <a href="conference-and-workshop.html">&#127963; Conferences &amp; Workshops</a>
+          <a href="service.html">&#128278; Service</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Digital Lab &#9662;</button>
+        <div class="dropdown-content">
+          <a href="projects.html">&#9879; Projects</a>
+          <a href="data-code.html">&#128190; Data &amp; Code</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Learning &#9662;</button>
+        <div class="dropdown-content">
+          <a href="Learning Notes.html">&#128218; All Learning Notes</a>
+          <a href="BSc-courses.html">&#127891; B.Sc. Courses</a>
+          <a href="MSc-courses.html">&#127891; M.Sc. Courses</a>
+          <a href="R-programming.html">&#128187; Learn R Programming</a>
+          <a href="Python-programming.html">&#128013; Learn Python Programming</a>
+          <a href="SQL-programming.html">&#128451; Learn SQL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Insights &#9662;</button>
+        <div class="dropdown-content">
+          <a href="insights.html">&#9997; Posts</a>
+          <a href="videos.html">&#9654; Videos</a>
+          <a href="archive.html">&#128247; Photos &amp; Archive</a>
+        </div>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <div class="drawer-inner">
+      <a class="drawer-link" href="home.html">Home</a>
+      <a class="drawer-link" href="publications.html">Publications</a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Academic</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
+        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+        <a class="drawer-link" href="service.html">Service</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Digital Lab</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="projects.html">Projects</a>
+        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Learning</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
+        <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
+        <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
+        <a class="drawer-link" href="R-programming.html">Learn R Programming</a>
+        <a class="drawer-link" href="Python-programming.html">Learn Python Programming</a>
+        <a class="drawer-link" href="SQL-programming.html">Learn SQL</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Insights</div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="insights.html">Posts</a>
+        <a class="drawer-link" href="videos.html">Videos</a>
+        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="doc-hero">
+  <div class="doc-hero-inner">
+    <div class="doc-crumb"><a href="R-programming.html">Learn R Programming</a> &nbsp;/&nbsp; R Package Library &nbsp;/&nbsp; Top 50 R Libraries</div>
+    <h1>Top 50 R Libraries</h1>
+  </div>
+</section>
+<div class="doc-layout">
+  <aside class="sidebar">
+    <a class="sb-home" href="R-programming.html">&larr; All R Topics</a>
+    <div class="sb-group"><div class="sb-group-title">Getting Started</div>
+<a class="sb-link" href="r-introduction.html">Introduction</a>
+<a class="sb-link" href="r-operators.html">Operators</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Data Structures</div>
+<a class="sb-link" href="r-vector.html">Vector</a>
+<a class="sb-link" href="r-list.html">List</a>
+<a class="sb-link" href="r-matrix.html">Matrix</a>
+<a class="sb-link" href="r-dataframe.html">Data Frame</a>
+<a class="sb-link" href="r-factor.html">Factor</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Control Flow</div>
+<a class="sb-link" href="r-if-else.html">If...Else</a>
+<a class="sb-link" href="r-switch.html">switch()</a>
+<a class="sb-link" href="r-while-loop.html">While Loop</a>
+<a class="sb-link" href="r-for-loop.html">For Loop</a>
+<a class="sb-link" href="r-repeat-loop.html">Repeat Loop</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Functions</div>
+<a class="sb-link" href="r-functions.html">Functions</a>
+<a class="sb-link" href="r-apply-family.html">Apply Family</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Import &amp; Export</div>
+<a class="sb-link" href="r-csv.html">CSV Files</a>
+<a class="sb-link" href="r-excel.html">Excel Files</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Base Graphics</div>
+<a class="sb-link" href="r-plot.html">plot() Basics</a>
+<a class="sb-link" href="r-bar-plot.html">Bar Plot</a>
+<a class="sb-link" href="r-scatter-plot.html">Scatter Plot</a>
+<a class="sb-link" href="r-boxplot.html">Box-Whisker Plot</a>
+<a class="sb-link" href="r-histogram.html">Histogram</a>
+<a class="sb-link" href="r-pie-chart.html">Pie Chart</a>
+<a class="sb-link" href="r-qqplot.html">QQ Plot</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">ggplot2 Graphics</div>
+<a class="sb-link" href="r-ggplot2-bar.html">Bar Plot</a>
+<a class="sb-link" href="r-ggplot2-scatter.html">Scatter Plot</a>
+<a class="sb-link" href="r-ggplot2-boxplot.html">Box-Whisker Plot</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">Statistical Analysis for Research</div>
+<a class="sb-link" href="r-descriptive-statistics.html">Descriptive Stats &amp; Regression</a>
+</div>
+<div class="sb-group"><div class="sb-group-title">R Package Library</div>
+<a class="sb-link active" href="R-libraries.html">Top 50 R Libraries</a>
+</div>
+  </aside>
+  <main class="content">
+    <p class="lede">R's real power comes from its package ecosystem. This page walks through the 50 libraries you will run into constantly, grouped by what they are for, with a plain-English explanation and a short example for each.</p>
+    <div class="section">
+        <h2>How to Use This Page</h2>
+        <p>Every R package is installed once with <code class="inline">install.packages("name")</code> and loaded at the top of a script with <code class="inline">library(name)</code>. You do not need to memorise all 50 of these - skim the category headings, and come back to this page as a reference whenever you hit a new package name in someone else's code.</p>
+        <div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="fn">install.packages</span>(<span class="st">"dplyr"</span>)  <span class="cm"># one-time install</span>
+<span class="fn">library</span>(dplyr)          <span class="cm"># load it at the top of every script that uses it</span></pre></div>
+</div><div class="callout tip"><div class="co-title">&#128161; Tip</div>The tidyverse (dplyr, tidyr, tibble, purrr, readr, stringr, ggplot2, and more) can all be installed and loaded together with install.packages('tidyverse') and library(tidyverse) - a huge shortcut for the packages used most in this guide.</div>
+        </div>
+<div class="section">
+        <h2>1. Data Manipulation (Tidyverse Core)</h2>
+        <p>These packages work with data frames and tibbles (a tidyverse-flavoured data frame) - the everyday job of cleaning, reshaping, and transforming a dataset before analysis.</p>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#01</span><code class="inline" style="font-size:14px;">dplyr</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">The single most-used data manipulation package in R - filter rows, select columns, create new columns, and summarise data using a small, consistent set of verbs.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames / tibbles</li>
+<li>Core verbs: filter(), select(), mutate(), arrange(), summarise(), group_by()</li>
+<li>Chains operations together with the pipe %&gt;% or |&gt;</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(dplyr)
+
+students <span class="kw">|&gt;</span>
+  <span class="fn">filter</span>(score &gt;= <span class="nm">80</span>) <span class="kw">|&gt;</span>
+  <span class="fn">group_by</span>(class) <span class="kw">|&gt;</span>
+  <span class="fn">summarise</span>(avg = <span class="fn">mean</span>(score))</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>class | avg
+A     | 90.0</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#02</span><code class="inline" style="font-size:14px;">tidyr</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Reshapes data between wide and long formats - the package that untangles messy, spreadsheet-style data into one row per observation.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames / tibbles</li>
+<li>Core functions: pivot_longer(), pivot_wider(), separate(), unite(), drop_na()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(tidyr)
+
+wide_df <span class="kw">|&gt;</span>
+  <span class="fn">pivot_longer</span>(cols = Jan:Mar, names_to = <span class="st">"month"</span>, values_to = <span class="st">"sales"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#03</span><code class="inline" style="font-size:14px;">tibble</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">A modern rework of the data frame - prints more nicely, never silently converts strings to factors, and never partial-matches column names.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: creates/represents rectangular data, drop-in replacement for data.frame</li>
+<li>Core functions: tibble(), as_tibble(), glimpse()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(tibble)
+
+df &lt;- <span class="fn">tibble</span>(name = <span class="fn">c</span>(<span class="st">"Rafi"</span>,<span class="st">"Meera"</span>), score = <span class="fn">c</span>(<span class="nm">88</span>,<span class="nm">92</span>))</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#04</span><code class="inline" style="font-size:14px;">magrittr</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Introduced the pipe operator (%&gt;%) that made chained, readable data-manipulation code possible - largely superseded by base R's built-in |&gt; pipe since R 4.1, but still everywhere in existing code.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: any object, purely a syntax tool</li>
+<li>Core operator: %&gt;% ("then")</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(magrittr)
+
+students %&gt;% <span class="fn">filter</span>(score &gt; <span class="nm">80</span>) %&gt;% <span class="fn">nrow</span>()</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#05</span><code class="inline" style="font-size:14px;">purrr</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Functional programming for R - applies a function to every element of a list or vector, replacing many for loops with one consistent set of tools.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: lists and vectors</li>
+<li>Core functions: map(), map_dbl(), map_chr(), pmap()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(purrr)
+
+<span class="fn">map_dbl</span>(<span class="nm">1</span>:<span class="nm">5</span>, ~ .x^<span class="nm">2</span>)</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>[1]  1  4  9 16 25</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#06</span><code class="inline" style="font-size:14px;">readr</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Fast, consistent reading and writing of rectangular text files (CSV, TSV) - the tidyverse's answer to base R's read.csv().</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: reads/writes text files into a tibble</li>
+<li>Core functions: read_csv(), read_tsv(), write_csv()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(readr)
+
+df &lt;- <span class="fn">read_csv</span>(<span class="st">"students.csv"</span>)</pre></div>
+</div>
+</div></div>
+<div class="section">
+        <h2>2. Import, Export &amp; Databases</h2>
+        <p>These packages move data in and out of R - from spreadsheets, other statistical software, web APIs, or a live database connection.</p>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#07</span><code class="inline" style="font-size:14px;">readxl</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Reads Excel .xls/.xlsx files into a data frame - no external software (like Excel itself) required.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: reads Excel files into a tibble</li>
+<li>Core functions: read_excel(), excel_sheets()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(readxl)
+
+df &lt;- <span class="fn">read_excel</span>(<span class="st">"data.xlsx"</span>, sheet = <span class="nm">1</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#08</span><code class="inline" style="font-size:14px;">writexl</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">The write-side counterpart to readxl - exports a data frame to a real .xlsx file without needing Java or Excel installed.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: writes a data frame/tibble to Excel</li>
+<li>Core function: write_xlsx()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(writexl)
+
+<span class="fn">write_xlsx</span>(df, <span class="st">"output.xlsx"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#09</span><code class="inline" style="font-size:14px;">haven</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Imports data files from other statistical software - SPSS (.sav), Stata (.dta), and SAS - preserving variable labels and value labels.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: reads foreign statistical formats into a tibble</li>
+<li>Core functions: read_sav(), read_dta(), read_sas()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(haven)
+
+df &lt;- <span class="fn">read_sav</span>(<span class="st">"survey.sav"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#10</span><code class="inline" style="font-size:14px;">jsonlite</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Converts between R objects and JSON, the data format used by most web APIs.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: lists, data frames, and nested JSON structures</li>
+<li>Core functions: fromJSON(), toJSON()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(jsonlite)
+
+data &lt;- <span class="fn">fromJSON</span>(<span class="st">"https://api.example.com/data"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#11</span><code class="inline" style="font-size:14px;">DBI</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">A standard interface for connecting R to any relational database - the common language that database-specific packages (like RSQLite) plug into.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: SQL query results, returned as data frames</li>
+<li>Core functions: dbConnect(), dbGetQuery(), dbWriteTable()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(DBI)
+
+con &lt;- <span class="fn">dbConnect</span>(RSQLite::SQLite(), <span class="st">"mydb.sqlite"</span>)
+result &lt;- <span class="fn">dbGetQuery</span>(con, <span class="st">"SELECT * FROM students"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#12</span><code class="inline" style="font-size:14px;">RSQLite</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">The SQLite database driver for DBI - lets R read and write a real, file-based SQL database with zero server setup.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: local .sqlite database files</li>
+<li>Used together with: DBI</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(RSQLite)
+
+con &lt;- DBI::<span class="fn">dbConnect</span>(<span class="fn">SQLite</span>(), <span class="st">":memory:"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#13</span><code class="inline" style="font-size:14px;">httr</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Makes HTTP requests to web APIs - the standard way to pull live data from the internet directly into R.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: web API responses (often paired with jsonlite to parse them)</li>
+<li>Core functions: GET(), POST(), content()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(httr)
+
+response &lt;- <span class="fn">GET</span>(<span class="st">"https://api.example.com/data"</span>)
+data &lt;- httr::<span class="fn">content</span>(response, as = <span class="st">"parsed"</span>)</pre></div>
+</div>
+</div></div>
+<div class="section">
+        <h2>3. Data Visualization</h2>
+        <p>Packages for turning data into charts, ranging from ggplot2's complete grammar-of-graphics system to small helper packages that polish an existing plot.</p>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#14</span><code class="inline" style="font-size:14px;">ggplot2</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">R's dominant charting package, covered in depth earlier in this guide - builds plots in layers using a consistent grammar (data, aesthetics, geometry, styling).</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames / tibbles</li>
+<li>Core functions: ggplot(), aes(), geom_*(), theme_*()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(ggplot2)
+
+<span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x, y)) + <span class="fn">geom_point</span>()</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#15</span><code class="inline" style="font-size:14px;">plotly</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Creates interactive, zoomable, hoverable charts for HTML output - can convert an existing ggplot2 chart into an interactive one with a single function call.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames, or wraps an existing ggplot object</li>
+<li>Core functions: plot_ly(), ggplotly()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(plotly)
+
+p &lt;- <span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x, y)) + <span class="fn">geom_point</span>()
+<span class="fn">ggplotly</span>(p)   <span class="cm"># same chart, now interactive</span></pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#16</span><code class="inline" style="font-size:14px;">lattice</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">An older, high-level plotting system built into base R's recommended packages - especially strong for 'trellis' charts that repeat the same plot across many subgroups.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames</li>
+<li>Core functions: xyplot(), bwplot(), histogram()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(lattice)
+
+<span class="fn">xyplot</span>(score ~ study_hours | group, data = df)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#17</span><code class="inline" style="font-size:14px;">RColorBrewer</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">A curated set of colour palettes designed specifically for maps and statistical charts - sequential, diverging, and qualitative palettes that are colourblind-safe.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: returns colour hex codes to use in any plot</li>
+<li>Core function: brewer.pal()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(RColorBrewer)
+
+colours &lt;- <span class="fn">brewer.pal</span>(<span class="nm">3</span>, <span class="st">"Set2"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#18</span><code class="inline" style="font-size:14px;">scales</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Formats axis labels and legend breaks nicely - percentages, currency, comma-separated thousands - and provides the colour-scaling machinery ggplot2 uses internally.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: numeric vectors (as label formatters)</li>
+<li>Core functions: percent(), comma(), dollar()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(scales)
+
+<span class="fn">ggplot</span>(df, <span class="fn">aes</span>(x, y)) + <span class="fn">geom_col</span>() +
+  <span class="fn">scale_y_continuous</span>(labels = <span class="fn">scales::percent</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#19</span><code class="inline" style="font-size:14px;">gridExtra</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Arranges multiple separate plots (including base R and ggplot2 plots) into a single grid layout.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: plot objects</li>
+<li>Core function: grid.arrange()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(gridExtra)
+
+<span class="fn">grid.arrange</span>(plot1, plot2, ncol = <span class="nm">2</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#20</span><code class="inline" style="font-size:14px;">patchwork</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">A more modern, ggplot2-native way to combine multiple plots - just add plot objects together with +, /, and | operators.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: ggplot2 plot objects</li>
+<li>Core syntax: p1 + p2, p1 / p2, p1 | p2</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(patchwork)
+
+p1 + p2   <span class="cm"># side by side</span>
+p1 / p2   <span class="cm"># stacked</span></pre></div>
+</div>
+</div></div>
+<div class="section">
+        <h2>4. String &amp; Date/Time Handling</h2>
+        <p>Base R can handle text and dates, but these packages make both dramatically easier and more consistent to work with.</p>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#21</span><code class="inline" style="font-size:14px;">stringr</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">A consistent, easy-to-remember set of functions for working with text - every function starts with str_ and takes the string first.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: character vectors</li>
+<li>Core functions: str_detect(), str_replace(), str_split(), str_trim()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(stringr)
+
+<span class="fn">str_detect</span>(<span class="fn">c</span>(<span class="st">"apple"</span>,<span class="st">"banana"</span>), <span class="st">"an"</span>)</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>[1] FALSE  TRUE</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#22</span><code class="inline" style="font-size:14px;">lubridate</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Makes working with dates and times far less painful than base R - parsing, arithmetic, and extracting components (year, month, weekday) all become one-line calls.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: Date and POSIXct (date-time) vectors</li>
+<li>Core functions: ymd(), mdy(), today(), wday(), interval()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(lubridate)
+
+d &lt;- <span class="fn">ymd</span>(<span class="st">"2026-07-17"</span>)
+<span class="fn">wday</span>(d, label = <span class="kw">TRUE</span>)</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>[1] Fri
+Levels: Sun &lt; Mon &lt; ... &lt; Sat</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#23</span><code class="inline" style="font-size:14px;">glue</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Interpolates variables directly into strings using {curly braces} - a cleaner alternative to paste0() for building formatted text and messages.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: any R values, embedded inside a string template</li>
+<li>Core function: glue()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(glue)
+
+name &lt;- <span class="st">"Rafi"</span>; score &lt;- <span class="nm">88</span>
+<span class="fn">glue</span>(<span class="st">"{name} scored {score} points"</span>)</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>Rafi scored 88 points</pre></div>
+</div>
+</div></div>
+<div class="section">
+        <h2>5. Statistical Modelling</h2>
+        <p>Beyond the base lm()/glm() functions used earlier in this guide, these packages extend R into more specialised statistical modelling.</p>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#24</span><code class="inline" style="font-size:14px;">stats</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Loaded automatically in every R session - contains the core statistical functions used constantly: t.test(), lm(), glm(), aov(), and every common probability distribution.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: vectors and data frames</li>
+<li>Core functions: lm(), t.test(), aov(), dnorm()/pnorm()/qnorm()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="cm"># stats is always loaded automatically - no library() call needed</span>
+<span class="fn">t.test</span>(score ~ group, data = df)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#25</span><code class="inline" style="font-size:14px;">car</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">'Companion to Applied Regression' - adds regression diagnostics and tests that base R lacks, like tests for multicollinearity and non-constant variance.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: fitted model objects (from lm(), glm())</li>
+<li>Core functions: vif(), Anova(), ncvTest()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(car)
+
+<span class="fn">vif</span>(model)   <span class="cm"># variance inflation factor - checks multicollinearity</span></pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#26</span><code class="inline" style="font-size:14px;">lme4</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Fits mixed-effects (multilevel/hierarchical) models - for data with a nested structure, like repeated measurements on the same patient or students within schools.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames with a grouping/nesting structure</li>
+<li>Core functions: lmer(), glmer()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(lme4)
+
+model &lt;- <span class="fn">lmer</span>(score ~ study_hours + (<span class="nm">1</span>|school), data = df)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#27</span><code class="inline" style="font-size:14px;">survival</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">The standard package for survival analysis - modelling time-to-event data, like time until patient relapse or equipment failure.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: Surv() objects built from time and event/status columns</li>
+<li>Core functions: Surv(), survfit(), coxph()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(survival)
+
+fit &lt;- <span class="fn">survfit</span>(<span class="fn">Surv</span>(time, status) ~ group, data = df)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#28</span><code class="inline" style="font-size:14px;">MASS</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">'Modern Applied Statistics with S' - a broad toolkit bundled with base R, covering robust regression, LDA/QDA classification, and negative binomial models.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames / fitted models</li>
+<li>Core functions: lda(), glm.nb(), stepAIC()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(MASS)
+
+model &lt;- MASS::<span class="fn">glm.nb</span>(count ~ x, data = df)  <span class="cm"># negative binomial regression</span></pre></div>
+</div>
+</div></div>
+<div class="section">
+        <h2>6. Machine Learning</h2>
+        <p>Packages for building predictive models beyond classical statistics - from single algorithms to complete, unified ML workflows.</p>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#29</span><code class="inline" style="font-size:14px;">caret</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">'Classification And REgression Training' - a long-standing unified interface for training and comparing dozens of different ML models with consistent syntax.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames</li>
+<li>Core functions: train(), trainControl(), predict()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(caret)
+
+model &lt;- <span class="fn">train</span>(class ~ ., data = df, method = <span class="st">"rf"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#30</span><code class="inline" style="font-size:14px;">randomForest</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Implements the Random Forest algorithm - an ensemble of decision trees, one of the most reliable general-purpose classification/regression methods.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames (predictors + a target column)</li>
+<li>Core function: randomForest()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(randomForest)
+
+model &lt;- <span class="fn">randomForest</span>(class ~ ., data = df, ntree = <span class="nm">500</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#31</span><code class="inline" style="font-size:14px;">xgboost</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">An extremely fast, high-performance implementation of gradient boosted trees - a top choice in machine learning competitions and production systems.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: numeric matrices (via xgb.DMatrix)</li>
+<li>Core functions: xgboost(), xgb.DMatrix(), predict()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(xgboost)
+
+model &lt;- <span class="fn">xgboost</span>(data = X_matrix, label = y, nrounds = <span class="nm">100</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#32</span><code class="inline" style="font-size:14px;">glmnet</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Fits regularised regression (Ridge, Lasso, and Elastic Net) - useful when you have many predictors and need automatic variable selection or shrinkage.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: numeric predictor matrix + outcome vector</li>
+<li>Core functions: glmnet(), cv.glmnet()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(glmnet)
+
+model &lt;- <span class="fn">cv.glmnet</span>(X_matrix, y, alpha = <span class="nm">1</span>)  <span class="cm"># alpha=1 is Lasso</span></pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#33</span><code class="inline" style="font-size:14px;">e1071</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">A grab-bag statistics/ML package best known for Support Vector Machines (SVM) and Naive Bayes classifiers, plus the skewness()/kurtosis() functions used earlier in this guide.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames</li>
+<li>Core functions: svm(), naiveBayes(), skewness()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(e1071)
+
+model &lt;- <span class="fn">svm</span>(class ~ ., data = df)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#34</span><code class="inline" style="font-size:14px;">tidymodels</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">A modern, tidyverse-style collection of packages for the ENTIRE modelling workflow - recipes for preprocessing, parsnip for model fitting, yardstick for evaluation.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames / tibbles</li>
+<li>Core packages: recipes, parsnip, workflows, yardstick</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(tidymodels)
+
+model_spec &lt;- <span class="fn">linear_reg</span>() <span class="kw">|&gt;</span> <span class="fn">set_engine</span>(<span class="st">"lm"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#35</span><code class="inline" style="font-size:14px;">rpart</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Fits a single classification or regression tree - simpler and more interpretable than a random forest, and often the first model tried on a new problem.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames</li>
+<li>Core functions: rpart(), predict()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(rpart)
+
+tree &lt;- <span class="fn">rpart</span>(class ~ ., data = df, method = <span class="st">"class"</span>)</pre></div>
+</div>
+</div></div>
+<div class="section">
+        <h2>7. Reporting, Documents &amp; Apps</h2>
+        <p>Turns R code and results into shareable output - reports, slides, and fully interactive web applications, all without leaving R.</p>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#36</span><code class="inline" style="font-size:14px;">rmarkdown</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Combines narrative text, R code, and its output into a single document, rendered to HTML, PDF, or Word - the standard way to produce reproducible reports directly from R.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: .Rmd source files (text + embedded R code chunks)</li>
+<li>Core function: render()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="cm">---</span>
+<span class="cm">title: "My Report"</span>
+<span class="cm">output: html_document</span>
+<span class="cm">---</span>
+
+<span class="cm">```{r}</span>
+<span class="fn">summary</span>(df)
+<span class="cm">```</span></pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#37</span><code class="inline" style="font-size:14px;">knitr</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">The engine underneath rmarkdown that actually runs the embedded R code chunks and weaves the results back into the document.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: .Rmd/.Rnw source files</li>
+<li>Core function: knit()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(knitr)
+
+<span class="fn">knit</span>(<span class="st">"report.Rmd"</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#38</span><code class="inline" style="font-size:14px;">shiny</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Builds fully interactive web applications using only R code - sliders, dropdowns, and live-updating plots, with no HTML/JavaScript required.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: reactive R expressions driving UI elements</li>
+<li>Core functions: fluidPage(), renderPlot(), shinyApp()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(shiny)
+
+ui &lt;- <span class="fn">fluidPage</span>(<span class="fn">sliderInput</span>(<span class="st">"n"</span>, <span class="st">"N"</span>, <span class="nm">1</span>, <span class="nm">100</span>, <span class="nm">50</span>), <span class="fn">plotOutput</span>(<span class="st">"plot"</span>))</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#39</span><code class="inline" style="font-size:14px;">flexdashboard</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Turns an R Markdown document into a polished, grid-based dashboard layout with minimal extra syntax - often combined with shiny for interactivity.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: .Rmd files with a special dashboard layout syntax</li>
+<li>Core output format: flex_dashboard</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre><span class="cm">---</span>
+<span class="cm">title: "Dashboard"</span>
+<span class="cm">output: flexdashboard::flex_dashboard</span>
+<span class="cm">---</span></pre></div>
+</div>
+</div></div>
+<div class="section">
+        <h2>8. Web Scraping</h2>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#40</span><code class="inline" style="font-size:14px;">rvest</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Extracts data directly from HTML web pages - selects elements with CSS selectors and pulls out text, links, or table data.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: parsed HTML documents</li>
+<li>Core functions: read_html(), html_elements(), html_table()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(rvest)
+
+page &lt;- <span class="fn">read_html</span>(<span class="st">"https://example.com"</span>)
+titles &lt;- page <span class="kw">|&gt;</span> <span class="fn">html_elements</span>(<span class="st">"h2"</span>) <span class="kw">|&gt;</span> <span class="fn">html_text</span>()</pre></div>
+</div>
+</div></div>
+<div class="section">
+        <h2>9. Performance &amp; Large Data</h2>
+        <p>These packages exist to make R faster - either through a more efficient data structure, compiled C++ code, or running work across multiple CPU cores at once.</p>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#41</span><code class="inline" style="font-size:14px;">data.table</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">An extremely fast, memory-efficient alternative to data.frame for large datasets, with its own concise syntax (DT[i, j, by]).</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: its own data.table object (extends data.frame)</li>
+<li>Core syntax: DT[rows, columns, by = grouping]</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(data.table)
+
+DT &lt;- <span class="fn">as.data.table</span>(df)
+DT[score &gt; <span class="nm">80</span>, .(avg = <span class="fn">mean</span>(score)), by = class]</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#42</span><code class="inline" style="font-size:14px;">Rcpp</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Lets you write small, performance-critical pieces of R code directly in C++ - used when a loop or calculation is too slow in pure R.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: compiles and calls C++ functions from R</li>
+<li>Core functions: cppFunction(), sourceCpp()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(Rcpp)
+
+<span class="fn">cppFunction</span>(<span class="st">"int add(int x, int y) { return x + y; }"</span>)
+<span class="fn">add</span>(<span class="nm">2</span>, <span class="nm">3</span>)</pre></div>
+<div class="ex-out"><div class="ex-label">Output</div><pre>[1] 5</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#43</span><code class="inline" style="font-size:14px;">parallel</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Built into base R - runs independent computations across multiple CPU cores simultaneously, speeding up loops and simulations.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: any function applied repeatedly (like sapply/lapply)</li>
+<li>Core functions: mclapply(), makeCluster(), parLapply()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(parallel)
+
+results &lt;- <span class="fn">mclapply</span>(<span class="nm">1</span>:<span class="nm">4</span>, <span class="kw">function</span>(x) x^<span class="nm">2</span>, mc.cores = <span class="nm">4</span>)</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#44</span><code class="inline" style="font-size:14px;">foreach</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Provides a for-loop-like syntax that can run either sequentially or in parallel, depending on which 'backend' is registered.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: any iterable sequence</li>
+<li>Core syntax: foreach(...) %do% { ... } or %dopar% { ... }</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(foreach)
+
+<span class="fn">foreach</span>(i = <span class="nm">1</span>:<span class="nm">3</span>) %do% { i^<span class="nm">2</span> }</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#45</span><code class="inline" style="font-size:14px;">doParallel</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">A parallel 'backend' that plugs into foreach, letting %dopar% loops actually run across multiple cores instead of one at a time.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: registers a parallel cluster for foreach to use</li>
+<li>Core functions: registerDoParallel(), makeCluster()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(doParallel)
+
+<span class="fn">registerDoParallel</span>(cores = <span class="nm">4</span>)
+foreach::<span class="fn">foreach</span>(i = <span class="nm">1</span>:<span class="nm">3</span>) %dopar% { i^<span class="nm">2</span> }</pre></div>
+</div>
+</div></div>
+<div class="section">
+        <h2>10. Utility &amp; Workflow</h2>
+        <p>These packages do not analyse data directly - they support the process of writing, testing, organising, and cleaning up an R project.</p>
+        <div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#46</span><code class="inline" style="font-size:14px;">devtools</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">A toolkit for building R packages - loading, testing, and documenting your own code as a reusable, shareable package.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: an R package project directory</li>
+<li>Core functions: load_all(), document(), install()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(devtools)
+
+<span class="fn">load_all</span>()   <span class="cm"># reload your in-development package</span></pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#47</span><code class="inline" style="font-size:14px;">testthat</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">R's standard unit-testing framework - write small checks that confirm your functions behave correctly, and catch bugs before they reach production.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: R functions, via test files</li>
+<li>Core functions: test_that(), expect_equal(), expect_true()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(testthat)
+
+<span class="fn">test_that</span>(<span class="st">"addition works"</span>, {
+  <span class="fn">expect_equal</span>(<span class="nm">2</span> + <span class="nm">2</span>, <span class="nm">4</span>)
+})</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#48</span><code class="inline" style="font-size:14px;">here</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Solves the 'file not found' working-directory problem - builds file paths relative to your project's root, no matter where a script is run from.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: file paths</li>
+<li>Core function: here()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(here)
+
+df &lt;- <span class="fn">read.csv</span>(<span class="fn">here</span>(<span class="st">"data"</span>, <span class="st">"students.csv"</span>))</pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#49</span><code class="inline" style="font-size:14px;">janitor</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Cleans up messy real-world data - standardises column names, removes empty rows/columns, and builds clean summary tables.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: data frames</li>
+<li>Core functions: clean_names(), tabyl(), remove_empty()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(janitor)
+
+df &lt;- df <span class="kw">|&gt;</span> <span class="fn">clean_names</span>()   <span class="cm"># "Student Name" -&gt; "student_name"</span></pre></div>
+</div>
+</div><div style="margin:26px 0;padding-top:20px;border-top:1px solid #f1f5f9;">
+<h3 style="font-size:15.5px;font-weight:700;color:#0f172a;margin-bottom:6px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;margin-right:8px;">#50</span><code class="inline" style="font-size:14px;">forcats</code></h3>
+<p style="font-size:13.5px;color:#475569;margin-bottom:8px;">Tools specifically for working with factors (categorical variables) - reordering, relabelling, and collapsing levels cleanly.</p>
+<ul style="font-size:13px;color:#475569;margin:0 0 10px 20px;"><li>Works on: factor vectors</li>
+<li>Core functions: fct_reorder(), fct_lump(), fct_recode()</li></ul>
+<div class="example">
+<div class="ex-code"><div class="ex-label">R Code</div><pre>library(forcats)
+
+df$class &lt;- <span class="fn">fct_relevel</span>(df$class, <span class="st">"B"</span>, <span class="st">"A"</span>)   <span class="cm"># set custom level order</span></pre></div>
+</div>
+</div></div>
+<div class="keypoints"><h4>Key Points</h4><ul><li>install.packages("name") installs a package once; library(name) loads it at the start of a script.</li>
+<li>install.packages("tidyverse") installs dplyr, tidyr, tibble, purrr, readr, stringr, ggplot2, and more together.</li>
+<li>Match the package to the job: dplyr/tidyr for wrangling, ggplot2 for charts, caret/tidymodels for machine learning, data.table for very large data.</li>
+<li>When code you find online fails with "could not find function", it almost always means the package providing that function has not been loaded with library() yet.</li></ul></div>
+    <div class="prevnext">
+      <a class="pn-link prev" href="r-descriptive-statistics.html"><div class="pn-dir">&larr; Previous</div><div class="pn-title">Descriptive Stats &amp; Regression</div></a>
+      <div class="pn-spacer"></div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Md. Abu Bokkor Shiddik</div>
+      <p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <div class="footer-nav-links">
+        <a href="home.html">Home</a>
+        <a href="publications.html">Publications</a>
+        <a href="projects.html">Projects</a>
+        <a href="Learning Notes.html">Learning Notes</a>
+        <a href="BSc-courses.html">B.Sc. Courses</a>
+        <a href="MSc-courses.html">M.Sc. Courses</a>
+        <a href="R-programming.html">Learn R Programming</a>
+        <a href="Python-programming.html">Learn Python Programming</a>
+        <a href="SQL-programming.html">Learn SQL</a>
+        <a href="service.html">Service</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <div class="footer-social-links">
+        <a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">&#127760; Portfolio</a>
+        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">&#127891; Google Scholar</a>
+        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">&#10022; ORCID</a>
+        <a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Md. Abu Bokkor Shiddik &middot; All rights reserved</p>
+    <p>abubokkor.brur60@gmail.com &middot; +880 1874 001360</p>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('.dropbtn').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var dd = btn.closest('.dropdown');
+    var open = dd.classList.contains('active');
+    document.querySelectorAll('.dropdown.active').forEach(function(d){ d.classList.remove('active'); });
+    if(!open) dd.classList.add('active');
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.dropdown.active').forEach(function(d){ d.classList.remove('active'); });
+});
+var ham = document.getElementById('hamburger');
+var navDrawer = document.getElementById('nav-drawer');
+if(ham){
+  ham.addEventListener('click', function(){ ham.classList.toggle('open'); navDrawer.classList.toggle('open'); });
+  navDrawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ ham.classList.remove('open'); navDrawer.classList.remove('open'); });
+  });
+}
+</script>
+
+</body>
+</html>
