@@ -190,6 +190,25 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 .footer-yt-btn{display:inline-flex;align-items:center;gap:7px;background:#ff0000;color:#fff;font-weight:700;font-size:13px;padding:11px 22px;border-radius:8px;white-space:nowrap;transition:background .15s,transform .15s;flex-shrink:0;}
 .footer-yt-btn:hover{background:#cc0000;transform:translateY(-1px);}
 @media (max-width:600px){.footer-yt-promo-inner{padding:20px;}.footer-yt-btn{width:100%;justify-content:center;}}
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+}
+
+.brand-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.brand-logo span {
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
 </style>
 </head>
 <body>
@@ -197,8 +216,12 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
 <nav class="navbar">
   <div class="nav-bar-inner">
     <div class="nav-brand">
-      <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/contact.html" style="color:#fff;">ABS<span> · </span>Abu Bokkor Shiddik</a>
-    </div>
+  <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/" class="brand-logo">
+    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png" 
+         alt="ABS Logo">
+    <span>ABS · Abu Bokkor Shiddik</span>
+  </a>
+</div>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
