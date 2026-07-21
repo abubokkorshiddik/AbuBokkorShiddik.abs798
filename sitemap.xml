@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/</loc>
     <lastmod>2026-05-03</lastmod>
   </url>
   <url>
-    <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home.html</loc>
+    <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/index.html</loc>
     <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/publications.html</loc>
@@ -14,7 +19,7 @@
   </url>
   <url>
     <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/service.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/projects.html</loc>
@@ -60,4 +65,107 @@
     <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/archive.html</loc>
     <lastmod>2026-05-03</lastmod>
   </url>
+  <url>
+    <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/contact.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+
+  <!-- Learning Hubs -->
+  <url>
+    <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/R-programming.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/Learn-R-Programming.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/R-libraries.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/Python-programming.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/SQL-programming.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+
+  <!-- R Notes -->
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-introduction.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-operators.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-if-else.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-for-loop.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-while-loop.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-repeat-loop.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-switch.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-functions.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-vector.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-list.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-matrix.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-dataframe.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-factor.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-apply-family.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-csv.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-excel.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-descriptive-statistics.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-plot.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-bar-plot.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-histogram.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-boxplot.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-scatter-plot.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-pie-chart.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-qqplot.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-ggplot2-bar.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/r-ggplot2-boxplot.html</loc><lastmod>2026-07-22</lastmod></url>
+
+  <!-- Python Notes -->
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-introduction.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-operators.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-if-else.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-for-loop.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-while-loop.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-break-continue.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-functions.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-lambda-comprehensions.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-list.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-tuple.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-set.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-dictionary.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-string.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-csv.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-excel.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-numpy.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-pandas.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-descriptive-statistics.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-matplotlib.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-bar-plot.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-histogram.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-boxplot.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-scatter-plot.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/py-seaborn.html</loc><lastmod>2026-07-22</lastmod></url>
+
+  <!-- SQL Notes -->
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-introduction.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-select.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-where.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-order-by.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-distinct.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-limit.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-aggregate-functions.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-group-by.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-having.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-case.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-inner-join.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-outer-join.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-self-join-union.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-subqueries.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-cte.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-window-functions.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-create-table.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-alter-table.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-insert-update-delete.html</loc><lastmod>2026-07-22</lastmod></url>
+  <url><loc>https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/sql-descriptive-statistics.html</loc><lastmod>2026-07-22</lastmod></url>
+
 </urlset>
