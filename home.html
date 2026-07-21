@@ -659,6 +659,24 @@
   .float-mail-btn, .float-contact-btn { width: 52px; height: 52px; font-size: 21px; }
   .float-mail-tooltip { display: none; }
 }
+    .brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+}
+
+.brand-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.brand-logo span {
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 600;
+}
   </style>
 </head>
 <body>
@@ -666,9 +684,13 @@
 <!-- ═══ NAVBAR ═══ -->
 <nav class="navbar">
   <div class="nav-inner">
-    <div class="nav-brand">
-      <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/contact.html" style="color:#fff;">ABS<span> · </span>Abu Bokkor Shiddik</a>
-    </div>
+   <div class="nav-brand">
+  <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/" class="brand-logo">
+    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png" 
+         alt="ABS Logo">
+    <span>ABS · Abu Bokkor Shiddik</span>
+  </a>
+</div>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
