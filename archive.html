@@ -12,37 +12,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { }
-
     :root {
-      --navy: #0b1f3a;
-      --blue: #1a56db;
-      --blue-hover: #1648c0;
-      --sky: #e8f0fe;
-      --sky2: #d2e3fc;
-      --text: #0f172a;
-      --text2: #334155;
-      --text3: #64748b;
-      --border: #e2e8f0;
-      --border2: #cbd5e1;
-      --bg: #f8fafc;
-      --white: #ffffff;
-      --radius: 8px;
-      --radius-lg: 14px;
+      --navy: #0b1f3a; --blue: #1a56db; --blue-hover: #1648c0; --sky: #e8f0fe; --sky2: #d2e3fc;
+      --text: #0f172a; --text2: #334155; --text3: #64748b; --border: #e2e8f0; --border2: #cbd5e1;
+      --bg: #f8fafc; --white: #ffffff; --radius: 8px; --radius-lg: 14px;
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
       --shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: var(--text);
-      font-size: 15.5px;
-      line-height: 1.75;
-      background: var(--bg);
-    }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: var(--text); font-size: 15.5px; line-height: 1.75; background: var(--bg); }
     a { color: inherit; text-decoration: none; }
-
-    /* ── NAVBAR ── */
     .navbar { background: var(--navy); position: sticky; top: 0; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .nav-bar-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; align-items: center; height: 56px; }
     .nav-brand { font-size: 14.5px; font-weight: 600; color: #fff; letter-spacing: 0.2px; margin-right: auto; white-space: nowrap; }
@@ -61,14 +39,8 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transform: translateY(6px);
       transition: opacity 0.2s, transform 0.2s, visibility 0.2s; pointer-events: none; z-index: 9999;
     }
-    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content {
-      opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
-    }
-    .dropdown-content a {
-      display: flex; align-items: center; gap: 8px; padding: 8px 12px;
-      color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 500; border-radius: 6px;
-      transition: background 0.15s, color 0.15s;
-    }
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .dropdown-content a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 500; border-radius: 6px; transition: background 0.15s, color 0.15s; }
     .dropdown-content a:hover { background: rgba(255,255,255,0.08); color: #fff; }
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 6px; margin-left: 10px; transition: background 0.2s; }
     .hamburger:hover { background: rgba(255,255,255,0.1); }
@@ -85,162 +57,55 @@
     .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,0.58); }
     .drawer-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0; }
     @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-drawer { display: block; } }
-
-    /* ── PAGE HEADER ── */
-    .page-hero {
-      background: linear-gradient(140deg, #07152a 0%, #0d2247 50%, #0f2d5c 100%);
-      color: white; padding: 52px 24px 44px; position: relative; overflow: hidden;
-    }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 75% 30%, rgba(59,130,246,0.1) 0%, transparent 55%);
-      pointer-events: none;
-    }
+    .page-hero { background: linear-gradient(140deg, #07152a 0%, #0d2247 50%, #0f2d5c 100%); color: white; padding: 52px 24px 44px; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 75% 30%, rgba(59,130,246,0.1) 0%, transparent 55%); pointer-events: none; }
     .page-hero-inner { max-width: 1180px; margin: auto; position: relative; }
-    .page-hero-label {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 11.5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-      color: #93c5fd; margin-bottom: 12px;
-    }
+    .page-hero-label { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #93c5fd; margin-bottom: 12px; }
     .page-hero h1 { font-family: 'Lora', serif; font-size: 2rem; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
     .page-hero p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 560px; }
-
-    /* ── TOC TABS ── */
     .toc-bar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 56px; z-index: 100; }
     .toc-inner { max-width: 1180px; margin: auto; padding: 0 12px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .toc-inner::-webkit-scrollbar { display: none; }
-    .toc-tab {
-      display: inline-flex; align-items: center; gap: 5px; padding: 11px 13px;
-      font-size: 13px; font-weight: 500; color: var(--text3); border-bottom: 2.5px solid transparent;
-      white-space: nowrap; cursor: pointer; transition: color 0.18s, border-color 0.18s; background: none; border-top: none; border-left: none; border-right: none;
-      font-family: inherit; -webkit-tap-highlight-color: transparent; min-height: 44px; user-select: none;
-    }
+    .toc-tab { display: inline-flex; align-items: center; gap: 5px; padding: 11px 13px; font-size: 13px; font-weight: 500; color: var(--text3); border-bottom: 2.5px solid transparent; white-space: nowrap; cursor: pointer; transition: color 0.18s, border-color 0.18s; background: none; border-top: none; border-left: none; border-right: none; font-family: inherit; -webkit-tap-highlight-color: transparent; min-height: 44px; user-select: none; }
     .toc-tab:hover { color: var(--blue); }
     .toc-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
     @media (max-width: 600px) { .toc-tab { font-size: 11.5px; padding: 10px 10px; gap: 3px; } }
-
-    /* ── MAIN ── */
     .page-body { max-width: 1180px; margin: 0 auto; padding: 0 24px 80px; }
-
-    /* ── SECTION ── */
     .gallery-section { padding: 52px 0 0; }
     .section-head { margin-bottom: 10px; }
     .section-head h2 { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--text); position: relative; padding-bottom: 8px; display: inline-block; }
     .section-head h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 32px; height: 2.5px; background: var(--blue); border-radius: 2px; }
     .section-desc { font-size: 13.5px; color: var(--text3); margin-top: 10px; margin-bottom: 20px; max-width: 720px; line-height: 1.6; }
-
-    /* ── PHOTO GRID ── */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
+    .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     @media (max-width: 1024px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 700px)  { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 420px)  { .photo-grid { grid-template-columns: 1fr; } }
-
-    /* ── PHOTO CARD ── */
-    .photo-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      cursor: pointer;
-      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
-      /* hidden by default — JS controls visibility */
-      display: none;
-    }
+    .photo-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); cursor: pointer; transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s; content-visibility: auto; contain-intrinsic-size: 260px; display: none; }
     .photo-card.visible { display: block; }
     .photo-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--border2); }
-
-    /* Image wrapper — keeps aspect ratio, shows skeleton while loading */
-    .img-wrap {
-      position: relative;
-      width: 100%;
-      padding-top: 72%; /* 4:3 ratio */
-      background: #f1f5f9;
-      overflow: hidden;
-    }
-    .img-wrap::before {
-      /* skeleton shimmer */
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.4s infinite;
-      z-index: 1;
-    }
+    .img-wrap { position: relative; width: 100%; padding-top: 72%; background: #f1f5f9; overflow: hidden; }
+    .img-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; z-index: 1; }
     .img-wrap.loaded::before { display: none; }
     @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-    .img-wrap img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      opacity: 0;
-      transition: opacity 0.35s;
-      z-index: 2;
-    }
+    .img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.35s; z-index: 2; }
     .img-wrap img.loaded { opacity: 1; }
-
-    .photo-caption {
-      padding: 10px 12px;
-      font-size: 12px;
-      color: var(--text3);
-      line-height: 1.5;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── SHOW MORE BUTTON ── */
+    .photo-caption { padding: 10px 12px; font-size: 12px; color: var(--text3); line-height: 1.5; border-top: 1px solid var(--border); }
     .show-more-wrap { margin-top: 18px; display: flex; align-items: center; gap: 14px; }
-    .show-more-btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: var(--white); border: 1px solid var(--border2); color: var(--blue);
-      font-size: 13.5px; font-weight: 600; padding: 9px 20px; border-radius: 7px;
-      cursor: pointer; font-family: inherit; transition: background 0.18s, border-color 0.18s;
-    }
+    .show-more-btn { display: inline-flex; align-items: center; gap: 7px; background: var(--white); border: 1px solid var(--border2); color: var(--blue); font-size: 13.5px; font-weight: 600; padding: 9px 20px; border-radius: 7px; cursor: pointer; font-family: inherit; transition: background 0.18s, border-color 0.18s; }
     .show-more-btn:hover { background: var(--sky); border-color: #93c5fd; }
     .photo-count-label { font-size: 12.5px; color: var(--text3); }
-
-    /* ── LIGHTBOX ── */
-    #lightbox {
-      position: fixed; inset: 0;
-      background: rgba(5, 10, 20, 0.96);
-      display: none; align-items: center; justify-content: center;
-      flex-direction: column; z-index: 99999; padding: 20px;
-      backdrop-filter: blur(4px);
-    }
+    #lightbox { position: fixed; inset: 0; background: rgba(5, 10, 20, 0.96); display: none; align-items: center; justify-content: center; flex-direction: column; z-index: 99999; padding: 20px; backdrop-filter: blur(4px); }
     #lightbox.open { display: flex; }
     .lb-img-wrap { position: relative; max-width: min(92vw, 900px); max-height: 80vh; }
-    #lightbox-img { display: block; max-width: 100%; max-height: 80vh; border-radius: 10px; object-fit: contain; }
+    #lightbox-img { display: block; max-width: 100%; max-height: 80vh; border-radius: 10px; object-fit: contain; background: #111; }
     #lightbox-caption { margin-top: 14px; font-size: 13px; color: rgba(255,255,255,0.55); text-align: center; max-width: 560px; line-height: 1.5; }
-    .lb-close {
-      position: absolute; top: -14px; right: -14px;
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
-      color: #fff; font-size: 15px; font-weight: 600; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.18s;
-    }
+    .lb-close { position: absolute; top: -14px; right: -14px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.18s; }
     .lb-close:hover { background: rgba(220,38,38,0.7); }
-    .lb-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 40px; height: 40px; border-radius: 50%;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
-      color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: background 0.18s;
-    }
+    .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.18s; }
     .lb-nav:hover { background: rgba(255,255,255,0.2); }
     .lb-prev { left: -56px; }
     .lb-next { right: -56px; }
     @media (max-width: 600px) { .lb-prev { left: 4px; } .lb-next { right: 4px; } .lb-close { top: 4px; right: 4px; position: fixed; } }
-
-    /* ── FOOTER ── */
     footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 44px 24px 32px; margin-top: 0; }
     .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .footer-col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
@@ -258,12 +123,9 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-bar-inner">
-    <div class="nav-brand">
-      <a href="contact.html" style="color:white;">ABS<span> · </span>Abu Bokkor Shiddik</a>
-    </div>
+    <div class="nav-brand"><a href="contact.html" style="color:white;">ABS<span> · </span>Abu Bokkor Shiddik</a></div>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
@@ -339,8 +201,7 @@
     </div>
   </div>
 </nav>
-  
-<!-- PAGE HERO -->
+
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="page-hero-label">📷 Visual Archive</div>
@@ -349,7 +210,6 @@
   </div>
 </div>
 
-<!-- TOC TABS -->
 <div class="toc-bar">
   <div class="toc-inner">
     <button class="toc-tab active" data-target="art">🎨 Art &amp; Drawing</button>
@@ -361,7 +221,6 @@
   </div>
 </div>
 
-<!-- LIGHTBOX -->
 <div id="lightbox">
   <div class="lb-img-wrap">
     <button class="lb-close" id="lb-close">✕</button>
@@ -372,166 +231,140 @@
   <div id="lightbox-caption"></div>
 </div>
 
-<!-- ════ MAIN ════ -->
 <div class="page-body">
 
-  <!-- ART -->
   <div class="gallery-section" id="art">
     <div class="section-head"><h2>My Art &amp; Drawing</h2></div>
     <p class="section-desc">My drawing skills help me visualize ideas more clearly and think critically. It also supports my ability to transform complex data into meaningful visual representations.</p>
     <div class="photo-grid" id="grid-art">
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/f58caf27-92bb-40c7-a70c-789c85ff52ac" data-caption="A collection of my artworks presented together, reflecting my creative journey."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f58caf27-92bb-40c7-a70c-789c85ff52ac" alt="Art collection"></div><div class="photo-caption">A collection of my artworks, reflecting my creative journey.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/c17f783c-0836-435f-a81b-85e2973901d8" data-caption="My artworks displayed at an art exhibition, showcasing my passion for visual storytelling."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c17f783c-0836-435f-a81b-85e2973901d8" alt="Art exhibition"></div><div class="photo-caption">Artworks at an exhibition — visual storytelling.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/fa0f9e8d-51b3-4389-af4c-db37f8de9278" data-caption="Interior view of an opera house, focusing on structure and depth."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/fa0f9e8d-51b3-4389-af4c-db37f8de9278" alt="Opera house sketch"></div><div class="photo-caption">Opera house interior — structure and depth.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/f1d33453-810b-4374-b11a-6e66a73538db" data-caption="Sketch of the Taj Mahal, inspired by symmetry and architecture."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f1d33453-810b-4374-b11a-6e66a73538db" alt="Taj Mahal sketch"></div><div class="photo-caption">Taj Mahal — symmetry and architecture.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/ed3f8ee7-904f-4d0f-aee5-40188eb6c3a8" data-caption="Street scene inspired by London, capturing urban life."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/ed3f8ee7-904f-4d0f-aee5-40188eb6c3a8" alt="London street"></div><div class="photo-caption">London street scene — urban life.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/3e09d7c8-17eb-4053-8111-90a92cae811e" data-caption="Lighthouse symbolizing solitude and waiting."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/3e09d7c8-17eb-4053-8111-90a92cae811e" alt="Lighthouse"></div><div class="photo-caption">Lighthouse — solitude and waiting.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/9a516bbb-546d-4bd9-b212-bb05fd2aae56" data-caption="Rural house in Bangladesh beside a river."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9a516bbb-546d-4bd9-b212-bb05fd2aae56" alt="Rural house"></div><div class="photo-caption">Rural house in Bangladesh beside a river.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/961d6556-4a16-4139-9837-0a1316914d14" data-caption="Abandoned house, showing fading memories."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/961d6556-4a16-4139-9837-0a1316914d14" alt="Abandoned house"></div><div class="photo-caption">Abandoned house — fading memories.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/f4efa897-dff5-4eec-bae9-d4a6ee5e28db" data-caption="Detailed street lantern focusing on light and shadow."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f4efa897-dff5-4eec-bae9-d4a6ee5e28db" alt="Street lantern"></div><div class="photo-caption">Street lantern — light and shadow.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/300ffcf3-83af-4849-9726-4c182c499856" data-caption="Lighthouse under moonlight, showing calm beauty."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/300ffcf3-83af-4849-9726-4c182c499856" alt="Lighthouse moonlight"></div><div class="photo-caption">Lighthouse under moonlight.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/9b467720-8d41-401d-ba9a-0efb037a9b48" data-caption="Hunter's wooden house in a forest, drawn from imagination."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9b467720-8d41-401d-ba9a-0efb037a9b48" alt="Forest house"></div><div class="photo-caption">Hunter's wooden house — drawn from imagination.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/dc4081b3-6d4e-4727-acd5-2b6c735728d8" data-caption="Jatiya Sangsad Bhaban, one of the largest legislative complexes."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/dc4081b3-6d4e-4727-acd5-2b6c735728d8" alt="Jatiya Sangsad Bhaban"></div><div class="photo-caption">Jatiya Sangsad Bhaban.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/e73aa1f8-58c8-481c-99db-287185a6d822" data-caption="Art for Pohela Boishakh, using cultural themes."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/e73aa1f8-58c8-481c-99db-287185a6d822" alt="Pohela Boishakh art"></div><div class="photo-caption">Art for Pohela Boishakh.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/0f0f38b1-b9f6-42f5-acc7-9bac55480ed1" data-caption="Art competition organized by Bishwa Sahitya Kendra."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/0f0f38b1-b9f6-42f5-acc7-9bac55480ed1" alt="Art competition"></div><div class="photo-caption">Art competition — Bishwa Sahitya Kendra.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/f58caf27-92bb-40c7-a70c-789c85ff52ac" data-caption="A collection of my artworks presented together, reflecting my creative journey."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f58caf27-92bb-40c7-a70c-789c85ff52ac" alt="Art collection" width="400" height="288"></div><div class="photo-caption">A collection of my artworks, reflecting my creative journey.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/c17f783c-0836-435f-a81b-85e2973901d8" data-caption="My artworks displayed at an art exhibition, showcasing my passion for visual storytelling."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c17f783c-0836-435f-a81b-85e2973901d8" alt="Art exhibition" width="400" height="288"></div><div class="photo-caption">Artworks at an exhibition — visual storytelling.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/fa0f9e8d-51b3-4389-af4c-db37f8de9278" data-caption="Interior view of an opera house, focusing on structure and depth."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/fa0f9e8d-51b3-4389-af4c-db37f8de9278" alt="Opera house sketch" width="400" height="288"></div><div class="photo-caption">Opera house interior — structure and depth.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/f1d33453-810b-4374-b11a-6e66a73538db" data-caption="Sketch of the Taj Mahal, inspired by symmetry and architecture."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f1d33453-810b-4374-b11a-6e66a73538db" alt="Taj Mahal sketch" width="400" height="288"></div><div class="photo-caption">Taj Mahal — symmetry and architecture.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/ed3f8ee7-904f-4d0f-aee5-40188eb6c3a8" data-caption="Street scene inspired by London, capturing urban life."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/ed3f8ee7-904f-4d0f-aee5-40188eb6c3a8" alt="London street" width="400" height="288"></div><div class="photo-caption">London street scene — urban life.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/3e09d7c8-17eb-4053-8111-90a92cae811e" data-caption="Lighthouse symbolizing solitude and waiting."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/3e09d7c8-17eb-4053-8111-90a92cae811e" alt="Lighthouse" width="400" height="288"></div><div class="photo-caption">Lighthouse — solitude and waiting.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/9a516bbb-546d-4bd9-b212-bb05fd2aae56" data-caption="Rural house in Bangladesh beside a river."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9a516bbb-546d-4bd9-b212-bb05fd2aae56" alt="Rural house" width="400" height="288"></div><div class="photo-caption">Rural house in Bangladesh beside a river.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/961d6556-4a16-4139-9837-0a1316914d14" data-caption="Abandoned house, showing fading memories."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/961d6556-4a16-4139-9837-0a1316914d14" alt="Abandoned house" width="400" height="288"></div><div class="photo-caption">Abandoned house — fading memories.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/f4efa897-dff5-4eec-bae9-d4a6ee5e28db" data-caption="Detailed street lantern focusing on light and shadow."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f4efa897-dff5-4eec-bae9-d4a6ee5e28db" alt="Street lantern" width="400" height="288"></div><div class="photo-caption">Street lantern — light and shadow.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/300ffcf3-83af-4849-9726-4c182c499856" data-caption="Lighthouse under moonlight, showing calm beauty."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/300ffcf3-83af-4849-9726-4c182c499856" alt="Lighthouse moonlight" width="400" height="288"></div><div class="photo-caption">Lighthouse under moonlight.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/9b467720-8d41-401d-ba9a-0efb037a9b48" data-caption="Hunter's wooden house in a forest, drawn from imagination."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9b467720-8d41-401d-ba9a-0efb037a9b48" alt="Forest house" width="400" height="288"></div><div class="photo-caption">Hunter's wooden house — drawn from imagination.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/dc4081b3-6d4e-4727-acd5-2b6c735728d8" data-caption="Jatiya Sangsad Bhaban, one of the largest legislative complexes."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/dc4081b3-6d4e-4727-acd5-2b6c735728d8" alt="Jatiya Sangsad Bhaban" width="400" height="288"></div><div class="photo-caption">Jatiya Sangsad Bhaban.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/e73aa1f8-58c8-481c-99db-287185a6d822" data-caption="Art for Pohela Boishakh, using cultural themes."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/e73aa1f8-58c8-481c-99db-287185a6d822" alt="Pohela Boishakh art" width="400" height="288"></div><div class="photo-caption">Art for Pohela Boishakh.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/0f0f38b1-b9f6-42f5-acc7-9bac55480ed1" data-caption="Art competition organized by Bishwa Sahitya Kendra."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/0f0f38b1-b9f6-42f5-acc7-9bac55480ed1" alt="Art competition" width="400" height="288"></div><div class="photo-caption">Art competition — Bishwa Sahitya Kendra.</div></div>
     </div>
-    <div class="show-more-wrap">
-      <button class="show-more-btn" data-grid="grid-art" data-step="4">Show more ↓</button>
-      <span class="photo-count-label" id="count-art"></span>
-    </div>
+    <div class="show-more-wrap"><button class="show-more-btn" data-grid="grid-art" data-step="4">Show more ↓</button><span class="photo-count-label" id="count-art"></span></div>
   </div>
 
-  <!-- ICASDS CONFERENCE -->
   <div class="gallery-section" id="conference">
     <div class="section-head"><h2>ICASDS 2025 — University of Dhaka</h2></div>
     <p class="section-desc">Attending the International Conference on Applied Statistics and Data Science at the University of Dhaka — an inspiring experience engaging with researchers and exploring innovative ideas in a global setting.</p>
     <div class="photo-grid" id="grid-conference">
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/a018d3b2-c0d4-4ad9-bf37-0830107b3e78" data-caption="A memorable group photo with fellow participants, capturing the spirit of collaboration."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a018d3b2-c0d4-4ad9-bf37-0830107b3e78" alt="Group photo ICASDS"></div><div class="photo-caption">Group photo — spirit of collaboration.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/7efc5424-1858-4fd5-ba77-dada434175a0" data-caption="With our research team from the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/7efc5424-1858-4fd5-ba77-dada434175a0" alt="Research team BRUR"></div><div class="photo-caption">Research team from Dept. of Statistics, BRUR.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/c2da5c9e-7de5-40c9-8a45-c6d363c8970f" data-caption="Engaging in meaningful discussions and networking with global researchers."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c2da5c9e-7de5-40c9-8a45-c6d363c8970f" alt="Networking"></div><div class="photo-caption">Networking with global researchers.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/efb214e0-1201-4591-b4d8-5a5d71a959bf" data-caption="Thoughtful discussions on diverse research ideas and methodologies."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/efb214e0-1201-4591-b4d8-5a5d71a959bf" alt="Research discussion"></div><div class="photo-caption">Discussing research ideas and methodologies.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/7f435a7d-a90f-40b3-a3b9-64446477e85b" data-caption="Presenting research work during the poster session."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/7f435a7d-a90f-40b3-a3b9-64446477e85b" alt="Poster session"></div><div class="photo-caption">Poster presentation session.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/78755250-f12d-4de9-8aeb-817db24f2fa7" data-caption="An engaging moment during poster presentation and academic exchange."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/78755250-f12d-4de9-8aeb-817db24f2fa7" alt="Academic exchange"></div><div class="photo-caption">Academic exchange at poster presentation.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/dd29ba96-9a6f-429c-ba12-342eaefed77b" data-caption="An engaging moment during poster presentation."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/dd29ba96-9a6f-429c-ba12-342eaefed77b" alt="Poster presentation"></div><div class="photo-caption">Poster presentation moment.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/9f9ba732-c817-4ecd-9f1e-d533f48a356a" data-caption="Academic exchange at ICASDS 2025."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9f9ba732-c817-4ecd-9f1e-d533f48a356a" alt="ICASDS exchange"></div><div class="photo-caption">Academic exchange, ICASDS 2025.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/570334a3-2740-40af-95b9-adcfa8160959" data-caption="Poster presentation and academic discussion."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/570334a3-2740-40af-95b9-adcfa8160959" alt="Discussion"></div><div class="photo-caption">Poster presentation discussion.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/2c079f2b-8eae-40b9-bd92-96e575381beb" data-caption="Another engaging moment during poster presentation."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2c079f2b-8eae-40b9-bd92-96e575381beb" alt="Poster moment"></div><div class="photo-caption">Poster session — academic atmosphere.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/eb3c1cda-cd2c-46c5-897a-3b9b643ba8a2" data-caption="A photo capturing the collaborative and academic atmosphere."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/eb3c1cda-cd2c-46c5-897a-3b9b643ba8a2" alt="Collaborative atmosphere"></div><div class="photo-caption">Collaborative and academic atmosphere.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/b0e51715-6a58-4794-9f58-bcb0750b836b" data-caption="Team photo from the second day of the conference."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/b0e51715-6a58-4794-9f58-bcb0750b836b" alt="Team day 2"></div><div class="photo-caption">Team photo — Day 2 of conference.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/f55af88c-7a1b-45da-b818-a72ff41db51c" data-caption="One of my research abstracts, showcasing my academic work."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f55af88c-7a1b-45da-b818-a72ff41db51c" alt="Research abstract"></div><div class="photo-caption">Research abstract — academic contributions.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/d4d9ef76-4953-4a1a-96cd-44d080e64283" data-caption="A second abstract representing my continued research contributions."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/d4d9ef76-4953-4a1a-96cd-44d080e64283" alt="Second abstract"></div><div class="photo-caption">Second research abstract.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/a5c31d33-9e51-4290-b4fc-b66eef6e2a92" data-caption="Preparation of my research poster for presentation at the conference."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a5c31d33-9e51-4290-b4fc-b66eef6e2a92" alt="Poster preparation"></div><div class="photo-caption">Research poster preparation.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/a018d3b2-c0d4-4ad9-bf37-0830107b3e78" data-caption="A memorable group photo with fellow participants, capturing the spirit of collaboration."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a018d3b2-c0d4-4ad9-bf37-0830107b3e78" alt="Group photo ICASDS" width="400" height="288"></div><div class="photo-caption">Group photo — spirit of collaboration.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/7efc5424-1858-4fd5-ba77-dada434175a0" data-caption="With our research team from the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/7efc5424-1858-4fd5-ba77-dada434175a0" alt="Research team BRUR" width="400" height="288"></div><div class="photo-caption">Research team from Dept. of Statistics, BRUR.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/c2da5c9e-7de5-40c9-8a45-c6d363c8970f" data-caption="Engaging in meaningful discussions and networking with global researchers."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c2da5c9e-7de5-40c9-8a45-c6d363c8970f" alt="Networking" width="400" height="288"></div><div class="photo-caption">Networking with global researchers.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/efb214e0-1201-4591-b4d8-5a5d71a959bf" data-caption="Thoughtful discussions on diverse research ideas and methodologies."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/efb214e0-1201-4591-b4d8-5a5d71a959bf" alt="Research discussion" width="400" height="288"></div><div class="photo-caption">Discussing research ideas and methodologies.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/7f435a7d-a90f-40b3-a3b9-64446477e85b" data-caption="Presenting research work during the poster session."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/7f435a7d-a90f-40b3-a3b9-64446477e85b" alt="Poster session" width="400" height="288"></div><div class="photo-caption">Poster presentation session.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/78755250-f12d-4de9-8aeb-817db24f2fa7" data-caption="An engaging moment during poster presentation and academic exchange."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/78755250-f12d-4de9-8aeb-817db24f2fa7" alt="Academic exchange" width="400" height="288"></div><div class="photo-caption">Academic exchange at poster presentation.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/dd29ba96-9a6f-429c-ba12-342eaefed77b" data-caption="An engaging moment during poster presentation."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/dd29ba96-9a6f-429c-ba12-342eaefed77b" alt="Poster presentation" width="400" height="288"></div><div class="photo-caption">Poster presentation moment.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/9f9ba732-c817-4ecd-9f1e-d533f48a356a" data-caption="Academic exchange at ICASDS 2025."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9f9ba732-c817-4ecd-9f1e-d533f48a356a" alt="ICASDS exchange" width="400" height="288"></div><div class="photo-caption">Academic exchange, ICASDS 2025.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/570334a3-2740-40af-95b9-adcfa8160959" data-caption="Poster presentation and academic discussion."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/570334a3-2740-40af-95b9-adcfa8160959" alt="Discussion" width="400" height="288"></div><div class="photo-caption">Poster presentation discussion.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/2c079f2b-8eae-40b9-bd92-96e575381beb" data-caption="Another engaging moment during poster presentation."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2c079f2b-8eae-40b9-bd92-96e575381beb" alt="Poster moment" width="400" height="288"></div><div class="photo-caption">Poster session — academic atmosphere.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/eb3c1cda-cd2c-46c5-897a-3b9b643ba8a2" data-caption="A photo capturing the collaborative and academic atmosphere."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/eb3c1cda-cd2c-46c5-897a-3b9b643ba8a2" alt="Collaborative atmosphere" width="400" height="288"></div><div class="photo-caption">Collaborative and academic atmosphere.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/b0e51715-6a58-4794-9f58-bcb0750b836b" data-caption="Team photo from the second day of the conference."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/b0e51715-6a58-4794-9f58-bcb0750b836b" alt="Team day 2" width="400" height="288"></div><div class="photo-caption">Team photo — Day 2 of conference.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/f55af88c-7a1b-45da-b818-a72ff41db51c" data-caption="One of my research abstracts, showcasing my academic work."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f55af88c-7a1b-45da-b818-a72ff41db51c" alt="Research abstract" width="400" height="288"></div><div class="photo-caption">Research abstract — academic contributions.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/d4d9ef76-4953-4a1a-96cd-44d080e64283" data-caption="A second abstract representing my continued research contributions."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/d4d9ef76-4953-4a1a-96cd-44d080e64283" alt="Second abstract" width="400" height="288"></div><div class="photo-caption">Second research abstract.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/a5c31d33-9e51-4290-b4fc-b66eef6e2a92" data-caption="Preparation of my research poster for presentation at the conference."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a5c31d33-9e51-4290-b4fc-b66eef6e2a92" alt="Poster preparation" width="400" height="288"></div><div class="photo-caption">Research poster preparation.</div></div>
     </div>
-    <div class="show-more-wrap">
-      <button class="show-more-btn" data-grid="grid-conference" data-step="4">Show more ↓</button>
-      <span class="photo-count-label" id="count-conference"></span>
-    </div>
+    <div class="show-more-wrap"><button class="show-more-btn" data-grid="grid-conference" data-step="4">Show more ↓</button><span class="photo-count-label" id="count-conference"></span></div>
   </div>
 
-  <!-- ACADEMIC ACTIVITIES -->
   <div class="gallery-section" id="academic">
     <div class="section-head"><h2>Professional &amp; Academic Activities</h2></div>
     <p class="section-desc">Workshops, youth leadership programs, and academic engagements that shaped my research perspective.</p>
     <div class="photo-grid" id="grid-academic">
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/7f6bdf1c-4424-4a75-98a7-4a4f0914644f" data-caption="A Workshop on Promotion of Research in Higher Studies."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/7f6bdf1c-4424-4a75-98a7-4a4f0914644f" alt="Research workshop"></div><div class="photo-caption">Workshop on Promotion of Research in Higher Studies.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/93fad93f-567c-4d7e-9ac7-ba3fca77aa4c" data-caption="Youth leadership training by Youth Ending Hunger."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/93fad93f-567c-4d7e-9ac7-ba3fca77aa4c" alt="Youth leadership"></div><div class="photo-caption">Youth leadership training — Youth Ending Hunger.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/bbdafaab-8a72-489c-b9bd-cbd208231319" data-caption="Youth leadership training by Youth Ending Hunger."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/bbdafaab-8a72-489c-b9bd-cbd208231319" alt="Youth training"></div><div class="photo-caption">Youth Ending Hunger leadership training.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/de305c55-02ba-466c-b9e2-4fb2a57e477e" data-caption="Youth leadership training by Youth Ending Hunger."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/de305c55-02ba-466c-b9e2-4fb2a57e477e" alt="Youth training"></div><div class="photo-caption">Youth Ending Hunger — leadership training session.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/729e6e26-3ebf-4add-ae6f-7e0e6fa45e6d" data-caption="Youth Ending Hunger program."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/729e6e26-3ebf-4add-ae6f-7e0e6fa45e6d" alt="Youth program"></div><div class="photo-caption">Youth Ending Hunger program.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/b080aa6e-aa71-4012-a258-a99a72cae32b" data-caption="Discussion on Human Rights between Youth Ending Hunger and German Embassy."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/b080aa6e-aa71-4012-a258-a99a72cae32b" alt="Human rights discussion"></div><div class="photo-caption">Human Rights discussion — Youth Ending Hunger &amp; German Embassy.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/4752bacc-1d32-44d4-96dc-97d24aad6dc1" data-caption="Human Rights discussion between Youth Ending Hunger and German Embassy."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/4752bacc-1d32-44d4-96dc-97d24aad6dc1" alt="German Embassy discussion"></div><div class="photo-caption">Youth Ending Hunger &amp; German Embassy — Human Rights.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/415b0c60-a8d8-47c5-9505-9826b95f1bd1" data-caption="International Conference on Postcolonial History, Language and Literature."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/415b0c60-a8d8-47c5-9505-9826b95f1bd1" alt="Postcolonial conference"></div><div class="photo-caption">Int'l Conference on Postcolonial History, Language &amp; Literature.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/7f6bdf1c-4424-4a75-98a7-4a4f0914644f" data-caption="A Workshop on Promotion of Research in Higher Studies."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/7f6bdf1c-4424-4a75-98a7-4a4f0914644f" alt="Research workshop" width="400" height="288"></div><div class="photo-caption">Workshop on Promotion of Research in Higher Studies.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/93fad93f-567c-4d7e-9ac7-ba3fca77aa4c" data-caption="Youth leadership training by Youth Ending Hunger."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/93fad93f-567c-4d7e-9ac7-ba3fca77aa4c" alt="Youth leadership" width="400" height="288"></div><div class="photo-caption">Youth leadership training — Youth Ending Hunger.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/bbdafaab-8a72-489c-b9bd-cbd208231319" data-caption="Youth leadership training by Youth Ending Hunger."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/bbdafaab-8a72-489c-b9bd-cbd208231319" alt="Youth training" width="400" height="288"></div><div class="photo-caption">Youth Ending Hunger leadership training.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/de305c55-02ba-466c-b9e2-4fb2a57e477e" data-caption="Youth leadership training by Youth Ending Hunger."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/de305c55-02ba-466c-b9e2-4fb2a57e477e" alt="Youth training" width="400" height="288"></div><div class="photo-caption">Youth Ending Hunger — leadership training session.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/729e6e26-3ebf-4add-ae6f-7e0e6fa45e6d" data-caption="Youth Ending Hunger program."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/729e6e26-3ebf-4add-ae6f-7e0e6fa45e6d" alt="Youth program" width="400" height="288"></div><div class="photo-caption">Youth Ending Hunger program.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/b080aa6e-aa71-4012-a258-a99a72cae32b" data-caption="Discussion on Human Rights between Youth Ending Hunger and German Embassy."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/b080aa6e-aa71-4012-a258-a99a72cae32b" alt="Human rights discussion" width="400" height="288"></div><div class="photo-caption">Human Rights discussion — Youth Ending Hunger &amp; German Embassy.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/4752bacc-1d32-44d4-96dc-97d24aad6dc1" data-caption="Human Rights discussion between Youth Ending Hunger and German Embassy."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/4752bacc-1d32-44d4-96dc-97d24aad6dc1" alt="German Embassy discussion" width="400" height="288"></div><div class="photo-caption">Youth Ending Hunger &amp; German Embassy — Human Rights.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/415b0c60-a8d8-47c5-9505-9826b95f1bd1" data-caption="International Conference on Postcolonial History, Language and Literature."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/415b0c60-a8d8-47c5-9505-9826b95f1bd1" alt="Postcolonial conference" width="400" height="288"></div><div class="photo-caption">Int'l Conference on Postcolonial History, Language &amp; Literature.</div></div>
     </div>
-    <div class="show-more-wrap">
-      <button class="show-more-btn" data-grid="grid-academic" data-step="4">Show more ↓</button>
-      <span class="photo-count-label" id="count-academic"></span>
-    </div>
+    <div class="show-more-wrap"><button class="show-more-btn" data-grid="grid-academic" data-step="4">Show more ↓</button><span class="photo-count-label" id="count-academic"></span></div>
   </div>
 
-  <!-- SOCIAL -->
   <div class="gallery-section" id="social">
     <div class="section-head"><h2>Social Activities &amp; Volunteering</h2></div>
     <p class="section-desc">Volunteering during emergency relief efforts in Bangladesh after the July 2024 crisis — supporting flood-affected communities.</p>
     <div class="photo-grid" id="grid-social">
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/a8f66ac1-c242-41a8-a209-961fda9dcd9e" data-caption="Volunteering during emergency relief efforts in Bangladesh after the July 2024 crisis."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a8f66ac1-c242-41a8-a209-961fda9dcd9e" alt="Volunteering"></div><div class="photo-caption">Emergency relief volunteering — July 2024 crisis.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/fae3e2a9-6661-4962-905f-b05744bfa9b4" data-caption="Working with fellow volunteers to support people affected by flooding."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/fae3e2a9-6661-4962-905f-b05744bfa9b4" alt="Flood support"></div><div class="photo-caption">Supporting flood-affected people with volunteers.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/c1941e72-abb4-42ee-9c67-0220c298af00" data-caption="Preparing relief materials for distribution among flood-affected communities."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c1941e72-abb4-42ee-9c67-0220c298af00" alt="Relief materials"></div><div class="photo-caption">Preparing relief materials for distribution.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/4635fb6a-6df6-43c9-be56-a7ec0f8f4a60" data-caption="Flood-affected area showing the impact of natural disaster."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/4635fb6a-6df6-43c9-be56-a7ec0f8f4a60" alt="Flood area"></div><div class="photo-caption">Flood-affected area — impact of natural disaster.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/3d172afc-cb79-4b9d-927f-06291c38b2d4" data-caption="Another view of the flood-affected area."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/3d172afc-cb79-4b9d-927f-06291c38b2d4" alt="Flood view"></div><div class="photo-caption">Flood-affected area — natural disaster impact.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/a8f66ac1-c242-41a8-a209-961fda9dcd9e" data-caption="Volunteering during emergency relief efforts in Bangladesh after the July 2024 crisis."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a8f66ac1-c242-41a8-a209-961fda9dcd9e" alt="Volunteering" width="400" height="288"></div><div class="photo-caption">Emergency relief volunteering — July 2024 crisis.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/fae3e2a9-6661-4962-905f-b05744bfa9b4" data-caption="Working with fellow volunteers to support people affected by flooding."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/fae3e2a9-6661-4962-905f-b05744bfa9b4" alt="Flood support" width="400" height="288"></div><div class="photo-caption">Supporting flood-affected people with volunteers.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/c1941e72-abb4-42ee-9c67-0220c298af00" data-caption="Preparing relief materials for distribution among flood-affected communities."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c1941e72-abb4-42ee-9c67-0220c298af00" alt="Relief materials" width="400" height="288"></div><div class="photo-caption">Preparing relief materials for distribution.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/4635fb6a-6df6-43c9-be56-a7ec0f8f4a60" data-caption="Flood-affected area showing the impact of natural disaster."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/4635fb6a-6df6-43c9-be56-a7ec0f8f4a60" alt="Flood area" width="400" height="288"></div><div class="photo-caption">Flood-affected area — impact of natural disaster.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/3d172afc-cb79-4b9d-927f-06291c38b2d4" data-caption="Another view of the flood-affected area."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/3d172afc-cb79-4b9d-927f-06291c38b2d4" alt="Flood view" width="400" height="288"></div><div class="photo-caption">Flood-affected area — natural disaster impact.</div></div>
     </div>
-    <div class="show-more-wrap">
-      <button class="show-more-btn" data-grid="grid-social" data-step="4">Show more ↓</button>
-      <span class="photo-count-label" id="count-social"></span>
-    </div>
+    <div class="show-more-wrap"><button class="show-more-btn" data-grid="grid-social" data-step="4">Show more ↓</button><span class="photo-count-label" id="count-social"></span></div>
   </div>
 
- <!-- DEPT OF STATISTICS -->
   <div class="gallery-section" id="stat">
     <div class="section-head"><h2>Dept. of Statistics, BRUR</h2></div>
     <p class="section-desc">Memorable moments from the Department of Statistics, Begum Rokeya University, Rangpur — where I learned, grew, and shared valuable experiences with peers and mentors.</p>
     <div class="photo-grid" id="grid-stat">
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/f2ff218d-4f7b-4ec9-a1a9-dbf797734a51" data-caption="A memorable photoshoot in the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f2ff218d-4f7b-4ec9-a1a9-dbf797734a51" alt="Dept photoshoot"></div><div class="photo-caption">Dept. of Statistics, BRUR — memorable photoshoot.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/bfa3110e-b202-4d22-aa4d-06bc37d635eb" data-caption="Group photoshoot after a successful presentation with my team and course instructor."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/bfa3110e-b202-4d22-aa4d-06bc37d635eb" alt="Group photoshoot"></div><div class="photo-caption">Group photo after successful presentation with team and instructor.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/843323aa-a195-4259-8e94-fa848df2e2c6" data-caption="Confident presentation on Explainable Artificial Intelligence."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/843323aa-a195-4259-8e94-fa848df2e2c6" alt="XAI presentation"></div><div class="photo-caption">Presentation on Explainable Artificial Intelligence.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/9c6ff761-47b6-4228-8316-1ac344166c99" data-caption="Presenting my published research in the classroom."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9c6ff761-47b6-4228-8316-1ac344166c99" alt="Classroom research"></div><div class="photo-caption">Presenting published research in the classroom.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/8843bf15-9172-4c08-a61e-b9a03c96f085" data-caption="B.Sc. Project Submission day at the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/8843bf15-9172-4c08-a61e-b9a03c96f085" alt="BSc Project Submission"></div><div class="photo-caption">Dept. of Statistics, BRUR — B.Sc. Project Submission day.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/8bd3b350-c4ec-4847-a62c-b0810590670b" data-caption="B.Sc. Project Submission day at the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/8bd3b350-c4ec-4847-a62c-b0810590670b" alt="BSc Project Submission"></div><div class="photo-caption">Dept. of Statistics, BRUR — B.Sc. Project Submission day.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/01fd56db-7701-4dee-b967-5155065bbc56" data-caption="Another moment presenting my research work."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/01fd56db-7701-4dee-b967-5155065bbc56" alt="Research presentation"></div><div class="photo-caption">Continuous academic engagement — research presentation.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/997320fa-539d-4457-bf57-d00dacd62116" data-caption="Participating in a cultural event, reciting the poem Dhumketu."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/997320fa-539d-4457-bf57-d00dacd62116" alt="Cultural event"></div><div class="photo-caption">Cultural event — reciting the poem "Dhumketu".</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/d73e54f8-fab5-4288-a230-0d8ba0d5a7dd" data-caption="Cultural performance moment — celebrating literature and heritage."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/d73e54f8-fab5-4288-a230-0d8ba0d5a7dd" alt="Cultural performance"></div><div class="photo-caption">Cultural performance — literature and heritage.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/2bd0a9a0-a1c2-497b-8fd5-65060170a80a" data-caption="Group photo with seniors and peers from the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2bd0a9a0-a1c2-497b-8fd5-65060170a80a" alt="Dept group photo"></div><div class="photo-caption">Group photo — Dept. of Statistics, BRUR seniors and peers.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/7c9ee783-2a3d-4cd0-8cd9-0a89bb4c7073" data-caption="Attending a seminar on higher study and career opportunities in the USA."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/7c9ee783-2a3d-4cd0-8cd9-0a89bb4c7073" alt="USA seminar"></div><div class="photo-caption">Seminar on higher study &amp; career opportunities in the USA.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/c9bb19cf-d843-4bcd-8b3e-e3d7dbc249e5" data-caption="Preparing presentation slides on Correlation Analysis."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c9bb19cf-d843-4bcd-8b3e-e3d7dbc249e5" alt="Correlation analysis"></div><div class="photo-caption">Preparing slides on Correlation Analysis with team.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/be242ba6-c5d1-4808-b6ed-61e5842bc48f" data-caption="Observing Victory Day of Bangladesh with the Department."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/be242ba6-c5d1-4808-b6ed-61e5842bc48f" alt="Victory Day"></div><div class="photo-caption">Victory Day of Bangladesh — Dept. of Statistics.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/1aa9cffc-12f6-4040-879f-26b5a23cbc50" data-caption="Group photo after final viva voce."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/1aa9cffc-12f6-4040-879f-26b5a23cbc50" alt="Viva voce"></div><div class="photo-caption">Group photo after final viva voce — semester completion.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/b1afb243-1f75-4a86-bb9e-e2def7745196" data-caption="Team photo after presentation on Introduction to Computer."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/b1afb243-1f75-4a86-bb9e-e2def7745196" alt="Computer presentation"></div><div class="photo-caption">Team photo — Introduction to Computer presentation.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/f2ff218d-4f7b-4ec9-a1a9-dbf797734a51" data-caption="A memorable photoshoot in the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/f2ff218d-4f7b-4ec9-a1a9-dbf797734a51" alt="Dept photoshoot" width="400" height="288"></div><div class="photo-caption">Dept. of Statistics, BRUR — memorable photoshoot.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/bfa3110e-b202-4d22-aa4d-06bc37d635eb" data-caption="Group photoshoot after a successful presentation with my team and course instructor."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/bfa3110e-b202-4d22-aa4d-06bc37d635eb" alt="Group photoshoot" width="400" height="288"></div><div class="photo-caption">Group photo after successful presentation with team and instructor.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/843323aa-a195-4259-8e94-fa848df2e2c6" data-caption="Confident presentation on Explainable Artificial Intelligence."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/843323aa-a195-4259-8e94-fa848df2e2c6" alt="XAI presentation" width="400" height="288"></div><div class="photo-caption">Presentation on Explainable Artificial Intelligence.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/9c6ff761-47b6-4228-8316-1ac344166c99" data-caption="Presenting my published research in the classroom."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9c6ff761-47b6-4228-8316-1ac344166c99" alt="Classroom research" width="400" height="288"></div><div class="photo-caption">Presenting published research in the classroom.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/8843bf15-9172-4c08-a61e-b9a03c96f085" data-caption="B.Sc. Project Submission day at the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/8843bf15-9172-4c08-a61e-b9a03c96f085" alt="BSc Project Submission" width="400" height="288"></div><div class="photo-caption">Dept. of Statistics, BRUR — B.Sc. Project Submission day.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/8bd3b350-c4ec-4847-a62c-b0810590670b" data-caption="B.Sc. Project Submission day at the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/8bd3b350-c4ec-4847-a62c-b0810590670b" alt="BSc Project Submission" width="400" height="288"></div><div class="photo-caption">Dept. of Statistics, BRUR — B.Sc. Project Submission day.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/01fd56db-7701-4dee-b967-5155065bbc56" data-caption="Another moment presenting my research work."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/01fd56db-7701-4dee-b967-5155065bbc56" alt="Research presentation" width="400" height="288"></div><div class="photo-caption">Continuous academic engagement — research presentation.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/997320fa-539d-4457-bf57-d00dacd62116" data-caption="Participating in a cultural event, reciting the poem Dhumketu."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/997320fa-539d-4457-bf57-d00dacd62116" alt="Cultural event" width="400" height="288"></div><div class="photo-caption">Cultural event — reciting the poem "Dhumketu".</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/d73e54f8-fab5-4288-a230-0d8ba0d5a7dd" data-caption="Cultural performance moment — celebrating literature and heritage."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/d73e54f8-fab5-4288-a230-0d8ba0d5a7dd" alt="Cultural performance" width="400" height="288"></div><div class="photo-caption">Cultural performance — literature and heritage.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/2bd0a9a0-a1c2-497b-8fd5-65060170a80a" data-caption="Group photo with seniors and peers from the Department of Statistics, BRUR."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2bd0a9a0-a1c2-497b-8fd5-65060170a80a" alt="Dept group photo" width="400" height="288"></div><div class="photo-caption">Group photo — Dept. of Statistics, BRUR seniors and peers.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/7c9ee783-2a3d-4cd0-8cd9-0a89bb4c7073" data-caption="Attending a seminar on higher study and career opportunities in the USA."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/7c9ee783-2a3d-4cd0-8cd9-0a89bb4c7073" alt="USA seminar" width="400" height="288"></div><div class="photo-caption">Seminar on higher study &amp; career opportunities in the USA.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/c9bb19cf-d843-4bcd-8b3e-e3d7dbc249e5" data-caption="Preparing presentation slides on Correlation Analysis."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c9bb19cf-d843-4bcd-8b3e-e3d7dbc249e5" alt="Correlation analysis" width="400" height="288"></div><div class="photo-caption">Preparing slides on Correlation Analysis with team.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/be242ba6-c5d1-4808-b6ed-61e5842bc48f" data-caption="Observing Victory Day of Bangladesh with the Department."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/be242ba6-c5d1-4808-b6ed-61e5842bc48f" alt="Victory Day" width="400" height="288"></div><div class="photo-caption">Victory Day of Bangladesh — Dept. of Statistics.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/1aa9cffc-12f6-4040-879f-26b5a23cbc50" data-caption="Group photo after final viva voce."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/1aa9cffc-12f6-4040-879f-26b5a23cbc50" alt="Viva voce" width="400" height="288"></div><div class="photo-caption">Group photo after final viva voce — semester completion.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/b1afb243-1f75-4a86-bb9e-e2def7745196" data-caption="Team photo after presentation on Introduction to Computer."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/b1afb243-1f75-4a86-bb9e-e2def7745196" alt="Computer presentation" width="400" height="288"></div><div class="photo-caption">Team photo — Introduction to Computer presentation.</div></div>
     </div>
-    <div class="show-more-wrap">
-      <button class="show-more-btn" data-grid="grid-stat" data-step="4">Show more ↓</button>
-      <span class="photo-count-label" id="count-stat"></span>
-    </div>
+    <div class="show-more-wrap"><button class="show-more-btn" data-grid="grid-stat" data-step="4">Show more ↓</button><span class="photo-count-label" id="count-stat"></span></div>
   </div>
 
-  <!-- TRAVEL -->
   <div class="gallery-section" id="travel">
     <div class="section-head"><h2>Travel &amp; Visits</h2></div>
     <p class="section-desc">Exploring the historical, cultural, and natural landscapes of Bangladesh — from Lalbagh Fort to Teknaf Beach and beyond.</p>
     <div class="photo-grid" id="grid-travel">
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/fe721e9b-b87c-4330-9d05-257eba86a648" data-caption="Lalbagh Fort — iconic 17th-century Mughal palace-fortress in Old Dhaka."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/fe721e9b-b87c-4330-9d05-257eba86a648" alt="Lalbagh Fort"></div><div class="photo-caption">Lalbagh Fort — Mughal palace-fortress, Old Dhaka.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/84585753-e922-4e28-ac26-aeba853917f5" data-caption="Train journey experience across Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/84585753-e922-4e28-ac26-aeba853917f5" alt="Train journey"></div><div class="photo-caption">Train journey experience.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/ba9ab228-7544-4e87-b325-5d28561608da" data-caption="Teknaf Beach — southernmost beach in Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/ba9ab228-7544-4e87-b325-5d28561608da" alt="Teknaf Beach"></div><div class="photo-caption">Teknaf Beach — southernmost beach of Bangladesh.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/a47b7229-885a-41b7-bfa0-07c81f441852" data-caption="National Martyrs' Memorial in Savar."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a47b7229-885a-41b7-bfa0-07c81f441852" alt="Martyrs Memorial"></div><div class="photo-caption">National Martyrs' Memorial, Savar — 1971 liberation war.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/a709f82a-8322-4bc8-b295-bd5290d525d5" data-caption="Rayerbazar Martyred Intellectuals Memorial."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a709f82a-8322-4bc8-b295-bd5290d525d5" alt="Rayerbazar memorial"></div><div class="photo-caption">Rayerbazar Martyred Intellectuals Memorial.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/2ca33777-cbba-4e31-80d5-3016c3fd968f" data-caption="Curzon Hall at the University of Dhaka."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2ca33777-cbba-4e31-80d5-3016c3fd968f" alt="Curzon Hall"></div><div class="photo-caption">Curzon Hall — University of Dhaka landmark.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/13de8139-b922-47b1-9cb7-a030152f8f29" data-caption="Uttara Ganavaban, Natore."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/13de8139-b922-47b1-9cb7-a030152f8f29" alt="Uttara Ganavaban Natore"></div><div class="photo-caption">Uttara Ganavaban, Natore.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/8e9d7d41-528a-4249-afa1-49f5fba79228" data-caption="Natore Rajbari."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/8e9d7d41-528a-4249-afa1-49f5fba79228" alt="Natore Rajbari"></div><div class="photo-caption">Natore Rajbari.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/a7eb48ed-89cf-41cd-b962-e09fea0c91a3" data-caption="Patgram Railway Station — transport hub in northern Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a7eb48ed-89cf-41cd-b962-e09fea0c91a3" alt="Patgram station"></div><div class="photo-caption">Patgram Railway Station — northern Bangladesh.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/8038f628-e10c-4828-9f27-dbfbebb437e4" data-caption="Burimari Railway Station — connects to the Burimari land port."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/8038f628-e10c-4828-9f27-dbfbebb437e4" alt="Burimari station"></div><div class="photo-caption">Burimari Railway Station — Burimari land port.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/5883673f-3369-46f2-8dd4-6bc8c0df1e3b" data-caption="Angarpota enclave — historically important after the land boundary agreement."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/5883673f-3369-46f2-8dd4-6bc8c0df1e3b" alt="Angarpota enclave"></div><div class="photo-caption">Angarpota enclave — land boundary agreement landmark.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/5aef2c89-f0c9-469e-9602-e50b3b7ac460" data-caption="Tin Bigha Corridor — 24-hour connection between Bangladesh mainland and enclaves."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/5aef2c89-f0c9-469e-9602-e50b3b7ac460" alt="Tin Bigha Corridor"></div><div class="photo-caption">Tin Bigha Corridor — mainland-enclave connection.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/9764d598-4ed2-47d6-9bcd-c39db81e1bb5" data-caption="Burimari Land Port — key international border crossing."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9764d598-4ed2-47d6-9bcd-c39db81e1bb5" alt="Burimari land port"></div><div class="photo-caption">Burimari Land Port — international border crossing.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/537f33d6-6082-4fbc-a3c3-bb04947f8c43" data-caption="Nilphamari Railway Station — one of the oldest in Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/537f33d6-6082-4fbc-a3c3-bb04947f8c43" alt="Nilphamari station"></div><div class="photo-caption">Nilphamari Railway Station — one of Bangladesh's oldest.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/d7c7f407-f8f4-41e8-ad47-bb513d0624b0" data-caption="Nilphamari Railway Station overview."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/d7c7f407-f8f4-41e8-ad47-bb513d0624b0" alt="Nilphamari overview"></div><div class="photo-caption">Nilphamari Railway Station overview.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/dda74b63-bcb2-4aa3-a03d-8e0b52ce9387" data-caption="An old historic house in Nilphamari."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/dda74b63-bcb2-4aa3-a03d-8e0b52ce9387" alt="Old house Nilphamari"></div><div class="photo-caption">Old house — Nilphamari.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/5a4022b6-2e52-47d7-9a81-87a5028802a4" data-caption="Nilsagar — famous lake known for migratory birds."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/5a4022b6-2e52-47d7-9a81-87a5028802a4" alt="Nilsagar lake"></div><div class="photo-caption">Nilsagar — famous lake for migratory birds.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/83d73289-1aab-4590-882c-3b04f48680e6" data-caption="Shah Sultan Balkhi Mahisawar Mazar — historic site in Bogura."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/83d73289-1aab-4590-882c-3b04f48680e6" alt="Bogura mazar"></div><div class="photo-caption">Shah Sultan Balkhi Mahisawar Mazar, Bogura.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/be2f74ea-253b-4434-8b19-283f1f405e0c" data-caption="University of Barishal — scenic public university."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/be2f74ea-253b-4434-8b19-283f1f405e0c" alt="Barishal University"></div><div class="photo-caption">University of Barishal — scenic campus.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/c52d8bfc-b85d-4105-85ca-b3e807b244fb" data-caption="Padma River in Rajshahi — peaceful and scenic."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c52d8bfc-b85d-4105-85ca-b3e807b244fb" alt="Padma River"></div><div class="photo-caption">Padma River, Rajshahi — peaceful and scenic.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/4cdc46d0-a7f0-4d6f-8850-3ad31b54b63b" data-caption="Parbatipur Junction — historic railway hub."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/4cdc46d0-a7f0-4d6f-8850-3ad31b54b63b" alt="Parbatipur Junction"></div><div class="photo-caption">Parbatipur Junction — historic railway hub.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/b34857c1-e946-44db-8700-c295b7605cfc" data-caption="Kantajew Temple — famous for terracotta art."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/b34857c1-e946-44db-8700-c295b7605cfc" alt="Kantajew Temple"></div><div class="photo-caption">Kantajew Temple — terracotta art and historic beauty.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/2a78a512-f78a-4ba8-9be4-f95bad0bc7b0" data-caption="Ramsagar National Park — popular picnic and historic destination."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2a78a512-f78a-4ba8-9be4-f95bad0bc7b0" alt="Ramsagar"></div><div class="photo-caption">Ramsagar National Park — popular historic destination.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/9f22b181-a9c7-424f-9b3f-cbceff42e7d2" data-caption="Singra National Park — known for biodiversity."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9f22b181-a9c7-424f-9b3f-cbceff42e7d2" alt="Singra National Park"></div><div class="photo-caption">Singra National Park — biodiversity and natural forest.</div></div>
-      <div class="photo-card" data-src="https://github.com/user-attachments/assets/2bf51026-1fdd-487a-94a9-49eeb891224b" data-caption="Banglabandha — northernmost border point of Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2bf51026-1fdd-487a-94a9-49eeb891224b" alt="Banglabandha"></div><div class="photo-caption">Banglabandha — northernmost border point of Bangladesh.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/fe721e9b-b87c-4330-9d05-257eba86a648" data-caption="Lalbagh Fort — iconic 17th-century Mughal palace-fortress in Old Dhaka."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/fe721e9b-b87c-4330-9d05-257eba86a648" alt="Lalbagh Fort" width="400" height="288"></div><div class="photo-caption">Lalbagh Fort — Mughal palace-fortress, Old Dhaka.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/84585753-e922-4e28-ac26-aeba853917f5" data-caption="Train journey experience across Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/84585753-e922-4e28-ac26-aeba853917f5" alt="Train journey" width="400" height="288"></div><div class="photo-caption">Train journey experience.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/ba9ab228-7544-4e87-b325-5d28561608da" data-caption="Teknaf Beach — southernmost beach in Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/ba9ab228-7544-4e87-b325-5d28561608da" alt="Teknaf Beach" width="400" height="288"></div><div class="photo-caption">Teknaf Beach — southernmost beach of Bangladesh.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/a47b7229-885a-41b7-bfa0-07c81f441852" data-caption="National Martyrs' Memorial in Savar."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a47b7229-885a-41b7-bfa0-07c81f441852" alt="Martyrs Memorial" width="400" height="288"></div><div class="photo-caption">National Martyrs' Memorial, Savar — 1971 liberation war.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/a709f82a-8322-4bc8-b295-bd5290d525d5" data-caption="Rayerbazar Martyred Intellectuals Memorial."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a709f82a-8322-4bc8-b295-bd5290d525d5" alt="Rayerbazar memorial" width="400" height="288"></div><div class="photo-caption">Rayerbazar Martyred Intellectuals Memorial.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/2ca33777-cbba-4e31-80d5-3016c3fd968f" data-caption="Curzon Hall at the University of Dhaka."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2ca33777-cbba-4e31-80d5-3016c3fd968f" alt="Curzon Hall" width="400" height="288"></div><div class="photo-caption">Curzon Hall — University of Dhaka landmark.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/13de8139-b922-47b1-9cb7-a030152f8f29" data-caption="Uttara Ganavaban, Natore."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/13de8139-b922-47b1-9cb7-a030152f8f29" alt="Uttara Ganavaban Natore" width="400" height="288"></div><div class="photo-caption">Uttara Ganavaban, Natore.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/8e9d7d41-528a-4249-afa1-49f5fba79228" data-caption="Natore Rajbari."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/8e9d7d41-528a-4249-afa1-49f5fba79228" alt="Natore Rajbari" width="400" height="288"></div><div class="photo-caption">Natore Rajbari.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/a7eb48ed-89cf-41cd-b962-e09fea0c91a3" data-caption="Patgram Railway Station — transport hub in northern Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/a7eb48ed-89cf-41cd-b962-e09fea0c91a3" alt="Patgram station" width="400" height="288"></div><div class="photo-caption">Patgram Railway Station — northern Bangladesh.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/8038f628-e10c-4828-9f27-dbfbebb437e4" data-caption="Burimari Railway Station — connects to the Burimari land port."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/8038f628-e10c-4828-9f27-dbfbebb437e4" alt="Burimari station" width="400" height="288"></div><div class="photo-caption">Burimari Railway Station — Burimari land port.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/5883673f-3369-46f2-8dd4-6bc8c0df1e3b" data-caption="Angarpota enclave — historically important after the land boundary agreement."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/5883673f-3369-46f2-8dd4-6bc8c0df1e3b" alt="Angarpota enclave" width="400" height="288"></div><div class="photo-caption">Angarpota enclave — land boundary agreement landmark.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/5aef2c89-f0c9-469e-9602-e50b3b7ac460" data-caption="Tin Bigha Corridor — 24-hour connection between Bangladesh mainland and enclaves."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/5aef2c89-f0c9-469e-9602-e50b3b7ac460" alt="Tin Bigha Corridor" width="400" height="288"></div><div class="photo-caption">Tin Bigha Corridor — mainland-enclave connection.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/9764d598-4ed2-47d6-9bcd-c39db81e1bb5" data-caption="Burimari Land Port — key international border crossing."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9764d598-4ed2-47d6-9bcd-c39db81e1bb5" alt="Burimari land port" width="400" height="288"></div><div class="photo-caption">Burimari Land Port — international border crossing.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/537f33d6-6082-4fbc-a3c3-bb04947f8c43" data-caption="Nilphamari Railway Station — one of the oldest in Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/537f33d6-6082-4fbc-a3c3-bb04947f8c43" alt="Nilphamari station" width="400" height="288"></div><div class="photo-caption">Nilphamari Railway Station — one of Bangladesh's oldest.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/d7c7f407-f8f4-41e8-ad47-bb513d0624b0" data-caption="Nilphamari Railway Station overview."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/d7c7f407-f8f4-41e8-ad47-bb513d0624b0" alt="Nilphamari overview" width="400" height="288"></div><div class="photo-caption">Nilphamari Railway Station overview.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/dda74b63-bcb2-4aa3-a03d-8e0b52ce9387" data-caption="An old historic house in Nilphamari."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/dda74b63-bcb2-4aa3-a03d-8e0b52ce9387" alt="Old house Nilphamari" width="400" height="288"></div><div class="photo-caption">Old house — Nilphamari.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/5a4022b6-2e52-47d7-9a81-87a5028802a4" data-caption="Nilsagar — famous lake known for migratory birds."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/5a4022b6-2e52-47d7-9a81-87a5028802a4" alt="Nilsagar lake" width="400" height="288"></div><div class="photo-caption">Nilsagar — famous lake for migratory birds.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/83d73289-1aab-4590-882c-3b04f48680e6" data-caption="Shah Sultan Balkhi Mahisawar Mazar — historic site in Bogura."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/83d73289-1aab-4590-882c-3b04f48680e6" alt="Bogura mazar" width="400" height="288"></div><div class="photo-caption">Shah Sultan Balkhi Mahisawar Mazar, Bogura.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/be2f74ea-253b-4434-8b19-283f1f405e0c" data-caption="University of Barishal — scenic public university."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/be2f74ea-253b-4434-8b19-283f1f405e0c" alt="Barishal University" width="400" height="288"></div><div class="photo-caption">University of Barishal — scenic campus.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/c52d8bfc-b85d-4105-85ca-b3e807b244fb" data-caption="Padma River in Rajshahi — peaceful and scenic."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/c52d8bfc-b85d-4105-85ca-b3e807b244fb" alt="Padma River" width="400" height="288"></div><div class="photo-caption">Padma River, Rajshahi — peaceful and scenic.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/4cdc46d0-a7f0-4d6f-8850-3ad31b54b63b" data-caption="Parbatipur Junction — historic railway hub."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/4cdc46d0-a7f0-4d6f-8850-3ad31b54b63b" alt="Parbatipur Junction" width="400" height="288"></div><div class="photo-caption">Parbatipur Junction — historic railway hub.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/b34857c1-e946-44db-8700-c295b7605cfc" data-caption="Kantajew Temple — famous for terracotta art."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/b34857c1-e946-44db-8700-c295b7605cfc" alt="Kantajew Temple" width="400" height="288"></div><div class="photo-caption">Kantajew Temple — terracotta art and historic beauty.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/2a78a512-f78a-4ba8-9be4-f95bad0bc7b0" data-caption="Ramsagar National Park — popular picnic and historic destination."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2a78a512-f78a-4ba8-9be4-f95bad0bc7b0" alt="Ramsagar" width="400" height="288"></div><div class="photo-caption">Ramsagar National Park — popular historic destination.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/9f22b181-a9c7-424f-9b3f-cbceff42e7d2" data-caption="Singra National Park — known for biodiversity."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/9f22b181-a9c7-424f-9b3f-cbceff42e7d2" alt="Singra National Park" width="400" height="288"></div><div class="photo-caption">Singra National Park — biodiversity and natural forest.</div></div>
+      <div class="photo-card" data-full="https://github.com/user-attachments/assets/2bf51026-1fdd-487a-94a9-49eeb891224b" data-caption="Banglabandha — northernmost border point of Bangladesh."><div class="img-wrap"><img data-src="https://github.com/user-attachments/assets/2bf51026-1fdd-487a-94a9-49eeb891224b" alt="Banglabandha" width="400" height="288"></div><div class="photo-caption">Banglabandha — northernmost border point of Bangladesh.</div></div>
     </div>
-    <div class="show-more-wrap">
-      <button class="show-more-btn" data-grid="grid-travel" data-step="4">Show more ↓</button>
-      <span class="photo-count-label" id="count-travel"></span>
-    </div>
+    <div class="show-more-wrap"><button class="show-more-btn" data-grid="grid-travel" data-step="4">Show more ↓</button><span class="photo-count-label" id="count-travel"></span></div>
   </div>
 
-</div><!-- /page-body -->
+</div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
@@ -567,30 +400,30 @@
 </footer>
 
 <script>
-/* ── INTERSECTION OBSERVER LAZY LOADER ──
-   Images only load when they scroll into view.
-   Uses data-src → src swap + skeleton shimmer. */
+/* ── FAST IMAGE PROXY ──
+   GitHub user-attachment images are full-resolution originals (often several MB each).
+   We route them through the wsrv.nl image proxy to resize + re-encode as compressed
+   WebP before they ever hit the browser. Grid thumbnails ask for a small width;
+   the lightbox (full view) asks for a larger width. This is the single biggest
+   speed fix here — it cuts payload per image by roughly 80-95%. */
+function thumbUrl(url, width) {
+  var clean = url.replace(/^https?:\/\//, '');
+  return 'https://wsrv.nl/?url=' + encodeURIComponent(clean) + '&w=' + width + '&q=70&output=webp&we';
+}
+
+/* ── INTERSECTION OBSERVER LAZY LOADER ── */
 const imgObserver = new IntersectionObserver((entries, obs) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     const img = entry.target;
     const wrap = img.closest('.img-wrap');
-    img.src = img.dataset.src;
-    img.onload = () => {
-      img.classList.add('loaded');
-      if (wrap) wrap.classList.add('loaded');
-    };
-    img.onerror = () => {
-      img.classList.add('loaded');
-      if (wrap) wrap.classList.add('loaded');
-    };
+    img.src = thumbUrl(img.dataset.src, 480);
+    img.onload = () => { img.classList.add('loaded'); if (wrap) wrap.classList.add('loaded'); };
+    img.onerror = () => { img.classList.add('loaded'); if (wrap) wrap.classList.add('loaded'); };
     obs.unobserve(img);
   });
-}, { rootMargin: '200px 0px' }); /* start loading 200px before visible */
+}, { rootMargin: '400px 0px' });
 
-/* ── SHOW / HIDE CARDS ──
-   Reveals cards in batches of `step`. Only registers
-   newly visible cards with the lazy loader. */
 const INITIAL = 4;
 const gridStates = {};
 
@@ -599,7 +432,6 @@ function initGrid(gridId) {
   if (!grid) return;
   const cards = Array.from(grid.querySelectorAll('.photo-card'));
   gridStates[gridId] = { cards, shown: 0 };
-  /* show initial batch */
   showBatch(gridId, INITIAL);
   updateCountLabel(gridId);
 }
@@ -611,7 +443,6 @@ function showBatch(gridId, count) {
   for (let i = state.shown; i < end; i++) {
     const card = state.cards[i];
     card.classList.add('visible');
-    /* register lazy load for this card's img */
     const img = card.querySelector('img[data-src]');
     if (img && !img.src) imgObserver.observe(img);
   }
@@ -625,17 +456,10 @@ function updateCountLabel(gridId) {
   const labelId = 'count-' + gridId.replace('grid-', '');
   const label = document.getElementById(labelId);
   if (label) label.textContent = state.shown + ' / ' + state.cards.length + ' photos';
-
-  /* hide button if all shown */
   const btn = document.querySelector(`[data-grid="${gridId}"]`);
   if (!btn) return;
-  if (state.shown >= state.cards.length) {
-    btn.textContent = 'Show less ↑';
-    btn.dataset.mode = 'collapse';
-  } else {
-    btn.textContent = 'Show more ↓';
-    btn.dataset.mode = 'expand';
-  }
+  if (state.shown >= state.cards.length) { btn.textContent = 'Show less ↑'; btn.dataset.mode = 'collapse'; }
+  else { btn.textContent = 'Show more ↓'; btn.dataset.mode = 'expand'; }
 }
 
 document.querySelectorAll('.show-more-btn').forEach(btn => {
@@ -645,11 +469,9 @@ document.querySelectorAll('.show-more-btn').forEach(btn => {
     const state = gridStates[gridId];
     if (!state) return;
     if (btn.dataset.mode === 'collapse') {
-      /* hide all but first batch */
       state.cards.forEach((c, i) => { if (i >= INITIAL) c.classList.remove('visible'); });
       state.shown = INITIAL;
       updateCountLabel(gridId);
-      /* scroll back to section */
       const grid = document.getElementById(gridId);
       if (grid) grid.closest('.gallery-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
@@ -674,11 +496,17 @@ function openLightbox(card) {
 function showLbImage(idx) {
   const card = lbImages[idx];
   if (!card) return;
-  const dataSrc = card.dataset.src;
   const caption = card.dataset.caption || '';
-  document.getElementById('lightbox-img').src = dataSrc;
+  const lbImg = document.getElementById('lightbox-img');
+  lbImg.classList.remove('loaded');
+  lbImg.src = thumbUrl(card.dataset.full, 1200);
   document.getElementById('lightbox-caption').textContent = caption;
   lbIndex = idx;
+  /* prefetch neighbors so prev/next feels instant */
+  [idx - 1, idx + 1].forEach(n => {
+    const neighbor = lbImages[n];
+    if (neighbor) { const pre = new Image(); pre.src = thumbUrl(neighbor.dataset.full, 1200); }
+  });
 }
 
 function closeLightbox() {
@@ -697,7 +525,6 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight' && lbIndex < lbImages.length - 1) showLbImage(lbIndex + 1);
 });
 
-/* Click handler on cards */
 document.querySelectorAll('.photo-grid').forEach(grid => {
   grid.addEventListener('click', e => {
     const card = e.target.closest('.photo-card');
@@ -722,7 +549,6 @@ ham.addEventListener('click', () => { ham.classList.toggle('open'); drawer.class
 drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); drawer.classList.remove('open'); }));
 
 /* ── TOC SCROLL ── */
-/* IMPORTANT: never name this "scrollTo" — it shadows window.scrollTo causing a crash */
 function jumpToSection(id) {
   var el = document.getElementById(id);
   if (!el) return;
@@ -744,7 +570,6 @@ document.querySelectorAll('.toc-tab').forEach(function(tab) {
   });
 });
 
-/* Highlight active tab while scrolling */
 var sectionIds = ['art','conference','academic','social','stat','travel'];
 var scrollRaf = null;
 window.addEventListener('scroll', function() {
@@ -765,7 +590,6 @@ window.addEventListener('scroll', function() {
   });
 }, { passive: true });
 
-/* ── INIT ALL GRIDS ── */
 document.addEventListener('DOMContentLoaded', () => {
   ['grid-art','grid-conference','grid-academic','grid-social','grid-stat','grid-travel'].forEach(initGrid);
 });
