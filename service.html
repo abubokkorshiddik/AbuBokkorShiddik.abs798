@@ -182,11 +182,14 @@
     .journal-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     }
-    .jc-bmj-gh::before    { background: linear-gradient(90deg, #0891b2, #0284c7); }
+    .jc-bmj-gh::before    { background: linear-gradient(90deg, #0369a1, #0ea5e9); }
     .jc-bmj-ph::before    { background: linear-gradient(90deg, #0369a1, #0ea5e9); }
     .jc-hsr::before       { background: linear-gradient(90deg, #7c3aed, #a855f7); }
     .jc-jms::before       { background: linear-gradient(90deg, #059669, #10b981); }
     .jc-plos::before      { background: linear-gradient(90deg, #d97706, #f59e0b); }
+    .jc-tech::before      { background: linear-gradient(90deg, #c2410c, #fb923c); }
+    .jc-spatial::before   { background: linear-gradient(90deg, #b91c1c, #f87171); }
+    .jc-gph::before       { background: linear-gradient(90deg, #047857, #34d399); }
 
     /* publisher badge */
     .publisher-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -194,10 +197,13 @@
       font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.7px;
       padding: 3px 9px; border-radius: 5px; white-space: nowrap;
     }
-    .badge-bmj   { background: #e0f7fa; color: #0e7490; border: 1px solid #67e8f9; }
-    .badge-wiley { background: #f5f3ff; color: #5b21b6; border: 1px solid #ddd6fe; }
-    .badge-plos  { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
-    .badge-sci   { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-bmj      { background: #e0f7fa; color: #0e7490; border: 1px solid #67e8f9; }
+    .badge-wiley    { background: #f5f3ff; color: #5b21b6; border: 1px solid #ddd6fe; }
+    .badge-plos     { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+    .badge-sci      { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-ios      { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+    .badge-elsevier { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+    .badge-taylor   { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
 
     .journal-name { font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 600; color: var(--text); line-height: 1.35; }
     .journal-scope { font-size: 12.5px; color: var(--text3); line-height: 1.55; }
@@ -245,6 +251,8 @@
     .tc-amber  { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
     .tc-green  { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd); }
     .tc-teal   { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-bd); }
+    .tc-orange { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+    .tc-red    { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
 
     /* ── SUMMARY STRIP ── */
     .summary-strip {
@@ -279,6 +287,48 @@
     }
     .exp-tag:hover { background: var(--sky); border-color: #93c5fd; color: var(--blue); }
 
+    /* ── OUTREACH & PROJECT SECTIONS ── */
+    .outreach-section, .project-section { margin-top: 52px; }
+    .outreach-card, .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 26px 30px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    .outreach-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+      background: linear-gradient(to bottom, #ea580c, #f59e0b);
+      border-radius: 4px 0 0 4px;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+      background: linear-gradient(to bottom, #047857, #10b981);
+      border-radius: 4px 0 0 4px;
+    }
+    .outreach-list, .project-list { list-style: none; margin-top: 12px; }
+    .outreach-list li, .project-list li {
+      font-size: 14px; color: var(--text2); padding: 6px 0 6px 22px; position: relative;
+    }
+    .outreach-list li::before, .project-list li::before {
+      content: '›'; position: absolute; left: 0; color: var(--blue); font-weight: 700;
+    }
+    .outreach-link {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+      font-size: 13px; font-weight: 600; color: var(--blue);
+      background: var(--sky); border: 1px solid var(--sky2);
+      border-radius: 20px; padding: 6px 14px; transition: background 0.15s;
+    }
+    .outreach-link:hover { background: var(--sky2); }
+    .project-meta-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; margin-top: 16px;
+    }
+    @media (max-width: 600px) { .project-meta-grid { grid-template-columns: 1fr; } }
+    .project-meta-item { font-size: 13px; color: var(--text2); }
+    .project-meta-item strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text3); font-weight: 700; margin-bottom: 3px; }
+
     /* ── FOOTER ── */
     footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 44px 24px 32px; margin-top: 60px; }
     .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.07); }
@@ -297,7 +347,6 @@
 </head>
 <body>
 
-<!-- ═══ NAVBAR ═══ -->
 <!-- ═══ NAVBAR ═══ -->
 <nav class="navbar">
   <div class="nav-bar-inner">
@@ -391,9 +440,9 @@
       <h1>Reviewer Service</h1>
       <p>Contributing to the integrity of global health research through rigorous peer review for high-impact international journals since 2025.</p>
       <div class="hero-stats">
-        <div><div class="hstat-num">18</div><div class="hstat-label">Total Reviews</div></div>
-        <div><div class="hstat-num">5</div><div class="hstat-label">Journals</div></div>
-        <div><div class="hstat-num">3</div><div class="hstat-label">Publishers</div></div>
+        <div><div class="hstat-num">26</div><div class="hstat-label">Total Reviews</div></div>
+        <div><div class="hstat-num">8</div><div class="hstat-label">Journals</div></div>
+        <div><div class="hstat-num">7</div><div class="hstat-label">Publishers</div></div>
         <div><div class="hstat-num">2025–26</div><div class="hstat-label">Active</div></div>
       </div>
     </div>
@@ -401,7 +450,7 @@
       <span class="verified-icon">🔬</span>
       <div class="verified-text">
         <strong>Verified Reviewer</strong>
-        Active peer reviewer for BMJ, PLOS &amp; Wiley journals
+        Active peer reviewer for BMJ, PLOS, Wiley &amp; other international journals
       </div>
     </div>
   </div>
@@ -415,14 +464,14 @@
     <div class="intro-icon">📋</div>
     <div class="intro-text">
       <p>Peer review is the cornerstone of rigorous scientific publishing. As a reviewer, I critically evaluate manuscripts on machine learning, epidemiology, public health, and data science — ensuring methodological soundness, reproducibility, and contribution to the field.</p>
-      <p>I have reviewed for journals published by <strong>BMJ Publishing Group</strong>, <strong>PLOS</strong>, and <strong>Wiley</strong> — three of the world's leading scientific publishers — contributing to open-access and subscription-based venues in global health.</p>
+      <p>I have reviewed for journals published by <strong>BMJ Publishing Group</strong>, <strong>PLOS</strong>, <strong>Wiley</strong>, <strong>Elsevier</strong>, <strong>Taylor &amp; Francis</strong>, <strong>IOS Press</strong>, and <strong>Science Publications</strong> — contributing to open-access and subscription-based venues in global health and quantitative sciences.</p>
     </div>
   </div>
 
   <!-- JOURNAL CARDS -->
   <div class="section-head">
     <h2>Journals Reviewed For</h2>
-    <span class="section-meta">5 journals · 3 publishers</span>
+    <span class="section-meta">8 journals · 7 publishers</span>
   </div>
 
   <div class="journal-grid">
@@ -438,16 +487,16 @@
       <div class="review-rows">
         <div class="review-row">
           <span class="year-tag">2025</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:75%"></div></div>
           <span class="review-count">6</span>
         </div>
         <div class="review-row">
           <span class="year-tag">2026</span>
           <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">6</span>
+          <span class="review-count">8</span>
         </div>
       </div>
-      <span class="total-pill">12 articles reviewed</span>
+      <span class="total-pill">14 articles reviewed</span>
     </div>
 
     <!-- Health Science Reports -->
@@ -461,12 +510,12 @@
       <div class="review-rows">
         <div class="review-row">
           <span class="year-tag">2025</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:66%"></div></div>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
           <span class="review-count">2</span>
         </div>
         <div class="review-row">
           <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:33%"></div></div>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:50%"></div></div>
           <span class="review-count">1</span>
         </div>
       </div>
@@ -484,11 +533,11 @@
       <div class="review-rows">
         <div class="review-row">
           <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:16%"></div></div>
-          <span class="review-count">1</span>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
+          <span class="review-count">2</span>
         </div>
       </div>
-      <span class="total-pill">1 article reviewed</span>
+      <span class="total-pill">2 articles reviewed</span>
     </div>
 
     <!-- BMJ Public Health -->
@@ -502,7 +551,58 @@
       <div class="review-rows">
         <div class="review-row">
           <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:16%"></div></div>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
+          <span class="review-count">2</span>
+        </div>
+      </div>
+      <span class="total-pill">2 articles reviewed</span>
+    </div>
+
+    <!-- Global Public Health -->
+    <div class="journal-card jc-gph">
+      <div class="publisher-row">
+        <span class="pub-logo-badge badge-taylor">Taylor &amp; Francis</span>
+      </div>
+      <div class="journal-name">Global Public Health</div>
+      <div class="journal-scope">International journal publishing research on public health issues from a global and comparative perspective.</div>
+      <div class="review-rows">
+        <div class="review-row">
+          <span class="year-tag">2026</span>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
+          <span class="review-count">2</span>
+        </div>
+      </div>
+      <span class="total-pill">2 articles reviewed</span>
+    </div>
+
+    <!-- Technology and Health Care -->
+    <div class="journal-card jc-tech">
+      <div class="publisher-row">
+        <span class="pub-logo-badge badge-ios">IOS Press</span>
+      </div>
+      <div class="journal-name">Technology and Health Care</div>
+      <div class="journal-scope">Journal covering the application of engineering and technology in medicine, biomedical devices, and health informatics.</div>
+      <div class="review-rows">
+        <div class="review-row">
+          <span class="year-tag">2026</span>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
+          <span class="review-count">1</span>
+        </div>
+      </div>
+      <span class="total-pill">1 article reviewed</span>
+    </div>
+
+    <!-- Spatial and Spatio-temporal Epidemiology -->
+    <div class="journal-card jc-spatial">
+      <div class="publisher-row">
+        <span class="pub-logo-badge badge-elsevier">Elsevier</span>
+      </div>
+      <div class="journal-name">Spatial and Spatio-temporal Epidemiology</div>
+      <div class="journal-scope">Journal focused on spatial and spatio-temporal methods for analyzing disease patterns and health outcomes.</div>
+      <div class="review-rows">
+        <div class="review-row">
+          <span class="year-tag">2026</span>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
           <span class="review-count">1</span>
         </div>
       </div>
@@ -519,7 +619,7 @@
       <div class="review-rows">
         <div class="review-row">
           <span class="year-tag">2025</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:16%"></div></div>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
           <span class="review-count">1</span>
         </div>
       </div>
@@ -531,15 +631,15 @@
   <!-- SUMMARY STRIP -->
   <div class="summary-strip">
     <div>
-      <div class="ss-num">18</div>
+      <div class="ss-num">26</div>
       <div class="ss-label">Total Articles Reviewed</div>
     </div>
     <div>
-      <div class="ss-num">5</div>
+      <div class="ss-num">8</div>
       <div class="ss-label">International Journals</div>
     </div>
     <div>
-      <div class="ss-num">BMJ · PLOS · Wiley</div>
+      <div class="ss-num">7</div>
       <div class="ss-label">Publishers</div>
     </div>
     <div>
@@ -559,19 +659,31 @@
         <div style="display:flex; flex-direction:column; gap:10px;">
           <div class="tl-card">
             <span class="tl-journal">PLOS Digital Health</span>
-            <span class="tl-count-badge tc-amber">6 articles</span>
+            <span class="tl-count-badge tc-amber">8 articles</span>
+          </div>
+          <div class="tl-card">
+            <span class="tl-journal">BMJ Global Health</span>
+            <span class="tl-count-badge tc-blue">2 articles</span>
+          </div>
+          <div class="tl-card">
+            <span class="tl-journal">BMJ Public Health</span>
+            <span class="tl-count-badge tc-blue">2 articles</span>
+          </div>
+          <div class="tl-card">
+            <span class="tl-journal">Global Public Health</span>
+            <span class="tl-count-badge tc-green">2 articles</span>
           </div>
           <div class="tl-card">
             <span class="tl-journal">Health Science Reports</span>
             <span class="tl-count-badge tc-purple">1 article</span>
           </div>
           <div class="tl-card">
-            <span class="tl-journal">BMJ Global Health</span>
-            <span class="tl-count-badge tc-blue">1 article</span>
+            <span class="tl-journal">Technology and Health Care</span>
+            <span class="tl-count-badge tc-orange">1 article</span>
           </div>
           <div class="tl-card">
-            <span class="tl-journal">BMJ Public Health</span>
-            <span class="tl-count-badge tc-blue">1 article</span>
+            <span class="tl-journal">Spatial and Spatio-temporal Epidemiology</span>
+            <span class="tl-count-badge tc-red">1 article</span>
           </div>
         </div>
       </div>
@@ -616,6 +728,47 @@
       <span class="exp-tag">SHAP / LIME</span>
       <span class="exp-tag">Digital Health</span>
       <span class="exp-tag">Statistical Methodology</span>
+    </div>
+  </div>
+
+  <!-- ACADEMIC CONTENT AND OUTREACH -->
+  <div class="outreach-section">
+    <div class="section-head"><h2>Academic Content &amp; Outreach</h2></div>
+    <div class="outreach-card">
+      <div class="intro-text">
+        <p>Beyond peer review, I create educational content to help build data analysis skills among students and early-career researchers.</p>
+      </div>
+      <ul class="outreach-list">
+        <li>Created educational video tutorials on Basic Statistics, R, and Python for data analysis</li>
+        <li>Shared public health and data science resources to promote research skills among students and early-career researchers</li>
+      </ul>
+      <a class="outreach-link" href="https://www.youtube.com/@abubokkorshiddik.abs798" target="_blank">&#9654; YouTube Channel</a>
+    </div>
+  </div>
+
+  <!-- RESEARCH PROJECT -->
+  <div class="project-section">
+    <div class="section-head"><h2>Research Project</h2></div>
+    <div class="project-card">
+      <div class="journal-name">Exploring Community Knowledge, Health Belief and Healthcare-Seeking Behaviours Regarding Non-Communicable Diseases (NCDs) in Bangladesh</div>
+      <div class="project-meta-grid">
+        <div class="project-meta-item">
+          <strong>Funding Source</strong>
+          University Grant Commission
+        </div>
+        <div class="project-meta-item">
+          <strong>Role</strong>
+          Research Assistant
+        </div>
+        <div class="project-meta-item">
+          <strong>Duration</strong>
+          October 2025 – February 2026
+        </div>
+        <div class="project-meta-item">
+          <strong>Department</strong>
+          Department of Statistics, Begum Rokeya University, Rangpur
+        </div>
+      </div>
     </div>
   </div>
 
