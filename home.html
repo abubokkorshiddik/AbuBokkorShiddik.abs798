@@ -211,29 +211,6 @@
       font-family: 'DM Mono', monospace; letter-spacing: .3px;
     }
 
-    /* contact chips */
-    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .hchip {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 8px; padding: 6px 12px;
-      font-size: 12px; color: rgba(255,255,255,.62); font-weight: 400;
-      transition: background .2s, border-color .2s;
-    }
-    .hchip:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.2); }
-    .hchip-icon { opacity: .7; }
-
-    /* social pills */
-    .hero-social { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 32px; }
-    .spill {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 7px 15px; border: 1px solid rgba(255,255,255,.14);
-      border-radius: 30px; font-size: 12.5px; font-weight: 500;
-      color: rgba(255,255,255,.72);
-      transition: background .2s, border-color .2s, color .2s, transform .2s;
-    }
-    .spill:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.3); color: #fff; transform: translateY(-1px); }
-
     /* CTA buttons */
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-primary {
@@ -308,29 +285,6 @@
       border: 4px solid var(--navy);
       display: block;
     }
-    /* floating badges on photo */
-    .photo-badge {
-      position: absolute; z-index: 3;
-      background: rgba(15,30,54,.92);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 30px; padding: 6px 14px;
-      font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,.85);
-      backdrop-filter: blur(8px);
-      white-space: nowrap;
-      display: flex; align-items: center; gap: 5px;
-    }
-    .pb-top { top: 18px; right: -20px; }
-    .pb-bottom { bottom: 20px; left: -20px; }
-    .pb-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-    .pb-dot.green { background: #4ade80; box-shadow: 0 0 6px rgba(74,222,128,.6); }
-    .pb-dot.blue  { background: #60a5fa; box-shadow: 0 0 6px rgba(96,165,250,.6); }
-
-    .photo-caption {
-      text-align: center; margin-top: 20px;
-      font-size: 12px; color: rgba(255,255,255,.38); line-height: 1.6;
-      font-family: 'DM Mono', monospace;
-    }
-    .photo-caption strong { color: rgba(255,255,255,.75); font-weight: 600; display: block; font-size: 12.5px; margin-bottom: 2px; font-family: 'Sora', sans-serif; }
 
     /* ══════════════════════════════════
        JUMP BAR
@@ -443,35 +397,43 @@
       background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       padding: 56px 0; margin-top: 56px; scroll-margin-top: 115px;
     }
-    .pub-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .pub-card {
+    .pub-scroll {
+      max-height: 560px; overflow-y: auto; padding-right: 6px;
+      display: flex; flex-direction: column; gap: 10px;
+      scrollbar-width: thin; scrollbar-color: var(--border2) transparent;
+    }
+    .pub-scroll::-webkit-scrollbar { width: 7px; }
+    .pub-scroll::-webkit-scrollbar-track { background: transparent; }
+    .pub-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
+    .pub-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .pub-row {
       background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
-      padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
-      transition: border-color .2s, box-shadow .2s, background .2s, transform .2s;
+      padding: 16px 20px; display: flex; align-items: flex-start; gap: 16px;
+      transition: border-color .2s, box-shadow .2s, background .2s, transform .15s;
       position: relative;
     }
-    .pub-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; border-radius: var(--r) var(--r) 0 0;
+    .pub-row:hover { border-color: #93c5fd; box-shadow: var(--sh2); background: var(--white); transform: translateX(2px); }
+    .pub-row-num {
+      font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 600;
+      color: var(--text3); background: var(--white); border: 1px solid var(--border);
+      border-radius: 6px; width: 26px; height: 26px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
     }
-    .pub-card.j-n::before { background: linear-gradient(90deg,#ea580c,#f59e0b); }
-    .pub-card.j-h::before { background: linear-gradient(90deg,#0891b2,#06b6d4); }
-    .pub-card.j-e::before { background: linear-gradient(90deg,#dc2626,#f97316); }
-    .pub-card.j-s::before { background: linear-gradient(90deg,#059669,#10b981); }
-    .pub-card.j-m::before { background: linear-gradient(90deg,#16a34a,#4ade80); }
-    .pub-card:hover { border-color: #93c5fd; box-shadow: var(--sh2); background: var(--white); transform: translateY(-3px); }
-    .pub-meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+    .pub-row-body { flex: 1; min-width: 0; }
+    .pub-row-meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-bottom: 6px; }
+    .pub-row-title { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.55; margin-bottom: 4px; }
+    .pub-row-cite { font-size: 12px; color: var(--text3); line-height: 1.6; margin-bottom: 6px; }
+    .pub-row-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: var(--blue); transition: gap .15s; }
+    .pub-row-link:hover { gap: 8px; }
     .jb { font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 5px; white-space: nowrap; }
     .jb-n { background:#fff3e0;color:#c2410c;border:1px solid #fdba74; }
     .jb-h { background:#e0f2fe;color:#0369a1;border:1px solid #7dd3fc; }
     .jb-g { background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8; }
     .jb-s { background:#ecfdf5;color:#065f46;border:1px solid #6ee7b7; }
     .jb-m { background:#f0fdf4;color:#166534;border:1px solid #bbf7d0; }
+    .jb-p { background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe; }
     .yb { font-size:11px;font-weight:600;color:var(--text3);background:#f1f5f9;border:1px solid var(--border);border-radius:5px;padding:2px 7px; }
     .oa { font-size:10.5px;font-weight:700;color:#d97706;background:#fffbeb;border:1px solid #fde68a;border-radius:5px;padding:2px 7px; }
-    .pub-title-text { font-size:13.5px;font-weight:600;color:var(--text);line-height:1.55;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden; }
-    .pub-link { display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--blue);margin-top:auto;transition:gap .15s; }
-    .pub-link:hover { gap:8px; }
 
     /* ══ DATA LAB ══ */
     .data-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
@@ -531,21 +493,40 @@
     }
     .pm-date { font-size: 11.5px; color: var(--text3); }
 
-    /* ══ COURSES ══ */
-    .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 12px; }
-    .course-card {
+    /* ══ COURSES (TIMELINE) ══ */
+    .course-scroll {
+      max-height: 480px; overflow-y: auto; padding-right: 6px;
+      scrollbar-width: thin; scrollbar-color: var(--border2) transparent;
+    }
+    .course-scroll::-webkit-scrollbar { width: 7px; }
+    .course-scroll::-webkit-scrollbar-track { background: transparent; }
+    .course-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
+    .course-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--teal));
+      border-radius: 2px;
+    }
+    .tl-item { position: relative; padding-bottom: 22px; }
+    .tl-item:last-child { padding-bottom: 2px; }
+    .tl-item::before {
+      content: ''; position: absolute; left: -28px; top: 4px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--white); border: 3px solid var(--blue);
+    }
+    .tl-date {
+      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600;
+      color: var(--blue); text-transform: uppercase; letter-spacing: .4px; margin-bottom: 5px;
+    }
+    .tl-card {
       background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
-      padding: 16px 18px; display: flex; gap: 13px; align-items: flex-start;
-      box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s;
+      padding: 14px 18px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s;
     }
-    .course-card:hover { border-color: var(--blue); box-shadow: var(--sh2); }
-    .cdot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--teal));
-      flex-shrink: 0; margin-top: 7px;
-    }
-    .cname { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-    .corg { font-size: 12px; color: var(--text3); }
+    .tl-card:hover { border-color: var(--blue); box-shadow: var(--sh2); }
+    .tl-name { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .tl-org { font-size: 12px; color: var(--text3); margin-bottom: 4px; }
+    .tl-detail { font-size: 12px; color: var(--text3); line-height: 1.6; }
 
     /* ══ SERVICE ══ */
     .service-list { display: flex; flex-direction: column; gap: 10px; }
@@ -592,12 +573,13 @@
       flex-wrap: wrap; gap: 8px;
     }
     .footer-bottom p { font-size: 12px; }
+    .footer-bottom a { transition: color .15s; }
+    .footer-bottom a:hover { color: rgba(255,255,255,.9); }
 
     /* ══ RESPONSIVE ══ */
     @media (max-width: 1100px) {
       .hero-inner { grid-template-columns: 1fr 280px; gap: 48px; }
       .photo-frame { width: 240px; }
-      .pub-grid { grid-template-columns: repeat(2,1fr); }
       .project-grid { grid-template-columns: repeat(2,1fr); }
       .data-strip { grid-template-columns: repeat(2,1fr); }
       .posts-strip { grid-template-columns: repeat(2,1fr); }
@@ -607,44 +589,49 @@
       .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 52px 24px 60px; }
       .hero-photo-col { order: -1; }
       .photo-frame { width: 180px; }
-      .pb-top { right: -10px; }
-      .pb-bottom { left: -10px; }
     }
     @media (max-width: 640px) {
-      .pub-grid { grid-template-columns: 1fr; }
       .project-grid { grid-template-columns: 1fr; }
       .data-strip { grid-template-columns: repeat(2,1fr); }
       .posts-strip { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .skills-grid { grid-template-columns: 1fr; }
-      .hero-chips { gap: 6px; }
+      .pub-row { flex-direction: column; gap: 8px; }
     }
 
-    /* ══ FLOATING MAIL BUTTON ══ */
-.float-mail-btn {
+    /* ══ FLOATING ACTION BUTTONS ══ */
+.float-actions {
   position: fixed;
   bottom: 28px;
   right: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  z-index: 9998;
+}
+.float-mail-btn, .float-contact-btn {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1a56db, #1648c0);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
   box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15);
-  z-index: 9998;
   transition: transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
+  position: relative;
 }
-.float-mail-btn:hover {
+.float-mail-btn { background: linear-gradient(135deg, #1a56db, #1648c0); }
+.float-contact-btn { background: linear-gradient(135deg, #0d9488, #0f766e); font-size: 22px; }
+.float-mail-btn:hover, .float-contact-btn:hover {
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 12px 32px rgba(26,86,219,0.5), 0 4px 12px rgba(0,0,0,0.2);
 }
-.float-mail-btn:active { transform: translateY(-1px) scale(0.98); }
+.float-mail-btn:active, .float-contact-btn:active { transform: translateY(-1px) scale(0.98); }
 
 .float-mail-tooltip {
   position: absolute;
@@ -663,13 +650,13 @@
   transition: opacity 0.2s, visibility 0.2s;
   pointer-events: none;
 }
-.float-mail-btn:hover .float-mail-tooltip {
+.float-mail-btn:hover .float-mail-tooltip, .float-contact-btn:hover .float-mail-tooltip {
   opacity: 1;
   visibility: visible;
 }
 
 @media (max-width: 600px) {
-  .float-mail-btn { width: 52px; height: 52px; bottom: 20px; right: 20px; font-size: 21px; }
+  .float-mail-btn, .float-contact-btn { width: 52px; height: 52px; font-size: 21px; }
   .float-mail-tooltip { display: none; }
 }
   </style>
@@ -777,23 +764,10 @@
       <p class="hero-tagline">Researcher · Machine Learning · Explainable AI · Global Health Analytics</p>
       <p class="hero-affil">Dept. of Statistics, BRUR · Rangpur, Bangladesh</p>
 
-      <div class="hero-chips">
-        <span class="hchip"><span class="hchip-icon">✉</span> abubokkor.brur60@gmail.com</span>
-        <span class="hchip"><span class="hchip-icon">📞</span> +880 1874 001360</span>
-        <span class="hchip"><span class="hchip-icon">📍</span> Rangpur, Bangladesh</span>
-      </div>
-
-      <div class="hero-social">
-        <a class="spill" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home" target="_blank">🌐 Portfolio</a>
-        <a class="spill" href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
-        <a class="spill" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Scholar</a>
-        <a class="spill" href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
-        <a class="spill" href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
-      </div>
-
       <div class="hero-actions">
         <a class="btn-primary" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/140726CV_AbuBokkorShiddik.pdf" target="_blank">↓ Download CV</a>
         <a class="btn-outline" href="publications.html">View Publications →</a>
+        <a class="btn-outline" href="contact.html">✉ Contact</a>
       </div>
 
       <div class="hero-stats">
@@ -817,16 +791,6 @@
     <div class="hero-photo-col">
       <div class="photo-frame">
         <img class="photo-img" src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/Profile.jpeg" alt="Md. Abu Bokkor Shiddik">
-        <div class="photo-badge pb-top">
-          <span class="pb-dot green"></span> Open to Collaborate
-        </div>
-        <div class="photo-badge pb-bottom">
-          <span class="pb-dot blue"></span> Published Researcher
-        </div>
-      </div>
-      <div class="photo-caption">
-        <strong>Dept. of Statistics</strong>
-        Begum Rokeya University<br>Rangpur, Bangladesh
       </div>
     </div>
   </div>
@@ -904,36 +868,123 @@
       <h2>Selected Publications</h2>
       <a href="publications.html" class="see-all">View all publications →</a>
     </div>
-    <div class="pub-grid">
-      <div class="pub-card j-n">
-        <div class="pub-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
-        <p class="pub-title-text">Utilizing AI to predict socioeconomic, environmental, and healthcare factors driving tuberculosis globally</p>
-        <a class="pub-link" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">View paper →</a>
+    <div class="pub-scroll">
+      <div class="pub-row">
+        <div class="pub-row-num">1</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</div>
+          <div class="pub-row-cite">Rahman, M.S., Shiddik, A.B. Sci Rep 15, 13619 (2025)</div>
+          <a class="pub-row-link" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">View paper →</a>
+        </div>
       </div>
-      <div class="pub-card j-h">
-        <div class="pub-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
-        <p class="pub-title-text">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based ML Model</p>
-        <a class="pub-link" href="https://doi.org/10.1002/hsr2.70726" target="_blank">View paper →</a>
+      <div class="pub-row">
+        <div class="pub-row-num">2</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree‐Based Machine Learning Model</div>
+          <div class="pub-row-cite">Rahman, M.S., Amrin, M., Bokkor Shiddik, M.A. Health Science Reports, 8(5), e70726 (2025)</div>
+          <a class="pub-row-link" href="https://doi.org/10.1002/hsr2.70726" target="_blank">View paper →</a>
+        </div>
       </div>
-      <div class="pub-card j-e">
-        <div class="pub-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div>
-        <p class="pub-title-text">Explainable AI for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</p>
-        <a class="pub-link" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">View paper →</a>
+      <div class="pub-row">
+        <div class="pub-row-num">3</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</div>
+          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. Global Epidemiology, 100210 (2025)</div>
+          <a class="pub-row-link" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">View paper →</a>
+        </div>
       </div>
-      <div class="pub-card j-n">
-        <div class="pub-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
-        <p class="pub-title-text">Unraveling global malaria incidence and mortality using machine learning and AI-driven spatial analysis</p>
-        <a class="pub-link" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">View paper →</a>
+      <div class="pub-row">
+        <div class="pub-row-num">4</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">Unraveling global malaria incidence and mortality using machine learning and artificial intelligence–driven spatial analysis</div>
+          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. Scientific Reports, 15(1), 28334 (2025)</div>
+          <a class="pub-row-link" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">View paper →</a>
+        </div>
       </div>
-      <div class="pub-card j-s">
-        <div class="pub-meta"><span class="jb jb-s">Int. J. Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div>
-        <p class="pub-title-text">Leveraging explainable AI and spatial analysis for communicable diseases in Asia (2000–2022)</p>
-        <a class="pub-link" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">View paper →</a>
+      <div class="pub-row">
+        <div class="pub-row-num">5</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span></div>
+          <div class="pub-row-title">Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</div>
+          <div class="pub-row-cite">Rahman, S., Shiddik, A.B. Global Epidemiology, 100230 (2025)</div>
+          <a class="pub-row-link" href="#" target="_blank">View paper →</a>
+        </div>
       </div>
-      <div class="pub-card j-m">
-        <div class="pub-meta"><span class="jb jb-m">Trop. Med. &amp; Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div>
-        <p class="pub-title-text">District-Level Dengue Early Warning System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</p>
-        <a class="pub-link" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">View paper →</a>
+      <div class="pub-row">
+        <div class="pub-row-num">6</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-p">Int. J. Statistical Sciences</span><span class="yb">2025</span></div>
+          <div class="pub-row-title">Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</div>
+          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. International Journal of Statistical Sciences, 25(2), 101-113 (2025)</div>
+          <a class="pub-row-link" href="#" target="_blank">View paper →</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-row-num">7</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-s">Int. J. Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000–2022) based on health, climate, and socioeconomic factors</div>
+          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. International Journal of Health Geographics, 24(1), 45 (2025)</div>
+          <a class="pub-row-link" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">View paper →</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-row-num">8</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-h">BMJ Open</span><span class="yb">2026</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000–2022) in 41 Asian countries: a population-level observational study</div>
+          <div class="pub-row-cite">Rahman, S., Shiddik, A.B. BMJ Open, 16(2), e108632 (2026)</div>
+          <a class="pub-row-link" href="#" target="_blank">View paper →</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-row-num">9</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-m">Trop. Med. &amp; Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</div>
+          <div class="pub-row-cite">Shiddik, M.A.B., Toshi, F.Z., Yesmin, S., Rahman, M.S. Tropical Medicine and Infectious Disease, 11(3), 73 (2026)</div>
+          <a class="pub-row-link" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">View paper →</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-row-num">10</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-s">BMC Medicine</span><span class="yb">2026</span></div>
+          <div class="pub-row-title">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh: leveraging machine learning and spatial regression for intervention strategies</div>
+          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B., Chowdhury, A.H. BMC Medicine (2026)</div>
+          <a class="pub-row-link" href="#" target="_blank">View paper →</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-row-num">11</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">Global Prediction of Dengue Incidence Using an Explainable Artificial Intelligence‐Driven ConvLSTM Integrating Environmental, Health, and Socio‐Economic Determinants</div>
+          <div class="pub-row-cite">Shiddik, M.A.B. Health Science Reports, 9(4), e72280 (2026)</div>
+          <a class="pub-row-link" href="#" target="_blank">View paper →</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-row-num">12</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">Explainable Artificial Intelligence in Healthcare: Current Landscape, Challenges, and Future Directions</div>
+          <div class="pub-row-cite">Shiddik, M.A.B. Health Science Reports, 9(3), e72172 (2026)</div>
+          <a class="pub-row-link" href="#" target="_blank">View paper →</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-row-num">13</div>
+        <div class="pub-row-body">
+          <div class="pub-row-meta"><span class="jb jb-p">Public Health Challenges</span><span class="yb">2026</span><span class="oa">OA</span></div>
+          <div class="pub-row-title">Stillbirth, Neonatal, and Child Mortality in Bangladesh: Progress and Persistent Public Health Challenges</div>
+          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. Public Health Challenges, 5(3), e70312 (2026)</div>
+          <a class="pub-row-link" href="#" target="_blank">View paper →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -985,13 +1036,76 @@
   <!-- COURSES -->
   <div class="section" id="sec-courses">
     <div class="section-head"><h2>Recent Courses &amp; Training</h2><a href="courses.html" class="see-all">See all →</a></div>
-    <div class="course-grid">
-      <div class="course-card"><div class="cdot"></div><div><div class="cname">Gen AI in Research Workflow</div><div class="corg">Elsevier Researcher Academy · 2026</div></div></div>
-      <div class="course-card"><div class="cdot"></div><div><div class="cname">Technical Writing Skills</div><div class="corg">Elsevier Researcher Academy · 2026</div></div></div>
-      <div class="course-card"><div class="cdot"></div><div><div class="cname">Practical Time Series Analysis</div><div class="corg">State University of New York · 2025</div></div></div>
-      <div class="course-card"><div class="cdot"></div><div><div class="cname">Machine Learning with Python</div><div class="corg">IBM · 2024</div></div></div>
-      <div class="course-card"><div class="cdot"></div><div><div class="cname">Climate Risk Informed Decision Analysis</div><div class="corg">UNESCO · 2024</div></div></div>
-      <div class="course-card"><div class="cdot"></div><div><div class="cname">Data Visualization with R</div><div class="corg">IBM · 2024</div></div></div>
+    <div class="course-scroll">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">January – March 2026</div>
+          <div class="tl-card">
+            <div class="tl-name">Scientific &amp; Manuscript Writing Series</div>
+            <div class="tl-org">Researcher Academy, Elsevier</div>
+            <div class="tl-detail">6 modules: Gen AI use in the research workflow, interdisciplinary writing, case reports, identifying research gaps, LaTeX manuscripts, methods articles, review articles</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">15 March 2025</div>
+          <div class="tl-card">
+            <div class="tl-name">Practical Time Series Analysis</div>
+            <div class="tl-org">An online course by The State University of New York</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">10 September 2024</div>
+          <div class="tl-card">
+            <div class="tl-name">Introduction to Climate Risk Informed Decision Analysis (CRIDA)</div>
+            <div class="tl-org">A course of study offered by UNESCO</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">January – June 2024</div>
+          <div class="tl-card">
+            <div class="tl-name">Data Science &amp; Machine Learning Specialization</div>
+            <div class="tl-org">IBM</div>
+            <div class="tl-detail">6 courses: Machine Learning with Python, Data Visualization with R, Regression for Car Mileage/Diamond Price, R for Data Science, Data Science Methodology, What is Data Science</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">10 March 2024</div>
+          <div class="tl-card">
+            <div class="tl-name">Successful Presentation</div>
+            <div class="tl-org">An online course by University of Colorado Boulder</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">December 2023</div>
+          <div class="tl-card">
+            <div class="tl-name">Research Methodology Series</div>
+            <div class="tl-org">RSBRU / Queen Mary University of London / University of London</div>
+            <div class="tl-detail">4 courses: Interdisciplinary Research Methodology, Research Methodologies, Understanding Research Methods, Introduction to Computer Programming</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">24 December 2023</div>
+          <div class="tl-card">
+            <div class="tl-name">Introduction to Statistical Analysis: Hypothesis Testing</div>
+            <div class="tl-org">SAS</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">November 2023</div>
+          <div class="tl-card">
+            <div class="tl-name">UNICEF Training Series</div>
+            <div class="tl-org">UNICEF</div>
+            <div class="tl-detail">2 courses: Education in Emergencies, Leadership for Planning and Decision-Making with Adolescents</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">July – December 2016</div>
+          <div class="tl-card">
+            <div class="tl-name">Diploma in Computer Science</div>
+            <div class="tl-org">A six month training course by Bangladesh Computer Education (BCE)</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1045,15 +1159,21 @@
   </div>
   <div class="footer-bottom">
     <p>© 2026 Md. Abu Bokkor Shiddik · All rights reserved</p>
-    <p>abubokkor.brur60@gmail.com · +880 1874 001360</p>
+    <p><a href="contact.html">abubokkor.brur60@gmail.com · +880 1874 001360</a></p>
   </div>
 </footer>
 
-<!-- ═══ FLOATING MAIL BUTTON ═══ -->
-<a href="mailto:abubokkor.brur60@gmail.com" class="float-mail-btn" aria-label="Send an email">
-  📧
-  <span class="float-mail-tooltip">abubokkor.brur60@gmail.com</span>
-</a>
+<!-- ═══ FLOATING ACTION BUTTONS ═══ -->
+<div class="float-actions">
+  <a href="contact.html" class="float-contact-btn" aria-label="Go to contact page">
+    ✉
+    <span class="float-mail-tooltip">Contact page</span>
+  </a>
+  <a href="mailto:abubokkor.brur60@gmail.com" class="float-mail-btn" aria-label="Send an email">
+    📧
+    <span class="float-mail-tooltip">abubokkor.brur60@gmail.com</span>
+  </a>
+</div>
 
   
 <script>
@@ -1153,7 +1273,7 @@ var fadeObs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
 
 document.querySelectorAll(
-  '.interest-card,.skill-card,.pub-card,.project-card,.course-card,.service-item,.data-chip,.post-mini,.about-card'
+  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card'
 ).forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(18px)';
