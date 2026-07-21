@@ -10,6 +10,8 @@
   <title>Data &amp; Code Lab | Md. Abu Bokkor Shiddik</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://raw.githubusercontent.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -100,6 +102,8 @@
       margin-bottom: 28px;
       box-shadow: var(--shadow-sm);
       transition: box-shadow 0.2s;
+      content-visibility: auto;
+      contain-intrinsic-size: 500px;
     }
     .project-card:hover { box-shadow: var(--shadow); }
 
@@ -339,9 +343,9 @@
 <!-- COPY TOAST -->
 <div id="copy-toast">✓ Code copied to clipboard</div>
 
-<!-- REQUIRED LIBS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<!-- REQUIRED LIBS (deferred — only needed when a Download button is clicked, so they must not block page rendering) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" defer></script>
 
 <!-- PAGE BODY -->
 <div class="page-body">
@@ -640,23 +644,48 @@ var DOWNLOAD_FILES = {
 };
 
 /* ═══════════════════════════════
-   FETCH HELPER
+   FETCH HELPER — with in-memory cache + partial-range read
+   Tables/code only ever render a capped number of rows/lines, so
+   for the FIRST render we ask the server for just the first ~90KB
+   of the file (far fewer bytes than the full multi-MB original).
+   The full text is only fetched in the background for ZIP download.
 ═══════════════════════════════ */
-function safeFetch(url) {
-  return fetch(url)
+var fetchCache = {};       // url -> Promise<string full text>
+var partialCache = {};     // url -> Promise<string first-chunk text>
+
+function fetchFull(url) {
+  if (fetchCache[url]) return fetchCache[url];
+  fetchCache[url] = fetch(url)
     .then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .catch(function() { return null; });
+  return fetchCache[url];
+}
+
+function fetchPartial(url, maxBytes) {
+  if (partialCache[url]) return partialCache[url];
+  partialCache[url] = fetch(url, { headers: { 'Range': 'bytes=0-' + maxBytes } })
+    .then(function(r) {
+      if (!r.ok && r.status !== 206) throw new Error(r.status);
+      return r.text();
+    })
+    .then(function(text) {
+      /* if we got a partial chunk, drop the possibly-truncated last line */
+      var lastNL = text.lastIndexOf('\n');
+      return lastNL > 0 ? text.slice(0, lastNL) : text;
+    })
+    .catch(function() { return fetchFull(url); }); // fall back to a normal full fetch if Range isn't supported
+  return partialCache[url];
 }
 
 /* ═══════════════════════════════
-   LOAD CSV TABLE
+   LOAD CSV TABLE (fast partial read)
 ═══════════════════════════════ */
 function loadTable(url, tableId, rowCountId) {
   var el = document.getElementById(tableId);
   if (!el) return;
-  safeFetch(url).then(function(text) {
+  fetchPartial(url, 90000).then(function(text) {
     if (!text) { el.innerHTML = '<tr><td style="padding:16px;color:#64748b;">Data unavailable</td></tr>'; return; }
-    var rows = text.trim().split('\n').slice(0, 400);
+    var rows = text.trim().split('\n').slice(0, 300);
     var html = '';
     rows.forEach(function(row, i) {
       var cells = parseCSVRow(row);
@@ -669,7 +698,7 @@ function loadTable(url, tableId, rowCountId) {
     el.innerHTML = html;
     if (rowCountId) {
       var rc = document.getElementById(rowCountId);
-      if (rc) rc.textContent = (rows.length - 1) + ' rows · ' + (rows[0] ? parseCSVRow(rows[0]).length : 0) + ' columns';
+      if (rc) rc.textContent = 'showing first ' + (rows.length - 1) + ' rows · ' + (rows[0] ? parseCSVRow(rows[0]).length : 0) + ' columns';
     }
   });
 }
@@ -691,14 +720,14 @@ function esc(s) {
 }
 
 /* ═══════════════════════════════
-   LOAD CODE
+   LOAD CODE (fast partial read)
 ═══════════════════════════════ */
 function loadCode(url, codeId) {
   var el = document.getElementById(codeId);
   if (!el) return;
-  safeFetch(url).then(function(text) {
+  fetchPartial(url, 60000).then(function(text) {
     if (!text) { el.textContent = '# Code unavailable'; return; }
-    el.textContent = text.split('\n').slice(0, 800).join('\n');
+    el.textContent = text.split('\n').slice(0, 600).join('\n');
   });
 }
 
@@ -785,7 +814,7 @@ function lazyLoad(card, tab, panelId) {
 }
 
 /* ═══════════════════════════════
-   DOWNLOAD ZIP
+   DOWNLOAD ZIP — uses the full (non-partial) fetch, only triggered on click
 ═══════════════════════════════ */
 function downloadProject(projectKey) {
   var btn = document.getElementById('dl-' + projectKey);
@@ -794,7 +823,7 @@ function downloadProject(projectKey) {
   if (!files) return;
   var zip = new JSZip();
   var promises = files.map(function(f) {
-    return safeFetch(f.url).then(function(text) {
+    return fetchFull(f.url).then(function(text) {
       if (text) zip.file(f.name, text);
     });
   });
@@ -810,17 +839,38 @@ function downloadProject(projectKey) {
 }
 
 /* ═══════════════════════════════
-   INIT: LOAD DEFAULT VISIBLE TABS
+   INIT: LOAD DEFAULT VISIBLE TAB PER CARD
+   — only once that card actually scrolls near the viewport,
+   instead of firing all 4 heavy fetches the instant the page loads.
 ═══════════════════════════════ */
-document.addEventListener('DOMContentLoaded', function() {
-  /* pre-load the first active panel of each card */
-  [
-    ['dengue-dist', 'data-yearly', 'dengue-dist-data-yearly'],
-    ['dengue-ews',  'data',        'dengue-ews-data'],
-    ['tb',          'data',        'tb-data'],
-    ['malaria',     'data',        'malaria-data'],
-  ].forEach(function(item) { lazyLoad(item[0], item[1], item[2]); });
-});
+var DEFAULT_TABS = {
+  'card-dengue-dist': ['dengue-dist', 'data-yearly', 'dengue-dist-data-yearly'],
+  'card-dengue-ews':  ['dengue-ews',  'data',        'dengue-ews-data'],
+  'card-tb':          ['tb',          'data',        'tb-data'],
+  'card-malaria':     ['malaria',     'data',        'malaria-data']
+};
+
+if ('IntersectionObserver' in window) {
+  var cardObserver = new IntersectionObserver(function(entries, obs) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var def = DEFAULT_TABS[entry.target.id];
+      if (def) lazyLoad(def[0], def[1], def[2]);
+      obs.unobserve(entry.target);
+    });
+  }, { rootMargin: '400px 0px' });
+  document.addEventListener('DOMContentLoaded', function() {
+    Object.keys(DEFAULT_TABS).forEach(function(cardId) {
+      var el = document.getElementById(cardId);
+      if (el) cardObserver.observe(el);
+    });
+  });
+} else {
+  /* very old browsers: just load everything up front like before */
+  document.addEventListener('DOMContentLoaded', function() {
+    Object.values(DEFAULT_TABS).forEach(function(item) { lazyLoad(item[0], item[1], item[2]); });
+  });
+}
 
 /* ═══════════════════════════════
    NAVBAR
