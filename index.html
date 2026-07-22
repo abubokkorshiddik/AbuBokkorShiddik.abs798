@@ -165,7 +165,7 @@
 
     .hero-inner {
       max-width: 1200px; margin: auto; padding: 44px 32px 48px;
-      display: grid; grid-template-columns: 1fr 260px;
+      display: grid; grid-template-columns: minmax(0,1fr) 260px;
       gap: 48px; align-items: center; position: relative; z-index: 1;
     }
 
@@ -191,13 +191,12 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+      font-size: clamp(1.6rem, 2.6vw, 2.3rem);
       font-weight: 900;
       line-height: 1.1;
       letter-spacing: -.5px;
       color: #fff;
       margin-bottom: 10px;
-      white-space: nowrap;
     }
     .hero h1 .accent { color: var(--gold2); }
 
