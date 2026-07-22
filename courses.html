@@ -192,6 +192,46 @@
       .footer-inner{grid-template-columns:1fr;} .footer-bottom{flex-direction:column;text-align:center;}
       .page-hero{padding:40px 16px 36px;} .page-hero h1{font-size:1.65rem;}
     }
+ 
+  
+  .nav-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-logo-img{
+    display:flex;
+    align-items:center;
+}
+
+.brand-logo-img img{
+    width:34px;
+    height:34px;
+    object-fit:contain;
+    transition:transform .2s ease;
+}
+
+.brand-logo-img:hover img{
+    transform:scale(1.08);
+}
+
+.brand-logo-text{
+    color:#fff;
+    font-size:14.5px;
+    font-weight:600;
+    letter-spacing:.2px;
+    white-space:nowrap;
+}
+
+.brand-logo-text span{
+    color:#93c5fd;
+    font-weight:300;
+}
+
+.brand-logo-text:hover{
+    color:#93c5fd;
+}
   </style>
 </head>
 <body>
@@ -200,8 +240,17 @@
 <nav class="navbar">
   <div class="nav-bar-inner">
     <div class="nav-brand">
-      <a href="contact.html" style="color:white;">ABS<span> · </span>Abu Bokkor Shiddik</a>
-    </div>
+
+  <a href="home.html" class="brand-logo-img">
+    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"
+         alt="ABS Logo">
+  </a>
+
+  <a href="contact.html" class="brand-logo-text">
+    ABS<span> · </span>Abu Bokkor Shiddik
+  </a>
+
+</div>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
