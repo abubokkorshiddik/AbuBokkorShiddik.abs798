@@ -164,9 +164,9 @@
     }
 
     .hero-inner {
-      max-width: 1200px; margin: auto; padding: 72px 32px 80px;
-      display: grid; grid-template-columns: 1fr 340px;
-      gap: 64px; align-items: center; position: relative; z-index: 1;
+      max-width: 1200px; margin: auto; padding: 44px 32px 48px;
+      display: grid; grid-template-columns: 1fr 260px;
+      gap: 48px; align-items: center; position: relative; z-index: 1;
     }
 
     /* badge */
@@ -176,7 +176,7 @@
       border-radius: 30px; padding: 6px 16px 6px 10px;
       font-size: 11.5px; font-weight: 600; letter-spacing: .8px;
       text-transform: uppercase; color: var(--gold2);
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
     .badge-dot {
       width: 8px; height: 8px; background: var(--gold2); border-radius: 50%;
@@ -191,23 +191,24 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-size: clamp(1.7rem, 3.4vw, 2.6rem);
       font-weight: 900;
-      line-height: 1.08;
+      line-height: 1.1;
       letter-spacing: -.5px;
       color: #fff;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      white-space: nowrap;
     }
     .hero h1 .accent { color: var(--gold2); }
 
     .hero-tagline {
-      font-size: 15px; font-weight: 400;
+      font-size: 14px; font-weight: 400;
       color: rgba(255,255,255,.55);
-      margin-bottom: 6px; letter-spacing: .1px;
+      margin-bottom: 5px; letter-spacing: .1px;
     }
     .hero-affil {
-      font-size: 13px; color: rgba(255,255,255,.32);
-      margin-bottom: 28px;
+      font-size: 12.5px; color: rgba(255,255,255,.32);
+      margin-bottom: 20px;
       font-family: 'DM Mono', monospace; letter-spacing: .3px;
     }
 
@@ -216,8 +217,8 @@
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--blue); color: #fff;
-      padding: 13px 28px; border-radius: 10px;
-      font-size: 14px; font-weight: 600; font-family: inherit;
+      padding: 11px 24px; border-radius: 10px;
+      font-size: 13.5px; font-weight: 600; font-family: inherit;
       border: none; cursor: pointer;
       transition: background .2s, transform .15s, box-shadow .2s;
       box-shadow: 0 4px 16px rgba(37,99,235,.35);
@@ -226,44 +227,17 @@
     .btn-outline {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(255,255,255,.04); color: rgba(255,255,255,.85);
-      padding: 13px 28px; border-radius: 10px;
-      font-size: 14px; font-weight: 600;
+      padding: 11px 24px; border-radius: 10px;
+      font-size: 13.5px; font-weight: 600;
       border: 1px solid rgba(255,255,255,.2);
       transition: background .2s, border-color .2s, color .2s, transform .15s;
     }
     .btn-outline:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.4); color: #fff; transform: translateY(-2px); }
 
-    /* stats row */
-    .hero-stats { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.08); }
-    .stat-box {
-      display: flex; flex-direction: column;
-      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
-      border-radius: 12px; padding: 14px 20px; min-width: 100px;
-      transition: background .2s, border-color .2s;
-    }
-    .stat-box:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 5px; }
-    .stat-lbl { font-size: 10.5px; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: .8px; font-weight: 500; }
-
-    /* publisher strip */
-    .pub-strip {
-      margin-top: 28px; padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,.07);
-      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    }
-    .pub-strip-lbl { font-size: 10.5px; color: rgba(255,255,255,.25); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
-    .pchip {
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 6px; padding: 4px 12px;
-      font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,.55);
-      white-space: nowrap; transition: background .2s;
-    }
-    .pchip:hover { background: rgba(255,255,255,.1); }
-
     /* photo card */
     .hero-photo-col { display: flex; flex-direction: column; align-items: center; gap: 0; }
     .photo-frame {
-      position: relative; width: 280px;
+      position: relative; width: 220px;
     }
     .photo-frame::before {
       content: '';
@@ -578,19 +552,33 @@
 
     /* ══ RESPONSIVE ══ */
     @media (max-width: 1100px) {
-      .hero-inner { grid-template-columns: 1fr 280px; gap: 48px; }
-      .photo-frame { width: 240px; }
+      .hero-inner { grid-template-columns: 1fr 220px; gap: 36px; }
+      .photo-frame { width: 190px; }
       .project-grid { grid-template-columns: repeat(2,1fr); }
       .data-strip { grid-template-columns: repeat(2,1fr); }
       .posts-strip { grid-template-columns: repeat(2,1fr); }
       .footer-inner { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 820px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 52px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 28px; padding: 36px 24px 40px; }
       .hero-photo-col { order: -1; }
-      .photo-frame { width: 180px; }
+      .photo-frame { width: 140px; }
+      .hero h1 { white-space: normal; }
     }
     @media (max-width: 640px) {
+      .hero h1 { font-size: clamp(1.5rem, 7vw, 2rem); }
+      .hero-tagline { font-size: 12.5px; }
+      .hero-affil { font-size: 11px; }
+      .btn-primary, .btn-outline { font-size: 12px; padding: 10px 18px; }
+      .hero-badge { font-size: 10px; }
+      body { font-size: 13.5px; }
+      .section-head h2 { font-size: 1.15rem; }
+      .about-card p { font-size: 13.5px; }
+      .i-label { font-size: 12px; }
+      .tag { font-size: 11px; }
+      .pub-row-title { font-size: 12.5px; }
+      .pub-row-cite { font-size: 11px; }
+      .p-desc, .dc-sub, .tl-org, .tl-detail { font-size: 11.5px; }
       .project-grid { grid-template-columns: 1fr; }
       .data-strip { grid-template-columns: repeat(2,1fr); }
       .posts-strip { grid-template-columns: 1fr; }
@@ -782,7 +770,7 @@
         <span class="badge-dot"></span>
         Available for Collaboration · 2026
       </div>
-      <h1>Md. Abu <span class="accent">Bokkor</span><br>Shiddik</h1>
+      <h1>Md. Abu <span class="accent">Bokkor</span> Shiddik</h1>
       <p class="hero-tagline">Researcher · Machine Learning · Explainable AI · Global Health Analytics</p>
       <p class="hero-affil">Dept. of Statistics, BRUR · Rangpur, Bangladesh</p>
 
@@ -790,23 +778,6 @@
         <a class="btn-primary" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/140726CV_AbuBokkorShiddik.pdf" target="_blank">↓ Download CV</a>
         <a class="btn-outline" href="publications.html">View Publications →</a>
         <a class="btn-outline" href="contact.html">✉ Contact</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat-box"><div class="stat-num">Multiple</div><div class="stat-lbl">Publications</div></div>
-        <div class="stat-box"><div class="stat-num" data-val="26" data-suffix="">26</div><div class="stat-lbl">Peer Reviews</div></div>
-        <div class="stat-box"><div class="stat-num" data-val="26" data-suffix="">26</div><div class="stat-lbl">Certifications</div></div>
-        <div class="stat-box"><div class="stat-num" data-val="8" data-suffix="">8</div><div class="stat-lbl">Institutions</div></div>
-      </div>
-
-      <div class="pub-strip">
-        <span class="pub-strip-lbl">Published in</span>
-        <span class="pchip">Nature / Scientific Reports</span>
-        <span class="pchip">BMJ Open</span>
-        <span class="pchip">Springer</span>
-        <span class="pchip">Elsevier</span>
-        <span class="pchip">MDPI</span>
-        <span class="pchip">Wiley</span>
       </div>
     </div>
 
@@ -1256,32 +1227,6 @@ window.addEventListener('scroll', function() {
     });
   });
 }, { passive: true });
-
-/* ── STAT COUNT-UP ── */
-var statsAnimated = false;
-function animateStats() {
-  if (statsAnimated) return;
-  var statsEl = document.querySelector('.hero-stats');
-  if (!statsEl) return;
-  if (statsEl.getBoundingClientRect().top < window.innerHeight) {
-    statsAnimated = true;
-    document.querySelectorAll('.stat-num[data-val]').forEach(function(el) {
-      var val    = parseInt(el.dataset.val) || 0;
-      var suffix = el.dataset.suffix || '';
-      var dur = 1200; var t0 = null;
-      function step(ts) {
-        if (!t0) t0 = ts;
-        var p    = Math.min((ts - t0) / dur, 1);
-        var ease = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(ease * val) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    });
-  }
-}
-window.addEventListener('scroll', animateStats, { passive: true });
-animateStats();
 
 /* ── SCROLL-IN FADE ── */
 var fadeObs = new IntersectionObserver(function(entries) {
