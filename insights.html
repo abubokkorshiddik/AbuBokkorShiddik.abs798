@@ -207,6 +207,46 @@
       .card-body{padding:14px 16px}.card-footer{padding:8px 16px}
       .post-full{padding:16px 16px 20px}
     }
+  
+  .nav-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-logo-img{
+    display:flex;
+    align-items:center;
+}
+
+.brand-logo-img img{
+    width:34px;
+    height:34px;
+    object-fit:contain;
+    transition:transform .2s ease;
+}
+
+.brand-logo-img:hover img{
+    transform:scale(1.08);
+}
+
+.brand-logo-text{
+    color:#fff;
+    font-size:14.5px;
+    font-weight:600;
+    letter-spacing:.2px;
+    white-space:nowrap;
+}
+
+.brand-logo-text span{
+    color:#93c5fd;
+    font-weight:300;
+}
+
+.brand-logo-text:hover{
+    color:#93c5fd;
+}
+  
   </style>
 </head>
 <body>
@@ -214,9 +254,18 @@
 <!-- ═══ NAVBAR ═══ -->
 <nav class="navbar">
   <div class="nav-bar-inner">
-    <div class="nav-brand">
-      <a href="contact.html" style="color:white;">ABS<span> · </span>Abu Bokkor Shiddik</a>
-    </div>
+   <div class="nav-brand">
+
+  <a href="home.html" class="brand-logo-img">
+    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"
+         alt="ABS Logo">
+  </a>
+
+  <a href="contact.html" class="brand-logo-text">
+    ABS<span> · </span>Abu Bokkor Shiddik
+  </a>
+
+</div>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
