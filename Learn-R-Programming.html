@@ -208,19 +208,61 @@ footer{background:#0b1f3a;color:rgba(255,255,255,.5);padding:44px 24px 32px;}
   font-size: 14.5px;
   font-weight: 600;
 }
+.nav-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
 
+.brand-logo-img{
+    display:flex;
+    align-items:center;
+}
+
+.brand-logo-img img{
+    width:34px;
+    height:34px;
+    object-fit:contain;
+    transition:transform .2s ease;
+}
+
+.brand-logo-img:hover img{
+    transform:scale(1.08);
+}
+
+.brand-logo-text{
+    color:#fff;
+    font-size:14.5px;
+    font-weight:600;
+    letter-spacing:.2px;
+    white-space:nowrap;
+}
+
+.brand-logo-text span{
+    color:#93c5fd;
+    font-weight:300;
+}
+
+.brand-logo-text:hover{
+    color:#93c5fd;
+}
 </style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="nav-bar-inner">
-    <div class="nav-brand">
-  <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/" class="brand-logo">
-    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png" 
+   <div class="nav-brand">
+
+  <a href="home.html" class="brand-logo-img">
+    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"
          alt="ABS Logo">
-    <span>ABS · Abu Bokkor Shiddik</span>
   </a>
+
+  <a href="contact.html" class="brand-logo-text">
+    ABS<span> · </span>Abu Bokkor Shiddik
+  </a>
+
 </div>
     <div class="nav-links">
       <a href="home.html">Home</a>
