@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Md. Abu Bokkor Shiddik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #060f1e;
+      --blue: #2563eb;
+      --blue-h: #1d4ed8;
+      --teal: #0d9488;
+      --text: #0f172a;
+      --text3: #64748b;
+      --border: #e2e8f0;
+      --bg: #f1f5f9;
+      --white: #ffffff;
+    }
+    body {
+      font-family: 'Sora', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .navbar {
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: sticky; top: 0; z-index: 999;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 58px;
+    }
+    .brand-logo { display: flex; align-items: center; gap: 8px; color: #fff; }
+    .brand-logo img { width: 30px; height: 30px; object-fit: contain; }
+    .brand-logo span { font-size: 14px; font-weight: 600; }
+    .back-link {
+      color: rgba(255,255,255,.7); font-size: 13px; font-weight: 500;
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,.15);
+      transition: background .15s, color .15s;
+    }
+    .back-link:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+    .cv-header {
+      max-width: 1100px; margin: 0 auto; padding: 28px 24px 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .cv-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; }
+    .cv-sub { font-size: 13px; color: var(--text3); margin-top: 4px; }
+    .cv-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 10px 18px; border-radius: 9px; font-size: 13px; font-weight: 600;
+      transition: background .2s, transform .15s, box-shadow .2s; cursor: pointer;
+    }
+    .btn-fill { background: var(--blue); color: #fff; border: none; box-shadow: 0 4px 14px rgba(37,99,235,.3); }
+    .btn-fill:hover { background: var(--blue-h); transform: translateY(-1px); }
+    .btn-line { background: var(--white); color: var(--text); border: 1px solid var(--border); }
+    .btn-line:hover { border-color: var(--blue); color: var(--blue); }
+
+    .cv-wrap {
+      flex: 1;
+      max-width: 1100px; width: 100%; margin: 0 auto;
+      padding: 0 24px 32px;
+    }
+    .cv-frame-box {
+      background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+      overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.08);
+      height: 82vh; min-height: 480px; position: relative;
+    }
+    .cv-frame-box iframe {
+      width: 100%; height: 100%; border: none; display: block;
+    }
+    .cv-loading {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 10px; color: var(--text3); font-size: 13px;
+      background: var(--white);
+    }
+    .spinner {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 3px solid var(--border); border-top-color: var(--blue);
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .cv-fallback {
+      margin-top: 14px; font-size: 12.5px; color: var(--text3); text-align: center;
+    }
+    .cv-fallback a { color: var(--blue); font-weight: 600; }
+
+    @media (max-width: 640px) {
+      .cv-header { padding: 20px 18px 14px; }
+      .cv-wrap { padding: 0 18px 24px; }
+      .cv-title { font-size: 1.2rem; }
+      .cv-frame-box { height: 74vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="home.html" class="brand-logo">
+        <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png" alt="ABS Logo">
+        <span>ABS · Abu Bokkor Shiddik</span>
+      </a>
+      <a href="home.html" class="back-link">&larr; Back to Portfolio</a>
+    </div>
+  </nav>
+
+  <div class="cv-header">
+    <div>
+      <div class="cv-title">Curriculum Vitae</div>
+      <div class="cv-sub">Md. Abu Bokkor Shiddik · Dept. of Statistics, BRUR</div>
+    </div>
+    <div class="cv-actions">
+      <a class="btn btn-line" id="openTabBtn" href="https://docs.google.com/viewer?url=https%3A%2F%2Fraw.githubusercontent.com%2Fabubokkorshiddik%2FAbuBokkorShiddik.abs798%2Fmain%2F140726CV_AbuBokkorShiddik.pdf&embedded=true" target="_blank" rel="noopener">&#8599; Open in New Tab</a>
+      <a class="btn btn-fill" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/140726CV_AbuBokkorShiddik.pdf" download>&#8595; Download PDF</a>
+    </div>
+  </div>
+
+  <div class="cv-wrap">
+    <div class="cv-frame-box">
+      <div class="cv-loading" id="cvLoading">
+        <div class="spinner"></div>
+        <span>Loading CV…</span>
+      </div>
+      <iframe
+        id="cvFrame"
+        src="https://docs.google.com/viewer?url=https%3A%2F%2Fraw.githubusercontent.com%2Fabubokkorshiddik%2FAbuBokkorShiddik.abs798%2Fmain%2F140726CV_AbuBokkorShiddik.pdf&embedded=true"
+        title="Md. Abu Bokkor Shiddik CV">
+      </iframe>
+    </div>
+    <p class="cv-fallback">Trouble viewing? <a href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/140726CV_AbuBokkorShiddik.pdf" target="_blank" rel="noopener">Open the raw PDF file</a> instead.</p>
+  </div>
+
+  <script>
+    var frame = document.getElementById('cvFrame');
+    var loading = document.getElementById('cvLoading');
+    frame.addEventListener('load', function () {
+      loading.style.display = 'none';
+    });
+    // Safety timeout in case the load event doesn't fire as expected
+    setTimeout(function () { loading.style.display = 'none'; }, 6000);
+  </script>
+
+</body>
+</html>
