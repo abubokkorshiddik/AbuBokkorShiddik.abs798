@@ -165,13 +165,63 @@ a{color:inherit;text-decoration:none}
 .footer-bottom p{font-size:12px}
 @media(max-width:600px){.game-grid{grid-template-columns:repeat(2,1fr);gap:10px}.footer-inner{grid-template-columns:1fr}.hub-hero{padding:28px 14px 24px}}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr}}
+ 
+  .nav-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-logo-img{
+    display:flex;
+    align-items:center;
+}
+
+.brand-logo-img img{
+    width:34px;
+    height:34px;
+    object-fit:contain;
+    transition:transform .2s ease;
+}
+
+.brand-logo-img:hover img{
+    transform:scale(1.08);
+}
+
+.brand-logo-text{
+    color:#fff;
+    font-size:14.5px;
+    font-weight:600;
+    letter-spacing:.2px;
+    white-space:nowrap;
+}
+
+.brand-logo-text span{
+    color:#93c5fd;
+    font-weight:300;
+}
+
+.brand-logo-text:hover{
+    color:#93c5fd;
+}
   </style>
 </head>
 <body>
 <div id="stars"></div><div class="scanlines"></div>
 <nav class="site-navbar" id="siteNav">
   <div class="nav-inner">
-    <div class="nav-brand">ABS<span> · </span>Abu Bokkor Shiddik</div>
+    <div class="nav-brand">
+
+  <a href="home.html" class="brand-logo-img">
+    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"
+         alt="ABS Logo">
+  </a>
+
+  <a href="contact.html" class="brand-logo-text">
+    ABS<span> · </span>Abu Bokkor Shiddik
+  </a>
+
+</div>
     <div class="nav-links">
       <a href="home.html">Home</a><a href="publications.html">Publications</a><a href="service.html">Service</a>
       <div class="dropdown"><button class="dropbtn">Digital Lab ▾</button><div class="dropdown-content"><a href="projects.html">⚗ Projects</a><a href="data-code.html">💾 Data &amp; Code</a><a href="game.html">🎮 Games</a></div></div>
