@@ -466,6 +466,49 @@
     }
     .pm-date { font-size: 11.5px; color: var(--text3); }
 
+    /* ══ GALLERY (from Photos & Archive) ══ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--r);
+      overflow: hidden;
+      box-shadow: var(--sh);
+      aspect-ratio: 1;
+      display: block;
+      background: #e2e8f0;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .gallery-item:hover { box-shadow: var(--sh2); transform: translateY(-3px); }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-overlay {
+      position: absolute; inset: auto 0 0 0;
+      background: linear-gradient(to top, rgba(6,15,30,.85) 0%, rgba(6,15,30,.35) 55%, transparent 100%);
+      color: #fff; padding: 20px 10px 8px;
+    }
+    .gallery-cat {
+      font-size: 9.5px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .6px; color: var(--gold2); display: block; margin-bottom: 2px;
+    }
+    .gallery-label { font-size: 11.5px; font-weight: 600; line-height: 1.35; }
+    .gallery-viewall {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; border: 1.5px dashed var(--border2); background: var(--bg2);
+      color: var(--blue); font-size: 12.5px; font-weight: 700; text-align: center;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .gallery-viewall:hover { border-color: var(--blue); background: var(--sky); transform: translateY(-3px); }
+    .gallery-viewall .gv-icon { font-size: 22px; }
+    @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px)  { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+
     /* ══ COURSES (TIMELINE) ══ */
     .course-scroll {
       max-height: 480px; overflow-y: auto; padding-right: 6px;
@@ -843,6 +886,7 @@
     <button class="jump-btn" data-target="sec-data">💾 Data &amp; Code</button>
     <button class="jump-btn" data-target="sec-projects">⚗ Projects</button>
     <button class="jump-btn" data-target="sec-insights">✍ Insights</button>
+    <button class="jump-btn" data-target="sec-gallery">📷 Gallery</button>
     <button class="jump-btn" data-target="sec-courses">🎓 Courses</button>
     <button class="jump-btn" data-target="sec-service">🔖 Service</button>
   </div>
@@ -1070,6 +1114,53 @@
     </div>
   </div>
 
+  <!-- PHOTO GALLERY -->
+  <div class="section" id="sec-gallery">
+    <div class="section-head"><h2>Photos &amp; Archive</h2><a href="archive.html" class="see-all">View all photos →</a></div>
+    <div class="gallery-grid">
+      <a href="archive.html#art" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Ff58caf27-92bb-40c7-a70c-789c85ff52ac&amp;w=320&amp;q=70&amp;output=webp" alt="Art collection" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Art &amp; Drawing</span><span class="gallery-label">My artworks</span></div>
+      </a>
+      <a href="archive.html#art" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2F60693bef-d734-433e-9263-d12fd69d1a15&amp;w=320&amp;q=70&amp;output=webp" alt="Old palace in forest" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Art &amp; Drawing</span><span class="gallery-label">Old palace in a forest</span></div>
+      </a>
+      <a href="archive.html#art" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Faed1c361-fa5d-4a42-85e2-6996f45d9144&amp;w=320&amp;q=70&amp;output=webp" alt="Old castle by the sea" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Art &amp; Drawing</span><span class="gallery-label">Castle by the sea</span></div>
+      </a>
+      <a href="archive.html#art" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fadd32bb6-feb8-42b7-90d1-e7cc85420b6b&amp;w=320&amp;q=70&amp;output=webp" alt="London street drawing" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Art &amp; Drawing</span><span class="gallery-label">London street</span></div>
+      </a>
+      <a href="archive.html#conference" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fa018d3b2-c0d4-4ad9-bf37-0830107b3e78&amp;w=320&amp;q=70&amp;output=webp" alt="ICASDS 2025 group photo" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">ICASDS 2025</span><span class="gallery-label">Conference at Dhaka University</span></div>
+      </a>
+      <a href="archive.html#academic" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2F7f6bdf1c-4424-4a75-98a7-4a4f0914644f&amp;w=320&amp;q=70&amp;output=webp" alt="Research workshop" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Academic</span><span class="gallery-label">Research workshop</span></div>
+      </a>
+      <a href="archive.html#social" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fa8f66ac1-c242-41a8-a209-961fda9dcd9e&amp;w=320&amp;q=70&amp;output=webp" alt="Volunteering during flood relief" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Volunteering</span><span class="gallery-label">Flood relief efforts</span></div>
+      </a>
+      <a href="archive.html#stat" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Ff2ff218d-4f7b-4ec9-a1a9-dbf797734a51&amp;w=320&amp;q=70&amp;output=webp" alt="Dept. of Statistics BRUR" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Dept. of Statistics</span><span class="gallery-label">BRUR memories</span></div>
+      </a>
+      <a href="archive.html#travel" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Ffe721e9b-b87c-4330-9d05-257eba86a648&amp;w=320&amp;q=70&amp;output=webp" alt="Lalbagh Fort" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Travel</span><span class="gallery-label">Lalbagh Fort</span></div>
+      </a>
+      <a href="archive.html" class="gallery-item gallery-viewall">
+        <span class="gv-icon">📷</span>
+        <span>View All Photos</span>
+      </a>
+    </div>
+  </div>
+
   <!-- COURSES -->
   <div class="section" id="sec-courses">
     <div class="section-head"><h2>Recent Courses &amp; Training</h2><a href="courses.html" class="see-all">See all →</a></div>
@@ -1252,7 +1343,7 @@ document.querySelectorAll('.jump-btn').forEach(function(btn) {
   });
 });
 
-var sectionIds = ['sec-about','sec-interests','sec-skills','sec-publications','sec-data','sec-projects','sec-insights','sec-courses','sec-service'];
+var sectionIds = ['sec-about','sec-interests','sec-skills','sec-publications','sec-data','sec-projects','sec-insights','sec-gallery','sec-courses','sec-service'];
 var scrollRaf = null;
 window.addEventListener('scroll', function() {
   if (scrollRaf) return;
@@ -1284,7 +1375,7 @@ var fadeObs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
 
 document.querySelectorAll(
-  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card'
+  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card,.gallery-item'
 ).forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(18px)';
