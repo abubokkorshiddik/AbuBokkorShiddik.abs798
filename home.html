@@ -307,6 +307,7 @@
       background: linear-gradient(90deg, var(--blue), var(--teal));
       border-radius: 2px;
     }
+    .section-desc { font-size: 13.5px; color: var(--text3); margin: -14px 0 22px; max-width: 640px; line-height: 1.65; }
     .see-all {
       font-size: 13px; font-weight: 600; color: var(--blue);
       display: flex; align-items: center; gap: 4px;
@@ -509,48 +510,24 @@
     @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 640px)  { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 
-    /* ══ ACADEMIC CONTENT & OUTREACH ══ */
-    .outreach-grid { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; }
-    .outreach-fb {
+    /* ══ ACADEMIC CONTENT & OUTREACH (simple links) ══ */
+    .learn-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .learn-link-card {
+      display: flex; align-items: center; gap: 12px;
       background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
-      padding: 18px; box-shadow: var(--sh);
+      padding: 14px 16px; box-shadow: var(--sh);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
     }
-    .outreach-fb-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-    .outreach-fb-icon {
-      width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0;
-      background: linear-gradient(135deg, #1877f2, #0e5fce);
-      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    .learn-link-card:hover { box-shadow: var(--sh2); transform: translateY(-2px); border-color: var(--border2); }
+    .learn-link-icon {
+      width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 17px;
     }
-    .outreach-fb-title { font-size: 13.5px; font-weight: 700; color: var(--text); }
-    .outreach-fb-sub { font-size: 11.5px; color: var(--text3); }
-    .outreach-fb iframe { border-radius: 8px; display: block; }
-    .outreach-fb-link { display: block; margin-top: 12px; font-size: 12.5px; font-weight: 600; color: var(--blue); text-align: center; }
-    .outreach-fb-link:hover { text-decoration: underline; }
-    .outreach-vids { display: flex; flex-direction: column; gap: 16px; }
-    .outreach-vids .vid-card {
-      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
-      overflow: hidden; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s;
-      position: relative;
-    }
-    .outreach-vids .vid-card:hover { box-shadow: var(--sh2); transform: translateY(-2px); }
-    .outreach-vids .vid-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 1; }
-    .outreach-vids .vid-card.python::before { background: linear-gradient(90deg, #3b82f6, #6366f1); }
-    .outreach-vids .vid-card.r-prog::before { background: linear-gradient(90deg, #059669, #0d9488); }
-    .outreach-vids .vid-embed { position: relative; width: 100%; height: 460px; background: #0b1220; }
-    .outreach-vids .vid-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; display: block; }
-    .outreach-vids .vid-body { padding: 14px 18px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-    .outreach-vids .vid-head { min-width: 0; }
-    .outreach-vids .vid-category { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 5px; }
-    .outreach-vids .cat-python { color: #3b82f6; }
-    .outreach-vids .cat-r { color: #059669; }
-    .outreach-vids .vid-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; line-height: 1.4; }
-    .outreach-vids .vid-desc { font-size: 12px; color: var(--text3); line-height: 1.5; }
-    .outreach-vids .vid-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; border: 1px solid; white-space: nowrap; flex-shrink: 0; }
-    .outreach-vids .tag-python { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
-    .outreach-vids .tag-r { background: #ecfdf5; color: #065f46; border-color: #6ee7b7; }
-    @media (max-width: 900px) { .outreach-grid { grid-template-columns: 1fr; } .outreach-fb { max-width: 400px; margin: 0 auto; } }
-    @media (max-width: 640px) { .outreach-vids .vid-embed { height: 340px; } }
-    @media (max-width: 420px) { .outreach-vids .vid-embed { height: 280px; } }
+    .learn-link-card.python .learn-link-icon { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+    .learn-link-card.r-prog .learn-link-icon { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+    .learn-link-title { font-size: 13.5px; font-weight: 700; color: var(--text); }
+    .learn-link-sub { font-size: 11.5px; color: var(--text3); }
+    @media (max-width: 500px) { .learn-links { grid-template-columns: 1fr; } }
 
     /* ══ COURSES (TIMELINE) ══ */
     .course-scroll {
@@ -925,14 +902,14 @@
     <button class="jump-btn active" data-target="sec-about">👤 About</button>
     <button class="jump-btn" data-target="sec-interests">🔬 Interests</button>
     <button class="jump-btn" data-target="sec-skills">⚙ Skills</button>
+    <button class="jump-btn" data-target="sec-courses">🎓 Courses</button>
     <button class="jump-btn" data-target="sec-publications">📄 Publications</button>
+    <button class="jump-btn" data-target="sec-service">🔖 Service</button>
+    <button class="jump-btn" data-target="sec-outreach">📘 Outreach</button>
     <button class="jump-btn" data-target="sec-data">💾 Data &amp; Code</button>
     <button class="jump-btn" data-target="sec-projects">⚗ Projects</button>
     <button class="jump-btn" data-target="sec-insights">✍ Insights</button>
     <button class="jump-btn" data-target="sec-gallery">📷 Gallery</button>
-    <button class="jump-btn" data-target="sec-outreach">📘 Outreach</button>
-    <button class="jump-btn" data-target="sec-courses">🎓 Courses</button>
-    <button class="jump-btn" data-target="sec-service">🔖 Service</button>
   </div>
 </div>
 
@@ -948,6 +925,7 @@
     </div>
   </div>
 
+
   <!-- INTERESTS -->
   <div class="section" id="sec-interests">
     <div class="section-head"><h2>Research Interests</h2></div>
@@ -960,6 +938,7 @@
       <div class="interest-card"><div class="i-icon">🌡</div><div class="i-label">Climate &amp; Health</div></div>
     </div>
   </div>
+
 
   <!-- SKILLS -->
   <div class="section" id="sec-skills">
@@ -983,6 +962,98 @@
       </div>
     </div>
   </div>
+
+
+  <!-- COURSES -->
+  <div class="section" id="sec-courses">
+    <div class="section-head"><h2>Recent Courses &amp; Training</h2><a href="courses.html" class="see-all">See all →</a></div>
+    <div class="course-scroll">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">January – March 2026</div>
+          <div class="tl-card">
+            <div class="tl-name">Scientific &amp; Manuscript Writing Series</div>
+            <div class="tl-org">Researcher Academy, Elsevier</div>
+            <div class="tl-detail">6 modules: Gen AI use in the research workflow, interdisciplinary writing, case reports, identifying research gaps, LaTeX manuscripts, methods articles, review articles</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">15 March 2025</div>
+          <div class="tl-card">
+            <div class="tl-name">Practical Time Series Analysis</div>
+            <div class="tl-org">An online course by The State University of New York</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">10 September 2024</div>
+          <div class="tl-card">
+            <div class="tl-name">Introduction to Climate Risk Informed Decision Analysis (CRIDA)</div>
+            <div class="tl-org">A course of study offered by UNESCO</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">January – June 2024</div>
+          <div class="tl-card">
+            <div class="tl-name">Data Science &amp; Machine Learning Specialization</div>
+            <div class="tl-org">IBM</div>
+            <div class="tl-detail">6 courses: Machine Learning with Python, Data Visualization with R, Regression for Car Mileage/Diamond Price, R for Data Science, Data Science Methodology, What is Data Science</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">10 March 2024</div>
+          <div class="tl-card">
+            <div class="tl-name">Successful Presentation</div>
+            <div class="tl-org">An online course by University of Colorado Boulder</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">December 2023</div>
+          <div class="tl-card">
+            <div class="tl-name">Research Methodology Series</div>
+            <div class="tl-org">RSBRU / Queen Mary University of London / University of London</div>
+            <div class="tl-detail">4 courses: Interdisciplinary Research Methodology, Research Methodologies, Understanding Research Methods, Introduction to Computer Programming</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">24 December 2023</div>
+          <div class="tl-card">
+            <div class="tl-name">Introduction to Statistical Analysis: Hypothesis Testing</div>
+            <div class="tl-org">SAS</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">November 2023</div>
+          <div class="tl-card">
+            <div class="tl-name">UNICEF Training Series</div>
+            <div class="tl-org">UNICEF</div>
+            <div class="tl-detail">2 courses: Education in Emergencies, Leadership for Planning and Decision-Making with Adolescents</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">July – December 2016</div>
+          <div class="tl-card">
+            <div class="tl-name">Diploma in Computer Science</div>
+            <div class="tl-org">A six month training course by Bangladesh Computer Education (BCE)</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Bachelor's Degree</div>
+          <div class="tl-card">
+            <div class="tl-name">Bachelor of Science in Statistics</div>
+            <div class="tl-org">Begum Rokeya University, Rangpur, Bangladesh</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2019</div>
+          <div class="tl-card">
+            <div class="tl-name">Higher Secondary Certificate (Science)</div>
+            <div class="tl-org">Police Lines School and College, Rangpur, Bangladesh</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </div>
 
@@ -1115,8 +1186,47 @@
   </div>
 </section>
 
+
 <!-- ═══ REST ═══ -->
 <div class="page-body">
+
+  <!-- SERVICE -->
+  <div class="section" id="sec-service">
+    <div class="section-head"><h2>Academic Service</h2><a href="service.html" class="see-all">See all →</a></div>
+    <div class="service-list">
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">PLOS Digital Health</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Global Health</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Public Health</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Global Public Health</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Health Science Reports</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Technology and Health Care</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Spatial and Spatio-temporal Epidemiology</span></div>
+      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Journal of Mathematics and Statistics</span></div>
+    </div>
+  </div>
+
+
+  <!-- ACADEMIC CONTENT & OUTREACH -->
+  <div class="section" id="sec-outreach">
+    <div class="section-head"><h2>Academic Content &amp; Outreach</h2></div>
+    <p class="section-desc">Hands-on programming notes and practice exercises to complement the research.</p>
+    <div class="learn-links">
+      <a class="learn-link-card python" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/Python-programming.html">
+        <span class="learn-link-icon">🐍</span>
+        <div>
+          <div class="learn-link-title">Learn Python Programming</div>
+          <div class="learn-link-sub">Notes &amp; practice exercises</div>
+        </div>
+      </a>
+      <a class="learn-link-card r-prog" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/R-programming.html">
+        <span class="learn-link-icon">📊</span>
+        <div>
+          <div class="learn-link-title">Learn R Programming</div>
+          <div class="learn-link-sub">Notes &amp; practice exercises</div>
+        </div>
+      </a>
+    </div>
+  </div>
 
   <!-- DATA LAB -->
   <div class="section" id="sec-data">
@@ -1129,6 +1239,7 @@
     </div>
   </div>
 
+
   <!-- PROJECTS -->
   <div class="section" id="sec-projects">
     <div class="section-head"><h2>Projects</h2><a href="projects.html" class="see-all">See all →</a></div>
@@ -1138,6 +1249,7 @@
       <div class="project-card"><div class="p-icon">📦</div><div class="p-name">R Package</div><div class="p-desc">Open-source R package for epidemiological time-series modeling, SHAP analysis, and visualization.</div></div>
     </div>
   </div>
+
 
   <!-- LATEST INSIGHTS -->
   <div class="section" id="sec-insights">
@@ -1157,6 +1269,7 @@
       </a>
     </div>
   </div>
+
 
   <!-- PHOTO GALLERY -->
   <div class="section" id="sec-gallery">
@@ -1201,147 +1314,7 @@
     </div>
   </div>
 
-  <!-- ACADEMIC CONTENT & OUTREACH -->
-  <div class="section" id="sec-outreach">
-    <div class="section-head"><h2>Academic Content &amp; Outreach</h2><a href="videos.html" class="see-all">View all videos →</a></div>
-    <div class="outreach-grid">
-      <div class="outreach-fb">
-        <div class="outreach-fb-head">
-          <span class="outreach-fb-icon">📘</span>
-          <div>
-            <div class="outreach-fb-title">Analytical Byte Scripts</div>
-            <div class="outreach-fb-sub">Facebook Page</div>
-          </div>
-        </div>
-        <iframe
-          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAnalyticalByteScripts.abs798&tabs=timeline&width=340&height=420&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
-          width="100%" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-          allowfullscreen="true" loading="lazy"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          title="Analytical Byte Scripts Facebook Page"></iframe>
-        <a class="outreach-fb-link" href="https://www.facebook.com/AnalyticalByteScripts.abs798" target="_blank" rel="noopener">Visit page on Facebook →</a>
-      </div>
-      <div class="outreach-vids">
-        <div class="vid-card python">
-          <div class="vid-embed">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB&listType=playlist&index=1" allowfullscreen loading="lazy" title="Python Playlist — full scrollable list"></iframe>
-          </div>
-          <div class="vid-body">
-            <div class="vid-head">
-              <div class="vid-category cat-python">● Python</div>
-              <div class="vid-title">Python for ML &amp; Data Science</div>
-              <div class="vid-desc">Every video in the playlist — scroll the list inside the player to pick one.</div>
-            </div>
-            <span class="vid-tag tag-python">Python</span>
-          </div>
-        </div>
-        <div class="vid-card r-prog">
-          <div class="vid-embed">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe&listType=playlist&index=1" allowfullscreen loading="lazy" title="R Programming Playlist — full scrollable list"></iframe>
-          </div>
-          <div class="vid-body">
-            <div class="vid-head">
-              <div class="vid-category cat-r">● R Programming</div>
-              <div class="vid-title">R Programming &amp; Visualization</div>
-              <div class="vid-desc">Every video in the playlist — scroll the list inside the player to pick one.</div>
-            </div>
-            <span class="vid-tag tag-r">R</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- COURSES -->
-  <div class="section" id="sec-courses">
-    <div class="section-head"><h2>Recent Courses &amp; Training</h2><a href="courses.html" class="see-all">See all →</a></div>
-    <div class="course-scroll">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-date">January – March 2026</div>
-          <div class="tl-card">
-            <div class="tl-name">Scientific &amp; Manuscript Writing Series</div>
-            <div class="tl-org">Researcher Academy, Elsevier</div>
-            <div class="tl-detail">6 modules: Gen AI use in the research workflow, interdisciplinary writing, case reports, identifying research gaps, LaTeX manuscripts, methods articles, review articles</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">15 March 2025</div>
-          <div class="tl-card">
-            <div class="tl-name">Practical Time Series Analysis</div>
-            <div class="tl-org">An online course by The State University of New York</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">10 September 2024</div>
-          <div class="tl-card">
-            <div class="tl-name">Introduction to Climate Risk Informed Decision Analysis (CRIDA)</div>
-            <div class="tl-org">A course of study offered by UNESCO</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">January – June 2024</div>
-          <div class="tl-card">
-            <div class="tl-name">Data Science &amp; Machine Learning Specialization</div>
-            <div class="tl-org">IBM</div>
-            <div class="tl-detail">6 courses: Machine Learning with Python, Data Visualization with R, Regression for Car Mileage/Diamond Price, R for Data Science, Data Science Methodology, What is Data Science</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">10 March 2024</div>
-          <div class="tl-card">
-            <div class="tl-name">Successful Presentation</div>
-            <div class="tl-org">An online course by University of Colorado Boulder</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">December 2023</div>
-          <div class="tl-card">
-            <div class="tl-name">Research Methodology Series</div>
-            <div class="tl-org">RSBRU / Queen Mary University of London / University of London</div>
-            <div class="tl-detail">4 courses: Interdisciplinary Research Methodology, Research Methodologies, Understanding Research Methods, Introduction to Computer Programming</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">24 December 2023</div>
-          <div class="tl-card">
-            <div class="tl-name">Introduction to Statistical Analysis: Hypothesis Testing</div>
-            <div class="tl-org">SAS</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">November 2023</div>
-          <div class="tl-card">
-            <div class="tl-name">UNICEF Training Series</div>
-            <div class="tl-org">UNICEF</div>
-            <div class="tl-detail">2 courses: Education in Emergencies, Leadership for Planning and Decision-Making with Adolescents</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">July – December 2016</div>
-          <div class="tl-card">
-            <div class="tl-name">Diploma in Computer Science</div>
-            <div class="tl-org">A six month training course by Bangladesh Computer Education (BCE)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SERVICE -->
-  <div class="section" id="sec-service">
-    <div class="section-head"><h2>Academic Service</h2><a href="service.html" class="see-all">See all →</a></div>
-    <div class="service-list">
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">PLOS Digital Health</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Global Health</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Public Health</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Global Public Health</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Health Science Reports</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Technology and Health Care</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Spatial and Spatio-temporal Epidemiology</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Journal of Mathematics and Statistics</span></div>
-    </div>
-  </div>
 
 </div><!-- /page-body -->
 
@@ -1434,7 +1407,7 @@ document.querySelectorAll('.jump-btn').forEach(function(btn) {
   });
 });
 
-var sectionIds = ['sec-about','sec-interests','sec-skills','sec-publications','sec-data','sec-projects','sec-insights','sec-gallery','sec-outreach','sec-courses','sec-service'];
+var sectionIds = ['sec-about','sec-interests','sec-skills','sec-courses','sec-publications','sec-service','sec-outreach','sec-data','sec-projects','sec-insights','sec-gallery'];
 var scrollRaf = null;
 window.addEventListener('scroll', function() {
   if (scrollRaf) return;
@@ -1466,7 +1439,7 @@ var fadeObs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
 
 document.querySelectorAll(
-  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card,.gallery-item,.outreach-fb,.outreach-vids .vid-card'
+  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card,.gallery-item,.learn-link-card'
 ).forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(18px)';
