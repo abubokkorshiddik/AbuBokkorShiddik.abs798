@@ -526,7 +526,7 @@
     .outreach-fb iframe { border-radius: 8px; display: block; }
     .outreach-fb-link { display: block; margin-top: 12px; font-size: 12.5px; font-weight: 600; color: var(--blue); text-align: center; }
     .outreach-fb-link:hover { text-decoration: underline; }
-    .outreach-vids { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .outreach-vids { display: flex; flex-direction: column; gap: 16px; }
     .outreach-vids .vid-card {
       background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
       overflow: hidden; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s;
@@ -536,21 +536,21 @@
     .outreach-vids .vid-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 1; }
     .outreach-vids .vid-card.python::before { background: linear-gradient(90deg, #3b82f6, #6366f1); }
     .outreach-vids .vid-card.r-prog::before { background: linear-gradient(90deg, #059669, #0d9488); }
-    .outreach-vids .vid-embed { position: relative; aspect-ratio: 16/9; }
+    .outreach-vids .vid-embed { position: relative; width: 100%; height: 460px; background: #0b1220; }
     .outreach-vids .vid-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; display: block; }
-    .outreach-vids .vid-body { padding: 14px 16px 16px; }
-    .outreach-vids .vid-category { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 7px; }
+    .outreach-vids .vid-body { padding: 14px 18px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .outreach-vids .vid-head { min-width: 0; }
+    .outreach-vids .vid-category { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 5px; }
     .outreach-vids .cat-python { color: #3b82f6; }
     .outreach-vids .cat-r { color: #059669; }
-    .outreach-vids .vid-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 5px; line-height: 1.4; }
-    .outreach-vids .vid-desc { font-size: 12px; color: var(--text3); line-height: 1.6; margin-bottom: 12px; }
-    .outreach-vids .vid-footer { display: flex; align-items: center; justify-content: space-between; }
-    .outreach-vids .vid-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; border: 1px solid; }
+    .outreach-vids .vid-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; line-height: 1.4; }
+    .outreach-vids .vid-desc { font-size: 12px; color: var(--text3); line-height: 1.5; }
+    .outreach-vids .vid-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; border: 1px solid; white-space: nowrap; flex-shrink: 0; }
     .outreach-vids .tag-python { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
     .outreach-vids .tag-r { background: #ecfdf5; color: #065f46; border-color: #6ee7b7; }
-    .outreach-vids .vid-link { font-size: 12px; font-weight: 600; color: var(--blue); }
     @media (max-width: 900px) { .outreach-grid { grid-template-columns: 1fr; } .outreach-fb { max-width: 400px; margin: 0 auto; } }
-    @media (max-width: 500px) { .outreach-vids { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .outreach-vids .vid-embed { height: 340px; } }
+    @media (max-width: 420px) { .outreach-vids .vid-embed { height: 280px; } }
 
     /* ══ COURSES (TIMELINE) ══ */
     .course-scroll {
@@ -1222,34 +1222,32 @@
         <a class="outreach-fb-link" href="https://www.facebook.com/AnalyticalByteScripts.abs798" target="_blank" rel="noopener">Visit page on Facebook →</a>
       </div>
       <div class="outreach-vids">
-        <a class="vid-card python" href="videos.html#sec-programming" style="display:block;">
+        <div class="vid-card python">
           <div class="vid-embed">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" allowfullscreen loading="lazy" title="Python Playlist"></iframe>
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB&listType=playlist&index=1" allowfullscreen loading="lazy" title="Python Playlist — full scrollable list"></iframe>
           </div>
           <div class="vid-body">
-            <div class="vid-category cat-python">● Python</div>
-            <div class="vid-title">Python for ML &amp; Data Science</div>
-            <div class="vid-desc">Data manipulation, visualization, and machine learning workflows for research applications.</div>
-            <div class="vid-footer">
-              <span class="vid-tag tag-python">Python</span>
-              <span class="vid-link">Watch playlist →</span>
+            <div class="vid-head">
+              <div class="vid-category cat-python">● Python</div>
+              <div class="vid-title">Python for ML &amp; Data Science</div>
+              <div class="vid-desc">Every video in the playlist — scroll the list inside the player to pick one.</div>
             </div>
+            <span class="vid-tag tag-python">Python</span>
           </div>
-        </a>
-        <a class="vid-card r-prog" href="videos.html#sec-programming" style="display:block;">
+        </div>
+        <div class="vid-card r-prog">
           <div class="vid-embed">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" allowfullscreen loading="lazy" title="R Programming"></iframe>
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe&listType=playlist&index=1" allowfullscreen loading="lazy" title="R Programming Playlist — full scrollable list"></iframe>
           </div>
           <div class="vid-body">
-            <div class="vid-category cat-r">● R Programming</div>
-            <div class="vid-title">R Programming &amp; Visualization</div>
-            <div class="vid-desc">R fundamentals, statistical analysis, and visualization using ggplot2 and tidyverse.</div>
-            <div class="vid-footer">
-              <span class="vid-tag tag-r">R</span>
-              <span class="vid-link">Watch playlist →</span>
+            <div class="vid-head">
+              <div class="vid-category cat-r">● R Programming</div>
+              <div class="vid-title">R Programming &amp; Visualization</div>
+              <div class="vid-desc">Every video in the playlist — scroll the list inside the player to pick one.</div>
             </div>
+            <span class="vid-tag tag-r">R</span>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </div>
