@@ -529,6 +529,12 @@
     .outreach-fb-link { display: block; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--blue); text-align: center; flex-shrink: 0; }
     .outreach-fb-link:hover { text-decoration: underline; }
 
+    /* ══ OUTREACH — 2 column layout: FB left, video stack right ══ */
+    .outreach-grid { display: grid; grid-template-columns: 400px 1fr; gap: 16px; margin-bottom: 18px; align-items: stretch; }
+    .outreach-fb-col { display: flex; }
+    .outreach-fb-col .outreach-fb { width: 100%; max-width: none; }
+    .vid-stack { display: flex; flex-direction: column; gap: 16px; }
+
     /* preview-style playlist cards (2-column row) */
     .vid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 18px; }
     .vid-card {
@@ -556,6 +562,7 @@
     .vid-link:hover { text-decoration: underline; }
     @media (max-width: 900px) {
       .outreach-fb { max-width: 100%; height: auto; }
+      .outreach-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
       .vid-grid { grid-template-columns: 1fr; }
@@ -1261,50 +1268,52 @@
   <div class="section" id="sec-outreach">
     <div class="section-head"><h2>Academic Content &amp; Outreach</h2></div>
     <p class="section-desc">Video tutorials, community updates, and hands-on programming notes to complement the research.</p>
-    <div class="outreach-fb-row">
-      <div class="outreach-fb">
-        <div class="outreach-fb-head">
-          <span class="outreach-fb-icon">📘</span>
-          <div>
-            <div class="outreach-fb-title">Analytical Byte Scripts</div>
-            <div class="outreach-fb-sub">Facebook Page</div>
+    <div class="outreach-grid">
+      <div class="outreach-fb-col">
+        <div class="outreach-fb">
+          <div class="outreach-fb-head">
+            <span class="outreach-fb-icon">📘</span>
+            <div>
+              <div class="outreach-fb-title">Analytical Byte Scripts</div>
+              <div class="outreach-fb-sub">Facebook Page</div>
+            </div>
           </div>
-        </div>
-        <iframe
-          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAnalyticalByteScripts.abs798&tabs=timeline&width=340&height=420&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
-          width="100%" height="420" style="border:none;overflow:hidden" scrolling="yes" frameborder="0"
-          allowfullscreen="true" loading="lazy"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          title="Analytical Byte Scripts Facebook Page"></iframe>
-        <a class="outreach-fb-link" href="https://www.facebook.com/AnalyticalByteScripts.abs798" target="_blank" rel="noopener">Visit page on Facebook →</a>
-      </div>
-    </div>
-    <div class="vid-grid">
-      <div class="vid-card python">
-        <div class="vid-embed">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" allowfullscreen loading="lazy" title="Python Playlist"></iframe>
-        </div>
-        <div class="vid-body">
-          <div class="vid-category cat-python">● Python</div>
-          <div class="vid-title">Python for ML &amp; Data Science</div>
-          <div class="vid-desc">A complete Python playlist covering data manipulation, visualization, and machine learning workflows for research applications.</div>
-          <div class="vid-footer">
-            <span class="vid-tag tag-python">Python</span>
-            <a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" target="_blank" rel="noopener">Open playlist →</a>
-          </div>
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAnalyticalByteScripts.abs798&tabs=timeline&width=340&height=420&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+            width="100%" height="420" style="border:none;overflow:hidden" scrolling="yes" frameborder="0"
+            allowfullscreen="true" loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            title="Analytical Byte Scripts Facebook Page"></iframe>
+          <a class="outreach-fb-link" href="https://www.facebook.com/AnalyticalByteScripts.abs798" target="_blank" rel="noopener">Visit page on Facebook →</a>
         </div>
       </div>
-      <div class="vid-card r-prog">
-        <div class="vid-embed">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" allowfullscreen loading="lazy" title="R Programming"></iframe>
+      <div class="vid-stack">
+        <div class="vid-card python">
+          <div class="vid-embed">
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" allowfullscreen loading="lazy" title="Python Playlist"></iframe>
+          </div>
+          <div class="vid-body">
+            <div class="vid-category cat-python">● Python</div>
+            <div class="vid-title">Python for ML &amp; Data Science</div>
+            <div class="vid-desc">A complete Python playlist covering data manipulation, visualization, and machine learning workflows for research applications.</div>
+            <div class="vid-footer">
+              <span class="vid-tag tag-python">Python</span>
+              <a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" target="_blank" rel="noopener">Open playlist →</a>
+            </div>
+          </div>
         </div>
-        <div class="vid-body">
-          <div class="vid-category cat-r">● R Programming</div>
-          <div class="vid-title">R Programming &amp; Visualization</div>
-          <div class="vid-desc">Covers R programming fundamentals, statistical analysis, and data visualization using ggplot2 and tidyverse packages.</div>
-          <div class="vid-footer">
-            <span class="vid-tag tag-r">R</span>
-            <a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">Open playlist →</a>
+        <div class="vid-card r-prog">
+          <div class="vid-embed">
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" allowfullscreen loading="lazy" title="R Programming"></iframe>
+          </div>
+          <div class="vid-body">
+            <div class="vid-category cat-r">● R Programming</div>
+            <div class="vid-title">R Programming &amp; Visualization</div>
+            <div class="vid-desc">Covers R programming fundamentals, statistical analysis, and data visualization using ggplot2 and tidyverse packages.</div>
+            <div class="vid-footer">
+              <span class="vid-tag tag-r">R</span>
+              <a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">Open playlist →</a>
+            </div>
           </div>
         </div>
       </div>
