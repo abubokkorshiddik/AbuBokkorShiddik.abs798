@@ -511,9 +511,9 @@
     @media (max-width: 640px)  { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 
     /* ══ ACADEMIC CONTENT & OUTREACH ══ */
-    .outreach-grid { display: grid; grid-template-columns: 320px 1fr; gap: 14px; align-items: stretch; margin-bottom: 16px; }
+    .outreach-fb-row { margin-bottom: 18px; }
     .outreach-fb {
-      display: flex; flex-direction: column; height: 460px;
+      display: flex; flex-direction: column; height: 460px; max-width: 400px;
       background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
       padding: 14px; box-shadow: var(--sh);
     }
@@ -528,32 +528,37 @@
     .outreach-fb iframe { border-radius: 8px; display: block; width: 100%; flex: 1; min-height: 0; }
     .outreach-fb-link { display: block; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--blue); text-align: center; flex-shrink: 0; }
     .outreach-fb-link:hover { text-decoration: underline; }
-    .outreach-yt { display: flex; flex-direction: column; gap: 14px; height: 460px; }
-    .yt-line-card {
-      flex: 1; min-height: 0; display: flex; align-items: center; gap: 12px;
+
+    /* preview-style playlist cards (2-column row) */
+    .vid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 18px; }
+    .vid-card {
       background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
-      padding: 0 18px; box-shadow: var(--sh); position: relative; overflow: hidden;
-      transition: box-shadow .2s, transform .2s, border-color .2s;
+      overflow: hidden; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s;
+      position: relative;
     }
-    .yt-line-card:hover { box-shadow: var(--sh2); transform: translateY(-2px); border-color: var(--border2); }
-    .yt-line-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; }
-    .yt-line-card.python::before { background: linear-gradient(180deg, #3b82f6, #6366f1); }
-    .yt-line-card.r-prog::before { background: linear-gradient(180deg, #059669, #0d9488); }
-    .yt-line-icon {
-      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
-      background: #ff0000; color: #fff; display: flex; align-items: center; justify-content: center;
-      font-size: 13px; padding-left: 2px;
-    }
-    .yt-line-text { min-width: 0; flex: 1; }
-    .yt-line-title { font-size: 14px; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .yt-line-sub { font-size: 12px; color: var(--text3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .yt-line-arrow { font-size: 15px; font-weight: 700; color: var(--blue); flex-shrink: 0; transition: transform .2s; }
-    .yt-line-card:hover .yt-line-arrow { transform: translateX(3px); }
+    .vid-card:hover { box-shadow: var(--sh2); transform: translateY(-2px); }
+    .vid-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 1; }
+    .vid-card.python::before { background: linear-gradient(90deg, #3b82f6, #6366f1); }
+    .vid-card.r-prog::before { background: linear-gradient(90deg, #059669, #0d9488); }
+    .vid-embed { position: relative; aspect-ratio: 16/9; }
+    .vid-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; display: block; }
+    .vid-body { padding: 14px 16px 16px; }
+    .vid-category { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 7px; }
+    .cat-python { color: #3b82f6; }
+    .cat-r { color: #059669; }
+    .vid-title { font-size: 14.5px; font-weight: 600; color: var(--text); margin-bottom: 5px; line-height: 1.4; }
+    .vid-desc { font-size: 12.5px; color: var(--text3); line-height: 1.6; margin-bottom: 12px; }
+    .vid-footer { display: flex; align-items: center; justify-content: space-between; }
+    .vid-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; border: 1px solid; }
+    .tag-python { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+    .tag-r { background: #ecfdf5; color: #065f46; border-color: #6ee7b7; }
+    .vid-link { font-size: 12px; font-weight: 600; color: var(--blue); }
+    .vid-link:hover { text-decoration: underline; }
     @media (max-width: 900px) {
-      .outreach-grid { grid-template-columns: 1fr; }
-      .outreach-fb, .outreach-yt { height: auto; }
-      .outreach-fb { max-width: 480px; margin: 0 auto; }
-      .yt-line-card { flex: none; padding: 14px 18px; }
+      .outreach-fb { max-width: 100%; height: auto; }
+    }
+    @media (max-width: 700px) {
+      .vid-grid { grid-template-columns: 1fr; }
     }
 
     /* ══ ACADEMIC CONTENT & OUTREACH — page links ══ */
@@ -1256,7 +1261,7 @@
   <div class="section" id="sec-outreach">
     <div class="section-head"><h2>Academic Content &amp; Outreach</h2></div>
     <p class="section-desc">Video tutorials, community updates, and hands-on programming notes to complement the research.</p>
-    <div class="outreach-grid">
+    <div class="outreach-fb-row">
       <div class="outreach-fb">
         <div class="outreach-fb-head">
           <span class="outreach-fb-icon">📘</span>
@@ -1273,23 +1278,35 @@
           title="Analytical Byte Scripts Facebook Page"></iframe>
         <a class="outreach-fb-link" href="https://www.facebook.com/AnalyticalByteScripts.abs798" target="_blank" rel="noopener">Visit page on Facebook →</a>
       </div>
-      <div class="outreach-yt">
-        <a class="yt-line-card python" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" target="_blank" rel="noopener">
-          <span class="yt-line-icon">▶</span>
-          <div class="yt-line-text">
-            <div class="yt-line-title">Python Playlist</div>
-            <div class="yt-line-sub">Python for ML &amp; Data Science</div>
+    </div>
+    <div class="vid-grid">
+      <div class="vid-card python">
+        <div class="vid-embed">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" allowfullscreen loading="lazy" title="Python Playlist"></iframe>
+        </div>
+        <div class="vid-body">
+          <div class="vid-category cat-python">● Python</div>
+          <div class="vid-title">Python for ML &amp; Data Science</div>
+          <div class="vid-desc">A complete Python playlist covering data manipulation, visualization, and machine learning workflows for research applications.</div>
+          <div class="vid-footer">
+            <span class="vid-tag tag-python">Python</span>
+            <a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" target="_blank" rel="noopener">Open playlist →</a>
           </div>
-          <span class="yt-line-arrow">→</span>
-        </a>
-        <a class="yt-line-card r-prog" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">
-          <span class="yt-line-icon">▶</span>
-          <div class="yt-line-text">
-            <div class="yt-line-title">R Programming Playlist</div>
-            <div class="yt-line-sub">R Programming &amp; Visualization</div>
+        </div>
+      </div>
+      <div class="vid-card r-prog">
+        <div class="vid-embed">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" allowfullscreen loading="lazy" title="R Programming"></iframe>
+        </div>
+        <div class="vid-body">
+          <div class="vid-category cat-r">● R Programming</div>
+          <div class="vid-title">R Programming &amp; Visualization</div>
+          <div class="vid-desc">Covers R programming fundamentals, statistical analysis, and data visualization using ggplot2 and tidyverse packages.</div>
+          <div class="vid-footer">
+            <span class="vid-tag tag-r">R</span>
+            <a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">Open playlist →</a>
           </div>
-          <span class="yt-line-arrow">→</span>
-        </a>
+        </div>
       </div>
     </div>
     <div class="learn-links">
@@ -1521,7 +1538,7 @@ var fadeObs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
 
 document.querySelectorAll(
-  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card,.gallery-item,.learn-link-card'
+  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card,.gallery-item,.learn-link-card,.outreach-fb,.vid-card'
 ).forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(18px)';
