@@ -511,6 +511,16 @@
     .brand-logo-text{ color:#fff; font-size:14.5px; font-weight:600; letter-spacing:.2px; white-space:nowrap; }
     .brand-logo-text span{ color:#93c5fd; font-weight:300; }
     .brand-logo-text:hover{ color:#93c5fd; }
+
+    /* ===== NEW: mini bar chart inside the "at a glance" stat sidebar ===== */
+    .stat-chart { position: relative; z-index: 1; }
+    .stat-chart-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: rgba(255,255,255,.4); margin-bottom: 8px; }
+    .stat-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .stat-bar-row:last-child { margin-bottom: 0; }
+    .stat-bar-label { font-size: 11px; color: rgba(255,255,255,.7); width: 66px; flex-shrink: 0; }
+    .stat-bar-track { flex: 1; height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
+    .stat-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+    .stat-bar-val { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; color: #fff; width: 20px; text-align: right; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -666,13 +676,26 @@
       </div>
       <div class="stat-side">
         <div>
-          <div class="stat-side-title">Peer-Reviewed Research</div>
-          <div class="stat-side-sub" style="margin-top:6px;">Publications, journals &amp; global reach at a glance</div>
+          <div class="stat-side-title">Research at a Glance</div>
         </div>
         <div class="stat-num-row">
           <div class="stat-num-box"><div class="n" id="kpi-pubs">13</div><div class="l">Publications</div></div>
           <div class="stat-num-box"><div class="n" id="kpi-journals">9</div><div class="l">Journals</div></div>
-          <div class="stat-num-box" style="grid-column:span 2;"><div class="n" id="kpi-countries">194</div><div class="l">Countries Studied</div></div>
+          <div class="stat-num-box"><div class="n">26</div><div class="l">Reviews Given</div></div>
+          <div class="stat-num-box"><div class="n" id="kpi-countries">194</div><div class="l">Countries Studied</div></div>
+        </div>
+        <div class="stat-chart">
+          <div class="stat-chart-title">Publications by Year</div>
+          <div class="stat-bar-row">
+            <span class="stat-bar-label">2025</span>
+            <span class="stat-bar-track"><span class="stat-bar-fill" style="width:78%;"></span></span>
+            <span class="stat-bar-val">7</span>
+          </div>
+          <div class="stat-bar-row">
+            <span class="stat-bar-label">2026</span>
+            <span class="stat-bar-track"><span class="stat-bar-fill" style="width:67%;"></span></span>
+            <span class="stat-bar-val">6</span>
+          </div>
         </div>
         <div class="stat-side-line">
           <strong>Publishers:</strong> Nature · BMJ · Springer · Wiley
@@ -840,7 +863,6 @@
       <a href="publications.html" class="see-all">View all publications →</a>
     </div>
     <p class="section-desc">Peer-reviewed research in machine learning, explainable AI, epidemiology, and global public health — published in high-impact international journals.</p>
-    <p class="scholar-note">📡 Counts below are curated manually alongside each release. For the always-current list, see the live <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener">Google Scholar profile ↗</a> — public pages can't safely auto-poll Scholar client-side, so this dashboard is refreshed by hand.</p>
 
     <div class="pub-dash">
       <div class="pub-dash-card">
