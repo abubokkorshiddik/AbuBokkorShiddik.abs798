@@ -219,6 +219,51 @@
     .about-card p { color: var(--text2); margin-bottom: 12px; font-size: 15px; line-height: 1.8; }
     .about-card p:last-child { margin-bottom: 0; }
 
+    /* ===== NEW: 2-column profile / stat-sidebar pattern (reused across sections) ===== */
+    .profile-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: stretch; }
+    .profile-text { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 30px 34px; box-shadow: var(--sh); position: relative; overflow: hidden; }
+    .profile-text::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(to bottom, var(--blue), var(--teal)); border-radius: 5px 0 0 5px; }
+    .profile-text p { color: var(--text2); margin-bottom: 12px; font-size: 15px; line-height: 1.8; }
+    .profile-text p:last-child { margin-bottom: 0; }
+
+    .stat-side { background: linear-gradient(160deg, var(--navy), var(--navy2) 60%, var(--navy3)); border-radius: var(--rl); padding: 24px 22px; box-shadow: var(--sh2); color: #fff; display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; }
+    .stat-side::before { content: ''; position: absolute; top: -50px; right: -50px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,.4) 0%, transparent 70%); pointer-events: none; }
+    .stat-side::after { content: ''; position: absolute; bottom: -60px; left: -40px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,.18) 0%, transparent 70%); pointer-events: none; }
+    .stat-side-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; color: var(--gold2); position: relative; z-index: 1; }
+    .stat-side-sub { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.6; margin-top: -10px; position: relative; z-index: 1; }
+    .stat-num-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; position: relative; z-index: 1; }
+    .stat-num-box { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 12px 10px; text-align: center; transition: background .2s, transform .2s; }
+    .stat-num-box:hover { background: rgba(255,255,255,.11); transform: translateY(-2px); }
+    .stat-num-box .n { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 700; color: #fff; line-height: 1.1; }
+    .stat-num-box .l { font-size: 9.5px; color: rgba(255,255,255,.55); margin-top: 4px; text-transform: uppercase; letter-spacing: .4px; }
+    .stat-side-line { font-size: 11.5px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); padding-top: 12px; position: relative; z-index: 1; }
+    .stat-side-line strong { color: #fff; }
+    .stat-side-link { font-size: 11.5px; color: var(--gold2); position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 4px; }
+    .stat-side-link:hover { text-decoration: underline; }
+    @media (max-width: 900px) { .profile-grid { grid-template-columns: 1fr; } }
+
+    /* Publications data dashboard */
+    .pub-dash { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+    .pub-dash-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; box-shadow: var(--sh); }
+    .pub-dash-card h4 { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--blue); margin-bottom: 12px; }
+    .topic-row, .metric-row { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--text2); padding: 5px 0; border-bottom: 1px dashed var(--border); }
+    .topic-row:last-child, .metric-row:last-child { border-bottom: none; }
+    .topic-row .cnt { font-family: 'DM Mono', monospace; font-weight: 700; color: var(--blue); background: var(--sky); border-radius: 5px; padding: 1px 8px; font-size: 11.5px; }
+    .metric-row .m { font-family: 'DM Mono', monospace; font-weight: 700; color: var(--teal); font-size: 12.5px; }
+    .pub-tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pub-tag { font-size: 10.5px; font-weight: 600; padding: 3px 9px; border-radius: 20px; background: var(--bg2); border: 1px solid var(--border); color: var(--text2); }
+    @media (max-width: 1000px) { .pub-dash { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .pub-dash { grid-template-columns: 1fr; } }
+
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .filter-chip { font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border2); background: var(--white); color: var(--text2); cursor: pointer; transition: all .15s; font-family: inherit; }
+    .filter-chip:hover { border-color: var(--blue); color: var(--blue); }
+    .filter-chip.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .pub-row.is-hidden { display: none; }
+    .scholar-note { font-size: 11.5px; color: var(--text3); margin: -10px 0 20px; display: flex; align-items: center; gap: 6px; }
+    .scholar-note a { color: var(--blue); font-weight: 600; }
+    .scholar-note a:hover { text-decoration: underline; }
+
     .interest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; }
     .interest-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .2s; }
     .interest-card:hover { border-color: var(--blue); box-shadow: var(--sh2); transform: translateY(-3px); }
@@ -265,6 +310,15 @@
     .dc-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .dc-sub { font-size: 11.5px; color: var(--text3); }
 
+    /* Generic reusable stat strip (numeric KPI cards) */
+    .kpi-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+    .kpi-chip { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 18px; text-align: center; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .2s; }
+    .kpi-chip:hover { border-color: var(--blue); box-shadow: var(--sh2); transform: translateY(-3px); }
+    .kpi-num { font-family: 'DM Mono', monospace; font-size: 26px; font-weight: 700; color: var(--text); line-height: 1.1; }
+    .kpi-lbl { font-size: 11.5px; color: var(--text3); margin-top: 5px; }
+    @media (max-width: 900px) { .kpi-strip { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .kpi-strip { grid-template-columns: 1fr 1fr; } }
+
     .project-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
     .project-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s, border-color .2s; position: relative; overflow: hidden; }
     .project-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--teal)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
@@ -308,8 +362,6 @@
     .outreach-fb-link { display: block; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--blue); text-align: center; flex-shrink: 0; }
     .outreach-fb-link:hover { text-decoration: underline; }
 
-    /* Outreach: FB card on the left, Python/R video cards as one row of 2 columns on the right,
-       stretched to match the Facebook card's height */
     .outreach-grid { display: grid; grid-template-columns: 400px 1fr; gap: 16px; margin-bottom: 18px; align-items: stretch; }
     .outreach-fb-col { display: flex; }
     .outreach-fb-col .outreach-fb { width: 100%; max-width: none; }
@@ -374,6 +426,7 @@
     .tl-name { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
     .tl-org { font-size: 12px; color: var(--text3); margin-bottom: 4px; }
     .tl-detail { font-size: 12px; color: var(--text3); line-height: 1.6; }
+    .tl-item.is-hidden { display: none; }
 
     .service-list { display: flex; flex-direction: column; gap: 10px; }
     .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 22px; display: flex; align-items: center; gap: 14px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s; }
@@ -381,6 +434,11 @@
     .sbadge { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; color: var(--purple); background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 5px; padding: 3px 10px; white-space: nowrap; flex-shrink: 0; }
     .sdot { width: 4px; height: 4px; background: var(--border2); border-radius: 50%; flex-shrink: 0; }
     .sname { font-size: 14px; font-weight: 500; color: var(--text); }
+
+    .reviewer-badge { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 14px; position: relative; z-index: 1; }
+    .reviewer-badge .rb-icon { font-size: 26px; }
+    .reviewer-badge .rb-title { font-size: 12.5px; font-weight: 700; color: #fff; }
+    .reviewer-badge .rb-sub { font-size: 11px; color: rgba(255,255,255,.55); line-height: 1.5; margin-top: 2px; }
 
     footer { background: var(--navy); color: rgba(255,255,255,.5); padding: 48px 24px 32px; position: relative; overflow: hidden; }
     footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--gold), var(--teal)); }
@@ -598,11 +656,29 @@
 
 <div class="page-body">
 
+  <!-- ===================== RESEARCH PROFILE (2-column: text 2/3 + stat sidebar 1/3) ===================== -->
   <div class="section" id="sec-about">
     <div class="section-head"><h2>Research Profile</h2></div>
-    <div class="about-card">
-      <p>I am a researcher with a growing portfolio of <strong>peer-reviewed publications</strong> in high-impact international journals including <em>Scientific Reports</em>, <em>BMJ Open</em>, <em>Global Epidemiology</em>, and <em>International Journal of Health Geographics</em>. My research covers global disease modeling, dengue early warning systems, and climate-health interactions.</p>
-      <p>My work integrates <strong>machine learning</strong>, <strong>explainable AI (SHAP, LIME)</strong>, <strong>Bayesian deep learning</strong>, and <strong>spatial analysis</strong> to support evidence-based decision-making in public health — across 194 countries using large-scale multi-source datasets.</p>
+    <div class="profile-grid">
+      <div class="profile-text">
+        <p>I am a researcher with a growing portfolio of <strong>peer-reviewed publications</strong> in high-impact international journals including <em>Scientific Reports</em>, <em>BMJ Open</em>, <em>Global Epidemiology</em>, and <em>International Journal of Health Geographics</em>. My research covers global disease modeling, dengue early warning systems, and climate-health interactions.</p>
+        <p>My work integrates <strong>machine learning</strong>, <strong>explainable AI (SHAP, LIME)</strong>, <strong>Bayesian deep learning</strong>, and <strong>spatial analysis</strong> to support evidence-based decision-making in public health — across 194 countries using large-scale multi-source datasets.</p>
+      </div>
+      <div class="stat-side">
+        <div>
+          <div class="stat-side-title">Peer-Reviewed Research</div>
+          <div class="stat-side-sub" style="margin-top:6px;">Publications, journals &amp; global reach at a glance</div>
+        </div>
+        <div class="stat-num-row">
+          <div class="stat-num-box"><div class="n" id="kpi-pubs">13</div><div class="l">Publications</div></div>
+          <div class="stat-num-box"><div class="n" id="kpi-journals">9</div><div class="l">Journals</div></div>
+          <div class="stat-num-box" style="grid-column:span 2;"><div class="n" id="kpi-countries">194</div><div class="l">Countries Studied</div></div>
+        </div>
+        <div class="stat-side-line">
+          <strong>Publishers:</strong> Nature · BMJ · Springer · Wiley
+        </div>
+        <a class="stat-side-link" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener">🎓 View live profile on Google Scholar →</a>
+      </div>
     </div>
   </div>
 
@@ -643,8 +719,29 @@
   </div>
 
 
+  <!-- ===================== COURSES & TRAINING (with KPI strip + institution badges) ===================== -->
   <div class="section" id="sec-courses">
-    <div class="section-head"><h2>Recent Courses &amp; Training</h2><a href="courses.html" class="see-all">See all →</a></div>
+    <div class="section-head"><h2>🎓 Learning &amp; Development — Courses &amp; Training</h2><a href="courses.html" class="see-all">See all →</a></div>
+    <p class="section-desc">Professional development, certified online learning, and undergraduate academic education in statistics, data science, and research methods.</p>
+
+    <div class="kpi-strip">
+      <div class="kpi-chip"><div class="kpi-num">26</div><div class="kpi-lbl">Online Certificates</div></div>
+      <div class="kpi-chip"><div class="kpi-num">35+</div><div class="kpi-lbl">Undergraduate Courses</div></div>
+      <div class="kpi-chip"><div class="kpi-num">8</div><div class="kpi-lbl">Institutions</div></div>
+      <div class="kpi-chip"><div class="kpi-num">2016–2026</div><div class="kpi-lbl">Learning Span</div></div>
+    </div>
+
+    <div class="tag-row" style="margin-bottom:22px;">
+      <span class="tag">All · 60+</span>
+      <span class="tag">Elsevier · 7</span>
+      <span class="tag">Springer Nature · 4</span>
+      <span class="tag">IBM · 5</span>
+      <span class="tag">University · 4</span>
+      <span class="tag">UN Agencies · 3</span>
+      <span class="tag">Other · 3</span>
+      <span class="tag">Undergraduate</span>
+    </div>
+
     <div class="course-scroll">
       <div class="timeline">
         <div class="tl-item">
@@ -735,14 +832,75 @@
 
 </div>
 
+<!-- ===================== PUBLICATIONS (stats dashboard + filterable list) ===================== -->
 <section class="pub-section" id="sec-publications">
   <div class="page-body">
     <div class="section-head" style="margin-top:0;padding-top:0;">
-      <h2>Selected Publications</h2>
+      <h2>Peer-Reviewed Research — Publications</h2>
       <a href="publications.html" class="see-all">View all publications →</a>
     </div>
-    <div class="pub-scroll">
-      <a class="pub-row" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank" rel="noopener">
+    <p class="section-desc">Peer-reviewed research in machine learning, explainable AI, epidemiology, and global public health — published in high-impact international journals.</p>
+    <p class="scholar-note">📡 Counts below are curated manually alongside each release. For the always-current list, see the live <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener">Google Scholar profile ↗</a> — public pages can't safely auto-poll Scholar client-side, so this dashboard is refreshed by hand.</p>
+
+    <div class="pub-dash">
+      <div class="pub-dash-card">
+        <h4>Research Topics</h4>
+        <div class="topic-row"><span>Dengue</span><span class="cnt">6</span></div>
+        <div class="topic-row"><span>Global</span><span class="cnt">3</span></div>
+        <div class="topic-row"><span>Vector-borne Diseases</span><span class="cnt">2</span></div>
+        <div class="topic-row"><span>Asia</span><span class="cnt">2</span></div>
+        <div class="topic-row"><span>Child Mortality</span><span class="cnt">2</span></div>
+        <div class="topic-row"><span>Malaria</span><span class="cnt">1</span></div>
+        <div class="topic-row"><span>Tuberculosis</span><span class="cnt">1</span></div>
+      </div>
+
+      <div class="pub-dash-card">
+        <h4>Journals</h4>
+        <div class="topic-row"><span>Health Science Reports</span><span class="cnt">3</span></div>
+        <div class="topic-row"><span>Scientific Reports</span><span class="cnt">2</span></div>
+        <div class="topic-row"><span>Global Epidemiology</span><span class="cnt">2</span></div>
+        <div class="topic-row"><span>BMJ Open</span><span class="cnt">1</span></div>
+        <div class="topic-row"><span>Int. J. Health Geographics</span><span class="cnt">1</span></div>
+        <div class="topic-row"><span>Trop. Med. &amp; Infect. Dis.</span><span class="cnt">1</span></div>
+        <div class="topic-row"><span>BMC Medicine</span><span class="cnt">1</span></div>
+        <div class="topic-row"><span>Public Health Challenges</span><span class="cnt">1</span></div>
+        <div class="topic-row"><span>Int. J. Statistical Sciences</span><span class="cnt">1</span></div>
+      </div>
+
+      <div class="pub-dash-card">
+        <h4>Key Statistics</h4>
+        <div class="metric-row"><span>Best model fit</span><span class="m">R² 0.99</span></div>
+        <div class="metric-row"><span>MLP accuracy</span><span class="m">Acc 0.93</span></div>
+        <div class="metric-row"><span>Countries (TB study)</span><span class="m">194</span></div>
+        <div class="metric-row"><span>ROC-AUC (dengue)</span><span class="m">AUC 0.99</span></div>
+        <div class="metric-row"><span>Countries (dengue)</span><span class="m">118</span></div>
+        <div class="metric-row"><span>Studies (XAI review)</span><span class="m">70</span></div>
+      </div>
+
+      <div class="pub-dash-card">
+        <h4>Publishers &amp; Methods</h4>
+        <div class="pub-tag-row" style="margin-bottom:12px;">
+          <span class="pub-tag">Nature Portfolio</span><span class="pub-tag">Wiley</span><span class="pub-tag">Elsevier</span><span class="pub-tag">BMJ</span><span class="pub-tag">Springer</span><span class="pub-tag">MDPI</span><span class="pub-tag">BanglaJOL</span>
+        </div>
+        <div class="pub-tag-row">
+          <span class="pub-tag">XGBoost</span><span class="pub-tag">LightGBM</span><span class="pub-tag">SHAP</span><span class="pub-tag">LIME</span><span class="pub-tag">Moran's I</span><span class="pub-tag">Bayesian</span><span class="pub-tag">ConvLSTM</span><span class="pub-tag">Getis-Ord Gi*</span><span class="pub-tag">IG / LRP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-bar" id="pub-filter-bar">
+      <button class="filter-chip active" data-filter="all">All · 13</button>
+      <button class="filter-chip" data-filter="dengue">Dengue · 6</button>
+      <button class="filter-chip" data-filter="malaria">Malaria · 1</button>
+      <button class="filter-chip" data-filter="tuberculosis">Tuberculosis · 1</button>
+      <button class="filter-chip" data-filter="child-mortality">Child Mortality · 2</button>
+      <button class="filter-chip" data-filter="asia">Asia · 2</button>
+      <button class="filter-chip" data-filter="2026">2026 · 6</button>
+      <button class="filter-chip" data-filter="2025">2025 · 7</button>
+    </div>
+
+    <div class="pub-scroll" id="pub-scroll">
+      <a class="pub-row" data-topics="tuberculosis global" data-year="2025" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank" rel="noopener">
         <div class="pub-row-num">1</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
@@ -751,7 +909,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="https://doi.org/10.1002/hsr2.70726" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="dengue" data-year="2025" href="https://doi.org/10.1002/hsr2.70726" target="_blank" rel="noopener">
         <div class="pub-row-num">2</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
@@ -760,7 +918,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="dengue" data-year="2025" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank" rel="noopener">
         <div class="pub-row-num">3</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div>
@@ -769,7 +927,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="malaria global" data-year="2025" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank" rel="noopener">
         <div class="pub-row-num">4</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
@@ -778,7 +936,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="#" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
         <div class="pub-row-num">5</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span></div>
@@ -787,7 +945,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="#" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
         <div class="pub-row-num">6</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-p">Int. J. Statistical Sciences</span><span class="yb">2025</span></div>
@@ -796,7 +954,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="asia vector-borne" data-year="2025" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank" rel="noopener">
         <div class="pub-row-num">7</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-s">Int. J. Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div>
@@ -805,7 +963,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="#" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="asia child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
         <div class="pub-row-num">8</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-h">BMJ Open</span><span class="yb">2026</span><span class="oa">OA</span></div>
@@ -814,7 +972,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="dengue" data-year="2026" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank" rel="noopener">
         <div class="pub-row-num">9</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-m">Trop. Med. &amp; Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div>
@@ -823,7 +981,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="#" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="vector-borne" data-year="2026" href="#" target="_blank" rel="noopener">
         <div class="pub-row-num">10</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-s">BMC Medicine</span><span class="yb">2026</span></div>
@@ -832,7 +990,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="#" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="dengue global" data-year="2026" href="#" target="_blank" rel="noopener">
         <div class="pub-row-num">11</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
@@ -841,7 +999,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="#" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="other" data-year="2026" href="#" target="_blank" rel="noopener">
         <div class="pub-row-num">12</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
@@ -850,7 +1008,7 @@
           <span class="pub-row-link">View paper →</span>
         </div>
       </a>
-      <a class="pub-row" href="#" target="_blank" rel="noopener">
+      <a class="pub-row" data-topics="child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
         <div class="pub-row-num">13</div>
         <div class="pub-row-body">
           <div class="pub-row-meta"><span class="jb jb-p">Public Health Challenges</span><span class="yb">2026</span><span class="oa">OA</span></div>
@@ -866,17 +1024,37 @@
 
 <div class="page-body">
 
+  <!-- ===================== ACADEMIC SERVICE (2-column: list 2/3 + stat sidebar 1/3) ===================== -->
   <div class="section" id="sec-service">
-    <div class="section-head"><h2>Academic Service</h2><a href="service.html" class="see-all">See all →</a></div>
-    <div class="service-list">
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">PLOS Digital Health</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Global Health</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Public Health</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Global Public Health</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Health Science Reports</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Technology and Health Care</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Spatial and Spatio-temporal Epidemiology</span></div>
-      <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Journal of Mathematics and Statistics</span></div>
+    <div class="section-head"><h2>Academic Contribution — Reviewer Service</h2><a href="service.html" class="see-all">See all →</a></div>
+    <p class="section-desc">Contributing to the integrity of global health research through rigorous peer review for high-impact international journals since 2025.</p>
+    <div class="profile-grid">
+      <div class="service-list">
+        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">PLOS Digital Health</span></div>
+        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Global Health</span></div>
+        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Public Health</span></div>
+        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Global Public Health</span></div>
+        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Health Science Reports</span></div>
+        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Technology and Health Care</span></div>
+        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Spatial and Spatio-temporal Epidemiology</span></div>
+        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Journal of Mathematics and Statistics</span></div>
+      </div>
+      <div class="stat-side">
+        <div class="stat-side-title">Reviewer Snapshot</div>
+        <div class="stat-num-row">
+          <div class="stat-num-box"><div class="n">26</div><div class="l">Total Reviews</div></div>
+          <div class="stat-num-box"><div class="n">8</div><div class="l">Journals</div></div>
+          <div class="stat-num-box"><div class="n">7</div><div class="l">Publishers</div></div>
+          <div class="stat-num-box"><div class="n">2025–26</div><div class="l">Active</div></div>
+        </div>
+        <div class="reviewer-badge">
+          <span class="rb-icon">🔬</span>
+          <div>
+            <div class="rb-title">Verified Reviewer</div>
+            <div class="rb-sub">Active peer reviewer for BMJ, PLOS, and 6 other journals across global public-health research.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -963,8 +1141,16 @@
   </div>
 
 
+  <!-- ===================== PROJECTS & TOOLS (with KPI strip) ===================== -->
   <div class="section" id="sec-projects">
-    <div class="section-head"><h2>Projects</h2><a href="projects.html" class="see-all">See all →</a></div>
+    <div class="section-head"><h2>Digital Lab — Projects &amp; Tools</h2><a href="projects.html" class="see-all">See all →</a></div>
+    <p class="section-desc">Interactive dashboards, open-source R packages, and reproducible research applications built to support public health analytics and data science.</p>
+    <div class="kpi-strip">
+      <div class="kpi-chip"><div class="kpi-num">3</div><div class="kpi-lbl">Projects</div></div>
+      <div class="kpi-chip"><div class="kpi-num" style="font-size:16px;">R · Python · HTML</div><div class="kpi-lbl">Technologies</div></div>
+      <div class="kpi-chip"><div class="kpi-num" style="font-size:16px;">Open Source</div><div class="kpi-lbl">All code public</div></div>
+      <div class="kpi-chip"><div class="kpi-num">2026</div><div class="kpi-lbl">Latest Release</div></div>
+    </div>
     <div class="project-grid">
       <div class="project-card"><div class="p-icon">🗺</div><div class="p-name">Dengue Dashboard</div><div class="p-desc">Interactive district-level early warning visualization for dengue outbreaks across all 64 districts of Bangladesh.</div></div>
       <div class="project-card"><div class="p-icon">📋</div><div class="p-name">Systematic Review Tool</div><div class="p-desc">Automated literature screening and data extraction workflow designed for health and epidemiology research.</div></div>
@@ -1154,13 +1340,34 @@ var fadeObs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
 
 document.querySelectorAll(
-  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card,.gallery-item,.learn-link-card,.outreach-fb,.vid-card'
+  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card,.gallery-item,.learn-link-card,.outreach-fb,.vid-card,.pub-dash-card,.kpi-chip,.profile-text,.stat-side'
 ).forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(18px)';
   el.style.transition = 'opacity .45s ease, transform .45s ease';
   fadeObs.observe(el);
 });
+
+/* ===================== Publications filter chips ===================== */
+(function () {
+  var bar = document.getElementById('pub-filter-bar');
+  if (!bar) return;
+  var rows = document.querySelectorAll('#pub-scroll .pub-row');
+  bar.addEventListener('click', function (e) {
+    var chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    bar.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('active'); });
+    chip.classList.add('active');
+    var f = chip.dataset.filter;
+    rows.forEach(function (row) {
+      if (f === 'all') { row.classList.remove('is-hidden'); return; }
+      var topics = (row.dataset.topics || '').split(' ');
+      var year = row.dataset.year || '';
+      var match = topics.indexOf(f) !== -1 || year === f;
+      row.classList.toggle('is-hidden', !match);
+    });
+  });
+})();
 </script>
 </body>
 </html>
