@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Publications - Md. Abu Bokkor Shiddik. Peer-reviewed research in machine learning, epidemiology, and global public health.">
-  <title>Publications | Md. Abu Bokkor Shiddik</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <style>
+<link href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png" rel="icon" type="image/png"/>
+<link href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png" rel="apple-touch-icon"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Publications - Md. Abu Bokkor Shiddik. Peer-reviewed research in machine learning, epidemiology, and global public health." name="description"/>
+<title>Publications | Md. Abu Bokkor Shiddik</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Lora:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --navy:#0b1f3a; --navy2:#122444; --blue:#1a56db; --blue-hover:#1648c0;
@@ -302,815 +303,920 @@
 .brand-logo-text:hover{
     color:#93c5fd;
 }  
-  </style>
+  
+    /* ══ TWO-COLUMN CARD LAYOUT (PDF preview panel) ══ */
+    .pub-card-inner { display:block; }
+    .pub-left { min-width:0; }
+    .pub-right { display:flex; flex-direction:column; }
+    .pdf-viewer-wrap { display:none; }
+    .pdf-actions { display:flex; gap:8px; }
+    .pdf-action-btn { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:6px; text-align:center; font-size:12.5px; font-weight:600; padding:10px 12px; border-radius:8px; transition:background 0.15s,color 0.15s,border-color 0.15s; white-space:nowrap; }
+    .pdf-action-open { background:var(--blue); color:#fff; }
+    .pdf-action-open:hover { background:var(--blue-hover); }
+    .pdf-action-download { background:var(--white); color:var(--text2); border:1px solid var(--border2); }
+    .pdf-action-download:hover { background:var(--bg); border-color:var(--blue); color:var(--blue); }
+    .pdf-panel-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--text3); margin-bottom:12px; display:flex; align-items:center; gap:6px; }
+    .pdf-panel-label::before { content:'\1F4C4'; font-size:12px; }
+    @media (min-width:901px) {
+      .pub-card-inner { display:grid; grid-template-columns:1.55fr 1fr; align-items:stretch; }
+      .pub-left { border-right:1px solid var(--border); }
+      .pub-right { padding:24px 24px 28px; background:#fbfcfe; gap:14px; }
+      .pdf-viewer-wrap { display:block; flex:1; min-height:420px; border-radius:10px; overflow:hidden; border:1px solid var(--border); background:#fff; box-shadow:var(--shadow-sm); }
+      .pdf-viewer { width:100%; height:100%; min-height:420px; border:none; display:block; }
+    }
+    @media (max-width:900px) {
+      .pub-right { padding:18px 20px 22px; border-top:1px solid var(--border); background:#fbfcfe; }
+    }
+</style>
 </head>
 <body>
 <!-- ═══ NAVBAR ═══ -->
 <!-- ═══ NAVBAR ═══ -->
 <nav class="navbar">
-  <div class="nav-bar-inner">
-    <div class="nav-brand">
-
-  <a href="home.html" class="brand-logo-img">
-    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"
-         alt="ABS Logo">
-  </a>
-
-  <a href="contact.html" class="brand-logo-text">
+<div class="nav-bar-inner">
+<div class="nav-brand">
+<a class="brand-logo-img" href="home.html">
+<img alt="ABS Logo" src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"/>
+</a>
+<a class="brand-logo-text" href="contact.html">
     ABS<span> · </span>Abu Bokkor Shiddik
   </a>
-
 </div>
-    <div class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="publications.html">Publications</a>
-      <div class="dropdown">
-        <button class="dropbtn">Academic &#9662;</button>
-        <div class="dropdown-content">
-          <a href="courses.html">&#127891; Courses &amp; Training</a>
-          <a href="conference-and-workshop.html">&#127963; Conferences &amp; Workshops</a>
-          <a href="service.html">&#128278; Service</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Digital Lab &#9662;</button>
-        <div class="dropdown-content">
-          <a href="projects.html">&#9879; Projects</a>
-          <a href="data-code.html">&#128190; Data &amp; Code</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Learning &#9662;</button>
-        <div class="dropdown-content">
-          <a href="Learning Notes.html">&#128218; All Learning Notes</a>
-          <a href="BSc-courses.html">&#127891; B.Sc. Courses</a>
-          <a href="MSc-courses.html">&#127891; M.Sc. Courses</a>
-          <a href="R-programming.html">&#128187; Learn R Programming</a>
-          <a href="Python-programming.html">&#128013; Learn Python Programming</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Insights &#9662;</button>
-        <div class="dropdown-content">
-          <a href="insights.html">&#9997; Posts</a>
-          <a href="videos.html">&#9654; Videos</a>
-          <a href="archive.html">&#128247; Photos &amp; Archive</a>
-        </div>
-      </div>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav-drawer" id="nav-drawer">
-    <div class="drawer-inner">
-      <a class="drawer-link" href="home.html">Home</a>
-      <a class="drawer-link" href="publications.html">Publications</a>
-      <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Academic</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
-        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
-        <a class="drawer-link" href="service.html">Service</a>
-      </div>
-      <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Digital Lab</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="projects.html">Projects</a>
-        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
-      </div>
-      <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Learning</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
-        <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
-        <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
-        <a class="drawer-link" href="R-programming.html">Learn R Programming</a>
-        <a class="drawer-link" href="Python-programming.html">Learn Python Programming</a>
-      </div>
-      <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Insights</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="insights.html">Posts</a>
-        <a class="drawer-link" href="videos.html">Videos</a>
-        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
-      </div>
-    </div>
-  </div>
+<div class="nav-links">
+<a href="home.html">Home</a>
+<a href="publications.html">Publications</a>
+<div class="dropdown">
+<button class="dropbtn">Academic ▾</button>
+<div class="dropdown-content">
+<a href="courses.html">🎓 Courses &amp; Training</a>
+<a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
+<a href="service.html">🔖 Service</a>
+</div>
+</div>
+<div class="dropdown">
+<button class="dropbtn">Digital Lab ▾</button>
+<div class="dropdown-content">
+<a href="projects.html">⚗ Projects</a>
+<a href="data-code.html">💾 Data &amp; Code</a>
+</div>
+</div>
+<div class="dropdown">
+<button class="dropbtn">Learning ▾</button>
+<div class="dropdown-content">
+<a href="Learning Notes.html">📚 All Learning Notes</a>
+<a href="BSc-courses.html">🎓 B.Sc. Courses</a>
+<a href="MSc-courses.html">🎓 M.Sc. Courses</a>
+<a href="R-programming.html">💻 Learn R Programming</a>
+<a href="Python-programming.html">🐍 Learn Python Programming</a>
+</div>
+</div>
+<div class="dropdown">
+<button class="dropbtn">Insights ▾</button>
+<div class="dropdown-content">
+<a href="insights.html">✍ Posts</a>
+<a href="videos.html">▶ Videos</a>
+<a href="archive.html">📷 Photos &amp; Archive</a>
+</div>
+</div>
+</div>
+<button aria-label="Toggle menu" class="hamburger" id="hamburger">
+<span></span><span></span><span></span>
+</button>
+</div>
+<div class="nav-drawer" id="nav-drawer">
+<div class="drawer-inner">
+<a class="drawer-link" href="home.html">Home</a>
+<a class="drawer-link" href="publications.html">Publications</a>
+<div class="drawer-divider"></div>
+<div class="drawer-section-label">Academic</div>
+<div class="drawer-sub">
+<a class="drawer-link" href="courses.html">Courses &amp; Training</a>
+<a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+<a class="drawer-link" href="service.html">Service</a>
+</div>
+<div class="drawer-divider"></div>
+<div class="drawer-section-label">Digital Lab</div>
+<div class="drawer-sub">
+<a class="drawer-link" href="projects.html">Projects</a>
+<a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+</div>
+<div class="drawer-divider"></div>
+<div class="drawer-section-label">Learning</div>
+<div class="drawer-sub">
+<a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
+<a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
+<a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
+<a class="drawer-link" href="R-programming.html">Learn R Programming</a>
+<a class="drawer-link" href="Python-programming.html">Learn Python Programming</a>
+</div>
+<div class="drawer-divider"></div>
+<div class="drawer-section-label">Insights</div>
+<div class="drawer-sub">
+<a class="drawer-link" href="insights.html">Posts</a>
+<a class="drawer-link" href="videos.html">Videos</a>
+<a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
+</div>
+</div>
+</div>
 </nav>
-
 <section class="page-hero">
-  <div class="hero-visual" aria-hidden="true">
-    <svg viewBox="0 0 1400 460" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-
-      <!-- world map dot grid, right side -->
-      <g fill="#8fb4f5" opacity="0.16">
-        <g id="dotcluster1">
-          <circle cx="900" cy="90" r="2.4"/><circle cx="915" cy="95" r="2"/><circle cx="930" cy="88" r="2.6"/><circle cx="945" cy="100" r="1.8"/>
-          <circle cx="905" cy="108" r="2"/><circle cx="922" cy="112" r="2.4"/><circle cx="938" cy="118" r="2"/><circle cx="960" cy="105" r="2.2"/>
-          <circle cx="975" cy="120" r="1.8"/><circle cx="890" cy="125" r="2"/><circle cx="950" cy="130" r="2.4"/><circle cx="965" cy="88" r="1.8"/>
-        </g>
-        <g id="dotcluster2">
-          <circle cx="1080" cy="150" r="2.2"/><circle cx="1098" cy="140" r="2"/><circle cx="1115" cy="155" r="2.6"/><circle cx="1130" cy="145" r="1.8"/>
-          <circle cx="1090" cy="168" r="2"/><circle cx="1108" cy="175" r="2.4"/><circle cx="1125" cy="165" r="2"/><circle cx="1145" cy="160" r="2.2"/>
-          <circle cx="1160" cy="178" r="1.8"/><circle cx="1075" cy="185" r="2"/><circle cx="1140" cy="190" r="2.4"/>
-        </g>
-        <g id="dotcluster3">
-          <circle cx="1000" cy="260" r="2.4"/><circle cx="1018" cy="252" r="2"/><circle cx="1035" cy="268" r="2.6"/><circle cx="1050" cy="255" r="1.8"/>
-          <circle cx="1010" cy="280" r="2"/><circle cx="1028" cy="288" r="2.4"/><circle cx="1045" cy="278" r="2"/><circle cx="1065" cy="270" r="2.2"/>
-          <circle cx="980" cy="290" r="1.8"/><circle cx="995" cy="300" r="2"/>
-        </g>
-      </g>
-
-      <!-- ML network graph, lower right -->
-      <g stroke="#5b8def" stroke-opacity="0.22" stroke-width="1.1" fill="none">
-        <line x1="1120" y1="330" x2="1200" y2="300"/>
-        <line x1="1120" y1="330" x2="1195" y2="360"/>
-        <line x1="1120" y1="330" x2="1180" y2="400"/>
-        <line x1="1060" y1="360" x2="1120" y2="330"/>
-        <line x1="1060" y1="360" x2="1195" y2="360"/>
-        <line x1="1200" y1="300" x2="1280" y2="320"/>
-        <line x1="1195" y1="360" x2="1280" y2="320"/>
-        <line x1="1195" y1="360" x2="1280" y2="380"/>
-        <line x1="1180" y1="400" x2="1280" y2="380"/>
-        <line x1="1060" y1="360" x2="1010" y2="400"/>
-      </g>
-      <g fill="#60a5fa" opacity="0.5">
-        <circle cx="1060" cy="360" r="3.2"/>
-        <circle cx="1120" cy="330" r="3.2"/>
-        <circle cx="1010" cy="400" r="3"/>
-        <circle cx="1200" cy="300" r="3.4"/>
-        <circle cx="1195" cy="360" r="3.4"/>
-        <circle cx="1180" cy="400" r="3.2"/>
-        <circle cx="1280" cy="320" r="3.6"/>
-        <circle cx="1280" cy="380" r="3.4"/>
-      </g>
-
-      <!-- faint mosquito silhouette (vector-borne disease motif) -->
-      <g transform="translate(230,330) rotate(-12)" fill="#7ea6e8" opacity="0.15">
-        <ellipse cx="0" cy="0" rx="5" ry="14"/>
-        <line x1="0" y1="-14" x2="-2" y2="-34" stroke="#7ea6e8" stroke-width="1.4"/>
-        <line x1="0" y1="12" x2="-18" y2="34" stroke="#7ea6e8" stroke-width="1.4"/>
-        <line x1="0" y1="12" x2="18" y2="34" stroke="#7ea6e8" stroke-width="1.4"/>
-        <ellipse cx="-14" cy="-2" rx="16" ry="6" transform="rotate(-18 -14 -2)"/>
-        <ellipse cx="14" cy="-2" rx="16" ry="6" transform="rotate(18 14 -2)"/>
-        <line x1="-2" y1="-6" x2="-14" y2="-2" stroke="#7ea6e8" stroke-width="1.2"/>
-        <line x1="-2" y1="2" x2="-16" y2="8" stroke="#7ea6e8" stroke-width="1.2"/>
-        <line x1="2" y1="-6" x2="14" y2="0" stroke="#7ea6e8" stroke-width="1.2"/>
-      </g>
-
-      <!-- DNA / data helix motif, far right edge -->
-      <g stroke="#6ea8ee" stroke-opacity="0.14" stroke-width="1.3" fill="none">
-        <path d="M1340,20 C1360,50 1320,80 1340,110 C1360,140 1320,170 1340,200 C1360,230 1320,260 1340,290 C1360,320 1320,350 1340,380"/>
-        <path d="M1360,20 C1340,50 1380,80 1360,110 C1340,140 1380,170 1360,200 C1340,230 1380,260 1360,290 C1340,320 1380,350 1360,380"/>
-      </g>
-
-      <!-- word cloud: research themes -->
-      <g font-family="'Lora',serif" fill="#bcd4fb">
-        <text x="760" y="70" font-size="34" font-weight="600" opacity="0.10" transform="rotate(-3 760 70)">Dengue</text>
-        <text x="1010" y="345" font-size="26" font-weight="600" opacity="0.09" transform="rotate(4 1010 345)">Malaria</text>
-        <text x="640" y="240" font-size="22" font-weight="500" opacity="0.08">Tuberculosis</text>
-        <text x="880" y="180" font-size="30" font-weight="600" opacity="0.11" transform="rotate(-2 880 180)">Explainable AI</text>
-        <text x="1120" y="60" font-size="20" font-weight="500" opacity="0.09">SHAP</text>
-        <text x="760" y="410" font-size="24" font-weight="500" opacity="0.08">Epidemiology</text>
-        <text x="1220" y="230" font-size="18" font-weight="500" opacity="0.09">Bayesian</text>
-        <text x="900" y="290" font-size="18" font-weight="500" opacity="0.08">ConvLSTM</text>
-        <text x="620" y="130" font-size="16" font-weight="500" opacity="0.07">Spatial Analysis</text>
-        <text x="1180" y="410" font-size="16" font-weight="500" opacity="0.08">XGBoost</text>
-        <text x="1300" y="140" font-size="16" font-weight="500" opacity="0.07">Global Health</text>
-        <text x="1000" y="410" font-size="14" font-weight="500" opacity="0.07">Bangladesh</text>
-      </g>
-    </svg>
-  </div>
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Peer-Reviewed Research</div>
-    <h1>Publications</h1>
-    <p>Peer-reviewed research in machine learning, explainable AI, epidemiology, and global public health &mdash; published in high-impact international journals.</p>
-    <div class="hero-metrics">
-      <div><div class="metric-num">13</div><div class="metric-label">Publications</div></div>
-      <div><div class="metric-num">9</div><div class="metric-label">Journals</div></div>
-      <div><div class="metric-num">194</div><div class="metric-label">Countries Studied</div></div>
-      <div><div class="metric-num">Nature &middot; BMJ &middot; Springer &middot; Wiley</div><div class="metric-label">Publishers</div></div>
-    </div>
-  </div>
+<div aria-hidden="true" class="hero-visual">
+<svg preserveaspectratio="xMidYMid slice" viewbox="0 0 1400 460" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="nodeGlow" r="50%">
+<stop offset="0%" stop-color="#60a5fa" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#60a5fa" stop-opacity="0"></stop>
+</radialgradient>
+</defs>
+<!-- world map dot grid, right side -->
+<g fill="#8fb4f5" opacity="0.16">
+<g id="dotcluster1">
+<circle cx="900" cy="90" r="2.4"></circle><circle cx="915" cy="95" r="2"></circle><circle cx="930" cy="88" r="2.6"></circle><circle cx="945" cy="100" r="1.8"></circle>
+<circle cx="905" cy="108" r="2"></circle><circle cx="922" cy="112" r="2.4"></circle><circle cx="938" cy="118" r="2"></circle><circle cx="960" cy="105" r="2.2"></circle>
+<circle cx="975" cy="120" r="1.8"></circle><circle cx="890" cy="125" r="2"></circle><circle cx="950" cy="130" r="2.4"></circle><circle cx="965" cy="88" r="1.8"></circle>
+</g>
+<g id="dotcluster2">
+<circle cx="1080" cy="150" r="2.2"></circle><circle cx="1098" cy="140" r="2"></circle><circle cx="1115" cy="155" r="2.6"></circle><circle cx="1130" cy="145" r="1.8"></circle>
+<circle cx="1090" cy="168" r="2"></circle><circle cx="1108" cy="175" r="2.4"></circle><circle cx="1125" cy="165" r="2"></circle><circle cx="1145" cy="160" r="2.2"></circle>
+<circle cx="1160" cy="178" r="1.8"></circle><circle cx="1075" cy="185" r="2"></circle><circle cx="1140" cy="190" r="2.4"></circle>
+</g>
+<g id="dotcluster3">
+<circle cx="1000" cy="260" r="2.4"></circle><circle cx="1018" cy="252" r="2"></circle><circle cx="1035" cy="268" r="2.6"></circle><circle cx="1050" cy="255" r="1.8"></circle>
+<circle cx="1010" cy="280" r="2"></circle><circle cx="1028" cy="288" r="2.4"></circle><circle cx="1045" cy="278" r="2"></circle><circle cx="1065" cy="270" r="2.2"></circle>
+<circle cx="980" cy="290" r="1.8"></circle><circle cx="995" cy="300" r="2"></circle>
+</g>
+</g>
+<!-- ML network graph, lower right -->
+<g fill="none" stroke="#5b8def" stroke-opacity="0.22" stroke-width="1.1">
+<line x1="1120" x2="1200" y1="330" y2="300"></line>
+<line x1="1120" x2="1195" y1="330" y2="360"></line>
+<line x1="1120" x2="1180" y1="330" y2="400"></line>
+<line x1="1060" x2="1120" y1="360" y2="330"></line>
+<line x1="1060" x2="1195" y1="360" y2="360"></line>
+<line x1="1200" x2="1280" y1="300" y2="320"></line>
+<line x1="1195" x2="1280" y1="360" y2="320"></line>
+<line x1="1195" x2="1280" y1="360" y2="380"></line>
+<line x1="1180" x2="1280" y1="400" y2="380"></line>
+<line x1="1060" x2="1010" y1="360" y2="400"></line>
+</g>
+<g fill="#60a5fa" opacity="0.5">
+<circle cx="1060" cy="360" r="3.2"></circle>
+<circle cx="1120" cy="330" r="3.2"></circle>
+<circle cx="1010" cy="400" r="3"></circle>
+<circle cx="1200" cy="300" r="3.4"></circle>
+<circle cx="1195" cy="360" r="3.4"></circle>
+<circle cx="1180" cy="400" r="3.2"></circle>
+<circle cx="1280" cy="320" r="3.6"></circle>
+<circle cx="1280" cy="380" r="3.4"></circle>
+</g>
+<!-- faint mosquito silhouette (vector-borne disease motif) -->
+<g fill="#7ea6e8" opacity="0.15" transform="translate(230,330) rotate(-12)">
+<ellipse cx="0" cy="0" rx="5" ry="14"></ellipse>
+<line stroke="#7ea6e8" stroke-width="1.4" x1="0" x2="-2" y1="-14" y2="-34"></line>
+<line stroke="#7ea6e8" stroke-width="1.4" x1="0" x2="-18" y1="12" y2="34"></line>
+<line stroke="#7ea6e8" stroke-width="1.4" x1="0" x2="18" y1="12" y2="34"></line>
+<ellipse cx="-14" cy="-2" rx="16" ry="6" transform="rotate(-18 -14 -2)"></ellipse>
+<ellipse cx="14" cy="-2" rx="16" ry="6" transform="rotate(18 14 -2)"></ellipse>
+<line stroke="#7ea6e8" stroke-width="1.2" x1="-2" x2="-14" y1="-6" y2="-2"></line>
+<line stroke="#7ea6e8" stroke-width="1.2" x1="-2" x2="-16" y1="2" y2="8"></line>
+<line stroke="#7ea6e8" stroke-width="1.2" x1="2" x2="14" y1="-6" y2="0"></line>
+</g>
+<!-- DNA / data helix motif, far right edge -->
+<g fill="none" stroke="#6ea8ee" stroke-opacity="0.14" stroke-width="1.3">
+<path d="M1340,20 C1360,50 1320,80 1340,110 C1360,140 1320,170 1340,200 C1360,230 1320,260 1340,290 C1360,320 1320,350 1340,380"></path>
+<path d="M1360,20 C1340,50 1380,80 1360,110 C1340,140 1380,170 1360,200 C1340,230 1380,260 1360,290 C1340,320 1380,350 1360,380"></path>
+</g>
+<!-- word cloud: research themes -->
+<g fill="#bcd4fb" font-family="'Lora',serif">
+<text font-size="34" font-weight="600" opacity="0.10" transform="rotate(-3 760 70)" x="760" y="70">Dengue</text>
+<text font-size="26" font-weight="600" opacity="0.09" transform="rotate(4 1010 345)" x="1010" y="345">Malaria</text>
+<text font-size="22" font-weight="500" opacity="0.08" x="640" y="240">Tuberculosis</text>
+<text font-size="30" font-weight="600" opacity="0.11" transform="rotate(-2 880 180)" x="880" y="180">Explainable AI</text>
+<text font-size="20" font-weight="500" opacity="0.09" x="1120" y="60">SHAP</text>
+<text font-size="24" font-weight="500" opacity="0.08" x="760" y="410">Epidemiology</text>
+<text font-size="18" font-weight="500" opacity="0.09" x="1220" y="230">Bayesian</text>
+<text font-size="18" font-weight="500" opacity="0.08" x="900" y="290">ConvLSTM</text>
+<text font-size="16" font-weight="500" opacity="0.07" x="620" y="130">Spatial Analysis</text>
+<text font-size="16" font-weight="500" opacity="0.08" x="1180" y="410">XGBoost</text>
+<text font-size="16" font-weight="500" opacity="0.07" x="1300" y="140">Global Health</text>
+<text font-size="14" font-weight="500" opacity="0.07" x="1000" y="410">Bangladesh</text>
+</g>
+</svg>
+</div>
+<div class="hero-inner">
+<div class="hero-eyebrow">Peer-Reviewed Research</div>
+<h1>Publications</h1>
+<p>Peer-reviewed research in machine learning, explainable AI, epidemiology, and global public health — published in high-impact international journals.</p>
+<div class="hero-metrics">
+<div><div class="metric-num">13</div><div class="metric-label">Publications</div></div>
+<div><div class="metric-num">9</div><div class="metric-label">Journals</div></div>
+<div><div class="metric-num">194</div><div class="metric-label">Countries Studied</div></div>
+<div><div class="metric-num">Nature · BMJ · Springer · Wiley</div><div class="metric-label">Publishers</div></div>
+</div>
+</div>
 </section>
-
 <div class="summary-panel">
-  <div class="summary-inner">
-    <div class="sum-block">
-      <div class="sum-block-title">Research Topics</div>
-      <div class="topic-row">
-        <span class="topic-name">Dengue</span>
-        <div class="topic-track"><div class="topic-fill" style="width:100%;background:#e05a2b"></div></div>
-        <span class="topic-count">8</span>
-      </div>
-      <div class="topic-row">
-        <span class="topic-name">Tuberculosis</span>
-        <div class="topic-track"><div class="topic-fill" style="width:30%;background:#7c3aed"></div></div>
-        <span class="topic-count">3</span>
-      </div>
-      <div class="topic-row">
-        <span class="topic-name">Malaria</span>
-        <div class="topic-track"><div class="topic-fill" style="width:30%;background:#d97706"></div></div>
-        <span class="topic-count">3</span>
-      </div>
-      <div class="topic-row">
-        <span class="topic-name">Asia</span>
-        <div class="topic-track"><div class="topic-fill" style="width:40%;background:#059669"></div></div>
-        <span class="topic-count">4</span>
-      </div>
-      <div class="topic-row">
-        <span class="topic-name">Global</span>
-        <div class="topic-track"><div class="topic-fill" style="width:30%;background:#059669"></div></div>
-        <span class="topic-count">3</span>
-      </div>
-      <div class="topic-row">
-        <span class="topic-name">Vector-borne Diseases</span>
-        <div class="topic-track"><div class="topic-fill" style="width:30%;background:#059669"></div></div>
-        <span class="topic-count">3</span>
-      </div>
-      <div class="topic-row">
-        <span class="topic-name">COD</span>
-        <div class="topic-track"><div class="topic-fill" style="width:20%;background:#059669"></div></div>
-        <span class="topic-count">2</span>
-      </div>
-      <div class="topic-row">
-        <span class="topic-name">Child Mortality</span>
-        <div class="topic-track"><div class="topic-fill" style="width:20%;background:#0891b2"></div></div>
-        <span class="topic-count">2</span>
-      </div>
-    </div>
-    <div class="sum-block">
-      <div class="sum-block-title">Journals</div>
-      <div class="jlist">
-        <div class="jitem"><div class="jdot" style="background:#92400e"></div><span class="jname">Health Science Reports</span><span class="jcount">3</span></div>
-        <div class="jitem"><div class="jdot" style="background:#e05a2b"></div><span class="jname">Scientific Reports</span><span class="jcount">2</span></div>
-        <div class="jitem"><div class="jdot" style="background:#be185d"></div><span class="jname">Global Epidemiology</span><span class="jcount">2</span></div>
-        <div class="jitem"><div class="jdot" style="background:#0e7490"></div><span class="jname">BMJ Open</span><span class="jcount">1</span></div>
-        <div class="jitem"><div class="jdot" style="background:#065f46"></div><span class="jname">Int. J. Health Geographics</span><span class="jcount">1</span></div>
-        <div class="jitem"><div class="jdot" style="background:#166534"></div><span class="jname">Trop. Med. &amp; Infect. Dis.</span><span class="jcount">1</span></div>
-        <div class="jitem"><div class="jdot" style="background:#5b21b6"></div><span class="jname">Int. J. Statistical Sciences</span><span class="jcount">1</span></div>
-        <div class="jitem"><div class="jdot" style="background:#1d4ed8"></div><span class="jname">BMC Medicine</span><span class="jcount">1</span></div>
-        <div class="jitem"><div class="jdot" style="background:#b45309"></div><span class="jname">Public Health Challenges</span><span class="jcount">1</span></div>
-      </div>
-    </div>
-    <div class="sum-block">
-      <div class="sum-block-title">Key Statistics</div>
-      <div class="kstat-grid">
-        <div class="kstat"><div class="kstat-n">R&#178; 0.99</div><div class="kstat-l">Best model fit</div></div>
-        <div class="kstat"><div class="kstat-n">Acc 0.93</div><div class="kstat-l">MLP accuracy</div></div>
-        <div class="kstat"><div class="kstat-n">194</div><div class="kstat-l">Countries (TB)</div></div>
-        <div class="kstat"><div class="kstat-n">AUC 0.99</div><div class="kstat-l">ROC-AUC (dengue)</div></div>
-        <div class="kstat"><div class="kstat-n">118</div><div class="kstat-l">Countries (dengue)</div></div>
-        <div class="kstat"><div class="kstat-n">70</div><div class="kstat-l">Studies (XAI review)</div></div>
-      </div>
-    </div>
-    <div class="sum-block">
-      <div class="sum-block-title">Publishers</div>
-      <div class="pub-pills">
-        <span class="pub-pill" style="background:#fff3e0;color:#c2410c;border-color:#fdba74">Nature Portfolio</span>
-        <span class="pub-pill" style="background:#fffbeb;color:#92400e;border-color:#fde68a">Wiley</span>
-        <span class="pub-pill" style="background:#fef2f2;color:#991b1b;border-color:#fca5a5">Elsevier</span>
-        <span class="pub-pill" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe">BMJ</span>
-        <span class="pub-pill" style="background:#ecfdf5;color:#065f46;border-color:#6ee7b7">Springer</span>
-        <span class="pub-pill" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">MDPI</span>
-        <span class="pub-pill" style="background:#f5f3ff;color:#5b21b6;border-color:#ddd6fe">BanglaJOL</span>
-      </div>
-      <div class="method-tags">
-        <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.9px;color:#64748b;margin-bottom:8px;width:100%">Methods</div>
-        <span class="mtag" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe">XGBoost</span>
-        <span class="mtag" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">LightGBM</span>
-        <span class="mtag" style="background:#f5f3ff;color:#5b21b6;border-color:#ddd6fe">SHAP</span>
-        <span class="mtag" style="background:#fff0f3;color:#be185d;border-color:#fbcfe8">LIME</span>
-        <span class="mtag" style="background:#fef3c7;color:#92400e;border-color:#fcd34d">Moran&apos;s I</span>
-        <span class="mtag" style="background:#e0f7fa;color:#0e7490;border-color:#67e8f9">Bayesian</span>
-        <span class="mtag" style="background:#fff3e0;color:#c2410c;border-color:#fdba74">ConvLSTM</span>
-        <span class="mtag" style="background:#ecfdf5;color:#065f46;border-color:#6ee7b7">Getis-Ord Gi*</span>
-        <span class="mtag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe">IG / LRP</span>
-      </div>
-    </div>
-  </div>
+<div class="summary-inner">
+<div class="sum-block">
+<div class="sum-block-title">Research Topics</div>
+<div class="topic-row">
+<span class="topic-name">Dengue</span>
+<div class="topic-track"><div class="topic-fill" style="width:100%;background:#e05a2b"></div></div>
+<span class="topic-count">8</span>
 </div>
-
+<div class="topic-row">
+<span class="topic-name">Tuberculosis</span>
+<div class="topic-track"><div class="topic-fill" style="width:30%;background:#7c3aed"></div></div>
+<span class="topic-count">3</span>
+</div>
+<div class="topic-row">
+<span class="topic-name">Malaria</span>
+<div class="topic-track"><div class="topic-fill" style="width:30%;background:#d97706"></div></div>
+<span class="topic-count">3</span>
+</div>
+<div class="topic-row">
+<span class="topic-name">Asia</span>
+<div class="topic-track"><div class="topic-fill" style="width:40%;background:#059669"></div></div>
+<span class="topic-count">4</span>
+</div>
+<div class="topic-row">
+<span class="topic-name">Global</span>
+<div class="topic-track"><div class="topic-fill" style="width:30%;background:#059669"></div></div>
+<span class="topic-count">3</span>
+</div>
+<div class="topic-row">
+<span class="topic-name">Vector-borne Diseases</span>
+<div class="topic-track"><div class="topic-fill" style="width:30%;background:#059669"></div></div>
+<span class="topic-count">3</span>
+</div>
+<div class="topic-row">
+<span class="topic-name">COD</span>
+<div class="topic-track"><div class="topic-fill" style="width:20%;background:#059669"></div></div>
+<span class="topic-count">2</span>
+</div>
+<div class="topic-row">
+<span class="topic-name">Child Mortality</span>
+<div class="topic-track"><div class="topic-fill" style="width:20%;background:#0891b2"></div></div>
+<span class="topic-count">2</span>
+</div>
+</div>
+<div class="sum-block">
+<div class="sum-block-title">Journals</div>
+<div class="jlist">
+<div class="jitem"><div class="jdot" style="background:#92400e"></div><span class="jname">Health Science Reports</span><span class="jcount">3</span></div>
+<div class="jitem"><div class="jdot" style="background:#e05a2b"></div><span class="jname">Scientific Reports</span><span class="jcount">2</span></div>
+<div class="jitem"><div class="jdot" style="background:#be185d"></div><span class="jname">Global Epidemiology</span><span class="jcount">2</span></div>
+<div class="jitem"><div class="jdot" style="background:#0e7490"></div><span class="jname">BMJ Open</span><span class="jcount">1</span></div>
+<div class="jitem"><div class="jdot" style="background:#065f46"></div><span class="jname">Int. J. Health Geographics</span><span class="jcount">1</span></div>
+<div class="jitem"><div class="jdot" style="background:#166534"></div><span class="jname">Trop. Med. &amp; Infect. Dis.</span><span class="jcount">1</span></div>
+<div class="jitem"><div class="jdot" style="background:#5b21b6"></div><span class="jname">Int. J. Statistical Sciences</span><span class="jcount">1</span></div>
+<div class="jitem"><div class="jdot" style="background:#1d4ed8"></div><span class="jname">BMC Medicine</span><span class="jcount">1</span></div>
+<div class="jitem"><div class="jdot" style="background:#b45309"></div><span class="jname">Public Health Challenges</span><span class="jcount">1</span></div>
+</div>
+</div>
+<div class="sum-block">
+<div class="sum-block-title">Key Statistics</div>
+<div class="kstat-grid">
+<div class="kstat"><div class="kstat-n">R² 0.99</div><div class="kstat-l">Best model fit</div></div>
+<div class="kstat"><div class="kstat-n">Acc 0.93</div><div class="kstat-l">MLP accuracy</div></div>
+<div class="kstat"><div class="kstat-n">194</div><div class="kstat-l">Countries (TB)</div></div>
+<div class="kstat"><div class="kstat-n">AUC 0.99</div><div class="kstat-l">ROC-AUC (dengue)</div></div>
+<div class="kstat"><div class="kstat-n">118</div><div class="kstat-l">Countries (dengue)</div></div>
+<div class="kstat"><div class="kstat-n">70</div><div class="kstat-l">Studies (XAI review)</div></div>
+</div>
+</div>
+<div class="sum-block">
+<div class="sum-block-title">Publishers</div>
+<div class="pub-pills">
+<span class="pub-pill" style="background:#fff3e0;color:#c2410c;border-color:#fdba74">Nature Portfolio</span>
+<span class="pub-pill" style="background:#fffbeb;color:#92400e;border-color:#fde68a">Wiley</span>
+<span class="pub-pill" style="background:#fef2f2;color:#991b1b;border-color:#fca5a5">Elsevier</span>
+<span class="pub-pill" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe">BMJ</span>
+<span class="pub-pill" style="background:#ecfdf5;color:#065f46;border-color:#6ee7b7">Springer</span>
+<span class="pub-pill" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">MDPI</span>
+<span class="pub-pill" style="background:#f5f3ff;color:#5b21b6;border-color:#ddd6fe">BanglaJOL</span>
+</div>
+<div class="method-tags">
+<div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.9px;color:#64748b;margin-bottom:8px;width:100%">Methods</div>
+<span class="mtag" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe">XGBoost</span>
+<span class="mtag" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">LightGBM</span>
+<span class="mtag" style="background:#f5f3ff;color:#5b21b6;border-color:#ddd6fe">SHAP</span>
+<span class="mtag" style="background:#fff0f3;color:#be185d;border-color:#fbcfe8">LIME</span>
+<span class="mtag" style="background:#fef3c7;color:#92400e;border-color:#fcd34d">Moran's I</span>
+<span class="mtag" style="background:#e0f7fa;color:#0e7490;border-color:#67e8f9">Bayesian</span>
+<span class="mtag" style="background:#fff3e0;color:#c2410c;border-color:#fdba74">ConvLSTM</span>
+<span class="mtag" style="background:#ecfdf5;color:#065f46;border-color:#6ee7b7">Getis-Ord Gi*</span>
+<span class="mtag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe">IG / LRP</span>
+</div>
+</div>
+</div>
+</div>
 <div class="filter-bar">
-  <div class="filter-inner">
-    <button class="filter-tab active" data-filter="all">All <span class="ftag">13</span></button>
-    <button class="filter-tab" data-filter="dengue">Dengue <span class="ftag">7</span></button>
-    <button class="filter-tab" data-filter="malaria">Malaria <span class="ftag">2</span></button>
-    <button class="filter-tab" data-filter="tb">Tuberculosis <span class="ftag">2</span></button>
-    <button class="filter-tab" data-filter="mortality">Child Mortality <span class="ftag">2</span></button>
-    <button class="filter-tab" data-filter="asia">Asia <span class="ftag">2</span></button>
-    <button class="filter-tab" data-filter="2026">2026 <span class="ftag">6</span></button>
-    <button class="filter-tab" data-filter="2025">2025 <span class="ftag">7</span></button>
-  </div>
+<div class="filter-inner">
+<button class="filter-tab active" data-filter="all">All <span class="ftag">13</span></button>
+<button class="filter-tab" data-filter="dengue">Dengue <span class="ftag">7</span></button>
+<button class="filter-tab" data-filter="malaria">Malaria <span class="ftag">2</span></button>
+<button class="filter-tab" data-filter="tb">Tuberculosis <span class="ftag">2</span></button>
+<button class="filter-tab" data-filter="mortality">Child Mortality <span class="ftag">2</span></button>
+<button class="filter-tab" data-filter="asia">Asia <span class="ftag">2</span></button>
+<button class="filter-tab" data-filter="2026">2026 <span class="ftag">6</span></button>
+<button class="filter-tab" data-filter="2025">2025 <span class="ftag">7</span></button>
 </div>
-
+</div>
 <div id="fig-lightbox">
-  <div class="lb-wrap">
-    <button class="lb-x" id="lb-close">&#10005;</button>
-    <button class="lb-arr" id="lb-prev">&#8249;</button>
-    <img id="lb-img" src="" alt="">
-    <button class="lb-arr" id="lb-next">&#8250;</button>
-  </div>
-  <div id="lb-caption"></div>
+<div class="lb-wrap">
+<button class="lb-x" id="lb-close">✕</button>
+<button class="lb-arr" id="lb-prev">‹</button>
+<img alt="" id="lb-img" src=""/>
+<button class="lb-arr" id="lb-next">›</button>
 </div>
-
+<div id="lb-caption"></div>
+</div>
 <div class="page-body">
-  <div class="search-wrap">
-    <span class="search-icon">&#128269;</span>
-    <input class="search-input" id="search" type="text" placeholder="Search by title, keyword, journal, method&#8230;" autocomplete="off">
-  </div>
-  <div class="no-results" id="no-results">No publications match your search.</div>
-
-  <!-- ═══════════════ 2026 PAPERS ═══════════════ -->
-
-  <article class="pub-card wiley" data-tags="mortality 2026 stillbirth neonatal bangladesh wiley public health challenges">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;">Public Health Challenges</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1002/puh2.70312" target="_blank">Stillbirth, Neonatal, and Child Mortality in Bangladesh: Progress and Persistent Public Health Challenges</a></h2>
-      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">30&rarr;27</div><div class="pm-lbl">IMR Reversal</div></div>
-        <div class="pm-item"><div class="pm-val">16&rarr;20</div><div class="pm-lbl">Neonatal (2023)</div></div>
-        <div class="pm-item"><div class="pm-val">100,000+</div><div class="pm-lbl">Under-5 Deaths</div></div>
-        <div class="pm-item"><div class="pm-val">63,000</div><div class="pm-lbl">Annual Stillbirths</div></div>
-        <div class="pm-item"><div class="pm-val">2000&ndash;23</div><div class="pm-lbl">Data Span</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/puh2.70312" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://onlinelibrary.wiley.com/doi/10.1002/puh2.70312" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite13',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite13"><button class="cite-copy" onclick="copyCite('cite13')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2026). Stillbirth, Neonatal, and Child Mortality in Bangladesh: Progress and Persistent Public Health Challenges. Public Health Challenges. https://doi.org/10.1002/puh2.70312</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-13"><p>Bangladesh made substantial gains in child survival over two decades, with the under-five mortality rate falling from 94 to 30 per 1000 live births between 2000 and 2020. Recent data from the Bangladesh Bureau of Statistics, however, point to a troubling reversal. The infant mortality rate rose to 27 per 1000 live births in 2023, whereas neonatal mortality climbed from 16 to 20 per 1000 live births within a single year. More than 100,000 children under 5 died in 2023, with two-thirds of deaths occurring in the first month of life. Bangladesh also records around 63,000 stillbirths annually, representing a substantial public health burden and reflecting persistent gaps in maternal and antenatal care. Contributing factors include preterm birth, limited skilled attendance at delivery, pneumonia, malnutrition, and disruptions from the COVID-19 pandemic. Strengthening rural healthcare, expanding immunization, and improving maternal and neonatal care are essential if Bangladesh is to meet its Sustainable Development Goal (SDG) 3.2 targets by 2030.</p></div>
-      <button class="read-more-btn" data-target="abs-13">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/45af9eed-f320-4527-b684-b399035934b5" alt="Figure 1" data-full="https://github.com/user-attachments/assets/45af9eed-f320-4527-b684-b399035934b5">
-      </div>
-    </div>
-  </article>
-
-  <article class="pub-card springer" data-tags="dengue malaria 2026 xai spatial vbd bangladesh springer xgboost">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-springer" style="background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;">BMC Medicine</span><span class="pub-sub-badge psb-springer">Springer</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1186/s12916-026-04857-1" target="_blank">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh: leveraging machine learning and spatial regression for intervention strategies</a></h2>
-     <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong>, <a href="https://scholar.google.com/citations?user=Z5Vu5OoAAAAJ&hl=en" target="_blank">Arman Hossain Chowdhury</a></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">64</div><div class="pm-lbl">Districts</div></div>
-        <div class="pm-item"><div class="pm-val">2017&ndash;20</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">&beta; 16.64</div><div class="pm-lbl">Temp. Effect</div></div>
-        <div class="pm-item"><div class="pm-val">5 Diseases</div><div class="pm-lbl">VBD Coverage</div></div>
-        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1186/s12916-026-04857-1" target="_blank">&#8599; DOI</a>
-        <button class="btn-cite" onclick="toggleCite('cite12',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite12"><button class="cite-copy" onclick="copyCite('cite12')">Copy</button>Rahman, M., Shiddik, M.A.B. & Chowdhury, A.H. Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh: leveraging machine learning and spatial regression for intervention strategies. BMC Med (2026). https://doi.org/10.1186/s12916-026-04857-1</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-12"><p><strong>Background:</strong> Bangladesh has seen a noticeable rise in vector-borne diseases (VBD) attributed to climate change. Accurately mapping, predicting, and identifying risk factors of VBD is essential for prevention and control strategies.</p><p><strong>Methods:</strong> District-level reported cases of VBD (dengue, chikungunya, malaria, filariasis, and yellow fever) were obtained from the Bangladesh Bureau of Statistics alongside meteorological data from NASA (2017&ndash;2020). Exploratory spatial analysis, spatial regression, and tree-based ML models were applied for prediction, risk factor identification, and correlation analysis.</p><p><strong>Results:</strong> Dengue was the most prevalent VBD, peaking in 2019. Dhaka, Pirojpur, Jessore, Bandarban, Rangamati, and Narail exhibited higher incidence rates. Spatial regression identified mean temperature as a major risk factor (&beta; = 16.64, s.e. = 6.39). XGBoost also highlighted mean temperature as the primary determinant, alongside GDP, population size, and healthcare infrastructure.</p><p><strong>Conclusions:</strong> Findings incorporating the One Health perspective provide insights for early-warning, prevention, and control strategies using ML to combat infectious diseases in Bangladesh and similar endemic countries.</p></div>
-      <button class="read-more-btn" data-target="abs-12">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/d2d1ffd8-018a-4eee-9fd5-af2777ca57c2" alt="Figure 1" data-full="https://github.com/user-attachments/assets/d2d1ffd8-018a-4eee-9fd5-af2777ca57c2">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/decaf72d-72bc-4315-ae0e-1441abcf7816" alt="Figure 2" data-full="https://github.com/user-attachments/assets/decaf72d-72bc-4315-ae0e-1441abcf7816">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/1ac2b74e-ceb0-49b6-b54a-6e1dc4841925" alt="Figure 3" data-full="https://github.com/user-attachments/assets/1ac2b74e-ceb0-49b6-b54a-6e1dc4841925" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="12">Show all figures (3) &rarr;</button>
-    </div>
-  </article>
-
-  <article class="pub-card wiley" data-tags="dengue 2026 xai convlstm global ml shap ig lrp wiley hsr">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1002/hsr2.72280" target="_blank">Global Prediction of Dengue Incidence Using an Explainable Artificial Intelligence-Driven ConvLSTM Integrating Environmental, Health, and Socio-Economic Determinants</a></h2>
-      <p class="pub-authors"><strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">118</div><div class="pm-lbl">Countries</div></div>
-        <div class="pm-item"><div class="pm-val">2000&ndash;21</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">R&sup2; 0.77</div><div class="pm-lbl">ConvLSTM Fit</div></div>
-        <div class="pm-item"><div class="pm-val">SHAP+IG+LRP</div><div class="pm-lbl">XAI Methods</div></div>
-        <div class="pm-item"><div class="pm-val">ConvLSTM</div><div class="pm-lbl">Best Model</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/hsr2.72280" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://doi.org/10.1002/hsr2.72280" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite10',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite10"><button class="cite-copy" onclick="copyCite('cite10')">Copy</button>Shiddik, M.A.B. (2026). Global Prediction of Dengue Incidence Using an Explainable Artificial Intelligence-Driven ConvLSTM Integrating Environmental, Health, and Socio-Economic Determinants. Health Science Reports. https://doi.org/10.1002/hsr2.72280</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-10"><p><strong>Background:</strong> Dengue fever is a rapidly expanding vector-borne disease posing significant global epidemiological challenges. Accurate and interpretable forecasting is essential for timely interventions, yet most models overlook spatiotemporal, sex-specific, and country-level heterogeneity in disease dynamics.</p><p><strong>Methods:</strong> A ConvLSTM network was applied to predict dengue incidence across 118 countries from 2000 to 2021 using 20 climatic, environmental, health system, and socio-economic predictors. Feature contributions were assessed through SHAP values, permutation importance, perturbation sensitivity, integrated gradients (IG), and layer-wise relevance propagation (LRP).</p><p><strong>Results:</strong> ConvLSTM achieved the best predictive performance (R&sup2; = 0.7731). Annual freshwater withdrawals dominated male dengue incidence (SHAP: 44.37%), while hospital bed density had greater influence for females (SHAP: 31.86%). Temperature anomalies contributed consistently to both sexes (SHAP: 11.51%). Sensitivity analysis showed dengue incidence varied from &minus;65% to +91% under &plusmn;50% predictor perturbations.</p><p><strong>Conclusion:</strong> The ConvLSTM&ndash;XAI framework provides transparent, sex-aware, and country-specific dengue forecasts supporting targeted, climate-resilient dengue control strategies.</p></div>
-      <button class="read-more-btn" data-target="abs-10">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/1d0b3df2-9dca-4568-8e1e-9f28ea4101ca" alt="Figure 1" data-full="https://github.com/user-attachments/assets/1d0b3df2-9dca-4568-8e1e-9f28ea4101ca">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/561baa5a-394e-489a-a217-b3516d6e97c9" alt="Figure 2" data-full="https://github.com/user-attachments/assets/561baa5a-394e-489a-a217-b3516d6e97c9">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/a24a599a-087f-49ec-b175-a49adb4662f0" alt="Figure 3" data-full="https://github.com/user-attachments/assets/a24a599a-087f-49ec-b175-a49adb4662f0" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/e7d61762-4849-4e2b-a090-f8a52cc472e2" alt="Figure 4" data-full="https://github.com/user-attachments/assets/e7d61762-4849-4e2b-a090-f8a52cc472e2" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/e7285f44-8749-497d-993d-9483fc0306c7" alt="Figure 5" data-full="https://github.com/user-attachments/assets/e7285f44-8749-497d-993d-9483fc0306c7" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/5fcbce20-9b31-4c98-9881-fdd2a40b60af" alt="Figure 6" data-full="https://github.com/user-attachments/assets/5fcbce20-9b31-4c98-9881-fdd2a40b60af" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="10">Show all figures (6) &rarr;</button>
-    </div>
-  </article>
-
-  <article class="pub-card wiley" data-tags="xai 2026 systematic review healthcare ml deep learning shap lime wiley hsr">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1002/hsr2.72172" target="_blank">Explainable Artificial Intelligence in Healthcare: Current Landscape, Challenges, and Future Directions</a></h2>
-      <p class="pub-authors"><strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">70</div><div class="pm-lbl">Studies Reviewed</div></div>
-        <div class="pm-item"><div class="pm-val">2017&ndash;25</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">SHAP 54%</div><div class="pm-lbl">Top XAI Method</div></div>
-        <div class="pm-item"><div class="pm-val">6 Databases</div><div class="pm-lbl">Sources</div></div>
-        <div class="pm-item"><div class="pm-val">Systematic Review</div><div class="pm-lbl">Study Design</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/hsr2.72172" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://doi.org/10.1002/hsr2.72172" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite11',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite11"><button class="cite-copy" onclick="copyCite('cite11')">Copy</button>Shiddik, M.A.B. (2026). Explainable Artificial Intelligence in Healthcare: Current Landscape, Challenges, and Future Directions. Health Science Reports. https://doi.org/10.1002/hsr2.72172</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-11"><p><strong>Background:</strong> AI, particularly ML and Deep Learning, is transforming healthcare by enabling improved diagnosis, prognosis, and personalized treatments. However, the opacity of many AI "black box" models limits interpretability, clinician trust, and real-world adoption. XAI has emerged to address these limitations by providing transparent and actionable insights. This systematic review synthesizes current evidence on XAI in healthcare, mapping AI models to XAI techniques, domains, and clinical applications.</p><p><strong>Methods:</strong> A systematic search was conducted across six databases (Elsevier, Springer, Taylor &amp; Francis, Semantic Scholar, ACM, and IEEE Xplore) for peer-reviewed articles published between 2017 and 2025, following PRISMA guidelines.</p><p><strong>Results:</strong> Seventy studies were included, spanning oncology (40%), cardiology (21%), infectious diseases (14%), neurology (11%), and clinical decision support (13%). Deep learning models were most frequently applied (76%). SHAP (54%) and LIME (30%) were the most commonly used XAI techniques. Only 12 studies explicitly addressed ethical or regulatory considerations.</p><p><strong>Conclusion:</strong> XAI enhances transparency, clinician trust, and decision-making in healthcare AI. Future work should focus on hybrid, clinically validated XAI models, comprehensive ethical compliance, and user-centered implementations.</p></div>
-      <button class="read-more-btn" data-target="abs-11">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/6560e3dc-e627-49ff-a7df-42a4c469c2cc" alt="Figure 1" data-full="https://github.com/user-attachments/assets/6560e3dc-e627-49ff-a7df-42a4c469c2cc">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/75363c60-2b4a-4296-a3c9-e0d9b4c554a8" alt="Figure 2" data-full="https://github.com/user-attachments/assets/75363c60-2b4a-4296-a3c9-e0d9b4c554a8">
-      </div>
-    </div>
-  </article>
-
-
-
-  <!-- ═══════════════ EXISTING PAPERS ═══════════════ -->
-
-  <article class="pub-card nature" data-tags="tb 2025 xai ml spatial nature xgboost shap global">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-nature">Scientific Reports</span><span class="pub-sub-badge psb-nature">Nature Portfolio</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</a></h2>
-      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">194</div><div class="pm-lbl">Countries</div></div>
-        <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">SHAP 0.874</div><div class="pm-lbl">Peak Impact</div></div>
-        <div class="pm-item"><div class="pm-val">R&sup2; 0.67</div><div class="pm-lbl">Model Fit</div></div>
-        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.nature.com/articles/s41598-025-96973-w" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite1',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite1"><button class="cite-copy" onclick="copyCite('cite1')">Copy</button>Rahman, M.S. &amp; Shiddik, A.B. (2025). Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally. Scientific Reports. https://doi.org/10.1038/s41598-025-96973-w</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-1"><p>Tuberculosis (TB) is a major global health issue, contributing significantly to mortality and morbidity rates worldwide. This study employed the advanced machine learning model XGBoost, combined with XAI and spatial analysis, to describe global TB incidence and mortality rates across 194 countries from 2000 to 2022. Spatial autocorrelation analysis utilizing Moran&apos;s I revealed geographical clusters and significant determinants affecting TB incidence. Treatment success rates and MDR-TB treatment initiation were identified as pivotal determinants. Confirmed cases of MDR-TB had the most significant impact on TB incidence (SHAP = 0.874). Additionally, air pollution had a notable impact (SHAP = 1.36). The XGBoost model demonstrated the best predictive performance (RMSE = 0.88, R&sup2; = 0.67, Adjusted R&sup2; = 0.65). This study highlights the potential of integrating XGBoost and XAI methodologies as a holistic framework for effectively tackling global tuberculosis incidence and mortality rates.</p></div>
-      <button class="read-more-btn" data-target="abs-1">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/9a2b292c-919a-4b7a-8106-7cac14ee4fb5" alt="Figure 1" data-full="https://github.com/user-attachments/assets/9a2b292c-919a-4b7a-8106-7cac14ee4fb5">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/025439ef-f880-41c5-b202-7585cddf912d" alt="Figure 2" data-full="https://github.com/user-attachments/assets/025439ef-f880-41c5-b202-7585cddf912d">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/b25a2489-bb83-4f7b-9039-c3c87844f7a0" alt="Figure 3" data-full="https://github.com/user-attachments/assets/b25a2489-bb83-4f7b-9039-c3c87844f7a0" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/dab00be0-e460-47ba-975c-d1f593172106" alt="Figure 4" data-full="https://github.com/user-attachments/assets/dab00be0-e460-47ba-975c-d1f593172106" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/90a6b33e-aa01-4ff8-a645-e1b80f046f28" alt="Figure 5" data-full="https://github.com/user-attachments/assets/90a6b33e-aa01-4ff8-a645-e1b80f046f28" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="1">Show all figures (5) &rarr;</button>
-    </div>
-  </article>
-
-  <article class="pub-card wiley" data-tags="dengue 2025 ml tree bangladesh warning lightgbm shap wiley hsr">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1002/hsr2.70726" target="_blank">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model</a></h2>
-      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <a href="https://scholar.google.com/citations?user=R-SM8CEAAAAJ&hl=en" target="_blank">Miftahuzzannat Amrin</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">LightGBM</div><div class="pm-lbl">Best Model</div></div>
-        <div class="pm-item"><div class="pm-val">2000&ndash;21</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">27&deg;C</div><div class="pm-lbl">Optimal Mean Temp</div></div>
-        <div class="pm-item"><div class="pm-val">82%</div><div class="pm-lbl">Risk Humidity</div></div>
-        <div class="pm-item"><div class="pm-val">SHAP</div><div class="pm-lbl">XAI Method</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/hsr2.70726" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://onlinelibrary.wiley.com/doi/10.1002/hsr2.70726" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite2',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite2"><button class="cite-copy" onclick="copyCite('cite2')">Copy</button>Rahman, M.S., Amrin, M. &amp; Shiddik, M.A.B. (2025). Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model. Health Science Reports, 8(5), e70726. https://doi.org/10.1002/hsr2.70726</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-2"><p><strong>Background:</strong> A life-threatening vector-borne disease, dengue fever poses significant global public health and economic threats, including Bangladesh. This study proposes an interpretable tree-based ML model for dengue early warning systems using climatic, sociodemographic, and landscape factors.</p><p><strong>Methods:</strong> High-performance ML algorithms &mdash; Random Forests, XGBoost, and LightGBM &mdash; were applied to surveillance data from January 2000 to December 2021. SHAP values identified the most significant dengue drivers.</p><p><strong>Results:</strong> Optimal thresholds: mean temperature 27&deg;C, minimum temperature 22&deg;C, humidity 82%. LightGBM accurately forecasts dengue, with agricultural land, population density, and minimum temperature as key outbreak drivers.</p><p><strong>Conclusion:</strong> The proposed ML model functions as an early warning system, providing a framework for sophisticated analytical techniques in public health.</p></div>
-      <button class="read-more-btn" data-target="abs-2">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/2f476fdc-0022-41b3-b8f3-fe3fbf096e9f" alt="Figure 1" data-full="https://github.com/user-attachments/assets/2f476fdc-0022-41b3-b8f3-fe3fbf096e9f">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/cbbfce46-0fb0-4419-b2b4-943edd2f59ce" alt="Figure 2" data-full="https://github.com/user-attachments/assets/cbbfce46-0fb0-4419-b2b4-943edd2f59ce">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/f61bb292-2f42-4134-a0bf-769252d60010" alt="Figure 3" data-full="https://github.com/user-attachments/assets/f61bb292-2f42-4134-a0bf-769252d60010" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/779fca91-fd94-4985-8f60-404fcb0ed6c9" alt="Figure 4" data-full="https://github.com/user-attachments/assets/779fca91-fd94-4985-8f60-404fcb0ed6c9" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/0f99549c-af64-4eb5-ab5f-4a125f990396" alt="Figure 5" data-full="https://github.com/user-attachments/assets/0f99549c-af64-4eb5-ab5f-4a125f990396" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/0bd7315d-cdc9-407c-8509-a373d578d18b" alt="Figure 6" data-full="https://github.com/user-attachments/assets/0bd7315d-cdc9-407c-8509-a373d578d18b" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/774c5933-498a-4334-ac0f-35664405a77b" alt="Figure 7" data-full="https://github.com/user-attachments/assets/774c5933-498a-4334-ac0f-35664405a77b" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="2">Show all figures (7) &rarr;</button>
-    </div>
-  </article>
-
-  <article class="pub-card elsevier" data-tags="dengue 2025 xai climate bangladesh eco shap lime auc elsevier">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-gloepi">Global Epidemiology</span><span class="pub-sub-badge psb-elsevier">Elsevier</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</a></h2>
-      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">AUC 0.89</div><div class="pm-lbl">Performance</div></div>
-        <div class="pm-item"><div class="pm-val">2000&ndash;23</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">SHAP+LIME</div><div class="pm-lbl">XAI Methods</div></div>
-        <div class="pm-item"><div class="pm-val">2024&ndash;30</div><div class="pm-lbl">Forecast</div></div>
-        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.sciencedirect.com/science/article/pii/S2590113325000288" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite3',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite3"><button class="cite-copy" onclick="copyCite('cite3')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers. Global Epidemiology, 10, 100210. https://doi.org/10.1016/j.gloepi.2025.100210</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-3"><p><strong>Background:</strong> Dengue represents a significant public health threat in Bangladesh, characterized by complex ecological transmission dynamics. This study employs state-of-the-art AI methods to identify eco-climatic factors in predicting dengue outbreaks.</p><p><strong>Methods:</strong> XGBoost and LightGBM combined with XAI (SHAP and LIME) evaluated predictive performance of dengue determinants from 2000 to 2023. Models also predicted dengue cases and early warning trends from 2024 to 2030.</p><p><strong>Findings:</strong> Bangladesh experienced the highest dengue cases in August, most fatalities in November. XGBoost achieved AUC = 0.89 and Log Loss = 0.64. Key predictors: population density, precipitation, temperature, and land-use patterns.</p><p><strong>Interpretation:</strong> This study showcases XAI&apos;s potential in uncovering dengue outbreak complexities, providing a robust tool for public health interventions and generating timely alerts to prevent outbreaks.</p></div>
-      <button class="read-more-btn" data-target="abs-3">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/b3bda697-298b-4d3e-8ac9-a926b29281b3" alt="Figure 1" data-full="https://github.com/user-attachments/assets/b3bda697-298b-4d3e-8ac9-a926b29281b3">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/b7b68469-b556-4a82-bd50-17b4951d97c0" alt="Figure 2" data-full="https://github.com/user-attachments/assets/b7b68469-b556-4a82-bd50-17b4951d97c0">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/9e228318-b885-42fa-94e8-dc337dff1e72" alt="Figure 3" data-full="https://github.com/user-attachments/assets/9e228318-b885-42fa-94e8-dc337dff1e72" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/45875f05-8074-4bd5-98d5-b535450927ed" alt="Figure 4" data-full="https://github.com/user-attachments/assets/45875f05-8074-4bd5-98d5-b535450927ed" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/d160fbf2-f5f2-4fb7-ae19-c1697b061686" alt="Figure 5" data-full="https://github.com/user-attachments/assets/d160fbf2-f5f2-4fb7-ae19-c1697b061686" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="3">Show all figures (5) &rarr;</button>
-    </div>
-  </article>
-
-  <article class="pub-card elsevier" data-tags="dengue 2025 xai reflections bangladesh elsevier">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-gloepi">Global Epidemiology</span><span class="pub-sub-badge psb-elsevier">Elsevier</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1016/j.gloepi.2025.100230" target="_blank">Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</a></h2>
-      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1016/j.gloepi.2025.100230" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.sciencedirect.com/science/article/pii/S2590113325000483" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite4',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite4"><button class="cite-copy" onclick="copyCite('cite4')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh. Global Epidemiology, p.100230. https://doi.org/10.1016/j.gloepi.2025.100230</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-4"><p>This paper reflects on XAI&apos;s vast implications in public health research and its potential to inform climate-sensitive disease prediction in low-income settings. A novel framework combining predictive accuracy with interpretability through XAI enables actionable insights for early warning systems (EWS) and dengue prevention in densely populated and climate-sensitive regions like Bangladesh.</p></div>
-      <button class="read-more-btn" data-target="abs-4">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip"><img class="fig-thumb" src="https://github.com/user-attachments/assets/6f349c6a-78ce-479d-8c75-6a78bc79b071" alt="Figure 1" data-full="https://github.com/user-attachments/assets/6f349c6a-78ce-479d-8c75-6a78bc79b071"></div>
-    </div>
-  </article>
-
-  <article class="pub-card nature" data-tags="malaria 2025 ml spatial nature xai global xgboost getis-ord">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-nature">Scientific Reports</span><span class="pub-sub-badge psb-nature">Nature Portfolio</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">Unraveling global malaria incidence and mortality using machine learning and artificial intelligence&ndash;driven spatial analysis</a></h2>
-      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">106</div><div class="pm-lbl">Countries</div></div>
-        <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">R&sup2; 0.93</div><div class="pm-lbl">Model Fit</div></div>
-        <div class="pm-item"><div class="pm-val">RMSE 0.63</div><div class="pm-lbl">Error</div></div>
-        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.nature.com/articles/s41598-025-12872-0" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite5',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite5"><button class="cite-copy" onclick="copyCite('cite5')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Unraveling global malaria incidence and mortality using machine learning and AI-driven spatial analysis. Scientific Reports, 15(1), 28334. https://doi.org/10.1038/s41598-025-12872-0</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-5"><p>This study utilized spatial analysis, advanced ML, and XAI to identify high-risk areas, uncover key determinants, and predict malaria outcomes across 106 countries (2000&ndash;2022). XGBoost combined with XAI and causal AI techniques was employed. Spatial analyses (Getis-Ord Gi* and Moran&apos;s I) detected significant geographical clusters. In 2022, malaria cases reached 251.75 million; Nigeria recorded the highest incidence (1,332.99 million cases). The XGBoost model demonstrated best predictive performance (RMSE = 0.63, R&sup2; = 0.93). Key determinants included access to basic sanitation, electricity availability, population growth, and under-5 mortality rate.</p></div>
-      <button class="read-more-btn" data-target="abs-5">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/5593340e-1fc0-4651-ad8b-088fa95f1512" alt="Figure 1" data-full="https://github.com/user-attachments/assets/5593340e-1fc0-4651-ad8b-088fa95f1512">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/4ceee8c6-c31c-4d5d-b69b-f7f48c2a34ca" alt="Figure 2" data-full="https://github.com/user-attachments/assets/4ceee8c6-c31c-4d5d-b69b-f7f48c2a34ca">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/012fdb2b-d919-474a-9568-7047a0268879" alt="Figure 3" data-full="https://github.com/user-attachments/assets/012fdb2b-d919-474a-9568-7047a0268879" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="5">Show all figures (3) &rarr;</button>
-    </div>
-  </article>
-
-  <article class="pub-card local" data-tags="dengue 2025 xai causal bangladesh ijss banglajol dowhy">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-ijss">Int. J. Statistical Sciences</span><span class="pub-sub-badge psb-banglajol">BanglaJOL</span><span class="year-pill">2025</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.3329/ijss.v25i2.85772" target="_blank">Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</a></h2>
-      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">2010&ndash;24</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">41.87%</div><div class="pm-lbl">Climate Factor</div></div>
-        <div class="pm-item"><div class="pm-val">DoWhy</div><div class="pm-lbl">Causal Framework</div></div>
-        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.3329/ijss.v25i2.85772" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.banglajol.info/index.php/ijss/article/view/85772" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite6',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite6"><button class="cite-copy" onclick="copyCite('cite6')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference. Int. J. Statistical Sciences, 25(2), 101-113. https://doi.org/10.3329/ijss.v25i2.85772</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-6"><p>This study employed high-performance ML (XGBoost) combined with XAI and causal inference (DoWhy framework) to evaluate dengue incidence in Bangladesh from January 2010 to December 2024. Dengue cases exceeded 100,000 total in 2019, 2023, and 2024, with monthly peaks of 50,000. The XGBoost model was the top performer (RMSE: 11,365.2; MAE: 7,014.68). Climate indicators were the strongest contributor to dengue prediction (41.87%), followed by sociodemographic (35.03%), healthcare (19.16%), and landscape factors (3.95%).</p></div>
-      <button class="read-more-btn" data-target="abs-6">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/c35b06f2-fb49-43bc-97b4-887a13928bc9" alt="Figure 1" data-full="https://github.com/user-attachments/assets/c35b06f2-fb49-43bc-97b4-887a13928bc9">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/717e34c8-179e-4297-8d20-4ef28a948a20" alt="Figure 2" data-full="https://github.com/user-attachments/assets/717e34c8-179e-4297-8d20-4ef28a948a20">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/3269cf85-fbde-4a64-86bd-86d3b8859176" alt="Figure 3" data-full="https://github.com/user-attachments/assets/3269cf85-fbde-4a64-86bd-86d3b8859176" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/120e4814-f8ad-45de-8443-ddb3c9ed3611" alt="Figure 4" data-full="https://github.com/user-attachments/assets/120e4814-f8ad-45de-8443-ddb3c9ed3611" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/cbca4dda-69ad-48be-9d58-c6700d9b2389" alt="Figure 5" data-full="https://github.com/user-attachments/assets/cbca4dda-69ad-48be-9d58-c6700d9b2389" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="6">Show all figures (5) &rarr;</button>
-    </div>
-  </article>
-
-  <article class="pub-card springer" data-tags="asia 2025 xai spatial communicable springer health tb malaria dengue">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-springer">Int. J. Health Geographics</span><span class="pub-sub-badge psb-springer">Springer</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000&ndash;2022) based on health, climate, and socioeconomic factors</a></h2>
-      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">41</div><div class="pm-lbl">Countries</div></div>
-        <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">R&sup2; 0.91</div><div class="pm-lbl">TB Model Fit</div></div>
-        <div class="pm-item"><div class="pm-val">Gi*+Moran</div><div class="pm-lbl">Spatial Methods</div></div>
-        <div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://link.springer.com/article/10.1186/s12942-025-00433-7" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite7',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite7"><button class="cite-copy" onclick="copyCite('cite7')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000-2022). Int. J. Health Geographics. https://doi.org/10.1186/s12942-025-00433-7</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-7"><p><strong>Background:</strong> Communicable diseases remain a significant challenge in Asia. This study applies ML and spatial analysis to examine patterns and determinants across 41 countries (2000&ndash;2022).</p><p><strong>Results:</strong> TB cases declined from 8.01M (2000) to 7.54M (2022), with hotspots in India (Gi* = 3.07) and Nepal (Gi* = 4.67). Malaria dropped from 27.00M to 7.96M, yet Bangladesh (Gi* = 4.13) and Pakistan (Gi* = 4.17) exhibited sustained risk. Dengue peaked at 2.71M cases in 2019. XGBoost achieved RMSE = 0.94, R&sup2; = 0.91 for tuberculosis.</p><p><strong>Conclusion:</strong> Integrating ML, spatial analysis, and XAI uncovers disease determinants and guides targeted interventions across Asia.</p></div>
-      <button class="read-more-btn" data-target="abs-7">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/bdeb37ae-4c5b-418d-85a0-494214e4db7b" alt="Figure 1" data-full="https://github.com/user-attachments/assets/bdeb37ae-4c5b-418d-85a0-494214e4db7b">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/18e079a6-1a3d-4a00-bba7-ac5ff0af4ff5" alt="Figure 2" data-full="https://github.com/user-attachments/assets/18e079a6-1a3d-4a00-bba7-ac5ff0af4ff5">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/1c4f1c8a-6bb1-4d68-9859-b3ec70359e80" alt="Figure 3" data-full="https://github.com/user-attachments/assets/1c4f1c8a-6bb1-4d68-9859-b3ec70359e80" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/018930f2-4fe7-4da1-8ef8-bb3f3354454c" alt="Figure 4" data-full="https://github.com/user-attachments/assets/018930f2-4fe7-4da1-8ef8-bb3f3354454c" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="7">Show all figures (4) &rarr;</button>
-    </div>
-  </article>
-
-  <article class="pub-card bmj" data-tags="mortality 2026 bayesian spatiotemporal bmj asia child neonatal infant">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-bmj">BMJ Open</span><span class="pub-sub-badge psb-bmj">BMJ</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.1136/bmjopen-2025-108632" target="_blank">Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000&ndash;2022) in 41 Asian countries: a population-level observational study</a></h2>
-      <p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">41</div><div class="pm-lbl">Countries</div></div>
-        <div class="pm-item"><div class="pm-val">2000&ndash;22</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">R&sup2; 0.99</div><div class="pm-lbl">Neonatal Model</div></div>
-        <div class="pm-item"><div class="pm-val">r = &minus;0.79</div><div class="pm-lbl">Rubella Corr.</div></div>
-        <div class="pm-item"><div class="pm-val">Bayesian</div><div class="pm-lbl">Approach</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.1136/bmjopen-2025-108632" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://bmjopen.bmj.com/content/16/2/e108632" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite8',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite8"><button class="cite-copy" onclick="copyCite('cite8')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2026). Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000-2022) in 41 Asian countries. BMJ Open, 16(2), e108632. https://doi.org/10.1136/bmjopen-2025-108632</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-8"><p><strong>Background:</strong> Child mortality continues to pose a major public health challenge across Asia. This study examines trends in under-5, infant, and neonatal mortality and identifies key determinants using spatiotemporal modelling across 41 Asian countries (2000&ndash;2022).</p><p><strong>Results:</strong> Under-5 mortality decreased significantly from 46.73 to 18.53 per 1000 live births. Strong negative associations were found with vaccination coverage &mdash; rubella (r = &minus;0.79), DTP (r = &minus;0.74). Afghanistan (77.12), Bangladesh (57.12), and Myanmar (63.16) were identified as high-risk hotspots. Predictive accuracy was highest for neonatal mortality (R&sup2; = 0.99; RMSE = 1.93).</p><p><strong>Conclusion:</strong> Immunisation and maternal education are critical to reducing mortality. The white-box modelling framework supports data-driven policy planning toward SDG 3.2.</p></div>
-      <button class="read-more-btn" data-target="abs-8">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/44081bcc-f4a1-4522-8019-00742b7b06dc" alt="Figure 1" data-full="https://github.com/user-attachments/assets/44081bcc-f4a1-4522-8019-00742b7b06dc">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/9b5144ac-e720-4841-9006-62bf117b3983" alt="Figure 2" data-full="https://github.com/user-attachments/assets/9b5144ac-e720-4841-9006-62bf117b3983">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/16230e9f-b203-4ed0-9933-86f7c772f8d7" alt="Figure 3" data-full="https://github.com/user-attachments/assets/16230e9f-b203-4ed0-9933-86f7c772f8d7" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/9c26fd4a-0938-4a8b-8c6c-f7ba50bcd66e" alt="Figure 4" data-full="https://github.com/user-attachments/assets/9c26fd4a-0938-4a8b-8c6c-f7ba50bcd66e" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="8">Show all figures (4) &rarr;</button>
-    </div>
-  </article>
-
-  <article class="pub-card mdpi" data-tags="dengue 2026 xai bayesian district bangladesh mdpi deep learning mlp convlstm shap">
-    <div class="pub-body">
-      <div class="pub-meta-row"><span class="journal-badge badge-mdpi">Trop. Med. &amp; Infect. Dis.</span><span class="pub-sub-badge psb-mdpi">MDPI</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
-      <h2 class="pub-title"><a href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</a></h2>
-      <p class="pub-authors"><strong><a href="https://scholar.google.com/citations?hl=en&user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong>, Farzana Zannat Toshi, Sadia Yesmin, <a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&hl=en" target="_blank">Md. Siddikur Rahman</a></p>
-      <div class="pub-metrics-strip">
-        <div class="pm-item"><div class="pm-val">64</div><div class="pm-lbl">Districts</div></div>
-        <div class="pm-item"><div class="pm-val">2017&ndash;24</div><div class="pm-lbl">Data Span</div></div>
-        <div class="pm-item"><div class="pm-val">Acc 0.93</div><div class="pm-lbl">MLP Accuracy</div></div>
-        <div class="pm-item"><div class="pm-val">AUC 0.99</div><div class="pm-lbl">ROC-AUC</div></div>
-        <div class="pm-item"><div class="pm-val">SHAP 0.314</div><div class="pm-lbl">Humidity Peak</div></div>
-      </div>
-      <div class="pub-links">
-        <a class="pub-link-btn btn-doi" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">&#8599; DOI</a>
-        <a class="pub-link-btn btn-journal" href="https://www.mdpi.com/2414-6366/11/3/73" target="_blank">View in Journal</a>
-        <button class="btn-cite" onclick="toggleCite('cite9',this)">Cite</button>
-      </div>
-      <div class="cite-box" id="cite9"><button class="cite-copy" onclick="copyCite('cite9')">Copy</button>Shiddik, M.A.B., Toshi, F.Z., Yesmin, S. &amp; Rahman, M.S. (2026). District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning. Tropical Medicine and Infectious Disease, 11(3), 73. https://doi.org/10.3390/tropicalmed11030073</div>
-    </div>
-    <div class="pub-abstract">
-      <div class="abstract-label">Abstract</div>
-      <div class="abstract-text"><div class="abstract-clamp" id="abs-9"><p>In Bangladesh, 321,179 dengue cases were reported in 2023, followed by 101,214 cases in 2024. This study developed a district-level dengue early warning system integrating climatic, socio-demographic, economic, healthcare, and environmental determinants across all 64 districts (2017&ndash;2024). ML and deep learning approaches &mdash; MLP and ConvLSTM &mdash; were combined with SHAP-based XAI and Bayesian spatio-temporal models. Climate was the strongest predictor (humidity SHAP = 0.314; minimum temperature SHAP = 0.146). Poverty (SHAP = 0.193) and healthcare capacity also contributed significantly. The MLP model achieved accuracy = 0.93, ROC-AUC = 0.99. The integrated framework delivers transparent, interpretable district-level early warnings for dengue outbreak preparedness.</p></div>
-      <button class="read-more-btn" data-target="abs-9">Read more &rarr;</button></div>
-    </div>
-    <div class="pub-figures">
-      <div class="figures-label">Figures</div>
-      <div class="fig-strip">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/0d00a77c-a690-4f35-b979-e83a3c581d6d" alt="Figure 1" data-full="https://github.com/user-attachments/assets/0d00a77c-a690-4f35-b979-e83a3c581d6d">
-        <img class="fig-thumb" src="https://github.com/user-attachments/assets/350ee93b-6577-4a81-83c9-de3fdfdfc8c6" alt="Figure 2" data-full="https://github.com/user-attachments/assets/350ee93b-6577-4a81-83c9-de3fdfdfc8c6">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/9a00fbba-7d4d-41f4-8c68-0c7692b86107" alt="Figure 3" data-full="https://github.com/user-attachments/assets/9a00fbba-7d4d-41f4-8c68-0c7692b86107" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/06613ffe-9938-4c9e-9d04-222252660bc3" alt="Figure 4" data-full="https://github.com/user-attachments/assets/06613ffe-9938-4c9e-9d04-222252660bc3" style="display:none">
-        <img class="fig-thumb hidden-fig" src="https://github.com/user-attachments/assets/a438cd93-e2d2-4008-be15-326190a81a6c" alt="Figure 5" data-full="https://github.com/user-attachments/assets/a438cd93-e2d2-4008-be15-326190a81a6c" style="display:none">
-      </div>
-      <button class="fig-more-btn" data-card="9">Show all figures (5) &rarr;</button>
-    </div>
-  </article>
-
+<div class="search-wrap">
+<span class="search-icon">🔍</span>
+<input autocomplete="off" class="search-input" id="search" placeholder="Search by title, keyword, journal, method…" type="text"/>
 </div>
+<div class="no-results" id="no-results">No publications match your search.</div>
+<!-- ═══════════════ 2026 PAPERS ═══════════════ -->
 
+
+
+
+<!-- ═══════════════ EXISTING PAPERS ═══════════════ -->
+
+
+
+
+
+
+
+
+
+<article class="pub-card wiley" data-tags="mortality 2026 stillbirth neonatal bangladesh wiley public health challenges">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;">Public Health Challenges</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1002/puh2.70312" target="_blank">Stillbirth, Neonatal, and Child Mortality in Bangladesh: Progress and Persistent Public Health Challenges</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">30→27</div><div class="pm-lbl">IMR Reversal</div></div>
+<div class="pm-item"><div class="pm-val">16→20</div><div class="pm-lbl">Neonatal (2023)</div></div>
+<div class="pm-item"><div class="pm-val">100,000+</div><div class="pm-lbl">Under-5 Deaths</div></div>
+<div class="pm-item"><div class="pm-val">63,000</div><div class="pm-lbl">Annual Stillbirths</div></div>
+<div class="pm-item"><div class="pm-val">2000–23</div><div class="pm-lbl">Data Span</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/puh2.70312" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://onlinelibrary.wiley.com/doi/10.1002/puh2.70312" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite13',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite13"><button class="cite-copy" onclick="copyCite('cite13')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2026). Stillbirth, Neonatal, and Child Mortality in Bangladesh: Progress and Persistent Public Health Challenges. Public Health Challenges. https://doi.org/10.1002/puh2.70312</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-13"><p>Bangladesh made substantial gains in child survival over two decades, with the under-five mortality rate falling from 94 to 30 per 1000 live births between 2000 and 2020. Recent data from the Bangladesh Bureau of Statistics, however, point to a troubling reversal. The infant mortality rate rose to 27 per 1000 live births in 2023, whereas neonatal mortality climbed from 16 to 20 per 1000 live births within a single year. More than 100,000 children under 5 died in 2023, with two-thirds of deaths occurring in the first month of life. Bangladesh also records around 63,000 stillbirths annually, representing a substantial public health burden and reflecting persistent gaps in maternal and antenatal care. Contributing factors include preterm birth, limited skilled attendance at delivery, pneumonia, malnutrition, and disruptions from the COVID-19 pandemic. Strengthening rural healthcare, expanding immunization, and improving maternal and neonatal care are essential if Bangladesh is to meet its Sustainable Development Goal (SDG) 3.2 targets by 2030.</p></div>
+<button class="read-more-btn" data-target="abs-13">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/45af9eed-f320-4527-b684-b399035934b5" src="https://github.com/user-attachments/assets/45af9eed-f320-4527-b684-b399035934b5"/>
+</div>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521282%2FPublic.Health.Challenges.-.2026.-.Rahman.-.Stillbirth.Neonatal.and.Child.Mortality.in.Bangladesh.Progress.and.Persistent.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521282/Public.Health.Challenges.-.2026.-.Rahman.-.Stillbirth.Neonatal.and.Child.Mortality.in.Bangladesh.Progress.and.Persistent.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521282/Public.Health.Challenges.-.2026.-.Rahman.-.Stillbirth.Neonatal.and.Child.Mortality.in.Bangladesh.Progress.and.Persistent.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card springer" data-tags="dengue malaria 2026 xai spatial vbd bangladesh springer xgboost">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-springer" style="background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;">BMC Medicine</span><span class="pub-sub-badge psb-springer">Springer</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1186/s12916-026-04857-1" target="_blank">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh: leveraging machine learning and spatial regression for intervention strategies</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong>, <a href="https://scholar.google.com/citations?user=Z5Vu5OoAAAAJ&amp;hl=en" target="_blank">Arman Hossain Chowdhury</a></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">64</div><div class="pm-lbl">Districts</div></div>
+<div class="pm-item"><div class="pm-val">2017–20</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">β 16.64</div><div class="pm-lbl">Temp. Effect</div></div>
+<div class="pm-item"><div class="pm-val">5 Diseases</div><div class="pm-lbl">VBD Coverage</div></div>
+<div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1186/s12916-026-04857-1" target="_blank">↗ DOI</a>
+<button class="btn-cite" onclick="toggleCite('cite12',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite12"><button class="cite-copy" onclick="copyCite('cite12')">Copy</button>Rahman, M., Shiddik, M.A.B. &amp; Chowdhury, A.H. Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh: leveraging machine learning and spatial regression for intervention strategies. BMC Med (2026). https://doi.org/10.1186/s12916-026-04857-1</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-12"><p><strong>Background:</strong> Bangladesh has seen a noticeable rise in vector-borne diseases (VBD) attributed to climate change. Accurately mapping, predicting, and identifying risk factors of VBD is essential for prevention and control strategies.</p><p><strong>Methods:</strong> District-level reported cases of VBD (dengue, chikungunya, malaria, filariasis, and yellow fever) were obtained from the Bangladesh Bureau of Statistics alongside meteorological data from NASA (2017–2020). Exploratory spatial analysis, spatial regression, and tree-based ML models were applied for prediction, risk factor identification, and correlation analysis.</p><p><strong>Results:</strong> Dengue was the most prevalent VBD, peaking in 2019. Dhaka, Pirojpur, Jessore, Bandarban, Rangamati, and Narail exhibited higher incidence rates. Spatial regression identified mean temperature as a major risk factor (β = 16.64, s.e. = 6.39). XGBoost also highlighted mean temperature as the primary determinant, alongside GDP, population size, and healthcare infrastructure.</p><p><strong>Conclusions:</strong> Findings incorporating the One Health perspective provide insights for early-warning, prevention, and control strategies using ML to combat infectious diseases in Bangladesh and similar endemic countries.</p></div>
+<button class="read-more-btn" data-target="abs-12">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/d2d1ffd8-018a-4eee-9fd5-af2777ca57c2" src="https://github.com/user-attachments/assets/d2d1ffd8-018a-4eee-9fd5-af2777ca57c2"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/decaf72d-72bc-4315-ae0e-1441abcf7816" src="https://github.com/user-attachments/assets/decaf72d-72bc-4315-ae0e-1441abcf7816"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/1ac2b74e-ceb0-49b6-b54a-6e1dc4841925" src="https://github.com/user-attachments/assets/1ac2b74e-ceb0-49b6-b54a-6e1dc4841925" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="12">Show all figures (3) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521301%2Fs12916-026-04857-1.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521301/s12916-026-04857-1.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521301/s12916-026-04857-1.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card wiley" data-tags="dengue 2026 xai convlstm global ml shap ig lrp wiley hsr">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1002/hsr2.72280" target="_blank">Global Prediction of Dengue Incidence Using an Explainable Artificial Intelligence-Driven ConvLSTM Integrating Environmental, Health, and Socio-Economic Determinants</a></h2>
+<p class="pub-authors"><strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">118</div><div class="pm-lbl">Countries</div></div>
+<div class="pm-item"><div class="pm-val">2000–21</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">R² 0.77</div><div class="pm-lbl">ConvLSTM Fit</div></div>
+<div class="pm-item"><div class="pm-val">SHAP+IG+LRP</div><div class="pm-lbl">XAI Methods</div></div>
+<div class="pm-item"><div class="pm-val">ConvLSTM</div><div class="pm-lbl">Best Model</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/hsr2.72280" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://doi.org/10.1002/hsr2.72280" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite10',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite10"><button class="cite-copy" onclick="copyCite('cite10')">Copy</button>Shiddik, M.A.B. (2026). Global Prediction of Dengue Incidence Using an Explainable Artificial Intelligence-Driven ConvLSTM Integrating Environmental, Health, and Socio-Economic Determinants. Health Science Reports. https://doi.org/10.1002/hsr2.72280</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-10"><p><strong>Background:</strong> Dengue fever is a rapidly expanding vector-borne disease posing significant global epidemiological challenges. Accurate and interpretable forecasting is essential for timely interventions, yet most models overlook spatiotemporal, sex-specific, and country-level heterogeneity in disease dynamics.</p><p><strong>Methods:</strong> A ConvLSTM network was applied to predict dengue incidence across 118 countries from 2000 to 2021 using 20 climatic, environmental, health system, and socio-economic predictors. Feature contributions were assessed through SHAP values, permutation importance, perturbation sensitivity, integrated gradients (IG), and layer-wise relevance propagation (LRP).</p><p><strong>Results:</strong> ConvLSTM achieved the best predictive performance (R² = 0.7731). Annual freshwater withdrawals dominated male dengue incidence (SHAP: 44.37%), while hospital bed density had greater influence for females (SHAP: 31.86%). Temperature anomalies contributed consistently to both sexes (SHAP: 11.51%). Sensitivity analysis showed dengue incidence varied from −65% to +91% under ±50% predictor perturbations.</p><p><strong>Conclusion:</strong> The ConvLSTM–XAI framework provides transparent, sex-aware, and country-specific dengue forecasts supporting targeted, climate-resilient dengue control strategies.</p></div>
+<button class="read-more-btn" data-target="abs-10">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/1d0b3df2-9dca-4568-8e1e-9f28ea4101ca" src="https://github.com/user-attachments/assets/1d0b3df2-9dca-4568-8e1e-9f28ea4101ca"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/561baa5a-394e-489a-a217-b3516d6e97c9" src="https://github.com/user-attachments/assets/561baa5a-394e-489a-a217-b3516d6e97c9"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/a24a599a-087f-49ec-b175-a49adb4662f0" src="https://github.com/user-attachments/assets/a24a599a-087f-49ec-b175-a49adb4662f0" style="display:none"/>
+<img alt="Figure 4" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/e7d61762-4849-4e2b-a090-f8a52cc472e2" src="https://github.com/user-attachments/assets/e7d61762-4849-4e2b-a090-f8a52cc472e2" style="display:none"/>
+<img alt="Figure 5" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/e7285f44-8749-497d-993d-9483fc0306c7" src="https://github.com/user-attachments/assets/e7285f44-8749-497d-993d-9483fc0306c7" style="display:none"/>
+<img alt="Figure 6" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/5fcbce20-9b31-4c98-9881-fdd2a40b60af" src="https://github.com/user-attachments/assets/5fcbce20-9b31-4c98-9881-fdd2a40b60af" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="10">Show all figures (6) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521323%2FHealth.Science.Reports.-.2026.-.Shiddik.-.Global.Prediction.of.Dengue.Incidence.Using.an.Explainable.Artificial.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521323/Health.Science.Reports.-.2026.-.Shiddik.-.Global.Prediction.of.Dengue.Incidence.Using.an.Explainable.Artificial.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521323/Health.Science.Reports.-.2026.-.Shiddik.-.Global.Prediction.of.Dengue.Incidence.Using.an.Explainable.Artificial.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card wiley" data-tags="xai 2026 systematic review healthcare ml deep learning shap lime wiley hsr">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1002/hsr2.72172" target="_blank">Explainable Artificial Intelligence in Healthcare: Current Landscape, Challenges, and Future Directions</a></h2>
+<p class="pub-authors"><strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">70</div><div class="pm-lbl">Studies Reviewed</div></div>
+<div class="pm-item"><div class="pm-val">2017–25</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">SHAP 54%</div><div class="pm-lbl">Top XAI Method</div></div>
+<div class="pm-item"><div class="pm-val">6 Databases</div><div class="pm-lbl">Sources</div></div>
+<div class="pm-item"><div class="pm-val">Systematic Review</div><div class="pm-lbl">Study Design</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/hsr2.72172" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://doi.org/10.1002/hsr2.72172" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite11',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite11"><button class="cite-copy" onclick="copyCite('cite11')">Copy</button>Shiddik, M.A.B. (2026). Explainable Artificial Intelligence in Healthcare: Current Landscape, Challenges, and Future Directions. Health Science Reports. https://doi.org/10.1002/hsr2.72172</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-11"><p><strong>Background:</strong> AI, particularly ML and Deep Learning, is transforming healthcare by enabling improved diagnosis, prognosis, and personalized treatments. However, the opacity of many AI "black box" models limits interpretability, clinician trust, and real-world adoption. XAI has emerged to address these limitations by providing transparent and actionable insights. This systematic review synthesizes current evidence on XAI in healthcare, mapping AI models to XAI techniques, domains, and clinical applications.</p><p><strong>Methods:</strong> A systematic search was conducted across six databases (Elsevier, Springer, Taylor &amp; Francis, Semantic Scholar, ACM, and IEEE Xplore) for peer-reviewed articles published between 2017 and 2025, following PRISMA guidelines.</p><p><strong>Results:</strong> Seventy studies were included, spanning oncology (40%), cardiology (21%), infectious diseases (14%), neurology (11%), and clinical decision support (13%). Deep learning models were most frequently applied (76%). SHAP (54%) and LIME (30%) were the most commonly used XAI techniques. Only 12 studies explicitly addressed ethical or regulatory considerations.</p><p><strong>Conclusion:</strong> XAI enhances transparency, clinician trust, and decision-making in healthcare AI. Future work should focus on hybrid, clinically validated XAI models, comprehensive ethical compliance, and user-centered implementations.</p></div>
+<button class="read-more-btn" data-target="abs-11">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/6560e3dc-e627-49ff-a7df-42a4c469c2cc" src="https://github.com/user-attachments/assets/6560e3dc-e627-49ff-a7df-42a4c469c2cc"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/75363c60-2b4a-4296-a3c9-e0d9b4c554a8" src="https://github.com/user-attachments/assets/75363c60-2b4a-4296-a3c9-e0d9b4c554a8"/>
+</div>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521360%2FHealth.Science.Reports.-.2026.-.Shiddik.-.Explainable.Artificial.Intelligence.in.Healthcare.Current.Landscape.Challenges.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521360/Health.Science.Reports.-.2026.-.Shiddik.-.Explainable.Artificial.Intelligence.in.Healthcare.Current.Landscape.Challenges.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521360/Health.Science.Reports.-.2026.-.Shiddik.-.Explainable.Artificial.Intelligence.in.Healthcare.Current.Landscape.Challenges.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card bmj" data-tags="mortality 2026 bayesian spatiotemporal bmj asia child neonatal infant">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-bmj">BMJ Open</span><span class="pub-sub-badge psb-bmj">BMJ</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1136/bmjopen-2025-108632" target="_blank">Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000–2022) in 41 Asian countries: a population-level observational study</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">41</div><div class="pm-lbl">Countries</div></div>
+<div class="pm-item"><div class="pm-val">2000–22</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">R² 0.99</div><div class="pm-lbl">Neonatal Model</div></div>
+<div class="pm-item"><div class="pm-val">r = −0.79</div><div class="pm-lbl">Rubella Corr.</div></div>
+<div class="pm-item"><div class="pm-val">Bayesian</div><div class="pm-lbl">Approach</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1136/bmjopen-2025-108632" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://bmjopen.bmj.com/content/16/2/e108632" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite8',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite8"><button class="cite-copy" onclick="copyCite('cite8')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2026). Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000-2022) in 41 Asian countries. BMJ Open, 16(2), e108632. https://doi.org/10.1136/bmjopen-2025-108632</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-8"><p><strong>Background:</strong> Child mortality continues to pose a major public health challenge across Asia. This study examines trends in under-5, infant, and neonatal mortality and identifies key determinants using spatiotemporal modelling across 41 Asian countries (2000–2022).</p><p><strong>Results:</strong> Under-5 mortality decreased significantly from 46.73 to 18.53 per 1000 live births. Strong negative associations were found with vaccination coverage — rubella (r = −0.79), DTP (r = −0.74). Afghanistan (77.12), Bangladesh (57.12), and Myanmar (63.16) were identified as high-risk hotspots. Predictive accuracy was highest for neonatal mortality (R² = 0.99; RMSE = 1.93).</p><p><strong>Conclusion:</strong> Immunisation and maternal education are critical to reducing mortality. The white-box modelling framework supports data-driven policy planning toward SDG 3.2.</p></div>
+<button class="read-more-btn" data-target="abs-8">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/44081bcc-f4a1-4522-8019-00742b7b06dc" src="https://github.com/user-attachments/assets/44081bcc-f4a1-4522-8019-00742b7b06dc"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/9b5144ac-e720-4841-9006-62bf117b3983" src="https://github.com/user-attachments/assets/9b5144ac-e720-4841-9006-62bf117b3983"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/16230e9f-b203-4ed0-9933-86f7c772f8d7" src="https://github.com/user-attachments/assets/16230e9f-b203-4ed0-9933-86f7c772f8d7" style="display:none"/>
+<img alt="Figure 4" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/9c26fd4a-0938-4a8b-8c6c-f7ba50bcd66e" src="https://github.com/user-attachments/assets/9c26fd4a-0938-4a8b-8c6c-f7ba50bcd66e" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="8">Show all figures (4) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521510%2Fe108632.full.1.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521510/e108632.full.1.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521510/e108632.full.1.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card mdpi" data-tags="dengue 2026 xai bayesian district bangladesh mdpi deep learning mlp convlstm shap">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-mdpi">Trop. Med. &amp; Infect. Dis.</span><span class="pub-sub-badge psb-mdpi">MDPI</span><span class="year-pill">2026</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</a></h2>
+<p class="pub-authors"><strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong>, Farzana Zannat Toshi, Sadia Yesmin, <a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">64</div><div class="pm-lbl">Districts</div></div>
+<div class="pm-item"><div class="pm-val">2017–24</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">Acc 0.93</div><div class="pm-lbl">MLP Accuracy</div></div>
+<div class="pm-item"><div class="pm-val">AUC 0.99</div><div class="pm-lbl">ROC-AUC</div></div>
+<div class="pm-item"><div class="pm-val">SHAP 0.314</div><div class="pm-lbl">Humidity Peak</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://www.mdpi.com/2414-6366/11/3/73" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite9',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite9"><button class="cite-copy" onclick="copyCite('cite9')">Copy</button>Shiddik, M.A.B., Toshi, F.Z., Yesmin, S. &amp; Rahman, M.S. (2026). District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning. Tropical Medicine and Infectious Disease, 11(3), 73. https://doi.org/10.3390/tropicalmed11030073</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-9"><p>In Bangladesh, 321,179 dengue cases were reported in 2023, followed by 101,214 cases in 2024. This study developed a district-level dengue early warning system integrating climatic, socio-demographic, economic, healthcare, and environmental determinants across all 64 districts (2017–2024). ML and deep learning approaches — MLP and ConvLSTM — were combined with SHAP-based XAI and Bayesian spatio-temporal models. Climate was the strongest predictor (humidity SHAP = 0.314; minimum temperature SHAP = 0.146). Poverty (SHAP = 0.193) and healthcare capacity also contributed significantly. The MLP model achieved accuracy = 0.93, ROC-AUC = 0.99. The integrated framework delivers transparent, interpretable district-level early warnings for dengue outbreak preparedness.</p></div>
+<button class="read-more-btn" data-target="abs-9">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/0d00a77c-a690-4f35-b979-e83a3c581d6d" src="https://github.com/user-attachments/assets/0d00a77c-a690-4f35-b979-e83a3c581d6d"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/350ee93b-6577-4a81-83c9-de3fdfdfc8c6" src="https://github.com/user-attachments/assets/350ee93b-6577-4a81-83c9-de3fdfdfc8c6"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/9a00fbba-7d4d-41f4-8c68-0c7692b86107" src="https://github.com/user-attachments/assets/9a00fbba-7d4d-41f4-8c68-0c7692b86107" style="display:none"/>
+<img alt="Figure 4" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/06613ffe-9938-4c9e-9d04-222252660bc3" src="https://github.com/user-attachments/assets/06613ffe-9938-4c9e-9d04-222252660bc3" style="display:none"/>
+<img alt="Figure 5" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/a438cd93-e2d2-4008-be15-326190a81a6c" src="https://github.com/user-attachments/assets/a438cd93-e2d2-4008-be15-326190a81a6c" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="9">Show all figures (5) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521525%2Ftropicalmed-11-00073.2.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521525/tropicalmed-11-00073.2.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521525/tropicalmed-11-00073.2.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card nature" data-tags="tb 2025 xai ml spatial nature xgboost shap global">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-nature">Scientific Reports</span><span class="pub-sub-badge psb-nature">Nature Portfolio</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">194</div><div class="pm-lbl">Countries</div></div>
+<div class="pm-item"><div class="pm-val">2000–22</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">SHAP 0.874</div><div class="pm-lbl">Peak Impact</div></div>
+<div class="pm-item"><div class="pm-val">R² 0.67</div><div class="pm-lbl">Model Fit</div></div>
+<div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://www.nature.com/articles/s41598-025-96973-w" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite1',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite1"><button class="cite-copy" onclick="copyCite('cite1')">Copy</button>Rahman, M.S. &amp; Shiddik, A.B. (2025). Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally. Scientific Reports. https://doi.org/10.1038/s41598-025-96973-w</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-1"><p>Tuberculosis (TB) is a major global health issue, contributing significantly to mortality and morbidity rates worldwide. This study employed the advanced machine learning model XGBoost, combined with XAI and spatial analysis, to describe global TB incidence and mortality rates across 194 countries from 2000 to 2022. Spatial autocorrelation analysis utilizing Moran's I revealed geographical clusters and significant determinants affecting TB incidence. Treatment success rates and MDR-TB treatment initiation were identified as pivotal determinants. Confirmed cases of MDR-TB had the most significant impact on TB incidence (SHAP = 0.874). Additionally, air pollution had a notable impact (SHAP = 1.36). The XGBoost model demonstrated the best predictive performance (RMSE = 0.88, R² = 0.67, Adjusted R² = 0.65). This study highlights the potential of integrating XGBoost and XAI methodologies as a holistic framework for effectively tackling global tuberculosis incidence and mortality rates.</p></div>
+<button class="read-more-btn" data-target="abs-1">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/9a2b292c-919a-4b7a-8106-7cac14ee4fb5" src="https://github.com/user-attachments/assets/9a2b292c-919a-4b7a-8106-7cac14ee4fb5"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/025439ef-f880-41c5-b202-7585cddf912d" src="https://github.com/user-attachments/assets/025439ef-f880-41c5-b202-7585cddf912d"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/b25a2489-bb83-4f7b-9039-c3c87844f7a0" src="https://github.com/user-attachments/assets/b25a2489-bb83-4f7b-9039-c3c87844f7a0" style="display:none"/>
+<img alt="Figure 4" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/dab00be0-e460-47ba-975c-d1f593172106" src="https://github.com/user-attachments/assets/dab00be0-e460-47ba-975c-d1f593172106" style="display:none"/>
+<img alt="Figure 5" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/90a6b33e-aa01-4ff8-a645-e1b80f046f28" src="https://github.com/user-attachments/assets/90a6b33e-aa01-4ff8-a645-e1b80f046f28" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="1">Show all figures (5) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521377%2Fs41598-025-96973-w.4.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521377/s41598-025-96973-w.4.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521377/s41598-025-96973-w.4.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card wiley" data-tags="dengue 2025 ml tree bangladesh warning lightgbm shap wiley hsr">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-hsr">Health Science Reports</span><span class="pub-sub-badge psb-wiley">Wiley</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1002/hsr2.70726" target="_blank">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <a href="https://scholar.google.com/citations?user=R-SM8CEAAAAJ&amp;hl=en" target="_blank">Miftahuzzannat Amrin</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">LightGBM</div><div class="pm-lbl">Best Model</div></div>
+<div class="pm-item"><div class="pm-val">2000–21</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">27°C</div><div class="pm-lbl">Optimal Mean Temp</div></div>
+<div class="pm-item"><div class="pm-val">82%</div><div class="pm-lbl">Risk Humidity</div></div>
+<div class="pm-item"><div class="pm-val">SHAP</div><div class="pm-lbl">XAI Method</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1002/hsr2.70726" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://onlinelibrary.wiley.com/doi/10.1002/hsr2.70726" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite2',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite2"><button class="cite-copy" onclick="copyCite('cite2')">Copy</button>Rahman, M.S., Amrin, M. &amp; Shiddik, M.A.B. (2025). Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree-Based Machine Learning Model. Health Science Reports, 8(5), e70726. https://doi.org/10.1002/hsr2.70726</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-2"><p><strong>Background:</strong> A life-threatening vector-borne disease, dengue fever poses significant global public health and economic threats, including Bangladesh. This study proposes an interpretable tree-based ML model for dengue early warning systems using climatic, sociodemographic, and landscape factors.</p><p><strong>Methods:</strong> High-performance ML algorithms — Random Forests, XGBoost, and LightGBM — were applied to surveillance data from January 2000 to December 2021. SHAP values identified the most significant dengue drivers.</p><p><strong>Results:</strong> Optimal thresholds: mean temperature 27°C, minimum temperature 22°C, humidity 82%. LightGBM accurately forecasts dengue, with agricultural land, population density, and minimum temperature as key outbreak drivers.</p><p><strong>Conclusion:</strong> The proposed ML model functions as an early warning system, providing a framework for sophisticated analytical techniques in public health.</p></div>
+<button class="read-more-btn" data-target="abs-2">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/2f476fdc-0022-41b3-b8f3-fe3fbf096e9f" src="https://github.com/user-attachments/assets/2f476fdc-0022-41b3-b8f3-fe3fbf096e9f"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/cbbfce46-0fb0-4419-b2b4-943edd2f59ce" src="https://github.com/user-attachments/assets/cbbfce46-0fb0-4419-b2b4-943edd2f59ce"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/f61bb292-2f42-4134-a0bf-769252d60010" src="https://github.com/user-attachments/assets/f61bb292-2f42-4134-a0bf-769252d60010" style="display:none"/>
+<img alt="Figure 4" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/779fca91-fd94-4985-8f60-404fcb0ed6c9" src="https://github.com/user-attachments/assets/779fca91-fd94-4985-8f60-404fcb0ed6c9" style="display:none"/>
+<img alt="Figure 5" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/0f99549c-af64-4eb5-ab5f-4a125f990396" src="https://github.com/user-attachments/assets/0f99549c-af64-4eb5-ab5f-4a125f990396" style="display:none"/>
+<img alt="Figure 6" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/0bd7315d-cdc9-407c-8509-a373d578d18b" src="https://github.com/user-attachments/assets/0bd7315d-cdc9-407c-8509-a373d578d18b" style="display:none"/>
+<img alt="Figure 7" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/774c5933-498a-4334-ac0f-35664405a77b" src="https://github.com/user-attachments/assets/774c5933-498a-4334-ac0f-35664405a77b" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="2">Show all figures (7) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521408%2FHealth.Science.Reports.-.2025.-.Rahman.-.Dengue.Early.Warning.System.and.Outbreak.Prediction.Tool.in.Bangladesh.Using.3.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521408/Health.Science.Reports.-.2025.-.Rahman.-.Dengue.Early.Warning.System.and.Outbreak.Prediction.Tool.in.Bangladesh.Using.3.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521408/Health.Science.Reports.-.2025.-.Rahman.-.Dengue.Early.Warning.System.and.Outbreak.Prediction.Tool.in.Bangladesh.Using.3.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card elsevier" data-tags="dengue 2025 xai climate bangladesh eco shap lime auc elsevier">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-gloepi">Global Epidemiology</span><span class="pub-sub-badge psb-elsevier">Elsevier</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">AUC 0.89</div><div class="pm-lbl">Performance</div></div>
+<div class="pm-item"><div class="pm-val">2000–23</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">SHAP+LIME</div><div class="pm-lbl">XAI Methods</div></div>
+<div class="pm-item"><div class="pm-val">2024–30</div><div class="pm-lbl">Forecast</div></div>
+<div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://www.sciencedirect.com/science/article/pii/S2590113325000288" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite3',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite3"><button class="cite-copy" onclick="copyCite('cite3')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers. Global Epidemiology, 10, 100210. https://doi.org/10.1016/j.gloepi.2025.100210</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-3"><p><strong>Background:</strong> Dengue represents a significant public health threat in Bangladesh, characterized by complex ecological transmission dynamics. This study employs state-of-the-art AI methods to identify eco-climatic factors in predicting dengue outbreaks.</p><p><strong>Methods:</strong> XGBoost and LightGBM combined with XAI (SHAP and LIME) evaluated predictive performance of dengue determinants from 2000 to 2023. Models also predicted dengue cases and early warning trends from 2024 to 2030.</p><p><strong>Findings:</strong> Bangladesh experienced the highest dengue cases in August, most fatalities in November. XGBoost achieved AUC = 0.89 and Log Loss = 0.64. Key predictors: population density, precipitation, temperature, and land-use patterns.</p><p><strong>Interpretation:</strong> This study showcases XAI's potential in uncovering dengue outbreak complexities, providing a robust tool for public health interventions and generating timely alerts to prevent outbreaks.</p></div>
+<button class="read-more-btn" data-target="abs-3">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/b3bda697-298b-4d3e-8ac9-a926b29281b3" src="https://github.com/user-attachments/assets/b3bda697-298b-4d3e-8ac9-a926b29281b3"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/b7b68469-b556-4a82-bd50-17b4951d97c0" src="https://github.com/user-attachments/assets/b7b68469-b556-4a82-bd50-17b4951d97c0"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/9e228318-b885-42fa-94e8-dc337dff1e72" src="https://github.com/user-attachments/assets/9e228318-b885-42fa-94e8-dc337dff1e72" style="display:none"/>
+<img alt="Figure 4" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/45875f05-8074-4bd5-98d5-b535450927ed" src="https://github.com/user-attachments/assets/45875f05-8074-4bd5-98d5-b535450927ed" style="display:none"/>
+<img alt="Figure 5" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/d160fbf2-f5f2-4fb7-ae19-c1697b061686" src="https://github.com/user-attachments/assets/d160fbf2-f5f2-4fb7-ae19-c1697b061686" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="3">Show all figures (5) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521428%2F1-s2.0-S2590113325000288-main.2.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521428/1-s2.0-S2590113325000288-main.2.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521428/1-s2.0-S2590113325000288-main.2.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card elsevier" data-tags="dengue 2025 xai reflections bangladesh elsevier">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-gloepi">Global Epidemiology</span><span class="pub-sub-badge psb-elsevier">Elsevier</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1016/j.gloepi.2025.100230" target="_blank">Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1016/j.gloepi.2025.100230" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://www.sciencedirect.com/science/article/pii/S2590113325000483" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite4',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite4"><button class="cite-copy" onclick="copyCite('cite4')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh. Global Epidemiology, p.100230. https://doi.org/10.1016/j.gloepi.2025.100230</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-4"><p>This paper reflects on XAI's vast implications in public health research and its potential to inform climate-sensitive disease prediction in low-income settings. A novel framework combining predictive accuracy with interpretability through XAI enables actionable insights for early warning systems (EWS) and dengue prevention in densely populated and climate-sensitive regions like Bangladesh.</p></div>
+<button class="read-more-btn" data-target="abs-4">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip"><img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/6f349c6a-78ce-479d-8c75-6a78bc79b071" src="https://github.com/user-attachments/assets/6f349c6a-78ce-479d-8c75-6a78bc79b071"/></div>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521440%2F1-s2.0-S2590113325000483-main.2.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521440/1-s2.0-S2590113325000483-main.2.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521440/1-s2.0-S2590113325000483-main.2.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card nature" data-tags="malaria 2025 ml spatial nature xai global xgboost getis-ord">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-nature">Scientific Reports</span><span class="pub-sub-badge psb-nature">Nature Portfolio</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">Unraveling global malaria incidence and mortality using machine learning and artificial intelligence–driven spatial analysis</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">106</div><div class="pm-lbl">Countries</div></div>
+<div class="pm-item"><div class="pm-val">2000–22</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">R² 0.93</div><div class="pm-lbl">Model Fit</div></div>
+<div class="pm-item"><div class="pm-val">RMSE 0.63</div><div class="pm-lbl">Error</div></div>
+<div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://www.nature.com/articles/s41598-025-12872-0" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite5',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite5"><button class="cite-copy" onclick="copyCite('cite5')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Unraveling global malaria incidence and mortality using machine learning and AI-driven spatial analysis. Scientific Reports, 15(1), 28334. https://doi.org/10.1038/s41598-025-12872-0</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-5"><p>This study utilized spatial analysis, advanced ML, and XAI to identify high-risk areas, uncover key determinants, and predict malaria outcomes across 106 countries (2000–2022). XGBoost combined with XAI and causal AI techniques was employed. Spatial analyses (Getis-Ord Gi* and Moran's I) detected significant geographical clusters. In 2022, malaria cases reached 251.75 million; Nigeria recorded the highest incidence (1,332.99 million cases). The XGBoost model demonstrated best predictive performance (RMSE = 0.63, R² = 0.93). Key determinants included access to basic sanitation, electricity availability, population growth, and under-5 mortality rate.</p></div>
+<button class="read-more-btn" data-target="abs-5">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/5593340e-1fc0-4651-ad8b-088fa95f1512" src="https://github.com/user-attachments/assets/5593340e-1fc0-4651-ad8b-088fa95f1512"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/4ceee8c6-c31c-4d5d-b69b-f7f48c2a34ca" src="https://github.com/user-attachments/assets/4ceee8c6-c31c-4d5d-b69b-f7f48c2a34ca"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/012fdb2b-d919-474a-9568-7047a0268879" src="https://github.com/user-attachments/assets/012fdb2b-d919-474a-9568-7047a0268879" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="5">Show all figures (3) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521453%2Fs41598-025-12872-0.2.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521453/s41598-025-12872-0.2.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521453/s41598-025-12872-0.2.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card local" data-tags="dengue 2025 xai causal bangladesh ijss banglajol dowhy">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-ijss">Int. J. Statistical Sciences</span><span class="pub-sub-badge psb-banglajol">BanglaJOL</span><span class="year-pill">2025</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.3329/ijss.v25i2.85772" target="_blank">Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">2010–24</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">41.87%</div><div class="pm-lbl">Climate Factor</div></div>
+<div class="pm-item"><div class="pm-val">DoWhy</div><div class="pm-lbl">Causal Framework</div></div>
+<div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.3329/ijss.v25i2.85772" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://www.banglajol.info/index.php/ijss/article/view/85772" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite6',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite6"><button class="cite-copy" onclick="copyCite('cite6')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference. Int. J. Statistical Sciences, 25(2), 101-113. https://doi.org/10.3329/ijss.v25i2.85772</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-6"><p>This study employed high-performance ML (XGBoost) combined with XAI and causal inference (DoWhy framework) to evaluate dengue incidence in Bangladesh from January 2010 to December 2024. Dengue cases exceeded 100,000 total in 2019, 2023, and 2024, with monthly peaks of 50,000. The XGBoost model was the top performer (RMSE: 11,365.2; MAE: 7,014.68). Climate indicators were the strongest contributor to dengue prediction (41.87%), followed by sociodemographic (35.03%), healthcare (19.16%), and landscape factors (3.95%).</p></div>
+<button class="read-more-btn" data-target="abs-6">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/c35b06f2-fb49-43bc-97b4-887a13928bc9" src="https://github.com/user-attachments/assets/c35b06f2-fb49-43bc-97b4-887a13928bc9"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/717e34c8-179e-4297-8d20-4ef28a948a20" src="https://github.com/user-attachments/assets/717e34c8-179e-4297-8d20-4ef28a948a20"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/3269cf85-fbde-4a64-86bd-86d3b8859176" src="https://github.com/user-attachments/assets/3269cf85-fbde-4a64-86bd-86d3b8859176" style="display:none"/>
+<img alt="Figure 4" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/120e4814-f8ad-45de-8443-ddb3c9ed3611" src="https://github.com/user-attachments/assets/120e4814-f8ad-45de-8443-ddb3c9ed3611" style="display:none"/>
+<img alt="Figure 5" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/cbca4dda-69ad-48be-9d58-c6700d9b2389" src="https://github.com/user-attachments/assets/cbca4dda-69ad-48be-9d58-c6700d9b2389" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="6">Show all figures (5) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521476%2FData-Driven.Dengue.Prevention.Strategies.in.Bangladesh.using.Explainable.Artificial.Intelligence.and.Causal.Inference.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521476/Data-Driven.Dengue.Prevention.Strategies.in.Bangladesh.using.Explainable.Artificial.Intelligence.and.Causal.Inference.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521476/Data-Driven.Dengue.Prevention.Strategies.in.Bangladesh.using.Explainable.Artificial.Intelligence.and.Causal.Inference.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article><article class="pub-card springer" data-tags="asia 2025 xai spatial communicable springer health tb malaria dengue">
+
+
+
+<div class="pub-card-inner"><div class="pub-left"><div class="pub-body">
+<div class="pub-meta-row"><span class="journal-badge badge-springer">Int. J. Health Geographics</span><span class="pub-sub-badge psb-springer">Springer</span><span class="year-pill">2025</span><span class="oa-pill">Open Access</span></div>
+<h2 class="pub-title"><a href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000–2022) based on health, climate, and socioeconomic factors</a></h2>
+<p class="pub-authors"><a href="https://scholar.google.com/citations?user=34tfqfAAAAAJ&amp;hl=en" target="_blank">Md. Siddikur Rahman</a>, <strong><a href="https://scholar.google.com/citations?hl=en&amp;user=JWeBd3IAAAAJ" target="_blank">Md. Abu Bokkor Shiddik</a></strong></p>
+<div class="pub-metrics-strip">
+<div class="pm-item"><div class="pm-val">41</div><div class="pm-lbl">Countries</div></div>
+<div class="pm-item"><div class="pm-val">2000–22</div><div class="pm-lbl">Data Span</div></div>
+<div class="pm-item"><div class="pm-val">R² 0.91</div><div class="pm-lbl">TB Model Fit</div></div>
+<div class="pm-item"><div class="pm-val">Gi*+Moran</div><div class="pm-lbl">Spatial Methods</div></div>
+<div class="pm-item"><div class="pm-val">XGBoost</div><div class="pm-lbl">Best Model</div></div>
+</div>
+<div class="pub-links">
+<a class="pub-link-btn btn-doi" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank">↗ DOI</a>
+<a class="pub-link-btn btn-journal" href="https://link.springer.com/article/10.1186/s12942-025-00433-7" target="_blank">View in Journal</a>
+<button class="btn-cite" onclick="toggleCite('cite7',this)">Cite</button>
+</div>
+<div class="cite-box" id="cite7"><button class="cite-copy" onclick="copyCite('cite7')">Copy</button>Rahman, M.S. &amp; Shiddik, M.A.B. (2025). Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000-2022). Int. J. Health Geographics. https://doi.org/10.1186/s12942-025-00433-7</div>
+</div><div class="pub-abstract">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text"><div class="abstract-clamp" id="abs-7"><p><strong>Background:</strong> Communicable diseases remain a significant challenge in Asia. This study applies ML and spatial analysis to examine patterns and determinants across 41 countries (2000–2022).</p><p><strong>Results:</strong> TB cases declined from 8.01M (2000) to 7.54M (2022), with hotspots in India (Gi* = 3.07) and Nepal (Gi* = 4.67). Malaria dropped from 27.00M to 7.96M, yet Bangladesh (Gi* = 4.13) and Pakistan (Gi* = 4.17) exhibited sustained risk. Dengue peaked at 2.71M cases in 2019. XGBoost achieved RMSE = 0.94, R² = 0.91 for tuberculosis.</p><p><strong>Conclusion:</strong> Integrating ML, spatial analysis, and XAI uncovers disease determinants and guides targeted interventions across Asia.</p></div>
+<button class="read-more-btn" data-target="abs-7">Read more →</button></div>
+</div><div class="pub-figures">
+<div class="figures-label">Figures</div>
+<div class="fig-strip">
+<img alt="Figure 1" class="fig-thumb" data-full="https://github.com/user-attachments/assets/bdeb37ae-4c5b-418d-85a0-494214e4db7b" src="https://github.com/user-attachments/assets/bdeb37ae-4c5b-418d-85a0-494214e4db7b"/>
+<img alt="Figure 2" class="fig-thumb" data-full="https://github.com/user-attachments/assets/18e079a6-1a3d-4a00-bba7-ac5ff0af4ff5" src="https://github.com/user-attachments/assets/18e079a6-1a3d-4a00-bba7-ac5ff0af4ff5"/>
+<img alt="Figure 3" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/1c4f1c8a-6bb1-4d68-9859-b3ec70359e80" src="https://github.com/user-attachments/assets/1c4f1c8a-6bb1-4d68-9859-b3ec70359e80" style="display:none"/>
+<img alt="Figure 4" class="fig-thumb hidden-fig" data-full="https://github.com/user-attachments/assets/018930f2-4fe7-4da1-8ef8-bb3f3354454c" src="https://github.com/user-attachments/assets/018930f2-4fe7-4da1-8ef8-bb3f3354454c" style="display:none"/>
+</div>
+<button class="fig-more-btn" data-card="7">Show all figures (4) →</button>
+</div></div><div class="pub-right">
+<div class="pdf-panel-label">PDF Preview</div>
+<div class="pdf-viewer-wrap">
+<iframe class="pdf-viewer" loading="lazy" src="https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Ffiles%2F30521487%2FLeveraging.explainable.artificial.intelligence.and.spatial.analysis.for.communicable.diseases.in.Asia.2000-2022.based.on.health.climate.and.socioeconomic.factors.pdf" title="PDF preview"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-action-btn pdf-action-open" href="https://github.com/user-attachments/files/30521487/Leveraging.explainable.artificial.intelligence.and.spatial.analysis.for.communicable.diseases.in.Asia.2000-2022.based.on.health.climate.and.socioeconomic.factors.pdf" rel="noopener" target="_blank">↗ Open in New Tab</a>
+<a class="pdf-action-btn pdf-action-download" download="" href="https://github.com/user-attachments/files/30521487/Leveraging.explainable.artificial.intelligence.and.spatial.analysis.for.communicable.diseases.in.Asia.2000-2022.based.on.health.climate.and.socioeconomic.factors.pdf">⬇ Download PDF</a>
+</div>
+</div></div></article></div>
 <footer>
-  <div class="footer-inner">
-    <div><div class="footer-name">Md. Abu Bokkor Shiddik</div><p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p></div>
-    <div>
-      <div class="footer-col-title">Navigation</div>
-      <div class="footer-nav-links"><a href="home.html">Home</a><a href="publications.html">Publications</a><a href="projects.html">Projects</a><a href="courses.html">Courses &amp; Training</a><a href="service.html">Service</a><a href="conference-and-workshop.html">Conferences</a></div>
-    </div>
-    <div>
-      <div class="footer-col-title">Connect</div>
-      <div class="footer-social-links"><a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">&#127760; Portfolio</a><a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home" target="_blank">in LinkedIn</a><a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">&#127891; Google Scholar</a><a href="https://orcid.org/0009-0002-0424-446X" target="_blank">&#10022; ORCID</a><a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a></div>
-    </div>
-  </div>
-  <div class="footer-bottom"><p>&copy; 2026 Md. Abu Bokkor Shiddik &middot; All rights reserved</p><p>abubokkor.brur60@gmail.com &middot; +880 1874 001360</p></div>
+<div class="footer-inner">
+<div><div class="footer-name">Md. Abu Bokkor Shiddik</div><p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p></div>
+<div>
+<div class="footer-col-title">Navigation</div>
+<div class="footer-nav-links"><a href="home.html">Home</a><a href="publications.html">Publications</a><a href="projects.html">Projects</a><a href="courses.html">Courses &amp; Training</a><a href="service.html">Service</a><a href="conference-and-workshop.html">Conferences</a></div>
+</div>
+<div>
+<div class="footer-col-title">Connect</div>
+<div class="footer-social-links"><a href="https://abubokkorshiddik.github.io/Portfolio-AbuBokkorShiddik/" target="_blank">🌐 Portfolio</a><a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home" target="_blank">in LinkedIn</a><a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Google Scholar</a><a href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a><a href="https://github.com/abubokkorshiddik" target="_blank">{} GitHub</a></div>
+</div>
+</div>
+<div class="footer-bottom"><p>© 2026 Md. Abu Bokkor Shiddik · All rights reserved</p><p>abubokkor.brur60@gmail.com · +880 1874 001360</p></div>
 </footer>
-
 <!-- ═══ FLOATING MAIL BUTTON ═══ -->
-<a href="mailto:abubokkor.brur60@gmail.com" class="float-mail-btn" aria-label="Send an email">
+<a aria-label="Send an email" class="float-mail-btn" href="mailto:abubokkor.brur60@gmail.com">
   📧
   <span class="float-mail-tooltip">abubokkor.brur60@gmail.com</span>
 </a>
-
-  
 <script>
 document.querySelectorAll('.dropbtn').forEach(function(btn){btn.addEventListener('click',function(e){e.stopPropagation();var dd=btn.closest('.dropdown');var open=dd.classList.contains('active');document.querySelectorAll('.dropdown.active').forEach(function(d){d.classList.remove('active')});if(!open)dd.classList.add('active')})});
 document.addEventListener('click',function(){document.querySelectorAll('.dropdown.active').forEach(function(d){d.classList.remove('active')})});
