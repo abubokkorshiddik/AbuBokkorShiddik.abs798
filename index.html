@@ -428,8 +428,12 @@
     .tl-detail { font-size: 12px; color: var(--text3); line-height: 1.6; }
     .tl-item.is-hidden { display: none; }
 
-    .service-list { display: flex; flex-direction: column; gap: 10px; }
-    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 22px; display: flex; align-items: center; gap: 14px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s; }
+    .service-list { display: flex; flex-direction: column; gap: 10px; max-height: 420px; overflow-y: auto; padding-right: 6px; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
+    .service-list::-webkit-scrollbar { width: 7px; }
+    .service-list::-webkit-scrollbar-track { background: transparent; }
+    .service-list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
+    .service-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 22px; display: flex; align-items: center; gap: 14px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s; flex-shrink: 0; }
     .service-item:hover { border-color: var(--border2); box-shadow: var(--sh2); }
     .sbadge { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; color: var(--purple); background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 5px; padding: 3px 10px; white-space: nowrap; flex-shrink: 0; }
     .sdot { width: 4px; height: 4px; background: var(--border2); border-radius: 50%; flex-shrink: 0; }
@@ -681,7 +685,7 @@
         <div class="stat-num-row">
           <div class="stat-num-box"><div class="n" id="kpi-pubs">13</div><div class="l">Publications</div></div>
           <div class="stat-num-box"><div class="n" id="kpi-journals">9</div><div class="l">Journals</div></div>
-          <div class="stat-num-box"><div class="n">26</div><div class="l">Reviews Given</div></div>
+          <div class="stat-num-box"><div class="n">27</div><div class="l">Reviews Given</div></div>
           <div class="stat-num-box"><div class="n" id="kpi-countries">194</div><div class="l">Countries Studied</div></div>
         </div>
         <div class="stat-chart">
@@ -1046,7 +1050,7 @@
 
 <div class="page-body">
 
-  <!-- ===================== ACADEMIC SERVICE (2-column: list 2/3 + stat sidebar 1/3) ===================== -->
+  <!-- ===================== ACADEMIC SERVICE (2-column: scrollable list 2/3 + stat sidebar 1/3) ===================== -->
   <div class="section" id="sec-service">
     <div class="section-head"><h2>Academic Contribution — Reviewer Service</h2><a href="service.html" class="see-all">See all →</a></div>
     <p class="section-desc">Contributing to the integrity of global health research through rigorous peer review for high-impact international journals since 2025.</p>
@@ -1059,21 +1063,22 @@
         <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Health Science Reports</span></div>
         <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Technology and Health Care</span></div>
         <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Spatial and Spatio-temporal Epidemiology</span></div>
+        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Knowledge-Based Systems</span></div>
         <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Journal of Mathematics and Statistics</span></div>
       </div>
       <div class="stat-side">
         <div class="stat-side-title">Reviewer Snapshot</div>
         <div class="stat-num-row">
-          <div class="stat-num-box"><div class="n">26</div><div class="l">Total Reviews</div></div>
-          <div class="stat-num-box"><div class="n">8</div><div class="l">Journals</div></div>
-          <div class="stat-num-box"><div class="n">7</div><div class="l">Publishers</div></div>
+          <div class="stat-num-box"><div class="n">27</div><div class="l">Total Reviews</div></div>
+          <div class="stat-num-box"><div class="n">9</div><div class="l">Journals</div></div>
+          <div class="stat-num-box"><div class="n">8</div><div class="l">Publishers</div></div>
           <div class="stat-num-box"><div class="n">2025–26</div><div class="l">Active</div></div>
         </div>
         <div class="reviewer-badge">
           <span class="rb-icon">🔬</span>
           <div>
             <div class="rb-title">Verified Reviewer</div>
-            <div class="rb-sub">Active peer reviewer for BMJ, PLOS, and 6 other journals across global public-health research.</div>
+            <div class="rb-sub">Active peer reviewer for BMJ, PLOS, and 7 other journals across global public-health and AI research.</div>
           </div>
         </div>
       </div>
