@@ -433,11 +433,13 @@
     .service-list::-webkit-scrollbar-track { background: transparent; }
     .service-list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
     .service-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 22px; display: flex; align-items: center; gap: 14px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s; flex-shrink: 0; }
-    .service-item:hover { border-color: var(--border2); box-shadow: var(--sh2); }
+    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 22px; display: flex; align-items: center; gap: 14px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .15s, background .2s; flex-shrink: 0; cursor: pointer; }
+    .service-item:hover { border-color: var(--blue); box-shadow: var(--sh2); transform: translateX(3px); background: var(--bg2); }
     .sbadge { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; color: var(--purple); background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 5px; padding: 3px 10px; white-space: nowrap; flex-shrink: 0; }
     .sdot { width: 4px; height: 4px; background: var(--border2); border-radius: 50%; flex-shrink: 0; }
-    .sname { font-size: 14px; font-weight: 500; color: var(--text); }
+    .sname { font-size: 14px; font-weight: 500; color: var(--text); flex: 1; }
+    .sarrow { font-size: 13px; font-weight: 700; color: var(--blue); opacity: 0; transform: translateX(-4px); transition: opacity .2s, transform .2s; flex-shrink: 0; }
+    .service-item:hover .sarrow { opacity: 1; transform: translateX(0); }
 
     .reviewer-badge { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 14px; position: relative; z-index: 1; }
     .reviewer-badge .rb-icon { font-size: 26px; }
@@ -1056,15 +1058,15 @@
     <p class="section-desc">Contributing to the integrity of global health research through rigorous peer review for high-impact international journals since 2025.</p>
     <div class="profile-grid">
       <div class="service-list">
-        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">PLOS Digital Health</span></div>
-        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Global Health</span></div>
-        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Public Health</span></div>
-        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Global Public Health</span></div>
-        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Health Science Reports</span></div>
-        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Technology and Health Care</span></div>
-        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Spatial and Spatio-temporal Epidemiology</span></div>
-        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Knowledge-Based Systems</span></div>
-        <div class="service-item"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Journal of Mathematics and Statistics</span></div>
+        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">PLOS Digital Health</span><span class="sarrow">→</span></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Global Health</span><span class="sarrow">→</span></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Public Health</span><span class="sarrow">→</span></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Global Public Health</span><span class="sarrow">→</span></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Health Science Reports</span><span class="sarrow">→</span></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Technology and Health Care</span><span class="sarrow">→</span></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Spatial and Spatio-temporal Epidemiology</span><span class="sarrow">→</span></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Knowledge-Based Systems</span><span class="sarrow">→</span></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Journal of Mathematics and Statistics</span><span class="sarrow">→</span></a>
       </div>
       <div class="stat-side">
         <div class="stat-side-title">Reviewer Snapshot</div>
