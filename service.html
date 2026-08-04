@@ -190,6 +190,7 @@
     .jc-tech::before      { background: linear-gradient(90deg, #c2410c, #fb923c); }
     .jc-spatial::before   { background: linear-gradient(90deg, #b91c1c, #f87171); }
     .jc-gph::before       { background: linear-gradient(90deg, #047857, #34d399); }
+    .jc-kbs::before       { background: linear-gradient(90deg, #4338ca, #818cf8); }
 
     /* publisher badge */
     .publisher-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -228,31 +229,6 @@
       border-radius: 20px; padding: 4px 12px;
     }
     .total-pill::before { content: '✓'; font-size: 11px; }
-
-    /* ── TIMELINE ── */
-    .timeline-section { margin-top: 52px; }
-    .timeline { position: relative; padding-left: 32px; }
-    .timeline::before { content: ''; position: absolute; left: 7px; top: 6px; bottom: 0; width: 2px; background: var(--border); border-radius: 2px; }
-    .tl-item { position: relative; margin-bottom: 28px; }
-    .tl-dot { position: absolute; left: -32px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--blue); border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--blue); }
-    .tl-year { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
-    .tl-card {
-      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 16px 20px; box-shadow: var(--shadow-sm);
-      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-    }
-    .tl-journal { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; min-width: 180px; }
-    .tl-count-badge {
-      font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
-      white-space: nowrap;
-    }
-    .tc-blue   { background: var(--sky); color: var(--blue); border: 1px solid var(--sky2); }
-    .tc-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-bd); }
-    .tc-amber  { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
-    .tc-green  { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd); }
-    .tc-teal   { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-bd); }
-    .tc-orange { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
-    .tc-red    { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
 
     /* ── SUMMARY STRIP ── */
     .summary-strip {
@@ -489,9 +465,9 @@
       <h1>Reviewer Service</h1>
       <p>Contributing to the integrity of global health research through rigorous peer review for high-impact international journals since 2025.</p>
       <div class="hero-stats">
-        <div><div class="hstat-num">26</div><div class="hstat-label">Total Reviews</div></div>
-        <div><div class="hstat-num">8</div><div class="hstat-label">Journals</div></div>
-        <div><div class="hstat-num">7</div><div class="hstat-label">Publishers</div></div>
+        <div><div class="hstat-num">27</div><div class="hstat-label">Total Reviews</div></div>
+        <div><div class="hstat-num">9</div><div class="hstat-label">Journals</div></div>
+        <div><div class="hstat-num">8</div><div class="hstat-label">Publishers</div></div>
         <div><div class="hstat-num">2025–26</div><div class="hstat-label">Active</div></div>
       </div>
     </div>
@@ -520,7 +496,7 @@
   <!-- JOURNAL CARDS -->
   <div class="section-head">
     <h2>Journals Reviewed For</h2>
-    <span class="section-meta">8 journals · 7 publishers</span>
+    <span class="section-meta">9 journals · 8 publishers</span>
   </div>
 
   <div class="journal-grid">
@@ -658,6 +634,23 @@
       <span class="total-pill">1 article reviewed</span>
     </div>
 
+    <!-- Knowledge-Based Systems -->
+    <div class="journal-card jc-kbs">
+      <div class="publisher-row">
+        <span class="pub-logo-badge badge-elsevier">Elsevier</span>
+      </div>
+      <div class="journal-name">Knowledge-Based Systems</div>
+      <div class="journal-scope">International journal covering artificial intelligence, machine learning, and knowledge-based/intelligent systems research.</div>
+      <div class="review-rows">
+        <div class="review-row">
+          <span class="year-tag">2026</span>
+          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
+          <span class="review-count">1</span>
+        </div>
+      </div>
+      <span class="total-pill">1 article reviewed</span>
+    </div>
+
     <!-- Journal of Mathematics and Statistics -->
     <div class="journal-card jc-jms">
       <div class="publisher-row">
@@ -680,82 +673,20 @@
   <!-- SUMMARY STRIP -->
   <div class="summary-strip">
     <div>
-      <div class="ss-num">26</div>
+      <div class="ss-num">27</div>
       <div class="ss-label">Total Articles Reviewed</div>
     </div>
     <div>
-      <div class="ss-num">8</div>
+      <div class="ss-num">9</div>
       <div class="ss-label">International Journals</div>
     </div>
     <div>
-      <div class="ss-num">7</div>
+      <div class="ss-num">8</div>
       <div class="ss-label">Publishers</div>
     </div>
     <div>
       <div class="ss-num">2025–26</div>
       <div class="ss-label">Active Period</div>
-    </div>
-  </div>
-
-  <!-- TIMELINE -->
-  <div class="timeline-section">
-    <div class="section-head"><h2>Review Activity Timeline</h2></div>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2026</div>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="tl-card">
-            <span class="tl-journal">PLOS Digital Health</span>
-            <span class="tl-count-badge tc-amber">8 articles</span>
-          </div>
-          <div class="tl-card">
-            <span class="tl-journal">BMJ Global Health</span>
-            <span class="tl-count-badge tc-blue">2 articles</span>
-          </div>
-          <div class="tl-card">
-            <span class="tl-journal">BMJ Public Health</span>
-            <span class="tl-count-badge tc-blue">2 articles</span>
-          </div>
-          <div class="tl-card">
-            <span class="tl-journal">Global Public Health</span>
-            <span class="tl-count-badge tc-green">2 articles</span>
-          </div>
-          <div class="tl-card">
-            <span class="tl-journal">Health Science Reports</span>
-            <span class="tl-count-badge tc-purple">1 article</span>
-          </div>
-          <div class="tl-card">
-            <span class="tl-journal">Technology and Health Care</span>
-            <span class="tl-count-badge tc-orange">1 article</span>
-          </div>
-          <div class="tl-card">
-            <span class="tl-journal">Spatial and Spatio-temporal Epidemiology</span>
-            <span class="tl-count-badge tc-red">1 article</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot" style="background:#6366f1; box-shadow: 0 0 0 2px #6366f1;"></div>
-        <div class="tl-year">2025</div>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="tl-card">
-            <span class="tl-journal">PLOS Digital Health</span>
-            <span class="tl-count-badge tc-amber">6 articles</span>
-          </div>
-          <div class="tl-card">
-            <span class="tl-journal">Health Science Reports</span>
-            <span class="tl-count-badge tc-purple">2 articles</span>
-          </div>
-          <div class="tl-card">
-            <span class="tl-journal">Journal of Mathematics and Statistics</span>
-            <span class="tl-count-badge tc-green">1 article</span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
