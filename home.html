@@ -49,15 +49,26 @@
       --sh3: 0 20px 60px rgba(0,0,0,.14),0 4px 16px rgba(0,0,0,.08);
     }
 
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Sora', system-ui, sans-serif;
       color: var(--text);
-      font-size: 15px;
+      font-size: clamp(14.5px, 1.1vw + 12px, 15px);
       line-height: 1.75;
       background: var(--bg);
       overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
+
+    /* SCROLL PROGRESS */
+    .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 10000; background: linear-gradient(90deg, var(--gold2), var(--blue)); box-shadow: 0 0 10px rgba(245,158,11,.5); transition: width .08s linear; }
+
+    /* SIGNATURE EYEBROW */
+    .eyebrow { display: block; font-family: 'DM Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 2.2px; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+    .eyebrow::before { content: '◆ '; color: var(--gold); }
 
     /* NAVBAR */
     .navbar {
@@ -149,10 +160,25 @@
     }
     .badge-dot { width: 8px; height: 8px; background: var(--gold2); border-radius: 50%; animation: live 2s infinite; box-shadow: 0 0 0 0 rgba(251,191,36,.5); }
     @keyframes live { 0%  { box-shadow: 0 0 0 0 rgba(251,191,36,.5); } 70% { box-shadow: 0 0 0 8px rgba(251,191,36,0); } 100%{ box-shadow: 0 0 0 0 rgba(251,191,36,0); } }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 900; line-height: 1.1; letter-spacing: -.5px; color: #fff; margin-bottom: 10px; }
-    .hero h1 .accent { color: var(--gold2); }
-    .hero-tagline { font-size: 14px; font-weight: 400; color: rgba(255,255,255,.55); margin-bottom: 5px; letter-spacing: .1px; }
-    .hero-affil { font-size: 12.5px; color: rgba(255,255,255,.32); margin-bottom: 20px; font-family: 'DM Mono', monospace; letter-spacing: .3px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.15rem, 4.6vw + .5rem, 3.6rem); font-weight: 900; line-height: 1.04; letter-spacing: -1px; color: #fff; margin-bottom: 14px; }
+    .hero h1 .accent { color: var(--gold2); position: relative; white-space: nowrap; }
+    .hero h1 .accent::after { content: ''; position: absolute; left: 0; right: 0; bottom: 2px; height: .22em; background: rgba(251,191,36,.16); z-index: -1; border-radius: 3px; transform: scaleX(0); transform-origin: left; animation: swipe-in .7s .5s cubic-bezier(.4,0,.2,1) forwards; }
+    @keyframes swipe-in { to { transform: scaleX(1); } }
+    .hero-tagline { font-size: clamp(13.5px, 1.6vw, 15.5px); font-weight: 400; color: rgba(255,255,255,.62); margin-bottom: 6px; letter-spacing: .1px; }
+    .hero-affil { font-size: 12.5px; color: rgba(255,255,255,.32); margin-bottom: 22px; font-family: 'DM Mono', monospace; letter-spacing: .3px; }
+
+    /* SIGNAL LINE — signature graphic: an outbreak-detection curve crossing an early-warning threshold */
+    .hero-signal { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; pointer-events: none; z-index: 0; opacity: .9; }
+    .hero-signal svg { width: 100%; height: 100%; display: block; }
+    .signal-path { fill: none; stroke: url(#signalGrad); stroke-width: 2; stroke-linecap: round; filter: drop-shadow(0 0 6px rgba(37,99,235,.5)); stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: draw-signal 2.6s cubic-bezier(.4,0,.2,1) .3s forwards; }
+    @keyframes draw-signal { to { stroke-dashoffset: 0; } }
+    .signal-fill { opacity: 0; animation: fade-fill 1.6s ease 1.8s forwards; }
+    @keyframes fade-fill { to { opacity: 1; } }
+    .signal-threshold { stroke: rgba(245,158,11,.4); stroke-width: 1; stroke-dasharray: 4 5; }
+    .signal-threshold-label { font-family: 'DM Mono', monospace; font-size: 9.5px; fill: rgba(251,191,36,.75); letter-spacing: .5px; }
+    .signal-dot { fill: var(--gold2); filter: drop-shadow(0 0 6px rgba(251,191,36,.85)); opacity: 0; animation: dot-appear .01s 2.7s forwards, pulse-dot 2.2s ease-in-out 2.9s infinite; }
+    @keyframes dot-appear { to { opacity: 1; } }
+    @keyframes pulse-dot { 0%,100% { r: 3.5; } 50% { r: 5.5; } }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
@@ -188,7 +214,7 @@
 
     /* JUMP BAR */
     .jump-bar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 58px; z-index: 200; box-shadow: 0 1px 6px rgba(0,0,0,.05); }
-    .jump-bar-inner { max-width: 1200px; margin: auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+    .jump-bar-inner { max-width: 1200px; margin: auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; position: relative; }
     .jump-bar-inner::-webkit-scrollbar { display: none; }
     .jump-btn {
       display: inline-flex; align-items: center; gap: 5px;
@@ -197,11 +223,12 @@
       border-bottom: 2.5px solid transparent;
       border-top: none; border-left: none; border-right: none;
       white-space: nowrap; cursor: pointer; background: none;
-      font-family: inherit; transition: color .18s, border-color .18s;
-      min-height: 44px;
+      font-family: inherit; transition: color .18s, border-color .18s, transform .15s;
+      min-height: 44px; position: relative;
     }
-    .jump-btn:hover { color: var(--blue); }
-    .jump-btn.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
+    .jump-btn:hover { color: var(--blue); transform: translateY(-1px); }
+    .jump-btn.active { color: var(--blue); font-weight: 600; }
+    .jump-indicator { position: absolute; bottom: 0; height: 2.5px; background: linear-gradient(90deg, var(--blue), var(--teal)); border-radius: 2px; transition: left .32s cubic-bezier(.4,0,.2,1), width .32s cubic-bezier(.4,0,.2,1); pointer-events: none; }
 
     /* PAGE BODY */
     .page-body { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -476,19 +503,27 @@
       .hero h1 { white-space: normal; }
     }
     @media (max-width: 640px) {
-      .hero h1 { font-size: clamp(1.5rem, 7vw, 2rem); }
-      .hero-tagline { font-size: 12.5px; }
-      .hero-affil { font-size: 11px; }
-      .btn-primary, .btn-outline { font-size: 12px; padding: 10px 18px; }
-      .hero-badge { font-size: 10px; }
-      body { font-size: 13.5px; }
-      .section-head h2 { font-size: 1.15rem; }
-      .about-card p { font-size: 13.5px; }
-      .i-label { font-size: 12px; }
-      .tag { font-size: 11px; }
-      .pub-row-title { font-size: 12.5px; }
-      .pub-row-cite { font-size: 11px; }
-      .p-desc, .dc-sub, .tl-org, .tl-detail { font-size: 11.5px; }
+      .hero-signal { height: 34%; opacity: .7; }
+      .hero h1 { font-size: clamp(2.05rem, 10vw, 2.6rem); letter-spacing: -.6px; }
+      .hero-tagline { font-size: 15px; line-height: 1.5; }
+      .hero-affil { font-size: 12.5px; }
+      .btn-primary, .btn-outline { font-size: 13.5px; padding: 12px 20px; }
+      .hero-badge { font-size: 11px; }
+      body { font-size: 15px; line-height: 1.7; }
+      .eyebrow { font-size: 11px; }
+      .section-head h2 { font-size: 1.4rem; line-height: 1.25; }
+      .section-desc { font-size: 14px; }
+      .about-card p, .profile-text p { font-size: 15px; }
+      .i-label { font-size: 13.5px; }
+      .tag { font-size: 12.5px; padding: 4px 11px; }
+      .pub-row-title { font-size: 14.5px; }
+      .pub-row-cite { font-size: 12.5px; }
+      .p-name { font-size: 15.5px; }
+      .p-desc, .dc-sub, .tl-org, .tl-detail { font-size: 13px; }
+      .dc-title { font-size: 14.5px; }
+      .tl-name { font-size: 14.5px; }
+      .kpi-num { font-size: 22px; }
+      .stat-num-box .n { font-size: 22px; }
       .project-grid { grid-template-columns: 1fr; }
       .data-strip { grid-template-columns: repeat(2,1fr); }
       .posts-strip { grid-template-columns: 1fr; }
@@ -496,6 +531,7 @@
       .footer-bottom { flex-direction: column; text-align: center; }
       .skills-grid { grid-template-columns: 1fr; }
       .pub-row { flex-direction: column; gap: 8px; }
+      .jump-btn { font-size: 13.5px; padding: 12px 15px; }
     }
 
     .float-actions { position: fixed; bottom: 28px; right: 28px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 9998; }
@@ -530,6 +566,7 @@
   </style>
 </head>
 <body>
+<div class="scroll-progress" id="scroll-progress"></div>
 
 <nav class="navbar">
   <div class="nav-inner">
@@ -626,9 +663,32 @@
 </nav>
 <section class="hero">
   <div class="hero-grid"></div>
-  <div class="hero-orb1"></div>
-  <div class="hero-orb2"></div>
-  <div class="hero-orb3"></div>
+  <div class="hero-orb1" data-parallax="0.06"></div>
+  <div class="hero-orb2" data-parallax="0.1"></div>
+  <div class="hero-orb3" data-parallax="0.14"></div>
+
+  <div class="hero-signal" aria-hidden="true">
+    <svg viewBox="0 0 1200 260" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="signalGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#2563eb" stop-opacity="0"/>
+          <stop offset="18%" stop-color="#2563eb" stop-opacity=".55"/>
+          <stop offset="55%" stop-color="#0d9488" stop-opacity=".7"/>
+          <stop offset="100%" stop-color="#fbbf24" stop-opacity=".9"/>
+        </linearGradient>
+        <linearGradient id="signalFillGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2563eb" stop-opacity=".16"/>
+          <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line class="signal-threshold" x1="0" y1="120" x2="1200" y2="120"/>
+      <text class="signal-threshold-label" x="16" y="112">EARLY-WARNING THRESHOLD</text>
+      <path class="signal-fill" fill="url(#signalFillGrad)" d="M0,230 C 90,225 140,215 190,205 C 260,192 300,175 360,168 C 430,160 470,178 540,150 C 610,122 640,60 700,50 C 770,38 810,95 880,80 C 950,66 990,20 1060,26 C 1120,31 1150,42 1200,40 L1200,260 L0,260 Z"/>
+      <path class="signal-path" d="M0,230 C 90,225 140,215 190,205 C 260,192 300,175 360,168 C 430,160 470,178 540,150 C 610,122 640,60 700,50 C 770,38 810,95 880,80 C 950,66 990,20 1060,26 C 1120,31 1150,42 1200,40"/>
+      <circle class="signal-dot" cx="700" cy="50" r="4"/>
+    </svg>
+  </div>
+
   <div class="hero-inner">
     <div>
       <div class="hero-badge">
@@ -667,6 +727,7 @@
     <button class="jump-btn" data-target="sec-projects">⚗ Projects</button>
     <button class="jump-btn" data-target="sec-insights">✍ Insights</button>
     <button class="jump-btn" data-target="sec-gallery">📷 Gallery</button>
+    <span class="jump-indicator" id="jump-indicator"></span>
   </div>
 </div>
 
@@ -674,7 +735,7 @@
 
   <!-- ===================== RESEARCH PROFILE (2-column: text 2/3 + stat sidebar 1/3) ===================== -->
   <div class="section" id="sec-about">
-    <div class="section-head"><h2>Research Profile</h2></div>
+    <div class="section-head"><div><span class="eyebrow">Who I Am</span><h2>Research Profile</h2></div></div>
     <div class="profile-grid">
       <div class="profile-text">
         <p>I am a researcher with a growing portfolio of <strong>peer-reviewed publications</strong> in high-impact international journals including <em>Scientific Reports</em>, <em>BMJ Open</em>, <em>Global Epidemiology</em>, and <em>International Journal of Health Geographics</em>. My research covers global disease modeling, dengue early warning systems, and climate-health interactions.</p>
@@ -685,10 +746,10 @@
           <div class="stat-side-title">Research at a Glance</div>
         </div>
         <div class="stat-num-row">
-          <div class="stat-num-box"><div class="n" id="kpi-pubs">13</div><div class="l">Publications</div></div>
-          <div class="stat-num-box"><div class="n" id="kpi-journals">9</div><div class="l">Journals</div></div>
-          <div class="stat-num-box"><div class="n">27</div><div class="l">Reviews Given</div></div>
-          <div class="stat-num-box"><div class="n" id="kpi-countries">194</div><div class="l">Countries Studied</div></div>
+          <div class="stat-num-box"><div class="n count-up" id="kpi-pubs" data-count="13">0</div><div class="l">Publications</div></div>
+          <div class="stat-num-box"><div class="n count-up" id="kpi-journals" data-count="9">0</div><div class="l">Journals</div></div>
+          <div class="stat-num-box"><div class="n count-up" data-count="27">0</div><div class="l">Reviews Given</div></div>
+          <div class="stat-num-box"><div class="n count-up" id="kpi-countries" data-count="194">0</div><div class="l">Countries Studied</div></div>
         </div>
         <div class="stat-chart">
           <div class="stat-chart-title">Publications by Year</div>
@@ -713,7 +774,7 @@
 
 
   <div class="section" id="sec-interests">
-    <div class="section-head"><h2>Research Interests</h2></div>
+    <div class="section-head"><div><span class="eyebrow">Focus Areas</span><h2>Research Interests</h2></div></div>
     <div class="interest-grid">
       <div class="interest-card"><div class="i-icon">🤖</div><div class="i-label">Machine Learning in Public Health</div></div>
       <div class="interest-card"><div class="i-icon">🔍</div><div class="i-label">Explainable AI (XAI)</div></div>
@@ -726,7 +787,7 @@
 
 
   <div class="section" id="sec-skills">
-    <div class="section-head"><h2>Technical Skills</h2></div>
+    <div class="section-head"><div><span class="eyebrow">Toolkit</span><h2>Technical Skills</h2></div></div>
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-lbl">Core Methods</div>
@@ -750,13 +811,13 @@
 
   <!-- ===================== COURSES & TRAINING (with KPI strip + institution badges) ===================== -->
   <div class="section" id="sec-courses">
-    <div class="section-head"><h2>🎓 Learning &amp; Development — Courses &amp; Training</h2><a href="courses.html" class="see-all">See all →</a></div>
+    <div class="section-head"><div><span class="eyebrow">Continuous Learning</span><h2>🎓 Learning &amp; Development — Courses &amp; Training</h2></div><a href="courses.html" class="see-all">See all →</a></div>
     <p class="section-desc">Professional development, certified online learning, and undergraduate academic education in statistics, data science, and research methods.</p>
 
     <div class="kpi-strip">
-      <div class="kpi-chip"><div class="kpi-num">26</div><div class="kpi-lbl">Online Certificates</div></div>
-      <div class="kpi-chip"><div class="kpi-num">35+</div><div class="kpi-lbl">Undergraduate Courses</div></div>
-      <div class="kpi-chip"><div class="kpi-num">8</div><div class="kpi-lbl">Institutions</div></div>
+      <div class="kpi-chip"><div class="kpi-num count-up" data-count="26">0</div><div class="kpi-lbl">Online Certificates</div></div>
+      <div class="kpi-chip"><div class="kpi-num count-up" data-count="35" data-suffix="+">0</div><div class="kpi-lbl">Undergraduate Courses</div></div>
+      <div class="kpi-chip"><div class="kpi-num count-up" data-count="8">0</div><div class="kpi-lbl">Institutions</div></div>
       <div class="kpi-chip"><div class="kpi-num">2016–2026</div><div class="kpi-lbl">Learning Span</div></div>
     </div>
 
@@ -865,7 +926,7 @@
 <section class="pub-section" id="sec-publications">
   <div class="page-body">
     <div class="section-head" style="margin-top:0;padding-top:0;">
-      <h2>Peer-Reviewed Research — Publications</h2>
+      <div><span class="eyebrow">Peer-Reviewed Output</span><h2>Peer-Reviewed Research — Publications</h2></div>
       <a href="publications.html" class="see-all">View all publications →</a>
     </div>
     <p class="section-desc">Peer-reviewed research in machine learning, explainable AI, epidemiology, and global public health — published in high-impact international journals.</p>
@@ -1054,7 +1115,7 @@
 
   <!-- ===================== ACADEMIC SERVICE (2-column: scrollable list 2/3 + stat sidebar 1/3) ===================== -->
   <div class="section" id="sec-service">
-    <div class="section-head"><h2>Academic Contribution — Reviewer Service</h2><a href="service.html" class="see-all">See all →</a></div>
+    <div class="section-head"><div><span class="eyebrow">Giving Back to the Field</span><h2>Academic Contribution — Reviewer Service</h2></div><a href="service.html" class="see-all">See all →</a></div>
     <p class="section-desc">Contributing to the integrity of global health research through rigorous peer review for high-impact international journals since 2025.</p>
     <div class="profile-grid">
       <div class="service-list">
@@ -1071,9 +1132,9 @@
       <div class="stat-side">
         <div class="stat-side-title">Reviewer Snapshot</div>
         <div class="stat-num-row">
-          <div class="stat-num-box"><div class="n">27</div><div class="l">Total Reviews</div></div>
-          <div class="stat-num-box"><div class="n">9</div><div class="l">Journals</div></div>
-          <div class="stat-num-box"><div class="n">8</div><div class="l">Publishers</div></div>
+          <div class="stat-num-box"><div class="n count-up" data-count="27">0</div><div class="l">Total Reviews</div></div>
+          <div class="stat-num-box"><div class="n count-up" data-count="9">0</div><div class="l">Journals</div></div>
+          <div class="stat-num-box"><div class="n count-up" data-count="8">0</div><div class="l">Publishers</div></div>
           <div class="stat-num-box"><div class="n">2025–26</div><div class="l">Active</div></div>
         </div>
         <div class="reviewer-badge">
@@ -1089,7 +1150,7 @@
 
 
   <div class="section" id="sec-outreach">
-    <div class="section-head"><h2>Academic Content &amp; Outreach</h2></div>
+    <div class="section-head"><div><span class="eyebrow">Teaching &amp; Community</span><h2>Academic Content &amp; Outreach</h2></div></div>
     <p class="section-desc">Video tutorials, community updates, and hands-on programming notes to complement the research.</p>
     <div class="outreach-grid">
       <div class="outreach-fb-col">
@@ -1160,7 +1221,7 @@
   </div>
 
   <div class="section" id="sec-data">
-    <div class="section-head"><h2>Open Data &amp; Code Lab</h2><a href="data-code.html" class="see-all">Explore →</a></div>
+    <div class="section-head"><div><span class="eyebrow">Open Science</span><h2>Open Data &amp; Code Lab</h2></div><a href="data-code.html" class="see-all">Explore →</a></div>
     <div class="data-strip">
       <a href="data-code.html" class="data-chip"><div class="dc-icon">🦟</div><div class="dc-title">Dengue District</div><div class="dc-sub">64 Districts · 2017–2024</div></a>
       <a href="data-code.html" class="data-chip"><div class="dc-icon">🦟</div><div class="dc-title">Dengue EWS</div><div class="dc-sub">National · 2000–2024</div></a>
@@ -1172,10 +1233,10 @@
 
   <!-- ===================== PROJECTS & TOOLS (with KPI strip) ===================== -->
   <div class="section" id="sec-projects">
-    <div class="section-head"><h2>Digital Lab — Projects &amp; Tools</h2><a href="projects.html" class="see-all">See all →</a></div>
+    <div class="section-head"><div><span class="eyebrow">Built &amp; Shipped</span><h2>Digital Lab — Projects &amp; Tools</h2></div><a href="projects.html" class="see-all">See all →</a></div>
     <p class="section-desc">Interactive dashboards, open-source R packages, and reproducible research applications built to support public health analytics and data science.</p>
     <div class="kpi-strip">
-      <div class="kpi-chip"><div class="kpi-num">3</div><div class="kpi-lbl">Projects</div></div>
+      <div class="kpi-chip"><div class="kpi-num count-up" data-count="3">0</div><div class="kpi-lbl">Projects</div></div>
       <div class="kpi-chip"><div class="kpi-num" style="font-size:16px;">R · Python · HTML</div><div class="kpi-lbl">Technologies</div></div>
       <div class="kpi-chip"><div class="kpi-num" style="font-size:16px;">Open Source</div><div class="kpi-lbl">All code public</div></div>
       <div class="kpi-chip"><div class="kpi-num">2026</div><div class="kpi-lbl">Latest Release</div></div>
@@ -1189,7 +1250,7 @@
 
 
   <div class="section" id="sec-insights">
-    <div class="section-head"><h2>Latest Insights</h2><a href="insights.html" class="see-all">See all posts →</a></div>
+    <div class="section-head"><div><span class="eyebrow">Writing</span><h2>Latest Insights</h2></div><a href="insights.html" class="see-all">See all posts →</a></div>
     <div class="posts-strip">
       <a href="insights.html#post-threshold-selection-outbreak-03" class="post-mini">
         <img class="pm-img" src="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0" alt="Threshold" loading="lazy">
@@ -1208,7 +1269,7 @@
 
 
   <div class="section" id="sec-gallery">
-    <div class="section-head"><h2>Photos &amp; Archive</h2><a href="archive.html" class="see-all">View all photos →</a></div>
+    <div class="section-head"><div><span class="eyebrow">Beyond the Lab</span><h2>Photos &amp; Archive</h2></div><a href="archive.html" class="see-all">View all photos →</a></div>
     <div class="gallery-grid">
       <a href="archive.html#art" class="gallery-item">
         <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2F60693bef-d734-433e-9263-d12fd69d1a15&amp;w=320&amp;q=70&amp;output=webp" alt="Old palace in forest" loading="lazy">
@@ -1355,8 +1416,17 @@ document.querySelectorAll('.jump-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
     jumpTo(btn.dataset.target);
     btn.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+    document.querySelectorAll('.jump-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    moveIndicatorToRef(btn);
   });
 });
+function moveIndicatorToRef(btn) {
+  var ind = document.getElementById('jump-indicator');
+  if (!ind || !btn) return;
+  ind.style.left = btn.offsetLeft + 'px';
+  ind.style.width = btn.offsetWidth + 'px';
+}
 
 var sectionIds = ['sec-about','sec-interests','sec-skills','sec-courses','sec-publications','sec-service','sec-outreach','sec-data','sec-projects','sec-insights','sec-gallery'];
 var scrollRaf = null;
@@ -1373,29 +1443,117 @@ window.addEventListener('scroll', function() {
       if (el && el.getBoundingClientRect().top <= offset) current = id;
     });
     document.querySelectorAll('.jump-btn').forEach(function(btn) {
-      btn.classList.toggle('active', btn.dataset.target === current);
+      var isActive = btn.dataset.target === current;
+      btn.classList.toggle('active', isActive);
+      if (isActive) moveIndicatorToRef(btn);
     });
   });
 }, { passive: true });
 
+var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 var fadeObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     if (e.isIntersecting) {
+      var delay = (parseInt(e.target.dataset.staggerIndex || '0', 10) % 4) * 70;
+      e.target.style.transitionDelay = delay + 'ms';
       e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
+      e.target.style.transform = 'translateY(0) scale(1)';
       fadeObs.unobserve(e.target);
     }
   });
 }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
 
-document.querySelectorAll(
-  '.interest-card,.skill-card,.pub-row,.project-card,.tl-card,.service-item,.data-chip,.post-mini,.about-card,.gallery-item,.learn-link-card,.outreach-fb,.vid-card,.pub-dash-card,.kpi-chip,.profile-text,.stat-side'
-).forEach(function(el) {
+var fadeGroups = document.querySelectorAll(
+  '.interest-grid,.skills-grid,#pub-scroll,.project-grid,.timeline,.service-list,.data-strip,.posts-strip,.gallery-grid,.learn-links,.outreach-grid,.pub-dash,.kpi-strip,.profile-grid'
+);
+fadeGroups.forEach(function(group) {
+  var items = group.children;
+  Array.prototype.forEach.call(items, function(el, i) {
+    if (!el.classList) return;
+    el.dataset.staggerIndex = i;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px) scale(.98)';
+    el.style.transition = 'opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1)';
+    fadeObs.observe(el);
+  });
+});
+/* elements not inside a grouped container above */
+document.querySelectorAll('.about-card').forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(18px)';
-  el.style.transition = 'opacity .45s ease, transform .45s ease';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
   fadeObs.observe(el);
 });
+
+/* ===================== Scroll progress bar ===================== */
+var progressBar = document.getElementById('scroll-progress');
+function updateProgress() {
+  var h = document.documentElement;
+  var scrolled = h.scrollTop;
+  var max = h.scrollHeight - h.clientHeight;
+  var pct = max > 0 ? (scrolled / max) * 100 : 0;
+  if (progressBar) progressBar.style.width = pct + '%';
+}
+
+/* ===================== Hero orb parallax ===================== */
+var parallaxEls = document.querySelectorAll('[data-parallax]');
+function updateParallax() {
+  if (reduceMotion) return;
+  var y = window.pageYOffset;
+  if (y > 900) return;
+  parallaxEls.forEach(function(el) {
+    var factor = parseFloat(el.dataset.parallax) || 0.08;
+    el.style.transform = 'translateY(' + (y * factor) + 'px)';
+  });
+}
+
+var mainScrollRaf = null;
+window.addEventListener('scroll', function() {
+  if (mainScrollRaf) return;
+  mainScrollRaf = requestAnimationFrame(function() {
+    mainScrollRaf = null;
+    updateProgress();
+    updateParallax();
+  });
+}, { passive: true });
+updateProgress();
+
+/* ===================== Sliding jump-bar indicator ===================== */
+var jumpIndicator = document.getElementById('jump-indicator');
+function moveIndicatorTo(btn) {
+  if (!jumpIndicator || !btn) return;
+  jumpIndicator.style.left = btn.offsetLeft + 'px';
+  jumpIndicator.style.width = btn.offsetWidth + 'px';
+}
+var initialActive = document.querySelector('.jump-btn.active');
+requestAnimationFrame(function() { moveIndicatorTo(initialActive); });
+window.addEventListener('resize', function() { moveIndicatorTo(document.querySelector('.jump-btn.active')); });
+
+/* ===================== Count-up numbers ===================== */
+var countObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (!entry.isIntersecting) return;
+    var el = entry.target;
+    countObs.unobserve(el);
+    var target = parseFloat(el.dataset.count);
+    var suffix = el.dataset.suffix || '';
+    if (isNaN(target)) return;
+    if (reduceMotion) { el.textContent = target + suffix; return; }
+    var duration = 1200;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(step);
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.count-up').forEach(function(el) { countObs.observe(el); });
 
 /* ===================== Publications filter chips ===================== */
 (function () {
