@@ -51,6 +51,7 @@
     }
 
     html { scroll-behavior: smooth; }
+    html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
     body {
       font-family: 'Sora', system-ui, sans-serif;
       color: var(--text);
@@ -60,6 +61,23 @@
       overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
+    img, svg, iframe, video { max-width: 100%; }
+
+    /* ===== Global overflow safety net =====
+       Grid/flex children default to min-width:auto, which stops them
+       shrinking below their content's natural width — the usual cause
+       of "page is wider than viewport" on mobile. Force them to 0. */
+    .hero-inner, .profile-grid, .interest-grid, .skills-grid, .pub-dash,
+    .data-strip, .kpi-strip, .project-grid, .posts-strip, .gallery-grid,
+    .service-list, .timeline, .vid-grid, .outreach-grid, .stack-sidebar,
+    .pub-grid {
+      min-width: 0;
+    }
+    .hero-inner > *, .profile-grid > *, .outreach-grid > *,
+    .pub-dash > *, .data-strip > *, .kpi-strip > *, .project-grid > *,
+    .posts-strip > *, .service-list > *, .timeline > *, .vid-grid > * {
+      min-width: 0;
+    }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
     }
@@ -651,7 +669,9 @@
       .hamburger span { width: 20px; height: 2.5px; }
     }
 
-    .float-actions { position: fixed; bottom: 28px; right: 28px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 9998; }
+    .float-actions { position: fixed; bottom: 28px; right: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 9998; }
+    /* right: 24px matches .nav-inner's padding: 0 24px, so the buttons'
+       right edge lines up with the hamburger icon above, not floating loose */
     .float-mail-btn { width: 56px; height: 56px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; position: relative; background: linear-gradient(135deg, #1a56db, #1648c0); }
     .float-contact-btn { height: 48px; padding: 0 22px; border-radius: 30px; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13.5px; font-weight: 700; letter-spacing: .2px; box-shadow: 0 8px 24px rgba(13,148,136,0.35), 0 2px 8px rgba(0,0,0,0.12); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; position: relative; background: linear-gradient(135deg, #0d9488, #0f766e); }
     .float-mail-btn:hover, .float-contact-btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 32px rgba(26,86,219,0.5), 0 4px 12px rgba(0,0,0,0.2); }
@@ -659,6 +679,7 @@
     .float-mail-tooltip { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: #0f172a; color: #fff; font-size: 12.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; pointer-events: none; }
     .float-mail-btn:hover .float-mail-tooltip, .float-contact-btn:hover .float-mail-tooltip { opacity: 1; visibility: visible; }
     @media (max-width: 600px) { .float-mail-btn { width: 50px; height: 50px; } .float-contact-btn { height: 44px; padding: 0 18px; font-size: 12.5px; } .float-mail-tooltip { display: none; } }
+    @media (max-width: 480px) { .float-actions { right: 16px; bottom: 20px; } } /* matches .nav-inner padding: 0 16px at this breakpoint */
     .brand-logo { display: flex; align-items: center; gap: 8px; color: #fff; }
     .brand-logo img { width: 32px; height: 32px; object-fit: contain; }
     .brand-logo span { color: #fff; font-size: 14.5px; font-weight: 600; }
@@ -679,7 +700,6 @@
     .stat-bar-track { flex: 1; height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
     .stat-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
     .stat-bar-val { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; color: #fff; width: 20px; text-align: right; flex-shrink: 0; }
-  
   </style>
 </head>
 <body>
