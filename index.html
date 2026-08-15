@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --navy: #060f1e;
@@ -51,37 +51,15 @@
     }
 
     html { scroll-behavior: smooth; }
-    /* overflow-x: clip (not hidden) — hidden forces overflow-y:auto on this
-       element per spec, turning body into its own scroll container and
-       breaking position:sticky (.navbar / .jump-bar) during scroll. clip
-       trims horizontal overflow the same way without creating that new
-       scroll context. */
-    html, body { width: 100%; max-width: 100%; overflow-x: clip; }
     body {
       font-family: 'Sora', system-ui, sans-serif;
       color: var(--text);
       font-size: clamp(14.5px, 1.1vw + 12px, 15px);
       line-height: 1.75;
       background: var(--bg);
+      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
-    img, svg, iframe, video { max-width: 100%; }
-
-    /* ===== Global overflow safety net =====
-       Grid/flex children default to min-width:auto, which stops them
-       shrinking below their content's natural width — the usual cause
-       of "page is wider than viewport" on mobile. Force them to 0. */
-    .hero-inner, .profile-grid, .interest-grid, .skills-grid, .pub-dash,
-    .data-strip, .kpi-strip, .project-grid, .posts-strip, .gallery-grid,
-    .service-list, .timeline, .vid-grid, .outreach-grid, .stack-sidebar,
-    .pub-grid {
-      min-width: 0;
-    }
-    .hero-inner > *, .profile-grid > *, .outreach-grid > *,
-    .pub-dash > *, .data-strip > *, .kpi-strip > *, .project-grid > *,
-    .posts-strip > *, .service-list > *, .timeline > *, .vid-grid > * {
-      min-width: 0;
-    }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
     }
@@ -95,7 +73,6 @@
 
     /* NAVBAR */
     .navbar {
-      width: 100%;
       background: var(--navy);
       position: sticky;
       top: 0;
@@ -244,7 +221,7 @@
     @media (max-width: 640px) { .hero-ticker-inner { display: none; } }
 
     /* JUMP BAR */
-    .jump-bar { width: 100%; background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 58px; z-index: 200; box-shadow: 0 1px 6px rgba(0,0,0,.05); }
+    .jump-bar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 58px; z-index: 200; box-shadow: 0 1px 6px rgba(0,0,0,.05); }
     .jump-bar-inner { max-width: 1200px; margin: auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; position: relative; }
     .jump-bar-inner::-webkit-scrollbar { display: none; }
     .jump-btn {
@@ -602,7 +579,7 @@
     .reviewer-badge .rb-title { font-size: 12.5px; font-weight: 700; color: #fff; }
     .reviewer-badge .rb-sub { font-size: 11px; color: rgba(255,255,255,.55); line-height: 1.5; margin-top: 2px; }
 
-    footer { width: 100%; background: var(--navy); color: rgba(255,255,255,.5); padding: 48px 24px 32px; position: relative; overflow: hidden; }
+    footer { background: var(--navy); color: rgba(255,255,255,.5); padding: 48px 24px 32px; position: relative; overflow: hidden; }
     footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--gold), var(--teal)); }
     .footer-inner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.07); }
     .footer-col-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,.3); margin-bottom: 16px; }
@@ -631,39 +608,16 @@
       .photo-frame { width: 140px; }
       .hero h1 { white-space: normal; }
     }
-    /* ===== TABLET TIER — fills the gap between desktop (1100px) and
-       phone (640px) so cards, text, and spacing step down gradually
-       instead of jumping straight from multi-column to single-column ===== */
-    @media (max-width: 900px) {
-      .page-body { padding: 0 20px; }
-      .section-head h2 { font-size: 1.5rem; }
-      .interest-grid { gap: 12px; }
-      .data-strip { grid-template-columns: repeat(2,1fr); gap: 12px; }
-      .kpi-strip { gap: 12px; }
-      .gallery-grid { grid-template-columns: repeat(3,1fr); }
-    }
-    @media (max-width: 768px) {
-      .about-card, .profile-text { padding: 24px 26px; }
-      .stat-side { padding: 20px 18px; }
-      .pub-dash { grid-template-columns: repeat(2,1fr); }
-      .interest-grid { grid-template-columns: repeat(2,1fr); }
-      .project-grid { grid-template-columns: repeat(2,1fr); }
-      .posts-strip { grid-template-columns: repeat(2,1fr); }
-      .service-list { grid-template-columns: 1fr; }
-      .timeline { grid-template-columns: 1fr; }
-      .vid-grid { grid-template-columns: 1fr; }
-      .outreach-grid { grid-template-columns: 1fr; }
-    }
     @media (max-width: 640px) {
       .hero-signal { height: 34%; opacity: .7; }
-      .hero h1 { font-size: clamp(1.9rem, 9vw, 2.4rem); letter-spacing: -.4px; }
+      .hero h1 { font-size: clamp(1.6rem, 8vw, 2.1rem); letter-spacing: -.5px; }
       .hero-tagline { font-size: 15px; line-height: 1.5; }
       .hero-affil { font-size: 12.5px; }
       .btn-primary, .btn-outline { font-size: 13.5px; padding: 12px 20px; }
       .hero-badge { font-size: 11px; }
       body { font-size: 15px; line-height: 1.7; }
       .eyebrow { font-size: 11px; }
-      .section-head h2 { font-size: 1.3rem; line-height: 1.28; }
+      .section-head h2 { font-size: 1.2rem; line-height: 1.25; }
       .section-desc { font-size: 14px; }
       .about-card p, .profile-text p { font-size: 15px; }
       .i-label { font-size: 13.5px; }
@@ -687,21 +641,16 @@
       .page-body { padding: 0 18px; }
       .stack-sidebar { padding: 18px; }
       .filter-nav { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .nav-inner { height: 56px; }
     }
     @media (max-width: 480px) {
-      .nav-inner { height: 56px; padding: 0 16px; }
-      .brand-logo-img img { width: 28px; height: 28px; }
-      .brand-logo-text { font-size: 12.5px; }
-      .hamburger { padding: 8px; margin-left: 4px; }
-      .hamburger span { width: 20px; height: 2.5px; }
-      .data-strip { grid-template-columns: 1fr; }
-      .page-body { padding: 0 16px; }
+      .nav-inner { height: 64px; padding: 0 16px; }
+      .brand-logo-img img { width: 30px; height: 30px; }
+      .brand-logo-text { font-size: 13px; }
+      .hamburger { padding: 9px; margin-left: 4px; }
+      .hamburger span { width: 22px; height: 2.5px; }
     }
 
-    .float-actions { position: fixed; bottom: 28px; right: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 9998; }
-    /* right: 24px matches .nav-inner's padding: 0 24px, so the buttons'
-       right edge lines up with the hamburger icon above, not floating loose */
+    .float-actions { position: fixed; bottom: 28px; right: 28px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 9998; }
     .float-mail-btn { width: 56px; height: 56px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; position: relative; background: linear-gradient(135deg, #1a56db, #1648c0); }
     .float-contact-btn { height: 48px; padding: 0 22px; border-radius: 30px; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13.5px; font-weight: 700; letter-spacing: .2px; box-shadow: 0 8px 24px rgba(13,148,136,0.35), 0 2px 8px rgba(0,0,0,0.12); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; position: relative; background: linear-gradient(135deg, #0d9488, #0f766e); }
     .float-mail-btn:hover, .float-contact-btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 32px rgba(26,86,219,0.5), 0 4px 12px rgba(0,0,0,0.2); }
@@ -709,7 +658,6 @@
     .float-mail-tooltip { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: #0f172a; color: #fff; font-size: 12.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; pointer-events: none; }
     .float-mail-btn:hover .float-mail-tooltip, .float-contact-btn:hover .float-mail-tooltip { opacity: 1; visibility: visible; }
     @media (max-width: 600px) { .float-mail-btn { width: 50px; height: 50px; } .float-contact-btn { height: 44px; padding: 0 18px; font-size: 12.5px; } .float-mail-tooltip { display: none; } }
-    @media (max-width: 480px) { .float-actions { right: 16px; bottom: 20px; } } /* matches .nav-inner padding: 0 16px at this breakpoint */
     .brand-logo { display: flex; align-items: center; gap: 8px; color: #fff; }
     .brand-logo img { width: 32px; height: 32px; object-fit: contain; }
     .brand-logo span { color: #fff; font-size: 14.5px; font-weight: 600; }
@@ -730,6 +678,7 @@
     .stat-bar-track { flex: 1; height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
     .stat-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
     .stat-bar-val { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; color: #fff; width: 20px; text-align: right; flex-shrink: 0; }
+  </style>
 </head>
 <body>
 <div class="scroll-progress" id="scroll-progress"></div>
