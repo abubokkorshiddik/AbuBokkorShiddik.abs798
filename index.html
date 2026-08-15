@@ -50,7 +50,7 @@
       --sh3: 0 24px 60px rgba(28,26,20,.2);
     }
 
-    html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Sora', system-ui, sans-serif;
       color: var(--text);
@@ -261,8 +261,9 @@
     /* ===== NEW: 2-column profile / stat-sidebar pattern (reused across sections) ===== */
     .profile-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: stretch; }
     .profile-text { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 30px 34px; box-shadow: var(--sh); position: relative; overflow: hidden; }
-    .profile-text::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(to bottom, var(--blue), var(--teal)); border-radius: 5px 0 0 5px; }
-    .profile-text p { color: var(--text2); margin-bottom: 12px; font-size: 15px; line-height: 1.8; }
+    .profile-text::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(to bottom, var(--blue), var(--teal)); border-radius: 5px 0 0 5px; z-index: 2; }
+    .profile-watermark { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .profile-text p { color: var(--text2); margin-bottom: 12px; font-size: 15px; line-height: 1.8; position: relative; z-index: 1; }
     .profile-text p:last-child { margin-bottom: 0; }
 
     .stat-side { background: linear-gradient(160deg, var(--navy), var(--navy2) 60%, var(--navy3)); border-radius: var(--rl); padding: 24px 22px; box-shadow: var(--sh2); color: #fff; display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; }
@@ -304,8 +305,9 @@
     .interest-card::after { content: ''; position: absolute; inset: 0; background: var(--accent, var(--blue)); opacity: 0; transition: opacity .25s; z-index: 0; pointer-events: none; }
     .interest-card:hover::after { opacity: .06; }
     .interest-card:hover { box-shadow: var(--sh2); transform: translateY(-4px); }
-    .i-icon { width: 38px; height: 38px; border-radius: 9px; background: color-mix(in srgb, var(--accent, var(--blue)) 14%, white); color: var(--accent, var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; position: relative; z-index: 1; transition: background .2s, transform .2s; }
-    .interest-card:hover .i-icon { transform: scale(1.08) rotate(-4deg); }
+    .i-icon { width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(150deg, var(--accent, var(--blue)), color-mix(in srgb, var(--accent, var(--blue)) 70%, black)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; position: relative; z-index: 1; transition: transform .25s, box-shadow .25s; box-shadow: 0 6px 14px -4px color-mix(in srgb, var(--accent, var(--blue)) 55%, transparent); }
+    .i-icon svg { width: 23px; height: 23px; }
+    .interest-card:hover .i-icon { transform: scale(1.1) rotate(-5deg); box-shadow: 0 10px 20px -4px color-mix(in srgb, var(--accent, var(--blue)) 65%, transparent); }
     .i-label { font-size: 13.5px; font-weight: 700; color: var(--text); line-height: 1.4; position: relative; z-index: 1; }
     .i-desc { font-size: 12px; color: var(--text3); line-height: 1.6; position: relative; z-index: 1; }
     @media (max-width: 780px) { .interest-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -398,7 +400,6 @@
     .tag-row-sidebar, .filter-bar-sidebar { display: flex; flex-wrap: wrap; gap: 6px; }
     .filter-bar-sidebar .filter-chip { font-size: 11.5px; padding: 5px 11px; }
     .i-icon svg, .p-icon svg, .dc-icon svg, .rb-icon svg, .skill-lbl svg { display: block; }
-    .i-icon { color: var(--blue); }
     .rb-icon svg { width: 26px; height: 26px; color: var(--gold2); }
     .skill-lbl { display: flex; align-items: center; gap: 7px; }
     .skill-lbl svg { width: 15px; height: 15px; color: var(--accent, var(--gold)); flex-shrink: 0; }
@@ -414,6 +415,11 @@
     /* network pattern behind Technical Skills */
     .network-bg { position: absolute; inset: -20px 0 0 0; z-index: -1; opacity: .55; pointer-events: none; }
     .network-bg svg { width: 100%; height: 100%; }
+
+    /* graph/chart illustration behind Research Interests */
+    .graph-bg { position: absolute; top: -10px; right: 0; width: 55%; max-width: 480px; height: 160px; z-index: -1; pointer-events: none; }
+    .graph-bg svg { width: 100%; height: 100%; }
+    @media (max-width: 780px) { .graph-bg { display: none; } }
 
     /* wave section dividers */
     .wave-divider { display: block; width: 100%; line-height: 0; position: relative; z-index: 1; }
@@ -877,6 +883,41 @@
     <div class="section-head"><div><span class="eyebrow">Who I Am</span><h2>Research Profile</h2></div></div>
     <div class="profile-grid">
       <div class="profile-text">
+        <svg class="profile-watermark" viewBox="0 0 420 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="wmCurve" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#0d9488"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
+            </linearGradient>
+          </defs>
+          <!-- scattered nodes suggesting a global multi-country dataset -->
+          <g fill="#2563eb" fill-opacity=".16">
+            <circle cx="30"  cy="60"  r="3"/>
+            <circle cx="70"  cy="95"  r="4.5"/>
+            <circle cx="55"  cy="140" r="3.5"/>
+            <circle cx="110" cy="55"  r="3"/>
+            <circle cx="140" cy="110" r="5"/>
+            <circle cx="180" cy="70"  r="3.5"/>
+            <circle cx="205" cy="130" r="4"/>
+            <circle cx="245" cy="90"  r="3"/>
+            <circle cx="20"  cy="200" r="4"/>
+            <circle cx="90"  cy="185" r="3"/>
+          </g>
+          <g stroke="#2563eb" stroke-opacity=".1" stroke-width="1">
+            <line x1="30" y1="60" x2="70" y2="95"/>
+            <line x1="70" y1="95" x2="140" y2="110"/>
+            <line x1="110" y1="55" x2="180" y2="70"/>
+            <line x1="140" y1="110" x2="205" y2="130"/>
+            <line x1="55" y1="140" x2="90" y2="185"/>
+          </g>
+          <!-- Bayesian probability curve -->
+          <path d="M180,260 C 220,260 235,120 280,110 C 325,100 340,255 400,258"
+                fill="none" stroke="url(#wmCurve)" stroke-width="2.5" stroke-linecap="round" opacity=".18"/>
+          <path d="M180,260 C 220,260 235,120 280,110 C 325,100 340,255 400,258 L400,300 L180,300 Z"
+                fill="#7c3aed" opacity=".05"/>
+          <line x1="280" y1="80" x2="280" y2="270" stroke="#f59e0b" stroke-opacity=".18" stroke-width="1" stroke-dasharray="3 4"/>
+          <circle cx="280" cy="110" r="4.5" fill="#f59e0b" fill-opacity=".28"/>
+        </svg>
         <p>I am a researcher with a growing portfolio of <strong>peer-reviewed publications</strong> in high-impact international journals including <em>Scientific Reports</em>, <em>BMJ Open</em>, <em>Global Epidemiology</em>, and <em>International Journal of Health Geographics</em>. My research covers global disease modeling, dengue early warning systems, and climate-health interactions.</p>
         <p>My work integrates <strong>machine learning</strong>, <strong>explainable AI (SHAP, LIME)</strong>, <strong>Bayesian deep learning</strong>, and <strong>spatial analysis</strong> to support evidence-based decision-making in public health — across 194 countries using large-scale multi-source datasets.</p>
       </div>
@@ -921,6 +962,21 @@
 
   <div class="section" id="sec-interests">
     <div class="section-blob blob-gold" style="width:300px;height:300px;top:20px;left:-100px;"></div>
+    <div class="graph-bg" aria-hidden="true">
+      <svg viewBox="0 0 1000 220" preserveAspectRatio="xMidYMid slice">
+        <g opacity=".5">
+          <rect x="40"  y="150" width="34" height="55" rx="3" fill="#2563eb" opacity=".14"/>
+          <rect x="100" y="120" width="34" height="85" rx="3" fill="#2563eb" opacity=".16"/>
+          <rect x="160" y="95"  width="34" height="110" rx="3" fill="#2563eb" opacity=".18"/>
+          <rect x="220" y="135" width="34" height="70" rx="3" fill="#2563eb" opacity=".14"/>
+          <rect x="280" y="70"  width="34" height="135" rx="3" fill="#2563eb" opacity=".2"/>
+        </g>
+        <path d="M40,160 L100,130 L160,105 L220,145 L280,80 L340,60 L400,90 L460,45" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>
+        <g fill="#f59e0b" opacity=".45">
+          <circle cx="40" cy="160" r="3.5"/><circle cx="160" cy="105" r="3.5"/><circle cx="280" cy="80" r="3.5"/><circle cx="400" cy="90" r="3.5"/><circle cx="460" cy="45" r="4"/>
+        </g>
+      </svg>
+    </div>
     <div class="section-head"><div><span class="eyebrow">Focus Areas</span><h2>Research Interests</h2></div></div>
     <div class="interest-grid">
       <div class="interest-card" style="--accent:var(--blue);"><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx=5 cy=7 r=2.1/><circle cx=5 cy=17 r=2.1/><circle cx=14 cy=12 r=2.3/><circle cx=20 cy=6 r=1.6/><circle cx=20 cy=18 r=1.6/><path d=M7,8 L12,10.5 M7,16 L12,13.5 M16.2,10.6 L18.4,7.4 M16.2,13.4 L18.4,16.6/></svg></div><div class="i-label">Machine Learning in Public Health</div><div class="i-desc">Primary research focus — tree-based and deep learning models for disease surveillance.</div></div>
