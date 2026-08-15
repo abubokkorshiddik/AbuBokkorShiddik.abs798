@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --navy: #060f1e;
@@ -610,76 +610,6 @@
     }
     @media (max-width: 640px) {
       .hero-signal { height: 34%; opacity: .7; }
-      .hero h1 { font-size: clamp(1.6rem, 8vw, 2.1rem); letter-spacing: -.5px; }
-      .hero-tagline { font-size: 15px; line-height: 1.5; }
-      .hero-affil { font-size: 12.5px; }
-      .btn-primary, .btn-outline { font-size: 13.5px; padding: 12px 20px; }
-      .hero-badge { font-size: 11px; }
-      body { font-size: 15px; line-height: 1.7; }
-      .eyebrow { font-size: 11px; }
-      .section-head h2 { font-size: 1.2rem; line-height: 1.25; }
-      .section-desc { font-size: 14px; }
-      .about-card p, .profile-text p { font-size: 15px; }
-      .i-label { font-size: 13.5px; }
-      .tag { font-size: 12.5px; padding: 4px 11px; }
-      .pub-row-title { font-size: 14.5px; }
-      .pub-row-cite { font-size: 12.5px; }
-      .p-name { font-size: 15.5px; }
-      .p-desc, .dc-sub, .tl-org, .tl-detail { font-size: 13px; }
-      .dc-title { font-size: 14.5px; }
-      .tl-name { font-size: 14.5px; }
-      .kpi-num { font-size: 22px; }
-      .stat-num-box .n { font-size: 22px; }
-      .project-grid { grid-template-columns: 1fr; }
-      .data-strip { grid-template-columns: repeat(2,1fr); }
-      .posts-strip { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .pub-row { flex-direction: column; gap: 8px; }
-      .jump-btn { font-size: 13.5px; padding: 12px 15px; }
-      .page-body { padding: 0 18px; }
-      .stack-sidebar { padding: 18px; }
-      .filter-nav { flex-direction: column; align-items: flex-start; gap: 10px; }
-    }
-    @media (max-width: 480px) {
-      .nav-inner { height: 64px; padding: 0 16px; }
-      .brand-logo-img img { width: 30px; height: 30px; }
-      .brand-logo-text { font-size: 13px; }
-      .hamburger { padding: 9px; margin-left: 4px; }
-      .hamburger span { width: 22px; height: 2.5px; }
-    }
-
-    .float-actions { position: fixed; bottom: 28px; right: 28px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 9998; }
-    .float-mail-btn { width: 56px; height: 56px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; position: relative; background: linear-gradient(135deg, #1a56db, #1648c0); }
-    .float-contact-btn { height: 48px; padding: 0 22px; border-radius: 30px; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13.5px; font-weight: 700; letter-spacing: .2px; box-shadow: 0 8px 24px rgba(13,148,136,0.35), 0 2px 8px rgba(0,0,0,0.12); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; position: relative; background: linear-gradient(135deg, #0d9488, #0f766e); }
-    .float-mail-btn:hover, .float-contact-btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 32px rgba(26,86,219,0.5), 0 4px 12px rgba(0,0,0,0.2); }
-    .float-mail-btn:active, .float-contact-btn:active { transform: translateY(-1px) scale(0.98); }
-    .float-mail-tooltip { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: #0f172a; color: #fff; font-size: 12.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; pointer-events: none; }
-    .float-mail-btn:hover .float-mail-tooltip, .float-contact-btn:hover .float-mail-tooltip { opacity: 1; visibility: visible; }
-    @media (max-width: 600px) { .float-mail-btn { width: 50px; height: 50px; } .float-contact-btn { height: 44px; padding: 0 18px; font-size: 12.5px; } .float-mail-tooltip { display: none; } }
-    .brand-logo { display: flex; align-items: center; gap: 8px; color: #fff; }
-    .brand-logo img { width: 32px; height: 32px; object-fit: contain; }
-    .brand-logo span { color: #fff; font-size: 14.5px; font-weight: 600; }
-    .nav-brand{ display:flex; align-items:center; gap:10px; }
-    .brand-logo-img{ display:flex; align-items:center; }
-    .brand-logo-img img{ width:34px; height:34px; object-fit:contain; transition:transform .2s ease; }
-    .brand-logo-img:hover img{ transform:scale(1.08); }
-    .brand-logo-text{ color:#fff; font-size:14.5px; font-weight:600; letter-spacing:.2px; white-space:nowrap; }
-    .brand-logo-text span{ color:#93c5fd; font-weight:300; }
-    .brand-logo-text:hover{ color:#93c5fd; }
-
-    /* ===== NEW: mini bar chart inside the "at a glance" stat sidebar ===== */
-    .stat-chart { position: relative; z-index: 1; }
-    .stat-chart-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: rgba(255,255,255,.4); margin-bottom: 8px; }
-    .stat-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-    .stat-bar-row:last-child { margin-bottom: 0; }
-    .stat-bar-label { font-size: 11px; color: rgba(255,255,255,.7); width: 66px; flex-shrink: 0; }
-    .stat-bar-track { flex: 1; height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
-    .stat-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
-    .stat-bar-val { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; color: #fff; width: 20px; text-align: right; flex-shrink: 0; }
- @media (max-width: 640px) {
-      .hero-signal { height: 34%; opacity: .7; }
       .hero h1 { font-size: clamp(1.9rem, 9vw, 2.4rem); letter-spacing: -.4px; }
       .hero-tagline { font-size: 15px; line-height: 1.5; }
       .hero-affil { font-size: 12.5px; }
@@ -720,6 +650,35 @@
       .hamburger { padding: 8px; margin-left: 4px; }
       .hamburger span { width: 20px; height: 2.5px; }
     }
+
+    .float-actions { position: fixed; bottom: 28px; right: 28px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 9998; }
+    .float-mail-btn { width: 56px; height: 56px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; position: relative; background: linear-gradient(135deg, #1a56db, #1648c0); }
+    .float-contact-btn { height: 48px; padding: 0 22px; border-radius: 30px; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13.5px; font-weight: 700; letter-spacing: .2px; box-shadow: 0 8px 24px rgba(13,148,136,0.35), 0 2px 8px rgba(0,0,0,0.12); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; position: relative; background: linear-gradient(135deg, #0d9488, #0f766e); }
+    .float-mail-btn:hover, .float-contact-btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 32px rgba(26,86,219,0.5), 0 4px 12px rgba(0,0,0,0.2); }
+    .float-mail-btn:active, .float-contact-btn:active { transform: translateY(-1px) scale(0.98); }
+    .float-mail-tooltip { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: #0f172a; color: #fff; font-size: 12.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; pointer-events: none; }
+    .float-mail-btn:hover .float-mail-tooltip, .float-contact-btn:hover .float-mail-tooltip { opacity: 1; visibility: visible; }
+    @media (max-width: 600px) { .float-mail-btn { width: 50px; height: 50px; } .float-contact-btn { height: 44px; padding: 0 18px; font-size: 12.5px; } .float-mail-tooltip { display: none; } }
+    .brand-logo { display: flex; align-items: center; gap: 8px; color: #fff; }
+    .brand-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .brand-logo span { color: #fff; font-size: 14.5px; font-weight: 600; }
+    .nav-brand{ display:flex; align-items:center; gap:10px; }
+    .brand-logo-img{ display:flex; align-items:center; }
+    .brand-logo-img img{ width:34px; height:34px; object-fit:contain; transition:transform .2s ease; }
+    .brand-logo-img:hover img{ transform:scale(1.08); }
+    .brand-logo-text{ color:#fff; font-size:14.5px; font-weight:600; letter-spacing:.2px; white-space:nowrap; }
+    .brand-logo-text span{ color:#93c5fd; font-weight:300; }
+    .brand-logo-text:hover{ color:#93c5fd; }
+
+    /* ===== NEW: mini bar chart inside the "at a glance" stat sidebar ===== */
+    .stat-chart { position: relative; z-index: 1; }
+    .stat-chart-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: rgba(255,255,255,.4); margin-bottom: 8px; }
+    .stat-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .stat-bar-row:last-child { margin-bottom: 0; }
+    .stat-bar-label { font-size: 11px; color: rgba(255,255,255,.7); width: 66px; flex-shrink: 0; }
+    .stat-bar-track { flex: 1; height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
+    .stat-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+    .stat-bar-val { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; color: #fff; width: 20px; text-align: right; flex-shrink: 0; }
   
   </style>
 </head>
