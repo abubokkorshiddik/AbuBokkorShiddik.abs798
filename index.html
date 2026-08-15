@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --navy: #060f1e;
@@ -49,23 +49,20 @@
       --sh2: 0 14px 34px rgba(28,26,20,.14);
       --sh3: 0 24px 60px rgba(28,26,20,.2);
     }
-    
-html {
-    scroll-behavior: smooth;
-}
 
-body {
-    overflow-x: hidden;
-}
-    
-    html, body { width: 100%; max-width: 100%;  }
+    html { scroll-behavior: smooth; }
+    /* overflow-x: clip (not hidden) — hidden forces overflow-y:auto on this
+       element per spec, turning body into its own scroll container and
+       breaking position:sticky (.navbar / .jump-bar) during scroll. clip
+       trims horizontal overflow the same way without creating that new
+       scroll context. */
+    html, body { width: 100%; max-width: 100%; overflow-x: clip; }
     body {
       font-family: 'Sora', system-ui, sans-serif;
       color: var(--text);
       font-size: clamp(14.5px, 1.1vw + 12px, 15px);
       line-height: 1.75;
       background: var(--bg);
-      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
     img, svg, iframe, video { max-width: 100%; }
@@ -98,6 +95,7 @@ body {
 
     /* NAVBAR */
     .navbar {
+      width: 100%;
       background: var(--navy);
       position: sticky;
       top: 0;
@@ -246,7 +244,7 @@ body {
     @media (max-width: 640px) { .hero-ticker-inner { display: none; } }
 
     /* JUMP BAR */
-    .jump-bar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 58px; z-index: 200; box-shadow: 0 1px 6px rgba(0,0,0,.05); }
+    .jump-bar { width: 100%; background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 58px; z-index: 200; box-shadow: 0 1px 6px rgba(0,0,0,.05); }
     .jump-bar-inner { max-width: 1200px; margin: auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; position: relative; }
     .jump-bar-inner::-webkit-scrollbar { display: none; }
     .jump-btn {
@@ -604,7 +602,7 @@ body {
     .reviewer-badge .rb-title { font-size: 12.5px; font-weight: 700; color: #fff; }
     .reviewer-badge .rb-sub { font-size: 11px; color: rgba(255,255,255,.55); line-height: 1.5; margin-top: 2px; }
 
-    footer { background: var(--navy); color: rgba(255,255,255,.5); padding: 48px 24px 32px; position: relative; overflow: hidden; }
+    footer { width: 100%; background: var(--navy); color: rgba(255,255,255,.5); padding: 48px 24px 32px; position: relative; overflow: hidden; }
     footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--gold), var(--teal)); }
     .footer-inner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.07); }
     .footer-col-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,.3); margin-bottom: 16px; }
@@ -632,6 +630,29 @@ body {
       .hero-photo-col { order: -1; }
       .photo-frame { width: 140px; }
       .hero h1 { white-space: normal; }
+    }
+    /* ===== TABLET TIER — fills the gap between desktop (1100px) and
+       phone (640px) so cards, text, and spacing step down gradually
+       instead of jumping straight from multi-column to single-column ===== */
+    @media (max-width: 900px) {
+      .page-body { padding: 0 20px; }
+      .section-head h2 { font-size: 1.5rem; }
+      .interest-grid { gap: 12px; }
+      .data-strip { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .kpi-strip { gap: 12px; }
+      .gallery-grid { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 768px) {
+      .about-card, .profile-text { padding: 24px 26px; }
+      .stat-side { padding: 20px 18px; }
+      .pub-dash { grid-template-columns: repeat(2,1fr); }
+      .interest-grid { grid-template-columns: repeat(2,1fr); }
+      .project-grid { grid-template-columns: repeat(2,1fr); }
+      .posts-strip { grid-template-columns: repeat(2,1fr); }
+      .service-list { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .vid-grid { grid-template-columns: 1fr; }
+      .outreach-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .hero-signal { height: 34%; opacity: .7; }
@@ -674,6 +695,8 @@ body {
       .brand-logo-text { font-size: 12.5px; }
       .hamburger { padding: 8px; margin-left: 4px; }
       .hamburger span { width: 20px; height: 2.5px; }
+      .data-strip { grid-template-columns: 1fr; }
+      .page-body { padding: 0 16px; }
     }
 
     .float-actions { position: fixed; bottom: 28px; right: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 9998; }
@@ -707,7 +730,6 @@ body {
     .stat-bar-track { flex: 1; height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
     .stat-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
     .stat-bar-val { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; color: #fff; width: 20px; text-align: right; flex-shrink: 0; }
-  </style>
 </head>
 <body>
 <div class="scroll-progress" id="scroll-progress"></div>
