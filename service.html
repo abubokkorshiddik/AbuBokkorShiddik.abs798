@@ -1,48 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+
+  <link rel="icon" type="image/png"
+        href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+
+  <link rel="apple-touch-icon"
+        href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Reviewer Service — Md. Abu Bokkor Shiddik. Peer review contributions to international journals.">
-  <meta name="keywords" content="ABS798, Abu Bokkor Shiddik, Peer Reviewer, BMJ, PLOS, Health Science Reports, Academic Service, Bangladesh">
-  <title>Reviewer Service | Md. Abu Bokkor Shiddik</title>
+
+  <meta name="description"
+        content="Research consulting, statistical analysis, machine learning, XAI, spatial analytics and academic peer review services by Md. Abu Bokkor Shiddik.">
+
+  <meta name="keywords"
+        content="Research Consultant, Statistical Consultant, Data Analysis, Machine Learning, XAI, SHAP, R, Python, Spatial Analysis, Epidemiology, Bangladesh">
+
+  <title>Research consulting & analytics | Md. Abu Bokkor Shiddik</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --navy:       #0b1f3a;
-      --blue:       #1a56db;
+
+      --navy: #0b1f3a;
+      --navy2: #102b4e;
+
+      --blue: #1a56db;
       --blue-hover: #1648c0;
-      --sky:        #e8f0fe;
-      --sky2:       #d2e3fc;
-      --green:      #166534;
-      --green-bg:   #f0fdf4;
-      --green-bd:   #bbf7d0;
-      --purple:     #5b21b6;
-      --purple-bg:  #f5f3ff;
-      --purple-bd:  #ddd6fe;
-      --teal:       #0f766e;
-      --teal-bg:    #f0fdfa;
-      --teal-bd:    #99f6e4;
-      --amber:      #92400e;
-      --amber-bg:   #fffbeb;
-      --amber-bd:   #fde68a;
-      --text:       #0f172a;
-      --text2:      #334155;
-      --text3:      #64748b;
-      --border:     #e2e8f0;
-      --border2:    #cbd5e1;
-      --bg:         #f8fafc;
-      --white:      #ffffff;
-      --radius:     8px;
-      --radius-lg:  14px;
-      --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow:     0 4px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+
+      --sky: #e8f0fe;
+      --sky2: #d2e3fc;
+
+      --green: #166534;
+      --green-bg: #f0fdf4;
+      --green-bd: #bbf7d0;
+
+      --purple: #5b21b6;
+      --purple-bg: #f5f3ff;
+      --purple-bd: #ddd6fe;
+
+      --teal: #0f766e;
+      --teal-bg: #f0fdfa;
+      --teal-bd: #99f6e4;
+
+      --amber: #92400e;
+      --amber-bg: #fffbeb;
+      --amber-bd: #fde68a;
+
+      --orange: #c2410c;
+      --orange-bg: #fff7ed;
+      --orange-bd: #fed7aa;
+
+      --text: #0f172a;
+      --text2: #334155;
+      --text3: #64748b;
+
+      --border: #e2e8f0;
+      --border2: #cbd5e1;
+
+      --bg: #f8fafc;
+      --white: #ffffff;
+
+      --radius: 8px;
+      --radius-lg: 14px;
+
+      --shadow-sm:
+        0 1px 3px rgba(0,0,0,0.06),
+        0 1px 2px rgba(0,0,0,0.04);
+
+      --shadow:
+        0 4px 20px rgba(0,0,0,0.08),
+        0 1px 4px rgba(0,0,0,0.04);
+
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -52,810 +98,3082 @@
       font-size: 15.5px;
       line-height: 1.75;
     }
-    a { color: inherit; text-decoration: none; }
 
-    /* ── NAVBAR ── */
-    .navbar { background: var(--navy); position: sticky; top: 0; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .nav-bar-inner { max-width: 1180px; margin: auto; padding: 0 24px; display: flex; align-items: center; height: 56px; }
-    .nav-brand { font-size: 14.5px; font-weight: 600; color: #fff; letter-spacing: 0.2px; margin-right: auto; white-space: nowrap; }
-    .nav-brand span { color: #93c5fd; font-weight: 300; }
-    .nav-links { display: flex; align-items: center; gap: 2px; }
-    .nav-links > a, .dropbtn {
-      color: rgba(255,255,255,0.75); font-size: 13.5px; font-weight: 500; padding: 6px 11px;
-      border-radius: 6px; border: none; background: none; cursor: pointer; font-family: inherit;
-      transition: background 0.18s, color 0.18s; white-space: nowrap; display: flex; align-items: center; gap: 4px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-    .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,0.09); }
-    .dropdown { position: relative; }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .navbar {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-bar-inner {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      height: 56px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: auto;
+    }
+
+    .brand-logo-img {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-logo-img img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      transition: transform .2s ease;
+    }
+
+    .brand-logo-img:hover img {
+      transform: scale(1.08);
+    }
+
+    .brand-logo-text {
+      color: #fff;
+      font-size: 14.5px;
+      font-weight: 600;
+      letter-spacing: .2px;
+      white-space: nowrap;
+    }
+
+    .brand-logo-text span {
+      color: #93c5fd;
+      font-weight: 300;
+    }
+
+    .brand-logo-text:hover {
+      color: #93c5fd;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .nav-links > a,
+    .dropbtn {
+      color: rgba(255,255,255,0.75);
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 6px 11px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .18s, color .18s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links > a:hover,
+    .dropbtn:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.09);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
     .dropdown-content {
-      position: absolute; top: calc(100% + 6px); left: 0; background: #132444;
-      border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; min-width: 190px; padding: 6px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transform: translateY(6px);
-      transition: opacity 0.2s, transform 0.2s, visibility 0.2s; pointer-events: none; z-index: 9999;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: #132444;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      min-width: 200px;
+      padding: 6px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity .2s, transform .2s, visibility .2s;
+      pointer-events: none;
+      z-index: 9999;
     }
-    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
-    .dropdown-content a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 500; border-radius: 6px; transition: background 0.15s, color 0.15s; }
-    .dropdown-content a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 6px; margin-left: 10px; transition: background 0.2s; }
-    .hamburger:hover { background: rgba(255,255,255,0.1); }
-    .hamburger span { display: block; width: 21px; height: 2px; background: rgba(255,255,255,0.85); border-radius: 2px; transition: transform 0.28s, opacity 0.28s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .nav-drawer { display: none; background: #0d1c38; border-top: 1px solid rgba(255,255,255,0.07); overflow: hidden; max-height: 0; transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1); }
-    .nav-drawer.open { max-height: 700px; }
-    .drawer-inner { padding: 8px 0 16px; }
-    .drawer-link { display: block; color: rgba(255,255,255,0.78); font-size: 15px; font-weight: 500; padding: 11px 24px; transition: background 0.15s, color 0.15s; }
-    .drawer-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
-    .drawer-section-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,0.3); padding: 14px 24px 4px; }
-    .drawer-sub .drawer-link { padding-left: 38px; font-size: 14px; color: rgba(255,255,255,0.58); }
-    .drawer-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0; }
-    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-drawer { display: block; } }
 
-    /* ── HERO ── */
-    .page-hero {
-      background: linear-gradient(140deg, #07152a 0%, #0d2247 50%, #0f2d5c 100%);
-      color: white; padding: 60px 24px 52px; position: relative; overflow: hidden;
+    .dropdown:hover .dropdown-content,
+    .dropdown.active .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
     }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0;
+
+    .dropdown-content a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background .15s, color .15s;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 7px;
+      border-radius: 6px;
+      margin-left: 10px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 21px;
+      height: 2px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2px;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-drawer {
+      display: none;
+      background: #0d1c38;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .38s ease;
+    }
+
+    .nav-drawer.open {
+      max-height: 800px;
+    }
+
+    .drawer-inner {
+      padding: 8px 0 16px;
+    }
+
+    .drawer-link {
+      display: block;
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 11px 24px;
+    }
+
+    .drawer-link:hover {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+
+    .drawer-section-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: rgba(255,255,255,0.3);
+      padding: 14px 24px 4px;
+    }
+
+    .drawer-sub .drawer-link {
+      padding-left: 38px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.58);
+    }
+
+    .drawer-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 4px 0;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-drawer {
+        display: block;
+      }
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .page-hero {
       background:
-        radial-gradient(circle at 75% 25%, rgba(59,130,246,0.12) 0%, transparent 50%),
-        radial-gradient(circle at 15% 75%, rgba(99,102,241,0.08) 0%, transparent 40%);
+        linear-gradient(140deg, #07152a 0%, #0d2247 50%, #0f2d5c 100%);
+
+      color: white;
+      padding: 66px 24px 58px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 75% 25%,
+          rgba(59,130,246,0.14) 0%,
+          transparent 50%
+        ),
+
+        radial-gradient(
+          circle at 15% 75%,
+          rgba(99,102,241,0.09) 0%,
+          transparent 40%
+        );
+
       pointer-events: none;
     }
-    .hero-inner { max-width: 1100px; margin: auto; position: relative; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #93c5fd; margin-bottom: 14px; }
-    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
-    .page-hero h1 { font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 600; line-height: 1.18; margin-bottom: 10px; }
-    .page-hero p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; margin-bottom: 30px; }
-    .hero-stats { display: flex; flex-wrap: wrap; gap: 20px 36px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
-    .hstat-num { font-size: 1.8rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 4px; }
-    .hstat-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 500; }
 
-    /* Verified badge in hero */
-    .verified-box {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: var(--radius-lg);
-      padding: 20px 24px;
-      text-align: center;
-      min-width: 160px;
-      flex-shrink: 0;
+    .hero-inner {
+      max-width: 1100px;
+      margin: auto;
+      position: relative;
+
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 45px;
+      align-items: center;
     }
-    .verified-icon { font-size: 2.4rem; margin-bottom: 8px; display: block; }
-    .verified-text { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); line-height: 1.5; }
-    .verified-text strong { color: #4ade80; display: block; font-size: 13.5px; margin-bottom: 2px; }
 
-    /* ── PAGE BODY ── */
-    .page-body { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
 
-    /* ── INTRO CARD ── */
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      color: #93c5fd;
+      margin-bottom: 14px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+    }
+
+    .page-hero h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.35rem;
+      font-weight: 600;
+      line-height: 1.18;
+      margin-bottom: 12px;
+    }
+
+    .page-hero p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.62);
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px 18px;
+      border-radius: 7px;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition: transform .2s, background .2s;
+    }
+
+    .hero-btn-primary {
+      background: #fff;
+      color: var(--navy);
+    }
+
+    .hero-btn-primary:hover {
+      transform: translateY(-2px);
+      background: #f1f5f9;
+    }
+
+    .hero-btn-secondary {
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.05);
+    }
+
+    .hero-btn-secondary:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 36px;
+
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .hstat-num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .hstat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,.4);
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      font-weight: 500;
+    }
+
+    .commercial-box {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: var(--radius-lg);
+      padding: 25px 27px;
+      width: 225px;
+      text-align: center;
+    }
+
+    .commercial-icon {
+      font-size: 2.3rem;
+      display: block;
+      margin-bottom: 9px;
+    }
+
+    .commercial-box strong {
+      display: block;
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .commercial-box span {
+      display: block;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+
+    /* =========================
+       INTRO
+    ========================= */
+
     .intro-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 28px 32px;
+
+      padding: 29px 32px;
+
       box-shadow: var(--shadow-sm);
-      margin-bottom: 44px;
+
+      margin-bottom: 48px;
+
       position: relative;
       overflow: hidden;
+
       display: flex;
       gap: 24px;
       align-items: flex-start;
     }
+
     .intro-card::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-      background: linear-gradient(to bottom, var(--blue), #6366f1);
-      border-radius: 4px 0 0 4px;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          to bottom,
+          var(--blue),
+          #6366f1
+        );
     }
-    .intro-icon { font-size: 2rem; flex-shrink: 0; margin-top: 2px; }
-    .intro-text p { color: var(--text2); font-size: 14.5px; line-height: 1.75; }
-    .intro-text p + p { margin-top: 8px; }
 
-    /* ── SECTION HEAD ── */
-    .section-head { margin-bottom: 20px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-    .section-head h2 { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--text); position: relative; padding-bottom: 8px; }
-    .section-head h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 32px; height: 2.5px; background: var(--blue); border-radius: 2px; }
-    .section-meta { font-size: 12.5px; color: var(--text3); font-weight: 500; }
+    .intro-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
 
-    /* ── JOURNAL CARDS ── */
-    .journal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    @media (max-width: 720px) { .journal-grid { grid-template-columns: 1fr; } }
+    .intro-text p {
+      color: var(--text2);
+      font-size: 14.5px;
+      line-height: 1.75;
+    }
+
+    .intro-text p + p {
+      margin-top: 8px;
+    }
+
+
+    /* =========================
+       SECTION HEAD
+    ========================= */
+
+    .section-head {
+      margin-bottom: 20px;
+
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .section-head h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .section-head h2::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 32px;
+      height: 2.5px;
+
+      background: var(--blue);
+      border-radius: 2px;
+    }
+
+    .section-meta {
+      font-size: 12.5px;
+      color: var(--text3);
+      font-weight: 500;
+    }
+
+
+    /* =========================
+       SERVICE INTRO
+    ========================= */
+
+    .service-intro {
+      margin-top: 58px;
+      margin-bottom: 20px;
+    }
+
+    .service-intro-card {
+      background: linear-gradient(
+        135deg,
+        #eff6ff,
+        #f8fafc
+      );
+
+      border: 1px solid #dbeafe;
+      border-radius: var(--radius-lg);
+
+      padding: 27px 30px;
+
+      margin-bottom: 22px;
+    }
+
+    .service-intro-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .service-intro-card p {
+      color: var(--text2);
+      font-size: 14px;
+      max-width: 850px;
+    }
+
+
+    /* =========================
+       COMMERCIAL SERVICE CARDS
+    ========================= */
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+
+      padding: 25px 25px 23px;
+
+      box-shadow: var(--shadow-sm);
+
+      position: relative;
+      overflow: hidden;
+
+      transition:
+        transform .2s,
+        box-shadow .2s,
+        border-color .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: #bfdbfe;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .service-card:nth-child(1)::before {
+      background: linear-gradient(90deg,#0369a1,#0ea5e9);
+    }
+
+    .service-card:nth-child(2)::before {
+      background: linear-gradient(90deg,#4338ca,#818cf8);
+    }
+
+    .service-card:nth-child(3)::before {
+      background: linear-gradient(90deg,#047857,#34d399);
+    }
+
+    .service-card:nth-child(4)::before {
+      background: linear-gradient(90deg,#7c3aed,#a855f7);
+    }
+
+    .service-card:nth-child(5)::before {
+      background: linear-gradient(90deg,#c2410c,#fb923c);
+    }
+
+    .service-card:nth-child(6)::before {
+      background: linear-gradient(90deg,#0f766e,#2dd4bf);
+    }
+
+    .service-icon {
+      width: 43px;
+      height: 43px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 10px;
+
+      background: #eff6ff;
+
+      font-size: 21px;
+
+      margin-bottom: 15px;
+    }
+
+    .service-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      color: var(--text3);
+      font-size: 12.8px;
+      line-height: 1.6;
+
+      min-height: 63px;
+    }
+
+    .service-price {
+      margin-top: 17px;
+
+      padding-top: 15px;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .price-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--text3);
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .price-main {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .price-sub {
+      font-size: 11px;
+      color: var(--text3);
+      margin-top: 2px;
+    }
+
+
+    /* =========================
+       PRICING POLICY
+    ========================= */
+
+    .pricing-policy {
+      margin-top: 25px;
+
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+
+      padding: 24px 28px;
+
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .policy-icon {
+      font-size: 1.7rem;
+    }
+
+    .pricing-policy h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .pricing-policy p {
+      color: var(--text2);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+
+    /* =========================
+       PACKAGES
+    ========================= */
+
+    .packages-section {
+      margin-top: 58px;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .package-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 27px;
+
+      box-shadow: var(--shadow-sm);
+
+      position: relative;
+    }
+
+    .package-card.featured {
+      border-color: #93c5fd;
+      box-shadow: 0 8px 28px rgba(37,99,235,.12);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+
+      background: var(--sky);
+      color: var(--blue);
+
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+
+    .package-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      margin-bottom: 7px;
+    }
+
+    .package-desc {
+      color: var(--text3);
+      font-size: 12.8px;
+      line-height: 1.6;
+
+      min-height: 62px;
+    }
+
+    .package-price {
+      margin-top: 17px;
+      margin-bottom: 16px;
+    }
+
+    .package-price strong {
+      display: block;
+      font-size: 20px;
+      color: var(--navy);
+    }
+
+    .package-price span {
+      font-size: 11px;
+      color: var(--text3);
+    }
+
+    .package-list {
+      list-style: none;
+      border-top: 1px solid var(--border);
+      padding-top: 13px;
+    }
+
+    .package-list li {
+      position: relative;
+      padding: 5px 0 5px 20px;
+
+      color: var(--text2);
+      font-size: 12.5px;
+    }
+
+    .package-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+
+      color: var(--green);
+      font-weight: 700;
+    }
+
+
+    /* =========================
+       QUOTE SECTION
+    ========================= */
+
+    .quote-section {
+      margin-top: 58px;
+    }
+
+    .quote-card {
+      background:
+        linear-gradient(
+          135deg,
+          #0f2044,
+          #193a69
+        );
+
+      border-radius: var(--radius-lg);
+
+      padding: 35px 38px;
+
+      color: white;
+
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-card::after {
+      content: '';
+
+      position: absolute;
+      width: 330px;
+      height: 330px;
+
+      right: -150px;
+      top: -160px;
+
+      border-radius: 50%;
+
+      background: rgba(96,165,250,.09);
+    }
+
+    .quote-card h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.45rem;
+      margin-bottom: 8px;
+    }
+
+    .quote-card p {
+      color: rgba(255,255,255,.62);
+      font-size: 13.5px;
+      max-width: 650px;
+    }
+
+    .quote-btn {
+      position: relative;
+      z-index: 2;
+
+      background: #fff;
+      color: var(--navy);
+
+      padding: 11px 20px;
+
+      border-radius: 7px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      white-space: nowrap;
+
+      transition: transform .2s, background .2s;
+    }
+
+    .quote-btn:hover {
+      transform: translateY(-2px);
+      background: #f1f5f9;
+    }
+
+
+    /* =========================
+       SCOPE
+    ========================= */
+
+    .scope-section {
+      margin-top: 58px;
+    }
+
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 18px;
+    }
+
+    .scope-card {
+      background: #fff;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+
+      padding: 24px 27px;
+
+      box-shadow: var(--shadow-sm);
+    }
+
+    .scope-card h3 {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .scope-card ul {
+      list-style: none;
+    }
+
+    .scope-card li {
+      color: var(--text2);
+      font-size: 13px;
+
+      padding: 5px 0 5px 20px;
+
+      position: relative;
+    }
+
+    .scope-card li::before {
+      content: '›';
+
+      position: absolute;
+      left: 0;
+
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+
+    /* =========================
+       REVIEWER SECTION
+    ========================= */
+
+    .reviewer-section {
+      margin-top: 72px;
+    }
+
+    .reviewer-intro {
+      background: #fff;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+
+      padding: 26px 30px;
+
+      box-shadow: var(--shadow-sm);
+
+      margin-bottom: 23px;
+    }
+
+    .reviewer-intro p {
+      color: var(--text2);
+      font-size: 14px;
+    }
+
+    .journal-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 18px;
+    }
 
     .journal-card {
       background: var(--white);
+
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 24px 26px;
+
+      padding: 23px 25px;
+
       box-shadow: var(--shadow-sm);
+
       position: relative;
       overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+      transition:
+        transform .2s,
+        box-shadow .2s,
+        border-color .2s;
+    }
+
+    .journal-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: #bfdbfe;
+    }
+
+    .journal-card::before {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 3px;
+    }
+
+    .jc-bmj::before {
+      background: linear-gradient(90deg,#0369a1,#0ea5e9);
+    }
+
+    .jc-wiley::before {
+      background: linear-gradient(90deg,#7c3aed,#a855f7);
+    }
+
+    .jc-plos::before {
+      background: linear-gradient(90deg,#c2410c,#fb923c);
+    }
+
+    .jc-elsevier::before {
+      background: linear-gradient(90deg,#b91c1c,#f87171);
+    }
+
+    .publisher-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .pub-badge {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+
+      padding: 3px 9px;
+
+      border-radius: 5px;
+    }
+
+    .badge-bmj {
+      background: #e0f7fa;
+      color: #0e7490;
+      border: 1px solid #67e8f9;
+    }
+
+    .badge-wiley {
+      background: #f5f3ff;
+      color: #5b21b6;
+      border: 1px solid #ddd6fe;
+    }
+
+    .badge-plos {
+      background: #fff7ed;
+      color: #c2410c;
+      border: 1px solid #fed7aa;
+    }
+
+    .badge-elsevier {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .journal-name {
+      font-family: 'Lora', serif;
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--text);
+
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+
+    .journal-scope {
+      font-size: 12.5px;
+      color: var(--text3);
+      line-height: 1.55;
+    }
+
+    .review-count-box {
+      margin-top: 13px;
+
+      display: inline-flex;
+      align-items: center;
+
+      gap: 6px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      color: var(--green);
+
+      background: var(--green-bg);
+      border: 1px solid var(--green-bd);
+
+      border-radius: 20px;
+
+      padding: 4px 11px;
+    }
+
+
+    /* =========================
+       EXPERTISE
+    ========================= */
+
+    .expertise-section {
+      margin-top: 58px;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .exp-tag {
+      font-size: 12.5px;
+      font-weight: 500;
+
+      padding: 6px 15px;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border2);
+      background: #fff;
+
+      color: var(--text2);
+
+      transition:
+        background .18s,
+        border-color .18s,
+        color .18s;
+    }
+
+    .exp-tag:hover {
+      background: var(--sky);
+      border-color: #93c5fd;
+      color: var(--blue);
+    }
+
+
+    /* =========================
+       ACADEMIC SERVICE
+    ========================= */
+
+    .academic-service {
+      margin-top: 58px;
+    }
+
+    .academic-card {
+      background: #fff;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+
+      padding: 27px 30px;
+
+      box-shadow: var(--shadow-sm);
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .academic-card::before {
+      content: '';
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 4px;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          to bottom,
+          #047857,
+          #10b981
+        );
+    }
+
+    .academic-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .academic-card p {
+      color: var(--text2);
+      font-size: 13.5px;
+    }
+
+    .academic-list {
+      list-style: none;
+      margin-top: 11px;
+    }
+
+    .academic-list li {
+      color: var(--text2);
+      font-size: 13px;
+
+      padding: 5px 0 5px 20px;
+
+      position: relative;
+    }
+
+    .academic-list li::before {
+      content: '›';
+
+      position: absolute;
+      left: 0;
+
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.5);
+
+      padding: 44px 24px 32px;
+
+      margin-top: 60px;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+
+      gap: 36px;
+
+      padding-bottom: 32px;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.07);
+    }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      color: rgba(255,255,255,.35);
+
+      margin-bottom: 14px;
+    }
+
+    .footer-name {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-weight: 600;
+
+      color: rgba(255,255,255,.9);
+
+      margin-bottom: 8px;
+    }
+
+    .footer-desc {
+      font-size: 12.5px;
+      line-height: 1.7;
+    }
+
+    .footer-nav-links,
+    .footer-social-links {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 7px;
     }
-    .journal-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #bfdbfe; }
 
-    /* top color bar */
-    .journal-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    .footer-nav-links a,
+    .footer-social-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,.55);
+      transition: color .15s;
     }
-    .jc-bmj-gh::before    { background: linear-gradient(90deg, #0369a1, #0ea5e9); }
-    .jc-bmj-ph::before    { background: linear-gradient(90deg, #0369a1, #0ea5e9); }
-    .jc-hsr::before       { background: linear-gradient(90deg, #7c3aed, #a855f7); }
-    .jc-jms::before       { background: linear-gradient(90deg, #059669, #10b981); }
-    .jc-plos::before      { background: linear-gradient(90deg, #d97706, #f59e0b); }
-    .jc-tech::before      { background: linear-gradient(90deg, #c2410c, #fb923c); }
-    .jc-spatial::before   { background: linear-gradient(90deg, #b91c1c, #f87171); }
-    .jc-gph::before       { background: linear-gradient(90deg, #047857, #34d399); }
-    .jc-kbs::before       { background: linear-gradient(90deg, #4338ca, #818cf8); }
 
-    /* publisher badge */
-    .publisher-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .pub-logo-badge {
-      font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.7px;
-      padding: 3px 9px; border-radius: 5px; white-space: nowrap;
+    .footer-nav-links a:hover {
+      color: rgba(255,255,255,.9);
     }
-    .badge-bmj      { background: #e0f7fa; color: #0e7490; border: 1px solid #67e8f9; }
-    .badge-wiley    { background: #f5f3ff; color: #5b21b6; border: 1px solid #ddd6fe; }
-    .badge-plos     { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
-    .badge-sci      { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-    .badge-ios      { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
-    .badge-elsevier { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
-    .badge-taylor   { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
 
-    .journal-name { font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 600; color: var(--text); line-height: 1.35; }
-    .journal-scope { font-size: 12.5px; color: var(--text3); line-height: 1.55; }
-
-    /* review counts per year */
-    .review-rows { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
-    .review-row { display: flex; align-items: center; gap: 10px; }
-    .year-tag {
-      font-size: 11px; font-weight: 700; color: var(--blue);
-      background: var(--sky); border: 1px solid var(--sky2);
-      border-radius: 5px; padding: 2px 8px; white-space: nowrap; min-width: 44px; text-align: center;
+    .footer-social-links a:hover {
+      color: #93c5fd;
     }
-    .review-bar-wrap { flex: 1; background: #f1f5f9; border-radius: 4px; height: 7px; overflow: hidden; }
-    .review-bar { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--blue), #6366f1); transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
-    .review-count { font-size: 12.5px; font-weight: 700; color: var(--text2); min-width: 24px; text-align: right; }
 
-    /* total reviews pill */
-    .total-pill {
-      display: inline-flex; align-items: center; gap: 6px; margin-top: 6px;
-      font-size: 12px; font-weight: 700; color: var(--green);
-      background: var(--green-bg); border: 1px solid var(--green-bd);
-      border-radius: 20px; padding: 4px 12px;
-    }
-    .total-pill::before { content: '✓'; font-size: 11px; }
+    .footer-bottom {
+      max-width: 1180px;
+      margin: 22px auto 0;
 
-    /* ── SUMMARY STRIP ── */
-    .summary-strip {
-      background: linear-gradient(135deg, #0f2044, #1a3460);
-      border-radius: var(--radius-lg);
-      padding: 32px 36px;
-      margin-top: 52px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-    .summary-strip::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 80% 50%, rgba(99,102,241,0.15) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .ss-num { font-size: 2rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 5px; }
-    .ss-label { font-size: 11.5px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 500; }
-    @media (max-width: 700px) { .summary-strip { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 420px) { .summary-strip { grid-template-columns: 1fr; } }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-    /* ── EXPERTISE TAGS ── */
-    .expertise-section { margin-top: 52px; }
-    .tag-cloud { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .exp-tag {
-      font-size: 13px; font-weight: 500; padding: 6px 16px; border-radius: 20px;
-      border: 1px solid var(--border2); background: var(--white); color: var(--text2);
-      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    .exp-tag:hover { background: var(--sky); border-color: #93c5fd; color: var(--blue); }
 
-    /* ── OUTREACH & PROJECT SECTIONS ── */
-    .outreach-section, .project-section { margin-top: 52px; }
-    .outreach-card, .project-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 26px 30px;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-      overflow: hidden;
+    .footer-bottom p {
+      font-size: 12px;
     }
-    .outreach-card::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-      background: linear-gradient(to bottom, #ea580c, #f59e0b);
-      border-radius: 4px 0 0 4px;
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .service-grid,
+      .package-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .commercial-box {
+        width: 100%;
+        max-width: 300px;
+        text-align: left;
+      }
+
     }
-    .project-card::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-      background: linear-gradient(to bottom, #047857, #10b981);
-      border-radius: 4px 0 0 4px;
+
+    @media (max-width: 720px) {
+
+      .journal-grid,
+      .scope-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid,
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-card {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-btn {
+        width: fit-content;
+      }
+
     }
-    .outreach-list, .project-list { list-style: none; margin-top: 12px; }
-    .outreach-list li, .project-list li {
-      font-size: 14px; color: var(--text2); padding: 6px 0 6px 22px; position: relative;
+
+    @media (max-width: 600px) {
+
+      .page-hero {
+        padding: 48px 20px;
+      }
+
+      .page-hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .page-body {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .intro-card {
+        flex-direction: column;
+        padding: 24px;
+      }
+
+      .pricing-policy {
+        flex-direction: column;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-stats {
+        gap: 18px 24px;
+      }
+
     }
-    .outreach-list li::before, .project-list li::before {
-      content: '›'; position: absolute; left: 0; color: var(--blue); font-weight: 700;
-    }
-    .outreach-link {
-      display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
-      font-size: 13px; font-weight: 600; color: var(--blue);
-      background: var(--sky); border: 1px solid var(--sky2);
-      border-radius: 20px; padding: 6px 14px; transition: background 0.15s;
-    }
-    .outreach-link:hover { background: var(--sky2); }
-    .project-meta-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; margin-top: 16px;
-    }
-    @media (max-width: 600px) { .project-meta-grid { grid-template-columns: 1fr; } }
-    .project-meta-item { font-size: 13px; color: var(--text2); }
-    .project-meta-item strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text3); font-weight: 700; margin-bottom: 3px; }
 
-    /* ── FOOTER ── */
-    footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 44px 24px 32px; margin-top: 60px; }
-    .footer-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .footer-col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
-    .footer-name { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 8px; }
-    .footer-desc { font-size: 12.5px; line-height: 1.7; }
-    .footer-nav-links, .footer-social-links { display: flex; flex-direction: column; gap: 7px; }
-    .footer-nav-links a, .footer-social-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.15s; }
-    .footer-nav-links a:hover { color: rgba(255,255,255,0.9); }
-    .footer-social-links a:hover { color: #93c5fd; }
-    .footer-bottom { max-width: 1180px; margin: 22px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-    .footer-bottom p { font-size: 12px; }
-    @media (max-width: 1024px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } .hero-inner { grid-template-columns: 1fr; } .verified-box { display: none; } .intro-card { flex-direction: column; } .journal-grid { grid-template-columns: 1fr; } }
- 
-  .nav-brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.brand-logo-img{
-    display:flex;
-    align-items:center;
-}
-
-.brand-logo-img img{
-    width:34px;
-    height:34px;
-    object-fit:contain;
-    transition:transform .2s ease;
-}
-
-.brand-logo-img:hover img{
-    transform:scale(1.08);
-}
-
-.brand-logo-text{
-    color:#fff;
-    font-size:14.5px;
-    font-weight:600;
-    letter-spacing:.2px;
-    white-space:nowrap;
-}
-
-.brand-logo-text span{
-    color:#93c5fd;
-    font-weight:300;
-}
-
-.brand-logo-text:hover{
-    color:#93c5fd;
-}
-  
   </style>
+
 </head>
+
 <body>
 
-<!-- ═══ NAVBAR ═══ -->
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
 <nav class="navbar">
+
   <div class="nav-bar-inner">
+
     <div class="nav-brand">
 
-  <a href="home.html" class="brand-logo-img">
-    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"
-         alt="ABS Logo">
-  </a>
+      <a href="home.html" class="brand-logo-img">
+        <img
+          src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"
+          alt="ABS Logo">
+      </a>
 
-  <a href="contact.html" class="brand-logo-text">
-    ABS<span> · </span>Abu Bokkor Shiddik
-  </a>
+      <a href="contact.html" class="brand-logo-text">
+        ABS<span> · </span>Abu Bokkor Shiddik
+      </a>
 
-</div>
+    </div>
+
+
     <div class="nav-links">
+
       <a href="home.html">Home</a>
+
       <a href="publications.html">Publications</a>
+
       <div class="dropdown">
-        <button class="dropbtn">Academic &#9662;</button>
+
+        <button class="dropbtn">
+          Academic &#9662;
+        </button>
+
         <div class="dropdown-content">
-          <a href="courses.html">&#127891; Courses &amp; Training</a>
-          <a href="conference-and-workshop.html">&#127963; Conferences &amp; Workshops</a>
-          <a href="service.html">&#128278; Service</a>
+
+          <a href="courses.html">
+            &#127891; Courses &amp; Training
+          </a>
+
+          <a href="conference-and-workshop.html">
+            &#127963; Conferences &amp; Workshops
+          </a>
+
+          <a href="service.html">
+            &#128278; Services
+          </a>
+
         </div>
+
       </div>
+
+
       <div class="dropdown">
-        <button class="dropbtn">Digital Lab &#9662;</button>
+
+        <button class="dropbtn">
+          Digital Lab &#9662;
+        </button>
+
         <div class="dropdown-content">
-          <a href="projects.html">&#9879; Projects</a>
-          <a href="data-code.html">&#128190; Data &amp; Code</a>
+
+          <a href="projects.html">
+            &#9879; Projects
+          </a>
+
+          <a href="data-code.html">
+            &#128190; Data &amp; Code
+          </a>
+
         </div>
+
       </div>
+
+
       <div class="dropdown">
-        <button class="dropbtn">Learning &#9662;</button>
+
+        <button class="dropbtn">
+          Learning &#9662;
+        </button>
+
         <div class="dropdown-content">
-          <a href="Learning Notes.html">&#128218; All Learning Notes</a>
-          <a href="BSc-courses.html">&#127891; B.Sc. Courses</a>
-          <a href="MSc-courses.html">&#127891; M.Sc. Courses</a>
-          <a href="R-programming.html">&#128187; Learn R Programming</a>
-          <a href="Python-programming.html">&#128013; Learn Python Programming</a>
+
+          <a href="Learning Notes.html">
+            &#128218; All Learning Notes
+          </a>
+
+          <a href="BSc-courses.html">
+            &#127891; B.Sc. Courses
+          </a>
+
+          <a href="MSc-courses.html">
+            &#127891; M.Sc. Courses
+          </a>
+
+          <a href="R-programming.html">
+            &#128187; Learn R Programming
+          </a>
+
+          <a href="Python-programming.html">
+            &#128013; Learn Python Programming
+          </a>
+
         </div>
+
       </div>
+
+
       <div class="dropdown">
-        <button class="dropbtn">Insights &#9662;</button>
+
+        <button class="dropbtn">
+          Insights &#9662;
+        </button>
+
         <div class="dropdown-content">
-          <a href="insights.html">&#9997; Posts</a>
-          <a href="videos.html">&#9654; Videos</a>
-          <a href="archive.html">&#128247; Photos &amp; Archive</a>
+
+          <a href="insights.html">
+            &#9997; Posts
+          </a>
+
+          <a href="videos.html">
+            &#9654; Videos
+          </a>
+
+          <a href="archive.html">
+            &#128247; Photos &amp; Archive
+          </a>
+
         </div>
+
       </div>
+
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
+
+
+    <button
+      class="hamburger"
+      id="hamburger"
+      aria-label="Toggle menu">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
     </button>
+
   </div>
+
+
   <div class="nav-drawer" id="nav-drawer">
+
     <div class="drawer-inner">
-      <a class="drawer-link" href="home.html">Home</a>
-      <a class="drawer-link" href="publications.html">Publications</a>
+
+      <a class="drawer-link" href="home.html">
+        Home
+      </a>
+
+      <a class="drawer-link" href="publications.html">
+        Publications
+      </a>
+
       <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Academic</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
-        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
-        <a class="drawer-link" href="service.html">Service</a>
+
+      <div class="drawer-section-label">
+        Academic
       </div>
+
+      <div class="drawer-sub">
+
+        <a class="drawer-link" href="courses.html">
+          Courses &amp; Training
+        </a>
+
+        <a class="drawer-link" href="conference-and-workshop.html">
+          Conferences &amp; Workshops
+        </a>
+
+        <a class="drawer-link" href="service.html">
+          Services
+        </a>
+
+      </div>
+
       <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Digital Lab</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="projects.html">Projects</a>
-        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+
+      <div class="drawer-section-label">
+        Digital Lab
       </div>
+
+      <div class="drawer-sub">
+
+        <a class="drawer-link" href="projects.html">
+          Projects
+        </a>
+
+        <a class="drawer-link" href="data-code.html">
+          Data &amp; Code
+        </a>
+
+      </div>
+
       <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Learning</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
-        <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
-        <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
-        <a class="drawer-link" href="R-programming.html">Learn R Programming</a>
-        <a class="drawer-link" href="Python-programming.html">Learn Python Programming</a>
+
+      <div class="drawer-section-label">
+        Learning
       </div>
+
+      <div class="drawer-sub">
+
+        <a class="drawer-link" href="Learning Notes.html">
+          All Learning Notes
+        </a>
+
+        <a class="drawer-link" href="BSc-courses.html">
+          B.Sc. Courses
+        </a>
+
+        <a class="drawer-link" href="MSc-courses.html">
+          M.Sc. Courses
+        </a>
+
+        <a class="drawer-link" href="R-programming.html">
+          Learn R Programming
+        </a>
+
+        <a class="drawer-link" href="Python-programming.html">
+          Learn Python Programming
+        </a>
+
+      </div>
+
       <div class="drawer-divider"></div>
-      <div class="drawer-section-label">Insights</div>
-      <div class="drawer-sub">
-        <a class="drawer-link" href="insights.html">Posts</a>
-        <a class="drawer-link" href="videos.html">Videos</a>
-        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
+
+      <div class="drawer-section-label">
+        Insights
       </div>
+
+      <div class="drawer-sub">
+
+        <a class="drawer-link" href="insights.html">
+          Posts
+        </a>
+
+        <a class="drawer-link" href="videos.html">
+          Videos
+        </a>
+
+        <a class="drawer-link" href="archive.html">
+          Photos &amp; Archive
+        </a>
+
+      </div>
+
     </div>
+
   </div>
+
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="page-hero">
+
   <div class="hero-inner">
+
     <div>
-      <div class="hero-eyebrow">Academic Contribution</div>
-      <h1>Reviewer Service</h1>
-      <p>Contributing to the integrity of global health research through rigorous peer review for high-impact international journals since 2025.</p>
+
+      <div class="hero-eyebrow">
+        Research consulting &amp; analytics
+      </div>
+
+      <h1>
+        Research consulting &amp; data science services
+      </h1>
+
+      <p>
+        Professional research analytics support for researchers, institutions,
+        organizations and research teams across Bangladesh and internationally.
+        Services are designed around the research problem, not the number of
+        statistical or machine learning techniques used.
+      </p>
+
+
+      <div class="hero-buttons">
+
+        <a
+          href="mailto:abubokkor.brur60@gmail.com?subject=Research%20Consulting%20Inquiry"
+          class="hero-btn hero-btn-primary">
+
+          Request a project quote
+
+        </a>
+
+        <a
+          href="#services"
+          class="hero-btn hero-btn-secondary">
+
+          Explore services
+
+        </a>
+
+      </div>
+
+
       <div class="hero-stats">
-        <div><div class="hstat-num">27</div><div class="hstat-label">Total Reviews</div></div>
-        <div><div class="hstat-num">9</div><div class="hstat-label">Journals</div></div>
-        <div><div class="hstat-num">8</div><div class="hstat-label">Publishers</div></div>
-        <div><div class="hstat-num">2025–26</div><div class="hstat-label">Active</div></div>
+
+        <div>
+          <div class="hstat-num">27</div>
+          <div class="hstat-label">Peer reviews</div>
+        </div>
+
+        <div>
+          <div class="hstat-num">9</div>
+          <div class="hstat-label">International journals</div>
+        </div>
+
+        <div>
+          <div class="hstat-num">R</div>
+          <div class="hstat-label">Statistical computing</div>
+        </div>
+
+        <div>
+          <div class="hstat-num">ML</div>
+          <div class="hstat-label">Predictive analytics</div>
+        </div>
+
       </div>
+
     </div>
-    <div class="verified-box">
-      <span class="verified-icon">🔬</span>
-      <div class="verified-text">
-        <strong>Verified Reviewer</strong>
-        Active peer reviewer for BMJ, PLOS, Wiley &amp; other international journals
-      </div>
+
+
+    <div class="commercial-box">
+
+      <span class="commercial-icon">
+        📊
+      </span>
+
+      <strong>
+        Commercial research support
+      </strong>
+
+      <span>
+        Bangladesh and international clients
+        welcome. Custom quotations available
+        for every project.
+      </span>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- MAIN -->
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
 <div class="page-body">
 
+
   <!-- INTRO -->
+
   <div class="intro-card">
-    <div class="intro-icon">📋</div>
+
+    <div class="intro-icon">
+      🧠
+    </div>
+
     <div class="intro-text">
-      <p>Peer review is the cornerstone of rigorous scientific publishing. As a reviewer, I critically evaluate manuscripts on machine learning, epidemiology, public health, and data science — ensuring methodological soundness, reproducibility, and contribution to the field.</p>
-      <p>I have reviewed for journals published by <strong>BMJ Publishing Group</strong>, <strong>PLOS</strong>, <strong>Wiley</strong>, <strong>Elsevier</strong>, <strong>Taylor &amp; Francis</strong>, <strong>IOS Press</strong>, and <strong>Science Publications</strong> — contributing to open-access and subscription-based venues in global health and quantitative sciences.</p>
-    </div>
-  </div>
 
-  <!-- JOURNAL CARDS -->
-  <div class="section-head">
-    <h2>Journals Reviewed For</h2>
-    <span class="section-meta">9 journals · 8 publishers</span>
-  </div>
+      <p>
+        I provide research-focused statistical and data science consulting
+        across quantitative research, public health, epidemiology, machine
+        learning, spatial analytics and reproducible research workflows.
+      </p>
 
-  <div class="journal-grid">
+      <p>
+        The service is <strong>scope based</strong>. Clients do not need to
+        decide whether they need Random Forest, XGBoost, regression, SHAP,
+        Bayesian modelling or another technique before contacting me.
+        The analytical strategy can be developed according to the research
+        question, data structure and project objectives.
+      </p>
 
-    <!-- PLOS Digital Health -->
-    <div class="journal-card jc-plos">
-      <div class="publisher-row">
-        <span class="pub-logo-badge badge-plos">PLOS</span>
-        <span style="font-size:12px; color:var(--text3);">Public Library of Science</span>
-      </div>
-      <div class="journal-name">PLOS Digital Health</div>
-      <div class="journal-scope">Open-access journal covering digital health technologies, AI in medicine, and health data science.</div>
-      <div class="review-rows">
-        <div class="review-row">
-          <span class="year-tag">2025</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:75%"></div></div>
-          <span class="review-count">6</span>
-        </div>
-        <div class="review-row">
-          <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">8</span>
-        </div>
-      </div>
-      <span class="total-pill">14 articles reviewed</span>
-    </div>
-
-    <!-- Health Science Reports -->
-    <div class="journal-card jc-hsr">
-      <div class="publisher-row">
-        <span class="pub-logo-badge badge-wiley">Wiley</span>
-        <span style="font-size:12px; color:var(--text3);">John Wiley &amp; Sons</span>
-      </div>
-      <div class="journal-name">Health Science Reports</div>
-      <div class="journal-scope">Open-access journal publishing research across all health science disciplines, with focus on clinical and public health.</div>
-      <div class="review-rows">
-        <div class="review-row">
-          <span class="year-tag">2025</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">2</span>
-        </div>
-        <div class="review-row">
-          <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:50%"></div></div>
-          <span class="review-count">1</span>
-        </div>
-      </div>
-      <span class="total-pill">3 articles reviewed</span>
-    </div>
-
-    <!-- BMJ Global Health -->
-    <div class="journal-card jc-bmj-gh">
-      <div class="publisher-row">
-        <span class="pub-logo-badge badge-bmj">BMJ</span>
-        <span style="font-size:12px; color:var(--text3);">BMJ Publishing Group</span>
-      </div>
-      <div class="journal-name">BMJ Global Health</div>
-      <div class="journal-scope">High-impact open-access journal covering health issues relevant to low- and middle-income countries and global health policy.</div>
-      <div class="review-rows">
-        <div class="review-row">
-          <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">2</span>
-        </div>
-      </div>
-      <span class="total-pill">2 articles reviewed</span>
-    </div>
-
-    <!-- BMJ Public Health -->
-    <div class="journal-card jc-bmj-ph">
-      <div class="publisher-row">
-        <span class="pub-logo-badge badge-bmj">BMJ</span>
-        <span style="font-size:12px; color:var(--text3);">BMJ Publishing Group</span>
-      </div>
-      <div class="journal-name">BMJ Public Health</div>
-      <div class="journal-scope">Open-access journal publishing research on public health, health promotion, disease prevention, and health systems.</div>
-      <div class="review-rows">
-        <div class="review-row">
-          <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">2</span>
-        </div>
-      </div>
-      <span class="total-pill">2 articles reviewed</span>
-    </div>
-
-    <!-- Global Public Health -->
-    <div class="journal-card jc-gph">
-      <div class="publisher-row">
-        <span class="pub-logo-badge badge-taylor">Taylor &amp; Francis</span>
-      </div>
-      <div class="journal-name">Global Public Health</div>
-      <div class="journal-scope">International journal publishing research on public health issues from a global and comparative perspective.</div>
-      <div class="review-rows">
-        <div class="review-row">
-          <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">2</span>
-        </div>
-      </div>
-      <span class="total-pill">2 articles reviewed</span>
-    </div>
-
-    <!-- Technology and Health Care -->
-    <div class="journal-card jc-tech">
-      <div class="publisher-row">
-        <span class="pub-logo-badge badge-ios">IOS Press</span>
-      </div>
-      <div class="journal-name">Technology and Health Care</div>
-      <div class="journal-scope">Journal covering the application of engineering and technology in medicine, biomedical devices, and health informatics.</div>
-      <div class="review-rows">
-        <div class="review-row">
-          <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">1</span>
-        </div>
-      </div>
-      <span class="total-pill">1 article reviewed</span>
-    </div>
-
-    <!-- Spatial and Spatio-temporal Epidemiology -->
-    <div class="journal-card jc-spatial">
-      <div class="publisher-row">
-        <span class="pub-logo-badge badge-elsevier">Elsevier</span>
-      </div>
-      <div class="journal-name">Spatial and Spatio-temporal Epidemiology</div>
-      <div class="journal-scope">Journal focused on spatial and spatio-temporal methods for analyzing disease patterns and health outcomes.</div>
-      <div class="review-rows">
-        <div class="review-row">
-          <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">1</span>
-        </div>
-      </div>
-      <span class="total-pill">1 article reviewed</span>
-    </div>
-
-    <!-- Knowledge-Based Systems -->
-    <div class="journal-card jc-kbs">
-      <div class="publisher-row">
-        <span class="pub-logo-badge badge-elsevier">Elsevier</span>
-      </div>
-      <div class="journal-name">Knowledge-Based Systems</div>
-      <div class="journal-scope">International journal covering artificial intelligence, machine learning, and knowledge-based/intelligent systems research.</div>
-      <div class="review-rows">
-        <div class="review-row">
-          <span class="year-tag">2026</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">1</span>
-        </div>
-      </div>
-      <span class="total-pill">1 article reviewed</span>
-    </div>
-
-    <!-- Journal of Mathematics and Statistics -->
-    <div class="journal-card jc-jms">
-      <div class="publisher-row">
-        <span class="pub-logo-badge badge-sci">Science Publications</span>
-      </div>
-      <div class="journal-name">Journal of Mathematics and Statistics</div>
-      <div class="journal-scope">Peer-reviewed journal covering original research in mathematical sciences, applied statistics, and quantitative methods.</div>
-      <div class="review-rows">
-        <div class="review-row">
-          <span class="year-tag">2025</span>
-          <div class="review-bar-wrap"><div class="review-bar" style="width:100%"></div></div>
-          <span class="review-count">1</span>
-        </div>
-      </div>
-      <span class="total-pill">1 article reviewed</span>
     </div>
 
   </div>
 
-  <!-- SUMMARY STRIP -->
-  <div class="summary-strip">
-    <div>
-      <div class="ss-num">27</div>
-      <div class="ss-label">Total Articles Reviewed</div>
-    </div>
-    <div>
-      <div class="ss-num">9</div>
-      <div class="ss-label">International Journals</div>
-    </div>
-    <div>
-      <div class="ss-num">8</div>
-      <div class="ss-label">Publishers</div>
-    </div>
-    <div>
-      <div class="ss-num">2025–26</div>
-      <div class="ss-label">Active Period</div>
-    </div>
-  </div>
 
-  <!-- REVIEW EXPERTISE -->
-  <div class="expertise-section">
-    <div class="section-head"><h2>Review Expertise Areas</h2></div>
+  <!-- =========================
+       SERVICES
+  ========================= -->
+
+  <section id="services">
+
+    <div class="section-head service-intro">
+
+      <h2>
+        Commercial consulting services
+      </h2>
+
+      <span class="section-meta">
+        Scope based pricing
+      </span>
+
+    </div>
+
+
+    <div class="service-intro-card">
+
+      <h3>
+        Focus on the research problem, not the number of models
+      </h3>
+
+      <p>
+        A project may require one model, several competing models, multiple
+        statistical methods or several analytical stages. Pricing is therefore
+        determined by the overall project scope, data complexity, analytical
+        objectives, deliverables and timeline rather than by the number of
+        techniques used.
+      </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+
+      <!-- CARD 1 -->
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          📐
+        </div>
+
+        <h3>
+          Statistical consulting
+        </h3>
+
+        <p>
+          Research design, statistical methodology, hypothesis testing,
+          regression, model selection and interpretation.
+        </p>
+
+        <div class="service-price">
+
+          <div class="price-label">
+            Starting price
+          </div>
+
+          <div class="price-main">
+            ৳3,000 / $50
+          </div>
+
+          <div class="price-sub">
+            Final quote based on project scope
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARD 2 -->
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          📊
+        </div>
+
+        <h3>
+          Data analysis &amp; visualization
+        </h3>
+
+        <p>
+          Data preparation, exploratory analysis, statistical summaries,
+          publication-ready visualization and analytical interpretation.
+        </p>
+
+        <div class="service-price">
+
+          <div class="price-label">
+            Starting price
+          </div>
+
+          <div class="price-main">
+            ৳10,000 / $150
+          </div>
+
+          <div class="price-sub">
+            Final quote based on project scope
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARD 3 -->
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          🤖
+        </div>
+
+        <h3>
+          Machine learning &amp; predictive analytics
+        </h3>
+
+        <p>
+          Predictive modelling, model comparison, validation, feature
+          selection, performance evaluation and interpretation.
+        </p>
+
+        <div class="service-price">
+
+          <div class="price-label">
+            Starting price
+          </div>
+
+          <div class="price-main">
+            ৳25,000 / $400
+          </div>
+
+          <div class="price-sub">
+            Complex projects quoted separately
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARD 4 -->
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          🔎
+        </div>
+
+        <h3>
+          Explainable AI &amp; model interpretation
+        </h3>
+
+        <p>
+          SHAP, feature importance, model interpretation, explainability
+          workflows and research-oriented visual interpretation.
+        </p>
+
+        <div class="service-price">
+
+          <div class="price-label">
+            Starting price
+          </div>
+
+          <div class="price-main">
+            ৳25,000 / $400
+          </div>
+
+          <div class="price-sub">
+            Based on model and data complexity
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARD 5 -->
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          🗺️
+        </div>
+
+        <h3>
+          Spatial &amp; epidemiological analytics
+        </h3>
+
+        <p>
+          GIS analysis, disease mapping, spatial statistics, spatial
+          modelling and epidemiological prediction workflows.
+        </p>
+
+        <div class="service-price">
+
+          <div class="price-label">
+            Starting price
+          </div>
+
+          <div class="price-main">
+            ৳20,000 / $350
+          </div>
+
+          <div class="price-sub">
+            Larger spatial projects quoted separately
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARD 6 -->
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          🧪
+        </div>
+
+        <h3>
+          Research methodology &amp; analytics
+        </h3>
+
+        <p>
+          Research question development, analytical planning, methodology
+          consultation and reproducible research strategy.
+        </p>
+
+        <div class="service-price">
+
+          <div class="price-label">
+            Starting price
+          </div>
+
+          <div class="price-main">
+            ৳7,000 / $100
+          </div>
+
+          <div class="price-sub">
+            Consultation and project scope based
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRICING POLICY -->
+
+    <div class="pricing-policy">
+
+      <div class="policy-icon">
+        💼
+      </div>
+
+      <div>
+
+        <h3>
+          How pricing works
+        </h3>
+
+        <p>
+          The displayed amounts are starting prices, not fixed prices.
+          Final quotations consider dataset size, data quality, research
+          objectives, analytical complexity, number of deliverables,
+          reporting requirements and timeline. A project involving several
+          simple analyses may cost less than a project involving one highly
+          complex analytical workflow.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PACKAGES
+  ========================= -->
+
+  <section class="packages-section">
+
+    <div class="section-head">
+
+      <h2>
+        Research analytics packages
+      </h2>
+
+      <span class="section-meta">
+        Flexible project scope
+      </span>
+
+    </div>
+
+
+    <div class="package-grid">
+
+
+      <!-- STARTER -->
+
+      <div class="package-card">
+
+        <h3>
+          Focused analysis
+        </h3>
+
+        <div class="package-desc">
+          Suitable for a focused research question requiring a clear
+          analytical workflow and defined outputs.
+        </div>
+
+        <div class="package-price">
+
+          <strong>
+            ৳10,000+ / $150+
+          </strong>
+
+          <span>
+            Starting price
+          </span>
+
+        </div>
+
+        <ul class="package-list">
+
+          <li>
+            Data preparation
+          </li>
+
+          <li>
+            Focused statistical analysis
+          </li>
+
+          <li>
+            Visualization
+          </li>
+
+          <li>
+            Analytical interpretation
+          </li>
+
+          <li>
+            Reproducible code where applicable
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- ADVANCED -->
+
+      <div class="package-card featured">
+
+        <div class="package-badge">
+          Popular
+        </div>
+
+        <h3>
+          Advanced analytics
+        </h3>
+
+        <div class="package-desc">
+          Suitable for projects requiring advanced modelling, multiple
+          analytical approaches or machine learning workflows.
+        </div>
+
+        <div class="package-price">
+
+          <strong>
+            ৳25,000+ / $400+
+          </strong>
+
+          <span>
+            Starting price
+          </span>
+
+        </div>
+
+        <ul class="package-list">
+
+          <li>
+            Advanced data preparation
+          </li>
+
+          <li>
+            Multiple analytical approaches
+          </li>
+
+          <li>
+            Model comparison and validation
+          </li>
+
+          <li>
+            Publication-quality figures
+          </li>
+
+          <li>
+            Technical interpretation
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- RESEARCH GRADE -->
+
+      <div class="package-card">
+
+        <h3>
+          Research analytics
+        </h3>
+
+        <div class="package-desc">
+          End-to-end analytical support for complex research projects,
+          datasets and multi-objective studies.
+        </div>
+
+        <div class="package-price">
+
+          <strong>
+            ৳50,000+ / $800+
+          </strong>
+
+          <span>
+            Starting price
+          </span>
+
+        </div>
+
+        <ul class="package-list">
+
+          <li>
+            Research-oriented analytical strategy
+          </li>
+
+          <li>
+            Advanced modelling
+          </li>
+
+          <li>
+            Model validation
+          </li>
+
+          <li>
+            XAI or spatial analytics when appropriate
+          </li>
+
+          <li>
+            Complete analytical reporting
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       QUOTE
+  ========================= -->
+
+  <section class="quote-section">
+
+    <div class="quote-card">
+
+      <div>
+
+        <h2>
+          Have a research problem?
+        </h2>
+
+        <p>
+          You do not need to know which statistical or machine learning
+          technique is required. Share your research objective, dataset
+          information and expected outcome. The appropriate analytical
+          strategy and project quotation can then be discussed.
+        </p>
+
+      </div>
+
+      <a
+        href="mailto:abubokkor.brur60@gmail.com?subject=Research%20consulting%20project%20quote"
+        class="quote-btn">
+
+        Request a project quote
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROJECT SCOPE
+  ========================= -->
+
+  <section class="scope-section">
+
+    <div class="section-head">
+
+      <h2>
+        Who I work with
+      </h2>
+
+    </div>
+
+
+    <div class="scope-grid">
+
+
+      <div class="scope-card">
+
+        <h3>
+          Research clients
+        </h3>
+
+        <ul>
+
+          <li>
+            Academic researchers
+          </li>
+
+          <li>
+            Research students
+          </li>
+
+          <li>
+            International research teams
+          </li>
+
+          <li>
+            Universities and research groups
+          </li>
+
+          <li>
+            Public health researchers
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="scope-card">
+
+        <h3>
+          Organizational clients
+        </h3>
+
+        <ul>
+
+          <li>
+            NGOs and development organizations
+          </li>
+
+          <li>
+            Health and research organizations
+          </li>
+
+          <li>
+            Data-driven projects
+          </li>
+
+          <li>
+            Survey and monitoring projects
+          </li>
+
+          <li>
+            Long-term analytical support
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       REVIEWER SERVICE
+  ========================= -->
+
+  <section class="reviewer-section">
+
+    <div class="section-head">
+
+      <h2>
+        Academic peer review service
+      </h2>
+
+      <span class="section-meta">
+        27 reviews · 9 journals
+      </span>
+
+    </div>
+
+
+    <div class="reviewer-intro">
+
+      <p>
+        In addition to commercial research consulting, I contribute to
+        academic publishing through peer review. I have reviewed manuscripts
+        covering machine learning, public health, epidemiology, digital
+        health, statistical methodology and quantitative research for
+        international journals.
+      </p>
+
+    </div>
+
+
+    <div class="journal-grid">
+
+
+      <div class="journal-card jc-plos">
+
+        <div class="publisher-row">
+
+          <span class="pub-badge badge-plos">
+            PLOS
+          </span>
+
+        </div>
+
+        <div class="journal-name">
+          PLOS Digital Health
+        </div>
+
+        <div class="journal-scope">
+          Digital health, artificial intelligence, health data science
+          and technology-enabled healthcare.
+        </div>
+
+        <div class="review-count-box">
+          ✓ 14 articles reviewed
+        </div>
+
+      </div>
+
+
+      <div class="journal-card jc-wiley">
+
+        <div class="publisher-row">
+
+          <span class="pub-badge badge-wiley">
+            Wiley
+          </span>
+
+        </div>
+
+        <div class="journal-name">
+          Health Science Reports
+        </div>
+
+        <div class="journal-scope">
+          Clinical research, public health and multidisciplinary health
+          science research.
+        </div>
+
+        <div class="review-count-box">
+          ✓ 3 articles reviewed
+        </div>
+
+      </div>
+
+
+      <div class="journal-card jc-bmj">
+
+        <div class="publisher-row">
+
+          <span class="pub-badge badge-bmj">
+            BMJ
+          </span>
+
+        </div>
+
+        <div class="journal-name">
+          BMJ Global Health
+        </div>
+
+        <div class="journal-scope">
+          Global health research and health issues affecting
+          low- and middle-income countries.
+        </div>
+
+        <div class="review-count-box">
+          ✓ 2 articles reviewed
+        </div>
+
+      </div>
+
+
+      <div class="journal-card jc-bmj">
+
+        <div class="publisher-row">
+
+          <span class="pub-badge badge-bmj">
+            BMJ
+          </span>
+
+        </div>
+
+        <div class="journal-name">
+          BMJ Public Health
+        </div>
+
+        <div class="journal-scope">
+          Public health, prevention, health promotion and health systems.
+        </div>
+
+        <div class="review-count-box">
+          ✓ 2 articles reviewed
+        </div>
+
+      </div>
+
+
+      <div class="journal-card jc-elsevier">
+
+        <div class="publisher-row">
+
+          <span class="pub-badge badge-elsevier">
+            Elsevier
+          </span>
+
+        </div>
+
+        <div class="journal-name">
+          Spatial and Spatio-temporal Epidemiology
+        </div>
+
+        <div class="journal-scope">
+          Spatial and spatio-temporal methods for epidemiological research.
+        </div>
+
+        <div class="review-count-box">
+          ✓ 1 article reviewed
+        </div>
+
+      </div>
+
+
+      <div class="journal-card jc-elsevier">
+
+        <div class="publisher-row">
+
+          <span class="pub-badge badge-elsevier">
+            Elsevier
+          </span>
+
+        </div>
+
+        <div class="journal-name">
+          Knowledge-Based Systems
+        </div>
+
+        <div class="journal-scope">
+          Artificial intelligence, machine learning and intelligent
+          systems research.
+        </div>
+
+        <div class="review-count-box">
+          ✓ 1 article reviewed
+        </div>
+
+      </div>
+
+
+      <div class="journal-card jc-wiley">
+
+        <div class="publisher-row">
+
+          <span class="pub-badge badge-wiley">
+            Taylor &amp; Francis
+          </span>
+
+        </div>
+
+        <div class="journal-name">
+          Global Public Health
+        </div>
+
+        <div class="journal-scope">
+          International and comparative public health research.
+        </div>
+
+        <div class="review-count-box">
+          ✓ 2 articles reviewed
+        </div>
+
+      </div>
+
+
+      <div class="journal-card jc-bmj">
+
+        <div class="publisher-row">
+
+          <span class="pub-badge badge-bmj">
+            IOS Press
+          </span>
+
+        </div>
+
+        <div class="journal-name">
+          Technology and Health Care
+        </div>
+
+        <div class="journal-scope">
+          Technology, biomedical applications and health informatics.
+        </div>
+
+        <div class="review-count-box">
+          ✓ 1 article reviewed
+        </div>
+
+      </div>
+
+
+      <div class="journal-card jc-wiley">
+
+        <div class="publisher-row">
+
+          <span class="pub-badge badge-wiley">
+            Science Publications
+          </span>
+
+        </div>
+
+        <div class="journal-name">
+          Journal of Mathematics and Statistics
+        </div>
+
+        <div class="journal-scope">
+          Applied statistics, mathematical sciences and quantitative
+          research.
+        </div>
+
+        <div class="review-count-box">
+          ✓ 1 article reviewed
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       EXPERTISE
+  ========================= -->
+
+  <section class="expertise-section">
+
+    <div class="section-head">
+
+      <h2>
+        Analytical expertise
+      </h2>
+
+    </div>
+
+
     <div class="tag-cloud">
-      <span class="exp-tag">Machine Learning</span>
-      <span class="exp-tag">Explainable AI (XAI)</span>
-      <span class="exp-tag">Epidemiological Modeling</span>
-      <span class="exp-tag">Public Health Analytics</span>
-      <span class="exp-tag">Bayesian Statistics</span>
-      <span class="exp-tag">Spatial Analysis</span>
-      <span class="exp-tag">Time Series Analysis</span>
-      <span class="exp-tag">Disease Prediction</span>
-      <span class="exp-tag">Climate-Health Interactions</span>
-      <span class="exp-tag">Global Health</span>
-      <span class="exp-tag">R &amp; Python Methods</span>
-      <span class="exp-tag">SHAP / LIME</span>
-      <span class="exp-tag">Digital Health</span>
-      <span class="exp-tag">Statistical Methodology</span>
-    </div>
-  </div>
 
-  <!-- ACADEMIC CONTENT AND OUTREACH -->
-  <div class="outreach-section">
-    <div class="section-head"><h2>Academic Content &amp; Outreach</h2></div>
-    <div class="outreach-card">
-      <div class="intro-text">
-        <p>Beyond peer review, I create educational content to help build data analysis skills among students and early-career researchers.</p>
-      </div>
-      <ul class="outreach-list">
-        <li>Created educational video tutorials on Basic Statistics, R, and Python for data analysis</li>
-        <li>Shared public health and data science resources to promote research skills among students and early-career researchers</li>
+      <span class="exp-tag">
+        Statistical modelling
+      </span>
+
+      <span class="exp-tag">
+        Machine learning
+      </span>
+
+      <span class="exp-tag">
+        Explainable AI
+      </span>
+
+      <span class="exp-tag">
+        SHAP
+      </span>
+
+      <span class="exp-tag">
+        Bayesian statistics
+      </span>
+
+      <span class="exp-tag">
+        Spatial analysis
+      </span>
+
+      <span class="exp-tag">
+        Spatio-temporal modelling
+      </span>
+
+      <span class="exp-tag">
+        Epidemiological modelling
+      </span>
+
+      <span class="exp-tag">
+        Public health analytics
+      </span>
+
+      <span class="exp-tag">
+        Time series
+      </span>
+
+      <span class="exp-tag">
+        R programming
+      </span>
+
+      <span class="exp-tag">
+        Python
+      </span>
+
+      <span class="exp-tag">
+        Data visualization
+      </span>
+
+      <span class="exp-tag">
+        Predictive analytics
+      </span>
+
+      <span class="exp-tag">
+        Research methodology
+      </span>
+
+      <span class="exp-tag">
+        Reproducible research
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ACADEMIC SERVICE
+  ========================= -->
+
+  <section class="academic-service">
+
+    <div class="section-head">
+
+      <h2>
+        Academic contribution
+      </h2>
+
+    </div>
+
+
+    <div class="academic-card">
+
+      <h3>
+        Peer review, research collaboration &amp; academic contribution
+      </h3>
+
+      <p>
+        Alongside commercial consulting, I remain active in academic research
+        and scholarly contribution.
+      </p>
+
+      <ul class="academic-list">
+
+        <li>
+          Peer review for international journals
+        </li>
+
+        <li>
+          Research collaboration in statistics and data science
+        </li>
+
+        <li>
+          Quantitative research methodology support
+        </li>
+
+        <li>
+          Educational content on statistics, R and Python
+        </li>
+
+        <li>
+          Research-oriented data science projects
+        </li>
+
       </ul>
-      <a class="outreach-link" href="https://www.youtube.com/@abubokkorshiddik.abs798" target="_blank">&#9654; YouTube Channel</a>
+
     </div>
-  </div>
 
-  <!-- RESEARCH PROJECT -->
-  <div class="project-section">
-    <div class="section-head"><h2>Research Project</h2></div>
-    <div class="project-card">
-      <div class="journal-name">Exploring Community Knowledge, Health Belief and Healthcare-Seeking Behaviours Regarding Non-Communicable Diseases (NCDs) in Bangladesh</div>
-      <div class="project-meta-grid">
-        <div class="project-meta-item">
-          <strong>Funding Source</strong>
-          University Grant Commission
-        </div>
-        <div class="project-meta-item">
-          <strong>Role</strong>
-          Research Assistant
-        </div>
-        <div class="project-meta-item">
-          <strong>Duration</strong>
-          October 2025 – February 2026
-        </div>
-        <div class="project-meta-item">
-          <strong>Department</strong>
-          Department of Statistics, Begum Rokeya University, Rangpur
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 
-</div><!-- /page-body -->
 
-<!-- FOOTER -->
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
+
   <div class="footer-inner">
+
+
     <div>
-      <div class="footer-name">Md. Abu Bokkor Shiddik</div>
-      <p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p>
+
+      <div class="footer-name">
+        Md. Abu Bokkor Shiddik
+      </div>
+
+      <p class="footer-desc">
+        Research consultant specializing in statistical analysis,
+        machine learning, explainable AI, spatial analytics and
+        global health research.
+      </p>
+
     </div>
+
+
     <div>
-      <div class="footer-col-title">Navigation</div>
+
+      <div class="footer-col-title">
+        Navigation
+      </div>
+
       <div class="footer-nav-links">
-        <a href="home.html">Home</a>
-        <a href="publications.html">Publications</a>
-        <a href="projects.html">Projects</a>
-        <a href="courses.html">Courses &amp; Training</a>
-        <a href="service.html">Service</a>
-        <a href="conference-and-workshop.html">Conferences</a>
+
+        <a href="home.html">
+          Home
+        </a>
+
+        <a href="publications.html">
+          Publications
+        </a>
+
+        <a href="projects.html">
+          Projects
+        </a>
+
+        <a href="courses.html">
+          Courses &amp; Training
+        </a>
+
+        <a href="service.html">
+          Services
+        </a>
+
+        <a href="conference-and-workshop.html">
+          Conferences
+        </a>
+
       </div>
+
     </div>
+
+
     <div>
-      <div class="footer-col-title">Connect</div>
-      <div class="footer-social-links">
-        <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home" target="_blank">🌐 Portfolio</a>
-        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
-        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">🎓 Google Scholar</a>
-        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">✦ ORCID</a>
-        <a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
+
+      <div class="footer-col-title">
+        Connect
       </div>
+
+      <div class="footer-social-links">
+
+        <a
+          href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home"
+          target="_blank">
+          🌐 Portfolio
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/"
+          target="_blank">
+          in LinkedIn
+        </a>
+
+        <a
+          href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ"
+          target="_blank">
+          🎓 Google Scholar
+        </a>
+
+        <a
+          href="https://orcid.org/0009-0002-0424-446X"
+          target="_blank">
+          ✦ ORCID
+        </a>
+
+        <a
+          href="https://github.com/abubokkorshiddik"
+          target="_blank">
+          {} GitHub
+        </a>
+
+      </div>
+
     </div>
+
   </div>
+
+
   <div class="footer-bottom">
-    <p>© 2026 Md. Abu Bokkor Shiddik · All rights reserved</p>
-    <p>abubokkor.brur60@gmail.com · +880 1874 001360</p>
+
+    <p>
+      © 2026 Md. Abu Bokkor Shiddik · All rights reserved
+    </p>
+
+    <p>
+      abubokkor.brur60@gmail.com · +880 1874 001360
+    </p>
+
   </div>
+
 </footer>
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
-  /* Navbar */
-  document.querySelectorAll('.dropbtn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var dd = btn.closest('.dropdown');
-      var open = dd.classList.contains('active');
-      document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
-      if (!open) dd.classList.add('active');
+
+  /* Dropdown */
+
+  document
+    .querySelectorAll('.dropbtn')
+    .forEach(function(btn) {
+
+      btn.addEventListener('click', function(e) {
+
+        e.stopPropagation();
+
+        var dropdown =
+          btn.closest('.dropdown');
+
+        var isOpen =
+          dropdown.classList.contains('active');
+
+        document
+          .querySelectorAll('.dropdown.active')
+          .forEach(function(d) {
+
+            d.classList.remove('active');
+
+          });
+
+        if (!isOpen) {
+
+          dropdown.classList.add('active');
+
+        }
+
+      });
+
     });
-  });
+
+
   document.addEventListener('click', function() {
-    document.querySelectorAll('.dropdown.active').forEach(function(d) { d.classList.remove('active'); });
-  });
-  var ham = document.getElementById('hamburger');
-  var drawer = document.getElementById('nav-drawer');
-  ham.addEventListener('click', function() { ham.classList.toggle('open'); drawer.classList.toggle('open'); });
-  drawer.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() { ham.classList.remove('open'); drawer.classList.remove('open'); });
+
+    document
+      .querySelectorAll('.dropdown.active')
+      .forEach(function(d) {
+
+        d.classList.remove('active');
+
+      });
+
   });
 
-  /* Animate review bars on scroll */
-  var bars = document.querySelectorAll('.review-bar');
-  bars.forEach(function(bar) { bar.dataset.width = bar.style.width; bar.style.width = '0'; });
 
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var bar = entry.target;
-        setTimeout(function() { bar.style.width = bar.dataset.width; }, 150);
-        observer.unobserve(bar);
-      }
+  /* Mobile menu */
+
+  var hamburger =
+    document.getElementById('hamburger');
+
+  var drawer =
+    document.getElementById('nav-drawer');
+
+
+  hamburger.addEventListener('click', function() {
+
+    hamburger.classList.toggle('open');
+
+    drawer.classList.toggle('open');
+
+  });
+
+
+  drawer
+    .querySelectorAll('a')
+    .forEach(function(a) {
+
+      a.addEventListener('click', function() {
+
+        hamburger.classList.remove('open');
+
+        drawer.classList.remove('open');
+
+      });
+
     });
-  }, { threshold: 0.3 });
 
-  bars.forEach(function(bar) { observer.observe(bar); });
 
-  /* Animate stat numbers */
-  function animateCount(el, target, duration) {
-    var start = 0;
-    var step = Math.ceil(target / (duration / 16));
-    var timer = setInterval(function() {
-      start += step;
-      if (start >= target) { start = target; clearInterval(timer); }
-      el.textContent = start;
-    }, 16);
-  }
+  /* Smooth anchor */
 
-  var numObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var el = entry.target;
-        var val = parseInt(el.dataset.count);
-        if (!isNaN(val)) animateCount(el, val, 800);
-        numObserver.unobserve(el);
-      }
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(function(anchor) {
+
+      anchor.addEventListener('click', function(e) {
+
+        var target =
+          document.querySelector(
+            this.getAttribute('href')
+          );
+
+        if (target) {
+
+          e.preventDefault();
+
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+        }
+
+      });
+
     });
-  }, { threshold: 0.5 });
 
-  document.querySelectorAll('.ss-num').forEach(function(el) {
-    var num = parseInt(el.textContent);
-    if (!isNaN(num) && num < 100) {
-      el.dataset.count = num;
-      el.textContent = '0';
-      numObserver.observe(el);
-    }
-  });
 </script>
+
+
 </body>
 </html>
