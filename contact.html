@@ -336,12 +336,45 @@
     .footer-bottom p { font-size: 12px; }
     @media (max-width: 1024px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } .contact-item { padding: 14px 20px; } .card-header { padding: 22px 20px; } .page-outer { padding: 36px 16px 80px; } }
- 
-  /* ══ FLOATING MAIL BUTTON ══ */
-.float-mail-btn {
+
+  /* ══ FLOATING ACTION BUTTONS ══ */
+.float-actions {
   position: fixed;
   bottom: 28px;
   right: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  z-index: 9998;
+  max-width: calc(100vw - 32px);
+}
+
+.float-service-btn {
+  height: 50px;
+  padding: 0 22px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 8px 24px rgba(13,148,136,0.35), 0 2px 8px rgba(0,0,0,0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.float-service-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(13,148,136,0.45), 0 4px 12px rgba(0,0,0,0.2);
+}
+.float-service-btn:active { transform: translateY(-1px) scale(0.98); }
+
+.float-mail-btn {
+  position: relative;
   width: 58px;
   height: 58px;
   border-radius: 50%;
@@ -352,7 +385,6 @@
   justify-content: center;
   font-size: 24px;
   box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15);
-  z-index: 9998;
   transition: transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
 }
@@ -385,7 +417,9 @@
 }
 
 @media (max-width: 600px) {
-  .float-mail-btn { width: 52px; height: 52px; bottom: 20px; right: 20px; font-size: 21px; }
+  .float-actions { bottom: 20px; right: 20px; gap: 10px; }
+  .float-service-btn { height: 44px; padding: 0 18px; font-size: 12.5px; }
+  .float-mail-btn { width: 52px; height: 52px; font-size: 21px; }
   .float-mail-tooltip { display: none; }
 }
   .brand-logo {
@@ -636,6 +670,13 @@
     </div>
   </div>
 
+  <!-- Link to commercial services -->
+  <div class="available-section" style="margin-top:16px; background:linear-gradient(135deg,#eff6ff,#f8fafc); border-color:#dbeafe;">
+    <div class="available-title" style="color:#1a56db;">Looking for paid consulting?</div>
+    <p style="font-size:13.5px; color:#334155; line-height:1.7; margin-bottom:14px;">Statistical consulting, machine learning, explainable AI, and spatial analytics services are also available for researchers, institutions, and organizations.</p>
+    <a href="service.html" style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#fff; background:linear-gradient(135deg,#0d9488,#0f766e); padding:10px 20px; border-radius:8px;">View Services &amp; Pricing →</a>
+  </div>
+
 </div>
 
 <!-- ═══ FOOTER ═══ -->
@@ -672,11 +713,16 @@
     <p>abubokkor.brur60@gmail.com &middot; +880 1874 001360</p>
   </div>
 </footer>
-  <!-- ═══ FLOATING MAIL BUTTON ═══ -->
-<a href="mailto:abubokkor.brur60@gmail.com" class="float-mail-btn" aria-label="Send an email">
-  📧
-  <span class="float-mail-tooltip">abubokkor.brur60@gmail.com</span>
-</a>
+  <!-- ═══ FLOATING ACTIONS ═══ -->
+<div class="float-actions">
+  <a href="service.html" class="float-service-btn" aria-label="View services and pricing">
+    🛠️ Services
+  </a>
+  <a href="mailto:abubokkor.brur60@gmail.com" class="float-mail-btn" aria-label="Send an email">
+    📧
+    <span class="float-mail-tooltip">abubokkor.brur60@gmail.com</span>
+  </a>
+</div>
 <script>
   /* ── NAVBAR ── */
 document.querySelectorAll('.dropbtn').forEach(function(btn) {
