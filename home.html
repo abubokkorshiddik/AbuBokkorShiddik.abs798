@@ -74,36 +74,20 @@
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
     }
 
-    /* SCROLL PROGRESS */
     .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 10000; background: linear-gradient(90deg, var(--gold2), var(--blue)); box-shadow: 0 0 10px rgba(245,158,11,.5); transition: width .08s linear; }
 
-    /* SIGNATURE EYEBROW */
     .eyebrow { display: block; font-family: 'DM Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 2.2px; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
     .eyebrow::before { content: '◆ '; color: var(--gold); }
 
-    /* NAVBAR */
-    .navbar {
-      background: var(--navy);
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: auto; padding: 0 24px;
-      display: flex; align-items: center; height: 58px;
-    }
-    .nav-brand {
-      font-size: 14px; font-weight: 700; color: #fff;
-      margin-right: auto; white-space: nowrap; letter-spacing: -.1px;
-    }
+    .navbar { background: var(--navy); position: sticky; top: 0; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav-inner { max-width: 1200px; margin: auto; padding: 0 24px; display: flex; align-items: center; height: 58px; }
+    .nav-brand { font-size: 14px; font-weight: 700; color: #fff; margin-right: auto; white-space: nowrap; letter-spacing: -.1px; }
     .nav-brand span { color: var(--gold2); font-weight: 400; }
     .nav-links { display: flex; align-items: center; gap: 2px; }
     .nav-links > a, .dropbtn {
       color: rgba(255,255,255,.72); font-size: 13px; font-weight: 500;
       padding: 6px 11px; border-radius: 6px; border: none; background: none;
-      cursor: pointer; font-family: inherit;
-      transition: background .15s, color .15s;
+      cursor: pointer; font-family: inherit; transition: background .15s, color .15s;
       white-space: nowrap; display: flex; align-items: center; gap: 4px;
     }
     .nav-links > a:hover, .dropbtn:hover { color: #fff; background: rgba(255,255,255,.09); }
@@ -117,20 +101,10 @@
       transition: opacity .2s, transform .2s, visibility .2s;
       pointer-events: none; z-index: 9999;
     }
-    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content {
-      opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
-    }
-    .dropdown-content a {
-      display: flex; align-items: center; gap: 8px; padding: 9px 13px;
-      color: rgba(255,255,255,.7); font-size: 13px; font-weight: 500;
-      border-radius: 8px; transition: background .15s, color .15s;
-    }
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .dropdown-content a { display: flex; align-items: center; gap: 8px; padding: 9px 13px; color: rgba(255,255,255,.7); font-size: 13px; font-weight: 500; border-radius: 8px; transition: background .15s, color .15s; }
     .dropdown-content a:hover { background: rgba(255,255,255,.08); color: #fff; }
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 7px;
-      border-radius: 6px; margin-left: 8px;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 6px; margin-left: 8px; }
     .hamburger span { display: block; width: 21px; height: 2px; background: rgba(255,255,255,.85); border-radius: 2px; transition: transform .28s, opacity .28s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -145,30 +119,18 @@
     .drawer-div { height: 1px; background: rgba(255,255,255,.06); margin: 4px 0; }
     @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-drawer { display: block; } }
 
-    /* HERO */
     .hero { background: var(--navy); position: relative; overflow: hidden; padding: 0; min-height: 74vh; display: flex; flex-direction: column; }
     .hero-grid {
       position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
       background-size: 44px 44px;
       mask-image: radial-gradient(ellipse 90% 90% at 30% 30%, black 30%, transparent 90%);
     }
     .hero-orb1 { position: absolute; top: -120px; right: -80px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,.22) 0%, transparent 65%); pointer-events: none; }
     .hero-orb2 { position: absolute; bottom: -100px; left: -60px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,.1) 0%, transparent 65%); pointer-events: none; }
     .hero-orb3 { position: absolute; top: 40%; left: 35%; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,.08) 0%, transparent 65%); pointer-events: none; }
-    .hero-inner {
-      max-width: 1240px; margin: auto; width: 100%; padding: 76px 32px 40px;
-      display: grid; grid-template-columns: minmax(0,1fr) 300px;
-      gap: 40px; align-items: center; position: relative; z-index: 1; flex: 1;
-    }
-    .hero-tag-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'DM Mono', monospace; font-size: 11.5px; font-weight: 500;
-      letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold2);
-      margin-bottom: 22px; padding-bottom: 10px; border-bottom: 1px solid rgba(251,191,36,.3);
-    }
+    .hero-inner { max-width: 1240px; margin: auto; width: 100%; padding: 76px 32px 40px; display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; align-items: center; position: relative; z-index: 1; flex: 1; }
+    .hero-tag-label { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold2); margin-bottom: 22px; padding-bottom: 10px; border-bottom: 1px solid rgba(251,191,36,.3); }
     .hero-tag-label .sq { width: 7px; height: 7px; background: var(--gold2); flex-shrink: 0; animation: live 2s infinite; }
     @keyframes live { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.7vw + .5rem, 2.8rem); font-weight: 900; line-height: 1.08; letter-spacing: -.8px; color: #fff; margin-bottom: 18px; white-space: nowrap; }
@@ -177,7 +139,6 @@
     .hero-tagline { font-size: clamp(13.5px, 1.6vw, 15.5px); font-weight: 400; color: rgba(255,255,255,.62); margin-bottom: 6px; letter-spacing: .1px; max-width: 480px; }
     .hero-affil { font-size: 12.5px; color: rgba(255,255,255,.32); margin-bottom: 26px; font-family: 'DM Mono', monospace; letter-spacing: .3px; }
 
-    /* SIGNAL LINE — signature graphic: an outbreak-detection curve crossing an early-warning threshold */
     .hero-signal { position: absolute; left: 0; right: 0; bottom: 46px; height: 30%; pointer-events: none; z-index: 0; opacity: .55; }
     .hero-signal svg { width: 100%; height: 100%; display: block; }
     .signal-path { fill: none; stroke: url(#signalGrad); stroke-width: 2; stroke-linecap: round; filter: drop-shadow(0 0 6px rgba(37,99,235,.5)); stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: draw-signal 2.6s cubic-bezier(.4,0,.2,1) .3s forwards; }
@@ -190,38 +151,27 @@
     @keyframes dot-appear { to { opacity: 1; } }
     @keyframes pulse-dot { 0%,100% { r: 3.5; } 50% { r: 5.5; } }
     .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--gold2); color: var(--navy);
-      padding: 12px 22px; border-radius: 2px;
-      font-size: 13px; font-weight: 700; font-family: inherit;
-      border: none; cursor: pointer; letter-spacing: .2px;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 4px 4px 0 rgba(251,191,36,.28);
-    }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold2); color: var(--navy); padding: 12px 22px; border-radius: 2px; font-size: 13px; font-weight: 700; font-family: inherit; border: none; cursor: pointer; letter-spacing: .2px; transition: background .2s, transform .15s, box-shadow .2s; box-shadow: 4px 4px 0 rgba(251,191,36,.28); }
     .btn-primary:hover { background: #fff; transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(251,191,36,.32); }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: rgba(255,255,255,.85);
-      padding: 12px 22px; border-radius: 2px;
-      font-size: 13px; font-weight: 600;
-      border: 1px solid rgba(255,255,255,.28);
-      transition: background .2s, border-color .2s, color .2s, transform .15s;
-    }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,.85); padding: 12px 22px; border-radius: 2px; font-size: 13px; font-weight: 600; border: 1px solid rgba(255,255,255,.28); transition: background .2s, border-color .2s, color .2s, transform .15s; }
     .btn-outline:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.5); color: #fff; transform: translate(-2px,-2px); }
 
-    /* Editorial photo card — replaces the spinning circular frame */
-    .hero-photo-col { display: flex; justify-content: center; position: relative; z-index: 1; }
+    .hero-photo-col { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; gap: 18px; }
     .photo-frame { position: relative; width: 240px; transform: rotate(-2deg); }
-    .photo-frame::before {
-      content: ''; position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px;
-      border: 1.5px solid rgba(251,191,36,.55); z-index: 0;
-    }
+    .photo-frame::before { content: ''; position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px; border: 1.5px solid rgba(251,191,36,.55); z-index: 0; }
     .photo-frame::after { content: ''; position: absolute; inset: 0; background: var(--gold2); opacity: .12; z-index: 0; }
     .photo-img { position: relative; z-index: 1; width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; border: 3px solid var(--navy); filter: grayscale(.15) contrast(1.05); box-shadow: var(--sh3); }
     .photo-tag { position: absolute; z-index: 2; bottom: -16px; left: -16px; background: var(--navy); border: 1px solid rgba(251,191,36,.4); color: var(--gold2); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 5px 10px; transform: rotate(-2deg); white-space: nowrap; }
 
-    /* Bottom data-ticker strip closing out the hero */
+    .hero-profile-box { width: 100%; max-width: 300px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 16px 18px; position: relative; z-index: 1; }
+    .hero-profile-box .hpb-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gold2); margin-bottom: 10px; }
+    .hpb-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .hpb-tag { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.82); font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 20px; letter-spacing: .1px; transition: background .15s, border-color .15s; }
+    .hpb-tag:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
+    .hero-profile-box .hpb-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 13px; font-size: 11.5px; font-weight: 600; color: var(--gold2); }
+    .hero-profile-box .hpb-link:hover { text-decoration: underline; }
+    @media (max-width: 900px) { .hero-profile-box { display: none; } }
+
     .hero-ticker { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.1); background: rgba(0,0,0,.15); }
     .hero-ticker-inner { max-width: 1240px; margin: auto; padding: 12px 32px; display: flex; gap: 28px; flex-wrap: wrap; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .5px; color: rgba(255,255,255,.45); }
     .hero-ticker-inner strong { color: var(--gold2); font-weight: 600; }
@@ -230,36 +180,24 @@
     .hero-ticker-inner span:first-child::before { content: ''; }
     @media (max-width: 640px) { .hero-ticker-inner { display: none; } }
 
-    /* JUMP BAR */
-    /* top is a fallback; JS (syncJumpBarOffset) sets the real value to match the
-       navbar's actual rendered height, since that height changes at the 480px
-       breakpoint and a hardcoded value here would drift out of sync on phones. */
     .jump-bar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 58px; z-index: 200; box-shadow: 0 1px 6px rgba(0,0,0,.05); }
     .jump-bar-inner { max-width: 1200px; margin: auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; position: relative; }
     .jump-bar-inner::-webkit-scrollbar { display: none; }
-    /* Fix: hint that the tab strip scrolls horizontally, so mobile users discover
-       the tabs past the right edge instead of assuming that's the full list. */
-    .jump-bar { position: sticky; }
     .jump-bar-wrap { position: relative; }
     .jump-bar-fade { position: absolute; top: 0; bottom: 0; right: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(251,249,242,0), var(--white)); z-index: 2; }
     @media (min-width: 901px) { .jump-bar-fade { display: none; } }
     .jump-btn {
-      display: inline-flex; align-items: center; gap: 5px;
-      padding: 11px 16px; font-size: 13px; font-weight: 500;
-      color: var(--text3);
-      border-bottom: 2.5px solid transparent;
-      border-top: none; border-left: none; border-right: none;
-      white-space: nowrap; cursor: pointer; background: none;
-      font-family: inherit; transition: color .18s, border-color .18s, transform .15s;
-      min-height: 44px; position: relative;
+      display: inline-flex; align-items: center; gap: 5px; padding: 11px 16px; font-size: 13px; font-weight: 500; color: var(--text3);
+      border-bottom: 2.5px solid transparent; border-top: none; border-left: none; border-right: none;
+      white-space: nowrap; cursor: pointer; background: none; font-family: inherit;
+      transition: color .18s, border-color .18s, transform .15s; min-height: 44px; position: relative;
     }
     .jump-btn:hover { color: var(--blue); transform: translateY(-1px); }
     .jump-btn.active { color: var(--blue); font-weight: 600; }
     .jump-indicator { position: absolute; bottom: 0; height: 2.5px; background: linear-gradient(90deg, var(--blue), var(--teal)); border-radius: 2px; transition: left .32s cubic-bezier(.4,0,.2,1), width .32s cubic-bezier(.4,0,.2,1); pointer-events: none; }
 
-    /* PAGE BODY */
     .page-body { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 56px 0 0; scroll-margin-top: 115px; }
+    .section { padding: 56px 0 0; scroll-margin-top: 115px; position: relative; }
     .section:last-child { padding-bottom: 72px; }
     .section-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 36px; gap: 12px; position: relative; padding-bottom: 20px; }
     .section-head::before { content: ''; position: absolute; left: 0; right: 0; bottom: 8px; height: 1px; background: var(--border2); }
@@ -270,232 +208,112 @@
     .see-all:hover { gap: 9px; background: var(--blue); border-color: var(--blue); color: #fff; transform: translateY(-1px); box-shadow: var(--sh2); }
     .see-all svg { flex-shrink: 0; }
 
-    .about-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 30px 34px; box-shadow: var(--sh); position: relative; overflow: hidden; }
+    .about-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 26px 30px; box-shadow: var(--sh); position: relative; overflow: hidden; }
     .about-card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(to bottom, var(--blue), var(--teal)); border-radius: 5px 0 0 5px; }
-    .about-card p { color: var(--text2); margin-bottom: 12px; font-size: 15px; line-height: 1.8; }
-    .about-card p:last-child { margin-bottom: 0; }
+    .about-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .about-card li { color: var(--text2); font-size: 14.5px; line-height: 1.6; display: flex; gap: 9px; }
+    .about-card li::before { content: '◆'; color: var(--gold); font-size: 10px; flex-shrink: 0; margin-top: 5px; }
+    .about-card .ac-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 14px; font-size: 12.5px; font-weight: 700; color: var(--blue); }
+    .about-card .ac-link:hover { text-decoration: underline; }
 
-    /* ===== NEW: 2-column profile / stat-sidebar pattern (reused across sections) ===== */
-    .profile-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: stretch; }
-    .profile-text { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 30px 34px; box-shadow: var(--sh); position: relative; overflow: hidden; }
-    .profile-text::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(to bottom, var(--blue), var(--teal)); border-radius: 5px 0 0 5px; z-index: 2; }
-    .profile-watermark { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-    .profile-text p { color: var(--text2); margin-bottom: 12px; font-size: 15px; line-height: 1.8; position: relative; z-index: 1; }
-    .profile-text p:last-child { margin-bottom: 0; }
-
-    .stat-side { background: linear-gradient(160deg, var(--navy), var(--navy2) 60%, var(--navy3)); border-radius: var(--rl); padding: 24px 22px; box-shadow: var(--sh2); color: #fff; display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; }
-    .stat-side::before { content: ''; position: absolute; top: -50px; right: -50px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,.4) 0%, transparent 70%); pointer-events: none; }
-    .stat-side::after { content: ''; position: absolute; bottom: -60px; left: -40px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,.18) 0%, transparent 70%); pointer-events: none; }
-    .stat-side-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; color: var(--gold2); position: relative; z-index: 1; }
-    .stat-side-sub { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.6; margin-top: -10px; position: relative; z-index: 1; }
-    .stat-num-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; position: relative; z-index: 1; }
-    .stat-num-box { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 12px 10px; text-align: center; transition: background .2s, transform .2s; }
-    .stat-num-box:hover { background: rgba(255,255,255,.11); transform: translateY(-2px); }
-    .stat-num-box .n { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 700; color: #fff; line-height: 1.1; }
-    .stat-num-box .l { font-size: 9.5px; color: rgba(255,255,255,.55); margin-top: 4px; text-transform: uppercase; letter-spacing: .4px; }
-    .stat-side-line { font-size: 11.5px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); padding-top: 12px; position: relative; z-index: 1; }
-    .stat-side-line strong { color: #fff; }
-    .stat-side-link { font-size: 11.5px; color: var(--gold2); position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 4px; }
-    .stat-side-link:hover { text-decoration: underline; }
-    @media (max-width: 900px) { .profile-grid { grid-template-columns: 1fr; } }
-
-    /* Publications data dashboard */
-    .pub-dash { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
-    .pub-dash-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; box-shadow: var(--sh); }
-    .pub-dash-card h4 { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--blue); margin-bottom: 12px; }
-    .topic-row, .metric-row { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--text2); padding: 5px 0; border-bottom: 1px dashed var(--border); }
-    .topic-row:last-child, .metric-row:last-child { border-bottom: none; }
-    .topic-row .cnt { font-family: 'DM Mono', monospace; font-weight: 700; color: var(--blue); background: var(--sky); border-radius: 5px; padding: 1px 8px; font-size: 11.5px; }
-    .metric-row .m { font-family: 'DM Mono', monospace; font-weight: 700; color: var(--teal); font-size: 12.5px; }
-    .pub-tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
-    .pub-tag { font-size: 10.5px; font-weight: 600; padding: 3px 9px; border-radius: 20px; background: var(--bg2); border: 1px solid var(--border); color: var(--text2); }
-    @media (max-width: 1000px) { .pub-dash { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .pub-dash { grid-template-columns: 1fr; } }
+    .cards-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 900px) { .cards-4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .cards-4 { gap: 10px; } }
 
     .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-    .scholar-note { font-size: 11.5px; color: var(--text3); margin: -10px 0 20px; display: flex; align-items: center; gap: 6px; }
-    .scholar-note a { color: var(--blue); font-weight: 600; }
-    .scholar-note a:hover { text-decoration: underline; }
 
-    .interest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .interest-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--accent, var(--blue)); border-radius: var(--r); padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 12px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .2s, background .2s; position: relative; overflow: hidden; }
+    .interest-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--accent, var(--blue)); border-radius: var(--r); padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .2s, background .2s; position: relative; overflow: hidden; }
     .interest-card::after { content: ''; position: absolute; inset: 0; background: var(--accent, var(--blue)); opacity: 0; transition: opacity .25s; z-index: 0; pointer-events: none; }
     .interest-card:hover::after { opacity: .06; }
     .interest-card:hover { box-shadow: var(--sh2); transform: translateY(-4px); }
-    .i-icon { width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(150deg, var(--accent, var(--blue)), color-mix(in srgb, var(--accent, var(--blue)) 70%, black)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; position: relative; z-index: 1; transition: transform .25s, box-shadow .25s; box-shadow: 0 6px 14px -4px color-mix(in srgb, var(--accent, var(--blue)) 55%, transparent); }
-    .i-icon svg { width: 23px; height: 23px; }
+    .i-icon { width: 42px; height: 42px; border-radius: 11px; background: linear-gradient(150deg, var(--accent, var(--blue)), color-mix(in srgb, var(--accent, var(--blue)) 70%, black)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; position: relative; z-index: 1; transition: transform .25s, box-shadow .25s; box-shadow: 0 6px 14px -4px color-mix(in srgb, var(--accent, var(--blue)) 55%, transparent); }
+    .i-icon svg { width: 21px; height: 21px; }
     .interest-card:hover .i-icon { transform: scale(1.1) rotate(-5deg); box-shadow: 0 10px 20px -4px color-mix(in srgb, var(--accent, var(--blue)) 65%, transparent); }
-    .i-watermark { position: absolute; right: -6px; bottom: -10px; width: 108px; height: 108px; color: var(--accent, var(--blue)); opacity: .2; pointer-events: none; z-index: 0; transform: rotate(-8deg); transition: opacity .25s, transform .25s; }
+    .i-watermark { position: absolute; right: -6px; bottom: -10px; width: 96px; height: 96px; color: var(--accent, var(--blue)); opacity: .2; pointer-events: none; z-index: 0; transform: rotate(-8deg); transition: opacity .25s, transform .25s; }
     .i-watermark svg { width: 100%; height: 100%; display: block; }
     .interest-card:hover .i-watermark { opacity: .32; transform: rotate(-3deg) scale(1.08); }
-    .i-label { font-size: 13.5px; font-weight: 700; color: var(--text); line-height: 1.4; position: relative; z-index: 1; }
-    .i-desc { font-size: 12px; color: var(--text3); line-height: 1.6; position: relative; z-index: 1; }
-    @media (max-width: 780px) { .interest-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .interest-grid { grid-template-columns: 1fr; } }
+    .i-label { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.35; position: relative; z-index: 1; }
+    .i-desc { font-size: 11.5px; color: var(--text3); line-height: 1.55; position: relative; z-index: 1; }
 
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 14px; }
-    .skill-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--accent, var(--blue)); border-radius: var(--r); padding: 20px 22px; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s; }
+    .skill-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--accent, var(--blue)); border-radius: var(--r); padding: 18px 18px; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s; }
     .skill-card:hover { box-shadow: var(--sh2); transform: translateY(-3px); }
-    .skill-lbl { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--blue); margin-bottom: 12px; }
+    .skill-lbl { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--blue); margin-bottom: 12px; display: flex; align-items: center; gap: 7px; }
+    .skill-lbl svg { width: 15px; height: 15px; color: var(--accent, var(--gold)); flex-shrink: 0; }
     .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { background: var(--sky); color: #1e3a8a; border: 1px solid var(--sky2); border-radius: 5px; font-size: 12px; font-weight: 500; padding: 3px 10px; transition: background .15s; }
+    .tag { background: var(--sky); color: #1e3a8a; border: 1px solid var(--sky2); border-radius: 5px; font-size: 11.5px; font-weight: 500; padding: 3px 9px; transition: background .15s; }
     .tag:hover { background: var(--sky2); }
 
     .pub-section { background: var(--bg2); padding: 60px 0 68px; margin-top: 0; scroll-margin-top: 115px; position: relative; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .pub-section::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--gold)); }
-    .pub-dash-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .2s; }
-    .pub-dash-card:hover { border-color: var(--border2); box-shadow: var(--sh2); transform: translateY(-2px); }
-    .pub-dash-card h4 { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--blue); margin-bottom: 12px; }
-    .topic-row, .metric-row { border-bottom: 1px dashed var(--border); color: var(--text2); }
-    .topic-row .cnt { background: var(--sky); color: var(--blue); }
-    .metric-row .m { color: var(--teal); }
-    .pub-tag { background: var(--bg2); border: 1px solid var(--border); color: var(--text2); }
 
     .filter-chip { font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border2); background: var(--white); color: var(--text2); cursor: pointer; transition: all .15s; font-family: inherit; }
     .filter-chip:hover { border-color: var(--blue); color: var(--blue); }
     .filter-chip.active { background: var(--blue); border-color: var(--blue); color: #fff; }
-    .pub-row.is-hidden { display: none; }
+    .pub-card.is-hidden { display: none; }
 
-    /* Two-column connected timeline */
-    .pub-scroll { max-height: 620px; overflow-y: auto; padding-right: 10px; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
-    .pub-scroll::-webkit-scrollbar { width: 7px; }
-    .pub-scroll::-webkit-scrollbar-track { background: transparent; }
-    .pub-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
-    .pub-scroll::-webkit-scrollbar-thumb:hover { background: #b3ab94; }
-    .pub-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; column-gap: 52px; row-gap: 16px; padding: 8px 0; align-items: start; }
-    .pub-grid::before { content: ''; position: absolute; left: 50%; top: 4px; bottom: 4px; width: 2px; background: repeating-linear-gradient(to bottom, var(--border2) 0, var(--border2) 6px, transparent 6px, transparent 12px); transform: translateX(-1px); }
-    .pub-row {
-      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
-      padding: 15px 18px; display: block; transition: border-color .2s, box-shadow .2s, transform .15s;
-      position: relative; cursor: pointer; box-shadow: var(--sh);
-    }
-    .pub-row:hover { border-color: var(--blue); box-shadow: var(--sh2); transform: translateY(-2px); }
-    .pub-row::after { content: ''; position: absolute; top: 20px; width: 11px; height: 11px; border-radius: 50%; background: var(--white); border: 2.5px solid var(--blue); z-index: 2; }
-    .pub-row:nth-child(odd)::after { right: -31.5px; }
-    .pub-row:nth-child(even)::after { left: -31.5px; }
-    .pub-row:nth-child(4n+2)::after, .pub-row:nth-child(4n+3)::after { border-color: var(--gold); }
-    .pub-row-num { display: none; }
-    .pub-row-body { flex: 1; min-width: 0; }
-    .pub-row-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
-    .pub-row-title { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.55; margin-bottom: 4px; }
-    .pub-row-cite { font-size: 12px; color: var(--text3); line-height: 1.6; margin-bottom: 6px; }
-    .pub-row-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: var(--blue); transition: gap .15s; }
+    .pub-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 15px 16px; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, box-shadow .2s, transform .15s; box-shadow: var(--sh); height: 100%; }
+    .pub-card:hover { border-color: var(--blue); box-shadow: var(--sh2); transform: translateY(-2px); }
+    .pub-row-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .pub-row-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.45; flex: 1; }
+    .pub-row-cite { font-size: 11px; color: var(--text3); line-height: 1.5; }
+    .pub-row-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--blue); margin-top: auto; transition: gap .15s; }
     .pub-row-link:hover { gap: 8px; }
-    @media (max-width: 820px) {
-      .pub-grid { grid-template-columns: 1fr; }
-      .pub-grid::before { left: 14px; }
-      .pub-row { margin-left: 26px; }
-      .pub-row::after { left: -21.5px !important; right: auto !important; }
-    }
-    .jb { font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 5px; white-space: nowrap; line-height: 1.4; }
+    .jb { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 5px; white-space: nowrap; line-height: 1.4; }
     .jb-n { background:#fff3e0;color:#c2410c;border:1px solid #fdba74; }
     .jb-h { background:#e0f2fe;color:#0369a1;border:1px solid #7dd3fc; }
     .jb-g { background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8; }
     .jb-s { background:#ecfdf5;color:#065f46;border:1px solid #6ee7b7; }
     .jb-m { background:#f0fdf4;color:#166534;border:1px solid #bbf7d0; }
     .jb-p { background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe; }
-    .yb { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; color: var(--text3); background: var(--bg2); border: 1px solid var(--border); border-radius: 5px; padding: 3px 9px; line-height: 1.4; white-space: nowrap; }
-    .oa { font-size: 10.5px; font-weight: 700; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; border-radius: 5px; padding: 3px 9px; line-height: 1.4; white-space: nowrap; }
+    .yb { font-family: 'DM Mono', monospace; font-size: 10.5px; font-weight: 600; color: var(--text3); background: var(--bg2); border: 1px solid var(--border); border-radius: 5px; padding: 3px 8px; line-height: 1.4; white-space: nowrap; }
+    .oa { font-size: 10px; font-weight: 700; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; border-radius: 5px; padding: 3px 8px; line-height: 1.4; white-space: nowrap; }
 
-    /* Bordered summary box on top (description, KPIs/filters, stats) + content grid below — used by Courses and Publications */
-    .stack-layout { display: block; }
-    .stack-sidebar { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 22px 26px; box-shadow: var(--sh); margin-bottom: 26px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px 28px; align-items: start; }
-    .stack-sidebar > p.section-desc { grid-column: 1 / -1; margin: 0 !important; }
-    .sidebar-block { display: flex; flex-direction: column; }
-    .sidebar-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); margin: 0 0 8px; }
-    .kpi-strip-sidebar { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 0; }
-    .kpi-strip-sidebar .kpi-chip { padding: 16px 10px; }
-    .kpi-strip-sidebar .kpi-num { font-size: 24px; }
-    .stack-sidebar .pub-dash-card { grid-column: span 1; }
-    @media (max-width: 900px) {
-      .kpi-strip-sidebar { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 700px) {
-      .stack-sidebar { grid-template-columns: 1fr; }
-    }
-
-    /* Filter row — single line of nav-style buttons, sitting just below the card */
     .filter-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
     .filter-nav-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); flex-shrink: 0; }
     .tag-row-sidebar, .filter-bar-sidebar { display: flex; flex-wrap: wrap; gap: 6px; }
     .filter-bar-sidebar .filter-chip { font-size: 11.5px; padding: 5px 11px; }
-    .i-icon svg, .p-icon svg, .dc-icon svg, .rb-icon svg, .skill-lbl svg { display: block; }
-    .rb-icon svg { width: 26px; height: 26px; color: var(--gold2); }
-    .skill-lbl { display: flex; align-items: center; gap: 7px; }
-    .skill-lbl svg { width: 15px; height: 15px; color: var(--accent, var(--gold)); flex-shrink: 0; }
 
-    /* ===== Ambient illustrated backdrops (replace flat document-on-grey feel) ===== */
-    .section { position: relative; }
     .section-blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(50px); pointer-events: none; max-width: 60vw; }
     @media (max-width: 700px) { .section-blob { display: none; } }
     .blob-blue { background: radial-gradient(circle, rgba(37,99,235,.10) 0%, transparent 70%); }
     .blob-gold { background: radial-gradient(circle, rgba(245,158,11,.09) 0%, transparent 70%); }
     .blob-teal { background: radial-gradient(circle, rgba(13,148,136,.09) 0%, transparent 70%); }
 
-    /* network pattern behind Technical Skills */
     .network-bg { position: absolute; inset: -20px 0 0 0; z-index: -1; opacity: .55; pointer-events: none; }
     .network-bg svg { width: 100%; height: 100%; }
 
-    /* graph/chart illustration behind Research Interests */
     .graph-bg { position: absolute; top: -10px; right: 0; width: 55%; max-width: 480px; height: 160px; z-index: -1; pointer-events: none; }
     .graph-bg svg { width: 100%; height: 100%; }
     @media (max-width: 780px) { .graph-bg { display: none; } }
 
-    /* wave section dividers */
     .wave-divider { display: block; width: 100%; line-height: 0; position: relative; z-index: 1; }
     .wave-divider svg { width: 100%; height: 46px; display: block; }
-    .wave-to-white { fill: var(--white); }
-    .wave-to-bg { fill: var(--bg); }
     .wave-to-navy { fill: var(--navy); }
-    .wave-flip { transform: scaleY(-1); }
 
-    /* mini illustrated trend chart (echoes hero signal line) */
-    .mini-chart-wrap { position: relative; z-index: 1; }
-    .mini-chart-wrap svg { width: 100%; height: 54px; display: block; overflow: visible; }
-    .mini-chart-line { fill: none; stroke: url(#miniSignalGrad); stroke-width: 2; stroke-linecap: round; }
-    .mini-chart-fill { opacity: .5; }
-    .mini-chart-dot { fill: var(--gold2); filter: drop-shadow(0 0 4px rgba(251,191,36,.7)); }
-    .mini-chart-labels { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(255,255,255,.45); margin-top: 2px; }
-
-    .data-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
     .data-chip { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 22px 18px; text-align: center; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .2s; position: relative; overflow: hidden; }
     .data-chip::after { content: ''; position: absolute; inset: 0; background: var(--accent, var(--blue)); opacity: 0; transition: opacity .2s; pointer-events: none; }
     .data-chip:hover::after { opacity: .05; }
     .data-chip:hover { border-color: var(--accent, var(--blue)); box-shadow: var(--sh2); transform: translateY(-3px); }
     .dc-icon { font-size: 28px; margin-bottom: 10px; color: var(--accent, var(--blue)); position: relative; z-index: 1; }
-    .dc-title { position: relative; z-index: 1; }
-    .dc-sub { position: relative; z-index: 1; }
-    .dc-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .dc-sub { font-size: 11.5px; color: var(--text3); }
+    .dc-title { position: relative; z-index: 1; font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .dc-sub { position: relative; z-index: 1; font-size: 11.5px; color: var(--text3); }
 
-    /* Generic reusable stat strip (numeric KPI cards) */
-    .kpi-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
-    .kpi-chip { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 18px; text-align: center; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .2s; }
-    .kpi-chip:hover { border-color: var(--blue); box-shadow: var(--sh2); transform: translateY(-3px); }
-    .kpi-num { font-family: 'DM Mono', monospace; font-size: 26px; font-weight: 700; color: var(--text); line-height: 1.1; }
-    .kpi-lbl { font-size: 11.5px; color: var(--text3); margin-top: 5px; }
-    @media (max-width: 900px) { .kpi-strip { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .kpi-strip { grid-template-columns: 1fr 1fr; } }
-
-    .project-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .project-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s, border-color .2s; position: relative; overflow: hidden; }
+    .project-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s, border-color .2s; position: relative; overflow: hidden; height: 100%; }
     .project-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent, var(--blue)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
     .project-card:hover { box-shadow: var(--sh2); transform: translateY(-3px); border-color: var(--border2); }
     .project-card:hover::after { transform: scaleX(1); }
-    .p-icon { width: 44px; height: 44px; border-radius: 11px; background: var(--accent, var(--blue)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 4px; flex-shrink: 0; }
-    .p-name { font-size: 14.5px; font-weight: 700; color: var(--text); }
-    .p-desc { font-size: 13px; color: var(--text3); line-height: 1.65; }
+    .p-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent, var(--blue)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 4px; flex-shrink: 0; }
+    .p-name { font-size: 13.5px; font-weight: 700; color: var(--text); }
+    .p-desc { font-size: 12px; color: var(--text3); line-height: 1.55; }
 
-    .posts-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .post-mini { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: var(--sh); transition: box-shadow .2s, border-color .2s, transform .2s; }
+    .post-mini { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: var(--sh); transition: box-shadow .2s, border-color .2s, transform .2s; height: 100%; display: flex; flex-direction: column; }
     .post-mini:hover { box-shadow: var(--sh2); border-color: #bfdbfe; transform: translateY(-3px); }
-    .pm-img { width: 100%; height: 135px; object-fit: cover; display: block; }
-    .pm-body { padding: 14px 16px; }
-    .pm-cat { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--blue); margin-bottom: 6px; }
-    .pm-title { font-family: 'Playfair Display', serif; font-size: 13.5px; font-weight: 700; color: var(--text); line-height: 1.45; margin-bottom: 7px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .pm-date { font-size: 11.5px; color: var(--text3); display: inline-flex; align-items: center; gap: 5px; }
+    .pm-img { width: 100%; height: 110px; object-fit: cover; display: block; }
+    .pm-body { padding: 13px 14px; flex: 1; }
+    .pm-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--blue); margin-bottom: 5px; }
+    .pm-title { font-family: 'Playfair Display', serif; font-size: 12.5px; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .pm-date { font-size: 11px; color: var(--text3); display: inline-flex; align-items: center; gap: 5px; }
 
-    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
     .gallery-item { position: relative; border-radius: var(--r); overflow: hidden; box-shadow: var(--sh); aspect-ratio: 1; display: block; background: #e2e8f0; transition: box-shadow .2s, transform .2s; }
     .gallery-item:hover { box-shadow: var(--sh2); transform: translateY(-3px); }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
@@ -506,12 +324,8 @@
     .gallery-viewall { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 1.5px dashed var(--border2); background: var(--bg2); color: var(--blue); font-size: 12.5px; font-weight: 700; text-align: center; transition: border-color .2s, background .2s, transform .2s; }
     .gallery-viewall:hover { border-color: var(--blue); background: var(--sky); transform: translateY(-3px); }
     .gallery-viewall .gv-icon { font-size: 22px; }
-    @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 640px)  { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 
-    /* OUTREACH */
-    .outreach-fb-row { margin-bottom: 18px; }
-    .outreach-fb { display: flex; flex-direction: column; height: 460px; max-width: 400px; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px; box-shadow: var(--sh); }
+    .outreach-fb { display: flex; flex-direction: column; height: 640px; max-width: 400px; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px; box-shadow: var(--sh); }
     .outreach-fb-head { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; flex-shrink: 0; }
     .outreach-fb-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; background: linear-gradient(135deg, #1877f2, #0e5fce); display: flex; align-items: center; justify-content: center; font-size: 15px; }
     .outreach-fb-title { font-size: 12.5px; font-weight: 700; color: var(--text); }
@@ -525,11 +339,7 @@
     .outreach-fb-col .outreach-fb { width: 100%; max-width: none; }
 
     .vid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; height: 100%; }
-    .vid-card {
-      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
-      overflow: hidden; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s;
-      position: relative; display: flex; flex-direction: column; height: 100%;
-    }
+    .vid-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: var(--sh); transition: box-shadow .2s, transform .2s; position: relative; display: flex; flex-direction: column; height: 100%; }
     .vid-card:hover { box-shadow: var(--sh2); transform: translateY(-2px); }
     .vid-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 1; }
     .vid-card.python::before { background: linear-gradient(90deg, #3b82f6, #6366f1); }
@@ -549,13 +359,21 @@
     .vid-link { font-size: 12px; font-weight: 600; color: var(--blue); }
     .vid-link:hover { text-decoration: underline; }
     @media (max-width: 900px) {
-      .outreach-fb { max-width: 100%; height: auto; }
+      .outreach-fb { max-width: 100%; }
       .outreach-grid { grid-template-columns: 1fr; }
       .vid-grid { height: auto; }
-      .vid-card { height: auto; }
     }
     @media (max-width: 700px) {
-      .vid-grid { grid-template-columns: 1fr; }
+      .vid-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .vid-card { height: auto; }
+      .vid-embed { aspect-ratio: 16/10; }
+      .vid-body { padding: 10px 11px 12px; }
+      .vid-category { font-size: 9.5px; margin-bottom: 5px; }
+      .vid-title { font-size: 12.5px; margin-bottom: 4px; line-height: 1.3; }
+      .vid-desc { font-size: 11px; line-height: 1.5; margin-bottom: 9px; -webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+      .vid-footer { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .vid-tag { font-size: 10px; padding: 2px 7px; }
+      .vid-link { font-size: 11px; }
     }
 
     .learn-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -568,33 +386,20 @@
     .learn-link-sub { font-size: 11.5px; color: var(--text3); }
     @media (max-width: 500px) { .learn-links { grid-template-columns: 1fr; } }
 
-    .course-scroll { max-height: 460px; overflow-y: auto; padding-right: 8px; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
-    .course-scroll::-webkit-scrollbar { width: 7px; }
-    .course-scroll::-webkit-scrollbar-track { background: transparent; }
-    .course-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
-    .course-scroll::-webkit-scrollbar-thumb:hover { background: #b3ab94; }
-    .timeline { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; align-content: start; }
-    .tl-item { position: relative; }
-    .tl-date { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: .4px; margin-bottom: 5px; }
-    .tl-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: var(--r); padding: 14px 18px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .15s; height: 100%; }
+    .tl-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: var(--r); padding: 13px 15px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .15s; height: 100%; display: flex; flex-direction: column; gap: 4px; }
     .tl-card:hover { box-shadow: var(--sh2); transform: translateY(-2px); }
     .tl-item:nth-child(4n+2) .tl-card, .tl-item:nth-child(4n+3) .tl-card { border-left-color: var(--teal); }
-    @media (max-width: 700px) {
-      .timeline { grid-template-columns: 1fr; }
-    }
-    .tl-name { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-    .tl-org { font-size: 12px; color: var(--text3); margin-bottom: 4px; }
-    .tl-detail { font-size: 12px; color: var(--text3); line-height: 1.6; }
-    .tl-item.is-hidden { display: none; }
+    .tl-date { font-family: 'DM Mono', monospace; font-size: 10.5px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: .4px; }
+    .tl-name { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.35; }
+    .tl-org { font-size: 11.5px; color: var(--text3); }
+    .tl-detail { font-size: 11px; color: var(--text3); line-height: 1.5; }
 
-    .service-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .15s, background .2s; cursor: pointer; border-left: 3px solid transparent; }
+    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 11px 13px; display: flex; flex-direction: column; gap: 6px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .15s, background .2s; cursor: pointer; border-left: 3px solid transparent; height: 100%; justify-content: center; }
     .service-item:hover { box-shadow: var(--sh2); transform: translateY(-2px); background: var(--bg2); }
-    .sbadge { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; border-radius: 5px; padding: 3px 9px; white-space: nowrap; flex-shrink: 0; }
-    .sdot { display: none; }
-    .sname { font-size: 13.5px; font-weight: 500; color: var(--text); flex: 1; line-height: 1.35; }
-    .sarrow { font-size: 13px; font-weight: 700; color: var(--blue); opacity: 0; transform: translateX(-4px); transition: opacity .2s, transform .2s; flex-shrink: 0; }
-    .service-item:hover .sarrow { opacity: 1; transform: translateX(0); }
+    .sbadge { font-size: 9.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; border-radius: 5px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0; align-self: flex-start; }
+    .sitem-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .sname { font-size: 12.5px; font-weight: 500; color: var(--text); line-height: 1.3; }
+    .sarrow { font-size: 13px; font-weight: 700; color: var(--blue); flex-shrink: 0; }
     .service-item:nth-child(4n+1) { border-left-color: var(--purple); }
     .service-item:nth-child(4n+1) .sbadge { color: var(--purple); background: #f5f3ff; border: 1px solid #ddd6fe; }
     .service-item:nth-child(4n+2) { border-left-color: var(--blue); }
@@ -603,12 +408,11 @@
     .service-item:nth-child(4n+3) .sbadge { color: var(--teal); background: #f0fdfa; border: 1px solid #99f6e4; }
     .service-item:nth-child(4n+4) { border-left-color: #d97706; }
     .service-item:nth-child(4n+4) .sbadge { color: #b45309; background: #fffbeb; border: 1px solid #fde68a; }
-    @media (max-width: 700px) { .service-list { grid-template-columns: 1fr; } }
 
-    .reviewer-badge { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 14px; position: relative; z-index: 1; }
-    .reviewer-badge .rb-icon { font-size: 26px; }
-    .reviewer-badge .rb-title { font-size: 12.5px; font-weight: 700; color: #fff; }
-    .reviewer-badge .rb-sub { font-size: 11px; color: rgba(255,255,255,.55); line-height: 1.5; margin-top: 2px; }
+    .reviewer-badge { display: flex; align-items: center; gap: 12px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; box-shadow: var(--sh); margin-top: 18px; }
+    .reviewer-badge .rb-icon { font-size: 26px; color: var(--gold); flex-shrink: 0; }
+    .reviewer-badge .rb-title { font-size: 12.5px; font-weight: 700; color: var(--text); }
+    .reviewer-badge .rb-sub { font-size: 11.5px; color: var(--text3); line-height: 1.5; margin-top: 2px; }
 
     footer { background: var(--navy); color: rgba(255,255,255,.5); padding: 48px 24px 32px; position: relative; overflow: hidden; }
     footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--gold), var(--teal)); }
@@ -628,16 +432,10 @@
     @media (max-width: 1100px) {
       .hero-inner { grid-template-columns: 1fr 220px; gap: 36px; }
       .photo-frame { width: 190px; }
-      .project-grid { grid-template-columns: repeat(2,1fr); }
-      .data-strip { grid-template-columns: repeat(2,1fr); }
-      .posts-strip { grid-template-columns: repeat(2,1fr); }
       .footer-inner { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 1024px) and (min-width: 821px) {
       .page-body { padding: 0 20px; }
-      .interest-grid { grid-template-columns: repeat(2, 1fr); }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .stack-sidebar { padding: 20px; }
       .jump-btn { font-size: 12.5px; padding: 10px 12px; }
     }
     @media (max-width: 820px) {
@@ -652,36 +450,24 @@
       .hero-tagline { font-size: 15px; line-height: 1.5; }
       .hero-affil { font-size: 12.5px; }
       .btn-primary, .btn-outline { font-size: 13.5px; padding: 12px 20px; }
-      .hero-badge { font-size: 11px; }
       body { font-size: 15px; line-height: 1.7; }
       .eyebrow { font-size: 11px; }
       .section-head h2 { font-size: 1.2rem; line-height: 1.25; }
       .section-desc { font-size: 14px; }
-      .about-card p, .profile-text p { font-size: 15px; }
-      .i-label { font-size: 13.5px; }
-      .tag { font-size: 12.5px; padding: 4px 11px; }
-      .pub-row-title { font-size: 14.5px; }
-      .pub-row-cite { font-size: 12.5px; }
-      .p-name { font-size: 15.5px; }
-      .p-desc, .dc-sub, .tl-org, .tl-detail { font-size: 13px; }
+      .about-card li { font-size: 14px; }
+      .i-label { font-size: 13px; }
+      .tag { font-size: 12px; padding: 4px 10px; }
+      .pub-row-title { font-size: 13.5px; }
+      .pub-row-cite { font-size: 12px; }
+      .p-name { font-size: 14.5px; }
+      .p-desc, .dc-sub, .tl-org, .tl-detail { font-size: 12.5px; }
       .dc-title { font-size: 14.5px; }
-      .tl-name { font-size: 14.5px; }
-      .kpi-num { font-size: 22px; }
-      .stat-num-box .n { font-size: 22px; }
-      .project-grid { grid-template-columns: 1fr; }
-      .data-strip { grid-template-columns: repeat(2,1fr); }
-      .posts-strip { grid-template-columns: 1fr; }
+      .tl-name { font-size: 13.5px; }
       .footer-inner { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .pub-row { flex-direction: column; gap: 8px; }
       .jump-btn { font-size: 13.5px; padding: 12px 15px; }
       .page-body { padding: 0 18px; }
-      .stack-sidebar { padding: 18px; }
       .filter-nav { flex-direction: column; align-items: flex-start; gap: 10px; }
-      /* Fix: nested fixed-height scroll boxes trap mobile swipes and eat most of the
-         viewport. Below 820px let these lists flow with the page instead. */
-      .pub-scroll, .course-scroll { max-height: none; overflow-y: visible; padding-right: 0; }
     }
     @media (max-width: 480px) {
       .nav-inner { height: 64px; padding: 0 16px; }
@@ -691,15 +477,7 @@
       .hamburger span { width: 22px; height: 2.5px; }
     }
 
-    /* Fix: three permanently-stacked buttons ate a large, fixed chunk of the
-       mobile screen and ignored notch/gesture-bar safe areas. Below 700px this
-       collapses into a single FAB that expands into the menu on tap. Desktop
-       keeps the original always-visible stack. */
-    .float-actions {
-      position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); right: 16px;
-      display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
-      z-index: 9998; max-width: calc(100vw - 32px);
-    }
+    .float-actions { position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); right: 16px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 9998; max-width: calc(100vw - 32px); }
     .float-menu { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
     .float-fab-toggle { display: none; }
     .float-mail-btn { width: 56px; height: 56px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; position: relative; background: linear-gradient(135deg, #1a56db, #1648c0); }
@@ -709,43 +487,38 @@
     .float-mail-tooltip { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: #0f172a; color: #fff; font-size: 12.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; pointer-events: none; }
     .float-mail-btn:hover .float-mail-tooltip, .float-contact-btn:hover .float-mail-tooltip { opacity: 1; visibility: visible; }
     @media (max-width: 700px) {
-      .float-menu {
-        opacity: 0; visibility: hidden; transform: translateY(8px);
-        pointer-events: none; transition: opacity .2s ease, transform .2s ease, visibility .2s;
-      }
+      .float-menu { opacity: 0; visibility: hidden; transform: translateY(8px); pointer-events: none; transition: opacity .2s ease, transform .2s ease, visibility .2s; }
       .float-actions.open .float-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
-      .float-fab-toggle {
-        display: flex; align-items: center; justify-content: center;
-        width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
-        color: #fff; background: linear-gradient(135deg, #1a56db, #1648c0);
-        box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15);
-        transition: transform .25s ease, box-shadow .2s ease;
-      }
+      .float-fab-toggle { display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer; color: #fff; background: linear-gradient(135deg, #1a56db, #1648c0); box-shadow: 0 8px 24px rgba(26,86,219,0.4), 0 2px 8px rgba(0,0,0,0.15); transition: transform .25s ease, box-shadow .2s ease; }
       .float-actions.open .float-fab-toggle { transform: rotate(45deg); }
       .float-mail-btn { width: 50px; height: 50px; }
       .float-contact-btn { height: 44px; padding: 0 18px; font-size: 12.5px; }
       .float-mail-tooltip { display: none; }
     }
-    .brand-logo { display: flex; align-items: center; gap: 8px; color: #fff; }
-    .brand-logo img { width: 32px; height: 32px; object-fit: contain; }
-    .brand-logo span { color: #fff; font-size: 14.5px; font-weight: 600; }
-    .nav-brand{ display:flex; align-items:center; gap:10px; }
-    .brand-logo-img{ display:flex; align-items:center; }
-    .brand-logo-img img{ width:34px; height:34px; object-fit:contain; transition:transform .2s ease; }
-    .brand-logo-img:hover img{ transform:scale(1.08); }
-    .brand-logo-text{ color:#fff; font-size:14.5px; font-weight:600; letter-spacing:.2px; white-space:nowrap; }
-    .brand-logo-text span{ color:#93c5fd; font-weight:300; }
-    .brand-logo-text:hover{ color:#93c5fd; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .brand-logo-img { display: flex; align-items: center; }
+    .brand-logo-img img { width: 34px; height: 34px; object-fit: contain; transition: transform .2s ease; }
+    .brand-logo-img:hover img { transform: scale(1.08); }
+    .brand-logo-text { color: #fff; font-size: 14.5px; font-weight: 600; letter-spacing: .2px; white-space: nowrap; }
+    .brand-logo-text span { color: #93c5fd; font-weight: 300; }
+    .brand-logo-text:hover { color: #93c5fd; }
 
-    /* ===== NEW: mini bar chart inside the "at a glance" stat sidebar ===== */
-    .stat-chart { position: relative; z-index: 1; }
-    .stat-chart-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: rgba(255,255,255,.4); margin-bottom: 8px; }
-    .stat-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-    .stat-bar-row:last-child { margin-bottom: 0; }
-    .stat-bar-label { font-size: 11px; color: rgba(255,255,255,.7); width: 66px; flex-shrink: 0; }
-    .stat-bar-track { flex: 1; height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
-    .stat-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
-    .stat-bar-val { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; color: #fff; width: 20px; text-align: right; flex-shrink: 0; }
+    /* Smart mobile jump navigation (grouped/accordion) */
+    .jump-bar-mobile { display: none; }
+    @media (max-width: 820px) {
+      .jump-bar-inner, .jump-bar-fade { display: none !important; }
+      .jump-bar-mobile { display: block; padding: 8px 14px; }
+      .jbm-groups { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+      .jbm-groups::-webkit-scrollbar { display: none; }
+      .jbm-group-btn { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; padding: 8px 13px; border-radius: 20px; border: 1px solid var(--border2); background: var(--white); color: var(--text2); white-space: nowrap; font-family: inherit; cursor: pointer; transition: background .15s, border-color .15s, color .15s; }
+      .jbm-group-btn svg { width: 11px; height: 11px; transition: transform .2s; flex-shrink: 0; }
+      .jbm-group-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+      .jbm-group-btn.active svg { transform: rotate(180deg); }
+      .jbm-panel { display: none; flex-wrap: wrap; gap: 6px; padding-top: 10px; }
+      .jbm-panel.open { display: flex; }
+      .jbm-panel .jump-btn { padding: 8px 13px; font-size: 12.5px; font-weight: 500; border: 1px solid var(--border); border-radius: 16px; background: var(--bg2); color: var(--text2); min-height: auto; }
+      .jbm-panel .jump-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); font-weight: 600; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -754,19 +527,10 @@
     "name": "Md. Abu Bokkor Shiddik",
     "jobTitle": "Researcher",
     "description": "Researcher in Machine Learning, Explainable AI and Global Health Analytics.",
-    "affiliation": {
-      "@type": "CollegeOrUniversity",
-      "name": "Begum Rokeya University, Rangpur",
-      "address": "Rangpur, Bangladesh"
-    },
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Begum Rokeya University, Rangpur", "address": "Rangpur, Bangladesh" },
     "url": "https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home.html",
     "image": "https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/Profile.jpeg",
-    "sameAs": [
-      "https://scholar.google.com/citations?user=JWeBd3IAAAAJ",
-      "https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/",
-      "https://orcid.org/0009-0002-0424-446X",
-      "https://github.com/abubokkorshiddik"
-    ],
+    "sameAs": ["https://scholar.google.com/citations?user=JWeBd3IAAAAJ", "https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/", "https://orcid.org/0009-0002-0424-446X", "https://github.com/abubokkorshiddik"],
     "knowsAbout": ["Machine Learning", "Explainable AI", "Epidemiology", "Spatial Analysis", "Global Health Analytics"]
   }
   </script>
@@ -777,18 +541,10 @@
 
 <nav class="navbar">
   <div class="nav-inner">
- <div class="nav-brand">
-
-  <a href="home.html" class="brand-logo-img">
-    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"
-         alt="ABS Logo">
-  </a>
-
-  <a href="contact.html" class="brand-logo-text">
-    ABS<span> · </span>Abu Bokkor Shiddik
-  </a>
-
-</div>
+    <div class="nav-brand">
+      <a href="home.html" class="brand-logo-img"><img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png" alt="ABS Logo"></a>
+      <a href="contact.html" class="brand-logo-text">ABS<span> · </span>Abu Bokkor Shiddik</a>
+    </div>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
@@ -898,14 +654,10 @@
 
   <div class="hero-inner">
     <div>
-      <div class="hero-tag-label">
-        <span class="sq"></span>
-        Available for Collaboration · 2026
-      </div>
+      <div class="hero-tag-label"><span class="sq"></span> Available for Collaboration · 2026</div>
       <h1><span class="ln">Md. Abu</span> <span class="ln accent">Bokkor</span> <span class="ln">Shiddik</span></h1>
       <p class="hero-tagline">Researcher · Machine Learning · Explainable AI · Global Health Analytics</p>
       <p class="hero-affil">Dept. of Statistics, BRUR · Rangpur, Bangladesh</p>
-
       <div class="hero-actions">
         <a class="btn-primary" href="cv.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg> View CV</a>
         <a class="btn-outline" href="publications.html">View Publications <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -918,6 +670,18 @@
       <div class="photo-frame">
         <img class="photo-img" src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/Profile.jpeg" alt="Md. Abu Bokkor Shiddik" fetchpriority="high" decoding="async">
         <span class="photo-tag">FIG. 01 — RESEARCHER</span>
+      </div>
+      <div class="hero-profile-box">
+        <div class="hpb-title">Keywords</div>
+        <div class="hpb-tags">
+          <span class="hpb-tag">Machine Learning</span>
+          <span class="hpb-tag">Explainable AI</span>
+          <span class="hpb-tag">Epidemiology</span>
+          <span class="hpb-tag">Spatiotemporal Analysis</span>
+          <span class="hpb-tag">Disease Prediction</span>
+          <span class="hpb-tag">Climate &amp; Health</span>
+        </div>
+        <a class="hpb-link" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener">Google Scholar profile →</a>
       </div>
     </div>
   </div>
@@ -951,90 +715,51 @@
     <span class="jump-indicator" id="jump-indicator"></span>
   </div>
   </div>
+
+  <div class="jump-bar-mobile" id="jump-bar-mobile">
+    <div class="jbm-groups">
+      <button class="jbm-group-btn" data-group="jbm-profile">Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="jbm-group-btn" data-group="jbm-academic">Academic <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="jbm-group-btn" data-group="jbm-lab">Digital Lab <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="jbm-group-btn" data-group="jbm-community">Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+    </div>
+    <div class="jbm-panel" id="jbm-profile">
+      <button class="jump-btn" data-target="sec-about">About</button>
+      <button class="jump-btn" data-target="sec-interests">Interests</button>
+      <button class="jump-btn" data-target="sec-skills">Skills</button>
+    </div>
+    <div class="jbm-panel" id="jbm-academic">
+      <button class="jump-btn" data-target="sec-courses">Courses</button>
+      <button class="jump-btn" data-target="sec-publications">Publications</button>
+      <button class="jump-btn" data-target="sec-service">Service</button>
+    </div>
+    <div class="jbm-panel" id="jbm-lab">
+      <button class="jump-btn" data-target="sec-data">Data &amp; Code</button>
+      <button class="jump-btn" data-target="sec-projects">Projects</button>
+    </div>
+    <div class="jbm-panel" id="jbm-community">
+      <button class="jump-btn" data-target="sec-outreach">Outreach</button>
+      <button class="jump-btn" data-target="sec-insights">Insights</button>
+      <button class="jump-btn" data-target="sec-gallery">Gallery</button>
+    </div>
+  </div>
 </nav>
 
 <main id="main-content">
 <div class="page-body">
 
-  <!-- ===================== RESEARCH PROFILE (2-column: text 2/3 + stat sidebar 1/3) ===================== -->
   <div class="section" id="sec-about">
-    <div class="section-blob blob-blue" style="width:420px;height:420px;top:-60px;right:-120px;"></div>
     <div class="section-head"><div><span class="eyebrow">Who I Am</span><h2>Research Profile</h2></div></div>
-    <div class="profile-grid">
-      <div class="profile-text">
-        <svg class="profile-watermark" viewBox="0 0 420 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="wmCurve" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#0d9488"/>
-              <stop offset="100%" stop-color="#7c3aed"/>
-            </linearGradient>
-          </defs>
-          <!-- scattered nodes suggesting a global multi-country dataset -->
-          <g fill="#2563eb" fill-opacity=".16">
-            <circle cx="30"  cy="60"  r="3"/>
-            <circle cx="70"  cy="95"  r="4.5"/>
-            <circle cx="55"  cy="140" r="3.5"/>
-            <circle cx="110" cy="55"  r="3"/>
-            <circle cx="140" cy="110" r="5"/>
-            <circle cx="180" cy="70"  r="3.5"/>
-            <circle cx="205" cy="130" r="4"/>
-            <circle cx="245" cy="90"  r="3"/>
-            <circle cx="20"  cy="200" r="4"/>
-            <circle cx="90"  cy="185" r="3"/>
-          </g>
-          <g stroke="#2563eb" stroke-opacity=".1" stroke-width="1">
-            <line x1="30" y1="60" x2="70" y2="95"/>
-            <line x1="70" y1="95" x2="140" y2="110"/>
-            <line x1="110" y1="55" x2="180" y2="70"/>
-            <line x1="140" y1="110" x2="205" y2="130"/>
-            <line x1="55" y1="140" x2="90" y2="185"/>
-          </g>
-          <!-- Bayesian probability curve -->
-          <path d="M180,260 C 220,260 235,120 280,110 C 325,100 340,255 400,258"
-                fill="none" stroke="url(#wmCurve)" stroke-width="2.5" stroke-linecap="round" opacity=".18"/>
-          <path d="M180,260 C 220,260 235,120 280,110 C 325,100 340,255 400,258 L400,300 L180,300 Z"
-                fill="#7c3aed" opacity=".05"/>
-          <line x1="280" y1="80" x2="280" y2="270" stroke="#f59e0b" stroke-opacity=".18" stroke-width="1" stroke-dasharray="3 4"/>
-          <circle cx="280" cy="110" r="4.5" fill="#f59e0b" fill-opacity=".28"/>
-        </svg>
-        <p>I am a researcher working at the intersection of <strong>machine learning</strong> and <strong>global public health</strong>, with a growing body of peer-reviewed publications in journals including <em>Scientific Reports</em>, <em>BMJ Open</em>, <em>Global Epidemiology</em>, and the <em>International Journal of Health Geographics</em>. My work centers on disease early-warning systems, spatial epidemiology, and climate-health interactions — from district-level dengue surveillance in Bangladesh to comparative disease-burden analysis spanning up to 194 countries.</p>
-        <p>Methodologically, I combine <strong>explainable AI (SHAP, LIME)</strong>, <strong>Bayesian deep learning</strong>, spatial statistics (Moran's I, Getis-Ord Gi*), and time-series forecasting (ARIMA/SARIMA, ConvLSTM) to build models that are both high-performing and interpretable for the decision-makers who rely on them. I also serve as a peer reviewer for international journals — including <em>BMJ Global Health</em> and <em>PLOS Digital Health</em> — and I welcome research collaborations and doctoral opportunities in machine learning for global health.</p>
-      </div>
-      <div class="stat-side">
-        <div>
-          <div class="stat-side-title">Research at a Glance</div>
-        </div>
-        <div class="stat-num-row">
-          <div class="stat-num-box"><div class="n count-up" id="kpi-pubs" data-count="13">0</div><div class="l">Publications</div></div>
-          <div class="stat-num-box"><div class="n count-up" id="kpi-journals" data-count="9">0</div><div class="l">Journals</div></div>
-          <div class="stat-num-box"><div class="n count-up" data-count="27">0</div><div class="l">Reviews Given</div></div>
-          <div class="stat-num-box"><div class="n count-up" id="kpi-countries" data-count="194">0</div><div class="l">Countries Studied</div></div>
-        </div>
-        <div class="mini-chart-wrap">
-          <div class="stat-chart-title">Publications by Year</div>
-          <svg viewBox="0 0 220 60" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="miniSignalGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#2563eb"/>
-                <stop offset="100%" stop-color="#fbbf24"/>
-              </linearGradient>
-              <linearGradient id="miniFillGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#fbbf24" stop-opacity=".35"/>
-                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <path class="mini-chart-fill" fill="url(#miniFillGrad)" d="M4,20 C 50,14 90,10 108,18 C 140,32 170,26 216,30 L216,60 L4,60 Z"/>
-            <path class="mini-chart-line" d="M4,20 C 50,14 90,10 108,18 C 140,32 170,26 216,30"/>
-            <circle class="mini-chart-dot" cx="4" cy="20" r="3"/>
-            <circle class="mini-chart-dot" cx="216" cy="30" r="3.4"/>
-          </svg>
-          <div class="mini-chart-labels"><span>2025 · 7</span><span>2026 · 6</span></div>
-        </div>
-        <div class="stat-side-line">
-          <strong>Publishers:</strong> Nature · BMJ · Springer · Wiley
-        </div>
-        <a class="stat-side-link" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M22 10L12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg> View live profile on Google Scholar →</a>
-      </div>
+    <div class="about-card">
+      <ul>
+        <li>Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics</li>
+        <li>13 peer-reviewed papers in Nature, BMJ, Springer &amp; Wiley journals</li>
+        <li>Focus: dengue, malaria &amp; TB prediction, spatial epidemiology, climate-health interactions</li>
+        <li>Methods: SHAP, LIME, Bayesian deep learning, spatial statistics, ARIMA/ConvLSTM</li>
+        <li>Peer reviewer for BMJ Global Health, PLOS Digital Health &amp; 7 more journals</li>
+        <li>Open to research collaboration &amp; doctoral opportunities in ML for global health</li>
+      </ul>
+      <a class="ac-link" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M22 10L12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg> View live profile on Google Scholar →</a>
     </div>
   </div>
 
@@ -1057,14 +782,13 @@
       </svg>
     </div>
     <div class="section-head"><div><span class="eyebrow">Focus Areas</span><h2>Research Interests</h2></div></div>
-    <p class="section-desc">Six connected threads — from predictive modeling to the climate drivers of disease — united by one goal: health forecasting that is both accurate and explainable.</p>
-    <div class="interest-grid">
-      <div class="interest-card" style="--accent:var(--blue);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x=7 y=7 width=10 height=10 rx=2/><path d="M7 2v3M12 2v3M17 2v3M7 19v3M12 19v3M17 19v3M2 7h3M2 12h3M2 17h3M19 7h3M19 12h3M19 17h3"/><circle cx=12 cy=12 r=2 fill=currentColor stroke=none/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x=7 y=7 width=10 height=10 rx=2/><path d="M7 2v3M12 2v3M17 2v3M7 19v3M12 19v3M17 19v3M2 7h3M2 12h3M2 17h3M19 7h3M19 12h3M19 17h3"/><circle cx=12 cy=12 r=2 fill=currentColor stroke=none/></svg></div><div class="i-label">Machine Learning in Public Health</div><div class="i-desc">Primary research focus — tree-based and deep learning models for disease surveillance.</div></div>
-      <div class="interest-card" style="--accent:var(--purple);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x=2.5 y=14 width=3.2 height=6.5/><rect x=8 y=10 width=3.2 height=10.5/><rect x=13.5 y=6.5 width=3.2 height=14 opacity=".45"/><circle cx=17.5 cy=8.5 r=4.8/><path d=M20.9,11.9 L23,14/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x=2.5 y=14 width=3.2 height=6.5/><rect x=8 y=10 width=3.2 height=10.5/><rect x=13.5 y=6.5 width=3.2 height=14 opacity=".45"/><circle cx=17.5 cy=8.5 r=4.8/><path d=M20.9,11.9 L23,14/></svg></div><div class="i-label">Explainable AI (XAI)</div><div class="i-desc">SHAP, LIME, and interpretable models that make predictions auditable, not black boxes.</div></div>
-      <div class="interest-card" style="--accent:var(--teal);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d=M2,20 L22,20/><path d="M3 19c2 0 3-1.5 4-5s2-10 5-10 4 8 5 11 2 3 4 3"/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M2,20 L22,20/><path d="M3 19c2 0 3-1.5 4-5s2-10 5-10 4 8 5 11 2 3 4 3"/></svg></div><div class="i-label">Epidemiological Modeling</div><div class="i-desc">Statistical and ML models tracing how disease burden shifts across time and place.</div></div>
-      <div class="interest-card" style="--accent:#d97706;"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="i-label">Spatiotemporal Analysis</div><div class="i-desc">Mapping disease clustering with Moran's I and Getis-Ord Gi* across regions and years.</div></div>
-      <div class="interest-card" style="--accent:var(--rose);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d=M2,13 L6,13 L8,7 L12,19 L14,10 L16,13 L22,13/><circle cx=14 cy=10 r=1.6 fill=currentColor stroke=none/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M2,13 L6,13 L8,7 L12,19 L14,10 L16,13 L22,13/><circle cx=14 cy=10 r=1.6 fill=currentColor stroke=none/></svg></div><div class="i-label">Disease Prediction Systems</div><div class="i-desc">District- and national-level early warning tools for outbreak forecasting.</div></div>
-      <div class="interest-card" style="--accent:var(--green);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d=M14,14.6 L14,4.5 A2,2 0 0 0 10,4.5 L10,14.6 A4,4 0 1 0 14,14.6 Z/><path d="M3.5 5.5l1.4 1.1M2 10.5h1.8M3.5 15.5l1.4-1.1" opacity=".55"/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M14,14.6 L14,4.5 A2,2 0 0 0 10,4.5 L10,14.6 A4,4 0 1 0 14,14.6 Z/><path d="M3.5 5.5l1.4 1.1M2 10.5h1.8M3.5 15.5l1.4-1.1" opacity=".55"/></svg></div><div class="i-label">Climate &amp; Health</div><div class="i-desc">Eco-climatic triggers linking temperature, rainfall, and vector-borne disease risk.</div></div>
+    <div class="cards-4">
+      <div class="interest-card" style="--accent:var(--blue);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x=7 y=7 width=10 height=10 rx=2/><path d="M7 2v3M12 2v3M17 2v3M7 19v3M12 19v3M17 19v3M2 7h3M2 12h3M2 17h3M19 7h3M19 12h3M19 17h3"/><circle cx=12 cy=12 r=2 fill=currentColor stroke=none/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x=7 y=7 width=10 height=10 rx=2/><path d="M7 2v3M12 2v3M17 2v3M7 19v3M12 19v3M17 19v3M2 7h3M2 12h3M2 17h3M19 7h3M19 12h3M19 17h3"/><circle cx=12 cy=12 r=2 fill=currentColor stroke=none/></svg></div><div class="i-label">Machine Learning in Public Health</div><div class="i-desc">Tree-based &amp; deep learning models for disease surveillance.</div></div>
+      <div class="interest-card" style="--accent:var(--purple);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x=2.5 y=14 width=3.2 height=6.5/><rect x=8 y=10 width=3.2 height=10.5/><rect x=13.5 y=6.5 width=3.2 height=14 opacity=".45"/><circle cx=17.5 cy=8.5 r=4.8/><path d=M20.9,11.9 L23,14/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x=2.5 y=14 width=3.2 height=6.5/><rect x=8 y=10 width=3.2 height=10.5/><rect x=13.5 y=6.5 width=3.2 height=14 opacity=".45"/><circle cx=17.5 cy=8.5 r=4.8/><path d=M20.9,11.9 L23,14/></svg></div><div class="i-label">Explainable AI (XAI)</div><div class="i-desc">SHAP &amp; LIME make predictions auditable, not black boxes.</div></div>
+      <div class="interest-card" style="--accent:var(--teal);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d=M2,20 L22,20/><path d="M3 19c2 0 3-1.5 4-5s2-10 5-10 4 8 5 11 2 3 4 3"/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M2,20 L22,20/><path d="M3 19c2 0 3-1.5 4-5s2-10 5-10 4 8 5 11 2 3 4 3"/></svg></div><div class="i-label">Epidemiological Modeling</div><div class="i-desc">Tracing how disease burden shifts across time and place.</div></div>
+      <div class="interest-card" style="--accent:#d97706;"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="i-label">Spatiotemporal Analysis</div><div class="i-desc">Moran's I &amp; Getis-Ord Gi* across regions and years.</div></div>
+      <div class="interest-card" style="--accent:var(--rose);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d=M2,13 L6,13 L8,7 L12,19 L14,10 L16,13 L22,13/><circle cx=14 cy=10 r=1.6 fill=currentColor stroke=none/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M2,13 L6,13 L8,7 L12,19 L14,10 L16,13 L22,13/><circle cx=14 cy=10 r=1.6 fill=currentColor stroke=none/></svg></div><div class="i-label">Disease Prediction Systems</div><div class="i-desc">District &amp; national early warning tools for outbreaks.</div></div>
+      <div class="interest-card" style="--accent:var(--green);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d=M14,14.6 L14,4.5 A2,2 0 0 0 10,4.5 L10,14.6 A4,4 0 1 0 14,14.6 Z/><path d="M3.5 5.5l1.4 1.1M2 10.5h1.8M3.5 15.5l1.4-1.1" opacity=".55"/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M14,14.6 L14,4.5 A2,2 0 0 0 10,4.5 L10,14.6 A4,4 0 1 0 14,14.6 Z/><path d="M3.5 5.5l1.4 1.1M2 10.5h1.8M3.5 15.5l1.4-1.1" opacity=".55"/></svg></div><div class="i-label">Climate &amp; Health</div><div class="i-desc">Eco-climatic triggers linking rainfall &amp; disease risk.</div></div>
     </div>
   </div>
 
@@ -1098,328 +822,161 @@
       </svg>
     </div>
     <div class="section-head"><div><span class="eyebrow">Toolkit</span><h2>Technical Skills</h2></div></div>
-    <div class="skills-grid">
+    <div class="cards-4">
       <div class="skill-card" style="--accent:var(--blue);">
         <div class="skill-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx=12 cy=12 r=1.5 fill=currentColor stroke=none/><ellipse cx=12 cy=12 rx=9 ry=3.6/><ellipse cx=12 cy=12 rx=9 ry=3.6 transform='rotate(60 12 12)'/><ellipse cx=12 cy=12 rx=9 ry=3.6 transform='rotate(120 12 12)'/></svg>Core Methods</div>
-        <div class="tag-row"><span class="tag">Machine Learning</span><span class="tag">SHAP</span><span class="tag">LIME</span><span class="tag">Statistical Modeling</span><span class="tag">Causal AI</span></div>
+        <div class="tag-row"><span class="tag">Machine Learning</span><span class="tag">SHAP</span><span class="tag">LIME</span><span class="tag">Causal AI</span></div>
       </div>
       <div class="skill-card" style="--accent:var(--teal);">
         <div class="skill-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d=M8,4 L3,12 L8,20 M16,4 L21,12 L16,20/></svg>Programming &amp; Tools</div>
-        <div class="tag-row"><span class="tag">R</span><span class="tag">Python</span><span class="tag">SPSS</span><span class="tag">LaTeX</span><span class="tag">Git / GitHub</span></div>
+        <div class="tag-row"><span class="tag">R</span><span class="tag">Python</span><span class="tag">SPSS</span><span class="tag">Git</span></div>
       </div>
       <div class="skill-card" style="--accent:#d97706;">
         <div class="skill-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><rect x=4 y=12 width=3.4 height=8/><rect x=10.3 y=7 width=3.4 height=13/><rect x=16.6 y=3 width=3.4 height=17/></svg>Advanced Analytics</div>
-        <div class="tag-row"><span class="tag">ARIMA / SARIMA</span><span class="tag">Spatial Analysis</span><span class="tag">Bayesian Modeling</span><span class="tag">Deep Learning</span><span class="tag">XGBoost</span></div>
+        <div class="tag-row"><span class="tag">ARIMA/SARIMA</span><span class="tag">Bayesian</span><span class="tag">XGBoost</span></div>
       </div>
       <div class="skill-card" style="--accent:var(--purple);">
         <div class="skill-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx=12 cy=12 r=9/><path d=M3,12 L21,12/><path d=M12,3 C16,7 16,17 12,21 C8,17 8,7 12,3 Z/></svg>Application Domains</div>
-        <div class="tag-row"><span class="tag">Epidemiology</span><span class="tag">Climate-Health</span><span class="tag">Disease Prediction</span><span class="tag">Health Geographics</span></div>
+        <div class="tag-row"><span class="tag">Epidemiology</span><span class="tag">Climate-Health</span></div>
       </div>
     </div>
   </div>
 
 
-  <!-- ===================== COURSES & TRAINING (with KPI strip + institution badges) ===================== -->
   <div class="section" id="sec-courses">
     <div class="section-blob blob-blue" style="width:360px;height:360px;top:40px;right:-140px;"></div>
-    <div class="section-head"><div><span class="eyebrow">Continuous Learning</span><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 10L12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg> Learning &amp; Development — Courses &amp; Training</h2></div><a href="courses.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-    <div class="stack-layout">
-      <aside class="stack-sidebar">
-        <p class="section-desc" style="margin:0 0 16px;">Professional development, certified online learning, and undergraduate academic education in statistics, data science, and research methods.</p>
-        <div class="kpi-strip kpi-strip-sidebar">
-          <div class="kpi-chip"><div class="kpi-num count-up" data-count="26">0</div><div class="kpi-lbl">Online Certificates</div></div>
-          <div class="kpi-chip"><div class="kpi-num count-up" data-count="35" data-suffix="+">0</div><div class="kpi-lbl">Undergraduate Courses</div></div>
-          <div class="kpi-chip"><div class="kpi-num count-up" data-count="8">0</div><div class="kpi-lbl">Institutions</div></div>
-          <div class="kpi-chip"><div class="kpi-num" style="font-size:16px;">2016–2026</div><div class="kpi-lbl">Learning Span</div></div>
-        </div>
-      </aside>
+    <div class="section-head"><div><span class="eyebrow">Continuous Learning</span><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 10L12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg> Courses &amp; Training</h2></div><a href="courses.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 
-      <div class="filter-nav">
-        <span class="filter-nav-label">Filter by Source</span>
-        <div class="tag-row tag-row-sidebar">
-          <span class="tag">All · 60+</span>
-          <span class="tag">Elsevier · 7</span>
-          <span class="tag">Springer Nature · 4</span>
-          <span class="tag">IBM · 5</span>
-          <span class="tag">University · 4</span>
-          <span class="tag">UN Agencies · 3</span>
-          <span class="tag">Other · 3</span>
-          <span class="tag">Undergraduate</span>
-        </div>
-      </div>
-
-      <div class="course-scroll">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">June 2026</div>
-            <div class="tl-name">Bachelor of Science in Statistics</div>
-            <div class="tl-org">Begum Rokeya University, Rangpur, Bangladesh</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">January – March 2026</div>
-            <div class="tl-name">Scientific &amp; Manuscript Writing Series</div>
-            <div class="tl-org">Researcher Academy, Elsevier</div>
-            <div class="tl-detail">6 modules: Gen AI use in the research workflow, interdisciplinary writing, case reports, identifying research gaps, LaTeX manuscripts, methods articles, review articles</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">15 March 2025</div>
-            <div class="tl-name">Practical Time Series Analysis</div>
-            <div class="tl-org">An online course by The State University of New York</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">10 September 2024</div>
-            <div class="tl-name">Introduction to Climate Risk Informed Decision Analysis (CRIDA)</div>
-            <div class="tl-org">A course of study offered by UNESCO</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">January – June 2024</div>
-            <div class="tl-name">Data Science &amp; Machine Learning Specialization</div>
-            <div class="tl-org">IBM</div>
-            <div class="tl-detail">6 courses: Machine Learning with Python, Data Visualization with R, Regression for Car Mileage/Diamond Price, R for Data Science, Data Science Methodology, What is Data Science</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">10 March 2024</div>
-            <div class="tl-name">Successful Presentation</div>
-            <div class="tl-org">An online course by University of Colorado Boulder</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">December 2023</div>
-            <div class="tl-name">Research Methodology Series</div>
-            <div class="tl-org">RSBRU / Queen Mary University of London / University of London</div>
-            <div class="tl-detail">4 courses: Interdisciplinary Research Methodology, Research Methodologies, Understanding Research Methods, Introduction to Computer Programming</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">24 December 2023</div>
-            <div class="tl-name">Introduction to Statistical Analysis: Hypothesis Testing</div>
-            <div class="tl-org">SAS</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">November 2023</div>
-            <div class="tl-name">UNICEF Training Series</div>
-            <div class="tl-org">UNICEF</div>
-            <div class="tl-detail">2 courses: Education in Emergencies, Leadership for Planning and Decision-Making with Adolescents</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">July – December 2016</div>
-            <div class="tl-name">Diploma in Computer Science</div>
-            <div class="tl-org">A six month training course by Bangladesh Computer Education (BCE)</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-date">2019</div>
-            <div class="tl-name">Higher Secondary Certificate (Science)</div>
-            <div class="tl-org">Police Lines School and College, Rangpur, Bangladesh</div>
-          </div>
-        </div>
+    <div class="filter-nav">
+      <span class="filter-nav-label">Filter by Source</span>
+      <div class="tag-row-sidebar">
+        <span class="filter-chip active">All · 60+</span>
+        <span class="filter-chip">Elsevier · 7</span>
+        <span class="filter-chip">Springer · 4</span>
+        <span class="filter-chip">IBM · 5</span>
+        <span class="filter-chip">University · 4</span>
+        <span class="filter-chip">UN Agencies · 3</span>
       </div>
     </div>
+
+    <div class="cards-4">
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">June 2026</div><div class="tl-name">B.Sc. in Statistics</div><div class="tl-org">Begum Rokeya University, Rangpur</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jan–Mar 2026</div><div class="tl-name">Scientific &amp; Manuscript Writing Series</div><div class="tl-org">Researcher Academy, Elsevier</div><div class="tl-detail">6 modules on Gen AI in research, manuscript &amp; review writing</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Mar 2025</div><div class="tl-name">Practical Time Series Analysis</div><div class="tl-org">State University of New York</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Sep 2024</div><div class="tl-name">Climate Risk Informed Decision Analysis</div><div class="tl-org">UNESCO</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jan–Jun 2024</div><div class="tl-name">Data Science &amp; ML Specialization</div><div class="tl-org">IBM</div><div class="tl-detail">6 courses: ML with Python, R for Data Science, Data Science Methodology</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Mar 2024</div><div class="tl-name">Successful Presentation</div><div class="tl-org">University of Colorado Boulder</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Dec 2023</div><div class="tl-name">Research Methodology Series</div><div class="tl-org">RSBRU / Queen Mary / University of London</div><div class="tl-detail">4 courses on interdisciplinary research methods</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Dec 2023</div><div class="tl-name">Hypothesis Testing: Intro to Statistical Analysis</div><div class="tl-org">SAS</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Nov 2023</div><div class="tl-name">UNICEF Training Series</div><div class="tl-org">UNICEF</div><div class="tl-detail">Education in Emergencies; Leadership for Adolescents</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jul–Dec 2016</div><div class="tl-name">Diploma in Computer Science</div><div class="tl-org">Bangladesh Computer Education (BCE)</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">2019</div><div class="tl-name">Higher Secondary Certificate (Science)</div><div class="tl-org">Police Lines School and College, Rangpur</div></div></div>
     </div>
   </div>
 
 
 </div>
 
-<!-- ===================== PUBLICATIONS (stats dashboard + filterable list) ===================== -->
 <section class="pub-section" id="sec-publications">
   <div class="page-body">
     <div class="section-head" style="margin-top:0;padding-top:0;">
-      <div><span class="eyebrow">Peer-Reviewed Output</span><h2>Peer-Reviewed Research — Publications</h2></div>
+      <div><span class="eyebrow">Peer-Reviewed Output</span><h2>Publications</h2></div>
       <a href="publications.html" class="see-all">View all publications <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
 
-    <div class="stack-layout">
-      <aside class="stack-sidebar">
-        <p class="section-desc" style="margin:0 0 16px;">Peer-reviewed research in machine learning, explainable AI, epidemiology, and global public health — published in high-impact international journals.</p>
-
-        <div class="pub-dash-card">
-          <h4>Key Statistics</h4>
-          <div class="metric-row"><span>Best model fit</span><span class="m">R² 0.99</span></div>
-          <div class="metric-row"><span>MLP accuracy</span><span class="m">Acc 0.93</span></div>
-          <div class="metric-row"><span>Countries (TB study)</span><span class="m">194</span></div>
-          <div class="metric-row"><span>ROC-AUC (dengue)</span><span class="m">AUC 0.99</span></div>
-          <div class="metric-row"><span>Countries (dengue)</span><span class="m">118</span></div>
-          <div class="metric-row"><span>Studies (XAI review)</span><span class="m">70</span></div>
-        </div>
-
-        <div class="pub-dash-card">
-          <h4>Journals</h4>
-          <div class="topic-row"><span>Health Science Reports</span><span class="cnt">3</span></div>
-          <div class="topic-row"><span>Scientific Reports</span><span class="cnt">2</span></div>
-          <div class="topic-row"><span>Global Epidemiology</span><span class="cnt">2</span></div>
-          <div class="topic-row"><span>BMJ Open</span><span class="cnt">1</span></div>
-          <div class="topic-row"><span>Int. J. Health Geographics</span><span class="cnt">1</span></div>
-          <div class="topic-row"><span>Trop. Med. &amp; Infect. Dis.</span><span class="cnt">1</span></div>
-          <div class="topic-row"><span>BMC Medicine</span><span class="cnt">1</span></div>
-          <div class="topic-row"><span>Public Health Challenges</span><span class="cnt">1</span></div>
-          <div class="topic-row"><span>Int. J. Statistical Sciences</span><span class="cnt">1</span></div>
-        </div>
-
-        <div class="pub-dash-card">
-          <h4>Publishers &amp; Methods</h4>
-          <div class="pub-tag-row" style="margin-bottom:12px;">
-            <span class="pub-tag">Nature Portfolio</span><span class="pub-tag">Wiley</span><span class="pub-tag">Elsevier</span><span class="pub-tag">BMJ</span><span class="pub-tag">Springer</span><span class="pub-tag">MDPI</span><span class="pub-tag">BanglaJOL</span>
-          </div>
-          <div class="pub-tag-row">
-            <span class="pub-tag">XGBoost</span><span class="pub-tag">LightGBM</span><span class="pub-tag">SHAP</span><span class="pub-tag">LIME</span><span class="pub-tag">Moran's I</span><span class="pub-tag">Bayesian</span><span class="pub-tag">ConvLSTM</span><span class="pub-tag">Getis-Ord Gi*</span><span class="pub-tag">IG / LRP</span>
-          </div>
-        </div>
-      </aside>
-
-      <div class="filter-nav">
-        <span class="filter-nav-label">Filter by Topic / Year</span>
-        <div class="filter-bar filter-bar-sidebar" id="pub-filter-bar">
-          <button class="filter-chip active" data-filter="all">All · 13</button>
-          <button class="filter-chip" data-filter="dengue">Dengue · 6</button>
-          <button class="filter-chip" data-filter="malaria">Malaria · 1</button>
-          <button class="filter-chip" data-filter="tuberculosis">Tuberculosis · 1</button>
-          <button class="filter-chip" data-filter="child-mortality">Child Mortality · 2</button>
-          <button class="filter-chip" data-filter="asia">Asia · 2</button>
-          <button class="filter-chip" data-filter="2026">2026 · 6</button>
-          <button class="filter-chip" data-filter="2025">2025 · 7</button>
-        </div>
+    <div class="filter-nav">
+      <span class="filter-nav-label">Filter by Topic / Year</span>
+      <div class="filter-bar-sidebar" id="pub-filter-bar">
+        <button class="filter-chip active" data-filter="all">All · 13</button>
+        <button class="filter-chip" data-filter="dengue">Dengue · 6</button>
+        <button class="filter-chip" data-filter="malaria">Malaria · 1</button>
+        <button class="filter-chip" data-filter="tuberculosis">Tuberculosis · 1</button>
+        <button class="filter-chip" data-filter="child-mortality">Child Mortality · 2</button>
+        <button class="filter-chip" data-filter="asia">Asia · 2</button>
+        <button class="filter-chip" data-filter="2026">2026 · 6</button>
+        <button class="filter-chip" data-filter="2025">2025 · 7</button>
       </div>
+    </div>
 
-    <div class="pub-scroll" id="pub-scroll">
-    <div class="pub-grid">
-      <a class="pub-row" data-topics="tuberculosis global" data-year="2025" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank" rel="noopener">
-        <div class="pub-row-num">1</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">Utilizing artificial intelligence to predict and analyze socioeconomic, environmental, and healthcare factors driving tuberculosis globally</div>
-          <div class="pub-row-cite">Rahman, M.S., Shiddik, A.B. Sci Rep 15, 13619 (2025)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+    <div class="cards-4" id="pub-scroll">
+      <a class="pub-card" data-topics="tuberculosis global" data-year="2025" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">AI to predict socioeconomic, environmental &amp; healthcare drivers of tuberculosis globally</div>
+        <div class="pub-row-cite">Rahman, Shiddik. Sci Rep 15, 13619 (2025)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="dengue" data-year="2025" href="https://doi.org/10.1002/hsr2.70726" target="_blank" rel="noopener">
-        <div class="pub-row-num">2</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">Dengue Early Warning System and Outbreak Prediction Tool in Bangladesh Using Interpretable Tree‐Based Machine Learning Model</div>
-          <div class="pub-row-cite">Rahman, M.S., Amrin, M., Bokkor Shiddik, M.A. Health Science Reports, 8(5), e70726 (2025)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="dengue" data-year="2025" href="https://doi.org/10.1002/hsr2.70726" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">Dengue Early Warning System &amp; Outbreak Prediction in Bangladesh using Interpretable Tree-Based ML</div>
+        <div class="pub-row-cite">Rahman, Amrin, Shiddik. Health Sci Reports, 8(5), e70726 (2025)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="dengue" data-year="2025" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank" rel="noopener">
-        <div class="pub-row-num">3</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">Explainable artificial intelligence for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</div>
-          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. Global Epidemiology, 100210 (2025)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="dengue" data-year="2025" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">Explainable AI for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</div>
+        <div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100210 (2025)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="malaria global" data-year="2025" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank" rel="noopener">
-        <div class="pub-row-num">4</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-n">Scientific Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">Unraveling global malaria incidence and mortality using machine learning and artificial intelligence–driven spatial analysis</div>
-          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. Scientific Reports, 15(1), 28334 (2025)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="malaria global" data-year="2025" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">Unraveling global malaria incidence &amp; mortality using ML-driven spatial analysis</div>
+        <div class="pub-row-cite">Rahman, Shiddik. Scientific Reports, 15(1), 28334 (2025)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
-        <div class="pub-row-num">5</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span></div>
-          <div class="pub-row-title">Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh</div>
-          <div class="pub-row-cite">Rahman, S., Shiddik, A.B. Global Epidemiology, 100230 (2025)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span></div>
+        <div class="pub-row-title">Reflections on explainable AI for predicting dengue outbreaks in Bangladesh</div>
+        <div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100230 (2025)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
-        <div class="pub-row-num">6</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-p">Int. J. Statistical Sciences</span><span class="yb">2025</span></div>
-          <div class="pub-row-title">Data-Driven Dengue Prevention Strategies in Bangladesh using Explainable Artificial Intelligence and Causal Inference</div>
-          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. International Journal of Statistical Sciences, 25(2), 101-113 (2025)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-p">Int. J. Stat. Sciences</span><span class="yb">2025</span></div>
+        <div class="pub-row-title">Data-Driven Dengue Prevention Strategies in Bangladesh using XAI &amp; Causal Inference</div>
+        <div class="pub-row-cite">Rahman, Shiddik. Int. J. Statistical Sciences, 25(2), 101–113 (2025)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="asia vector-borne" data-year="2025" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank" rel="noopener">
-        <div class="pub-row-num">7</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-s">Int. J. Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">Leveraging explainable artificial intelligence and spatial analysis for communicable diseases in Asia (2000–2022) based on health, climate, and socioeconomic factors</div>
-          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. International Journal of Health Geographics, 24(1), 45 (2025)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="asia vector-borne" data-year="2025" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-s">Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">XAI &amp; spatial analysis for communicable diseases in Asia (2000–2022)</div>
+        <div class="pub-row-cite">Rahman, Shiddik. Int. J. Health Geographics, 24(1), 45 (2025)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="asia child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-row-num">8</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-h">BMJ Open</span><span class="yb">2026</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">Bayesian spatiotemporal modelling of neonatal, infant and under-5 mortality (2000–2022) in 41 Asian countries: a population-level observational study</div>
-          <div class="pub-row-cite">Rahman, S., Shiddik, A.B. BMJ Open, 16(2), e108632 (2026)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="asia child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-h">BMJ Open</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">Bayesian spatiotemporal modelling of child mortality (2000–2022) in 41 Asian countries</div>
+        <div class="pub-row-cite">Rahman, Shiddik. BMJ Open, 16(2), e108632 (2026)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="dengue" data-year="2026" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank" rel="noopener">
-        <div class="pub-row-num">9</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-m">Trop. Med. &amp; Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning</div>
-          <div class="pub-row-cite">Shiddik, M.A.B., Toshi, F.Z., Yesmin, S., Rahman, M.S. Tropical Medicine and Infectious Disease, 11(3), 73 (2026)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="dengue" data-year="2026" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-m">Trop. Med. Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">District-Level Dengue Early Warning using Hybrid XAI &amp; Bayesian Deep Learning</div>
+        <div class="pub-row-cite">Shiddik et al. Trop. Med. Infect. Dis., 11(3), 73 (2026)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="vector-borne" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-row-num">10</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-s">BMC Medicine</span><span class="yb">2026</span></div>
-          <div class="pub-row-title">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh: leveraging machine learning and spatial regression for intervention strategies</div>
-          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B., Chowdhury, A.H. BMC Medicine (2026)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="vector-borne" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-s">BMC Medicine</span><span class="yb">2026</span></div>
+        <div class="pub-row-title">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh</div>
+        <div class="pub-row-cite">Rahman, Shiddik, Chowdhury. BMC Medicine (2026)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="dengue global" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-row-num">11</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">Global Prediction of Dengue Incidence Using an Explainable Artificial Intelligence‐Driven ConvLSTM Integrating Environmental, Health, and Socio‐Economic Determinants</div>
-          <div class="pub-row-cite">Shiddik, M.A.B. Health Science Reports, 9(4), e72280 (2026)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="dengue global" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">Global Dengue Prediction using XAI-Driven ConvLSTM integrating environmental &amp; socio-economic data</div>
+        <div class="pub-row-cite">Shiddik. Health Sci Reports, 9(4), e72280 (2026)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="other" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-row-num">12</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-h">Health Science Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">Explainable Artificial Intelligence in Healthcare: Current Landscape, Challenges, and Future Directions</div>
-          <div class="pub-row-cite">Shiddik, M.A.B. Health Science Reports, 9(3), e72172 (2026)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="other" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">Explainable AI in Healthcare: Current Landscape, Challenges &amp; Future Directions</div>
+        <div class="pub-row-cite">Shiddik. Health Sci Reports, 9(3), e72172 (2026)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-      <a class="pub-row" data-topics="child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-row-num">13</div>
-        <div class="pub-row-body">
-          <div class="pub-row-meta"><span class="jb jb-p">Public Health Challenges</span><span class="yb">2026</span><span class="oa">OA</span></div>
-          <div class="pub-row-title">Stillbirth, Neonatal, and Child Mortality in Bangladesh: Progress and Persistent Public Health Challenges</div>
-          <div class="pub-row-cite">Rahman, M.S., Shiddik, M.A.B. Public Health Challenges, 5(3), e70312 (2026)</div>
-          <span class="pub-row-link">View paper →</span>
-        </div>
+      <a class="pub-card" data-topics="child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-row-meta"><span class="jb jb-p">Public Health Challenges</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-row-title">Stillbirth, Neonatal &amp; Child Mortality in Bangladesh: Progress &amp; Persistent Challenges</div>
+        <div class="pub-row-cite">Rahman, Shiddik. Public Health Challenges, 5(3), e70312 (2026)</div>
+        <span class="pub-row-link">View paper →</span>
       </a>
-    </div>
-    </div>
     </div>
   </div>
 </section>
@@ -1427,38 +984,24 @@
 
 <div class="page-body">
 
-  <!-- ===================== ACADEMIC SERVICE (2-column: scrollable list 2/3 + stat sidebar 1/3) ===================== -->
   <div class="section" id="sec-service">
     <div class="section-blob blob-teal" style="width:340px;height:340px;top:-40px;right:-140px;"></div>
-    <div class="section-head"><div><span class="eyebrow">Giving Back to the Field</span><h2>Academic Contribution — Reviewer Service</h2></div><a href="service.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-    <p class="section-desc">Contributing to the integrity of global health research through rigorous peer review for high-impact international journals since 2025.</p>
-    <div class="profile-grid">
-      <div class="service-list">
-        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">PLOS Digital Health</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Global Health</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">BMJ Public Health</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Global Public Health</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Health Science Reports</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Technology and Health Care</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Spatial and Spatio-temporal Epidemiology</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Knowledge-Based Systems</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Peer Reviewer</span><span class="sdot"></span><span class="sname">Journal of Mathematics and Statistics</span><span class="sarrow">→</span></a>
-      </div>
-      <div class="stat-side">
-        <div class="stat-side-title">Reviewer Snapshot</div>
-        <div class="stat-num-row">
-          <div class="stat-num-box"><div class="n count-up" data-count="27">0</div><div class="l">Total Reviews</div></div>
-          <div class="stat-num-box"><div class="n count-up" data-count="9">0</div><div class="l">Journals</div></div>
-          <div class="stat-num-box"><div class="n count-up" data-count="8">0</div><div class="l">Publishers</div></div>
-          <div class="stat-num-box"><div class="n">2025–26</div><div class="l">Active</div></div>
-        </div>
-        <div class="reviewer-badge">
-          <span class="rb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d=M12,3 L19,6 L19,12 C19,17 15.5,20 12,21 C8.5,20 5,17 5,12 L5,6 Z/><path d=M9,12 L11,14 L15,10/></svg></span>
-          <div>
-            <div class="rb-title">Verified Reviewer</div>
-            <div class="rb-sub">Active peer reviewer for BMJ, PLOS, and 7 other journals across global public-health and AI research.</div>
-          </div>
-        </div>
+    <div class="section-head"><div><span class="eyebrow">Giving Back to the Field</span><h2>Reviewer Service</h2></div><a href="service.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <div class="cards-4">
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">PLOS Digital Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">BMJ Global Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">BMJ Public Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Global Public Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Health Science Reports</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Technology and Health Care</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Spatial &amp; Spatio-temporal Epidemiology</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Knowledge-Based Systems</span><span class="sarrow">→</span></div></a>
+    </div>
+    <div class="reviewer-badge">
+      <span class="rb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d=M12,3 L19,6 L19,12 C19,17 15.5,20 12,21 C8.5,20 5,17 5,12 L5,6 Z/><path d=M9,12 L11,14 L15,10/></svg></span>
+      <div>
+        <div class="rb-title">Verified Reviewer · 27 reviews across 9 journals</div>
+        <div class="rb-sub">Active peer reviewer for BMJ, PLOS &amp; 7 other journals in global public-health &amp; AI research since 2025.</div>
       </div>
     </div>
   </div>
@@ -1478,8 +1021,8 @@
             </div>
           </div>
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAnalyticalByteScripts.abs798&tabs=timeline&width=340&height=420&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
-            width="100%" height="420" style="border:none;overflow:hidden" scrolling="yes" frameborder="0"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAnalyticalByteScripts.abs798&tabs=timeline&width=340&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+            width="100%" height="600" style="border:none;overflow:hidden" scrolling="yes" frameborder="0"
             allowfullscreen="true" loading="lazy"
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             title="Analytical Byte Scripts Facebook Page"></iframe>
@@ -1488,31 +1031,21 @@
       </div>
       <div class="vid-grid">
         <div class="vid-card python">
-          <div class="vid-embed">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" allowfullscreen loading="lazy" title="Python Playlist"></iframe>
-          </div>
+          <div class="vid-embed"><iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" allowfullscreen loading="lazy" title="Python Playlist"></iframe></div>
           <div class="vid-body">
             <div class="vid-category cat-python">● Python</div>
             <div class="vid-title">Python for ML &amp; Data Science</div>
             <div class="vid-desc">A complete Python playlist covering data manipulation, visualization, and machine learning workflows for research applications.</div>
-            <div class="vid-footer">
-              <span class="vid-tag tag-python">Python</span>
-              <a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" target="_blank" rel="noopener">Open playlist →</a>
-            </div>
+            <div class="vid-footer"><span class="vid-tag tag-python">Python</span><a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" target="_blank" rel="noopener">Open playlist →</a></div>
           </div>
         </div>
         <div class="vid-card r-prog">
-          <div class="vid-embed">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" allowfullscreen loading="lazy" title="R Programming"></iframe>
-          </div>
+          <div class="vid-embed"><iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" allowfullscreen loading="lazy" title="R Programming"></iframe></div>
           <div class="vid-body">
             <div class="vid-category cat-r">● R Programming</div>
             <div class="vid-title">R Programming &amp; Visualization</div>
             <div class="vid-desc">Covers R programming fundamentals, statistical analysis, and data visualization using ggplot2 and tidyverse packages.</div>
-            <div class="vid-footer">
-              <span class="vid-tag tag-r">R</span>
-              <a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">Open playlist →</a>
-            </div>
+            <div class="vid-footer"><span class="vid-tag tag-r">R</span><a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">Open playlist →</a></div>
           </div>
         </div>
       </div>
@@ -1520,24 +1053,18 @@
     <div class="learn-links">
       <a class="learn-link-card python" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/Python-programming.html">
         <span class="learn-link-icon">🐍</span>
-        <div>
-          <div class="learn-link-title">Learn Python Programming</div>
-          <div class="learn-link-sub">Notes &amp; practice exercises</div>
-        </div>
+        <div><div class="learn-link-title">Learn Python Programming</div><div class="learn-link-sub">Notes &amp; practice exercises</div></div>
       </a>
       <a class="learn-link-card r-prog" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/R-programming.html">
         <span class="learn-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 3 5-7"/></svg></span>
-        <div>
-          <div class="learn-link-title">Learn R Programming</div>
-          <div class="learn-link-sub">Notes &amp; practice exercises</div>
-        </div>
+        <div><div class="learn-link-title">Learn R Programming</div><div class="learn-link-sub">Notes &amp; practice exercises</div></div>
       </a>
     </div>
   </div>
 
   <div class="section" id="sec-data">
     <div class="section-head"><div><span class="eyebrow">Open Science</span><h2>Open Data &amp; Code Lab</h2></div><a href="data-code.html" class="see-all">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-    <div class="data-strip">
+    <div class="cards-4">
       <a href="data-code.html" class="data-chip" style="--accent:var(--rose);"><div class="dc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d=M12,21 C12,21 19,13.4 19,9 A7,7 0 1 0 5,9 C5,13.4 12,21 12,21 Z/><circle cx=12 cy=9 r=2.3/></svg></div><div class="dc-title">Dengue District</div><div class="dc-sub">64 Districts · 2017–2024</div></a>
       <a href="data-code.html" class="data-chip" style="--accent:var(--blue);"><div class="dc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d=M2,12 L6,12 L8,6 L12,18 L14,9 L16,12 L22,12/></svg></div><div class="dc-title">Dengue EWS</div><div class="dc-sub">National · 2000–2024</div></a>
       <a href="data-code.html" class="data-chip" style="--accent:var(--teal);"><div class="dc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><circle cx=12 cy=12 r=9/><path d=M3,12 L21,12 M12,3 C16,7 16,17 12,21 C8,17 8,7 12,3 Z/></svg></div><div class="dc-title">Global TB</div><div class="dc-sub">194 Countries · 2000–2022</div></a>
@@ -1546,39 +1073,31 @@
   </div>
 
 
-  <!-- ===================== PROJECTS & TOOLS (with KPI strip) ===================== -->
   <div class="section" id="sec-projects">
     <div class="section-blob blob-gold" style="width:320px;height:320px;top:0;left:-120px;"></div>
-    <div class="section-head"><div><span class="eyebrow">Built &amp; Shipped</span><h2>Digital Lab — Projects &amp; Tools</h2></div><a href="projects.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-    <p class="section-desc">Interactive dashboards, open-source R packages, and reproducible research applications built to support public health analytics and data science.</p>
-    <div class="kpi-strip">
-      <div class="kpi-chip"><div class="kpi-num count-up" data-count="3">0</div><div class="kpi-lbl">Projects</div></div>
-      <div class="kpi-chip"><div class="kpi-num" style="font-size:16px;">R · Python · HTML</div><div class="kpi-lbl">Technologies</div></div>
-      <div class="kpi-chip"><div class="kpi-num" style="font-size:16px;">Open Source</div><div class="kpi-lbl">All code public</div></div>
-      <div class="kpi-chip"><div class="kpi-num">2026</div><div class="kpi-lbl">Latest Release</div></div>
-    </div>
-    <div class="project-grid">
-      <div class="project-card" style="--accent:var(--teal);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="p-name">Dengue Dashboard</div><div class="p-desc">Interactive district-level early warning visualization for dengue outbreaks across all 64 districts of Bangladesh.</div></div>
-      <div class="project-card" style="--accent:var(--blue);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M9,4 L15,4 A1,1 0 0 1 16,5 L16,6 L8,6 L8,5 A1,1 0 0 1 9,4 Z/><rect x=5 y=6 width=14 height=15 rx=2/><path d=M9,13.5 L11,15.5 L15,10.5/></svg></div><div class="p-name">Systematic Review Tool</div><div class="p-desc">Automated literature screening and data extraction workflow designed for health and epidemiology research.</div></div>
-      <div class="project-card" style="--accent:#d97706;"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M21,8 L12,3 L3,8 L12,13 L21,8 Z/><path d=M3,8 L3,16 L12,21 L21,16 L21,8/><path d=M12,13 L12,21/></svg></div><div class="p-name">R Package</div><div class="p-desc">Open-source R package for epidemiological time-series modeling, SHAP analysis, and visualization.</div></div>
+    <div class="section-head"><div><span class="eyebrow">Built &amp; Shipped</span><h2>Projects &amp; Tools</h2></div><a href="projects.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <div class="cards-4">
+      <div class="project-card" style="--accent:var(--teal);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="p-name">Dengue Dashboard</div><div class="p-desc">Interactive district-level early warning visualization for all 64 districts of Bangladesh.</div></div>
+      <div class="project-card" style="--accent:var(--blue);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M9,4 L15,4 A1,1 0 0 1 16,5 L16,6 L8,6 L8,5 A1,1 0 0 1 9,4 Z/><rect x=5 y=6 width=14 height=15 rx=2/><path d=M9,13.5 L11,15.5 L15,10.5/></svg></div><div class="p-name">Systematic Review Tool</div><div class="p-desc">Automated literature screening &amp; data extraction workflow for health research.</div></div>
+      <div class="project-card" style="--accent:#d97706;"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M21,8 L12,3 L3,8 L12,13 L21,8 Z/><path d=M3,8 L3,16 L12,21 L21,16 L21,8/><path d=M12,13 L12,21/></svg></div><div class="p-name">R Package</div><div class="p-desc">Open-source R package for time-series modeling, SHAP analysis &amp; visualization.</div></div>
     </div>
   </div>
 
 
   <div class="section" id="sec-insights">
     <div class="section-head"><div><span class="eyebrow">Writing</span><h2>Latest Insights</h2></div><a href="insights.html" class="see-all">See all posts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-    <div class="posts-strip">
+    <div class="cards-4">
       <a href="insights.html#post-threshold-selection-outbreak-03" class="post-mini">
         <img class="pm-img" src="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0" alt="Threshold" loading="lazy">
-        <div class="pm-body"><div class="pm-cat">Machine Learning</div><div class="pm-title">Threshold selection in outbreak prediction models</div><div class="pm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 10 April 2026</div></div>
+        <div class="pm-body"><div class="pm-cat">Machine Learning</div><div class="pm-title">Threshold selection in outbreak prediction models</div><div class="pm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 10 Apr 2026</div></div>
       </a>
       <a href="insights.html#post-gather-guidelines-02" class="post-mini">
         <img class="pm-img" src="https://github.com/user-attachments/assets/bb76126f-aa6f-4c7f-ab7e-e03ef4f3afd0" alt="GATHER" loading="lazy">
-        <div class="pm-body"><div class="pm-cat">Public Health</div><div class="pm-title">Understanding GATHER and making health estimates transparent</div><div class="pm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 6 April 2026</div></div>
+        <div class="pm-body"><div class="pm-cat">Public Health</div><div class="pm-title">Understanding GATHER and making health estimates transparent</div><div class="pm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 6 Apr 2026</div></div>
       </a>
       <a href="insights.html#post-normalization-standardization-01" class="post-mini">
         <img class="pm-img" src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5" alt="Normalization" loading="lazy">
-        <div class="pm-body"><div class="pm-cat">Machine Learning</div><div class="pm-title">Normalization vs. Standardization in data preprocessing</div><div class="pm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 6 April 2026</div></div>
+        <div class="pm-body"><div class="pm-cat">Machine Learning</div><div class="pm-title">Normalization vs. Standardization in data preprocessing</div><div class="pm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 6 Apr 2026</div></div>
       </a>
     </div>
   </div>
@@ -1586,38 +1105,18 @@
 
   <div class="section" id="sec-gallery">
     <div class="section-head"><div><span class="eyebrow">Beyond the Lab</span><h2>Photos &amp; Archive</h2></div><a href="archive.html" class="see-all">View all photos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-    <div class="gallery-grid">
+    <div class="cards-4">
       <a href="archive.html#art" class="gallery-item">
         <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2F60693bef-d734-433e-9263-d12fd69d1a15&amp;w=320&amp;q=70&amp;output=webp" alt="Old palace in forest" loading="lazy">
         <div class="gallery-overlay"><span class="gallery-cat">Art &amp; Drawing</span><span class="gallery-label">Old palace in a forest</span></div>
-      </a>
-      <a href="archive.html#art" class="gallery-item">
-        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Faed1c361-fa5d-4a42-85e2-6996f45d9144&amp;w=320&amp;q=70&amp;output=webp" alt="Old castle by the sea" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-cat">Art &amp; Drawing</span><span class="gallery-label">Castle by the sea</span></div>
-      </a>
-      <a href="archive.html#art" class="gallery-item">
-        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fadd32bb6-feb8-42b7-90d1-e7cc85420b6b&amp;w=320&amp;q=70&amp;output=webp" alt="London street drawing" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-cat">Art &amp; Drawing</span><span class="gallery-label">London street</span></div>
       </a>
       <a href="archive.html#conference" class="gallery-item">
         <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fa018d3b2-c0d4-4ad9-bf37-0830107b3e78&amp;w=320&amp;q=70&amp;output=webp" alt="ICASDS 2025 group photo" loading="lazy">
         <div class="gallery-overlay"><span class="gallery-cat">ICASDS 2025</span><span class="gallery-label">Conference at Dhaka University</span></div>
       </a>
-      <a href="archive.html#conference" class="gallery-item">
-        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2F7efc5424-1858-4fd5-ba77-dada434175a0&amp;w=320&amp;q=70&amp;output=webp" alt="Research team from Dept. of Statistics, BRUR" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-cat">ICASDS 2025</span><span class="gallery-label">Research team from Dept. of Statistics, BRUR</span></div>
-      </a>
-      <a href="archive.html#conference" class="gallery-item">
-        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fb0e51715-6a58-4794-9f58-bcb0750b836b&amp;w=320&amp;q=70&amp;output=webp" alt="Team photo Day 2 of conference" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-cat">ICASDS 2025</span><span class="gallery-label">Team photo — Day 2 of conference</span></div>
-      </a>
       <a href="archive.html#academic" class="gallery-item">
         <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2F7f6bdf1c-4424-4a75-98a7-4a4f0914644f&amp;w=320&amp;q=70&amp;output=webp" alt="Research workshop" loading="lazy">
         <div class="gallery-overlay"><span class="gallery-cat">Academic</span><span class="gallery-label">Research workshop</span></div>
-      </a>
-      <a href="archive.html#academic" class="gallery-item">
-        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2F93fad93f-567c-4d7e-9ac7-ba3fca77aa4c&amp;w=320&amp;q=70&amp;output=webp" alt="Youth leadership training, Youth Ending Hunger" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-cat">Academic</span><span class="gallery-label">Youth leadership training — Youth Ending Hunger</span></div>
       </a>
       <a href="archive.html#social" class="gallery-item">
         <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fa8f66ac1-c242-41a8-a209-961fda9dcd9e&amp;w=320&amp;q=70&amp;output=webp" alt="Volunteering during flood relief" loading="lazy">
@@ -1627,17 +1126,13 @@
         <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Ff2ff218d-4f7b-4ec9-a1a9-dbf797734a51&amp;w=320&amp;q=70&amp;output=webp" alt="Dept. of Statistics BRUR" loading="lazy">
         <div class="gallery-overlay"><span class="gallery-cat">Dept. of Statistics</span><span class="gallery-label">BRUR memories</span></div>
       </a>
-      <a href="archive.html#stat" class="gallery-item">
-        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fd73e54f8-fab5-4288-a230-0d8ba0d5a7dd&amp;w=320&amp;q=70&amp;output=webp" alt="Cultural performance, literature and heritage" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-cat">Dept. of Statistics</span><span class="gallery-label">Cultural performance — literature and heritage</span></div>
-      </a>
       <a href="archive.html#travel" class="gallery-item">
         <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Ffe721e9b-b87c-4330-9d05-257eba86a648&amp;w=320&amp;q=70&amp;output=webp" alt="Lalbagh Fort" loading="lazy">
         <div class="gallery-overlay"><span class="gallery-cat">Travel</span><span class="gallery-label">Lalbagh Fort</span></div>
       </a>
       <a href="archive.html#travel" class="gallery-item">
         <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fa47b7229-885a-41b7-bfa0-07c81f441852&amp;w=320&amp;q=70&amp;output=webp" alt="National Martyrs' Memorial, Savar" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-cat">Travel</span><span class="gallery-label">National Martyrs' Memorial, Savar — 1971 liberation war</span></div>
+        <div class="gallery-overlay"><span class="gallery-cat">Travel</span><span class="gallery-label">National Martyrs' Memorial, Savar</span></div>
       </a>
       <a href="archive.html" class="gallery-item gallery-viewall">
         <span class="gv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></span>
@@ -1690,14 +1185,8 @@
 
 <div class="float-actions" id="float-actions">
   <div class="float-menu" id="float-menu">
-    <a href="service.html" class="float-contact-btn" aria-label="View services and pricing" style="background:linear-gradient(135deg,#0d9488,#0f766e);">
-      Services
-      <span class="float-mail-tooltip">Consulting &amp; pricing</span>
-    </a>
-    <a href="contact.html" class="float-contact-btn" aria-label="Go to contact page">
-      Contact
-      <span class="float-mail-tooltip">Contact page</span>
-    </a>
+    <a href="service.html" class="float-contact-btn" aria-label="View services and pricing" style="background:linear-gradient(135deg,#0d9488,#0f766e);">Services<span class="float-mail-tooltip">Consulting &amp; pricing</span></a>
+    <a href="contact.html" class="float-contact-btn" aria-label="Go to contact page">Contact<span class="float-mail-tooltip">Contact page</span></a>
     <a href="mailto:abubokkor.brur60@gmail.com" class="float-mail-btn" aria-label="Send an email">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
       <span class="float-mail-tooltip">abubokkor.brur60@gmail.com</span>
@@ -1708,7 +1197,6 @@
   </button>
 </div>
 
-  
 <script>
 document.querySelectorAll('.dropbtn').forEach(function(btn) {
   btn.addEventListener('click', function(e) {
@@ -1773,9 +1261,28 @@ document.querySelectorAll('.jump-btn').forEach(function(btn) {
 function moveIndicatorToRef(btn) {
   var ind = document.getElementById('jump-indicator');
   if (!ind || !btn) return;
+  if (!btn.closest('.jump-bar-inner')) return;
   ind.style.left = btn.offsetLeft + 'px';
   ind.style.width = btn.offsetWidth + 'px';
 }
+
+/* Smart mobile grouped nav: accordion behaviour */
+(function () {
+  var groupBtns = document.querySelectorAll('.jbm-group-btn');
+  groupBtns.forEach(function (gBtn) {
+    gBtn.addEventListener('click', function () {
+      var targetId = gBtn.dataset.group;
+      var panel = document.getElementById(targetId);
+      var isOpen = panel.classList.contains('open');
+      document.querySelectorAll('.jbm-panel').forEach(function (p) { p.classList.remove('open'); });
+      document.querySelectorAll('.jbm-group-btn').forEach(function (b) { b.classList.remove('active'); });
+      if (!isOpen) {
+        panel.classList.add('open');
+        gBtn.classList.add('active');
+      }
+    });
+  });
+})();
 
 var sectionIds = ['sec-about','sec-interests','sec-skills','sec-courses','sec-publications','sec-service','sec-outreach','sec-data','sec-projects','sec-insights','sec-gallery'];
 var scrollRaf = null;
@@ -1812,9 +1319,7 @@ var fadeObs = new IntersectionObserver(function(entries) {
   });
 }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
 
-var fadeGroups = document.querySelectorAll(
-  '.interest-grid,.skills-grid,.pub-grid,.project-grid,.timeline,.service-list,.data-strip,.posts-strip,.gallery-grid,.learn-links,.outreach-grid,.pub-dash,.kpi-strip,.profile-grid,.stack-sidebar'
-);
+var fadeGroups = document.querySelectorAll('.cards-4,.outreach-grid,.learn-links,.about-interests-grid');
 fadeGroups.forEach(function(group) {
   var items = group.children;
   Array.prototype.forEach.call(items, function(el, i) {
@@ -1826,15 +1331,13 @@ fadeGroups.forEach(function(group) {
     fadeObs.observe(el);
   });
 });
-/* elements not inside a grouped container above */
-document.querySelectorAll('.about-card').forEach(function(el) {
+document.querySelectorAll('.reviewer-badge, .hero-profile-box').forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(18px)';
   el.style.transition = 'opacity .5s ease, transform .5s ease';
   fadeObs.observe(el);
 });
 
-/* ===================== Scroll progress bar ===================== */
 var progressBar = document.getElementById('scroll-progress');
 function updateProgress() {
   var h = document.documentElement;
@@ -1844,7 +1347,6 @@ function updateProgress() {
   if (progressBar) progressBar.style.width = pct + '%';
 }
 
-/* ===================== Hero orb parallax ===================== */
 var parallaxEls = document.querySelectorAll('[data-parallax]');
 function updateParallax() {
   if (reduceMotion) return;
@@ -1867,53 +1369,26 @@ window.addEventListener('scroll', function() {
 }, { passive: true });
 updateProgress();
 
-/* ===================== Sliding jump-bar indicator ===================== */
 var jumpIndicator = document.getElementById('jump-indicator');
 function moveIndicatorTo(btn) {
   if (!jumpIndicator || !btn) return;
   jumpIndicator.style.left = btn.offsetLeft + 'px';
   jumpIndicator.style.width = btn.offsetWidth + 'px';
 }
-var initialActive = document.querySelector('.jump-btn.active');
+var initialActive = document.querySelector('.jump-bar-inner .jump-btn.active');
 requestAnimationFrame(function() {
   syncJumpBarOffset();
   moveIndicatorTo(initialActive);
 });
 window.addEventListener('resize', function() {
   syncJumpBarOffset();
-  moveIndicatorTo(document.querySelector('.jump-btn.active'));
+  moveIndicatorTo(document.querySelector('.jump-bar-inner .jump-btn.active'));
 });
 
-/* ===================== Count-up numbers ===================== */
-var countObs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (!entry.isIntersecting) return;
-    var el = entry.target;
-    countObs.unobserve(el);
-    var target = parseFloat(el.dataset.count);
-    var suffix = el.dataset.suffix || '';
-    if (isNaN(target)) return;
-    if (reduceMotion) { el.textContent = target + suffix; return; }
-    var duration = 1200;
-    var start = null;
-    function step(ts) {
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target + suffix;
-    }
-    requestAnimationFrame(step);
-  });
-}, { threshold: 0.4 });
-document.querySelectorAll('.count-up').forEach(function(el) { countObs.observe(el); });
-
-/* ===================== Publications filter chips ===================== */
 (function () {
   var bar = document.getElementById('pub-filter-bar');
   if (!bar) return;
-  var rows = document.querySelectorAll('#pub-scroll .pub-row');
+  var rows = document.querySelectorAll('#pub-scroll .pub-card');
   bar.addEventListener('click', function (e) {
     var chip = e.target.closest('.filter-chip');
     if (!chip) return;
@@ -1930,7 +1405,6 @@ document.querySelectorAll('.count-up').forEach(function(el) { countObs.observe(e
   });
 })();
 
-/* ===================== Floating action menu (mobile: single FAB that expands) ===================== */
 (function () {
   var wrap = document.getElementById('float-actions');
   var toggle = document.getElementById('float-fab-toggle');
