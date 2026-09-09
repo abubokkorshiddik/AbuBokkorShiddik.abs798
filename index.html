@@ -165,10 +165,10 @@
 
     .hero-profile-box { width: 100%; max-width: 300px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 16px 18px; position: relative; z-index: 1; }
     .hero-profile-box .hpb-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gold2); margin-bottom: 10px; }
-    .hero-profile-box ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .hero-profile-box li { font-size: 12px; line-height: 1.5; color: rgba(255,255,255,.78); display: flex; gap: 7px; }
-    .hero-profile-box li::before { content: '▸'; color: var(--gold2); flex-shrink: 0; }
-    .hero-profile-box .hpb-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 11px; font-size: 11.5px; font-weight: 600; color: var(--gold2); }
+    .hpb-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .hpb-tag { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.82); font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 20px; letter-spacing: .1px; transition: background .15s, border-color .15s; }
+    .hpb-tag:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
+    .hero-profile-box .hpb-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 13px; font-size: 11.5px; font-weight: 600; color: var(--gold2); }
     .hero-profile-box .hpb-link:hover { text-decoration: underline; }
     @media (max-width: 900px) { .hero-profile-box { display: none; } }
 
@@ -195,7 +195,6 @@
     .jump-btn:hover { color: var(--blue); transform: translateY(-1px); }
     .jump-btn.active { color: var(--blue); font-weight: 600; }
     .jump-indicator { position: absolute; bottom: 0; height: 2.5px; background: linear-gradient(90deg, var(--blue), var(--teal)); border-radius: 2px; transition: left .32s cubic-bezier(.4,0,.2,1), width .32s cubic-bezier(.4,0,.2,1); pointer-events: none; }
-    @media (min-width: 901px) { .jump-btn[data-target="sec-about"] { display: none; } }
 
     .page-body { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     .section { padding: 56px 0 0; scroll-margin-top: 115px; position: relative; }
@@ -216,7 +215,6 @@
     .about-card li::before { content: '◆'; color: var(--gold); font-size: 10px; flex-shrink: 0; margin-top: 5px; }
     .about-card .ac-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 14px; font-size: 12.5px; font-weight: 700; color: var(--blue); }
     .about-card .ac-link:hover { text-decoration: underline; }
-    @media (min-width: 901px) { #sec-about { display: none; } }
 
     .cards-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     @media (max-width: 900px) { .cards-4 { grid-template-columns: repeat(2, 1fr); } }
@@ -327,7 +325,7 @@
     .gallery-viewall:hover { border-color: var(--blue); background: var(--sky); transform: translateY(-3px); }
     .gallery-viewall .gv-icon { font-size: 22px; }
 
-    .outreach-fb { display: flex; flex-direction: column; height: 460px; max-width: 400px; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px; box-shadow: var(--sh); }
+    .outreach-fb { display: flex; flex-direction: column; height: 640px; max-width: 400px; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px; box-shadow: var(--sh); }
     .outreach-fb-head { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; flex-shrink: 0; }
     .outreach-fb-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; background: linear-gradient(135deg, #1877f2, #0e5fce); display: flex; align-items: center; justify-content: center; font-size: 15px; }
     .outreach-fb-title { font-size: 12.5px; font-weight: 700; color: var(--text); }
@@ -361,12 +359,22 @@
     .vid-link { font-size: 12px; font-weight: 600; color: var(--blue); }
     .vid-link:hover { text-decoration: underline; }
     @media (max-width: 900px) {
-      .outreach-fb { max-width: 100%; height: auto; }
+      .outreach-fb { max-width: 100%; }
       .outreach-grid { grid-template-columns: 1fr; }
       .vid-grid { height: auto; }
-      .vid-card { height: auto; }
     }
-    @media (max-width: 700px) { .vid-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) {
+      .vid-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .vid-card { height: auto; }
+      .vid-embed { aspect-ratio: 16/10; }
+      .vid-body { padding: 10px 11px 12px; }
+      .vid-category { font-size: 9.5px; margin-bottom: 5px; }
+      .vid-title { font-size: 12.5px; margin-bottom: 4px; line-height: 1.3; }
+      .vid-desc { font-size: 11px; line-height: 1.5; margin-bottom: 9px; -webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+      .vid-footer { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .vid-tag { font-size: 10px; padding: 2px 7px; }
+      .vid-link { font-size: 11px; }
+    }
 
     .learn-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .learn-link-card { display: flex; align-items: center; gap: 12px; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .2s; }
@@ -386,11 +394,12 @@
     .tl-org { font-size: 11.5px; color: var(--text3); }
     .tl-detail { font-size: 11px; color: var(--text3); line-height: 1.5; }
 
-    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 15px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .15s, background .2s; cursor: pointer; border-left: 3px solid transparent; height: 100%; }
+    .service-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 11px 13px; display: flex; flex-direction: column; gap: 6px; box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s, transform .15s, background .2s; cursor: pointer; border-left: 3px solid transparent; height: 100%; justify-content: center; }
     .service-item:hover { box-shadow: var(--sh2); transform: translateY(-2px); background: var(--bg2); }
     .sbadge { font-size: 9.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; border-radius: 5px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0; align-self: flex-start; }
-    .sname { font-size: 12.5px; font-weight: 500; color: var(--text); line-height: 1.35; }
-    .sarrow { font-size: 12px; font-weight: 700; color: var(--blue); align-self: flex-end; }
+    .sitem-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .sname { font-size: 12.5px; font-weight: 500; color: var(--text); line-height: 1.3; }
+    .sarrow { font-size: 13px; font-weight: 700; color: var(--blue); flex-shrink: 0; }
     .service-item:nth-child(4n+1) { border-left-color: var(--purple); }
     .service-item:nth-child(4n+1) .sbadge { color: var(--purple); background: #f5f3ff; border: 1px solid #ddd6fe; }
     .service-item:nth-child(4n+2) { border-left-color: var(--blue); }
@@ -493,6 +502,23 @@
     .brand-logo-text { color: #fff; font-size: 14.5px; font-weight: 600; letter-spacing: .2px; white-space: nowrap; }
     .brand-logo-text span { color: #93c5fd; font-weight: 300; }
     .brand-logo-text:hover { color: #93c5fd; }
+
+    /* Smart mobile jump navigation (grouped/accordion) */
+    .jump-bar-mobile { display: none; }
+    @media (max-width: 820px) {
+      .jump-bar-inner, .jump-bar-fade { display: none !important; }
+      .jump-bar-mobile { display: block; padding: 8px 14px; }
+      .jbm-groups { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+      .jbm-groups::-webkit-scrollbar { display: none; }
+      .jbm-group-btn { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; padding: 8px 13px; border-radius: 20px; border: 1px solid var(--border2); background: var(--white); color: var(--text2); white-space: nowrap; font-family: inherit; cursor: pointer; transition: background .15s, border-color .15s, color .15s; }
+      .jbm-group-btn svg { width: 11px; height: 11px; transition: transform .2s; flex-shrink: 0; }
+      .jbm-group-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+      .jbm-group-btn.active svg { transform: rotate(180deg); }
+      .jbm-panel { display: none; flex-wrap: wrap; gap: 6px; padding-top: 10px; }
+      .jbm-panel.open { display: flex; }
+      .jbm-panel .jump-btn { padding: 8px 13px; font-size: 12.5px; font-weight: 500; border: 1px solid var(--border); border-radius: 16px; background: var(--bg2); color: var(--text2); min-height: auto; }
+      .jbm-panel .jump-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); font-weight: 600; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -646,14 +672,15 @@
         <span class="photo-tag">FIG. 01 — RESEARCHER</span>
       </div>
       <div class="hero-profile-box">
-        <div class="hpb-title">Research Profile</div>
-        <ul>
-          <li>Researcher in ML, Explainable AI &amp; Global Health Analytics</li>
-          <li>13 papers in Nature, BMJ, Springer &amp; Wiley journals</li>
-          <li>Focus: dengue, malaria &amp; TB prediction, spatial epidemiology, climate-health</li>
-          <li>Methods: SHAP, LIME, Bayesian deep learning, ARIMA/ConvLSTM</li>
-          <li>Peer reviewer for BMJ Global Health, PLOS Digital Health &amp; 7 more</li>
-        </ul>
+        <div class="hpb-title">Keywords</div>
+        <div class="hpb-tags">
+          <span class="hpb-tag">Machine Learning</span>
+          <span class="hpb-tag">Explainable AI</span>
+          <span class="hpb-tag">Epidemiology</span>
+          <span class="hpb-tag">Spatiotemporal Analysis</span>
+          <span class="hpb-tag">Disease Prediction</span>
+          <span class="hpb-tag">Climate &amp; Health</span>
+        </div>
         <a class="hpb-link" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener">Google Scholar profile →</a>
       </div>
     </div>
@@ -687,6 +714,34 @@
     <button class="jump-btn" data-target="sec-gallery"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg> Gallery</button>
     <span class="jump-indicator" id="jump-indicator"></span>
   </div>
+  </div>
+
+  <div class="jump-bar-mobile" id="jump-bar-mobile">
+    <div class="jbm-groups">
+      <button class="jbm-group-btn" data-group="jbm-profile">Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="jbm-group-btn" data-group="jbm-academic">Academic <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="jbm-group-btn" data-group="jbm-lab">Digital Lab <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="jbm-group-btn" data-group="jbm-community">Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+    </div>
+    <div class="jbm-panel" id="jbm-profile">
+      <button class="jump-btn" data-target="sec-about">About</button>
+      <button class="jump-btn" data-target="sec-interests">Interests</button>
+      <button class="jump-btn" data-target="sec-skills">Skills</button>
+    </div>
+    <div class="jbm-panel" id="jbm-academic">
+      <button class="jump-btn" data-target="sec-courses">Courses</button>
+      <button class="jump-btn" data-target="sec-publications">Publications</button>
+      <button class="jump-btn" data-target="sec-service">Service</button>
+    </div>
+    <div class="jbm-panel" id="jbm-lab">
+      <button class="jump-btn" data-target="sec-data">Data &amp; Code</button>
+      <button class="jump-btn" data-target="sec-projects">Projects</button>
+    </div>
+    <div class="jbm-panel" id="jbm-community">
+      <button class="jump-btn" data-target="sec-outreach">Outreach</button>
+      <button class="jump-btn" data-target="sec-insights">Insights</button>
+      <button class="jump-btn" data-target="sec-gallery">Gallery</button>
+    </div>
   </div>
 </nav>
 
@@ -933,14 +988,14 @@
     <div class="section-blob blob-teal" style="width:340px;height:340px;top:-40px;right:-140px;"></div>
     <div class="section-head"><div><span class="eyebrow">Giving Back to the Field</span><h2>Reviewer Service</h2></div><a href="service.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <div class="cards-4">
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><span class="sname">PLOS Digital Health</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><span class="sname">BMJ Global Health</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><span class="sname">BMJ Public Health</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><span class="sname">Global Public Health</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><span class="sname">Health Science Reports</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><span class="sname">Technology and Health Care</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><span class="sname">Spatial &amp; Spatio-temporal Epidemiology</span><span class="sarrow">→</span></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><span class="sname">Knowledge-Based Systems</span><span class="sarrow">→</span></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">PLOS Digital Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">BMJ Global Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">BMJ Public Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Global Public Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Health Science Reports</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Technology and Health Care</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Spatial &amp; Spatio-temporal Epidemiology</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Knowledge-Based Systems</span><span class="sarrow">→</span></div></a>
     </div>
     <div class="reviewer-badge">
       <span class="rb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d=M12,3 L19,6 L19,12 C19,17 15.5,20 12,21 C8.5,20 5,17 5,12 L5,6 Z/><path d=M9,12 L11,14 L15,10/></svg></span>
@@ -966,8 +1021,8 @@
             </div>
           </div>
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAnalyticalByteScripts.abs798&tabs=timeline&width=340&height=420&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
-            width="100%" height="420" style="border:none;overflow:hidden" scrolling="yes" frameborder="0"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAnalyticalByteScripts.abs798&tabs=timeline&width=340&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+            width="100%" height="600" style="border:none;overflow:hidden" scrolling="yes" frameborder="0"
             allowfullscreen="true" loading="lazy"
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             title="Analytical Byte Scripts Facebook Page"></iframe>
@@ -1206,9 +1261,28 @@ document.querySelectorAll('.jump-btn').forEach(function(btn) {
 function moveIndicatorToRef(btn) {
   var ind = document.getElementById('jump-indicator');
   if (!ind || !btn) return;
+  if (!btn.closest('.jump-bar-inner')) return;
   ind.style.left = btn.offsetLeft + 'px';
   ind.style.width = btn.offsetWidth + 'px';
 }
+
+/* Smart mobile grouped nav: accordion behaviour */
+(function () {
+  var groupBtns = document.querySelectorAll('.jbm-group-btn');
+  groupBtns.forEach(function (gBtn) {
+    gBtn.addEventListener('click', function () {
+      var targetId = gBtn.dataset.group;
+      var panel = document.getElementById(targetId);
+      var isOpen = panel.classList.contains('open');
+      document.querySelectorAll('.jbm-panel').forEach(function (p) { p.classList.remove('open'); });
+      document.querySelectorAll('.jbm-group-btn').forEach(function (b) { b.classList.remove('active'); });
+      if (!isOpen) {
+        panel.classList.add('open');
+        gBtn.classList.add('active');
+      }
+    });
+  });
+})();
 
 var sectionIds = ['sec-about','sec-interests','sec-skills','sec-courses','sec-publications','sec-service','sec-outreach','sec-data','sec-projects','sec-insights','sec-gallery'];
 var scrollRaf = null;
@@ -1245,7 +1319,7 @@ var fadeObs = new IntersectionObserver(function(entries) {
   });
 }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
 
-var fadeGroups = document.querySelectorAll('.cards-4,.outreach-grid,.learn-links');
+var fadeGroups = document.querySelectorAll('.cards-4,.outreach-grid,.learn-links,.about-interests-grid');
 fadeGroups.forEach(function(group) {
   var items = group.children;
   Array.prototype.forEach.call(items, function(el, i) {
@@ -1257,7 +1331,7 @@ fadeGroups.forEach(function(group) {
     fadeObs.observe(el);
   });
 });
-document.querySelectorAll('.about-card, .reviewer-badge, .hero-profile-box').forEach(function(el) {
+document.querySelectorAll('.reviewer-badge, .hero-profile-box').forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(18px)';
   el.style.transition = 'opacity .5s ease, transform .5s ease';
@@ -1301,14 +1375,14 @@ function moveIndicatorTo(btn) {
   jumpIndicator.style.left = btn.offsetLeft + 'px';
   jumpIndicator.style.width = btn.offsetWidth + 'px';
 }
-var initialActive = document.querySelector('.jump-btn.active');
+var initialActive = document.querySelector('.jump-bar-inner .jump-btn.active');
 requestAnimationFrame(function() {
   syncJumpBarOffset();
   moveIndicatorTo(initialActive);
 });
 window.addEventListener('resize', function() {
   syncJumpBarOffset();
-  moveIndicatorTo(document.querySelector('.jump-btn.active'));
+  moveIndicatorTo(document.querySelector('.jump-bar-inner .jump-btn.active'));
 });
 
 (function () {
