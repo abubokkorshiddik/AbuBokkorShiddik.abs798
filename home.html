@@ -176,7 +176,18 @@
     .hero-ticker-inner span:first-child::before { content: ''; }
     @media (max-width: 640px) { .hero-ticker-inner { display: none; } }
 
-    .side-nav { position: fixed; left: 8px; top: 50%; transform: translateY(-50%); z-index: 500; display: flex; flex-direction: column; gap: 2px; background: rgba(251,249,242,.95); border: 1px solid var(--border); border-radius: 14px; padding: 6px; box-shadow: var(--sh2); max-height: 76vh; overflow-y: auto; scrollbar-width: none; }
+    /* ===== Section jump navigation =====
+       Desktop (≥901px): fixed vertical rail on the left edge, icon-only.
+       Mobile (≤900px): reverts to a horizontal bar in normal document flow,
+       sitting sticky right under the header — same place/behavior as the
+       original design — so it doesn't float over content or need side gutters. */
+    .side-nav {
+      position: fixed; left: 8px; top: 50%; transform: translateY(-50%); z-index: 500;
+      display: flex; flex-direction: column; gap: 2px;
+      background: rgba(251,249,242,.95); border: 1px solid var(--border); border-radius: 14px;
+      padding: 6px; box-shadow: var(--sh2); max-height: 76vh; overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: none;
+    }
     .side-nav::-webkit-scrollbar { display: none; }
     .jump-btn {
       display: flex; align-items: center; justify-content: center; gap: 0; padding: 9px; font-size: 12.5px; font-weight: 500; color: var(--text3);
@@ -188,9 +199,26 @@
     .jump-btn .jb-label { display: none; }
     .jump-btn:hover { background: var(--bg2); color: var(--blue); }
     .jump-btn.active { background: var(--sky); color: var(--blue); }
-    /* Native title attribute supplies the hover label (no layout weight, no content overlap) */
-    @media (max-width: 820px) {
-      .side-nav { max-height: 68vh; }
+
+    @media (max-width: 900px) {
+      /* Bar becomes part of the page flow again: sticky under the navbar,
+         horizontally scrollable, icon + label like the original jump bar. */
+      .side-nav {
+        position: sticky; left: auto; top: 58px; transform: none;
+        flex-direction: row; align-items: center;
+        width: 100%; max-height: none; overflow-y: hidden; overflow-x: auto;
+        border-radius: 0; border: none; border-bottom: 1px solid var(--border);
+        background: var(--white); box-shadow: 0 1px 6px rgba(0,0,0,.05);
+        padding: 4px 10px; gap: 2px; z-index: 200;
+      }
+      .jump-btn {
+        flex-direction: row; gap: 6px; padding: 10px 12px; min-height: 44px;
+        border-radius: 8px; flex-shrink: 0;
+      }
+      .jump-btn .jb-label { display: inline; }
+    }
+    @media (max-width: 480px) {
+      .side-nav { top: 64px; }
     }
 
     .page-body { max-width: 1200px; margin: 0 auto; padding: 0 24px; padding-left: calc(24px + var(--nav-gutter)); }
@@ -434,9 +462,13 @@
     @media (max-width: 1024px) and (min-width: 821px) {
       .page-body { padding: 0 20px; padding-left: calc(20px + var(--nav-gutter)); }
     }
+    @media (max-width: 900px) {
+      /* Nav rail is no longer fixed to the left edge on mobile, so the
+         reserved gutter space is no longer needed anywhere on the page. */
+      :root { --nav-gutter: 0px; }
+    }
     @media (max-width: 820px) {
-      :root { --nav-gutter: 46px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 28px; padding: 36px 24px 40px; padding-left: calc(24px + var(--nav-gutter)); }
+      .hero-inner { grid-template-columns: 1fr; gap: 28px; padding: 36px 24px 40px; padding-left: 24px; }
       .hero-photo-col { order: -1; }
       .photo-frame { width: 140px; }
       .hero h1 { white-space: normal; }
@@ -467,7 +499,7 @@
       .footer-desc, .footer-links a { font-size: 11.5px; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .footer-bottom p { font-size: 11px; }
-      .page-body { padding: 0 18px; padding-left: calc(18px + var(--nav-gutter)); }
+      .page-body { padding: 0 18px; }
       .filter-nav { flex-direction: column; align-items: flex-start; gap: 10px; }
     }
     @media (max-width: 480px) {
@@ -1166,10 +1198,16 @@ drawer.querySelectorAll('.drawer-sec').forEach(function (sec) {
   });
 });
 
+/* Sticky-offset math accounts for the navbar always, and additionally for the
+   section-jump bar's own height only when it's laid out inline (mobile mode,
+   ≤900px) — on desktop it's a fixed side rail and takes no vertical space. */
 function getStickyOffset() {
   var navbar = document.querySelector('.navbar');
-  var navH   = navbar ? navbar.offsetHeight : 58;
-  return { navH: navH, barH: 12 };
+  var sideNav = document.getElementById('side-nav');
+  var navH = navbar ? navbar.offsetHeight : 58;
+  var isInlineMode = window.matchMedia('(max-width: 900px)').matches;
+  var barH = (isInlineMode && sideNav) ? sideNav.offsetHeight : 12;
+  return { navH: navH, barH: barH };
 }
 function jumpTo(id) {
   var el = document.getElementById(id);
@@ -1183,6 +1221,7 @@ document.querySelectorAll('.jump-btn').forEach(function(btn) {
     jumpTo(btn.dataset.target);
     document.querySelectorAll('.jump-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
+    btn.scrollIntoView({ inline: 'center', block: 'nearest' });
   });
 });
 
