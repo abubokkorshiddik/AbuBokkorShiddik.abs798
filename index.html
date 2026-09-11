@@ -275,12 +275,15 @@
     .filter-chip:hover { border-color: var(--blue); color: var(--blue); }
     .filter-chip.active { background: var(--blue); border-color: var(--blue); color: #fff; }
 
-    .pub-list { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: var(--sh); max-width: 780px; }
-    .pub-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: none; border: none; border-bottom: 1px solid var(--border); border-left: 4px solid transparent; border-radius: 0; padding: 14px 18px; box-shadow: none; height: auto; transition: background .15s, border-color .15s; }
+    .pub-list { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: var(--sh); width: 100%; }
+    .pub-card { display: grid; grid-template-columns: 176px 1fr 108px; align-items: center; gap: 18px; background: none; border: none; border-bottom: 1px solid var(--border); border-left: 4px solid transparent; border-radius: 0; padding: 14px 20px; box-shadow: none; height: auto; transition: background .15s, border-color .15s; }
     .pub-card:last-child { border-bottom: none; }
     .pub-card:nth-child(even) { background: var(--bg2); }
     .pub-card:hover { background: var(--sky); box-shadow: none; transform: none; }
     .pub-card-main { display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1; }
+    .pub-col-meta { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+    .pub-col-body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+    .pub-col-action { display: flex; justify-content: flex-end; }
     .pub-card.acc-n { border-left-color: #d97706; }
     .pub-card.acc-h { border-left-color: #0369a1; }
     .pub-card.acc-g { border-left-color: #be185d; }
@@ -293,6 +296,10 @@
     .pub-row-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--blue); flex-shrink: 0; white-space: nowrap; transition: gap .15s; }
     .pub-row-link:hover { gap: 8px; }
     .pub-card.is-hidden { display: none; }
+    @media (max-width: 780px) {
+      .pub-card { grid-template-columns: 1fr; align-items: flex-start; gap: 8px; padding: 12px 16px; }
+      .pub-col-action { justify-content: flex-start; }
+    }
     .jb { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 5px; white-space: nowrap; line-height: 1.4; }
     .jb-n { background:#fff3e0;color:#c2410c;border:1px solid #fdba74; }
     .jb-h { background:#e0f2fe;color:#0369a1;border:1px solid #7dd3fc; }
@@ -497,9 +504,6 @@
       .tag { font-size: 11px; padding: 3px 9px; }
       .pub-row-title { font-size: 12.5px; }
       .pub-row-cite { font-size: 11px; }
-      .pub-list { max-width: 100%; }
-      .pub-card { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 14px; }
-      .pub-row-link { align-self: flex-start; }
       .p-name { font-size: 13px; }
       .p-desc, .dc-sub, .tl-org, .tl-detail { font-size: 11.5px; }
       .dc-title { font-size: 13px; }
@@ -869,116 +873,116 @@
 
     <div class="pub-list" id="pub-scroll">
       <a class="pub-card acc-s" data-topics="measles asia" data-year="2026" href="https://link.springer.com/article/10.1186/s12879-026-14067-y" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-s">BMC Infect Dis</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">BMC Infect Dis</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">District-level measles outbreak prediction in Bangladesh using geospatial artificial intelligence</div>
           <div class="pub-row-cite">Shiddik, Rahman. BMC Infectious Diseases (2026)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-h" data-topics="asia child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-h">BMJ Open</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">BMJ Open</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Bayesian spatiotemporal modelling of child mortality (2000–2022) in 41 Asian countries</div>
           <div class="pub-row-cite">Rahman, Shiddik. BMJ Open, 16(2), e108632 (2026)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-m" data-topics="dengue" data-year="2026" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-m">Trop. Med. Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-m">Trop. Med. Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">District-Level Dengue Early Warning using Hybrid XAI &amp; Bayesian Deep Learning</div>
           <div class="pub-row-cite">Shiddik et al. Trop. Med. Infect. Dis., 11(3), 73 (2026)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-s" data-topics="vector-borne" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-s">BMC Medicine</span><span class="yb">2026</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">BMC Medicine</span><span class="yb">2026</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh</div>
           <div class="pub-row-cite">Rahman, Shiddik, Chowdhury. BMC Medicine (2026)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-h" data-topics="dengue global" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Global Dengue Prediction using XAI-Driven ConvLSTM integrating environmental &amp; socio-economic data</div>
           <div class="pub-row-cite">Shiddik. Health Sci Reports, 9(4), e72280 (2026)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-h" data-topics="other" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Explainable AI in Healthcare: Current Landscape, Challenges &amp; Future Directions</div>
           <div class="pub-row-cite">Shiddik. Health Sci Reports, 9(3), e72172 (2026)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-p" data-topics="child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-p">Public Health Challenges</span><span class="yb">2026</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-p">Public Health Challenges</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Stillbirth, Neonatal &amp; Child Mortality in Bangladesh: Progress &amp; Persistent Challenges</div>
           <div class="pub-row-cite">Rahman, Shiddik. Public Health Challenges, 5(3), e70312 (2026)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-n" data-topics="tuberculosis global" data-year="2025" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">AI to predict socioeconomic, environmental &amp; healthcare drivers of tuberculosis globally</div>
           <div class="pub-row-cite">Rahman, Shiddik. Sci Rep 15, 13619 (2025)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-h" data-topics="dengue" data-year="2025" href="https://doi.org/10.1002/hsr2.70726" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Dengue Early Warning System &amp; Outbreak Prediction in Bangladesh using Interpretable Tree-Based ML</div>
           <div class="pub-row-cite">Rahman, Amrin, Shiddik. Health Sci Reports, 8(5), e70726 (2025)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-g" data-topics="dengue" data-year="2025" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Explainable AI for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</div>
           <div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100210 (2025)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-n" data-topics="malaria global" data-year="2025" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Unraveling global malaria incidence &amp; mortality using ML-driven spatial analysis</div>
           <div class="pub-row-cite">Rahman, Shiddik. Scientific Reports, 15(1), 28334 (2025)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-g" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Reflections on explainable AI for predicting dengue outbreaks in Bangladesh</div>
           <div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100230 (2025)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-p" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-p">Int. J. Stat. Sciences</span><span class="yb">2025</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-p">Int. J. Stat. Sciences</span><span class="yb">2025</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">Data-Driven Dengue Prevention Strategies in Bangladesh using XAI &amp; Causal Inference</div>
           <div class="pub-row-cite">Rahman, Shiddik. Int. J. Statistical Sciences, 25(2), 101–113 (2025)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
       <a class="pub-card acc-s" data-topics="asia vector-borne" data-year="2025" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank" rel="noopener">
-        <div class="pub-card-main">
-          <div class="pub-row-meta"><span class="jb jb-s">Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div>
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
           <div class="pub-row-title">XAI &amp; spatial analysis for communicable diseases in Asia (2000–2022)</div>
           <div class="pub-row-cite">Rahman, Shiddik. Int. J. Health Geographics, 24(1), 45 (2025)</div>
         </div>
-        <span class="pub-row-link">View paper →</span>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
     </div>
   </div>
