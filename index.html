@@ -176,6 +176,11 @@
     .hero-ticker-inner span:first-child::before { content: ''; }
     @media (max-width: 640px) { .hero-ticker-inner { display: none; } }
 
+    /* ===== Section jump navigation =====
+       Desktop (≥901px): fixed vertical rail on the left edge, icon-only.
+       Mobile (≤900px): reverts to a horizontal bar in normal document flow,
+       sitting sticky right under the header — same place/behavior as the
+       original design — so it doesn't float over content or need side gutters. */
     .side-nav {
       position: fixed; left: 8px; top: 50%; transform: translateY(-50%); z-index: 500;
       display: flex; flex-direction: column; gap: 2px;
@@ -196,6 +201,8 @@
     .jump-btn.active { background: var(--sky); color: var(--blue); }
 
     @media (max-width: 900px) {
+      /* Bar becomes part of the page flow again: sticky under the navbar,
+         horizontally scrollable, icon + label like the original jump bar. */
       .side-nav {
         position: sticky; left: auto; top: 58px; transform: none;
         flex-direction: row; align-items: center;
@@ -471,6 +478,8 @@
       .page-body { padding: 0 20px; padding-left: calc(20px + var(--nav-gutter)); }
     }
     @media (max-width: 900px) {
+      /* Nav rail is no longer fixed to the left edge on mobile, so the
+         reserved gutter space is no longer needed anywhere on the page. */
       :root { --nav-gutter: 0px; }
     }
     @media (max-width: 820px) {
@@ -539,179 +548,175 @@
     .brand-logo-text { color: #fff; font-size: 14.5px; font-weight: 600; letter-spacing: .2px; white-space: nowrap; }
     .brand-logo-text span { color: #93c5fd; font-weight: 300; }
     .brand-logo-text:hover { color: #93c5fd; }
-
-    /* ============================================================
-       PRINT STYLESHEET
-       Goal: when the visitor hits Ctrl/Cmd+P, this page prints as a
-       clean, compact CV that keeps the site's navy / gold / teal
-       colour palette and typography, instead of trying to print the
-       full scrollable website (nav bars, floating buttons, embeds,
-       hover animations, decorative blobs, etc. are stripped out).
-       ============================================================ */
-    @media print {
-      @page { size: A4; margin: 14mm 13mm; }
-
-      * { animation: none !important; transition: none !important; box-shadow: none !important; }
-      html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }
-      body { background: #fff !important; font-size: 10.5px; line-height: 1.45; }
-
-      /* Chrome-only / interactive elements: never printed */
-      .navbar, .side-nav, .hamburger, .nav-drawer,
-      .scroll-progress, .float-actions, .wave-divider,
-      .hero-grid, .hero-orb1, .hero-orb2, .hero-orb3, .hero-signal, .hero-ticker,
-      .section-blob, .network-bg, .graph-bg,
-      .filter-nav, .see-all, .filter-bar, .filter-bar-sidebar,
-      .no-print, #sec-outreach, #sec-gallery, #sec-insights,
-      .outreach-fb, .vid-grid, .learn-links, iframe {
-        display: none !important;
-      }
-
-      a[href]:not(.pub-row-link)::after { content: ""; }
-      a { text-decoration: none; color: inherit; }
-
-      /* ---- Cover header: keep the navy hero band, but compact ---- */
-      .hero {
-        min-height: 0 !important;
-        background: var(--navy) !important;
-        page-break-after: avoid;
-      }
-      .hero-inner {
-        padding: 16mm 8mm 10mm !important;
-        grid-template-columns: 1fr auto !important;
-        gap: 16px !important;
-      }
-      .hero h1 { font-size: 24pt !important; white-space: normal !important; color: #fff !important; }
-      .hero h1 .accent { color: transparent !important; -webkit-text-stroke: 1px var(--gold2) !important; }
-      .hero-tagline { color: rgba(255,255,255,.85) !important; font-size: 10pt !important; }
-      .hero-affil { color: rgba(255,255,255,.6) !important; font-size: 8.5pt !important; }
-      .hero-actions { display: none !important; }
-      .photo-frame { width: 100px !important; transform: none !important; }
-      .photo-tag { display: none; }
-
-      /* ---- General layout ---- */
-      .page-body { padding: 0 !important; max-width: 100% !important; }
-      .section { padding: 10px 0 0 !important; scroll-margin-top: 0 !important; }
-      .section:last-child { padding-bottom: 10px !important; }
-      .section-head { margin-bottom: 10px !important; padding-bottom: 8px !important; page-break-after: avoid; }
-      .section-head h2 { font-size: 13pt !important; color: var(--navy) !important; }
-      .eyebrow { font-size: 7.5pt !important; }
-      .section-desc { display: none; }
-
-      /* Force every 4-column / grid block down to 2 columns so text
-         is readable at print scale, and never split a card mid-way */
-      .cards-4 { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
-      .interest-card, .skill-card, .data-chip, .project-card, .tl-card, .service-item {
-        break-inside: avoid; page-break-inside: avoid;
-        box-shadow: none !important; border: 1px solid var(--border2) !important;
-      }
-      .i-watermark, .i-icon svg, .p-icon, .dc-icon { display: none !important; }
-      .i-desc, .p-desc, .dc-sub, .tl-org, .tl-detail { font-size: 8pt !important; }
-      .i-label, .p-name, .dc-title, .tl-name { font-size: 9pt !important; }
-
-      .about-card { box-shadow: none !important; border: 1px solid var(--border2) !important; break-inside: avoid; }
-      .about-card li { font-size: 9.5pt !important; }
-
-      /* ---- Publications: keep the coloured journal badges, but
-         tighten row height and prevent a row splitting across pages */
-      .pub-section { background: #fff !important; border: none !important; padding: 10px 0 0 !important; }
-      .pub-list { box-shadow: none !important; border: 1px solid var(--border2) !important; }
-      .pub-card {
-        break-inside: avoid; page-break-inside: avoid;
-        grid-template-columns: 120px 1fr 0 !important;
-        padding: 8px 10px !important; gap: 10px !important;
-      }
-      .pub-col-action { display: none !important; }
-      .pub-row-title { font-size: 9pt !important; }
-      .pub-row-cite { font-size: 7.8pt !important; }
-      .jb, .yb, .oa { font-size: 7.3pt !important; padding: 2px 6px !important; }
-
-      .reviewer-badge { box-shadow: none !important; border: 1px solid var(--border2) !important; break-inside: avoid; }
-
-      /* ---- Footer becomes a simple contact strip ---- */
-      footer { background: var(--navy) !important; padding: 14px 10mm !important; }
-      .footer-inner { grid-template-columns: 1fr 1fr 1fr !important; gap: 16px !important; padding-bottom: 12px !important; padding-left: 0 !important; }
-      .footer-bottom { padding-left: 0 !important; }
-      .footer-desc, .footer-links a { font-size: 8pt !important; }
-
-      /* Keep section headings with at least some of their content */
-      h2, h3, .tl-name, .pub-row-title { page-break-after: avoid; }
-    }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Md. Abu Bokkor Shiddik",
+    "jobTitle": "Researcher",
+    "description": "Researcher in Machine Learning, Explainable AI and Global Health Analytics.",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Begum Rokeya University, Rangpur", "address": "Rangpur, Bangladesh" },
+    "url": "https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home.html",
+    "image": "https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/Profile.jpeg",
+    "sameAs": ["https://scholar.google.com/citations?user=JWeBd3IAAAAJ", "https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/", "https://orcid.org/0009-0002-0424-446X", "https://github.com/abubokkorshiddik"],
+    "knowsAbout": ["Machine Learning", "Explainable AI", "Epidemiology", "Spatial Analysis", "Global Health Analytics"]
+  }
+  </script>
 </head>
 <body>
+<div class="scroll-progress" id="scroll-progress"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <nav class="navbar">
   <div class="nav-inner">
     <div class="nav-brand">
       <a href="home.html" class="brand-logo-img"><img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png" alt="ABS Logo"></a>
-      <a href="contact.html" class="brand-logo-text">ABS<span> &middot; </span>Abu Bokkor Shiddik</a>
+      <a href="contact.html" class="brand-logo-text">ABS<span> · </span>Abu Bokkor Shiddik</a>
     </div>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="publications.html">Publications</a>
       <div class="dropdown">
-        <button class="dropbtn">Academic &#9662;</button>
+        <button class="dropbtn" aria-expanded="false" aria-haspopup="true">Academic &#9662;</button>
         <div class="dropdown-content">
-          <a href="courses.html">Courses &amp; Training</a>
-          <a href="conference-and-workshop.html">Conferences &amp; Workshops</a>
-          <a href="service.html">Service</a>
+          <a href="courses.html">&#127891; Courses &amp; Training</a>
+          <a href="conference-and-workshop.html">&#127963; Conferences &amp; Workshops</a>
+          <a href="service.html">&#128278; Service</a>
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropbtn">Digital Lab &#9662;</button>
+        <button class="dropbtn" aria-expanded="false" aria-haspopup="true">Digital Lab &#9662;</button>
         <div class="dropdown-content">
-          <a href="projects.html">Projects</a>
-          <a href="data-code.html">Data &amp; Code</a>
+          <a href="projects.html">&#9879; Projects</a>
+          <a href="data-code.html">&#128190; Data &amp; Code</a>
+          <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/game.html">&#127918; Games</a>
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropbtn">Learning &#9662;</button>
+        <button class="dropbtn" aria-expanded="false" aria-haspopup="true">Learning &#9662;</button>
         <div class="dropdown-content">
-          <a href="Learning Notes.html">All Learning Notes</a>
-          <a href="R-programming.html">Learn R Programming</a>
-          <a href="Python-programming.html">Learn Python Programming</a>
+          <a href="Learning Notes.html">&#128218; All Learning Notes</a>
+          <a href="BSc-courses.html">&#127891; B.Sc. Courses</a>
+          <a href="MSc-courses.html">&#127891; M.Sc. Courses</a>
+          <a href="R-programming.html">&#128187; Learn R Programming</a>
+          <a href="Python-programming.html">&#128013; Learn Python Programming</a>
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropbtn">Insights &#9662;</button>
+        <button class="dropbtn" aria-expanded="false" aria-haspopup="true">Insights &#9662;</button>
         <div class="dropdown-content">
-          <a href="insights.html">Posts</a>
-          <a href="videos.html">Videos</a>
-          <a href="archive.html">Photos &amp; Archive</a>
+          <a href="insights.html">&#9997; Posts</a>
+          <a href="videos.html">&#9654; Videos</a>
+          <a href="archive.html">&#128247; Photos &amp; Archive</a>
         </div>
       </div>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <div class="drawer-inner">
+      <a class="drawer-link" href="home.html">Home</a>
+      <a class="drawer-link" href="publications.html">Publications</a>
+      <div class="drawer-div"></div>
+      <div class="drawer-sec">Academic <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
+        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+        <a class="drawer-link" href="service.html">Service</a>
+      </div>
+      <div class="drawer-div"></div>
+      <div class="drawer-sec">Digital Lab <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="projects.html">Projects</a>
+        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+        <a class="drawer-link" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/game.html">Games</a>
+      </div>
+      <div class="drawer-div"></div>
+      <div class="drawer-sec">Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
+        <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
+        <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
+        <a class="drawer-link" href="R-programming.html">Learn R Programming</a>
+        <a class="drawer-link" href="Python-programming.html">Learn Python Programming</a>
+      </div>
+      <div class="drawer-div"></div>
+      <div class="drawer-sec">Insights <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="insights.html">Posts</a>
+        <a class="drawer-link" href="videos.html">Videos</a>
+        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
+      </div>
+    </div>
   </div>
 </nav>
-
 <section class="hero">
   <div class="hero-grid"></div>
-  <div class="hero-orb1"></div>
-  <div class="hero-orb2"></div>
-  <div class="hero-orb3"></div>
+  <div class="hero-orb1" data-parallax="0.06"></div>
+  <div class="hero-orb2" data-parallax="0.1"></div>
+  <div class="hero-orb3" data-parallax="0.14"></div>
+
+  <div class="hero-signal" aria-hidden="true">
+    <svg viewBox="0 0 1200 260" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="signalGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#2563eb" stop-opacity="0"/>
+          <stop offset="18%" stop-color="#2563eb" stop-opacity=".55"/>
+          <stop offset="55%" stop-color="#0d9488" stop-opacity=".7"/>
+          <stop offset="100%" stop-color="#fbbf24" stop-opacity=".9"/>
+        </linearGradient>
+        <linearGradient id="signalFillGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2563eb" stop-opacity=".16"/>
+          <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line class="signal-threshold" x1="0" y1="120" x2="1200" y2="120"/>
+      <text class="signal-threshold-label" x="16" y="112">EARLY-WARNING THRESHOLD</text>
+      <path class="signal-fill" fill="url(#signalFillGrad)" d="M0,230 C 90,225 140,215 190,205 C 260,192 300,175 360,168 C 430,160 470,178 540,150 C 610,122 640,60 700,50 C 770,38 810,95 880,80 C 950,66 990,20 1060,26 C 1120,31 1150,42 1200,40 L1200,260 L0,260 Z"/>
+      <path class="signal-path" d="M0,230 C 90,225 140,215 190,205 C 260,192 300,175 360,168 C 430,160 470,178 540,150 C 610,122 640,60 700,50 C 770,38 810,95 880,80 C 950,66 990,20 1060,26 C 1120,31 1150,42 1200,40"/>
+      <circle class="signal-dot" cx="700" cy="50" r="4"/>
+    </svg>
+  </div>
+
   <div class="hero-inner">
     <div>
-      <div class="hero-tag-label"><span class="sq"></span> Available for Collaboration &middot; 2026</div>
+      <div class="hero-tag-label"><span class="sq"></span> Available for Collaboration · 2026</div>
       <h1><span class="ln">Md. Abu</span> <span class="ln accent">Bokkor</span> <span class="ln">Shiddik</span></h1>
-      <p class="hero-tagline">Researcher &middot; Machine Learning &middot; Explainable AI &middot; Global Health Analytics</p>
-      <p class="hero-affil">Dept. of Statistics, BRUR &middot; Rangpur, Bangladesh</p>
+      <p class="hero-tagline">Researcher · Machine Learning · Explainable AI · Global Health Analytics</p>
+      <p class="hero-affil">Dept. of Statistics, BRUR · Rangpur, Bangladesh</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="cv.html">View CV</a>
-        <a class="btn-outline" href="publications.html">View Publications</a>
-        <a class="btn-outline" href="service.html">Services</a>
-        <a class="btn-outline" href="contact.html">Contact</a>
+        <a class="btn-primary" href="cv.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg> View CV</a>
+        <a class="btn-outline" href="publications.html">View Publications <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn-outline" href="service.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Services</a>
+        <a class="btn-outline" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M4 4h16v16H4z" opacity="0"/><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg> Contact</a>
       </div>
     </div>
+
     <div class="hero-photo-col">
       <div class="photo-frame">
-        <img class="photo-img" src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/Profile.jpeg" alt="Md. Abu Bokkor Shiddik">
-        <span class="photo-tag">FIG. 01 &mdash; RESEARCHER</span>
+        <img class="photo-img" src="https://raw.githubusercontent.com/abubokkorshiddik/Portfolio-AbuBokkorShiddik/main/Profile.jpeg" alt="Md. Abu Bokkor Shiddik" fetchpriority="high" decoding="async">
+        <span class="photo-tag">FIG. 01 — RESEARCHER</span>
       </div>
     </div>
   </div>
 </section>
+
+<nav class="side-nav" id="side-nav" aria-label="Section navigation">
+  <button class="jump-btn active" title="About" data-target="sec-about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span class="jb-label">About</span></button>
+  <button class="jump-btn" title="Interests" data-target="sec-interests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="jb-label">Interests</span></button>
+  <button class="jump-btn" title="Skills" data-target="sec-skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg><span class="jb-label">Skills</span></button>
+  <button class="jump-btn" title="Courses" data-target="sec-courses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M22 10L12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg><span class="jb-label">Courses</span></button>
+  <button class="jump-btn" title="Publications" data-target="sec-publications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg><span class="jb-label">Publications</span></button>
+  <button class="jump-btn" title="Service" data-target="sec-service"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z"/></svg><span class="jb-label">Service</span></button>
+  <button class="jump-btn" title="Outreach" data-target="sec-outreach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M2 3h20v14H6l-4 4Z"/></svg><span class="jb-label">Outreach</span></button>
+  <button class="jump-btn" title="Data & Code" data-target="sec-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg><span class="jb-label">Data &amp; Code</span></button>
+  <button class="jump-btn" title="Projects" data-target="sec-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/></svg><span class="jb-label">Projects</span></button>
+  <button class="jump-btn" title="Insights" data-target="sec-insights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span class="jb-label">Insights</span></button>
+  <button class="jump-btn" title="Gallery" data-target="sec-gallery"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span class="jb-label">Gallery</span></button>
+</nav>
 
 <main id="main-content">
 <div class="page-body">
@@ -727,123 +732,429 @@
         <li>Peer reviewer for BMJ Global Health, PLOS Digital Health &amp; 7 more journals</li>
         <li>Open to research collaboration &amp; doctoral opportunities in ML for global health</li>
       </ul>
-      <a class="ac-link" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener">View live profile on Google Scholar &rarr;</a>
+      <a class="ac-link" href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M22 10L12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg> View live profile on Google Scholar →</a>
     </div>
   </div>
+
 
   <div class="section" id="sec-interests">
+    <div class="section-blob blob-gold" style="width:300px;height:300px;top:20px;left:-100px;"></div>
+    <div class="graph-bg" aria-hidden="true">
+      <svg viewBox="0 0 1000 220" preserveAspectRatio="xMidYMid slice">
+        <g opacity=".5">
+          <rect x="40"  y="150" width="34" height="55" rx="3" fill="#2563eb" opacity=".14"/>
+          <rect x="100" y="120" width="34" height="85" rx="3" fill="#2563eb" opacity=".16"/>
+          <rect x="160" y="95"  width="34" height="110" rx="3" fill="#2563eb" opacity=".18"/>
+          <rect x="220" y="135" width="34" height="70" rx="3" fill="#2563eb" opacity=".14"/>
+          <rect x="280" y="70"  width="34" height="135" rx="3" fill="#2563eb" opacity=".2"/>
+        </g>
+        <path d="M40,160 L100,130 L160,105 L220,145 L280,80 L340,60 L400,90 L460,45" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>
+        <g fill="#f59e0b" opacity=".45">
+          <circle cx="40" cy="160" r="3.5"/><circle cx="160" cy="105" r="3.5"/><circle cx="280" cy="80" r="3.5"/><circle cx="400" cy="90" r="3.5"/><circle cx="460" cy="45" r="4"/>
+        </g>
+      </svg>
+    </div>
     <div class="section-head"><div><span class="eyebrow">Focus Areas</span><h2>Research Interests</h2></div></div>
     <div class="cards-4">
-      <div class="interest-card" style="--accent:var(--blue);"><div class="i-icon">&#9635;</div><div class="i-label">Machine Learning in Public Health</div><div class="i-desc">Tree-based &amp; deep learning models for disease surveillance.</div></div>
-      <div class="interest-card" style="--accent:var(--purple);"><div class="i-icon">&#9636;</div><div class="i-label">Explainable AI (XAI)</div><div class="i-desc">SHAP &amp; LIME make predictions auditable, not black boxes.</div></div>
-      <div class="interest-card" style="--accent:var(--teal);"><div class="i-icon">&#8767;</div><div class="i-label">Epidemiological Modeling</div><div class="i-desc">Tracing how disease burden shifts across time and place.</div></div>
-      <div class="interest-card" style="--accent:#d97706;"><div class="i-icon">&#9678;</div><div class="i-label">Spatiotemporal Analysis</div><div class="i-desc">Moran's I &amp; Getis-Ord Gi* across regions and years.</div></div>
-      <div class="interest-card" style="--accent:var(--rose);"><div class="i-icon">&#8776;</div><div class="i-label">Disease Prediction Systems</div><div class="i-desc">District &amp; national early warning tools for outbreaks.</div></div>
-      <div class="interest-card" style="--accent:var(--green);"><div class="i-icon">&#10052;</div><div class="i-label">Climate &amp; Health</div><div class="i-desc">Eco-climatic triggers linking rainfall &amp; disease risk.</div></div>
+      <div class="interest-card" style="--accent:var(--blue);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x=7 y=7 width=10 height=10 rx=2/><path d="M7 2v3M12 2v3M17 2v3M7 19v3M12 19v3M17 19v3M2 7h3M2 12h3M2 17h3M19 7h3M19 12h3M19 17h3"/><circle cx=12 cy=12 r=2 fill=currentColor stroke=none/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x=7 y=7 width=10 height=10 rx=2/><path d="M7 2v3M12 2v3M17 2v3M7 19v3M12 19v3M17 19v3M2 7h3M2 12h3M2 17h3M19 7h3M19 12h3M19 17h3"/><circle cx=12 cy=12 r=2 fill=currentColor stroke=none/></svg></div><div class="i-label">Machine Learning in Public Health</div><div class="i-desc">Tree-based &amp; deep learning models for disease surveillance.</div></div>
+      <div class="interest-card" style="--accent:var(--purple);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x=2.5 y=14 width=3.2 height=6.5/><rect x=8 y=10 width=3.2 height=10.5/><rect x=13.5 y=6.5 width=3.2 height=14 opacity=".45"/><circle cx=17.5 cy=8.5 r=4.8/><path d=M20.9,11.9 L23,14/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x=2.5 y=14 width=3.2 height=6.5/><rect x=8 y=10 width=3.2 height=10.5/><rect x=13.5 y=6.5 width=3.2 height=14 opacity=".45"/><circle cx=17.5 cy=8.5 r=4.8/><path d=M20.9,11.9 L23,14/></svg></div><div class="i-label">Explainable AI (XAI)</div><div class="i-desc">SHAP &amp; LIME make predictions auditable, not black boxes.</div></div>
+      <div class="interest-card" style="--accent:var(--teal);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d=M2,20 L22,20/><path d="M3 19c2 0 3-1.5 4-5s2-10 5-10 4 8 5 11 2 3 4 3"/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M2,20 L22,20/><path d="M3 19c2 0 3-1.5 4-5s2-10 5-10 4 8 5 11 2 3 4 3"/></svg></div><div class="i-label">Epidemiological Modeling</div><div class="i-desc">Tracing how disease burden shifts across time and place.</div></div>
+      <div class="interest-card" style="--accent:#d97706;"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="i-label">Spatiotemporal Analysis</div><div class="i-desc">Moran's I &amp; Getis-Ord Gi* across regions and years.</div></div>
+      <div class="interest-card" style="--accent:var(--rose);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d=M2,13 L6,13 L8,7 L12,19 L14,10 L16,13 L22,13/><circle cx=14 cy=10 r=1.6 fill=currentColor stroke=none/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M2,13 L6,13 L8,7 L12,19 L14,10 L16,13 L22,13/><circle cx=14 cy=10 r=1.6 fill=currentColor stroke=none/></svg></div><div class="i-label">Disease Prediction Systems</div><div class="i-desc">District &amp; national early warning tools for outbreaks.</div></div>
+      <div class="interest-card" style="--accent:var(--green);"><div class="i-watermark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d=M14,14.6 L14,4.5 A2,2 0 0 0 10,4.5 L10,14.6 A4,4 0 1 0 14,14.6 Z/><path d="M3.5 5.5l1.4 1.1M2 10.5h1.8M3.5 15.5l1.4-1.1" opacity=".55"/></svg></div><div class="i-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M14,14.6 L14,4.5 A2,2 0 0 0 10,4.5 L10,14.6 A4,4 0 1 0 14,14.6 Z/><path d="M3.5 5.5l1.4 1.1M2 10.5h1.8M3.5 15.5l1.4-1.1" opacity=".55"/></svg></div><div class="i-label">Climate &amp; Health</div><div class="i-desc">Eco-climatic triggers linking rainfall &amp; disease risk.</div></div>
     </div>
   </div>
+
 
   <div class="section" id="sec-skills">
+    <div class="network-bg" aria-hidden="true">
+      <svg viewBox="0 0 1000 260" preserveAspectRatio="xMidYMid slice">
+        <g stroke="#2563eb" stroke-opacity=".13" stroke-width="1">
+          <line x1="60" y1="40" x2="220" y2="110"/>
+          <line x1="220" y1="110" x2="120" y2="200"/>
+          <line x1="220" y1="110" x2="400" y2="60"/>
+          <line x1="400" y1="60" x2="560" y2="140"/>
+          <line x1="560" y1="140" x2="420" y2="220"/>
+          <line x1="560" y1="140" x2="740" y2="90"/>
+          <line x1="740" y1="90" x2="900" y2="150"/>
+          <line x1="740" y1="90" x2="820" y2="30"/>
+          <line x1="120" y1="200" x2="20" y2="150"/>
+        </g>
+        <g fill="#2563eb" fill-opacity=".22">
+          <circle cx="60" cy="40" r="3.5"/>
+          <circle cx="220" cy="110" r="4.5"/>
+          <circle cx="120" cy="200" r="3.5"/>
+          <circle cx="400" cy="60" r="3.5"/>
+          <circle cx="560" cy="140" r="5"/>
+          <circle cx="420" cy="220" r="3.5"/>
+          <circle cx="740" cy="90" r="4.5"/>
+          <circle cx="900" cy="150" r="3.5"/>
+          <circle cx="820" cy="30" r="3.5"/>
+          <circle cx="20" cy="150" r="3"/>
+        </g>
+      </svg>
+    </div>
     <div class="section-head"><div><span class="eyebrow">Toolkit</span><h2>Technical Skills</h2></div></div>
     <div class="cards-4">
-      <div class="skill-card" style="--accent:var(--blue);"><div class="skill-lbl">Core Methods</div><div class="tag-row"><span class="tag">Machine Learning</span><span class="tag">SHAP</span><span class="tag">LIME</span><span class="tag">Causal AI</span></div></div>
-      <div class="skill-card" style="--accent:var(--teal);"><div class="skill-lbl">Programming &amp; Tools</div><div class="tag-row"><span class="tag">R</span><span class="tag">Python</span><span class="tag">SPSS</span><span class="tag">Git</span></div></div>
-      <div class="skill-card" style="--accent:#d97706;"><div class="skill-lbl">Advanced Analytics</div><div class="tag-row"><span class="tag">ARIMA/SARIMA</span><span class="tag">Bayesian</span><span class="tag">XGBoost</span></div></div>
-      <div class="skill-card" style="--accent:var(--purple);"><div class="skill-lbl">Application Domains</div><div class="tag-row"><span class="tag">Epidemiology</span><span class="tag">Climate-Health</span></div></div>
+      <div class="skill-card" style="--accent:var(--blue);">
+        <div class="skill-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx=12 cy=12 r=1.5 fill=currentColor stroke=none/><ellipse cx=12 cy=12 rx=9 ry=3.6/><ellipse cx=12 cy=12 rx=9 ry=3.6 transform='rotate(60 12 12)'/><ellipse cx=12 cy=12 rx=9 ry=3.6 transform='rotate(120 12 12)'/></svg>Core Methods</div>
+        <div class="tag-row"><span class="tag">Machine Learning</span><span class="tag">SHAP</span><span class="tag">LIME</span><span class="tag">Causal AI</span></div>
+      </div>
+      <div class="skill-card" style="--accent:var(--teal);">
+        <div class="skill-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d=M8,4 L3,12 L8,20 M16,4 L21,12 L16,20/></svg>Programming &amp; Tools</div>
+        <div class="tag-row"><span class="tag">R</span><span class="tag">Python</span><span class="tag">SPSS</span><span class="tag">Git</span></div>
+      </div>
+      <div class="skill-card" style="--accent:#d97706;">
+        <div class="skill-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><rect x=4 y=12 width=3.4 height=8/><rect x=10.3 y=7 width=3.4 height=13/><rect x=16.6 y=3 width=3.4 height=17/></svg>Advanced Analytics</div>
+        <div class="tag-row"><span class="tag">ARIMA/SARIMA</span><span class="tag">Bayesian</span><span class="tag">XGBoost</span></div>
+      </div>
+      <div class="skill-card" style="--accent:var(--purple);">
+        <div class="skill-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx=12 cy=12 r=9/><path d=M3,12 L21,12/><path d=M12,3 C16,7 16,17 12,21 C8,17 8,7 12,3 Z/></svg>Application Domains</div>
+        <div class="tag-row"><span class="tag">Epidemiology</span><span class="tag">Climate-Health</span></div>
+      </div>
     </div>
   </div>
 
+
   <div class="section" id="sec-courses">
-    <div class="section-head"><div><span class="eyebrow">Continuous Learning</span><h2>Courses &amp; Training</h2></div></div>
+    <div class="section-blob blob-blue" style="width:360px;height:360px;top:40px;right:-140px;"></div>
+    <div class="section-head"><div><span class="eyebrow">Continuous Learning</span><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 10L12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg> Courses &amp; Training</h2></div><a href="courses.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+
+    <div class="filter-nav">
+      <span class="filter-nav-label">Filter by Source</span>
+      <div class="tag-row-sidebar">
+        <span class="filter-chip active">All · 60+</span>
+        <span class="filter-chip">Elsevier · 7</span>
+        <span class="filter-chip">Springer · 4</span>
+        <span class="filter-chip">IBM · 5</span>
+        <span class="filter-chip">University · 4</span>
+        <span class="filter-chip">UN Agencies · 3</span>
+      </div>
+    </div>
+
     <div class="cards-4">
         <div class="tl-item"><div class="tl-card"><div class="tl-date">June 2026</div><div class="tl-name">B.Sc. in Statistics</div><div class="tl-org">Begum Rokeya University, Rangpur</div></div></div>
-        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jan&ndash;Mar 2026</div><div class="tl-name">Scientific &amp; Manuscript Writing Series</div><div class="tl-org">Researcher Academy, Elsevier</div><div class="tl-detail">6 modules on Gen AI in research, manuscript &amp; review writing</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jan–Mar 2026</div><div class="tl-name">Scientific &amp; Manuscript Writing Series</div><div class="tl-org">Researcher Academy, Elsevier</div><div class="tl-detail">6 modules on Gen AI in research, manuscript &amp; review writing</div></div></div>
         <div class="tl-item"><div class="tl-card"><div class="tl-date">Mar 2025</div><div class="tl-name">Practical Time Series Analysis</div><div class="tl-org">State University of New York</div></div></div>
         <div class="tl-item"><div class="tl-card"><div class="tl-date">Sep 2024</div><div class="tl-name">Climate Risk Informed Decision Analysis</div><div class="tl-org">UNESCO</div></div></div>
-        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jan&ndash;Jun 2024</div><div class="tl-name">Data Science &amp; ML Specialization</div><div class="tl-org">IBM</div><div class="tl-detail">6 courses: ML with Python, R for Data Science, Data Science Methodology</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jan–Jun 2024</div><div class="tl-name">Data Science &amp; ML Specialization</div><div class="tl-org">IBM</div><div class="tl-detail">6 courses: ML with Python, R for Data Science, Data Science Methodology</div></div></div>
         <div class="tl-item"><div class="tl-card"><div class="tl-date">Mar 2024</div><div class="tl-name">Successful Presentation</div><div class="tl-org">University of Colorado Boulder</div></div></div>
         <div class="tl-item"><div class="tl-card"><div class="tl-date">Dec 2023</div><div class="tl-name">Research Methodology Series</div><div class="tl-org">RSBRU / Queen Mary / University of London</div><div class="tl-detail">4 courses on interdisciplinary research methods</div></div></div>
         <div class="tl-item"><div class="tl-card"><div class="tl-date">Dec 2023</div><div class="tl-name">Hypothesis Testing: Intro to Statistical Analysis</div><div class="tl-org">SAS</div></div></div>
         <div class="tl-item"><div class="tl-card"><div class="tl-date">Nov 2023</div><div class="tl-name">UNICEF Training Series</div><div class="tl-org">UNICEF</div><div class="tl-detail">Education in Emergencies; Leadership for Adolescents</div></div></div>
-        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jul&ndash;Dec 2016</div><div class="tl-name">Diploma in Computer Science</div><div class="tl-org">Bangladesh Computer Education (BCE)</div></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jul–Dec 2016</div><div class="tl-name">Diploma in Computer Science</div><div class="tl-org">Bangladesh Computer Education (BCE)</div></div></div>
         <div class="tl-item"><div class="tl-card"><div class="tl-date">2019</div><div class="tl-name">Higher Secondary Certificate (Science)</div><div class="tl-org">Police Lines School and College, Rangpur</div></div></div>
     </div>
   </div>
+
 
 </div>
 
 <section class="pub-section" id="sec-publications">
   <div class="page-body">
-    <div class="section-head" style="margin-top:0;padding-top:0;"><div><span class="eyebrow">Peer-Reviewed Output</span><h2>Publications</h2></div></div>
+    <div class="section-head" style="margin-top:0;padding-top:0;">
+      <div><span class="eyebrow">Peer-Reviewed Output</span><h2>Publications</h2></div>
+      <a href="publications.html" class="see-all">View all publications <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <div class="filter-nav">
+      <span class="filter-nav-label">Filter by Topic / Year</span>
+      <div class="filter-bar-sidebar" id="pub-filter-bar">
+        <button class="filter-chip active" data-filter="all">All · 14</button>
+        <button class="filter-chip" data-filter="dengue">Dengue · 6</button>
+        <button class="filter-chip" data-filter="malaria">Malaria · 1</button>
+        <button class="filter-chip" data-filter="tuberculosis">Tuberculosis · 1</button>
+        <button class="filter-chip" data-filter="child-mortality">Child Mortality · 2</button>
+        <button class="filter-chip" data-filter="asia">Asia · 2</button>
+        <button class="filter-chip" data-filter="2026">2026 · 7</button>
+        <button class="filter-chip" data-filter="2025">2025 · 7</button>
+      </div>
+    </div>
+
     <div class="pub-list" id="pub-scroll">
-      <a class="pub-card acc-s" href="https://link.springer.com/article/10.1186/s12879-026-14067-y" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">BMC Infect Dis</span><span class="yb">2026</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">District-level measles outbreak prediction in Bangladesh using geospatial artificial intelligence</div><div class="pub-row-cite">Shiddik, Rahman. BMC Infectious Diseases (2026)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-h" href="#" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">BMJ Open</span><span class="yb">2026</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">Bayesian spatiotemporal modelling of child mortality (2000&ndash;2022) in 41 Asian countries</div><div class="pub-row-cite">Rahman, Shiddik. BMJ Open, 16(2), e108632 (2026)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-m" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-m">Trop. Med. Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">District-Level Dengue Early Warning using Hybrid XAI &amp; Bayesian Deep Learning</div><div class="pub-row-cite">Shiddik et al. Trop. Med. Infect. Dis., 11(3), 73 (2026)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-s" href="#" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">BMC Medicine</span><span class="yb">2026</span></div></div><div class="pub-col-body"><div class="pub-row-title">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh</div><div class="pub-row-cite">Rahman, Shiddik, Chowdhury. BMC Medicine (2026)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-h" href="#" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">Global Dengue Prediction using XAI-Driven ConvLSTM integrating environmental &amp; socio-economic data</div><div class="pub-row-cite">Shiddik. Health Sci Reports, 9(4), e72280 (2026)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-h" href="#" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">Explainable AI in Healthcare: Current Landscape, Challenges &amp; Future Directions</div><div class="pub-row-cite">Shiddik. Health Sci Reports, 9(3), e72172 (2026)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-p" href="#" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-p">Public Health Challenges</span><span class="yb">2026</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">Stillbirth, Neonatal &amp; Child Mortality in Bangladesh: Progress &amp; Persistent Challenges</div><div class="pub-row-cite">Rahman, Shiddik. Public Health Challenges, 5(3), e70312 (2026)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-n" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">AI to predict socioeconomic, environmental &amp; healthcare drivers of tuberculosis globally</div><div class="pub-row-cite">Rahman, Shiddik. Sci Rep 15, 13619 (2025)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-h" href="https://doi.org/10.1002/hsr2.70726" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">Dengue Early Warning System &amp; Outbreak Prediction in Bangladesh using Interpretable Tree-Based ML</div><div class="pub-row-cite">Rahman, Amrin, Shiddik. Health Sci Reports, 8(5), e70726 (2025)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-g" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">Explainable AI for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</div><div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100210 (2025)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-n" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">Unraveling global malaria incidence &amp; mortality using ML-driven spatial analysis</div><div class="pub-row-cite">Rahman, Shiddik. Scientific Reports, 15(1), 28334 (2025)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-g" href="#" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span></div></div><div class="pub-col-body"><div class="pub-row-title">Reflections on explainable AI for predicting dengue outbreaks in Bangladesh</div><div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100230 (2025)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-p" href="#" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-p">Int. J. Stat. Sciences</span><span class="yb">2025</span></div></div><div class="pub-col-body"><div class="pub-row-title">Data-Driven Dengue Prevention Strategies in Bangladesh using XAI &amp; Causal Inference</div><div class="pub-row-cite">Rahman, Shiddik. Int. J. Statistical Sciences, 25(2), 101&ndash;113 (2025)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
-      <a class="pub-card acc-s" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank" rel="noopener"><div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div></div><div class="pub-col-body"><div class="pub-row-title">XAI &amp; spatial analysis for communicable diseases in Asia (2000&ndash;2022)</div><div class="pub-row-cite">Rahman, Shiddik. Int. J. Health Geographics, 24(1), 45 (2025)</div></div><div class="pub-col-action"><span class="pub-row-link">View paper &rarr;</span></div></a>
+      <a class="pub-card acc-s" data-topics="measles asia" data-year="2026" href="https://link.springer.com/article/10.1186/s12879-026-14067-y" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">BMC Infect Dis</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">District-level measles outbreak prediction in Bangladesh using geospatial artificial intelligence</div>
+          <div class="pub-row-cite">Shiddik, Rahman. BMC Infectious Diseases (2026)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-h" data-topics="asia child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">BMJ Open</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Bayesian spatiotemporal modelling of child mortality (2000–2022) in 41 Asian countries</div>
+          <div class="pub-row-cite">Rahman, Shiddik. BMJ Open, 16(2), e108632 (2026)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-m" data-topics="dengue" data-year="2026" href="https://doi.org/10.3390/tropicalmed11030073" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-m">Trop. Med. Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">District-Level Dengue Early Warning using Hybrid XAI &amp; Bayesian Deep Learning</div>
+          <div class="pub-row-cite">Shiddik et al. Trop. Med. Infect. Dis., 11(3), 73 (2026)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-s" data-topics="vector-borne" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">BMC Medicine</span><span class="yb">2026</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh</div>
+          <div class="pub-row-cite">Rahman, Shiddik, Chowdhury. BMC Medicine (2026)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-h" data-topics="dengue global" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Global Dengue Prediction using XAI-Driven ConvLSTM integrating environmental &amp; socio-economic data</div>
+          <div class="pub-row-cite">Shiddik. Health Sci Reports, 9(4), e72280 (2026)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-h" data-topics="other" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Explainable AI in Healthcare: Current Landscape, Challenges &amp; Future Directions</div>
+          <div class="pub-row-cite">Shiddik. Health Sci Reports, 9(3), e72172 (2026)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-p" data-topics="child-mortality" data-year="2026" href="#" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-p">Public Health Challenges</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Stillbirth, Neonatal &amp; Child Mortality in Bangladesh: Progress &amp; Persistent Challenges</div>
+          <div class="pub-row-cite">Rahman, Shiddik. Public Health Challenges, 5(3), e70312 (2026)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-n" data-topics="tuberculosis global" data-year="2025" href="https://doi.org/10.1038/s41598-025-96973-w" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">AI to predict socioeconomic, environmental &amp; healthcare drivers of tuberculosis globally</div>
+          <div class="pub-row-cite">Rahman, Shiddik. Sci Rep 15, 13619 (2025)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-h" data-topics="dengue" data-year="2025" href="https://doi.org/10.1002/hsr2.70726" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Dengue Early Warning System &amp; Outbreak Prediction in Bangladesh using Interpretable Tree-Based ML</div>
+          <div class="pub-row-cite">Rahman, Amrin, Shiddik. Health Sci Reports, 8(5), e70726 (2025)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-g" data-topics="dengue" data-year="2025" href="https://doi.org/10.1016/j.gloepi.2025.100210" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Explainable AI for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</div>
+          <div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100210 (2025)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-n" data-topics="malaria global" data-year="2025" href="https://doi.org/10.1038/s41598-025-12872-0" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Unraveling global malaria incidence &amp; mortality using ML-driven spatial analysis</div>
+          <div class="pub-row-cite">Rahman, Shiddik. Scientific Reports, 15(1), 28334 (2025)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-g" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Reflections on explainable AI for predicting dengue outbreaks in Bangladesh</div>
+          <div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100230 (2025)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-p" data-topics="dengue" data-year="2025" href="#" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-p">Int. J. Stat. Sciences</span><span class="yb">2025</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">Data-Driven Dengue Prevention Strategies in Bangladesh using XAI &amp; Causal Inference</div>
+          <div class="pub-row-cite">Rahman, Shiddik. Int. J. Statistical Sciences, 25(2), 101–113 (2025)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
+      <a class="pub-card acc-s" data-topics="asia vector-borne" data-year="2025" href="https://doi.org/10.1186/s12942-025-00433-7" target="_blank" rel="noopener">
+        <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
+        <div class="pub-col-body">
+          <div class="pub-row-title">XAI &amp; spatial analysis for communicable diseases in Asia (2000–2022)</div>
+          <div class="pub-row-cite">Rahman, Shiddik. Int. J. Health Geographics, 24(1), 45 (2025)</div>
+        </div>
+        <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
+      </a>
     </div>
   </div>
 </section>
 
+
+
 <div class="page-body">
 
   <div class="section" id="sec-service">
-    <div class="section-head"><div><span class="eyebrow">Giving Back to the Field</span><h2>Reviewer Service</h2></div></div>
+    <div class="section-blob blob-teal" style="width:340px;height:340px;top:-40px;right:-140px;"></div>
+    <div class="section-head"><div><span class="eyebrow">Giving Back to the Field</span><h2>Reviewer Service</h2></div><a href="service.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <div class="cards-4">
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">PLOS Digital Health</span><span class="sarrow">&rarr;</span></div></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">BMJ Global Health</span><span class="sarrow">&rarr;</span></div></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">BMJ Public Health</span><span class="sarrow">&rarr;</span></div></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Global Public Health</span><span class="sarrow">&rarr;</span></div></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Health Science Reports</span><span class="sarrow">&rarr;</span></div></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Technology and Health Care</span><span class="sarrow">&rarr;</span></div></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Spatial &amp; Spatio-temporal Epidemiology</span><span class="sarrow">&rarr;</span></div></a>
-        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Knowledge-Based Systems</span><span class="sarrow">&rarr;</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">PLOS Digital Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">BMJ Global Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">BMJ Public Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Global Public Health</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Health Science Reports</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Technology and Health Care</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Spatial &amp; Spatio-temporal Epidemiology</span><span class="sarrow">→</span></div></a>
+        <a class="service-item" href="service.html"><span class="sbadge">Reviewer</span><div class="sitem-row"><span class="sname">Knowledge-Based Systems</span><span class="sarrow">→</span></div></a>
     </div>
     <div class="reviewer-badge">
-      <span class="rb-icon">&#10003;</span>
+      <span class="rb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d=M12,3 L19,6 L19,12 C19,17 15.5,20 12,21 C8.5,20 5,17 5,12 L5,6 Z/><path d=M9,12 L11,14 L15,10/></svg></span>
       <div>
-        <div class="rb-title">Verified Reviewer &middot; 27 reviews across 9 journals</div>
+        <div class="rb-title">Verified Reviewer · 27 reviews across 9 journals</div>
         <div class="rb-sub">Active peer reviewer for BMJ, PLOS &amp; 7 other journals in global public-health &amp; AI research since 2025.</div>
       </div>
     </div>
   </div>
 
-  <div class="section no-print" id="sec-outreach">
+
+  <div class="section" id="sec-outreach">
     <div class="section-head"><div><span class="eyebrow">Teaching &amp; Community</span><h2>Academic Content &amp; Outreach</h2></div></div>
     <p class="section-desc">Video tutorials, community updates, and hands-on programming notes to complement the research.</p>
+    <div class="outreach-grid">
+      <div class="outreach-fb-col">
+        <div class="outreach-fb">
+          <div class="outreach-fb-head">
+            <span class="outreach-fb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></span>
+            <div>
+              <div class="outreach-fb-title">Analytical Byte Scripts</div>
+              <div class="outreach-fb-sub">Facebook Page</div>
+            </div>
+          </div>
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAnalyticalByteScripts.abs798&tabs=timeline&width=340&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+            width="100%" height="600" style="border:none;overflow:hidden" scrolling="yes" frameborder="0"
+            allowfullscreen="true" loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            title="Analytical Byte Scripts Facebook Page"></iframe>
+          <a class="outreach-fb-link" href="https://www.facebook.com/AnalyticalByteScripts.abs798" target="_blank" rel="noopener">Visit page on Facebook →</a>
+        </div>
+      </div>
+      <div class="vid-grid">
+        <div class="vid-card python">
+          <div class="vid-embed"><iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" allowfullscreen loading="lazy" title="Python Playlist"></iframe></div>
+          <div class="vid-body">
+            <div class="vid-category cat-python">● Python</div>
+            <div class="vid-title">Python for ML &amp; Data Science</div>
+            <div class="vid-desc">A complete Python playlist covering data manipulation, visualization, and machine learning workflows for research applications.</div>
+            <div class="vid-footer"><span class="vid-tag tag-python">Python</span><a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX9bhNDXnYs4D3NPELKC74NB" target="_blank" rel="noopener">Open playlist →</a></div>
+          </div>
+        </div>
+        <div class="vid-card r-prog">
+          <div class="vid-embed"><iframe src="https://www.youtube.com/embed/videoseries?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" allowfullscreen loading="lazy" title="R Programming"></iframe></div>
+          <div class="vid-body">
+            <div class="vid-category cat-r">● R Programming</div>
+            <div class="vid-title">R Programming &amp; Visualization</div>
+            <div class="vid-desc">Covers R programming fundamentals, statistical analysis, and data visualization using ggplot2 and tidyverse packages.</div>
+            <div class="vid-footer"><span class="vid-tag tag-r">R</span><a class="vid-link" href="https://www.youtube.com/playlist?list=PLEyQp_lYcUX_Vlid1zJ3vvHfi_0yeQYBe" target="_blank" rel="noopener">Open playlist →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="learn-links">
+      <a class="learn-link-card python" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/Python-programming.html">
+        <span class="learn-link-icon">🐍</span>
+        <div><div class="learn-link-title">Learn Python Programming</div><div class="learn-link-sub">Notes &amp; practice exercises</div></div>
+      </a>
+      <a class="learn-link-card r-prog" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/R-programming.html">
+        <span class="learn-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 3 5-7"/></svg></span>
+        <div><div class="learn-link-title">Learn R Programming</div><div class="learn-link-sub">Notes &amp; practice exercises</div></div>
+      </a>
+    </div>
   </div>
 
   <div class="section" id="sec-data">
-    <div class="section-head"><div><span class="eyebrow">Open Science</span><h2>Open Data &amp; Code Lab</h2></div></div>
+    <div class="section-head"><div><span class="eyebrow">Open Science</span><h2>Open Data &amp; Code Lab</h2></div><a href="data-code.html" class="see-all">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <div class="cards-4">
-      <a href="data-code.html" class="data-chip" style="--accent:var(--rose);"><div class="dc-title">Dengue District</div><div class="dc-sub">64 Districts &middot; 2017&ndash;2024</div></a>
-      <a href="data-code.html" class="data-chip" style="--accent:var(--blue);"><div class="dc-title">Dengue EWS</div><div class="dc-sub">National &middot; 2000&ndash;2024</div></a>
-      <a href="data-code.html" class="data-chip" style="--accent:var(--teal);"><div class="dc-title">Global TB</div><div class="dc-sub">194 Countries &middot; 2000&ndash;2022</div></a>
-      <a href="data-code.html" class="data-chip" style="--accent:var(--purple);"><div class="dc-title">Global Malaria</div><div class="dc-sub">106 Countries &middot; 2000&ndash;2022</div></a>
+      <a href="data-code.html" class="data-chip" style="--accent:var(--rose);"><div class="dc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d=M12,21 C12,21 19,13.4 19,9 A7,7 0 1 0 5,9 C5,13.4 12,21 12,21 Z/><circle cx=12 cy=9 r=2.3/></svg></div><div class="dc-title">Dengue District</div><div class="dc-sub">64 Districts · 2017–2024</div></a>
+      <a href="data-code.html" class="data-chip" style="--accent:var(--blue);"><div class="dc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d=M2,12 L6,12 L8,6 L12,18 L14,9 L16,12 L22,12/></svg></div><div class="dc-title">Dengue EWS</div><div class="dc-sub">National · 2000–2024</div></a>
+      <a href="data-code.html" class="data-chip" style="--accent:var(--teal);"><div class="dc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><circle cx=12 cy=12 r=9/><path d=M3,12 L21,12 M12,3 C16,7 16,17 12,21 C8,17 8,7 12,3 Z/></svg></div><div class="dc-title">Global TB</div><div class="dc-sub">194 Countries · 2000–2022</div></a>
+      <a href="data-code.html" class="data-chip" style="--accent:var(--purple);"><div class="dc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><circle cx=12 cy=12 r=9/><path d=M3,12 L21,12 M12,3 C16,7 16,17 12,21 C8,17 8,7 12,3 Z/></svg></div><div class="dc-title">Global Malaria</div><div class="dc-sub">106 Countries · 2000–2022</div></a>
     </div>
   </div>
 
+
   <div class="section" id="sec-projects">
-    <div class="section-head"><div><span class="eyebrow">Built &amp; Shipped</span><h2>Projects &amp; Tools</h2></div></div>
+    <div class="section-blob blob-gold" style="width:320px;height:320px;top:0;left:-120px;"></div>
+    <div class="section-head"><div><span class="eyebrow">Built &amp; Shipped</span><h2>Projects &amp; Tools</h2></div><a href="projects.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <div class="cards-4">
-      <div class="project-card" style="--accent:var(--teal);"><div class="p-name">Dengue Dashboard</div><div class="p-desc">Interactive district-level early warning visualization for all 64 districts of Bangladesh.</div></div>
-      <div class="project-card" style="--accent:var(--blue);"><div class="p-name">Systematic Review Tool</div><div class="p-desc">Automated literature screening &amp; data extraction workflow for health research.</div></div>
-      <div class="project-card" style="--accent:#d97706;"><div class="p-name">R Package</div><div class="p-desc">Open-source R package for time-series modeling, SHAP analysis &amp; visualization.</div></div>
+      <div class="project-card" style="--accent:var(--teal);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="p-name">Dengue Dashboard</div><div class="p-desc">Interactive district-level early warning visualization for all 64 districts of Bangladesh.</div></div>
+      <div class="project-card" style="--accent:var(--blue);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M9,4 L15,4 A1,1 0 0 1 16,5 L16,6 L8,6 L8,5 A1,1 0 0 1 9,4 Z/><rect x=5 y=6 width=14 height=15 rx=2/><path d=M9,13.5 L11,15.5 L15,10.5/></svg></div><div class="p-name">Systematic Review Tool</div><div class="p-desc">Automated literature screening &amp; data extraction workflow for health research.</div></div>
+      <div class="project-card" style="--accent:#d97706;"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M21,8 L12,3 L3,8 L12,13 L21,8 Z/><path d=M3,8 L3,16 L12,21 L21,16 L21,8/><path d=M12,13 L12,21/></svg></div><div class="p-name">R Package</div><div class="p-desc">Open-source R package for time-series modeling, SHAP analysis &amp; visualization.</div></div>
     </div>
   </div>
+
+
+  <div class="section" id="sec-insights">
+    <div class="section-head"><div><span class="eyebrow">Writing</span><h2>Latest Insights</h2></div><a href="insights.html" class="see-all">See all posts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <div class="cards-4">
+      <a href="insights.html#post-threshold-selection-outbreak-03" class="post-mini">
+        <img class="pm-img" src="https://github.com/user-attachments/assets/3b36f824-5f93-4a1d-8563-3388005915e0" alt="Threshold" loading="lazy">
+        <div class="pm-body"><div class="pm-cat">Machine Learning</div><div class="pm-title">Threshold selection in outbreak prediction models</div><div class="pm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 10 Apr 2026</div></div>
+      </a>
+      <a href="insights.html#post-gather-guidelines-02" class="post-mini">
+        <img class="pm-img" src="https://github.com/user-attachments/assets/bb76126f-aa6f-4c7f-ab7e-e03ef4f3afd0" alt="GATHER" loading="lazy">
+        <div class="pm-body"><div class="pm-cat">Public Health</div><div class="pm-title">Understanding GATHER and making health estimates transparent</div><div class="pm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 6 Apr 2026</div></div>
+      </a>
+      <a href="insights.html#post-normalization-standardization-01" class="post-mini">
+        <img class="pm-img" src="https://github.com/user-attachments/assets/196a03ba-b447-45b8-bdd4-e76869c61df5" alt="Normalization" loading="lazy">
+        <div class="pm-body"><div class="pm-cat">Machine Learning</div><div class="pm-title">Normalization vs. Standardization in data preprocessing</div><div class="pm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 6 Apr 2026</div></div>
+      </a>
+    </div>
+  </div>
+
+
+  <div class="section" id="sec-gallery">
+    <div class="section-head"><div><span class="eyebrow">Beyond the Lab</span><h2>Photos &amp; Archive</h2></div><a href="archive.html" class="see-all">View all photos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <div class="cards-4">
+      <a href="archive.html#art" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2F60693bef-d734-433e-9263-d12fd69d1a15&amp;w=320&amp;q=70&amp;output=webp" alt="Old palace in forest" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Art &amp; Drawing</span><span class="gallery-label">Old palace in a forest</span></div>
+      </a>
+      <a href="archive.html#conference" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fa018d3b2-c0d4-4ad9-bf37-0830107b3e78&amp;w=320&amp;q=70&amp;output=webp" alt="ICASDS 2025 group photo" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">ICASDS 2025</span><span class="gallery-label">Conference at Dhaka University</span></div>
+      </a>
+      <a href="archive.html#academic" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2F7f6bdf1c-4424-4a75-98a7-4a4f0914644f&amp;w=320&amp;q=70&amp;output=webp" alt="Research workshop" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Academic</span><span class="gallery-label">Research workshop</span></div>
+      </a>
+      <a href="archive.html#social" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fa8f66ac1-c242-41a8-a209-961fda9dcd9e&amp;w=320&amp;q=70&amp;output=webp" alt="Volunteering during flood relief" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Volunteering</span><span class="gallery-label">Flood relief efforts</span></div>
+      </a>
+      <a href="archive.html#stat" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Ff2ff218d-4f7b-4ec9-a1a9-dbf797734a51&amp;w=320&amp;q=70&amp;output=webp" alt="Dept. of Statistics BRUR" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Dept. of Statistics</span><span class="gallery-label">BRUR memories</span></div>
+      </a>
+      <a href="archive.html#travel" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Ffe721e9b-b87c-4330-9d05-257eba86a648&amp;w=320&amp;q=70&amp;output=webp" alt="Lalbagh Fort" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Travel</span><span class="gallery-label">Lalbagh Fort</span></div>
+      </a>
+      <a href="archive.html#travel" class="gallery-item">
+        <img src="https://wsrv.nl/?url=github.com%2Fuser-attachments%2Fassets%2Fa47b7229-885a-41b7-bfa0-07c81f441852&amp;w=320&amp;q=70&amp;output=webp" alt="National Martyrs' Memorial, Savar" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-cat">Travel</span><span class="gallery-label">National Martyrs' Memorial, Savar</span></div>
+      </a>
+      <a href="archive.html" class="gallery-item gallery-viewall">
+        <span class="gv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></span>
+        <span>View All Photos</span>
+      </a>
+    </div>
+  </div>
+
+
 
 </div>
 </main>
 
+<div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 46" preserveAspectRatio="none"><path class="wave-to-navy" d="M0,18 C 200,40 400,4 600,20 C 800,36 1000,10 1200,24 L1200,46 L0,46 Z"/></svg></div>
 <footer>
   <div class="footer-inner">
     <div>
@@ -858,27 +1169,230 @@
         <a href="projects.html">Projects</a>
         <a href="courses.html">Courses &amp; Training</a>
         <a href="service.html">Service</a>
+        <a href="conference-and-workshop.html">Conferences</a>
+        <a href="data-code.html">Data &amp; Code</a>
+        <a href="insights.html">Insights</a>
       </div>
     </div>
     <div>
       <div class="footer-col-title">Connect</div>
       <div class="footer-links social">
-        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank" rel="noopener">ORCID</a>
-        <a href="https://github.com/abubokkorshiddik" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home" target="_blank" rel="noopener">🌐 Portfolio</a>
+        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank" rel="noopener">in LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M22 10L12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg> Google Scholar</a>
+        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank" rel="noopener">✦ ORCID</a>
+        <a href="https://github.com/abubokkorshiddik" target="_blank" rel="noopener">&#123;&#125; GitHub</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2026 Md. Abu Bokkor Shiddik &middot; All rights reserved</p>
-    <p><a href="mailto:abubokkor.brur60@gmail.com">abubokkor.brur60@gmail.com</a> &middot; <a href="tel:+8801874001360">+880 1874 001360</a></p>
+    <p>© 2026 Md. Abu Bokkor Shiddik · All rights reserved</p>
+    <p><a href="mailto:abubokkor.brur60@gmail.com">abubokkor.brur60@gmail.com</a> · <a href="tel:+8801874001360">+880 1874 001360</a></p>
   </div>
 </footer>
 
-<div class="float-actions no-print" id="float-actions">
-  <button type="button" class="float-fab-toggle" id="float-fab-toggle" aria-label="Open quick actions">+</button>
+<div class="float-actions" id="float-actions">
+  <div class="float-menu" id="float-menu">
+    <a href="service.html" class="float-contact-btn" aria-label="View services and pricing" style="background:linear-gradient(135deg,#0d9488,#0f766e);">Services<span class="float-mail-tooltip">Consulting &amp; pricing</span></a>
+    <a href="contact.html" class="float-contact-btn" aria-label="Go to contact page">Contact<span class="float-mail-tooltip">Contact page</span></a>
+    <a href="mailto:abubokkor.brur60@gmail.com" class="float-mail-btn" aria-label="Send an email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+      <span class="float-mail-tooltip">abubokkor.brur60@gmail.com</span>
+    </a>
+  </div>
+  <button type="button" class="float-fab-toggle" id="float-fab-toggle" aria-label="Open quick actions" aria-expanded="false">
+    <svg class="fab-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 5v14M5 12h14"/></svg>
+  </button>
 </div>
 
+<script>
+document.querySelectorAll('.dropbtn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var dd = btn.closest('.dropdown');
+    var open = dd.classList.contains('active');
+    document.querySelectorAll('.dropdown.active').forEach(function(d) {
+      d.classList.remove('active');
+      var b = d.querySelector('.dropbtn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    if (!open) { dd.classList.add('active'); btn.setAttribute('aria-expanded', 'true'); }
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.dropdown.active').forEach(function(d) {
+    d.classList.remove('active');
+    var b = d.querySelector('.dropbtn');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  });
+});
+var ham = document.getElementById('hamburger');
+var drawer = document.getElementById('nav-drawer');
+ham.addEventListener('click', function() {
+  ham.classList.toggle('open');
+  drawer.classList.toggle('open');
+  ham.setAttribute('aria-expanded', ham.classList.contains('open') ? 'true' : 'false');
+});
+drawer.querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() { ham.classList.remove('open'); drawer.classList.remove('open'); ham.setAttribute('aria-expanded', 'false'); });
+});
+
+/* Drawer sections: collapsed by default, tap to reveal sub-links */
+drawer.querySelectorAll('.drawer-sec').forEach(function (sec) {
+  sec.addEventListener('click', function () {
+    var sub = sec.nextElementSibling;
+    if (!sub || !sub.classList.contains('drawer-sub')) return;
+    var isOpen = sub.classList.contains('open');
+    sub.classList.toggle('open', !isOpen);
+    sec.classList.toggle('open', !isOpen);
+  });
+});
+
+/* Sticky-offset math accounts for the navbar always, and additionally for the
+   section-jump bar's own height only when it's laid out inline (mobile mode,
+   ≤900px) — on desktop it's a fixed side rail and takes no vertical space. */
+function getStickyOffset() {
+  var navbar = document.querySelector('.navbar');
+  var sideNav = document.getElementById('side-nav');
+  var navH = navbar ? navbar.offsetHeight : 58;
+  var isInlineMode = window.matchMedia('(max-width: 900px)').matches;
+  var barH = (isInlineMode && sideNav) ? sideNav.offsetHeight : 12;
+  return { navH: navH, barH: barH };
+}
+function jumpTo(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var o = getStickyOffset();
+  var top = el.getBoundingClientRect().top + window.pageYOffset - o.navH - o.barH - 8;
+  window.scrollTo({ top: top, behavior: 'smooth' });
+}
+document.querySelectorAll('.jump-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    jumpTo(btn.dataset.target);
+    document.querySelectorAll('.jump-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    btn.scrollIntoView({ inline: 'center', block: 'nearest' });
+  });
+});
+
+var sectionIds = ['sec-about','sec-interests','sec-skills','sec-courses','sec-publications','sec-service','sec-outreach','sec-data','sec-projects','sec-insights','sec-gallery'];
+var scrollRaf = null;
+window.addEventListener('scroll', function() {
+  if (scrollRaf) return;
+  scrollRaf = requestAnimationFrame(function() {
+    scrollRaf = null;
+    var o = getStickyOffset();
+    var offset  = o.navH + o.barH + 24;
+    var current = sectionIds[0];
+    sectionIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= offset) current = id;
+    });
+    document.querySelectorAll('.jump-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.target === current);
+    });
+  });
+}, { passive: true });
+
+var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+var fadeObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      var delay = (parseInt(e.target.dataset.staggerIndex || '0', 10) % 4) * 70;
+      e.target.style.transitionDelay = delay + 'ms';
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0) scale(1)';
+      fadeObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
+
+var fadeGroups = document.querySelectorAll('.cards-4,.outreach-grid,.learn-links,.about-interests-grid');
+fadeGroups.forEach(function(group) {
+  var items = group.children;
+  Array.prototype.forEach.call(items, function(el, i) {
+    if (!el.classList) return;
+    el.dataset.staggerIndex = i;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px) scale(.98)';
+    el.style.transition = 'opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1)';
+    fadeObs.observe(el);
+  });
+});
+document.querySelectorAll('.reviewer-badge').forEach(function(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  fadeObs.observe(el);
+});
+
+var progressBar = document.getElementById('scroll-progress');
+function updateProgress() {
+  var h = document.documentElement;
+  var scrolled = h.scrollTop;
+  var max = h.scrollHeight - h.clientHeight;
+  var pct = max > 0 ? (scrolled / max) * 100 : 0;
+  if (progressBar) progressBar.style.width = pct + '%';
+}
+
+var parallaxEls = document.querySelectorAll('[data-parallax]');
+function updateParallax() {
+  if (reduceMotion) return;
+  var y = window.pageYOffset;
+  if (y > 900) return;
+  parallaxEls.forEach(function(el) {
+    var factor = parseFloat(el.dataset.parallax) || 0.08;
+    el.style.transform = 'translateY(' + (y * factor) + 'px)';
+  });
+}
+
+var mainScrollRaf = null;
+window.addEventListener('scroll', function() {
+  if (mainScrollRaf) return;
+  mainScrollRaf = requestAnimationFrame(function() {
+    mainScrollRaf = null;
+    updateProgress();
+    updateParallax();
+  });
+}, { passive: true });
+updateProgress();
+
+(function () {
+  var bar = document.getElementById('pub-filter-bar');
+  if (!bar) return;
+  var rows = document.querySelectorAll('#pub-scroll .pub-card');
+  bar.addEventListener('click', function (e) {
+    var chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    bar.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('active'); });
+    chip.classList.add('active');
+    var f = chip.dataset.filter;
+    rows.forEach(function (row) {
+      if (f === 'all') { row.classList.remove('is-hidden'); return; }
+      var topics = (row.dataset.topics || '').split(' ');
+      var year = row.dataset.year || '';
+      var match = topics.indexOf(f) !== -1 || year === f;
+      row.classList.toggle('is-hidden', !match);
+    });
+  });
+})();
+
+(function () {
+  var wrap = document.getElementById('float-actions');
+  var toggle = document.getElementById('float-fab-toggle');
+  if (!wrap || !toggle) return;
+  toggle.addEventListener('click', function () {
+    var isOpen = wrap.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target)) {
+      wrap.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
 </body>
 </html>
