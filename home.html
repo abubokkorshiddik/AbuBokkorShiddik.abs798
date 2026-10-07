@@ -292,6 +292,7 @@
     .pub-row-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
     .pub-row-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.45; }
     .pub-row-cite { font-size: 11px; color: var(--text3); line-height: 1.5; }
+    .pub-row-cite strong { font-weight: 800; color: var(--text); }
     .pub-row-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--blue); flex-shrink: 0; white-space: nowrap; transition: gap .15s; }
     .pub-row-link:hover { gap: 8px; }
     .pub-card.is-hidden { display: none; }
@@ -547,6 +548,47 @@
     .brand-logo-text { color: #fff; font-size: 14.5px; font-weight: 600; letter-spacing: .2px; white-space: nowrap; }
     .brand-logo-text span { color: #93c5fd; font-weight: 300; }
     .brand-logo-text:hover { color: #93c5fd; }
+
+    /* ===== Serial numbers on publication cards (straddling the colored left border) ===== */
+    .pub-list { counter-reset: pubno; overflow: visible; }
+    .pub-card {
+      position: relative;
+      counter-increment: pubno;
+      padding-left: 28px;
+      --acc: var(--blue);
+    }
+    .pub-card.acc-n { --acc: #d97706; }
+    .pub-card.acc-h { --acc: #0369a1; }
+    .pub-card.acc-g { --acc: #be185d; }
+    .pub-card.acc-s { --acc: #0d9488; }
+    .pub-card.acc-m { --acc: #166534; }
+    .pub-card.acc-p { --acc: #4338ca; }
+    .pub-card::before {
+      content: counter(pubno);
+      position: absolute;
+      top: 50%;
+      left: -16px;            /* centre of the 4px border: half outside, half inside */
+      width: 28px;
+      height: 28px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+      background: var(--acc);
+      box-shadow: 0 0 0 3px var(--bg2), 0 2px 6px rgba(28,26,20,.2);
+      z-index: 2;
+      transition: transform .2s;
+    }
+    .pub-card:hover::before { transform: translateY(-50%) scale(1.12); }
+    @media (max-width: 780px) {
+      .pub-card { padding-left: 28px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -875,7 +917,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Explainable Machine Learning for Predicting Global Malaria Incidence From 2000 to 2022 With Climatic and Extreme Weather Conditions Across 78 Endemic Countries: A Retrospective Ecological Study</div>
-          <div class="pub-row-cite">Shiddik, Sohan. Health Sci Reports, 9(10), e73311 (2026)</div>
+          <div class="pub-row-cite"><strong>Shiddik</strong>, Sohan. Health Sci Reports, 9(10), e73311 (2026)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -883,7 +925,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">BMC Infect Dis</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">District-level measles outbreak prediction in Bangladesh using geospatial artificial intelligence</div>
-          <div class="pub-row-cite">Shiddik, Rahman. BMC Infectious Diseases (2026)</div>
+          <div class="pub-row-cite"><strong>Shiddik</strong>, Rahman. BMC Infectious Diseases (2026)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -891,7 +933,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">BMJ Open</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Bayesian spatiotemporal modelling of child mortality (2000–2022) in 41 Asian countries</div>
-          <div class="pub-row-cite">Rahman, Shiddik. BMJ Open, 16(2), e108632 (2026)</div>
+          <div class="pub-row-cite">Rahman, <strong>Shiddik</strong>. BMJ Open, 16(2), e108632 (2026)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -899,7 +941,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-m">Trop. Med. Infect. Dis.</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">District-Level Dengue Early Warning using Hybrid XAI &amp; Bayesian Deep Learning</div>
-          <div class="pub-row-cite">Shiddik et al. Trop. Med. Infect. Dis., 11(3), 73 (2026)</div>
+          <div class="pub-row-cite"><strong>Shiddik</strong> et al. Trop. Med. Infect. Dis., 11(3), 73 (2026)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -907,7 +949,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">BMC Medicine</span><span class="yb">2026</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh</div>
-          <div class="pub-row-cite">Rahman, Shiddik, Chowdhury. BMC Medicine (2026)</div>
+          <div class="pub-row-cite">Rahman, <strong>Shiddik</strong>, Chowdhury. BMC Medicine (2026)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -915,7 +957,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Global Dengue Prediction using XAI-Driven ConvLSTM integrating environmental &amp; socio-economic data</div>
-          <div class="pub-row-cite">Shiddik. Health Sci Reports, 9(4), e72280 (2026)</div>
+          <div class="pub-row-cite"><strong>Shiddik</strong>. Health Sci Reports, 9(4), e72280 (2026)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -923,7 +965,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Explainable AI in Healthcare: Current Landscape, Challenges &amp; Future Directions</div>
-          <div class="pub-row-cite">Shiddik. Health Sci Reports, 9(3), e72172 (2026)</div>
+          <div class="pub-row-cite"><strong>Shiddik</strong>. Health Sci Reports, 9(3), e72172 (2026)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -931,7 +973,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-p">Public Health Challenges</span><span class="yb">2026</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Stillbirth, Neonatal &amp; Child Mortality in Bangladesh: Progress &amp; Persistent Challenges</div>
-          <div class="pub-row-cite">Rahman, Shiddik. Public Health Challenges, 5(3), e70312 (2026)</div>
+          <div class="pub-row-cite">Rahman, <strong>Shiddik</strong>. Public Health Challenges, 5(3), e70312 (2026)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -939,7 +981,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">AI to predict socioeconomic, environmental &amp; healthcare drivers of tuberculosis globally</div>
-          <div class="pub-row-cite">Rahman, Shiddik. Sci Rep 15, 13619 (2025)</div>
+          <div class="pub-row-cite">Rahman, <strong>Shiddik</strong>. Sci Rep 15, 13619 (2025)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -947,7 +989,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-h">Health Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Dengue Early Warning System &amp; Outbreak Prediction in Bangladesh using Interpretable Tree-Based ML</div>
-          <div class="pub-row-cite">Rahman, Amrin, Shiddik. Health Sci Reports, 8(5), e70726 (2025)</div>
+          <div class="pub-row-cite">Rahman, Amrin, <strong>Shiddik</strong>. Health Sci Reports, 8(5), e70726 (2025)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -955,7 +997,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Explainable AI for predicting dengue outbreaks in Bangladesh using eco-climatic triggers</div>
-          <div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100210 (2025)</div>
+          <div class="pub-row-cite">Rahman, <strong>Shiddik</strong>. Global Epidemiology, 100210 (2025)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -963,7 +1005,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-n">Sci Reports</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Unraveling global malaria incidence &amp; mortality using ML-driven spatial analysis</div>
-          <div class="pub-row-cite">Rahman, Shiddik. Scientific Reports, 15(1), 28334 (2025)</div>
+          <div class="pub-row-cite">Rahman, <strong>Shiddik</strong>. Scientific Reports, 15(1), 28334 (2025)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -971,7 +1013,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-g">Global Epidemiology</span><span class="yb">2025</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Reflections on explainable AI for predicting dengue outbreaks in Bangladesh</div>
-          <div class="pub-row-cite">Rahman, Shiddik. Global Epidemiology, 100230 (2025)</div>
+          <div class="pub-row-cite">Rahman, <strong>Shiddik</strong>. Global Epidemiology, 100230 (2025)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -979,7 +1021,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-p">Int. J. Stat. Sciences</span><span class="yb">2025</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">Data-Driven Dengue Prevention Strategies in Bangladesh using XAI &amp; Causal Inference</div>
-          <div class="pub-row-cite">Rahman, Shiddik. Int. J. Statistical Sciences, 25(2), 101–113 (2025)</div>
+          <div class="pub-row-cite">Rahman, <strong>Shiddik</strong>. Int. J. Statistical Sciences, 25(2), 101–113 (2025)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
@@ -987,7 +1029,7 @@
         <div class="pub-col-meta"><div class="pub-row-meta"><span class="jb jb-s">Health Geographics</span><span class="yb">2025</span><span class="oa">OA</span></div></div>
         <div class="pub-col-body">
           <div class="pub-row-title">XAI &amp; spatial analysis for communicable diseases in Asia (2000–2022)</div>
-          <div class="pub-row-cite">Rahman, Shiddik. Int. J. Health Geographics, 24(1), 45 (2025)</div>
+          <div class="pub-row-cite">Rahman, <strong>Shiddik</strong>. Int. J. Health Geographics, 24(1), 45 (2025)</div>
         </div>
         <div class="pub-col-action"><span class="pub-row-link">View paper →</span></div>
       </a>
