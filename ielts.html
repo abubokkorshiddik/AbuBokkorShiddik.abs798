@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10233f">
+<title>IELTS Academic | 90-Day Band 8+ Planner</title>
+<style>
+:root{--navy:#10233f;--blue:#1a56db;--teal:#087f8c;--bg:#f4f7fb;--white:#fff;--text:#203047;--muted:#68788d;--border:#dce4ed;--green:#16845b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.container{width:min(1120px,94%);margin:auto}
+header{background:linear-gradient(125deg,#0b1f3a,#193b60);color:white;padding:38px 0}
+.eyebrow{color:#9de3e2;text-transform:uppercase;letter-spacing:2px;font-size:.78rem;font-weight:700}
+h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.12;margin:12px 0}
+header p{max-width:760px;color:#e1eaf3}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.tag{border:1px solid #65809b;padding:5px 12px;border-radius:25px;font-size:.82rem}
+nav{position:sticky;top:0;background:white;border-bottom:1px solid var(--border);z-index:5}
+.nav{display:flex;gap:8px;overflow-x:auto;padding:10px 0}
+nav a{color:var(--navy);text-decoration:none;white-space:nowrap;padding:7px 10px;border-radius:7px;font-size:.9rem}
+nav a:hover{background:#e5f5f5}
+main{padding:25px 0 55px}
+section{margin:25px 0}
+h2{color:var(--navy);font-size:1.55rem;margin:0 0 13px}
+h3{font-size:1.05rem;color:var(--navy);margin:0 0 8px}
+p{margin:7px 0}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.grid{display:grid;gap:15px}
+.stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:white;border:1px solid var(--border);border-radius:13px;padding:18px;box-shadow:0 4px 18px #10233f0a}
+.number{font-size:2rem;font-weight:800;color:var(--navy);line-height:1.2}
+.stat-label{font-size:.85rem;color:var(--muted);margin-top:5px}
+.track{height:10px;background:#e6edf4;border-radius:20px;overflow:hidden;margin:13px 0}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),#35b5a7);transition:width .2s}
+.btn{border:0;border-radius:8px;padding:9px 13px;background:var(--navy);color:white;font-weight:600}
+.btn:hover{opacity:.88}
+.btn.light{background:#e9eff6;color:var(--navy)}
+.btn.teal{background:var(--teal)}
+.btn.red{background:#fff0ef;color:#a32d2d}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.phases{grid-template-columns:repeat(2,minmax(0,1fr))}
+.phase{border-top:4px solid var(--teal)}
+.phase-label{font-size:.75rem;color:var(--teal);font-weight:800;letter-spacing:1px}
+.notice{background:#e5f5f5;border-left:4px solid var(--teal);padding:14px 16px;border-radius:8px;margin:14px 0}
+.book-list{padding-left:23px}
+.book-list li{margin:9px 0}
+.routine{grid-template-columns:repeat(3,minmax(0,1fr))}
+.minutes{color:var(--teal);font-size:.84rem;font-weight:700}
+.toolbar{display:grid;grid-template-columns:1fr 180px 180px;gap:10px;margin:14px 0}
+input[type=search],select{width:100%;padding:11px;border:1px solid var(--border);border-radius:8px;background:white;color:var(--text)}
+.day-list{display:grid;gap:11px}
+.day{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.day.done{border-left:5px solid var(--green)}
+.day-head{display:flex;align-items:flex-start;gap:11px;padding:14px}
+.day-check{width:21px;height:21px;accent-color:var(--teal);margin-top:4px;flex-shrink:0}
+.day-title{flex:1;min-width:0}
+.day-title h3{margin:0}
+.day-meta{font-size:.82rem;color:var(--muted);margin-top:3px}
+.badge{font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:20px;background:#edf2f7;color:#41566e;white-space:nowrap}
+.badge.complete{background:#e4f5eb;color:#126b48}
+.day-body{padding:0 17px 17px 47px}
+.day-body ul{padding-left:19px;margin:5px 0}
+.day-body li{padding:3px 0}
+.task{display:flex;gap:8px;align-items:flex-start;margin:7px 0}
+.task input{margin-top:5px;accent-color:var(--teal)}
+.empty{text-align:center;background:white;padding:25px;border-radius:10px;color:var(--muted)}
+footer{background:var(--navy);color:#d9e4ef;padding:25px 0;font-size:.9rem}
+footer a{color:#9de3e2}
+@media(max-width:750px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.phases,.routine{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}.day-body{padding-left:43px}}
+@media print{nav,.toolbar,.actions,.no-print{display:none!important}body{background:white}header{background:white;color:black;padding:10px 0}header p,.eyebrow,.tag{color:#333}.container{width:100%}.card,.day{box-shadow:none;break-inside:avoid}.day-list{gap:6px}}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<div class="eyebrow">Your personal learning dashboard</div>
+<h1>IELTS Academic<br>90-Day Study Planner</h1>
+<p>A structured daily study plan for an intermediate learner aiming for Band 8.0+, combining IELTS skill development with Cambridge IELTS Academic Books 1–18.</p>
+<div class="tags">
+<span class="tag">90 days</span><span class="tag">5–6 hours daily</span><span class="tag">Academic IELTS</span><span class="tag">Target Band 8+</span>
+</div>
+</div>
+</header>
+
+<nav><div class="container nav">
+<a href="#dashboard">Dashboard</a><a href="#roadmap">Roadmap</a><a href="#books">Books</a><a href="#routine">Daily routine</a><a href="#plan">90-day checklist</a>
+</div></nav>
+
+<main class="container">
+<section id="dashboard">
+<h2>Your progress</h2>
+<div class="grid stats">
+<div class="card"><div class="number" id="completed">0</div><div class="stat-label">Days completed</div></div>
+<div class="card"><div class="number" id="remaining">90</div><div class="stat-label">Days remaining</div></div>
+<div class="card"><div class="number" id="percent">0%</div><div class="stat-label">Overall completion</div></div>
+<div class="card"><div class="number" id="streak">0</div><div class="stat-label">Consecutive days from Day 1</div></div>
+</div>
+<div class="card" style="margin-top:15px">
+<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><strong>Your 90-day journey</strong><span id="progress-label" class="muted small">0 of 90 days completed</span></div>
+<div class="track"><div class="fill" id="progress-bar"></div></div>
+<p class="muted small">Your progress is saved in this browser on this device. Export a backup if you change devices or browsers.</p>
+<div class="actions no-print">
+<button class="btn teal" onclick="exportProgress()">Export progress</button>
+<button class="btn light" onclick="document.getElementById('import-file').click()">Import progress</button>
+<input type="file" id="import-file" accept=".json,application/json" hidden onchange="importProgress(event)">
+<button class="btn light" onclick="window.print()">Print / Save PDF</button>
+<button class="btn red" onclick="resetProgress()">Reset progress</button>
+</div>
+</div>
+</section>
+
+<section id="roadmap">
+<h2>Your 4-phase roadmap</h2>
+<div class="grid phases">
+<div class="card phase"><div class="phase-label">PHASE 1 · DAYS 1–12</div><h3>Build your foundation</h3><p>Learn the test format, improve grammar and vocabulary, understand writing assessment, and practise speaking every day.</p></div>
+<div class="card phase"><div class="phase-label">PHASE 2 · DAYS 13–48</div><h3>Cambridge Books 1–9</h3><p>Complete all four tests in each book. Review answers carefully and identify your weakest question types.</p></div>
+<div class="card phase"><div class="phase-label">PHASE 3 · DAYS 49–84</div><h3>Cambridge Books 10–18</h3><p>Complete the remaining tests, improve accuracy, practise timed writing, and refine your speaking responses.</p></div>
+<div class="card phase"><div class="phase-label">PHASE 4 · DAYS 85–90</div><h3>Final review and readiness</h3><p>Focus on recurring mistakes, timed practice, weak skills, and your exam-day strategy.</p></div>
+</div>
+<div class="notice"><strong>Study smart:</strong> There are 72 test sets across Cambridge Books 1–18. This plan schedules one set each day on Days 13–84. Review every answer and keep an error log. Older books remain useful for practice, but prioritise recent tests when judging readiness for the current IELTS format.</div>
+</section>
+
+<section id="books">
+<h2>Your book collection</h2>
+<div class="grid phases">
+<div class="card">
+<h3>Five foundation books</h3>
+<ol class="book-list">
+<li><strong>The Official Cambridge Guide to IELTS</strong><br><span class="muted small">Test format, strategies, guided practice</span></li>
+<li><strong>English Grammar in Use</strong><br><span class="muted small">Grammar, sentence construction, accuracy</span></li>
+<li><strong>Check Your English Vocabulary for IELTS</strong><br><span class="muted small">Topic vocabulary and word choice</span></li>
+<li><strong>Writing for IELTS — Collins</strong><br><span class="muted small">Task 1 and Task 2 structure and practice</span></li>
+<li><strong>English Collocations in Use: Intermediate</strong><br><span class="muted small">Natural word combinations and fluency</span></li>
+</ol>
+</div>
+<div class="card">
+<h3>Cambridge IELTS Academic Books</h3>
+<p>Work through Books 1–18 in ascending order. Each book contains four tests in this plan.</p>
+<div id="book-chips" class="tags"></div>
+<p class="muted small">Use the original answer keys and audio supplied with your books. Follow the instructions and time limits for each test.</p>
+</div>
+</div>
+</section>
+
+<section id="routine">
+<h2>Suggested daily routine</h2>
+<p class="muted">Aim for approximately 5 hours 30 minutes of focused work. Take short breaks between sessions.</p>
+<div class="grid routine">
+<div class="card"><div class="minutes">60 MINUTES</div><h3>Listening</h3><p>Practise audio, predict answers, identify distractors, and review transcript mistakes.</p></div>
+<div class="card"><div class="minutes">60 MINUTES</div><h3>Reading</h3><p>Practise skimming, scanning, locating evidence, and managing question-specific timing.</p></div>
+<div class="card"><div class="minutes">75 MINUTES</div><h3>Writing</h3><p>Practise Task 1 or Task 2. Review task response, organisation, vocabulary, and grammar.</p></div>
+<div class="card"><div class="minutes">45 MINUTES</div><h3>Speaking</h3><p>Record answers, practise Parts 1–3, and review fluency, clarity, vocabulary, and grammar.</p></div>
+<div class="card"><div class="minutes">45 MINUTES</div><h3>Grammar and vocabulary</h3><p>Study your supplementary books and review your personal error log.</p></div>
+<div class="card"><div class="minutes">45 MINUTES</div><h3>Review and reflection</h3><p>Check answers, classify errors, revise difficult words, and plan the next session.</p></div>
+</div>
+<p class="muted small">On full Cambridge test days, prioritise the timed sections and thorough review. You do not need to write a complete essay and practise every speaking part from scratch every day; alternate these activities when necessary.</p>
+</section>
+
+<section id="plan">
+<h2>Your day-by-day plan</h2>
+<p class="muted">Expand a day to see its tasks. Tick the day when you have completed the session. Your checklist and completion status are saved automatically.</p>
+<div class="toolbar no-print">
+<input type="search" id="search" placeholder="Search a day, book, topic, or task…">
+<select id="phase-filter">
+<option value="all">All phases</option><option value="1">Phase 1: Foundation</option><option value="2">Phase 2: Books 1–9</option><option value="3">Phase 3: Books 10–18</option><option value="4">Phase 4: Final review</option>
+</select>
+<select id="status-filter">
+<option value="all">All statuses</option><option value="pending">Not completed</option><option value="done">Completed</option>
+</select>
+</div>
+<div id="day-list" class="day-list"></div>
+<p id="result-count" class="muted small"></p>
+</section>
+</main>
+
+<footer><div class="container">
+<strong>IELTS Academic — Personal Study Planner</strong>
+<p>Designed for personal learning. The plan supports preparation but cannot guarantee a particular band score. Measure progress through timed practice and honest assessment.</p>
+</div></footer>
+
+<script>
+const foundation = [
+{
+title:"Understand the IELTS Academic test",
+book:"The Official Cambridge Guide to IELTS",
+tasks:[
+"Read the introduction and understand Listening, Reading, Writing, and Speaking formats.",
+"Learn the test instructions, timing, question types, and assessment criteria.",
+"Complete a short diagnostic exercise in each skill and record your current strengths.",
+"Start an error log with columns for question, mistake, reason, and corrective action.",
+"Speak for 2 minutes about your studies and record your first baseline response."
+]},
+{
+title:"Listening foundations",
+book:"The Official Cambridge Guide to IELTS",
+tasks:[
+"Study the Listening test format and question types.",
+"Practise predicting answers before listening and identifying keywords.",
+"Complete a guided Listening exercise and check your answers.",
+"Replay difficult sections and use the transcript to understand missed answers.",
+"Learn common spelling, plural, number, date, and address errors."
+]},
+{
+title:"Reading foundations",
+book:"The Official Cambridge Guide to IELTS",
+tasks:[
+"Study skimming, scanning, and locating supporting evidence.",
+"Practise True/False/Not Given and Yes/No/Not Given questions.",
+"Complete a timed passage and record your accuracy.",
+"Review unfamiliar vocabulary in context rather than memorising isolated translations.",
+"Explain why each incorrect answer was wrong."
+]},
+{
+title:"Writing Task 1 foundations",
+book:"The Official Cambridge Guide to IELTS",
+tasks:[
+"Study the Task 1 instructions and assessment criteria.",
+"Learn how to identify the overview and main trends in charts.",
+"Practise comparing values using accurate language.",
+"Write one Task 1 response within 20 minutes.",
+"Review grammar, data accuracy, paragraph structure, and unnecessary detail."
+]},
+{
+title:"Writing Task 2 foundations",
+book:"The Official Cambridge Guide to IELTS",
+tasks:[
+"Study essay question types: opinion, discussion, advantages/disadvantages, and problem/solution.",
+"Practise analysing the prompt and planning a clear position.",
+"Write a thesis statement and topic sentences for two essay prompts.",
+"Write one complete essay within 40 minutes.",
+"Check whether every main idea directly answers the question."
+]},
+{
+title:"Speaking foundations",
+book:"The Official Cambridge Guide to IELTS",
+tasks:[
+"Study Speaking Parts 1, 2, and 3 and their different expectations.",
+"Practise giving direct, developed answers in Part 1.",
+"Prepare a Part 2 response using brief notes and speak for up to 2 minutes.",
+"Practise explaining reasons, examples, and consequences in Part 3.",
+"Record yourself and note hesitation, repetition, unclear pronunciation, and grammar errors."
+]},
+{
+title:"Grammar: sentence accuracy",
+book:"English Grammar in Use",
+tasks:[
+"Study present, past, and future forms relevant to your errors.",
+"Review subject–verb agreement and countable/uncountable nouns.",
+"Practise articles, prepositions, and common sentence structures.",
+"Write 10 original sentences about education, health, technology, or the environment.",
+"Correct five sentences from your own previous writing."
+]},
+{
+title:"Vocabulary: topic development",
+book:"Check Your English Vocabulary for IELTS",
+tasks:[
+"Study vocabulary for education and learning.",
+"Study health and lifestyle vocabulary.",
+"Practise environment, climate, and technology vocabulary.",
+"Create a vocabulary notebook with meaning, collocation, and an original example.",
+"Use at least 10 new expressions in a short spoken response or paragraph."
+]},
+{
+title:"Collocations and natural English",
+book:"English Collocations in Use: Intermediate",
+tasks:[
+"Study a unit on common verb–noun collocations.",
+"Study adjective–noun and adverb–adjective collocations.",
+"Practise choosing natural word combinations in context.",
+"Rewrite an awkward paragraph using accurate collocations.",
+"Review the collocations aloud and make original examples."
+]},
+{
+title:"Writing development",
+book:"Writing for IELTS — Collins",
+tasks:[
+"Study a lesson on organising Academic Task 1 responses.",
+"Practise overview sentences for two visual-data prompts.",
+"Study a lesson on developing Task 2 arguments.",
+"Write one introduction and two body paragraphs for an essay prompt.",
+"Check coherence, paragraph unity, grammar, and vocabulary."
+]},
+{
+title:"Integrated skill practice",
+book:"The Official Cambridge Guide to IELTS",
+tasks:[
+"Complete one Listening practice and review every error.",
+"Complete one timed Reading passage.",
+"Write a Task 1 overview and a Task 2 essay plan.",
+"Practise a Part 2 cue card and answer three Part 3 questions.",
+"Review your error log and identify your three weakest areas."
+]},
+{
+title:"Foundation assessment and planning",
+book:"All five foundation books",
+tasks:[
+"Complete a short timed practice activity in each IELTS skill.",
+"Review grammar and vocabulary errors from Days 1–11.",
+"Write a complete Task 2 essay under timed conditions.",
+"Record a Speaking Part 2 response and review fluency and clarity.",
+"Set specific improvement goals for your Cambridge test phase."
+]}
+];
+
+const finalDays = [
+{title:"Review your weakest skill",tasks:["Review your error log and identify your most frequent errors.","Complete a focused practice session in your weakest skill.","Review grammar and vocabulary connected to those mistakes.","Practise one Writing or Speaking task under realistic conditions.","Record the lesson learned and the correction strategy."]},
+{title:"Listening and Reading accuracy",tasks:["Complete a timed Listening test or full section.","Review wrong answers with the answer key and transcript.","Complete a timed Academic Reading passage or test.","Classify errors by question type and evidence missed.","Practise the two question types causing the most difficulty."]},
+{title:"Writing Task 1 and Task 2",tasks:["Complete one Academic Writing Task 1 within 20 minutes.","Check overview, comparisons, accuracy, and paragraph organisation.","Plan a Task 2 essay in approximately 5 minutes.","Write a complete Task 2 essay within 40 minutes.","Edit both responses for grammar, clarity, and relevance."]},
+{title:"Speaking and language review",tasks:["Practise Part 1 questions across several familiar topics.","Complete one Part 2 cue card with a timed response.","Practise Part 3 questions requiring explanation and examples.","Review pronunciation, hesitation, repetition, and grammar.","Revise your most useful collocations and topic vocabulary."]},
+{title:"Final timed practice",tasks:["Complete a realistic timed Listening practice.","Complete a realistic timed Academic Reading practice.","Complete both Writing tasks within the total 60-minute limit.","Practise Speaking Parts 1–3 or conduct a mock speaking interview.","Review performance without ignoring recurring mistakes."]},
+{title:"Consolidation and exam readiness",tasks:["Review your complete error log and the corrections that worked.","Revise useful Task 1 structures and Task 2 planning strategies.","Review Listening and Reading timing and answer-transfer procedures.","Practise a short, relaxed speaking warm-up and check exam logistics.","Set a realistic final strategy, rest properly, and avoid cramming new material."]}
+];
+
+const days = [];
+for(let i=1;i<=12;i++){
+ const d=foundation[i-1];
+ days.push({day:i,phase:1,title:d.title,book:d.book,tasks:d.tasks});
+}
+for(let book=1;book<=18;book++){
+ for(let test=1;test<=4;test++){
+  const day=12+(book-1)*4+test;
+  const phase=book<=9?2:3;
+  const tasks=[
+   "Complete the Listening section under the test's prescribed time. Check answers and replay difficult sections.",
+   "Complete the Academic Reading test under timed conditions. Identify the evidence for every answer.",
+   "Attempt Writing Task 1 and Task 2 using the prescribed total time when practical. On review-heavy days, alternate a complete response with detailed planning and editing.",
+   "Practise Speaking Parts 1–3. Record at least one response, review grammar and fluency, and note useful vocabulary.",
+   "Check answers, calculate your raw Listening/Reading scores where answer keys permit, and update your error log.",
+   "Choose at least three mistakes and write down why each happened and how you will avoid repeating it."
+  ];
+  days.push({
+   day,phase,
+   title:`Cambridge IELTS Academic ${book} — Test ${test}`,
+   book:`Cambridge IELTS Academic Book ${book}`,
+   test,
+   tasks
+  });
+ }
+}
+for(let i=0;i<6;i++){
+ const d=finalDays[i];
+ days.push({day:85+i,phase:4,title:d.title,book:"Final review",tasks:d.tasks});
+}
+
+const STORE="ielts90planner_v1";
+let state={};
+try{state=JSON.parse(localStorage.getItem(STORE)||"{}")}catch(e){state={}}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(state))}catch(e){}}
+function escapeHTML(s){
+ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function isDone(day){return !!(state[day]&&state[day].done)}
+function taskState(day,index){return !!(state[day]&&state[day].checks&&state[day].checks[index])}
+
+function renderBooks(){
+ const el=document.getElementById("book-chips");
+ el.innerHTML=Array.from({length:18},(_,i)=>`<span class="tag" style="color:#10233f;border-color:#dce4ed">Book ${i+1}</span>`).join("");
+}
+function renderStats(){
+ const completed=days.filter(d=>isDone(d.day)).length;
+ document.getElementById("completed").textContent=completed;
+ document.getElementById("remaining").textContent=90-completed;
+ document.getElementById("percent").textContent=Math.round(completed/90*100)+"%";
+ let streak=0;
+ for(let i=1;i<=90&&isDone(i);i++)streak++;
+ document.getElementById("streak").textContent=streak;
+ document.getElementById("progress-label").textContent=`${completed} of 90 days completed`;
+ document.getElementById("progress-bar").style.width=(completed/90*100)+"%";
+}
+function renderDays(){
+ const query=document.getElementById("search").value.trim().toLowerCase();
+ const phase=document.getElementById("phase-filter").value;
+ const status=document.getElementById("status-filter").value;
+ const filtered=days.filter(d=>{
+  const text=[d.day,d.title,d.book,...d.tasks].join(" ").toLowerCase();
+  return (!query||text.includes(query))&&(phase==="all"||String(d.phase)===phase)&&
+   (status==="all"||(status==="done"&&isDone(d.day))||(status==="pending"&&!isDone(d.day)));
+ });
+ const list=document.getElementById("day-list");
+ if(!filtered.length){list.innerHTML='<div class="empty">No days match your search. Try a different keyword or filter.</div>'}
+ else list.innerHTML=filtered.map(d=>{
+  const done=isDone(d.day);
+  const checks=d.tasks.map((task,i)=>`<label class="task"><input type="checkbox" ${taskState(d.day,i)?"checked":""} onchange="toggleTask(${d.day},${i},this.checked)"><span>${escapeHTML(task)}</span></label>`).join("");
+  const phaseLabel=["","Foundation","Cambridge 1–9","Cambridge 10–18","Final review"][d.phase];
+  const open=state[d.day]&&state[d.day].open;
+  return `<article class="day ${done?"done":""}">
+   <div class="day-head">
+    <input class="day-check" aria-label="Mark day ${d.day} complete" type="checkbox" ${done?"checked":""} onchange="toggleDay(${d.day},this.checked)">
+    <div class="day-title">
+     <h3>Day ${d.day}: ${escapeHTML(d.title)}</h3>
+     <div class="day-meta">${escapeHTML(d.book)} · ${phaseLabel}</div>
+    </div>
+    <span class="badge ${done?"complete":""}">${done?"Completed":"Pending"}</span>
+    <button class="btn light no-print" style="padding:6px 9px" onclick="toggleOpen(${d.day})">${open?"Hide":"View"}</button>
+   </div>
+   <div class="day-body" ${open?"":"hidden"}>
+    <p class="muted small">Suggested study time: 5–6 hours, including review and breaks.</p>
+    ${checks}
+    <label class="task"><input type="checkbox" ${done?"checked":""} onchange="toggleDay(${d.day},this.checked)"><strong>Mark Day ${d.day} fully completed</strong></label>
+   </div>
+  </article>`;
+ }).join("");
+ document.getElementById("result-count").textContent=`Showing ${filtered.length} of 90 days`;
+ renderStats();
+}
+function toggleDay(day,checked){
+ state[day]=state[day]||{checks:{}};
+ state[day].done=checked;
+ if(checked){
+  state[day].checks={};
+  days.find(d=>d.day===day).tasks.forEach((_,i)=>state[day].checks[i]=true);
+ }else{
+  state[day].checks={};
+ }
+ save();renderDays();
+}
+function toggleTask(day,index,checked){
+ state[day]=state[day]||{checks:{}};
+ state[day].checks=state[day].checks||{};
+ state[day].checks[index]=checked;
+ const d=days.find(x=>x.day===day);
+ state[day].done=d.tasks.every((_,i)=>!!state[day].checks[i]);
+ save();renderDays();
+}
+function toggleOpen(day){
+ state[day]=state[day]||{checks:{}};
+ state[day].open=!(state[day].open);
+ save();renderDays();
+}
+function exportProgress(){
+ const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");a.href=url;a.download="ielts-90-day-progress.json";a.click();
+ URL.revokeObjectURL(url);
+}
+function importProgress(event){
+ const file=event.target.files[0];if(!file)return;
+ const reader=new FileReader();
+ reader.onload=()=>{
+  try{
+   const imported=JSON.parse(reader.result);
+   if(!imported||typeof imported!=="object"||Array.isArray(imported))throw Error();
+   state=imported;save();renderDays();alert("Progress imported successfully.");
+  }catch(e){alert("That file could not be imported. Please select a valid progress JSON file.")}
+  event.target.value="";
+ };
+ reader.readAsText(file);
+}
+function resetProgress(){
+ if(confirm("Reset all saved study progress? This cannot be undone unless you exported a backup.")){
+  state={};save();renderDays();
+ }
+}
+document.getElementById("search").addEventListener("input",renderDays);
+document.getElementById("phase-filter").addEventListener("change",renderDays);
+document.getElementById("status-filter").addEventListener("change",renderDays);
+renderBooks();
+renderDays();
+</script>
+</body>
+</html>
