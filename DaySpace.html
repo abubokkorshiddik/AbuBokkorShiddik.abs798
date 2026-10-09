@@ -215,7 +215,7 @@ $('#nav').innerHTML=vs.map(x=>`<button class="nb ${x[0]==v?'on':''}" data-act="n
 const nm=S.set.name||S.user?.user_metadata?.name||'',h=new Date().getHours(),cv=v.startsWith('c:')?cs.find(c=>'c:'+c.id==v):null;
 $('#ttl').innerHTML=v=='today'?avh(40)+esc((h<12?'Good morning':h<18?'Good afternoon':'Good evening')+(nm?', '+nm:'')):esc(cv?cv.name:VIEWS.find(x=>x[0]==v)[2]);
 $('#sub').textContent=v=='today'?new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'}):cv?'Your own section.':SUB[v];
-const hide=['progress','journal'].includes(v);$('#add').style.display=hide?'none':'';document.querySelector('.fab').style.visibility=hide?'hidden':'';$('#view').innerHTML=cv?cview(cv.id):V[v]();tick()}
+const hide=false;$('#add').style.display=hide?'none':'';document.querySelector('.fab').style.visibility=hide?'hidden':'';$('#view').innerHTML=cv?cview(cv.id):V[v]();tick()}
 function form(type,id){const it=id?byId(id):mk(type),t=it.type,D=it.data,o=(a,v)=>a.map(x=>`<option ${x==v?'selected':''}>${x}</option>`).join(''),so=(a,v)=>a.map(([k,l])=>`<option value="${k}" ${k==v?'selected':''}>${l}</option>`).join('');
 return`<form id="ef" data-id="${it.id}" data-t="${t}"><h2 style="margin:0">${id?'Edit':'New'} ${t}</h2>${field('Title',`<input name="title" required maxlength="160" value="${esc(it.title)}" autofocus>`)}
 ${t=='routine'||t=='habit'?field('Emoji',`<input name="emoji" maxlength="4" value="${esc(D.emoji||'')}" placeholder="🏃">`)+field('Repeats',`<select name="freq">${o(FREQ,D.freq||'Daily')}</select>`):''}
@@ -236,13 +236,14 @@ document.addEventListener('submit',async e=>{if(e.target.id!='ef')return;e.stopI
 ['emoji','freq','time','end','color','pri','kind','mode','unit','dir'].forEach(k=>{if(f.elements[k])it.data[k]=g(k)});if(f.elements.target)it.data.target=g('target')===''?null:+g('target');if(f.elements.progress)it.data.progress=+g('progress');await save(it);close();render()},true);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act;
 if(a=='log'&&isNum(byId(b.dataset.id))){e.stopImmediatePropagation();valDlg(b.dataset.id,b.dataset.day)}
-if(a=='add'&&S.view.startsWith('c:')&&!b.dataset.t){e.stopImmediatePropagation();$('#qc')?.focus()}},true);
+if(a=='add'&&!b.dataset.t){const v=S.view;if(v.startsWith('c:')){e.stopImmediatePropagation();const c=S.set.custom.find(x=>'c:'+x.id==v);dlg(`<h2 style="margin:0">Add to ${esc(c.name)}</h2>${field('What do you want to add?',`<input id="qd" maxlength="160" autofocus>`)}<div class="ft"><button class="btn" data-act="close">Cancel</button><button class="btn p" data-act="qd" data-sec="${c.id}">Add</button></div>`)}else if(v=='journal'){e.stopImmediatePropagation();$('#jt')?.focus()}}},true);
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act,D=b.dataset;
 if(a=='sug')sugOpen();else if(a=='sugadd')sugAdd();else if(a=='val')valDlg(D.id,D.day);
 else if(a=='vsave')setVal(D.id,D.day,$('#vi').value);else if(a=='vclr')setVal(D.id,D.day,null);
 else if(a=='vstep'){const i=$('#vi');i.value=Math.max(0,Math.round(((+i.value||0)+ +D.s*i.dataset.st)*100)/100)}
 else if(a=='tr'){S.tr=D.f;render()}
 else if(a=='qadd'){const v=$('#qt').value.trim();if(!v)return;const w=+$('#qw').value;let due=null;if(w>=0){const x=new Date();x.setDate(x.getDate()+w);due=dts(x)}await save(mk('task',{title:v,due_date:due,data:{pri:'Normal'}}));render();$('#qt')?.focus()}
+else if(a=='qd'){const v=$('#qd').value.trim();if(!v)return;await save(mk('entry',{title:v,data:{sec:D.sec}}));close();render()}
 else if(a=='qc'){const v=$('#qc').value.trim();if(!v)return;await save(mk('entry',{title:v,data:{sec:D.sec}}));render();$('#qc')?.focus()}
 else if(a=='avpick')$('#avf').click();else if(a=='avdel'){S.set.avatar='';S.av='';if(sb)sb.storage.from('photos').remove([S.user.id+'/avatar.jpg']);apply();render();settings()}
 else if(a=='obsave'){S.set.name=$('#on').value.trim();S.set.bio=$('#ob').value.trim();S.set.onboarded=true;apply();close();render();if(!S.items.length)sugOpen()}
@@ -252,6 +253,7 @@ else if(a=='delsec'){const c=S.set.custom.find(x=>x.id==D.id);if(!confirm('Delet
 document.addEventListener('change',async e=>{if(e.target.id=='sbio'){S.set.bio=e.target.value;apply()}
 if(e.target.id=='avf'&&e.target.files[0]){const b=await sq(e.target.files[0]);if(sb){const p=S.user.id+'/avatar.jpg',{error}=await sb.storage.from('photos').upload(p,b,{upsert:true,contentType:'image/jpeg'});if(error)return toast(error.message);S.set.avatar=p}else S.set.avatar=await b64(b);e.target.value='';apply();await avUrl();render();(S.dlgFn||settings)()}});
 document.addEventListener('keydown',e=>{if(e.key=='Enter'&&(e.target.id=='qt'||e.target.id=='qc'))document.querySelector('[data-act='+(e.target.id=='qt'?'qadd':'qc')+']').click()});
+document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.id=='qd')document.querySelector('[data-act=qd]').click()});
 function start(){$('#auth').classList.add('hidden');$('#app').classList.remove('hidden');apply();load().then(async()=>{await avUrl();render();if(!S.set.onboarded)onboard()})}
 /* boot */
 async function shared(tok){$('#app').classList.add('hidden');const{data}=await sb.rpc('get_shared',{t:tok}),b=document.body;if(!data)return b.innerHTML='<div class="empty" style="padding:80px 20px"><h2>Link unavailable</h2>This item is private or no longer shared.</div>';
