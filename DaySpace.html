@@ -176,7 +176,7 @@ document.body.insertAdjacentHTML('beforeend','<input type="file" id="avf" accept
 S.set.custom=S.set.custom||[];S.tr='today';
 const tm=s=>{const[h,m]=s.split(':');return +h*60+ +m};
 const avh=z=>S.av?`<img class="av" style="width:${z}px;height:${z}px" src="${esc(S.av)}" alt="">`:`<span class="av" style="width:${z}px;height:${z}px;font-size:${z*.45}px">${esc((S.set.name||S.user?.user_metadata?.name||'D')[0].toUpperCase())}</span>`;
-async function avUrl(){const a=S.set.avatar;if(sb&&a&&!a.startsWith('data:')){const{data}=await sb.storage.from('photos').createSignedUrl(a,3600);S.av=data?.signedUrl||''}else S.av=a||''}
+async function avUrl(){if(sb&&S.user){const{data:l}=await sb.storage.from('photos').list(S.user.id,{search:'avatar.jpg'});if(l&&l.some(f=>f.name=='avatar.jpg')&&S.set.avatar!==''){const{data}=await sb.storage.from('photos').createSignedUrl(S.user.id+'/avatar.jpg',3600);S.av=data?.signedUrl||''}else S.av=''}else S.av=S.set.avatar||''}
 const sq=f=>new Promise(r=>{const im=new Image();im.onload=()=>{const k=Math.min(im.width,im.height),c=document.createElement('canvas');c.width=c.height=256;c.getContext('2d').drawImage(im,(im.width-k)/2,(im.height-k)/2,k,k,0,0,256,256);c.toBlob(r,'image/jpeg',.85)};im.src=URL.createObjectURL(f)});
 const mkR=(emoji,title,time,end)=>({type:'routine',emoji,title,time,end}),mkH=(emoji,title,kind,mode,unit,target,dir)=>({type:'habit',emoji,title,kind,mode,unit,target,dir});
 const SUG=[mkR('🌅','Wake up & drink water','06:30','06:45'),mkR('🧘','Stretch or meditate','06:45','07:05'),mkR('🍳','Healthy breakfast','07:15','07:45'),mkR('📚','Deep work / study','09:00','11:00'),mkR('🚶','Walk & fresh air','13:00','13:30'),mkR('🏋️','Workout','18:00','19:00'),mkR('📵','Screen-free wind-down','21:30','22:00'),mkR('🛌','Sleep','22:30','23:30'),
@@ -244,7 +244,7 @@ else if(a=='vstep'){const i=$('#vi');i.value=Math.max(0,Math.round(((+i.value||0
 else if(a=='tr'){S.tr=D.f;render()}
 else if(a=='qadd'){const v=$('#qt').value.trim();if(!v)return;const w=+$('#qw').value;let due=null;if(w>=0){const x=new Date();x.setDate(x.getDate()+w);due=dts(x)}await save(mk('task',{title:v,due_date:due,data:{pri:'Normal'}}));render();$('#qt')?.focus()}
 else if(a=='qc'){const v=$('#qc').value.trim();if(!v)return;await save(mk('entry',{title:v,data:{sec:D.sec}}));render();$('#qc')?.focus()}
-else if(a=='avpick')$('#avf').click();else if(a=='avdel'){S.set.avatar='';S.av='';apply();render();settings()}
+else if(a=='avpick')$('#avf').click();else if(a=='avdel'){S.set.avatar='';S.av='';if(sb)sb.storage.from('photos').remove([S.user.id+'/avatar.jpg']);apply();render();settings()}
 else if(a=='obsave'){S.set.name=$('#on').value.trim();S.set.bio=$('#ob').value.trim();S.set.onboarded=true;apply();close();render();if(!S.items.length)sugOpen()}
 else if(a=='obskip'){S.set.onboarded=true;apply();close();if(!S.items.length)sugOpen()}
 else if(a=='addsec'){const n=$('#snm').value.trim();if(!n)return toast('Give your section a name');S.set.custom.push({id:Date.now().toString(36),name:n,emoji:$('#semo').value.trim()||'📌'});apply();settings();render()}
@@ -254,7 +254,6 @@ if(e.target.id=='avf'&&e.target.files[0]){const b=await sq(e.target.files[0]);if
 document.addEventListener('keydown',e=>{if(e.key=='Enter'&&(e.target.id=='qt'||e.target.id=='qc'))document.querySelector('[data-act='+(e.target.id=='qt'?'qadd':'qc')+']').click()});
 function start(){$('#auth').classList.add('hidden');$('#app').classList.remove('hidden');apply();load().then(async()=>{await avUrl();render();if(!S.set.onboarded)onboard()})}
 /* boot */
-function start(){$('#auth').classList.add('hidden');$('#app').classList.remove('hidden');apply();load().then(render)}
 async function shared(tok){$('#app').classList.add('hidden');const{data}=await sb.rpc('get_shared',{t:tok}),b=document.body;if(!data)return b.innerHTML='<div class="empty" style="padding:80px 20px"><h2>Link unavailable</h2>This item is private or no longer shared.</div>';
 const p=data.type=='photo'?`<img style="width:100%;border-radius:14px" src="${sb.storage.from('public-photos').getPublicUrl(data.data.pub).data.publicUrl}">`:`<p style="white-space:pre-wrap">${esc(data.content)}</p>`;b.innerHTML=`<main class="main" style="margin:auto;max-width:640px"><div class="brand"><span class="mark">D</span>DaySpace</div><h1>${esc(data.title)}</h1><div class="panel">${p}${data.type=='goal'?`<div class="pb"><i style="width:${data.data.progress||0}%"></i></div>`:''}</div></main>`}
 (async()=>{apply();const h=location.hash;if(sb&&h.startsWith('#/s/'))return shared(h.slice(4));
