@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
   <meta charset="UTF-8">
@@ -348,6 +347,8 @@
     .p-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent, var(--blue)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 4px; flex-shrink: 0; }
     .p-name { font-size: 13.5px; font-weight: 700; color: var(--text); }
     .p-desc { font-size: 12px; color: var(--text3); line-height: 1.55; }
+    .p-link { margin-top: auto; padding-top: 6px; font-size: 12px; font-weight: 700; color: var(--accent, var(--blue)); display: inline-flex; align-items: center; gap: 5px; transition: gap .15s; }
+    a.project-card:hover .p-link { gap: 9px; }
 
     .post-mini { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: var(--sh); transition: box-shadow .2s, border-color .2s, transform .2s; height: 100%; display: flex; flex-direction: column; }
     .post-mini:hover { box-shadow: var(--sh2); border-color: #bfdbfe; transform: translateY(-3px); }
@@ -632,6 +633,8 @@
         <div class="dropdown-content">
           <a href="projects.html">&#9879; Projects</a>
           <a href="data-code.html">&#128190; Data &amp; Code</a>
+          <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace" target="_blank" rel="noopener">&#128197; DaySpace</a>
+          <a href="https://abubokkorshiddik.github.io/bd-health-climate-atlas/" target="_blank" rel="noopener">&#127757; BD Health &amp; Climate Atlas</a>
           <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/game.html">&#127918; Games</a>
         </div>
       </div>
@@ -674,6 +677,8 @@
       <div class="drawer-sub">
         <a class="drawer-link" href="projects.html">Projects</a>
         <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+        <a class="drawer-link" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace" target="_blank" rel="noopener">DaySpace</a>
+        <a class="drawer-link" href="https://abubokkorshiddik.github.io/bd-health-climate-atlas/" target="_blank" rel="noopener">BD Health &amp; Climate Atlas</a>
         <a class="drawer-link" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/game.html">Games</a>
       </div>
       <div class="drawer-div"></div>
@@ -750,12 +755,12 @@
   <button class="jump-btn active" title="About" data-target="sec-about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span class="jb-label">About</span></button>
   <button class="jump-btn" title="Interests" data-target="sec-interests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="jb-label">Interests</span></button>
   <button class="jump-btn" title="Skills" data-target="sec-skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg><span class="jb-label">Skills</span></button>
+  <button class="jump-btn" title="Projects & Tools Development" data-target="sec-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/></svg><span class="jb-label">Projects</span></button>
   <button class="jump-btn" title="Courses" data-target="sec-courses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M22 10L12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg><span class="jb-label">Courses</span></button>
   <button class="jump-btn" title="Publications" data-target="sec-publications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg><span class="jb-label">Publications</span></button>
   <button class="jump-btn" title="Service" data-target="sec-service"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z"/></svg><span class="jb-label">Service</span></button>
   <button class="jump-btn" title="Outreach" data-target="sec-outreach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M2 3h20v14H6l-4 4Z"/></svg><span class="jb-label">Outreach</span></button>
   <button class="jump-btn" title="Data & Code" data-target="sec-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg><span class="jb-label">Data &amp; Code</span></button>
-  <button class="jump-btn" title="Projects" data-target="sec-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/></svg><span class="jb-label">Projects</span></button>
   <button class="jump-btn" title="Insights" data-target="sec-insights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span class="jb-label">Insights</span></button>
   <button class="jump-btn" title="Gallery" data-target="sec-gallery"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span class="jb-label">Gallery</span></button>
 </nav>
@@ -854,6 +859,36 @@
         <div class="skill-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx=12 cy=12 r=9/><path d=M3,12 L21,12/><path d=M12,3 C16,7 16,17 12,21 C8,17 8,7 12,3 Z/></svg>Application Domains</div>
         <div class="tag-row"><span class="tag">Epidemiology</span><span class="tag">Climate-Health</span></div>
       </div>
+    </div>
+  </div>
+
+
+  <!-- Projects & Tools Development (moved here: directly after Technical Skills) -->
+  <div class="section" id="sec-projects">
+    <div class="section-blob blob-gold" style="width:320px;height:320px;top:0;left:-120px;"></div>
+    <div class="section-head"><div><span class="eyebrow">Built &amp; Shipped</span><h2>Projects &amp; Tools Development</h2></div><a href="projects.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <div class="cards-4">
+      <a class="project-card" href="https://abubokkorshiddik.github.io/bd-health-climate-atlas/" target="_blank" rel="noopener" style="--accent:var(--green);">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c4 4 4 14 0 18-4-4-4-14 0-18z"/></svg></div>
+        <div class="p-name">BD Health &amp; Climate Atlas</div>
+        <div class="p-desc">Interactive atlas linking climate variables with health outcomes across Bangladesh.</div>
+        <span class="p-link">Open atlas →</span>
+      </a>
+      <a class="project-card" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace" target="_blank" rel="noopener" style="--accent:var(--purple);">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 15l2.5 2.5L16 13"/></svg></div>
+        <div class="p-name">DaySpace</div>
+        <div class="p-desc">A web app for organizing your day: plan tasks, track time and keep daily focus.</div>
+        <span class="p-link">Open DaySpace →</span>
+      </a>
+      <a class="project-card" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/game.html" target="_blank" rel="noopener" style="--accent:var(--rose);">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10v5M4.5 12.5h5"/><circle cx="16" cy="11.5" r="1" fill="currentColor" stroke="none"/><circle cx="18.5" cy="14" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <div class="p-name">Games</div>
+        <div class="p-desc">Small browser games built for fun and learning, playable right on the portfolio.</div>
+        <span class="p-link">Play games →</span>
+      </a>
+      <div class="project-card" style="--accent:var(--teal);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="6.5" opacity=".55"/><circle cx="12" cy="12" r="10.5" opacity=".3"/></svg></div><div class="p-name">Dengue Dashboard</div><div class="p-desc">Interactive district-level early warning visualization for all 64 districts of Bangladesh.</div></div>
+      <div class="project-card" style="--accent:var(--blue);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1z"/><rect x="5" y="6" width="14" height="15" rx="2"/><path d="M9 13.5l2 2 4-5"/></svg></div><div class="p-name">Systematic Review Tool</div><div class="p-desc">Automated literature screening &amp; data extraction workflow for health research.</div></div>
+      <div class="project-card" style="--accent:#d97706;"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div><div class="p-name">R Package</div><div class="p-desc">Open-source R package for time-series modeling, SHAP analysis &amp; visualization.</div></div>
     </div>
   </div>
 
@@ -1131,17 +1166,6 @@
   </div>
 
 
-  <div class="section" id="sec-projects">
-    <div class="section-blob blob-gold" style="width:320px;height:320px;top:0;left:-120px;"></div>
-    <div class="section-head"><div><span class="eyebrow">Built &amp; Shipped</span><h2>Projects &amp; Tools</h2></div><a href="projects.html" class="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-    <div class="cards-4">
-      <div class="project-card" style="--accent:var(--teal);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx=12 cy=12 r=2.2 fill=currentColor stroke=none/><circle cx=12 cy=12 r=6.5 opacity=".55"/><circle cx=12 cy=12 r=10.5 opacity=".3"/></svg></div><div class="p-name">Dengue Dashboard</div><div class="p-desc">Interactive district-level early warning visualization for all 64 districts of Bangladesh.</div></div>
-      <div class="project-card" style="--accent:var(--blue);"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M9,4 L15,4 A1,1 0 0 1 16,5 L16,6 L8,6 L8,5 A1,1 0 0 1 9,4 Z/><rect x=5 y=6 width=14 height=15 rx=2/><path d=M9,13.5 L11,15.5 L15,10.5/></svg></div><div class="p-name">Systematic Review Tool</div><div class="p-desc">Automated literature screening &amp; data extraction workflow for health research.</div></div>
-      <div class="project-card" style="--accent:#d97706;"><div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d=M21,8 L12,3 L3,8 L12,13 L21,8 Z/><path d=M3,8 L3,16 L12,21 L21,16 L21,8/><path d=M12,13 L12,21/></svg></div><div class="p-name">R Package</div><div class="p-desc">Open-source R package for time-series modeling, SHAP analysis &amp; visualization.</div></div>
-    </div>
-  </div>
-
-
   <div class="section" id="sec-insights">
     <div class="section-head"><div><span class="eyebrow">Writing</span><h2>Latest Insights</h2></div><a href="insights.html" class="see-all">See all posts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <div class="cards-4">
@@ -1221,6 +1245,9 @@
         <a href="service.html">Service</a>
         <a href="conference-and-workshop.html">Conferences</a>
         <a href="data-code.html">Data &amp; Code</a>
+        <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace" target="_blank" rel="noopener">DaySpace</a>
+        <a href="https://abubokkorshiddik.github.io/bd-health-climate-atlas/" target="_blank" rel="noopener">BD Health &amp; Climate Atlas</a>
+        <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/game.html">Games</a>
         <a href="insights.html">Insights</a>
       </div>
     </div>
@@ -1325,7 +1352,8 @@ document.querySelectorAll('.jump-btn').forEach(function(btn) {
   });
 });
 
-var sectionIds = ['sec-about','sec-interests','sec-skills','sec-courses','sec-publications','sec-service','sec-outreach','sec-data','sec-projects','sec-insights','sec-gallery'];
+/* Order matches the on-page order: Projects now follows Skills */
+var sectionIds = ['sec-about','sec-interests','sec-skills','sec-projects','sec-courses','sec-publications','sec-service','sec-outreach','sec-data','sec-insights','sec-gallery'];
 var scrollRaf = null;
 window.addEventListener('scroll', function() {
   if (scrollRaf) return;
