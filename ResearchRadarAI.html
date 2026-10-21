@@ -1,204 +1,860 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101a32">
-<meta name="description" content="ResearchRadar AI — discover scholarly literature, save papers, and organize research insights.">
-<title>ResearchRadar AI | Literature Intelligence</title>
+<meta name="theme-color" content="#0b1f3a">
+<meta name="description" content="ResearchRadar AI — discover scholarly literature, explore research trends, save papers, and organize research gaps in machine learning, public health, climate and infectious disease research.">
+<title>ResearchRadar AI | Research Intelligence</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
-:root{--bg:#f4f7fb;--panel:#fff;--text:#17233d;--muted:#6c7890;--line:#e2e8f2;--navy:#101a32;--blue:#315ee8;--blue2:#eaf0ff;--teal:#0e9f9a;--green:#16845b;--red:#c34454;--shadow:0 8px 28px rgba(26,45,85,.06);--radius:18px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:248px;background:var(--navy);color:#fff;padding:24px 16px;display:flex;flex-direction:column;z-index:10}.brand{display:flex;align-items:center;gap:12px;padding:4px 8px 28px}.brand-mark{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,#4776ff,#11b8b0);display:grid;place-items:center;font-weight:900;font-size:20px}.brand-name{font-weight:800;letter-spacing:-.4px;font-size:17px}.brand-sub{font-size:11px;color:#aebbd4;letter-spacing:1.5px;text-transform:uppercase}.nav-label{color:#8796b4;font-size:10px;letter-spacing:1.5px;font-weight:800;padding:12px 12px 7px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#c4cde0;text-align:left;padding:11px 12px;border-radius:11px;display:flex;align-items:center;gap:12px;font-weight:600}.nav button .ico{width:22px;text-align:center;font-size:17px}.nav button:hover,.nav button.active{background:#263556;color:#fff}.nav button.active{box-shadow:inset 3px 0 #6e8bff}.sidebar-bottom{margin-top:auto;border-top:1px solid #2b3854;padding:18px 10px 0;color:#aab6cc;font-size:12px}.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#25c18a;margin-right:7px}.main{margin-left:248px;min-height:100vh}.topbar{height:76px;background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:8;backdrop-filter:blur(12px)}.top-left{display:flex;align-items:center;gap:12px}.eyebrow{font-size:11px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;font-weight:800}.topbar h1{font-size:19px;margin:2px 0 0;letter-spacing:-.5px}.top-actions{display:flex;align-items:center;gap:10px}.avatar{width:36px;height:36px;border-radius:12px;background:#e6edff;color:#2449c4;display:grid;place-items:center;font-weight:800}.mobile-menu{display:none}.content{padding:28px 32px 52px;max-width:1500px;margin:auto}.page{display:none}.page.active{display:block}.welcome{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:24px}.welcome h2{font-size:27px;line-height:1.2;letter-spacing:-.8px;margin:4px 0 8px}.welcome p{margin:0;color:var(--muted);max-width:650px}.btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:11px;padding:10px 14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.15s}.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn.soft{background:var(--blue2);color:#284ed0;border-color:#dce5ff}.btn.small{padding:7px 10px;font-size:12px;border-radius:9px}.btn.danger{color:var(--red)}.grid{display:grid;gap:18px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:22px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;font-weight:700}.stat-icon{width:37px;height:37px;border-radius:12px;background:#edf1ff;display:grid;place-items:center;font-size:18px}.stat-value{font-size:29px;letter-spacing:-1px;font-weight:800;margin:12px 0 1px}.stat-note{font-size:12px;color:var(--muted)}.columns{grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}.panel-head{padding:19px 21px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.panel-head h3{font-size:15px;margin:0}.panel-head p{font-size:12px;color:var(--muted);margin:3px 0 0}.panel-body{padding:20px}.paper-list{display:grid}.paper-row{padding:17px 20px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:12px}.paper-row:last-child{border-bottom:0}.paper-title{font-weight:750;line-height:1.4;letter-spacing:-.15px;margin-bottom:7px}.paper-title a{color:inherit;text-decoration:none}.paper-title a:hover{color:var(--blue)}.paper-meta{font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:7px 12px}.tag{font-size:10px;font-weight:800;letter-spacing:.35px;text-transform:uppercase;padding:4px 7px;border-radius:6px;background:#edf2fa;color:#566580;white-space:nowrap}.tag.blue{background:#eaf0ff;color:#3154c9}.tag.green{background:#e3f7ed;color:#16764e}.tag.teal{background:#def8f5;color:#087e78}.paper-abstract{font-size:13px;color:#5d6a80;margin:10px 0 0;line-height:1.55}.paper-actions{display:flex;align-items:flex-start;gap:6px}.icon-btn{border:1px solid var(--line);background:#fff;width:34px;height:34px;border-radius:9px;color:#687690;display:grid;place-items:center}.icon-btn:hover,.icon-btn.saved{color:var(--blue);background:var(--blue2);border-color:#d8e2ff}.trend-item{display:flex;gap:12px;margin:0 0 18px}.trend-num{width:31px;height:31px;flex:0 0 31px;border-radius:10px;background:#edf1ff;color:#3156d4;display:grid;place-items:center;font-weight:800;font-size:12px}.trend-item strong{display:block;font-size:13px}.trend-item p{margin:3px 0 0;color:var(--muted);font-size:12px}.mini-link{color:var(--blue);background:none;border:0;font-weight:750;font-size:12px;padding:0}.notice{border:1px solid #dce7ff;background:#f2f6ff;border-radius:13px;padding:14px;color:#435779;font-size:12px;line-height:1.5}.notice strong{color:#2547ac}.section-title{margin:28px 0 13px;display:flex;align-items:center;justify-content:space-between;gap:12px}.section-title h3{font-size:17px;margin:0;letter-spacing:-.3px}.section-title p{margin:3px 0 0;color:var(--muted);font-size:12px}.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}.search-wrap{position:relative;flex:1;min-width:210px}.search-wrap span{position:absolute;left:13px;top:10px;color:#8190a7}.search-wrap input{padding-left:38px;width:100%}input,select,textarea{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--text);outline:none;width:100%}input:focus,select:focus,textarea:focus{border-color:#8ba4ff;box-shadow:0 0 0 3px #eaf0ff}select{width:auto;min-width:135px}.input-label{display:block;font-size:12px;font-weight:750;margin-bottom:7px}.field{margin-bottom:16px}.field small{display:block;color:var(--muted);font-size:11px;margin-top:5px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form-grid .field{margin:0}.form-grid .wide{grid-column:1/-1}.empty{text-align:center;padding:40px 20px;color:var(--muted)}.empty-icon{font-size:34px;margin-bottom:10px}.empty h3{color:var(--text);font-size:16px;margin:0 0 6px}.empty p{font-size:13px;max-width:420px;margin:0 auto 15px}.report-card{padding:20px;border:1px solid var(--line);border-radius:14px;margin-bottom:12px}.report-card h3{font-size:16px;margin:8px 0}.report-card p{font-size:13px;color:var(--muted);margin:0 0 13px}.report-date{font-size:11px;color:var(--muted)}.report-content{white-space:pre-wrap;background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:17px;margin-top:15px;font-size:13px;line-height:1.7}.gap-card{padding:17px;border:1px solid var(--line);border-radius:13px;margin-bottom:12px}.gap-card h4{margin:0 0 7px;font-size:14px}.gap-card p{margin:0;color:var(--muted);font-size:13px}.gap-actions{display:flex;gap:7px;margin-top:12px}.footer{border-top:1px solid var(--line);margin-top:35px;padding-top:18px;display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:11px}.toast{position:fixed;right:22px;bottom:22px;background:#15213a;color:#fff;border-radius:12px;padding:13px 17px;box-shadow:0 10px 30px #17233d30;z-index:30;max-width:min(380px,calc(100vw - 32px));display:none;font-size:13px}.toast.show{display:block;animation:fadein .2s ease}@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}.mobile-overlay{display:none}
-@media(max-width:1050px){.sidebar{width:220px}.main{margin-left:220px}.content{padding:24px}.topbar{padding:0 24px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.columns{grid-template-columns:1fr}}
-@media(max-width:700px){.sidebar{transform:translateX(-100%);transition:transform .2s;width:270px}.sidebar.open{transform:translateX(0)}.mobile-overlay.show{display:block;position:fixed;inset:0;background:#0a142a88;z-index:9}.main{margin-left:0}.topbar{height:68px;padding:0 16px}.mobile-menu{display:inline-flex}.topbar h1{font-size:16px}.topbar .eyebrow{font-size:9px}.content{padding:22px 14px 35px}.welcome{display:block}.welcome h2{font-size:24px}.welcome .btn{margin-top:15px}.stats{gap:10px}.stat{padding:14px}.stat-value{font-size:25px}.stat-icon{width:31px;height:31px}.stat-top{font-size:11px}.stat-note{font-size:10px}.paper-row{padding:15px 13px;grid-template-columns:minmax(0,1fr) auto;gap:7px}.paper-actions{flex-direction:column}.panel-head,.panel-body{padding:16px}.form-grid{grid-template-columns:1fr}.form-grid .wide{grid-column:auto}.toolbar select{flex:1;min-width:0}.footer{display:block}.footer span{display:block;margin:5px 0}.top-actions .btn{display:none}}
+:root {
+  --navy:#0b1f3a;
+  --navy2:#132e50;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
+  --teal:#0d9488;
+  --bg:#f5f7fb;
+  --surface:#ffffff;
+  --text:#182338;
+  --muted:#68758a;
+  --border:#e3e9f2;
+  --green:#15803d;
+  --red:#b91c1c;
+  --shadow:0 8px 30px rgba(15,35,65,.055);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"DM Sans",sans-serif;font-size:14px;line-height:1.6
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button:focus-visible,a:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible{
+  outline:3px solid #93c5fd;outline-offset:2px
+}
+.topbar{
+  background:var(--navy);color:white;padding:13px 22px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;position:sticky;top:0;z-index:20;
+  box-shadow:0 3px 16px #06162c30
+}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand-icon{
+  width:42px;height:42px;border-radius:13px;background:#1d4ed8;
+  display:grid;place-items:center;font-size:19px;flex-shrink:0
+}
+.brand h1{font:800 19px Manrope,sans-serif;margin:0;letter-spacing:-.5px}
+.brand p{margin:1px 0 0;color:#c3d5ed;font-size:11px}
+.top-actions{display:flex;gap:8px;align-items:center}
+.top-actions a,.top-actions button{
+  border:1px solid #ffffff30;background:#ffffff0d;color:white;
+  border-radius:9px;padding:8px 11px;font-size:12px
+}
+.top-actions a:hover,.top-actions button:hover{background:#ffffff20}
+.layout{max-width:1500px;margin:auto;display:grid;grid-template-columns:225px minmax(0,1fr);min-height:calc(100vh - 68px)}
+.sidebar{padding:22px 13px;border-right:1px solid var(--border);background:#fff}
+.nav-label{font-size:10px;font-weight:700;letter-spacing:1.2px;color:#94a3b8;padding:12px 11px 7px}
+.nav-item{
+  width:100%;display:flex;align-items:center;gap:12px;
+  border:0;background:transparent;color:#536177;text-align:left;
+  padding:11px;border-radius:10px;margin:2px 0;font-size:13px
+}
+.nav-item i{width:18px;text-align:center}
+.nav-item:hover{background:#f4f7fc}
+.nav-item.active{background:var(--blue-light);color:var(--blue);font-weight:700}
+.nav-count{margin-left:auto;font-size:11px;color:var(--muted)}
+.sidebar-note{margin:26px 5px 0;padding:13px;border:1px solid var(--border);border-radius:12px;background:#fafcff;font-size:12px;color:var(--muted)}
+.sidebar-note strong{color:var(--text);display:block;margin-bottom:4px}
+main{padding:26px;min-width:0}
+.page{display:none}
+.page.active{display:block}
+.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}
+.eyebrow{font-size:10px;font-weight:800;letter-spacing:1.4px;color:var(--blue);text-transform:uppercase}
+h2{font:800 27px Manrope,sans-serif;letter-spacing:-.8px;line-height:1.25;margin:5px 0}
+.page-head p{color:var(--muted);margin:7px 0 0;max-width:700px}
+.btn{
+  border:1px solid var(--border);background:white;color:var(--text);
+  border-radius:9px;padding:9px 13px;font-weight:600;font-size:12px;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px
+}
+.btn:hover{background:#f7f9fd}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:white}
+.btn.primary:hover{background:#1d4ed8}
+.btn.small{padding:6px 9px;font-size:11px}
+.btn.danger{color:var(--red)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:22px}
+.stat{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow);min-width:0
+}
+.stat-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.stat-label{color:var(--muted);font-size:12px}
+.stat-icon{width:34px;height:34px;border-radius:10px;background:#eff6ff;color:var(--blue);display:grid;place-items:center}
+.stat-number{font:800 29px Manrope,sans-serif;margin:12px 0 2px;letter-spacing:-1px}
+.stat-sub{font-size:11px;color:var(--muted)}
+.grid-two{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(250px,1fr);gap:16px;margin-bottom:20px}
+.card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:19px;box-shadow:var(--shadow);min-width:0}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
+.card-head h3{font:700 15px Manrope,sans-serif;margin:0}
+.muted{color:var(--muted)}
+.small-text{font-size:12px}
+.searchbar{
+  display:flex;align-items:center;gap:10px;background:white;
+  border:1px solid var(--border);padding:5px 6px 5px 13px;
+  border-radius:12px;margin-bottom:13px
+}
+.searchbar i{color:#94a3b8}
+.searchbar input{border:0;outline:0;flex:1;min-width:0;padding:9px 0;background:transparent}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters select,.field input,.field select,.field textarea{
+  border:1px solid var(--border);background:white;color:var(--text);
+  padding:9px 11px;border-radius:9px;min-width:0;width:100%
+}
+.filters select{width:auto;max-width:100%}
+.paper-list{display:grid;gap:12px}
+.paper{
+  background:white;border:1px solid var(--border);border-radius:14px;
+  padding:17px;transition:border-color .15s
+}
+.paper:hover{border-color:#b7cafa}
+.paper-top{display:flex;justify-content:space-between;gap:12px}
+.paper-title{font:700 15px/1.45 Manrope,sans-serif;margin:0 0 7px}
+.paper-title a{color:var(--navy)}
+.paper-meta{font-size:11px;color:var(--muted);display:flex;gap:7px 12px;flex-wrap:wrap}
+.paper-abstract{font-size:12px;line-height:1.75;color:#536177;margin:12px 0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.tag{font-size:10px;border-radius:6px;padding:4px 7px;background:#f0f5fc;color:#375579}
+.tag.green{background:#ecfdf5;color:#166534}
+.paper-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.icon-btn{border:1px solid var(--border);background:white;border-radius:8px;padding:7px 9px;color:#64748b}
+.icon-btn:hover,.icon-btn.saved{color:var(--blue);background:var(--blue-light);border-color:#bfdbfe}
+.status{
+  display:inline-flex;align-items:center;gap:6px;font-size:10px;
+  font-weight:700;padding:5px 8px;border-radius:7px;white-space:nowrap;height:max-content
+}
+.status.ok{background:#ecfdf5;color:#166534}
+.status.demo{background:#fff7ed;color:#9a3412}
+.status.info{background:#eff6ff;color:#1d4ed8}
+.topic-list{display:grid;gap:15px}
+.topic{display:grid;gap:6px}
+.topic-line{display:flex;justify-content:space-between;gap:8px;font-size:12px}
+.bar{height:7px;border-radius:20px;background:#edf1f7;overflow:hidden}
+.bar span{height:100%;display:block;border-radius:20px;background:var(--blue)}
+.empty{text-align:center;padding:36px 15px;color:var(--muted)}
+.empty i{font-size:26px;color:#94a3b8;margin-bottom:10px}
+.empty h3{font:700 15px Manrope;color:var(--text);margin:4px 0}
+.field{display:grid;gap:6px;margin-bottom:14px}
+.field label{font-weight:700;font-size:12px}
+.field textarea{min-height:110px;resize:vertical}
+.field .hint{font-size:11px;color:var(--muted)}
+.two-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.notice{padding:12px 14px;border-radius:10px;background:#eff6ff;color:#1e40af;font-size:12px;margin-bottom:15px}
+.notice.warning{background:#fff7ed;color:#9a3412}
+.notice.success{background:#ecfdf5;color:#166534}
+.gap-item{border:1px solid var(--border);border-radius:12px;padding:15px;background:white;margin-bottom:10px}
+.gap-item h3{font:700 14px Manrope;margin:0 0 6px}
+.gap-item p{font-size:12px;color:#536177;margin:5px 0 12px;white-space:pre-wrap}
+.gap-item .gap-meta{font-size:11px;color:var(--muted)}
+.report{border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px}
+.report h3{font:700 15px Manrope;margin:0 0 7px}
+.report p{font-size:12px;color:#536177;line-height:1.8;white-space:pre-wrap}
+.report ul{padding-left:20px;font-size:12px;color:#536177}
+footer{border-top:1px solid var(--border);margin-top:28px;padding:17px 0;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.mobile-menu{display:none}
+#toast{position:fixed;bottom:20px;right:20px;max-width:min(360px,calc(100vw - 40px));background:var(--navy);color:white;padding:12px 16px;border-radius:10px;box-shadow:var(--shadow);z-index:99;display:none;font-size:12px}
+#toast.show{display:block}
+dialog{width:min(600px,calc(100% - 24px));border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 20px 80px #0b1f3a35}
+dialog::backdrop{background:#0b1f3a80}
+.dialog-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+.dialog-head h3{font:800 19px Manrope;margin:0}
+@media(max-width:950px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none;border-right:0;border-bottom:1px solid var(--border);padding:10px 14px}
+  .sidebar.open{display:block}
+  .sidebar .nav-label,.sidebar-note{display:none}
+  .sidebar nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}
+  .nav-item{font-size:11px;padding:9px 7px;gap:7px}
+  .mobile-menu{display:inline-flex}
+  main{padding:20px}
+}
+@media(max-width:650px){
+  .topbar{padding:11px 13px}
+  .brand h1{font-size:16px}
+  .brand p{font-size:10px}
+  .brand-icon{width:37px;height:37px}
+  .top-actions a .hide-mobile{display:none}
+  .top-actions a,.top-actions button{padding:8px 9px}
+  main{padding:15px 12px}
+  .page-head{flex-direction:column}
+  h2{font-size:23px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .stat{padding:13px}
+  .stat-number{font-size:25px}
+  .grid-two{grid-template-columns:1fr}
+  .two-fields{grid-template-columns:1fr}
+  .filters select{flex:1;width:100%;max-width:none}
+  .paper{padding:13px}
+  .paper-top{gap:7px}
+  .paper-title{font-size:14px}
+  .sidebar nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media print{
+  .topbar,.sidebar,.no-print,.btn,.filters,.searchbar,footer{display:none!important}
+  .layout{display:block}
+  main{padding:0}
+  body{background:white}
+  .page{display:none!important}
+  .page.active{display:block!important}
+  .card,.paper,.stat{box-shadow:none;break-inside:avoid}
+}
 </style>
 </head>
+
 <body>
-<div class="app">
-  <aside class="sidebar" id="sidebar">
-    <div class="brand"><div class="brand-mark">R</div><div><div class="brand-name">ResearchRadar AI</div><div class="brand-sub">Literature intelligence</div></div></div>
-    <div class="nav-label">WORKSPACE</div>
-    <nav class="nav" aria-label="Main navigation">
-      <button class="active" data-page="dashboard"><span class="ico">◫</span> Dashboard</button>
-      <button data-page="discover"><span class="ico">⌕</span> Discover papers</button>
-      <button data-page="saved"><span class="ico">▣</span> Saved library <span id="savedNavCount" style="margin-left:auto;font-size:11px"></span></button>
-      <button data-page="reports"><span class="ico">▤</span> AI reports</button>
-      <button data-page="gaps"><span class="ico">◇</span> Research gaps</button>
-    </nav>
-    <div class="nav-label" style="margin-top:20px">TOOLS</div>
-    <nav class="nav">
-      <button data-page="settings"><span class="ico">⚙</span> Data settings</button>
-    </nav>
-    <div class="sidebar-bottom"><div><span class="status-dot"></span><span id="connectionText">Dashboard ready</span></div><div style="margin-top:8px">Built for curious researchers.</div></div>
-  </aside>
-  <div class="mobile-overlay" id="overlay"></div>
-  <main class="main">
-    <header class="topbar">
-      <div class="top-left"><button class="btn mobile-menu" id="menuBtn" aria-label="Open menu">☰</button><div><div class="eyebrow">RESEARCH WORKSPACE</div><h1 id="pageHeading">Dashboard</h1></div></div>
-      <div class="top-actions"><button class="btn" id="refreshBtn">↻ Refresh data</button><div class="avatar">AI</div></div>
-    </header>
-    <div class="content">
-      <section class="page active" id="page-dashboard">
-        <div class="welcome"><div><div class="eyebrow">YOUR DAILY RESEARCH BRIEF</div><h2>Good research starts with<br>the right questions.</h2><p>Discover scholarly literature, track emerging themes, and keep your research organized in one workspace.</p></div><button class="btn primary" data-go="discover">＋ Discover papers</button></div>
-        <div class="grid stats">
-          <div class="stat"><div class="stat-top">Papers in workspace <span class="stat-icon">▤</span></div><div class="stat-value" id="statPapers">0</div><div class="stat-note">Papers loaded from your dataset</div></div>
-          <div class="stat"><div class="stat-top">Saved papers <span class="stat-icon">▣</span></div><div class="stat-value" id="statSaved">0</div><div class="stat-note">Stored in this browser</div></div>
-          <div class="stat"><div class="stat-top">Research topics <span class="stat-icon">⌘</span></div><div class="stat-value" id="statTopics">0</div><div class="stat-note">Distinct topic labels found</div></div>
-          <div class="stat"><div class="stat-top">Reports available <span class="stat-icon">✧</span></div><div class="stat-value" id="statReports">0</div><div class="stat-note">Generated report files detected</div></div>
-        </div>
-        <div class="grid columns">
-          <div class="panel"><div class="panel-head"><div><h3>Recently discovered</h3><p>Latest papers available in your dataset</p></div><button class="mini-link" data-go="discover">View all →</button></div><div class="paper-list" id="recentPapers"></div></div>
-          <div class="panel"><div class="panel-head"><div><h3>Topic radar</h3><p>Common subjects in your current library</p></div><span class="tag teal">LIVE FROM DATA</span></div><div class="panel-body" id="topicRadar"></div></div>
-        </div>
-        <div class="section-title"><div><h3>Research workflow</h3><p>A simple path from discovery to a useful research question.</p></div></div>
-        <div class="grid stats" style="grid-template-columns:repeat(3,minmax(0,1fr))">
-          <div class="stat"><div class="stat-icon">⌕</div><div style="font-weight:800;margin:10px 0 4px">1. Discover</div><div class="stat-note">Search titles, abstracts, authors, and keywords.</div></div>
-          <div class="stat"><div class="stat-icon">▣</div><div style="font-weight:800;margin:10px 0 4px">2. Organize</div><div class="stat-note">Save relevant papers in your personal browser library.</div></div>
-          <div class="stat"><div class="stat-icon">✧</div><div style="font-weight:800;margin:10px 0 4px">3. Synthesize</div><div class="stat-note">Review generated reports and develop research-gap ideas.</div></div>
-        </div>
-      </section>
-
-      <section class="page" id="page-discover">
-        <div class="welcome"><div><div class="eyebrow">LITERATURE EXPLORER</div><h2>Discover papers</h2><p>Search and filter the papers loaded from your published research dataset.</p></div><button class="btn soft" id="exportBtn">↓ Export results</button></div>
-        <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="paperSearch" type="search" placeholder="Search title, author, abstract, topic…"></div><select id="topicFilter" aria-label="Filter by topic"><option value="">All topics</option></select><select id="yearFilter" aria-label="Filter by year"><option value="">All years</option></select><select id="sortFilter" aria-label="Sort papers"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="title">Title A–Z</option></select></div>
-        <div class="panel"><div class="panel-head"><div><h3 id="resultsHeading">Papers</h3><p id="resultsSub">Search the loaded dataset</p></div><span class="tag blue" id="dataSourceTag">LOCAL DATA</span></div><div class="paper-list" id="paperResults"></div></div>
-      </section>
-
-      <section class="page" id="page-saved">
-        <div class="welcome"><div><div class="eyebrow">YOUR PERSONAL COLLECTION</div><h2>Saved library</h2><p>Keep papers you want to read, cite, or revisit. Saved items are stored locally in this browser.</p></div><button class="btn" id="exportSavedBtn">↓ Export library</button></div>
-        <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="savedSearch" type="search" placeholder="Search your saved papers…"></div></div>
-        <div class="panel"><div class="panel-head"><div><h3>Your saved papers</h3><p id="savedSub">Private to this browser</p></div></div><div class="paper-list" id="savedResults"></div></div>
-      </section>
-
-      <section class="page" id="page-reports">
-        <div class="welcome"><div><div class="eyebrow">LITERATURE SYNTHESIS</div><h2>AI research reports</h2><p>Read reports produced by your scheduled backend, or create a research brief from the papers currently loaded.</p></div><button class="btn primary" id="makeReportBtn">✧ Draft a brief</button></div>
-        <div class="notice"><strong>Backend note:</strong> This page does not call OpenAI directly. For automatic daily reports, your GitHub Actions workflow should generate report files and publish a JSON manifest or copy reports into the website folder.</div>
-        <div class="section-title"><div><h3>Available reports</h3><p>Loaded from a report manifest if your backend publishes one.</p></div><button class="btn small" id="refreshReportsBtn">↻ Reload reports</button></div>
-        <div id="reportList"></div>
-        <div id="draftReport" style="display:none" class="panel"><div class="panel-head"><div><h3>Research brief draft</h3><p>Generated locally from loaded paper metadata; not an AI API response.</p></div><button class="icon-btn" id="closeDraft" aria-label="Close draft">✕</button></div><div class="panel-body"><div class="field"><label class="input-label" for="briefTopic">Research topic</label><input id="briefTopic" placeholder="e.g. Climate-sensitive dengue prediction"></div><button class="btn primary" id="generateLocalBrief">Create local brief</button><div id="localBriefOutput"></div></div></div>
-      </section>
-
-      <section class="page" id="page-gaps">
-        <div class="welcome"><div><div class="eyebrow">IDEA DEVELOPMENT</div><h2>Research gaps workspace</h2><p>Capture possible gaps, unanswered questions, and next steps. These are researcher notes, not validated claims from a systematic review.</p></div><button class="btn primary" id="newGapBtn">＋ Add research idea</button></div>
-        <div class="notice"><strong>Use responsibly:</strong> A true research gap needs a careful review of relevant studies. Treat generated ideas as hypotheses to verify, not evidence that no one has studied a topic.</div>
-        <div id="gapForm" class="panel" style="display:none;margin-top:18px"><div class="panel-head"><h3>New research idea</h3><button class="icon-btn" id="closeGapForm" aria-label="Close form">✕</button></div><div class="panel-body"><div class="form-grid"><div class="field wide"><label class="input-label" for="gapTitle">Working title *</label><input id="gapTitle" placeholder="A possible research question or gap"></div><div class="field"><label class="input-label" for="gapArea">Research area</label><input id="gapArea" placeholder="e.g. Public health"></div><div class="field"><label class="input-label" for="gapStatus">Status</label><select id="gapStatus"><option>Idea</option><option>Checking literature</option><option>Promising</option><option>Not pursuing</option></select></div><div class="field wide"><label class="input-label" for="gapNotes">Notes and evidence to check</label><textarea id="gapNotes" rows="4" placeholder="What seems unknown? Which papers or methods should you check?"></textarea></div></div><div style="display:flex;gap:9px;margin-top:16px"><button class="btn primary" id="saveGapBtn">Save idea</button><button class="btn" id="cancelGapBtn">Cancel</button></div></div></div>
-        <div class="section-title"><div><h3>Your research ideas</h3><p>Saved in this browser only.</p></div><select id="gapFilter" aria-label="Filter research ideas"><option value="">All statuses</option><option>Idea</option><option>Checking literature</option><option>Promising</option><option>Not pursuing</option></select></div>
-        <div id="gapList"></div>
-      </section>
-
-      <section class="page" id="page-settings">
-        <div class="welcome"><div><div class="eyebrow">CONFIGURATION</div><h2>Data settings</h2><p>Connect the dashboard to JSON files published alongside your GitHub Pages website.</p></div></div>
-        <div class="grid columns">
-          <div class="panel"><div class="panel-head"><div><h3>Dataset connection</h3><p>Provide a path to a public JSON file.</p></div></div><div class="panel-body"><div class="field"><label class="input-label" for="dataUrl">Articles JSON URL</label><input id="dataUrl" placeholder="./data/articles.json"><small>Recommended format: a JSON array of papers, or an object containing an articles array.</small></div><div class="field"><label class="input-label" for="reportsUrl">Reports manifest URL</label><input id="reportsUrl" placeholder="./data/reports.json"><small>Optional manifest: an array of reports with title, date, summary, and url fields.</small></div><button class="btn primary" id="saveSettingsBtn">Save & load data</button><button class="btn" id="resetSettingsBtn" style="margin-left:6px">Reset paths</button></div></div>
-          <div class="panel"><div class="panel-head"><div><h3>How to connect your backend</h3><p>Keep API credentials on the server side.</p></div></div><div class="panel-body"><div class="trend-item"><div class="trend-num">1</div><div><strong>Publish the data</strong><p>Have your Python workflow write articles to <code>data/articles.json</code> or copy it into the Pages folder.</p></div></div><div class="trend-item"><div class="trend-num">2</div><div><strong>Publish report metadata</strong><p>Create <code>data/reports.json</code> listing report titles, dates, summaries, and public report URLs.</p></div></div><div class="trend-item"><div class="trend-num">3</div><div><strong>Keep the secret safe</strong><p>Use GitHub Actions Secrets for <code>OPENAI_API_KEY</code>. Never place it in HTML or browser JavaScript.</p></div></div><div class="trend-item" style="margin-bottom:0"><div class="trend-num">4</div><div><strong>Check relative paths</strong><p>If this file is in a subfolder, adjust JSON paths to match the published website structure.</p></div></div></div></div>
-        </div>
-        <div class="section-title"><div><h3>About this dashboard</h3><p>Build information and browser storage.</p></div></div>
-        <div class="panel"><div class="panel-body" style="display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap"><div><strong>ResearchRadar AI</strong><div style="color:var(--muted);font-size:12px;margin-top:4px">Single-file front end · No API key required in browser</div></div><button class="btn danger" id="clearLocalBtn">Clear saved browser data</button></div></div>
-      </section>
-      <footer class="footer"><span>© <span id="yearNow"></span> ResearchRadar AI · Research discovery workspace</span><span>Metadata helps discovery; verify findings in the original papers.</span></footer>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+    <div>
+      <h1>ResearchRadar <span style="color:#93c5fd">AI</span></h1>
+      <p>Scholarly discovery &amp; research intelligence</p>
     </div>
+  </div>
+  <div class="top-actions">
+    <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+    <a href="./index.html"><i class="fa-solid fa-house"></i> <span class="hide-mobile">Portfolio</span></a>
+    <button id="refreshBtn"><i class="fa-solid fa-rotate"></i> <span class="hide-mobile">Refresh data</span></button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="nav-label">WORKSPACE</div>
+    <nav>
+      <button class="nav-item active" data-page="overview"><i class="fa-solid fa-chart-pie"></i> Overview</button>
+      <button class="nav-item" data-page="discover"><i class="fa-solid fa-magnifying-glass"></i> Discover papers <span class="nav-count" id="navPapers">0</span></button>
+      <button class="nav-item" data-page="saved"><i class="fa-regular fa-bookmark"></i> Saved papers <span class="nav-count" id="navSaved">0</span></button>
+      <button class="nav-item" data-page="gaps"><i class="fa-solid fa-lightbulb"></i> Research gaps <span class="nav-count" id="navGaps">0</span></button>
+      <button class="nav-item" data-page="reports"><i class="fa-solid fa-file-lines"></i> AI reports</button>
+      <button class="nav-item" data-page="settings"><i class="fa-solid fa-sliders"></i> Data settings</button>
+    </nav>
+    <div class="sidebar-note">
+      <strong><i class="fa-solid fa-shield-halved"></i> Your workspace</strong>
+      Saved papers and research-gap notes are stored in this browser. They do not automatically sync to other devices.
+    </div>
+  </aside>
+
+  <main>
+    <section class="page active" id="page-overview">
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Your research workspace</div>
+          <h2>Research intelligence</h2>
+          <p>Discover recent scholarly work, organize useful papers, and identify questions worth investigating.</p>
+        </div>
+        <div class="btn-row no-print">
+          <button class="btn" id="exportAll"><i class="fa-solid fa-download"></i> Export library</button>
+          <button class="btn primary" data-go="discover"><i class="fa-solid fa-magnifying-glass"></i> Explore papers</button>
+        </div>
+      </div>
+
+      <div id="dataNotice" class="notice warning">Loading research data…</div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-top"><span class="stat-label">Papers available</span><span class="stat-icon"><i class="fa-solid fa-book-open"></i></span></div>
+          <div class="stat-number" id="statPapers">0</div><div class="stat-sub">Records loaded into this workspace</div>
+        </div>
+        <div class="stat">
+          <div class="stat-top"><span class="stat-label">Saved papers</span><span class="stat-icon"><i class="fa-solid fa-bookmark"></i></span></div>
+          <div class="stat-number" id="statSaved">0</div><div class="stat-sub">Your personal reading list</div>
+        </div>
+        <div class="stat">
+          <div class="stat-top"><span class="stat-label">Research gaps</span><span class="stat-icon"><i class="fa-solid fa-lightbulb"></i></span></div>
+          <div class="stat-number" id="statGaps">0</div><div class="stat-sub">Ideas you have recorded</div>
+        </div>
+        <div class="stat">
+          <div class="stat-top"><span class="stat-label">Report records</span><span class="stat-icon"><i class="fa-solid fa-file-lines"></i></span></div>
+          <div class="stat-number" id="statReports">0</div><div class="stat-sub">Research summaries available</div>
+        </div>
+      </div>
+
+      <div class="grid-two">
+        <div class="card">
+          <div class="card-head"><h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--blue)"></i> Recently discovered</h3><button class="btn small" data-go="discover">View all</button></div>
+          <div id="recentPapers" class="paper-list"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><i class="fa-solid fa-layer-group" style="color:var(--teal)"></i> Research topics</h3></div>
+          <div id="topicBreakdown" class="topic-list"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--blue)"></i> Latest research intelligence</h3><button class="btn small" data-go="reports">Open reports</button></div>
+        <div id="latestReport"></div>
+      </div>
+    </section>
+
+    <section class="page" id="page-discover">
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Literature discovery</div>
+          <h2>Discover scholarly papers</h2>
+          <p>Search the loaded metadata by title, author, abstract, keyword, topic, or publication year.</p>
+        </div>
+        <button class="btn no-print" id="exportSearch"><i class="fa-solid fa-file-csv"></i> Export results</button>
+      </div>
+      <div class="searchbar"><i class="fa-solid fa-magnifying-glass"></i><input id="searchInput" type="search" placeholder="Search dengue, explainable AI, climate-health…" aria-label="Search papers"><button class="btn small" id="clearSearch">Clear</button></div>
+      <div class="filters no-print">
+        <select id="topicFilter" aria-label="Filter by topic"><option value="">All topics</option></select>
+        <select id="yearFilter" aria-label="Filter by year"><option value="">All years</option></select>
+        <select id="sortFilter" aria-label="Sort papers"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="title">Title A–Z</option></select>
+        <select id="savedFilter" aria-label="Filter saved papers"><option value="all">All papers</option><option value="saved">Saved only</option><option value="unsaved">Not saved</option></select>
+      </div>
+      <div class="muted small-text" id="resultCount" style="margin-bottom:12px"></div>
+      <div id="paperResults" class="paper-list"></div>
+    </section>
+
+    <section class="page" id="page-saved">
+      <div class="page-head">
+        <div><div class="eyebrow">Personal reading list</div><h2>Saved papers</h2><p>Keep important studies together for your next literature review.</p></div>
+        <button class="btn no-print" id="exportSaved"><i class="fa-solid fa-download"></i> Export saved</button>
+      </div>
+      <div id="savedResults" class="paper-list"></div>
+    </section>
+
+    <section class="page" id="page-gaps">
+      <div class="page-head">
+        <div><div class="eyebrow">Research planning</div><h2>Research gaps &amp; ideas</h2><p>Record unanswered questions, methodological limitations, and potential research contributions.</p></div>
+        <button class="btn primary no-print" id="newGap"><i class="fa-solid fa-plus"></i> Add research gap</button>
+      </div>
+      <div class="notice">Research gaps you enter here are your own notes. The app does not automatically verify that a gap is novel or absent from the published literature.</div>
+      <div id="gapsList"></div>
+    </section>
+
+    <section class="page" id="page-reports">
+      <div class="page-head">
+        <div><div class="eyebrow">Research synthesis</div><h2>AI reports &amp; summaries</h2><p>Review summaries generated by your configured backend, when available.</p></div>
+        <button class="btn no-print" id="exportReports"><i class="fa-solid fa-download"></i> Export reports</button>
+      </div>
+      <div id="reportsList"></div>
+    </section>
+
+    <section class="page" id="page-settings">
+      <div class="page-head"><div><div class="eyebrow">Workspace configuration</div><h2>Data settings</h2><p>Configure the public JSON files that supply your dashboard with research metadata.</p></div></div>
+      <div class="card">
+        <h3 style="font:700 16px Manrope;margin-top:0">Research data sources</h3>
+        <div class="field">
+          <label for="articlesUrl">Articles JSON URL</label>
+          <input id="articlesUrl" value="./data/articles.json">
+          <span class="hint">Default for your existing root-level HTML file: ./data/articles.json</span>
+        </div>
+        <div class="field">
+          <label for="reportsUrl">Reports JSON URL</label>
+          <input id="reportsUrl" value="./data/reports.json">
+          <span class="hint">Default for your existing root-level HTML file: ./data/reports.json</span>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="saveSettings"><i class="fa-solid fa-floppy-disk"></i> Save sources &amp; reload</button>
+          <button class="btn" id="resetSettings">Restore defaults</button>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3 style="font:700 16px Manrope;margin-top:0">How automated updates work</h3>
+        <ol class="small-text" style="padding-left:20px">
+          <li>A GitHub Actions workflow runs the Python collector.</li>
+          <li>The collector retrieves scholarly metadata from its configured literature sources.</li>
+          <li>The workflow writes updated <code>articles.json</code> and <code>reports.json</code> files.</li>
+          <li>This dashboard fetches those public JSON files when you refresh it.</li>
+        </ol>
+        <div class="notice warning">GitHub Pages only serves the HTML, CSS, JavaScript, and JSON files. It does not execute Python. Never put your OpenAI API key in this HTML or any public JSON file.</div>
+        <div id="sourceStatus" class="small-text muted">No source request has been made yet.</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3 style="font:700 16px Manrope;margin-top:0">Browser storage</h3>
+        <p class="small-text muted">Saved papers and research-gap notes live in this browser's local storage. Clearing browser data can remove them. Export a backup regularly.</p>
+        <div class="btn-row">
+          <button class="btn" id="backupLocal">Export personal notes</button>
+          <button class="btn danger" id="clearLocal">Clear personal notes</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>ResearchRadar AI · Literature discovery workspace</span>
+      <span>Verify papers and AI-generated interpretations against original sources.</span>
+    </footer>
   </main>
 </div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog id="gapDialog">
+  <div class="dialog-head"><h3 id="gapDialogTitle">Add research gap</h3><button class="icon-btn" id="closeGap" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+  <form id="gapForm">
+    <input type="hidden" id="gapId">
+    <div class="field"><label for="gapTitle">Research question or gap *</label><input id="gapTitle" required maxlength="220" placeholder="e.g. Limited external validation of dengue early-warning models"></div>
+    <div class="field"><label for="gapDescription">Description and evidence</label><textarea id="gapDescription" placeholder="What is missing? Which studies suggest this limitation?"></textarea></div>
+    <div class="two-fields">
+      <div class="field"><label for="gapTopic">Topic</label><input id="gapTopic" placeholder="e.g. Dengue prediction"></div>
+      <div class="field"><label for="gapPriority">Priority</label><select id="gapPriority"><option>High</option><option selected>Medium</option><option>Low</option></select></div>
+    </div>
+    <div class="btn-row"><button class="btn primary" type="submit">Save research gap</button><button class="btn" type="button" id="cancelGap">Cancel</button></div>
+  </form>
+</dialog>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
 <script>
-(() => {
-'use strict';
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
-const STORE = {saved:'rr_saved_v1',gaps:'rr_gaps_v1',settings:'rr_settings_v1'};
-const defaultSettings = {articlesUrl:'./data/articles.json',reportsUrl:'./data/reports.json'};
-let articles = [], reports = [], saved = readStore(STORE.saved,[]), gaps = readStore(STORE.gaps,[]), settings = {...defaultSettings,...readStore(STORE.settings,{})};
-let sourceName = 'Sample dataset';
-function readStore(key, fallback){try{const x=localStorage.getItem(key);return x===null?fallback:JSON.parse(x)}catch(e){return fallback}}
-function writeStore(key,val){try{localStorage.setItem(key,JSON.stringify(val))}catch(e){toast('Browser storage is unavailable. Your changes may not persist.')}}
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),3200)}
-function normalizePaper(x,i){
-  if(typeof x==='string') x={title:x};
-  x=x||{};
-  const authors=Array.isArray(x.authors)?x.authors.map(a=>typeof a==='string'?a:(a.name||'')).filter(Boolean).join(', '):(x.authors||x.author||'');
-  const date=x.publication_date||x.published||x.date||x.publicationYear||x.year||'';
-  const year=String(date).match(/\b(19|20)\d{2}\b/)?.[0]||'';
-  const topics=x.topics||x.keywords||x.topic||x.subjects||[];
-  return {id:String(x.id||x.doi||x.url||x.paperId||`paper-${i}-${(x.title||'untitled').slice(0,24)}`),title:x.title||x.display_name||x.name||'Untitled paper',authors:typeof authors==='string'?authors:'',year,venue:x.journal||x.venue||x.source||x.publication||'',doi:x.doi||'',url:x.url||x.landing_page_url||x.pdf_url||x.link||'',abstract:x.abstract||x.summary||x.description||'',topics:Array.isArray(topics)?topics.map(t=>typeof t==='string'?t:(t.display_name||t.name||'')).filter(Boolean):String(topics||'').split(/[,;|]/).map(s=>s.trim()).filter(Boolean),source:x.source||x.database||'',raw:x};
+(function(){
+"use strict";
+
+const $ = id => document.getElementById(id);
+const STORAGE = {
+  saved:"rr_ai_saved_v1",
+  gaps:"rr_ai_gaps_v1",
+  sources:"rr_ai_sources_v1"
+};
+
+const DEFAULT_SOURCES = {
+  articles:"./data/articles.json",
+  reports:"./data/reports.json"
+};
+
+const DEMO_PAPERS = [
+  {
+    id:"demo-1",
+    title:"Explainable artificial intelligence for infectious disease prediction: methods and challenges",
+    authors:["ResearchRadar demonstration record"],
+    year:2025,
+    journal:"Demonstration record",
+    doi:"",
+    url:"https://openalex.org/",
+    abstract:"This demonstration record illustrates how scholarly metadata appears in the dashboard. It is not a verified bibliographic record. Replace it with records from your configured literature collection.",
+    topics:["Explainable AI","Infectious diseases"],
+    source:"Demo"
+  },
+  {
+    id:"demo-2",
+    title:"Climate-sensitive disease modelling using environmental and geospatial data",
+    authors:["ResearchRadar demonstration record"],
+    year:2024,
+    journal:"Demonstration record",
+    doi:"",
+    url:"https://europepmc.org/",
+    abstract:"This sample illustrates the paper card layout for climate, environmental, and geospatial epidemiology. It is not a real citation and should not be cited in academic work.",
+    topics:["Climate-health","Geospatial modelling"],
+    source:"Demo"
+  },
+  {
+    id:"demo-3",
+    title:"Remote sensing and machine learning for public health surveillance",
+    authors:["ResearchRadar demonstration record"],
+    year:2023,
+    journal:"Demonstration record",
+    doi:"",
+    url:"https://openalex.org/",
+    abstract:"This demonstration record shows the interface for papers relating satellite observations, machine learning, and public health. It is placeholder content, not a verified article.",
+    topics:["Remote sensing","Machine learning"],
+    source:"Demo"
+  }
+];
+
+let papers = [];
+let reports = [];
+let saved = readStorage(STORAGE.saved, []);
+let gaps = readStorage(STORAGE.gaps, []);
+let sourceSettings = readStorage(STORAGE.sources, DEFAULT_SOURCES);
+let demoMode = false;
+let toastTimer;
+
+function readStorage(key, fallback){
+  try{
+    const raw=localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){return fallback}
 }
-const sample = [
-{title:'Climate variability and dengue transmission: a spatial modelling perspective',authors:'ResearchRadar sample record',year:'2025',venue:'Illustrative sample metadata',topics:['Climate and health','Dengue','Spatial modelling'],abstract:'Example record only. Connect your articles JSON file in Data settings to display real scholarly metadata.',url:'https://openalex.org/'},
-{title:'Explainable machine learning for infectious disease early warning',authors:'ResearchRadar sample record',year:'2024',venue:'Illustrative sample metadata',topics:['Explainable AI','Public health','Machine learning'],abstract:'This is demonstration content, not a verified publication. Replace it by connecting a real research dataset.',url:'https://europepmc.org/'},
-{title:'Satellite environmental indicators for public health risk mapping',authors:'ResearchRadar sample record',year:'2023',venue:'Illustrative sample metadata',topics:['Remote sensing','GeoAI','Climate and health'],abstract:'A sample card demonstrating the dashboard layout. No claims about a real study are made.',url:'https://openalex.org/'}
-].map(normalizePaper);
-function getTopics(){const m={};articles.forEach(a=>a.topics.forEach(t=>{if(t)m[t]=(m[t]||0)+1}));return Object.entries(m).sort((a,b)=>b[1]-a[1])}
-function yearNum(a){return Number(a.year)||0}
-function safeExternal(url){try{const u=new URL(url,location.href);return ['http:','https:'].includes(u.protocol)?u.href:''}catch(e){return ''}}
-function paperCard(a){const isSaved=saved.some(x=>x.id===a.id);const href=safeExternal(a.url);return `<article class="paper-row"><div><div class="paper-title">${href?`<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(a.title)}</a>`:esc(a.title)}</div><div class="paper-meta"><span>${esc(a.authors||'Author details unavailable')}</span>${a.year?`<span>· ${esc(a.year)}</span>`:''}${a.venue?`<span>· ${esc(a.venue)}</span>`:''}</div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:9px">${a.topics.slice(0,4).map((t,i)=>`<span class="tag ${i===0?'blue':''}">${esc(t)}</span>`).join('')}</div>${a.abstract?`<p class="paper-abstract">${esc(a.abstract.length>320?a.abstract.slice(0,317)+'…':a.abstract)}</p>`:''}</div><div class="paper-actions"><button class="icon-btn ${isSaved?'saved':''}" data-save="${esc(a.id)}" title="${isSaved?'Remove from saved':'Save paper'}" aria-label="${isSaved?'Remove from saved':'Save paper'}">${isSaved?'★':'☆'}</button>${href?`<a class="icon-btn" href="${esc(href)}" target="_blank" rel="noopener noreferrer" title="Open paper" aria-label="Open paper" style="text-decoration:none">↗</a>`:''}</div></article>`}
-function emptyState(title,desc,button=''){return `<div class="empty"><div class="empty-icon">⌕</div><h3>${esc(title)}</h3><p>${esc(desc)}</p>${button}</div>`}
-function renderStats(){$('#statPapers').textContent=articles.length;$('#statSaved').textContent=saved.length;$('#savedNavCount').textContent=saved.length?String(saved.length):'';$('#statTopics').textContent=getTopics().length;$('#statReports').textContent=reports.length}
-function renderDashboard(){
-  const recent=[...articles].sort((a,b)=>yearNum(b)-yearNum(a)).slice(0,4);
-  $('#recentPapers').innerHTML=recent.length?recent.map(paperCard).join(''):emptyState('No papers loaded','Connect your articles JSON in Data settings.');
-  const topics=getTopics().slice(0,7);
-  $('#topicRadar').innerHTML=topics.length?topics.map(([t,n],i)=>`<div style="margin-bottom:15px"><div style="display:flex;justify-content:space-between;gap:8px;font-size:12px;margin-bottom:6px"><strong>${esc(t)}</strong><span style="color:var(--muted)">${n} paper${n===1?'':'s'}</span></div><div style="height:6px;background:#edf1f7;border-radius:99px;overflow:hidden"><div style="height:100%;width:${Math.max(5,Math.round(n/Math.max(...topics.map(z=>z[1]))*100))}%;background:${['#315ee8','#0e9f9a','#8a6de9','#5d86e8'][i%4]};border-radius:99px"></div></div></div>`).join(''):emptyState('No topic labels yet','Add topics or keywords to your paper records.');
-  renderStats();
+function writeStorage(key,value){
+  try{localStorage.setItem(key,JSON.stringify(value))}
+  catch(e){notify("Browser storage is unavailable or full. Export your notes and try again.")}
 }
-function populateFilters(){const topic=$('#topicFilter').value,year=$('#yearFilter').value;$('#topicFilter').innerHTML='<option value="">All topics</option>'+getTopics().map(([t])=>`<option value="${esc(t)}">${esc(t)}</option>`).join('');$('#yearFilter').innerHTML='<option value="">All years</option>'+[...new Set(articles.map(a=>a.year).filter(Boolean))].sort((a,b)=>b-a).map(y=>`<option value="${esc(y)}">${esc(y)}</option>`).join('');$('#topicFilter').value=topic;$('#yearFilter').value=year}
-function filteredPapers(list,query,topic,year,sort){let q=query.trim().toLowerCase();let out=list.filter(a=>(!q||[a.title,a.authors,a.abstract,a.venue,a.year,...a.topics].join(' ').toLowerCase().includes(q))&&(!topic||a.topics.includes(topic))&&(!year||a.year===year));if(sort==='newest')out.sort((a,b)=>yearNum(b)-yearNum(a));if(sort==='oldest')out.sort((a,b)=>yearNum(a)-yearNum(b));if(sort==='title')out.sort((a,b)=>a.title.localeCompare(b.title));return out}
-function renderDiscover(){const list=filteredPapers(articles,$('#paperSearch').value,$('#topicFilter').value,$('#yearFilter').value,$('#sortFilter').value);$('#resultsHeading').textContent=`${list.length} paper${list.length===1?'':'s'}`;$('#resultsSub').textContent=`Showing ${list.length} of ${articles.length} loaded records`;$('#paperResults').innerHTML=list.length?list.map(paperCard).join(''):emptyState('No matching papers','Try a different search term or clear one of the filters.');}
-function renderSaved(){const q=$('#savedSearch').value.toLowerCase();const list=saved.filter(a=>[a.title,a.authors,a.abstract,...a.topics].join(' ').toLowerCase().includes(q));$('#savedSub').textContent=`${saved.length} saved · stored in this browser`;$('#savedResults').innerHTML=list.length?list.map(paperCard).join(''):emptyState(saved.length?'No saved papers match':'Your library is empty',saved.length?'Try another search term.':'Tap the star beside a paper to save it.');renderStats()}
-function renderReports(){if(!reports.length){$('#reportList').innerHTML=emptyState('No report manifest found','When your backend publishes data/reports.json, its reports will appear here. You can also draft a local brief from your loaded paper metadata.','<button class="btn primary" data-action="draft">✧ Draft a brief</button>');return}$('#reportList').innerHTML=reports.map((r,i)=>`<article class="report-card"><span class="tag teal">RESEARCH REPORT</span><h3>${esc(r.title||r.name||`Research report ${i+1}`)}</h3><div class="report-date">${esc(r.date||r.generated_at||r.created_at||'Date not provided')}</div><p style="margin-top:8px">${esc(r.summary||r.description||'Open the report to read the full synthesis.')}</p>${r.url?`<a class="btn small" href="${esc(safeExternal(r.url))}" target="_blank" rel="noopener noreferrer">Open report ↗</a>`:r.content?`<button class="btn small" data-report="${i}">Read report</button>`:''}<div id="reportContent${i}"></div></article>`).join('')}
-function renderGaps(){const f=$('#gapFilter').value;const list=gaps.filter(g=>!f||g.status===f);$('#gapList').innerHTML=list.length?list.map(g=>`<article class="gap-card"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px"><div><span class="tag ${g.status==='Promising'?'green':g.status==='Checking literature'?'blue':''}">${esc(g.status)}</span><h4 style="margin-top:9px">${esc(g.title)}</h4>${g.area?`<div style="font-size:11px;color:var(--muted);margin-bottom:6px">${esc(g.area)}</div>`:''}<p>${esc(g.notes||'No notes added yet.')}</p></div><button class="icon-btn" data-delete-gap="${esc(g.id)}" title="Delete idea" aria-label="Delete idea">✕</button></div><div class="gap-actions"><select data-gap-status="${esc(g.id)}" aria-label="Change status" style="font-size:12px;padding:6px 8px;min-width:0"><option ${g.status==='Idea'?'selected':''}>Idea</option><option ${g.status==='Checking literature'?'selected':''}>Checking literature</option><option ${g.status==='Promising'?'selected':''}>Promising</option><option ${g.status==='Not pursuing'?'selected':''}>Not pursuing</option></select><span style="font-size:10px;color:var(--muted);align-self:center">${new Date(g.created||Date.now()).toLocaleDateString()}</span></div></article>`).join(''):emptyState('No research ideas yet','Capture a potential gap and the evidence you need to verify.','<button class="btn primary" data-action="new-gap">＋ Add research idea</button>')}
-function showPage(name){const pages=['dashboard','discover','saved','reports','gaps','settings'];if(!pages.includes(name))name='dashboard';$$('.page').forEach(p=>p.classList.toggle('active',p.id===`page-${name}`));$$('.nav [data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));$('#pageHeading').textContent=({dashboard:'Dashboard',discover:'Discover papers',saved:'Saved library',reports:'AI reports',gaps:'Research gaps',settings:'Data settings'})[name];$('#sidebar').classList.remove('open');$('#overlay').classList.remove('show');if(name==='discover')renderDiscover();if(name==='saved')renderSaved();if(name==='reports')renderReports();if(name==='gaps')renderGaps();window.scrollTo({top:0,behavior:'smooth'})}
-async function fetchJson(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}
-async function loadArticles(){
-  $('#connectionText').textContent='Loading data…';$('#dataSourceTag').textContent='LOADING';
-  let loaded=false;
-  if(settings.articlesUrl){try{const raw=await fetchJson(settings.articlesUrl);const arr=Array.isArray(raw)?raw:(raw.articles||raw.papers||raw.results||raw.data||[]);if(Array.isArray(arr)&&arr.length){articles=arr.map(normalizePaper);sourceName=settings.articlesUrl;loaded=true;}}catch(e){console.warn('Articles dataset unavailable:',e.message)}}
-  if(!loaded){articles=sample;sourceName='Demonstration sample';$('#connectionText').textContent='Sample data · connect dataset';$('#dataSourceTag').textContent='SAMPLE DATA';}
-  else{$('#connectionText').textContent='Dataset connected';$('#dataSourceTag').textContent='CONNECTED';}
-  populateFilters();renderDashboard();renderDiscover();renderSaved();
-  if(!loaded)toast('Showing demonstration records. Add a real articles JSON file in Data settings.');
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
 }
-async function loadReports(){
-  reports=[];
-  if(settings.reportsUrl){try{const raw=await fetchJson(settings.reportsUrl);reports=Array.isArray(raw)?raw:(raw.reports||raw.items||[]);if(!Array.isArray(reports))reports=[];}catch(e){console.info('Report manifest not available:',e.message)}}
-  renderStats();renderReports();
+function safeURL(value){
+  try{
+    const u=new URL(String(value||""),location.href);
+    return ["https:","http:"].includes(u.protocol) ? u.href : "";
+  }catch(e){return ""}
 }
-function toggleSaved(id){const inSaved=saved.some(x=>x.id===id);if(inSaved)saved=saved.filter(x=>x.id!==id);else{const a=articles.find(x=>x.id===id)||saved.find(x=>x.id===id);if(a)saved.unshift(a)}writeStore(STORE.saved,saved);renderDashboard();renderDiscover();renderSaved();toast(inSaved?'Removed from saved library':'Paper saved to your library')}
-function download(filename,content,type='application/json'){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
-function exportPapers(list,name){download(name,JSON.stringify(list.map(({raw,...a})=>a),null,2));toast('Export prepared')}
-function makeLocalBrief(){
- const topic=$('#briefTopic').value.trim();const relevant=articles.filter(a=>!topic||[a.title,a.abstract,a.authors,...a.topics].join(' ').toLowerCase().includes(topic.toLowerCase())).slice(0,30);
- const topicCounts={};relevant.forEach(a=>a.topics.forEach(t=>topicCounts[t]=(topicCounts[t]||0)+1));
- const lines=[`RESEARCH BRIEF: ${topic||'Overview of loaded literature'}`,`Created locally: ${new Date().toLocaleString()}`,`Records reviewed: ${relevant.length}`, '', 'SCOPE AND DATA NOTE','This is an automatically assembled outline based on the metadata currently loaded in this browser. It is not an AI-generated systematic review, and the sample records may be illustrative.', '', 'TOPIC LABELS IN THE LOADED RECORDS',...(Object.entries(topicCounts).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([t,n])=>`• ${t} (${n} records)`)), '', 'PAPERS TO REVIEW',...(relevant.slice(0,12).map((a,i)=>`${i+1}. ${a.title}${a.year?` (${a.year})`:''}${a.authors?` — ${a.authors}`:''}${a.url?`\n   Link: ${a.url}`:''}`)), '', 'NEXT STEPS TO VERIFY A RESEARCH GAP','1. Read the full text of relevant studies and check their limitations.','2. Compare datasets, geographic settings, study periods, methods, validation, and outcomes.','3. Record evidence for each proposed gap and search for contradictory studies.','4. Refine a research question with a supervisor or subject specialist.'];
- $('#localBriefOutput').innerHTML=`<div class="report-content" id="briefText">${esc(lines.join('\n'))}</div><button class="btn small" id="downloadBrief" style="margin-top:10px">↓ Download text report</button>`;$('#downloadBrief').addEventListener('click',()=>download('research-brief.txt',lines.join('\n'),'text/plain'));$('#draftReport').scrollIntoView({behavior:'smooth',block:'start'});
+function getId(p){
+  return String(p.id || p.doi || p.url || p.title || "");
 }
-function openGapForm(){ $('#gapForm').style.display='block';$('#gapTitle').focus()}
-$$('.nav [data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
-$$('[data-go]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.go)));
-$('#menuBtn').addEventListener('click',()=>{$('#sidebar').classList.add('open');$('#overlay').classList.add('show')});
-$('#overlay').addEventListener('click',()=>{$('#sidebar').classList.remove('open');$('#overlay').classList.remove('show')});
-$('#refreshBtn').addEventListener('click',async()=>{await loadArticles();await loadReports();toast('Dashboard data refreshed')});
-$('#paperSearch').addEventListener('input',renderDiscover);$('#topicFilter').addEventListener('change',renderDiscover);$('#yearFilter').addEventListener('change',renderDiscover);$('#sortFilter').addEventListener('change',renderDiscover);$('#savedSearch').addEventListener('input',renderSaved);$('#gapFilter').addEventListener('change',renderGaps);
-document.addEventListener('click',e=>{
- const save=e.target.closest('[data-save]');if(save){toggleSaved(save.dataset.save);return}
- const go=e.target.closest('[data-go]');if(go){showPage(go.dataset.go);return}
- const act=e.target.closest('[data-action]');if(act){if(act.dataset.action==='draft'){showPage('reports');$('#draftReport').style.display='block'}if(act.dataset.action==='new-gap')openGapForm();return}
- const rep=e.target.closest('[data-report]');if(rep){const i=Number(rep.dataset.report),r=reports[i];const target=$(`#reportContent${i}`);target.innerHTML=`<div class="report-content">${esc(r.content||r.text||r.summary||'No report text available.')}</div>`;return}
- const del=e.target.closest('[data-delete-gap]');if(del){gaps=gaps.filter(g=>g.id!==del.dataset.deleteGap);writeStore(STORE.gaps,gaps);renderGaps();toast('Research idea deleted')}
+function normalizePaper(p){
+  const authors=Array.isArray(p.authors) ? p.authors :
+    (typeof p.authors==="string" ? p.authors.split(/;\s*|,\s*(?=[A-Z])/).filter(Boolean) : []);
+  let topics=p.topics || p.keywords || p.topic || [];
+  if(typeof topics==="string") topics=topics.split(/[,;|]/).map(s=>s.trim()).filter(Boolean);
+  if(!Array.isArray(topics)) topics=[];
+  return {
+    ...p,
+    id:getId(p),
+    title:String(p.title || p.name || "Untitled paper"),
+    authors,
+    year:String(p.year || p.publication_year || p.date || "").match(/(?:19|20)\d{2}/)?.[0] || "",
+    journal:String(p.journal || p.venue || p.source_title || ""),
+    doi:String(p.doi || ""),
+    url:String(p.url || p.landing_page_url || p.link || (p.doi ? "https://doi.org/"+p.doi : "")),
+    abstract:String(p.abstract || p.summary || p.description || ""),
+    topics:topics.map(String),
+    source:String(p.source || p.provider || "")
+  };
+}
+function normalizeReport(r){
+  return {
+    ...r,
+    id:String(r.id || r.date || r.title || Math.random().toString(36).slice(2)),
+    title:String(r.title || r.name || "Research report"),
+    date:String(r.date || r.generated_at || r.updated_at || ""),
+    summary:String(r.summary || r.abstract || r.content || r.text || ""),
+    topics:Array.isArray(r.topics) ? r.topics : [],
+    findings:Array.isArray(r.findings) ? r.findings : [],
+    gaps:Array.isArray(r.gaps) ? r.gaps : [],
+    recommendations:Array.isArray(r.recommendations) ? r.recommendations : []
+  };
+}
+function notify(message){
+  const t=$("toast");
+  t.textContent=message;t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove("show"),3000);
+}
+function isSaved(p){return saved.includes(getId(p))}
+function savePersonal(){
+  writeStorage(STORAGE.saved,saved);
+  writeStorage(STORAGE.gaps,gaps);
+  updateCounts();
+}
+function updateCounts(){
+  $("statPapers").textContent=papers.length;
+  $("statSaved").textContent=saved.length;
+  $("statGaps").textContent=gaps.length;
+  $("statReports").textContent=reports.length;
+  $("navPapers").textContent=papers.length;
+  $("navSaved").textContent=saved.length;
+  $("navGaps").textContent=gaps.length;
+}
+function displayAuthors(authors){
+  if(!authors || !authors.length)return "Authors not provided";
+  return authors.slice(0,4).join(", ")+(authors.length>4?" et al.":"");
+}
+function paperCard(p){
+  const id=getId(p);
+  const link=safeURL(p.url);
+  const bookmarked=isSaved(p);
+  const tags=(p.topics||[]).slice(0,5).map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join("");
+  return `<article class="paper">
+    <div class="paper-top">
+      <div style="min-width:0">
+        <h3 class="paper-title">${link?`<a href="${escapeHTML(link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(p.title)}</a>`:escapeHTML(p.title)}</h3>
+        <div class="paper-meta">
+          <span><i class="fa-regular fa-user"></i> ${escapeHTML(displayAuthors(p.authors))}</span>
+          ${p.year?`<span><i class="fa-regular fa-calendar"></i> ${escapeHTML(p.year)}</span>`:""}
+          ${p.journal?`<span><i class="fa-regular fa-newspaper"></i> ${escapeHTML(p.journal)}</span>`:""}
+          ${p.source?`<span>${escapeHTML(p.source)}</span>`:""}
+        </div>
+      </div>
+      <button class="icon-btn ${bookmarked?"saved":""}" data-save="${escapeHTML(id)}" title="${bookmarked?"Remove from saved":"Save paper"}" aria-label="${bookmarked?"Unsave":"Save"} paper"><i class="${bookmarked?"fa-solid":"fa-regular"} fa-bookmark"></i></button>
+    </div>
+    ${p.abstract?`<p class="paper-abstract">${escapeHTML(p.abstract.length>650?p.abstract.slice(0,650)+"…":p.abstract)}</p>`:""}
+    ${tags?`<div class="tags">${tags}</div>`:""}
+    <div class="paper-actions">
+      ${link?`<a class="btn small" href="${escapeHTML(link)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open source</a>`:""}
+      ${p.doi?`<a class="btn small" href="${escapeHTML(safeURL("https://doi.org/"+p.doi))}" target="_blank" rel="noopener noreferrer">DOI</a>`:""}
+      <button class="btn small" data-gap-from="${escapeHTML(id)}"><i class="fa-regular fa-lightbulb"></i> Note a gap</button>
+    </div>
+  </article>`;
+}
+function emptyState(title,message){
+  return `<div class="empty"><i class="fa-regular fa-folder-open"></i><h3>${escapeHTML(title)}</h3><p>${escapeHTML(message)}</p></div>`;
+}
+function renderPapers(target,list){
+  $(target).innerHTML=list.length?list.map(paperCard).join(""):emptyState("No papers found","Try another search or check whether your data source has been configured.");
+}
+function getFilteredPapers(){
+  const query=$("searchInput").value.trim().toLowerCase();
+  const topic=$("topicFilter").value;
+  const year=$("yearFilter").value;
+  const savedFilter=$("savedFilter").value;
+  let list=papers.filter(p=>{
+    const hay=[p.title,p.abstract,p.journal,p.doi,...(p.authors||[]),...(p.topics||[])].join(" ").toLowerCase();
+    return (!query||hay.includes(query)) &&
+      (!topic||(p.topics||[]).includes(topic)) &&
+      (!year||String(p.year)===year) &&
+      (savedFilter==="all"||(savedFilter==="saved"&&isSaved(p))||(savedFilter==="unsaved"&&!isSaved(p)));
+  });
+  const sort=$("sortFilter").value;
+  list.sort((a,b)=>{
+    if(sort==="title")return a.title.localeCompare(b.title);
+    if(sort==="oldest")return (Number(a.year)||0)-(Number(b.year)||0);
+    return (Number(b.year)||0)-(Number(a.year)||0);
+  });
+  return list;
+}
+function renderDiscover(){
+  const list=getFilteredPapers();
+  $("resultCount").textContent=`Showing ${list.length} of ${papers.length} papers`;
+  renderPapers("paperResults",list);
+}
+function renderSaved(){
+  renderPapers("savedResults",papers.filter(isSaved));
+}
+function renderTopics(){
+  const counts={};
+  papers.forEach(p=>{
+    (p.topics||[]).forEach(t=>counts[t]=(counts[t]||0)+1);
+  });
+  const entries=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  $("topicBreakdown").innerHTML=entries.length?entries.map(([name,n])=>`
+    <div class="topic"><div class="topic-line"><span>${escapeHTML(name)}</span><strong>${n}</strong></div>
+    <div class="bar"><span style="width:${Math.max(5,100*n/Math.max(...entries.map(x=>x[1])))}%"></span></div></div>
+  `).join(""):emptyState("No topics yet","Topic counts appear when your JSON data contains topic or keyword fields.");
+}
+function renderReports(){
+  $("reportsList").innerHTML=reports.length?reports.map(r=>`
+    <article class="report">
+      <div class="paper-meta">${escapeHTML(r.date)} ${r.model?` · ${escapeHTML(r.model)}`:""}</div>
+      <h3>${escapeHTML(r.title)}</h3>
+      ${r.summary?`<p>${escapeHTML(r.summary)}</p>`:""}
+      ${r.topics.length?`<div class="tags">${r.topics.map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join("")}</div>`:""}
+      ${r.findings.length?`<strong class="small-text">Key findings</strong><ul>${r.findings.map(x=>`<li>${escapeHTML(x)}</li>`).join("")}</ul>`:""}
+      ${r.gaps.length?`<strong class="small-text">Potential research gaps</strong><ul>${r.gaps.map(x=>`<li>${escapeHTML(x)}</li>`).join("")}</ul>`:""}
+      ${r.recommendations.length?`<strong class="small-text">Recommendations</strong><ul>${r.recommendations.map(x=>`<li>${escapeHTML(x)}</li>`).join("")}</ul>`:""}
+      <button class="btn small no-print" data-report-download="${escapeHTML(r.id)}"><i class="fa-solid fa-download"></i> Download report</button>
+    </article>
+  `).join(""):emptyState("No reports loaded","Reports will appear here when reports.json contains generated summaries. A working API key and backend run are needed for AI-generated analysis.");
+}
+function renderGaps(){
+  $("gapsList").innerHTML=gaps.length?gaps.slice().sort((a,b)=>new Date(b.updated||b.created||0)-new Date(a.updated||a.created||0)).map(g=>`
+    <article class="gap-item">
+      <div class="paper-top"><div><h3>${escapeHTML(g.title)}</h3><div class="gap-meta">${escapeHTML(g.topic||"Uncategorized")} · Priority: ${escapeHTML(g.priority||"Medium")} · ${escapeHTML((g.updated||g.created||"").slice(0,10))}</div></div>
+      <span class="status ${g.priority==="High"?"demo":"info"}">${escapeHTML(g.priority||"Medium")}</span></div>
+      ${g.description?`<p>${escapeHTML(g.description)}</p>`:""}
+      <div class="btn-row no-print"><button class="btn small" data-edit-gap="${escapeHTML(g.id)}"><i class="fa-solid fa-pen"></i> Edit</button><button class="btn small danger" data-delete-gap="${escapeHTML(g.id)}"><i class="fa-regular fa-trash-can"></i> Delete</button></div>
+    </article>
+  `).join(""):emptyState("No research gaps saved","Use Add research gap to record a question or potential contribution.");
+}
+function renderOverview(){
+  renderPapers("recentPapers",papers.slice().sort((a,b)=>(Number(b.year)||0)-(Number(a.year)||0)).slice(0,3));
+  renderTopics();
+  $("latestReport").innerHTML=reports.length?
+    `<h4 style="margin:0 0 7px">${escapeHTML(reports[0].title)}</h4><p class="small-text muted">${escapeHTML(reports[0].summary.slice(0,600))}${reports[0].summary.length>600?"…":""}</p>`:
+    `<p class="small-text muted">No report is available yet. After the backend generates reports.json, its latest summary will appear here.</p>`;
+}
+function populateFilters(){
+  const topics=[...new Set(papers.flatMap(p=>p.topics||[]))].sort();
+  const years=[...new Set(papers.map(p=>p.year).filter(Boolean))].sort((a,b)=>Number(b)-Number(a));
+  const oldTopic=$("topicFilter").value,oldYear=$("yearFilter").value;
+  $("topicFilter").innerHTML='<option value="">All topics</option>'+topics.map(t=>`<option value="${escapeHTML(t)}">${escapeHTML(t)}</option>`).join("");
+  $("yearFilter").innerHTML='<option value="">All years</option>'+years.map(y=>`<option value="${escapeHTML(y)}">${escapeHTML(y)}</option>`).join("");
+  if(topics.includes(oldTopic))$("topicFilter").value=oldTopic;
+  if(years.includes(oldYear))$("yearFilter").value=oldYear;
+}
+function showPage(name){
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+name));
+  document.querySelectorAll(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.page===name));
+  $("sidebar").classList.remove("open");
+  if(name==="discover")renderDiscover();
+  if(name==="saved")renderSaved();
+  if(name==="gaps")renderGaps();
+  if(name==="reports")renderReports();
+  if(name==="overview")renderOverview();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function normalizeCollection(data,keys){
+  if(Array.isArray(data))return data;
+  if(data&&typeof data==="object"){
+    for(const key of keys)if(Array.isArray(data[key]))return data[key];
+  }
+  return [];
+}
+async function fetchJSON(url){
+  const safe=safeURL(url);
+  if(!safe)throw new Error("Invalid data URL");
+  const response=await fetch(safe,{cache:"no-store"});
+  if(!response.ok)throw new Error("HTTP "+response.status);
+  return response.json();
+}
+async function loadData(){
+  $("dataNotice").textContent="Loading data sources…";
+  $("dataNotice").className="notice";
+  $("sourceStatus").textContent="Fetching JSON files…";
+  let articleOK=false,reportOK=false,errors=[];
+  try{
+    const data=await fetchJSON(sourceSettings.articles);
+    const rows=normalizeCollection(data,["articles","papers","results","records","items"]);
+    if(rows.length){papers=rows.map(normalizePaper);articleOK=true;}
+    else errors.push("articles.json contains no article records");
+  }catch(e){errors.push("Articles: "+e.message);}
+  try{
+    const data=await fetchJSON(sourceSettings.reports);
+    const rows=normalizeCollection(data,["reports","items","results","records"]);
+    reports=rows.map(normalizeReport);reportOK=true;
+  }catch(e){errors.push("Reports: "+e.message);}
+  demoMode=!articleOK;
+  if(!articleOK)papers=DEMO_PAPERS.map(normalizePaper);
+  if(!reportOK)reports=[];
+  populateFilters();
+  updateCounts();
+  renderAll();
+  if(articleOK){
+    $("dataNotice").className="notice success";
+    $("dataNotice").textContent=`Live data loaded: ${papers.length} papers${reportOK?" and "+reports.length+" report records":"; report data unavailable"}.`;
+  }else{
+    $("dataNotice").className="notice warning";
+    $("dataNotice").textContent="Demo mode: real article data could not be loaded. Check the JSON paths in Data settings. "+errors.join(" · ");
+  }
+  $("sourceStatus").textContent=(articleOK?"Articles loaded successfully. ":"Articles unavailable. ")+(reportOK?"Reports loaded successfully. ":"Reports unavailable. ")+errors.join(" ");
+}
+function renderAll(){
+  renderOverview();renderDiscover();renderSaved();renderGaps();renderReports();updateCounts();
+}
+function downloadFile(filename,content,type){
+  const blob=new Blob([content],{type:type||"text/plain;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function exportJSON(filename,data){
+  downloadFile(filename,JSON.stringify(data,null,2),"application/json;charset=utf-8");
+}
+function csvCell(v){
+  if(Array.isArray(v))v=v.join("; ");
+  return '"'+String(v??"").replace(/"/g,'""')+'"';
+}
+function exportCSV(filename,list){
+  const cols=["title","authors","year","journal","doi","url","abstract","topics","source"];
+  const rows=[cols.join(","),...list.map(p=>cols.map(c=>csvCell(p[c])).join(","))];
+  downloadFile(filename,"\uFEFF"+rows.join("\r\n"),"text/csv;charset=utf-8");
+}
+function toggleSave(id){
+  if(saved.includes(id))saved=saved.filter(x=>x!==id);
+  else saved.push(id);
+  savePersonal();renderAll();
+  notify(saved.includes(id)?"Paper saved to your reading list.":"Paper removed from your reading list.");
+}
+function openGap(g){
+  $("gapDialogTitle").textContent=g?"Edit research gap":"Add research gap";
+  $("gapId").value=g?.id||"";
+  $("gapTitle").value=g?.title||"";
+  $("gapDescription").value=g?.description||"";
+  $("gapTopic").value=g?.topic||"";
+  $("gapPriority").value=g?.priority||"Medium";
+  $("gapDialog").showModal();
+}
+function downloadReport(r){
+  exportJSON("research-report.json",r);
+}
+
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.go)));
+$("menuToggle").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
+$("refreshBtn").addEventListener("click",loadData);
+$("searchInput").addEventListener("input",renderDiscover);
+["topicFilter","yearFilter","sortFilter","savedFilter"].forEach(id=>$(id).addEventListener("change",renderDiscover));
+$("clearSearch").addEventListener("click",()=>{$("searchInput").value="";renderDiscover()});
+$("exportAll").addEventListener("click",()=>exportCSV("researchradar-papers.csv",papers));
+$("exportSearch").addEventListener("click",()=>exportCSV("researchradar-search-results.csv",getFilteredPapers()));
+$("exportSaved").addEventListener("click",()=>exportCSV("researchradar-saved-papers.csv",papers.filter(isSaved)));
+$("exportReports").addEventListener("click",()=>exportJSON("researchradar-reports.json",reports));
+$("newGap").addEventListener("click",()=>openGap(null));
+$("closeGap").addEventListener("click",()=>$("gapDialog").close());
+$("cancelGap").addEventListener("click",()=>$("gapDialog").close());
+
+$("gapForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const id=$("gapId").value||("gap-"+Date.now());
+  const old=gaps.find(g=>g.id===id);
+  const item={
+    id,title:$("gapTitle").value.trim(),
+    description:$("gapDescription").value.trim(),
+    topic:$("gapTopic").value.trim(),
+    priority:$("gapPriority").value,
+    created:old?.created||new Date().toISOString(),
+    updated:new Date().toISOString()
+  };
+  if(old)gaps=gaps.map(g=>g.id===id?item:g);
+  else gaps.unshift(item);
+  writeStorage(STORAGE.gaps,gaps);updateCounts();renderGaps();
+  $("gapDialog").close();notify("Research gap saved.");
 });
-$('#exportBtn').addEventListener('click',()=>exportPapers(filteredPapers(articles,$('#paperSearch').value,$('#topicFilter').value,$('#yearFilter').value,$('#sortFilter').value),'researchradar-papers.json'));
-$('#exportSavedBtn').addEventListener('click',()=>exportPapers(saved,'researchradar-saved-library.json'));
-$('#refreshReportsBtn').addEventListener('click',async()=>{await loadReports();toast('Reports reloaded')});
-$('#makeReportBtn').addEventListener('click',()=>{$('#draftReport').style.display='block';$('#draftReport').scrollIntoView({behavior:'smooth'})});
-$('#closeDraft').addEventListener('click',()=>$('#draftReport').style.display='none');
-$('#generateLocalBrief').addEventListener('click',makeLocalBrief);
-$('#newGapBtn').addEventListener('click',openGapForm);$('#closeGapForm').addEventListener('click',()=>$('#gapForm').style.display='none');$('#cancelGapBtn').addEventListener('click',()=>$('#gapForm').style.display='none');
-$('#saveGapBtn').addEventListener('click',()=>{const title=$('#gapTitle').value.trim();if(!title){toast('Please add a working title first.');$('#gapTitle').focus();return}gaps.unshift({id:`gap-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,title,area:$('#gapArea').value.trim(),status:$('#gapStatus').value,notes:$('#gapNotes').value.trim(),created:Date.now()});writeStore(STORE.gaps,gaps);$('#gapTitle').value='';$('#gapArea').value='';$('#gapNotes').value='';$('#gapStatus').value='Idea';$('#gapForm').style.display='none';renderGaps();toast('Research idea saved')});
-document.addEventListener('change',e=>{const s=e.target.closest('[data-gap-status]');if(s){const g=gaps.find(x=>x.id===s.dataset.gapStatus);if(g){g.status=s.value;writeStore(STORE.gaps,gaps);renderGaps();toast('Status updated')}}});
-$('#saveSettingsBtn').addEventListener('click',async()=>{settings={articlesUrl:$('#dataUrl').value.trim(),reportsUrl:$('#reportsUrl').value.trim()};writeStore(STORE.settings,settings);await loadArticles();await loadReports();toast('Settings saved')});
-$('#resetSettingsBtn').addEventListener('click',()=>{$('#dataUrl').value=defaultSettings.articlesUrl;$('#reportsUrl').value=defaultSettings.reportsUrl;settings={...defaultSettings};writeStore(STORE.settings,settings);toast('Default paths restored. Tap Save & load data.')});
-$('#clearLocalBtn').addEventListener('click',()=>{if(confirm('Clear saved papers and research ideas from this browser? This cannot be undone.')){saved=[];gaps=[];writeStore(STORE.saved,saved);writeStore(STORE.gaps,gaps);renderDashboard();renderSaved();renderGaps();toast('Browser library cleared')}});
-$('#dataUrl').value=settings.articlesUrl;$('#reportsUrl').value=settings.reportsUrl;$('#yearNow').textContent=new Date().getFullYear();
-loadArticles();loadReports();
+
+document.addEventListener("click",e=>{
+  const saveButton=e.target.closest("[data-save]");
+  if(saveButton){toggleSave(saveButton.dataset.save);return;}
+  const gapButton=e.target.closest("[data-gap-from]");
+  if(gapButton){
+    const p=papers.find(p=>getId(p)===gapButton.dataset.gapFrom);
+    openGap({title:p?"Investigate: "+p.title:"",description:p?"Potential gap related to this paper:\n"+p.url:"",topic:p?.topics?.[0]||"",priority:"Medium"});
+    return;
+  }
+  const editButton=e.target.closest("[data-edit-gap]");
+  if(editButton){const g=gaps.find(x=>x.id===editButton.dataset.editGap);if(g)openGap(g);return;}
+  const deleteButton=e.target.closest("[data-delete-gap]");
+  if(deleteButton){
+    const g=gaps.find(x=>x.id===deleteButton.dataset.deleteGap);
+    if(g&&confirm("Delete this research-gap note?")){
+      gaps=gaps.filter(x=>x.id!==g.id);writeStorage(STORAGE.gaps,gaps);renderAll();notify("Research gap deleted.");
+    }
+    return;
+  }
+  const reportButton=e.target.closest("[data-report-download]");
+  if(reportButton){const r=reports.find(x=>x.id===reportButton.dataset.reportDownload);if(r)downloadReport(r);}
+});
+
+$("saveSettings").addEventListener("click",()=>{
+  const articles=$("articlesUrl").value.trim();
+  const reportsURL=$("reportsUrl").value.trim();
+  if(!safeURL(articles)||!safeURL(reportsURL)){
+    notify("Please enter valid HTTP or HTTPS JSON URLs.");return;
+  }
+  sourceSettings={articles,reports:reportsURL};
+  writeStorage(STORAGE.sources,sourceSettings);
+  loadData();
+});
+$("resetSettings").addEventListener("click",()=>{
+  sourceSettings={...DEFAULT_SOURCES};
+  writeStorage(STORAGE.sources,sourceSettings);
+  $("articlesUrl").value=sourceSettings.articles;
+  $("reportsUrl").value=sourceSettings.reports;
+  loadData();
+});
+$("backupLocal").addEventListener("click",()=>exportJSON("researchradar-personal-backup.json",{saved,gaps,exported_at:new Date().toISOString()}));
+$("clearLocal").addEventListener("click",()=>{
+  if(confirm("Clear saved papers and research-gap notes from this browser? This cannot be undone unless you exported a backup.")){
+    saved=[];gaps=[];savePersonal();renderAll();notify("Personal notes cleared.");
+  }
+});
+
+$("articlesUrl").value=sourceSettings.articles||DEFAULT_SOURCES.articles;
+$("reportsUrl").value=sourceSettings.reports||DEFAULT_SOURCES.reports;
+updateCounts();
+loadData();
+
 })();
 </script>
 </body>
