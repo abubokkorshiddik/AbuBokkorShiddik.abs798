@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/abslogo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects & Tools Development — Md. Abu Bokkor Shiddik. Interactive dashboards, atlases, web apps, an editor, a PDF reader, games, R packages, and reproducible research applications.">
+  <meta name="keywords" content="ABS798, Abu Bokkor Shiddik, Projects, Tools Development, R Package, Dengue Dashboard, BD Health Climate Atlas, DaySpace, Games, Editor, PDF Reader, whatdis, Systematic Review, Digital Tools, BRUR, Bangladesh">
+  <title>Projects &amp; Tools Development | Md. Abu Bokkor Shiddik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    :root {
+      --navy:#0b1f3a; --navy2:#122444;
+      --blue:#1a56db; --blue-hover:#1648c0; --sky:#e8f0fe; --sky2:#d2e3fc;
+      --text:#0f172a; --text2:#334155; --text3:#64748b;
+      --border:#e2e8f0; --border2:#cbd5e1; --bg:#f8fafc; --white:#ffffff;
+      --radius:8px; --radius-lg:14px;
+      --shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+      --shadow:0 4px 20px rgba(0,0,0,0.08),0 1px 4px rgba(0,0,0,0.04);
+    }
+    body { font-family:'Inter',system-ui,-apple-system,sans-serif; color:var(--text); font-size:15.5px; line-height:1.75; background:var(--bg); }
+    a { color:inherit; text-decoration:none; }
+
+    /* NAV */
+    .navbar { background:var(--navy); position:sticky; top:0; z-index:9999; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .nav-bar-inner { max-width:1180px; margin:auto; padding:0 24px; display:flex; align-items:center; height:56px; }
+    .nav-brand { font-size:14.5px; font-weight:600; color:#fff; letter-spacing:0.2px; margin-right:auto; white-space:nowrap; }
+    .nav-brand span { color:#93c5fd; font-weight:300; }
+    .nav-links { display:flex; align-items:center; gap:2px; }
+    .nav-links > a, .dropbtn { color:rgba(255,255,255,0.75); font-size:13.5px; font-weight:500; padding:6px 11px; border-radius:6px; border:none; background:none; cursor:pointer; font-family:inherit; transition:background 0.18s,color 0.18s; white-space:nowrap; display:flex; align-items:center; gap:4px; }
+    .nav-links > a:hover, .dropbtn:hover { color:#fff; background:rgba(255,255,255,0.09); }
+    .dropdown { position:relative; }
+    .dropdown-content { position:absolute; top:calc(100% + 6px); left:0; background:#132444; border:1px solid rgba(255,255,255,0.1); border-radius:10px; min-width:190px; padding:6px; box-shadow:0 12px 32px rgba(0,0,0,0.3); opacity:0; visibility:hidden; transform:translateY(6px); transition:opacity 0.2s,transform 0.2s,visibility 0.2s; pointer-events:none; z-index:9999; }
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto; }
+    .dropdown-content a { display:flex; align-items:center; gap:8px; padding:8px 12px; color:rgba(255,255,255,0.72); font-size:13px; font-weight:500; border-radius:6px; transition:background 0.15s,color 0.15s; }
+    .dropdown-content a:hover { background:rgba(255,255,255,0.08); color:#fff; }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:7px; border-radius:6px; margin-left:10px; transition:background 0.2s; }
+    .hamburger:hover { background:rgba(255,255,255,0.1); }
+    .hamburger span { display:block; width:21px; height:2px; background:rgba(255,255,255,0.85); border-radius:2px; transition:transform 0.28s,opacity 0.28s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display:none; background:#0a1628; border-top:1px solid rgba(255,255,255,.06); overflow-y:auto; max-height:0; transition:max-height .38s cubic-bezier(.4,0,.2,1); }
+    .nav-drawer.open { max-height:min(70vh,560px); }
+    .drawer-inner { padding:8px 0 16px; }
+    .drawer-link { display:block; color:rgba(255,255,255,.75); font-size:14.5px; font-weight:500; padding:11px 24px; transition:background .15s,color .15s; }
+    .drawer-link:hover { background:rgba(255,255,255,.05); color:#fff; }
+    .drawer-sec { display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.4px; color:rgba(255,255,255,.28); padding:14px 24px 4px; cursor:pointer; user-select:none; }
+    .drawer-sec svg { width:12px; height:12px; color:rgba(255,255,255,.3); transition:transform .2s; flex-shrink:0; }
+    .drawer-sec.open svg { transform:rotate(180deg); }
+    .drawer-sub { max-height:0; overflow:hidden; transition:max-height .3s ease; }
+    .drawer-sub.open { max-height:400px; }
+    .drawer-sub .drawer-link { padding-left:38px; font-size:13.5px; color:rgba(255,255,255,.55); }
+    .drawer-divider { height:1px; background:rgba(255,255,255,.06); margin:4px 0; }
+    @media (max-width:900px) { .nav-links{display:none;} .hamburger{display:flex;} .nav-drawer{display:block;} }
+
+    /* HERO */
+    .page-hero { background:linear-gradient(140deg,#07152a 0%,#0d2247 50%,#0f2d5c 100%); color:white; padding:60px 24px 50px; position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 80% 20%,rgba(59,130,246,0.13) 0%,transparent 50%),radial-gradient(circle at 10% 80%,rgba(99,102,241,0.08) 0%,transparent 40%); pointer-events:none; }
+    .hero-inner { max-width:1100px; margin:auto; position:relative; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:7px; font-size:11.5px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#93c5fd; margin-bottom:14px; }
+    .hero-eyebrow::before { content:''; width:6px; height:6px; background:#4ade80; border-radius:50%; }
+    .page-hero h1 { font-family:'Lora',serif; font-size:2.2rem; font-weight:600; line-height:1.18; margin-bottom:10px; }
+    .page-hero p { font-size:15px; color:rgba(255,255,255,0.6); max-width:600px; margin-bottom:28px; }
+    .hero-stats { display:flex; flex-wrap:wrap; gap:32px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.1); }
+    .hstat-n { font-size:1.7rem; font-weight:700; color:#fff; line-height:1; margin-bottom:4px; }
+    .hstat-l { font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.8px; font-weight:500; }
+
+    /* MAIN */
+    .page-wrap { max-width:1100px; margin:auto; padding:48px 24px 80px; }
+
+    /* PROJECT CARD */
+    .proj-card {
+      background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg);
+      overflow:hidden; margin-bottom:28px; box-shadow:var(--shadow-sm);
+      transition:box-shadow 0.2s,transform 0.2s;
+    }
+    .proj-card:hover { box-shadow:var(--shadow); transform:translateY(-2px); }
+    .proj-card::before { content:''; display:block; height:3px; }
+    .proj-card.pkg::before       { background:linear-gradient(90deg,#7c3aed,#a855f7); }
+    .proj-card.dashboard::before { background:linear-gradient(90deg,#e05a2b,#f59e0b); }
+    .proj-card.review::before    { background:linear-gradient(90deg,#059669,#0d9488); }
+    .proj-card.atlas::before     { background:linear-gradient(90deg,#059669,#2563eb); }
+    .proj-card.dayspace::before  { background:linear-gradient(90deg,#7c3aed,#2563eb); }
+    .proj-card.games::before     { background:linear-gradient(90deg,#e11d48,#f59e0b); }
+    .proj-card.editor::before    { background:linear-gradient(90deg,#0ea5e9,#2563eb); }
+    .proj-card.reader::before    { background:linear-gradient(90deg,#4f46e5,#7c3aed); }
+
+    /* HEAD */
+    .proj-head { padding:24px 28px 20px; border-bottom:1px solid var(--border); display:flex; align-items:flex-start; gap:18px; }
+    .proj-icon {
+      width:52px; height:52px; border-radius:12px; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center; font-size:24px;
+    }
+    .icon-pkg      { background:#f5f3ff; }
+    .icon-dash     { background:#fff3e0; }
+    .icon-review   { background:#ecfdf5; }
+    .icon-atlas    { background:#ecfdf5; }
+    .icon-dayspace { background:#eef2ff; }
+    .icon-games    { background:#fff1f2; }
+    .icon-editor   { background:#e0f2fe; }
+    .icon-reader   { background:#eef2ff; }
+    .proj-head-text { flex:1; }
+    .proj-type-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+    .proj-badge { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; padding:3px 10px; border-radius:5px; white-space:nowrap; }
+    .badge-pkg      { background:#f5f3ff; color:#5b21b6; border:1px solid #ddd6fe; }
+    .badge-dash     { background:#fff3e0; color:#c2410c; border:1px solid #fdba74; }
+    .badge-review   { background:#ecfdf5; color:#065f46; border:1px solid #6ee7b7; }
+    .badge-atlas    { background:#ecfdf5; color:#065f46; border:1px solid #6ee7b7; }
+    .badge-dayspace { background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe; }
+    .badge-games    { background:#fff1f2; color:#be123c; border:1px solid #fecdd3; }
+    .badge-editor   { background:#e0f2fe; color:#075985; border:1px solid #bae6fd; }
+    .badge-reader   { background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe; }
+    .badge-open     { background:#ecfdf5; color:#065f46; border:1px solid #6ee7b7; }
+    .proj-title { font-family:'Lora',serif; font-size:1.2rem; font-weight:600; color:var(--text); line-height:1.35; margin-bottom:6px; }
+    .proj-subtitle { font-size:13.5px; color:var(--text3); }
+
+    /* TECH TAGS */
+    .tech-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+    .tech-tag { font-size:11.5px; font-weight:600; padding:3px 10px; border-radius:20px; border:1px solid; }
+    .tt-r      { background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe; }
+    .tt-python { background:#f5f3ff; color:#5b21b6; border-color:#ddd6fe; }
+    .tt-dash   { background:#fff3e0; color:#92400e; border-color:#fde68a; }
+    .tt-html   { background:#fef2f2; color:#991b1b; border-color:#fca5a5; }
+    .tt-spatial{ background:#ecfdf5; color:#065f46; border-color:#6ee7b7; }
+    .tt-prisma { background:#e0f7fa; color:#0e7490; border-color:#67e8f9; }
+
+    /* BODY */
+    .proj-body { padding:20px 28px 24px; }
+    .proj-desc { font-size:14px; color:var(--text2); line-height:1.8; margin-bottom:18px; }
+
+    /* FEATURE LIST */
+    .feature-list { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:20px; }
+    .feature-item { display:flex; align-items:flex-start; gap:8px; font-size:13.5px; color:var(--text2); }
+    .feature-item::before {
+  content: '✓';
+  color: #059669;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+    /* ACTIONS */
+    .proj-actions { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
+    .proj-actions:last-child { margin-bottom:0; }
+    .action-btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; padding:8px 18px; border-radius:8px; transition:all 0.18s; }
+    .btn-primary { background:var(--blue); color:#fff; }
+    .btn-primary:hover { background:var(--blue-hover); transform:translateY(-1px); }
+    .btn-outline { background:var(--white); color:var(--blue); border:1px solid #bfdbfe; }
+    .btn-outline:hover { background:var(--sky); }
+    .btn-ghost { background:var(--bg); color:var(--text2); border:1px solid var(--border); }
+
+    /* DEMO IFRAME */
+    .demo-wrap { border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+    .demo-bar { background:#f1f5f9; border-bottom:1px solid var(--border); padding:8px 14px; display:flex; align-items:center; gap:8px; }
+    .demo-dot { width:10px; height:10px; border-radius:50%; }
+    .demo-url { font-size:12px; color:var(--text3); font-family:monospace; flex:1; text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .demo-wrap iframe { width:100%; height:360px; border:none; display:block; }
+
+    /* FOOTER */
+    footer { background:var(--navy); color:rgba(255,255,255,0.5); padding:44px 24px 32px; margin-top:0; }
+    .footer-inner { max-width:1180px; margin:auto; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,0.07); }
+    .footer-col-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.35); margin-bottom:14px; }
+    .footer-name { font-family:'Lora',serif; font-size:16px; font-weight:600; color:rgba(255,255,255,0.9); margin-bottom:8px; }
+    .footer-desc { font-size:12.5px; line-height:1.7; }
+    .footer-nav-links, .footer-social-links { display:flex; flex-direction:column; gap:7px; }
+    .footer-nav-links a, .footer-social-links a { font-size:13px; color:rgba(255,255,255,0.55); transition:color 0.15s; }
+    .footer-nav-links a:hover { color:rgba(255,255,255,0.9); }
+    .footer-social-links a:hover { color:#93c5fd; }
+    .footer-bottom { max-width:1180px; margin:22px auto 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+    .footer-bottom p { font-size:12px; }
+
+    /* RESPONSIVE */
+    @media (max-width:1024px) { .footer-inner{grid-template-columns:1fr 1fr;} }
+    @media (max-width:700px) {
+      .feature-list{grid-template-columns:1fr;}
+      .proj-head{flex-direction:column;gap:12px;}
+    }
+    @media (max-width:600px) {
+      .page-hero{padding:40px 16px 36px;} .page-hero h1{font-size:1.65rem;}
+      .page-wrap{padding:28px 16px 60px;}
+      .proj-head,.proj-body{padding-left:18px;padding-right:18px;}
+      .demo-wrap iframe{height:260px;}
+      .footer-inner{grid-template-columns:1fr;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+    }
+  
+  .nav-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-logo-img{
+    display:flex;
+    align-items:center;
+}
+
+.brand-logo-img img{
+    width:34px;
+    height:34px;
+    object-fit:contain;
+    transition:transform .2s ease;
+}
+
+.brand-logo-img:hover img{
+    transform:scale(1.08);
+}
+
+.brand-logo-text{
+    color:#fff;
+    font-size:14.5px;
+    font-weight:600;
+    letter-spacing:.2px;
+    white-space:nowrap;
+}
+
+.brand-logo-text span{
+    color:#93c5fd;
+    font-weight:300;
+}
+
+.brand-logo-text:hover{
+    color:#93c5fd;
+}
+  
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <div class="nav-bar-inner">
+    <div class="nav-brand">
+
+  <a href="home.html" class="brand-logo-img">
+    <img src="https://raw.githubusercontent.com/abubokkorshiddik/AbuBokkorShiddik.abs798/main/LOGOABS.png"
+         alt="ABS Logo">
+  </a>
+
+  <a href="contact.html" class="brand-logo-text">
+    ABS<span> · </span>Abu Bokkor Shiddik
+  </a>
+
+</div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <div class="dropdown">
+        <button class="dropbtn">Academic ▾</button>
+        <div class="dropdown-content">
+          <a href="courses.html">🎓 Courses &amp; Training</a>
+          <a href="conference-and-workshop.html">🏛 Conferences &amp; Workshops</a>
+          <a href="service.html">🔖 Service</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Digital Lab ▾</button>
+        <div class="dropdown-content">
+          <a href="projects.html">⚗ Projects</a>
+          <a href="data-code.html">💾 Data &amp; Code</a>
+          <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace" target="_blank" rel="noopener">📅 DaySpace</a>
+          <a href="https://abubokkorshiddik.github.io/bd-health-climate-atlas/" target="_blank" rel="noopener">🌍 BD Health &amp; Climate Atlas</a>
+          <a href="https://abubokkorshiddik.github.io/Eng-materials/editor.html" target="_blank" rel="noopener">📝 Editor</a>
+          <a href="https://abubokkorshiddik.github.io/Eng-materials/reader.html" target="_blank" rel="noopener">📖 Reader</a>
+          <a href="game.html">🎮 Games</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Learning ▾</button>
+        <div class="dropdown-content">
+          <a href="Learning Notes.html">📖 All Learning Notes</a>
+          <a href="BSc-courses.html">🎓 B.Sc. Courses</a>
+          <a href="MSc-courses.html">🎓 M.Sc. Courses</a>
+          <a href="R-programming.html">💻 Learn R Programming</a>
+          <a href="Python-programming.html">🐍 Learn Python Programming</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Insights ▾</button>
+        <div class="dropdown-content">
+          <a href="insights.html">✍ Posts</a>
+          <a href="videos.html">▶ Videos</a>
+          <a href="archive.html">📷 Photos &amp; Archive</a>
+        </div>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <div class="drawer-inner">
+      <a class="drawer-link" href="home.html">Home</a>
+      <a class="drawer-link" href="publications.html">Publications</a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-sec">Academic <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="courses.html">Courses &amp; Training</a>
+        <a class="drawer-link" href="conference-and-workshop.html">Conferences &amp; Workshops</a>
+        <a class="drawer-link" href="service.html">Service</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-sec">Digital Lab <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="projects.html">Projects</a>
+        <a class="drawer-link" href="data-code.html">Data &amp; Code</a>
+        <a class="drawer-link" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace" target="_blank" rel="noopener">DaySpace</a>
+        <a class="drawer-link" href="https://abubokkorshiddik.github.io/bd-health-climate-atlas/" target="_blank" rel="noopener">BD Health &amp; Climate Atlas</a>
+        <a class="drawer-link" href="https://abubokkorshiddik.github.io/Eng-materials/editor.html" target="_blank" rel="noopener">Editor</a>
+        <a class="drawer-link" href="https://abubokkorshiddik.github.io/Eng-materials/reader.html" target="_blank" rel="noopener">Reader</a>
+        <a class="drawer-link" href="game.html">Games</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-sec">Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="Learning Notes.html">All Learning Notes</a>
+        <a class="drawer-link" href="BSc-courses.html">B.Sc. Courses</a>
+        <a class="drawer-link" href="MSc-courses.html">M.Sc. Courses</a>
+        <a class="drawer-link" href="R-programming.html">Learn R Programming</a>
+        <a class="drawer-link" href="Python-programming.html">Learn Python Programming</a>
+      </div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-sec">Insights <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="drawer-sub">
+        <a class="drawer-link" href="insights.html">Posts</a>
+        <a class="drawer-link" href="videos.html">Videos</a>
+        <a class="drawer-link" href="archive.html">Photos &amp; Archive</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Digital Lab</div>
+    <h1>Projects &amp; Tools Development</h1>
+    <p>Interactive dashboards, atlases, web apps, writing and reading tools, games, open-source R packages, and reproducible research applications built to support public health analytics and data science.</p>
+    <div class="hero-stats">
+      <div><div class="hstat-n">8</div><div class="hstat-l">Projects</div></div>
+      <div><div class="hstat-n">R &middot; Python &middot; HTML</div><div class="hstat-l">Technologies</div></div>
+      <div><div class="hstat-n">Open Source</div><div class="hstat-l">All code public</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="page-wrap">
+
+  <!-- PROJECT — BD HEALTH & CLIMATE ATLAS -->
+  <div class="proj-card atlas" id="bd-health-climate-atlas">
+    <div class="proj-head">
+      <div class="proj-icon icon-atlas">&#127757;</div>
+      <div class="proj-head-text">
+        <div class="proj-type-row">
+          <span class="proj-badge badge-atlas">Interactive Atlas</span>
+          <span class="proj-badge badge-open">Live Demo</span>
+        </div>
+        <div class="proj-title">BD Health &amp; Climate Atlas</div>
+        <div class="proj-subtitle">Exploring climate variables and health outcomes across Bangladesh</div>
+        <div class="tech-tags">
+          <span class="tech-tag tt-html">HTML/JS</span>
+          <span class="tech-tag tt-spatial">Spatial Analysis</span>
+          <span class="tech-tag tt-dash">Climate &amp; Health</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">An interactive web atlas that brings climate and public health data for Bangladesh together in one place, making it easier to explore spatial patterns and climate-health relationships. Built to complement published research on climate-sensitive diseases.</p>
+      <div class="proj-actions">
+        <a class="action-btn btn-primary" href="https://abubokkorshiddik.github.io/bd-health-climate-atlas/" target="_blank" rel="noopener">&#127760; Open Atlas &#8599;</a>
+        <a class="action-btn btn-outline" href="publications.html">Related publications &rarr;</a>
+      </div>
+      <div class="demo-wrap">
+        <div class="demo-bar">
+          <div class="demo-dot" style="background:#ef4444"></div>
+          <div class="demo-dot" style="background:#f59e0b;margin-left:4px"></div>
+          <div class="demo-dot" style="background:#22c55e;margin-left:4px"></div>
+          <span class="demo-url">abubokkorshiddik.github.io/bd-health-climate-atlas</span>
+        </div>
+        <iframe src="https://abubokkorshiddik.github.io/bd-health-climate-atlas/" loading="lazy" title="BD Health &amp; Climate Atlas"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT — DAYSPACE -->
+  <div class="proj-card dayspace" id="dayspace">
+    <div class="proj-head">
+      <div class="proj-icon icon-dayspace">&#128197;</div>
+      <div class="proj-head-text">
+        <div class="proj-type-row">
+          <span class="proj-badge badge-dayspace">Web App</span>
+          <span class="proj-badge badge-open">Live Demo</span>
+        </div>
+        <div class="proj-title">DaySpace</div>
+        <div class="proj-subtitle">A browser-based app for organizing and planning your day</div>
+        <div class="tech-tags">
+          <span class="tech-tag tt-html">HTML/JS</span>
+          <span class="tech-tag tt-dash">Productivity</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">DaySpace is a lightweight web app for planning and organizing daily activities. It runs entirely in the browser, with no installation required.</p>
+      <div class="proj-actions">
+        <a class="action-btn btn-primary" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace" target="_blank" rel="noopener">&#127760; Open DaySpace &#8599;</a>
+      </div>
+      <div class="demo-wrap">
+        <div class="demo-bar">
+          <div class="demo-dot" style="background:#ef4444"></div>
+          <div class="demo-dot" style="background:#f59e0b;margin-left:4px"></div>
+          <div class="demo-dot" style="background:#22c55e;margin-left:4px"></div>
+          <span class="demo-url">abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace</span>
+        </div>
+        <iframe src="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace" loading="lazy" title="DaySpace"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT — GAMES -->
+  <div class="proj-card games" id="games">
+    <div class="proj-head">
+      <div class="proj-icon icon-games">&#127918;</div>
+      <div class="proj-head-text">
+        <div class="proj-type-row">
+          <span class="proj-badge badge-games">Games</span>
+          <span class="proj-badge badge-open">Play Online</span>
+        </div>
+        <div class="proj-title">Games</div>
+        <div class="proj-subtitle">Small browser games built for fun and learning</div>
+        <div class="tech-tags">
+          <span class="tech-tag tt-html">HTML/JS</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">A collection of simple games that run right in your browser &mdash; a lighter side of the digital lab.</p>
+      <div class="proj-actions">
+        <a class="action-btn btn-primary" href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/game.html" target="_blank" rel="noopener">&#127918; Play Games &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT — EDITOR -->
+  <div class="proj-card editor" id="editor">
+    <div class="proj-head">
+      <div class="proj-icon icon-editor">&#128221;</div>
+      <div class="proj-head-text">
+        <div class="proj-type-row">
+          <span class="proj-badge badge-editor">Writing Tool</span>
+          <span class="proj-badge badge-open">Open Online</span>
+        </div>
+        <div class="proj-title">Editor</div>
+        <div class="proj-subtitle">A browser-based editor for writing papers, notes and reports</div>
+        <div class="tech-tags">
+          <span class="tech-tag tt-html">HTML/JS</span>
+          <span class="tech-tag tt-dash">Writing</span>
+          <span class="tech-tag tt-spatial">Research Tool</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">A lightweight word-processor style editor that runs entirely in the browser, built for drafting research notes, manuscripts and reports without installing anything. It pairs with the Reader, so highlights, quotes and notes collected while reading can be carried straight into your writing.</p>
+      <div class="feature-list">
+        <div class="feature-item">Clean, distraction-free writing area</div>
+        <div class="feature-item">Headings, lists, bold, italic and tables</div>
+        <div class="feature-item">Receives quotes and notes from the Reader</div>
+        <div class="feature-item">Auto-save in the browser, so work is not lost</div>
+        <div class="feature-item">Export your document when finished</div>
+        <div class="feature-item">Works on phone, tablet and desktop</div>
+      </div>
+      <div class="proj-actions">
+        <a class="action-btn btn-primary" href="https://abubokkorshiddik.github.io/Eng-materials/editor.html" target="_blank" rel="noopener">&#128221; Open Editor &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT — READER &MDASH; PDF STUDY READER -->
+  <div class="proj-card reader" id="reader">
+    <div class="proj-head">
+      <div class="proj-icon icon-reader">&#128214;</div>
+      <div class="proj-head-text">
+        <div class="proj-type-row">
+          <span class="proj-badge badge-reader">PDF Reader</span>
+          <span class="proj-badge badge-open">Open Online</span>
+        </div>
+        <div class="proj-title">Reader &mdash; PDF Study Reader</div>
+        <div class="proj-subtitle">A PDF reader for annotating, taking notes and studying papers and books</div>
+        <div class="tech-tags">
+          <span class="tech-tag tt-html">HTML/JS</span>
+          <span class="tech-tag tt-prisma">PDF</span>
+          <span class="tech-tag tt-dash">Study Tool</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">A single-file PDF reader for serious study. Open a PDF from your device, highlight and draw on it, keep multiple notes per document, and save everything back into the PDF. It can be installed as an app and works offline, with a library that shows the first page of each PDF as its cover.</p>
+      <div class="feature-list">
+        <div class="feature-item">Highlight, underline and freehand drawing</div>
+        <div class="feature-item">Multiple notes per PDF, exported into the file</div>
+        <div class="feature-item">Library with cover thumbnails, Cards, Grid and List views</div>
+        <div class="feature-item">Categories with sorting, hiding and renaming</div>
+        <div class="feature-item">Comfortable Reading mode and brightness control</div>
+        <div class="feature-item">Rotate pages, handle mixed page sizes, adjustable split view</div>
+        <div class="feature-item">Built-in browser pane and dictionary lookup</div>
+        <div class="feature-item">Installable as an app, works offline</div>
+      </div>
+      <div class="proj-actions">
+        <a class="action-btn btn-primary" href="https://abubokkorshiddik.github.io/Eng-materials/reader.html" target="_blank" rel="noopener">&#128214; Open Reader &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT — R PACKAGE -->
+  <div class="proj-card pkg">
+    <div class="proj-head">
+      <div class="proj-icon icon-pkg">&#128230;</div>
+      <div class="proj-head-text">
+        <div class="proj-type-row">
+          <span class="proj-badge badge-pkg">R Package</span>
+          <span class="proj-badge badge-open">Open Source</span>
+        </div>
+        <div class="proj-title">whatdis() &mdash; R Distribution Detector</div>
+        <div class="proj-subtitle">Automatically identify and visualize data distributions for statistical modeling decisions</div>
+        <div class="tech-tags">
+          <span class="tech-tag tt-r">R</span>
+          <span class="tech-tag tt-dash">Statistics</span>
+          <span class="tech-tag tt-spatial">EDA</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">A custom R package designed to help researchers and analysts identify the best-fit statistical distribution for their data. <strong>whatdis()</strong> automates distribution testing, fitting, and visualization &mdash; removing guesswork from exploratory data analysis and improving downstream modeling decisions.</p>
+      <div class="feature-list">
+        <div class="feature-item">Automatic distribution testing across common families</div>
+        <div class="feature-item">Visual comparison of fitted distributions</div>
+        <div class="feature-item">Goodness-of-fit statistics (AIC, BIC, KS test)</div>
+        <div class="feature-item">Supports skewed, heavy-tailed, and count data</div>
+        <div class="feature-item">Designed for epidemiological and health data</div>
+        <div class="feature-item">Minimal dependencies, easy to install</div>
+      </div>
+      <div class="proj-actions">
+        <a class="action-btn btn-primary" href="https://github.com/abubokkorshiddik/R-distribution-detector" target="_blank">&#128190; GitHub Repository &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT — DENGUE DASHBOARD -->
+  <div class="proj-card dashboard">
+    <div class="proj-head">
+      <div class="proj-icon icon-dash">&#128200;</div>
+      <div class="proj-head-text">
+        <div class="proj-type-row">
+          <span class="proj-badge badge-dash">Interactive Dashboard</span>
+          <span class="proj-badge badge-open">Live Demo</span>
+        </div>
+        <div class="proj-title">Dengue Analytics Dashboard &mdash; Bangladesh</div>
+        <div class="proj-subtitle">Spatial and temporal visualization of dengue trends and early warning insights</div>
+        <div class="tech-tags">
+          <span class="tech-tag tt-html">HTML/JS</span>
+          <span class="tech-tag tt-spatial">Spatial Analysis</span>
+          <span class="tech-tag tt-dash">Public Health</span>
+          <span class="tech-tag tt-r">R</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">An interactive web-based dashboard for analyzing dengue fever trends across Bangladesh using spatial and temporal visualization. Supports district-level early warning insights, climate-disease correlations, and outbreak pattern detection &mdash; built to complement published dengue research.</p>
+      <div class="feature-list">
+        <div class="feature-item">District-level dengue case mapping</div>
+        <div class="feature-item">Time series trend visualization</div>
+        <div class="feature-item">Climate variable overlay (temperature, humidity)</div>
+        <div class="feature-item">Early warning threshold indicators</div>
+        <div class="feature-item">Responsive design for field use</div>
+        <div class="feature-item">Linked to published XAI research</div>
+      </div>
+      <div class="proj-actions">
+        <a class="action-btn btn-primary" href="https://abubokkorshiddik.github.io/dengue-dashboard" target="_blank">&#127760; Live Demo &#8599;</a>
+        <a class="action-btn btn-outline" href="publications.html">Related publications &rarr;</a>
+      </div>
+      <div class="demo-wrap">
+        <div class="demo-bar">
+          <div class="demo-dot" style="background:#ef4444"></div>
+          <div class="demo-dot" style="background:#f59e0b;margin-left:4px"></div>
+          <div class="demo-dot" style="background:#22c55e;margin-left:4px"></div>
+          <span class="demo-url">abubokkorshiddik.github.io/dengue-dashboard</span>
+        </div>
+        <iframe src="https://abubokkorshiddik.github.io/dengue-dashboard" loading="lazy" title="Dengue Dashboard"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT — SYSTEMATIC REVIEW -->
+  <div class="proj-card review">
+    <div class="proj-head">
+      <div class="proj-icon icon-review">&#128203;</div>
+      <div class="proj-head-text">
+        <div class="proj-type-row">
+          <span class="proj-badge badge-review">Research Tool</span>
+          <span class="proj-badge badge-open">Live Demo</span>
+        </div>
+        <div class="proj-title">Systematic Review Dashboard</div>
+        <div class="proj-subtitle">Web-based literature screening, filtering, and PRISMA-based analysis tool</div>
+        <div class="tech-tags">
+          <span class="tech-tag tt-html">HTML/JS</span>
+          <span class="tech-tag tt-prisma">PRISMA</span>
+          <span class="tech-tag tt-spatial">Literature Review</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">A web-based research tool designed for efficient systematic review management. Supports literature screening, study filtering, data extraction, and PRISMA-based flowchart generation &mdash; enabling transparent and reproducible evidence synthesis for health research.</p>
+      <div class="feature-list">
+        <div class="feature-item">Title and abstract screening interface</div>
+        <div class="feature-item">Inclusion / exclusion criteria filtering</div>
+        <div class="feature-item">PRISMA flowchart generation</div>
+        <div class="feature-item">Study characteristic data extraction</div>
+        <div class="feature-item">Export results for reporting</div>
+        <div class="feature-item">Browser-based, no installation needed</div>
+      </div>
+      <div class="proj-actions">
+        <a class="action-btn btn-primary" href="https://abubokkorshiddik.github.io/research-explorer" target="_blank">&#127760; Live Demo &#8599;</a>
+      </div>
+      <div class="demo-wrap">
+        <div class="demo-bar">
+          <div class="demo-dot" style="background:#ef4444"></div>
+          <div class="demo-dot" style="background:#f59e0b;margin-left:4px"></div>
+          <div class="demo-dot" style="background:#22c55e;margin-left:4px"></div>
+          <span class="demo-url">abubokkorshiddik.github.io/research-explorer</span>
+        </div>
+        <iframe src="https://abubokkorshiddik.github.io/research-explorer" loading="lazy" title="Research Explorer"></iframe>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Md. Abu Bokkor Shiddik</div>
+      <p class="footer-desc">Researcher in Machine Learning, Explainable AI &amp; Global Health Analytics. Dept. of Statistics, BRUR, Rangpur, Bangladesh.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <div class="footer-nav-links">
+        <a href="home.html">Home</a>
+        <a href="publications.html">Publications</a>
+        <a href="projects.html">Projects</a>
+        <a href="courses.html">Courses &amp; Training</a>
+        <a href="service.html">Service</a>
+        <a href="conference-and-workshop.html">Conferences</a>
+        <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/DaySpace" target="_blank" rel="noopener">DaySpace</a>
+        <a href="https://abubokkorshiddik.github.io/bd-health-climate-atlas/" target="_blank" rel="noopener">BD Health &amp; Climate Atlas</a>
+        <a href="https://abubokkorshiddik.github.io/Eng-materials/editor.html" target="_blank" rel="noopener">Editor</a>
+        <a href="https://abubokkorshiddik.github.io/Eng-materials/reader.html" target="_blank" rel="noopener">Reader</a>
+        <a href="game.html">Games</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <div class="footer-social-links">
+        <a href="https://abubokkorshiddik.github.io/AbuBokkorShiddik.abs798/home" target="_blank">&#127760; Portfolio</a>
+        <a href="https://www.linkedin.com/in/abu-bokkor-shiddik-abs798/" target="_blank">in LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=JWeBd3IAAAAJ" target="_blank">&#127891; Google Scholar</a>
+        <a href="https://orcid.org/0009-0002-0424-446X" target="_blank">&#10022; ORCID</a>
+        <a href="https://github.com/abubokkorshiddik" target="_blank">&#123;&#125; GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Md. Abu Bokkor Shiddik &middot; All rights reserved</p>
+    <p>abubokkor.brur60@gmail.com &middot; +880 1874 001360</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.dropbtn').forEach(function(btn){btn.addEventListener('click',function(e){e.stopPropagation();var dd=btn.closest('.dropdown');var open=dd.classList.contains('active');document.querySelectorAll('.dropdown.active').forEach(function(d){d.classList.remove('active')});if(!open)dd.classList.add('active')})});
+document.addEventListener('click',function(){document.querySelectorAll('.dropdown.active').forEach(function(d){d.classList.remove('active')})});
+var ham=document.getElementById('hamburger');var drawer=document.getElementById('nav-drawer');
+ham.addEventListener('click',function(){ham.classList.toggle('open');drawer.classList.toggle('open');ham.setAttribute('aria-expanded',ham.classList.contains('open')?'true':'false')});
+/* Drawer sections: collapsed by default, tap to reveal sub-links */
+drawer.querySelectorAll('.drawer-sec').forEach(function(sec){sec.addEventListener('click',function(){var sub=sec.nextElementSibling;if(!sub||!sub.classList.contains('drawer-sub'))return;var isOpen=sub.classList.contains('open');sub.classList.toggle('open',!isOpen);sec.classList.toggle('open',!isOpen)})});
+drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){ham.classList.remove('open');drawer.classList.remove('open');ham.setAttribute('aria-expanded','false')})});
+</script>
+</body>
+</html>
